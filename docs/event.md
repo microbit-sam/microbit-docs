@@ -20,7 +20,7 @@ Constructor.  MicroBit MicroBitEvent MicroBitEvent MicroBitMessageBus MicroBitEv
 >  <div style='color:#008080; display:inline-block'>uint16_t</div> *value* - Component specific code indicating the cause of the event. 
 #####Example
 ```c++
-MicrobitEventevt(id,MICROBIT_BUTTON_EVT_CLICK);
+ MicrobitEvent evt(id,MICROBIT_BUTTON_EVT_CLICK); 
 
 ```
 <br/>
@@ -36,7 +36,7 @@ Constructor.  MicroBit MicroBitEvent MicroBitEvent MicroBitMessageBus MicroBitEv
 >  <div style='color:#008080; display:inline-block'>MicroBitEventLaunchMode</div> *mode* - optional definition of how the event should be processed after construction (if at all):
 #####Example
 ```c++
-MicrobitEventevt(id,MICROBIT_BUTTON_EVT_CLICK);
+ MicrobitEvent evt(id,MICROBIT_BUTTON_EVT_CLICK); 
 
 ```
 <br/>

@@ -18,8 +18,8 @@ Constructor. Create a managed string from a specially prepared string literal. I
 >  <div style='color:#008080; display:inline-block'>StringData  *</div> *ptr* - The literal - first two bytes should be 0xff, then the length in little endian, then the literal. The literal has to be 4-byte aligned.
 #####Example
 ```c++
-staticconstcharhello[]__attribute__((aligned(4)))="\xff\xff\x05\x00""Hello";
-ManagedStrings((StringData*)(void*)hello);
+ static const char hello[] __attribute__ ((aligned (4))) = "\xff\xff\x05\x00" "Hello"; 
+ ManagedString s((StringData*)(void*)hello); 
 
 ```
 ##leakData
@@ -37,7 +37,7 @@ Constructor. Create a managed string from a pointer to an 8-bit character buffer
 >  <div style='color:#008080; display:inline-block'>const char *</div> *str* - The character array on which to base the new  ManagedString .
 #####Example
 ```c++
-ManagedStrings("abcdefg");
+ ManagedString s("abcdefg"); 
 
 ```
 <br/>
@@ -49,7 +49,7 @@ Constructor. Create a managed string from a given integer.
 >  <div style='color:#008080; display:inline-block'>const int</div> *value* - The integer from which to create the  ManagedString
 #####Example
 ```c++
-ManagedStrings(20);
+ ManagedString s(20); 
 
 ```
 <br/>
@@ -61,7 +61,7 @@ Constructor. Create a managed string from a given char.
 >  <div style='color:#008080; display:inline-block'>const char</div> *value* - The char from which to create the  ManagedString
 #####Example
 ```c++
-ManagedStrings('a');
+ ManagedString s('a'); 
 
 ```
 <br/>
@@ -75,7 +75,7 @@ Constructor. Create a managed string from a pointer to an 8-bit character buffer
 >  <div style='color:#008080; display:inline-block'>const int16_t</div> *length* - The length of the character array
 #####Example
 ```c++
-ManagedStrings("abcdefg",7);//thisisgenerallyusedforsubstring...whynotuseanormalchar*constructor?
+ ManagedString s("abcdefg",7); // this is generally used for substring... why not use a normal char * constructor? 
 
 ```
 <br/>
@@ -87,8 +87,8 @@ Copy constructor. Makes a new  ManagedString ManagedString
 >  <div style='color:#008080; display:inline-block'>const  ManagedString  &</div> *s* - The  ManagedString  to copy.
 #####Example
 ```c++
-ManagedStrings("abcdefg");
-ManagedStringp(s);
+ ManagedString s("abcdefg"); 
+ ManagedString p(s); 
 
 ```
 <br/>
@@ -97,7 +97,7 @@ ManagedStringp(s);
 Default constructor.
 #####Example
 ```c++
-ManagedStrings();
+ ManagedString s(); 
 
 ```
 ##~ManagedString
@@ -115,9 +115,9 @@ Copy assign operation.
 >  <div style='color:#008080; display:inline-block'>const  ManagedString  &</div> *s* - The  ManagedString  to copy.
 #####Example
 ```c++
-ManagedStrings("abcd");
-ManagedStringp("efgh");
-p=s//pnowpointstos,s'refisincremented
+ ManagedString s("abcd"); 
+ ManagedString p("efgh"); 
+ p = s // p now points to s, s' ref is incremented 
 
 ```
 ##operator==
@@ -132,13 +132,13 @@ Equality operation.
 true if this  ManagedString  is identical to the one supplied, false otherwise.
 #####Example
 ```c++
-ManagedStrings("abcd");
-ManagedStringp("efgh");
-
-if(p==s)
-print("Wearethesame!");
-else
-print("Wearedifferent!");//pisnotequaltos-thiswillbecalled
+ ManagedString s("abcd"); 
+ ManagedString p("efgh"); 
+ 
+ if(p==s) 
+ print("We are the same!"); 
+ else 
+ print("We are different!"); //p is not equal to s - this will be called 
 
 ```
 ##operator<
@@ -153,13 +153,13 @@ Inequality operation.
 true if this  ManagedString  is alphabetically less than to the one supplied, false otherwise.
 #####Example
 ```c++
-ManagedStrings("a");
-ManagedStringp("b");
-
-if(s<p)
-print("aisbeforeb!");//aisbeforeb
-else
-print("bisbeforea!");
+ ManagedString s("a"); 
+ ManagedString p("b"); 
+ 
+ if(s<p) 
+ print("a is before b!"); //a is before b 
+ else 
+ print("b is before a!"); 
 
 ```
 ##operator>
@@ -174,13 +174,13 @@ Inequality operation.
 true if this  ManagedString  is alphabetically greater than to the one supplied, false otherwise.
 #####Example
 ```c++
-ManagedStrings("a");
-ManagedStringp("b");
-
-if(p>a)
-print("bisaftera!");//bisaftera
-else
-print("aisafterb!");
+ ManagedString s("a"); 
+ ManagedString p("b"); 
+ 
+ if(p>a) 
+ print("b is after a!"); //b is after a 
+ else 
+ print("a is after b!"); 
 
 ```
 ##substring
@@ -197,9 +197,9 @@ Extracts a  ManagedString
 a  ManagedString  representing the requested substring.
 #####Example
 ```c++
-ManagedStrings("abcdefg");
-
-print(s.substring(0,2))//prints"ab"
+ ManagedString s("abcdefg"); 
+ 
+ print(s.substring(0,2)) // prints "ab" 
 
 ```
 ##operator+
@@ -214,10 +214,10 @@ Concatenates this string with the one provided.
 a new  ManagedString  representing the joined strings.
 #####Example
 ```c++
-ManagedStrings("abcd");
-ManagedStringp("efgh")
-
-print(s+p)//prints"abcdefgh"
+ ManagedString s("abcd"); 
+ ManagedString p("efgh") 
+ 
+ print(s + p) // prints "abcdefgh" 
 
 ```
 ##charAt
@@ -232,9 +232,9 @@ Provides a character value at a given position in the string, indexed from zero.
 the character at posisiton index, zero if index is invalid.
 #####Example
 ```c++
-ManagedStrings("abcd");
-
-print(s.charAt(1))//prints"b"
+ ManagedString s("abcd"); 
+ 
+ print(s.charAt(1)) // prints "b" 
 
 ```
 ##toCharArray
@@ -253,9 +253,9 @@ Determines the length of this  ManagedString
 the length of the string in characters.
 #####Example
 ```c++
-ManagedStrings("abcd");
-
-print(s.length())//prints"4"
+ ManagedString s("abcd"); 
+ 
+ print(s.length()) // prints "4" 
 
 ```
 ____

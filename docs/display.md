@@ -22,7 +22,7 @@ Constructor. Create a representation of a display of a given size. The display i
 >  <div style='color:#008080; display:inline-block'>uint8_t</div> *y* - the height of the display in pixels.
 #####Example
 ```c++
-MicroBitDisplaydisplay(MICROBIT_ID_DISPLAY,5,5),
+ MicroBitDisplay display(MICROBIT_ID_DISPLAY, 5, 5), 
 
 ```
 ##stopAnimation
@@ -42,8 +42,8 @@ Prints the given character to the display, if it is not in use.
 MICROBIT_OK, MICROBIT_BUSY is the screen is in use, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
-uBit.display.printAsync('p');
-uBit.display.printAsync('p',100);
+ uBit.display.printAsync('p'); 
+ uBit.display.printAsync('p',100); 
 
 ```
 <br/>
@@ -59,8 +59,8 @@ Prints the given character to the display, if it is not in use.
 MICROBIT_OK, MICROBIT_BUSY is the screen is in use, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
-uBit.display.printAsync('p');
-uBit.display.printAsync('p',100);
+ uBit.display.printAsync('p'); 
+ uBit.display.printAsync('p',100); 
 
 ```
 <br/>
@@ -74,7 +74,7 @@ Prints the given string to the display, one character at a time. Uses the given 
 MICROBIT_OK, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
-uBit.display.printAsync("abc123",400);
+ uBit.display.printAsync("abc123",400); 
 
 ```
 <br/>
@@ -90,7 +90,7 @@ Prints the given string to the display, one character at a time. Uses the given 
 MICROBIT_OK, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
-uBit.display.printAsync("abc123",400);
+ uBit.display.printAsync("abc123",400); 
 
 ```
 <br/>
@@ -108,8 +108,8 @@ Prints the given image to the display, if the display is not in use. Returns imm
 >  <div style='color:#008080; display:inline-block'>int</div> *alpha* - Treats the brightness level '0' as transparent (default 0) 
 #####Example
 ```c++
-MicrobitImagei("1,1,1,1,1\n1,1,1,1,1\n");
-uBit.display.print(i,400);
+ MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n"); 
+ uBit.display.print(i,400); 
 
 ```
 <br/>
@@ -129,8 +129,8 @@ Prints the given image to the display, if the display is not in use. Returns imm
 >  <div style='color:#008080; display:inline-block'>int</div> *delay* - The time to delay between characters, in milliseconds. set to 0 to display forever. (default 0).
 #####Example
 ```c++
-MicrobitImagei("1,1,1,1,1\n1,1,1,1,1\n");
-uBit.display.print(i,400);
+ MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n"); 
+ uBit.display.print(i,400); 
 
 ```
 ##print
@@ -145,7 +145,7 @@ Prints the given character to the display.
 MICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
-uBit.display.print('p');
+ uBit.display.print('p'); 
 
 ```
 <br/>
@@ -161,7 +161,7 @@ Prints the given character to the display.
 MICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
-uBit.display.print('p');
+ uBit.display.print('p'); 
 
 ```
 <br/>
@@ -175,7 +175,7 @@ Prints the given string to the display, one character at a time. Uses the given 
 MICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
-uBit.display.print("abc123",400);
+ uBit.display.print("abc123",400); 
 
 ```
 <br/>
@@ -191,7 +191,7 @@ Prints the given string to the display, one character at a time. Uses the given 
 MICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
-uBit.display.print("abc123",400);
+ uBit.display.print("abc123",400); 
 
 ```
 <br/>
@@ -211,8 +211,8 @@ Prints the given image to the display. Blocks the calling thread until all the t
 MICROBIT_OK, MICROBIT_BUSY if the display is already in use, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
-MicrobitImagei("1,1,1,1,1\n1,1,1,1,1\n");
-uBit.display.print(i,400);
+ MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n"); 
+ uBit.display.print(i,400); 
 
 ```
 <br/>
@@ -234,8 +234,8 @@ Prints the given image to the display. Blocks the calling thread until all the t
 MICROBIT_OK, MICROBIT_BUSY if the display is already in use, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
-MicrobitImagei("1,1,1,1,1\n1,1,1,1,1\n");
-uBit.display.print(i,400);
+ MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n"); 
+ uBit.display.print(i,400); 
 
 ```
 ##scrollAsync
@@ -250,7 +250,7 @@ Scrolls the given string to the display, from right to left. Uses the given dela
 MICROBIT_OK, MICROBIT_BUSY if the display is already in use, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
-uBit.display.scrollAsync("abc123",100);
+ uBit.display.scrollAsync("abc123",100); 
 
 ```
 <br/>
@@ -266,7 +266,7 @@ Scrolls the given string to the display, from right to left. Uses the given dela
 MICROBIT_OK, MICROBIT_BUSY if the display is already in use, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
-uBit.display.scrollAsync("abc123",100);
+ uBit.display.scrollAsync("abc123",100); 
 
 ```
 <br/>
@@ -280,8 +280,8 @@ Scrolls the given image across the display, from right to left. Returns immediat
 MICROBIT_OK, MICROBIT_BUSY if the display is already in use, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
-MicrobitImagei("1,1,1,1,1\n1,1,1,1,1\n");
-uBit.display.scrollAsync(i,100,1);
+ MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n"); 
+ uBit.display.scrollAsync(i,100,1); 
 
 ```
 <br/>
@@ -297,8 +297,8 @@ Scrolls the given image across the display, from right to left. Returns immediat
 MICROBIT_OK, MICROBIT_BUSY if the display is already in use, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
-MicrobitImagei("1,1,1,1,1\n1,1,1,1,1\n");
-uBit.display.scrollAsync(i,100,1);
+ MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n"); 
+ uBit.display.scrollAsync(i,100,1); 
 
 ```
 <br/>
@@ -316,8 +316,8 @@ Scrolls the given image across the display, from right to left. Returns immediat
 MICROBIT_OK, MICROBIT_BUSY if the display is already in use, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
-MicrobitImagei("1,1,1,1,1\n1,1,1,1,1\n");
-uBit.display.scrollAsync(i,100,1);
+ MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n"); 
+ uBit.display.scrollAsync(i,100,1); 
 
 ```
 ##scroll
@@ -332,7 +332,7 @@ Scrolls the given string to the display, from right to left. Uses the given dela
 MICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
-uBit.display.scroll("abc123",100);
+ uBit.display.scroll("abc123",100); 
 
 ```
 <br/>
@@ -348,7 +348,7 @@ Scrolls the given string to the display, from right to left. Uses the given dela
 MICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
-uBit.display.scroll("abc123",100);
+ uBit.display.scroll("abc123",100); 
 
 ```
 <br/>
@@ -362,8 +362,8 @@ Scrolls the given image across the display, from right to left. Blocks the calli
 MICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
-MicrobitImagei("1,1,1,1,1\n1,1,1,1,1\n");
-uBit.display.scroll(i,100,1);
+ MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n"); 
+ uBit.display.scroll(i,100,1); 
 
 ```
 <br/>
@@ -379,8 +379,8 @@ Scrolls the given image across the display, from right to left. Blocks the calli
 MICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
-MicrobitImagei("1,1,1,1,1\n1,1,1,1,1\n");
-uBit.display.scroll(i,100,1);
+ MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n"); 
+ uBit.display.scroll(i,100,1); 
 
 ```
 <br/>
@@ -398,8 +398,8 @@ Scrolls the given image across the display, from right to left. Blocks the calli
 MICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
-MicrobitImagei("1,1,1,1,1\n1,1,1,1,1\n");
-uBit.display.scroll(i,100,1);
+ MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n"); 
+ uBit.display.scroll(i,100,1); 
 
 ```
 ##animateAsync
@@ -418,12 +418,12 @@ uBit.display.scroll(i,100,1);
 MICROBIT_OK, MICROBIT_BUSY if the screen is in use, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
-constintheart_w=10;
-constintheart_h=5;
-constuint8_theart[]={0,1,0,1,0,0,0,0,0,0,1,1,1,1,1,0,1,0,1,0,1,1,1,1,1,0,1,1,1,0,0,1,1,1,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,};
-
-MicroBitImagei(heart_w,heart_h,heart);
-uBit.display.animateAsync(i,100,5);
+ const int heart_w = 10; 
+ const int heart_h = 5; 
+ const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; 
+ 
+ MicroBitImage i(heart_w,heart_h,heart); 
+ uBit.display.animateAsync(i,100,5); 
 
 ```
 <br/>
@@ -443,12 +443,12 @@ uBit.display.animateAsync(i,100,5);
 MICROBIT_OK, MICROBIT_BUSY if the screen is in use, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
-constintheart_w=10;
-constintheart_h=5;
-constuint8_theart[]={0,1,0,1,0,0,0,0,0,0,1,1,1,1,1,0,1,0,1,0,1,1,1,1,1,0,1,1,1,0,0,1,1,1,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,};
-
-MicroBitImagei(heart_w,heart_h,heart);
-uBit.display.animateAsync(i,100,5);
+ const int heart_w = 10; 
+ const int heart_h = 5; 
+ const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; 
+ 
+ MicroBitImage i(heart_w,heart_h,heart); 
+ uBit.display.animateAsync(i,100,5); 
 
 ```
 ##animate
@@ -467,12 +467,12 @@ uBit.display.animateAsync(i,100,5);
 MICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
-constintheart_w=10;
-constintheart_h=5;
-constuint8_theart[]={0,1,0,1,0,0,0,0,0,0,1,1,1,1,1,0,1,0,1,0,1,1,1,1,1,0,1,1,1,0,0,1,1,1,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,};
-
-MicroBitImagei(heart_w,heart_h,heart);
-uBit.display.animate(i,100,5);
+ const int heart_w = 10; 
+ const int heart_h = 5; 
+ const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; 
+ 
+ MicroBitImage i(heart_w,heart_h,heart); 
+ uBit.display.animate(i,100,5); 
 
 ```
 <br/>
@@ -492,12 +492,12 @@ uBit.display.animate(i,100,5);
 MICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
-constintheart_w=10;
-constintheart_h=5;
-constuint8_theart[]={0,1,0,1,0,0,0,0,0,0,1,1,1,1,1,0,1,0,1,0,1,1,1,1,1,0,1,1,1,0,0,1,1,1,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,};
-
-MicroBitImagei(heart_w,heart_h,heart);
-uBit.display.animate(i,100,5);
+ const int heart_w = 10; 
+ const int heart_h = 5; 
+ const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; 
+ 
+ MicroBitImage i(heart_w,heart_h,heart); 
+ uBit.display.animate(i,100,5); 
 
 ```
 ##setBrightness
@@ -512,7 +512,7 @@ Sets the display brightness to the specified level.
 MICROBIT_OK, or MICROBIT_INVALID_PARAMETER
 #####Example
 ```c++
-uBit.display.setBrightness(255);//maxbrightness
+ uBit.display.setBrightness(255); //max brightness 
 
 ```
 ##setDisplayMode
@@ -525,7 +525,7 @@ Sets the mode of the display.
 >  <div style='color:#008080; display:inline-block'>DisplayMode</div> *mode* - The mode to swap the display into. (can be either DISPLAY_MODE_GREYSCALE, DISPLAY_MODE_BLACK_AND_WHITE, DISPLAY_MODE_BLACK_AND_WHITE_LIGHT_SENSE)
 #####Example
 ```c++
-uBit.display.setDisplayMode(DISPLAY_MODE_GREYSCALE);//perpixelbrightness
+ uBit.display.setDisplayMode(DISPLAY_MODE_GREYSCALE); //per pixel brightness 
 
 ```
 ##getDisplayMode
@@ -544,7 +544,7 @@ Fetches the current brightness of this display.
 the brightness of this display, in the range 0..255.
 #####Example
 ```c++
-uBit.display.getBrightness();//thecurrentbrightness
+ uBit.display.getBrightness(); //the current brightness 
 
 ```
 ##rotateTo
@@ -557,7 +557,7 @@ Rotates the display to the given position. Axis aligned values only.
 >  <div style='color:#008080; display:inline-block'>DisplayRotation</div> *position*
 #####Example
 ```c++
-uBit.display.rotateTo(MICROBIT_DISPLAY_ROTATION_180);//rotates180degreesfromoriginalorientation
+ uBit.display.rotateTo(MICROBIT_DISPLAY_ROTATION_180); //rotates 180 degrees from original orientation 
 
 ```
 ##enable
@@ -567,7 +567,7 @@ uBit.display.rotateTo(MICROBIT_DISPLAY_ROTATION_180);//rotates180degreesfromorig
 Enables the display, should only be called if the display is disabled.
 #####Example
 ```c++
-uBit.display.enable();//reenablesthedisplaymechanics
+ uBit.display.enable(); //reenables the display mechanics 
 
 ```
 ##disable
@@ -577,7 +577,7 @@ uBit.display.enable();//reenablesthedisplaymechanics
 Disables the display, should only be called if the display is enabled. Display must be disabled to avoid MUXing of edge connector pins.
 #####Example
 ```c++
-uBit.display.disable();//disablesthedisplay
+ uBit.display.disable(); //disables the display 
 
 ```
 ##clear
@@ -587,7 +587,7 @@ uBit.display.disable();//disablesthedisplay
 Clears the current image on the display. Simplifies the process, you can also use uBit.display.image.clear
 #####Example
 ```c++
-uBit.display.clear();//clearsthedisplay
+ uBit.display.clear(); //clears the display 
 
 ```
 ##error
@@ -600,7 +600,7 @@ Displays "=(" and an accompanying status code infinitely.
 >  <div style='color:#008080; display:inline-block'>int</div> *statusCode* - the appropriate status code - 0 means no code will be displayed. Status codes must be in the range 0-255.
 #####Example
 ```c++
-uBit.display.error(20);
+ uBit.display.error(20); 
 
 ```
 ##setErrorTimeout
@@ -613,7 +613,7 @@ Defines the length of time that the device will remain in a error state before r
 >  <div style='color:#008080; display:inline-block'>int</div> *iterations* - The number of times the error code will be displayed before resetting. Set to zero to remain in error state forever.
 #####Example
 ```c++
-uBit.display.setErrorTimeout(4);
+ uBit.display.setErrorTimeout(4); 
 
 ```
 ##setFont

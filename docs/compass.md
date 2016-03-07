@@ -20,7 +20,7 @@ Constructor. Create a compass representation with the given ID.
 >  <div style='color:#008080; display:inline-block'>uint16_t</div> *address* - the default address for the compass register
 #####Example
 ```c++
-compass(MICROBIT_ID_COMPASS,MAG3110_DEFAULT_ADDR);
+ compass(MICROBIT_ID_COMPASS, MAG3110_DEFAULT_ADDR); 
 
 ```
 ##configure
@@ -56,7 +56,7 @@ Gets the current heading of the device, relative to magnetic north. If the compa
 the current heading, in degrees. Or MICROBIT_CALIBRATION_IN_PROGRESS if the compass is calibrating.
 #####Example
 ```c++
-uBit.compass.heading();
+ uBit.compass.heading(); 
 
 ```
 ##whoAmI
@@ -68,7 +68,7 @@ Attempts to determine the 8 bit ID from the magnetometer.
 the id of the compass (magnetometer), or MICROBIT_I2C_ERROR if the magnetometer could not be updated.
 #####Example
 ```c++
-uBit.compass.whoAmI();
+ uBit.compass.whoAmI(); 
 
 ```
 ##getX
@@ -80,7 +80,7 @@ Reads the X axis value of the latest update from the compass.
 The magnetic force measured in the X axis, in nano teslas.
 #####Example
 ```c++
-uBit.compass.getX();
+ uBit.compass.getX(); 
 
 ```
 <br/>
@@ -94,7 +94,7 @@ Reads the X axis value of the latest update from the compass.
 The magnetic force measured in the X axis, in nano teslas.
 #####Example
 ```c++
-uBit.compass.getX();
+ uBit.compass.getX(); 
 
 ```
 ##getY
@@ -106,7 +106,7 @@ Reads the Y axis value of the latest update from the compass.
 The magnetic force measured in the Y axis, in nano teslas.
 #####Example
 ```c++
-uBit.compass.getY();
+ uBit.compass.getY(); 
 
 ```
 <br/>
@@ -120,7 +120,7 @@ Reads the Y axis value of the latest update from the compass.
 The magnetic force measured in the Y axis, in nano teslas.
 #####Example
 ```c++
-uBit.compass.getY();
+ uBit.compass.getY(); 
 
 ```
 ##getZ
@@ -132,7 +132,7 @@ Reads the Z axis value of the latest update from the compass.
 The magnetic force measured in the Z axis, in nano teslas.
 #####Example
 ```c++
-uBit.compass.getZ();
+ uBit.compass.getZ(); 
 
 ```
 <br/>
@@ -146,7 +146,7 @@ Reads the Z axis value of the latest update from the compass.
 The magnetic force measured in the Z axis, in nano teslas.
 #####Example
 ```c++
-uBit.compass.getZ();
+ uBit.compass.getZ(); 
 
 ```
 ##getFieldStrength
@@ -158,7 +158,7 @@ Determines the overall magnetic field strength based on the latest update from t
 The magnetic force measured across all axes, in nano teslas.
 #####Example
 ```c++
-uBit.compass.getFieldStrength();
+ uBit.compass.getFieldStrength(); 
 
 ```
 ##readTemperature

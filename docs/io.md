@@ -22,7 +22,7 @@ Constructor. Create a Button representation with the given ID.  MicroBitPin
 >  <div style='color:#008080; display:inline-block'>PinCapability</div> *capability* - the capability of this pin.
 #####Example
 ```c++
-MicroBitPinP0(MICROBIT_ID_IO_P0,MICROBIT_PIN_P0,PIN_CAPABILITY_BOTH);
+ MicroBitPin P0(MICROBIT_ID_IO_P0, MICROBIT_PIN_P0, PIN_CAPABILITY_BOTH); 
 
 ```
 ##setDigitalValue
@@ -37,8 +37,8 @@ Configures this IO pin as a digital output (if necessary) and sets the pin to 'v
 MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if value is out of range, or MICROBIT_NOT_SUPPORTED if the given pin does not have digital capability.
 #####Example
 ```c++
-MicroBitPinP0(MICROBIT_ID_IO_P0,MICROBIT_PIN_P0,PIN_CAPABILITY_BOTH);
-P0.setDigitalValue(1);//P0isnowHI
+ MicroBitPin P0(MICROBIT_ID_IO_P0, MICROBIT_PIN_P0, PIN_CAPABILITY_BOTH); 
+ P0.setDigitalValue(1); // P0 is now HI 
 
 ```
 ##getDigitalValue
@@ -50,8 +50,8 @@ Configures this IO pin as a digital input (if necessary) and tests its current v
 1 if this input is high, 0 if input is LO, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability.
 #####Example
 ```c++
-MicroBitPinP0(MICROBIT_ID_IO_P0,MICROBIT_PIN_P0,PIN_CAPABILITY_BOTH);
-P0.getDigitalValue();//P0iseither0or1;
+ MicroBitPin P0(MICROBIT_ID_IO_P0, MICROBIT_PIN_P0, PIN_CAPABILITY_BOTH); 
+ P0.getDigitalValue(); // P0 is either 0 or 1; 
 
 ```
 ##setAnalogValue
@@ -107,8 +107,8 @@ Configures this IO pin as an analogue input (if necessary and possible).
 the current analogue level on the pin, in the range 0 - 1024, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability.
 #####Example
 ```c++
-MicroBitPinP0(MICROBIT_ID_IO_P0,MICROBIT_PIN_P0,PIN_CAPABILITY_BOTH);
-P0.getAnalogValue();//P0isavalueintherangeof0-1024
+ MicroBitPin P0(MICROBIT_ID_IO_P0, MICROBIT_PIN_P0, PIN_CAPABILITY_BOTH); 
+ P0.getAnalogValue(); // P0 is a value in the range of 0 - 1024 
 
 ```
 ##isInput
@@ -148,11 +148,11 @@ Configures this IO pin as a makey makey style touch sensor (if necessary) and te
 1 if pin is touched, 0 if not, or MICROBIT_NOT_SUPPORTED if this pin does not support touch capability.
 #####Example
 ```c++
-MicroBitPinP0(MICROBIT_ID_IO_P0,MICROBIT_PIN_P0,PIN_CAPABILITY_ALL);
-if(P0.isTouched())
-{
-uBit.display.clear();
-}
+ MicroBitPin P0(MICROBIT_ID_IO_P0, MICROBIT_PIN_P0, PIN_CAPABILITY_ALL); 
+ if(P0.isTouched()) 
+ { 
+ uBit.display.clear(); 
+ } 
 
 ```
 ##setServoPulseUs

@@ -20,7 +20,7 @@ Constructor. Create an accelerometer representation with the given ID.
 >  <div style='color:#008080; display:inline-block'>uint16_t</div> *address* - the default base address of the accelerometer.
 #####Example
 ```c++
-accelerometer(MICROBIT_ID_ACCELEROMETER,MMA8653_DEFAULT_ADDR)
+ accelerometer(MICROBIT_ID_ACCELEROMETER, MMA8653_DEFAULT_ADDR) 
 
 ```
 ##configure
@@ -80,7 +80,7 @@ Attempts to determine the 8 bit ID from the accelerometer.
 the 8 bit ID returned by the accelerometer, or MICROBIT_I2C_ERROR if the request fails.
 #####Example
 ```c++
-uBit.accelerometer.whoAmI();
+ uBit.accelerometer.whoAmI(); 
 
 ```
 ##getX
@@ -92,7 +92,7 @@ Reads the X axis value of the latest update from the accelerometer.
 The force measured in the X axis, in milli-g.
 #####Example
 ```c++
-uBit.accelerometer.getX();
+ uBit.accelerometer.getX(); 
 
 ```
 <br/>
@@ -106,7 +106,7 @@ Reads the X axis value of the latest update from the accelerometer.
 The force measured in the X axis, in milli-g.
 #####Example
 ```c++
-uBit.accelerometer.getX();
+ uBit.accelerometer.getX(); 
 
 ```
 ##getY
@@ -118,7 +118,7 @@ Reads the Y axis value of the latest update from the accelerometer.
 The force measured in the Y axis, in milli-g.
 #####Example
 ```c++
-uBit.accelerometer.getY();
+ uBit.accelerometer.getY(); 
 
 ```
 <br/>
@@ -132,7 +132,7 @@ Reads the Y axis value of the latest update from the accelerometer.
 The force measured in the Y axis, in milli-g.
 #####Example
 ```c++
-uBit.accelerometer.getY();
+ uBit.accelerometer.getY(); 
 
 ```
 ##getZ
@@ -144,7 +144,7 @@ Reads the Z axis value of the latest update from the accelerometer.
 The force measured in the Z axis, in milli-g.
 #####Example
 ```c++
-uBit.accelerometer.getZ();
+ uBit.accelerometer.getZ(); 
 
 ```
 <br/>
@@ -158,7 +158,7 @@ Reads the Z axis value of the latest update from the accelerometer.
 The force measured in the Z axis, in milli-g.
 #####Example
 ```c++
-uBit.accelerometer.getZ();
+ uBit.accelerometer.getZ(); 
 
 ```
 ##getPitch
@@ -170,7 +170,7 @@ Provides a rotation compensated pitch of the device, based on the latest update 
 The pitch of the device, in degrees.
 #####Example
 ```c++
-uBit.accelerometer.getPitch();
+ uBit.accelerometer.getPitch(); 
 
 ```
 ##getPitchRadians
@@ -185,7 +185,7 @@ Provides a rotation compensated roll of the device, based on the latest update f
 The roll of the device, in degrees.
 #####Example
 ```c++
-uBit.accelerometer.getRoll();
+ uBit.accelerometer.getRoll(); 
 
 ```
 ##getRollRadians
@@ -200,7 +200,7 @@ Reads the last recorded gesture detected.
 The last gesture detected.
 #####Example
 ```c++
-if(uBit.accelerometer.getGesture()==SHAKE)
+ if (uBit.accelerometer.getGesture() == SHAKE) 
 
 ```
 ##isIdleCallbackNeeded

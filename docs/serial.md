@@ -20,7 +20,7 @@ Constructor. Create an instance of  MicroBitSerial MicroBitSerial
 >  <div style='color:#008080; display:inline-block'>PinName</div> *rx*
 #####Example
 ```c++
-MicroBitSerialserial(USBTX,USBRX);
+ MicroBitSerial serial(USBTX, USBRX); 
 
 ```
 
@@ -35,7 +35,7 @@ Sends a managed string over serial.
 >  <div style='color:#008080; display:inline-block'>ManagedString</div> *s* - the  ManagedString  to send
 #####Example
 ```c++
-uBit.serial.printString("abc123");
+ uBit.serial.printString("abc123"); 
 
 ```
 ##readString
@@ -45,7 +45,7 @@ uBit.serial.printString("abc123");
 Reads a  ManagedString
 #####Example
 ```c++
-uBit.serial.readString();
+ uBit.serial.readString(); 
 
 ```
 
@@ -60,7 +60,7 @@ Reads a  ManagedString
 >  <div style='color:#008080; display:inline-block'>int</div> *len* - the buffer size for the string, default is defined by MICROBIT_SERIAL_BUFFER_SIZE
 #####Example
 ```c++
-uBit.serial.readString();
+ uBit.serial.readString(); 
 
 ```
 
@@ -76,9 +76,9 @@ Sends a  MicroBitImage
 >  <div style='color:#008080; display:inline-block'>MicroBitImage</div> *i* - the instance of  MicroBitImage  you would like to send.
 #####Example
 ```c++
-constuint8_theart[]={0,1,0,1,0,0,0,0,0,0,1,1,1,1,1,0,1,0,1,0,1,1,1,1,1,0,1,1,1,0,0,1,1,1,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,};//acuteheart
-MicroBitImagei(10,5,heart);
-uBit.serial.sendImage(i);
+ const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart 
+ MicroBitImage i(10,5,heart); 
+ uBit.serial.sendImage(i); 
 
 ```
 ##readImage
@@ -95,7 +95,7 @@ Reads a  MicroBitImage
 a  MicroBitImage  with the format described over serial
 #####Example
 ```c++
-MicroBitImagei=uBit.serial.readImage(2,2);
+ MicroBitImage i = uBit.serial.readImage(2,2); 
 
 ```
 
@@ -107,7 +107,7 @@ MicroBitImagei=uBit.serial.readImage(2,2);
 Sends the current pixel values, byte-per-pixel, over serial
 #####Example
 ```c++
-uBit.serial.sendDisplayState();
+ uBit.serial.sendDisplayState(); 
 
 ```
 ##readDisplayState
@@ -117,7 +117,7 @@ uBit.serial.sendDisplayState();
 Reads pixel values, byte-per-pixel, from serial, and sets the display.
 #####Example
 ```c++
-uBit.serial.readDisplayState();
+ uBit.serial.readDisplayState(); 
 
 ```
 ____

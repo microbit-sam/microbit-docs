@@ -22,7 +22,7 @@ Constructor. Create a representation of a vurtual button, that generates events 
 >  <div style='color:#008080; display:inline-block'>uint16_t</div> *button2* - the ID of the second button to integrate. 
 #####Example
 ```c++
-multiButton(MICROBIT_ID_BUTTON_AB,MICROBIT_ID_BUTTON_A,MICROBIT_ID_BUTTON_B);
+ multiButton(MICROBIT_ID_BUTTON_AB, MICROBIT_ID_BUTTON_A, MICROBIT_ID_BUTTON_B); 
 
 ```
 ##isPressed
@@ -34,8 +34,8 @@ Tests if this MultiButton is currently pressed.
 1 if both physical buttons are pressed simultaneously.
 #####Example
 ```c++
-if(uBit.buttonAB.isPressed())
-print("Pressed!");
+ if(uBit.buttonAB.isPressed()) 
+ print("Pressed!"); 
 
 ```
 ##setEventConfiguration
@@ -48,11 +48,11 @@ Changes the event configuraiton of this button to the given value. All subsequen
 >  <div style='color:#008080; display:inline-block'>MicroBitButtonEventConfiguration</div> *config* - The new configuration for this button. Legal values are MICROBIT_BUTTON_ALL_EVENTS or MICROBIT_BUTTON_SIMPLE_EVENTS.
 #####Example
 ```c++
-//Configureabuttontogenerateallpossibleevents.
-uBit.buttonAB.setEventConfiguration(MICROBIT_BUTTON_ALL_EVENTS);
-
-//ConfigureabuttontosuppressMICROBIT_BUTTON_EVT_CLICKandMICROBIT_BUTTON_EVT_LONG_CLICKevents.
-uBit.buttonAB.setEventConfiguration(MICROBIT_BUTTON_SIMPLE_EVENTS);
+ // Configure a button to generate all possible events. 
+ uBit.buttonAB.setEventConfiguration(MICROBIT_BUTTON_ALL_EVENTS); 
+ 
+ // Configure a button to suppress MICROBIT_BUTTON_EVT_CLICK and MICROBIT_BUTTON_EVT_LONG_CLICK events. 
+ uBit.buttonAB.setEventConfiguration(MICROBIT_BUTTON_SIMPLE_EVENTS); 
 
 ```
 ____

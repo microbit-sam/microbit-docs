@@ -202,7 +202,7 @@ def extract_member_function(root, xml_element):
     examples = detailed_description.find('para/programlisting')
 
     if examples is not None:
-         function['examples'] = ''.join(examples.itertext())
+         function['examples'] = ''.join([('' if index is 0 else ' ')+word for index, word in enumerate(examples.itertext(),1) ])
 
     param_list = detailed_description.findall('para/parameterlist')
 

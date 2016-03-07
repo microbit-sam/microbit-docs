@@ -20,7 +20,7 @@ Constructor. Create a pin representation with the given ID.  MicroBitButton
 >  <div style='color:#008080; display:inline-block'>PinName</div> *name* - the physical pin on the processor that this butotn is connected to. 
 #####Example
 ```c++
-buttonA(MICROBIT_ID_BUTTON_A,MICROBIT_PIN_BUTTON_A);//anumberbetween0and200inclusive
+ buttonA(MICROBIT_ID_BUTTON_A,MICROBIT_PIN_BUTTON_A); //a number between 0 and 200 inclusive 
 
 ```
 <br/>
@@ -36,7 +36,7 @@ Constructor. Create a pin representation with the given ID.  MicroBitButton
 >  <div style='color:#008080; display:inline-block'>MicroBitButtonEventConfiguration</div> *eventConfiguration*
 #####Example
 ```c++
-buttonA(MICROBIT_ID_BUTTON_A,MICROBIT_PIN_BUTTON_A);//anumberbetween0and200inclusive
+ buttonA(MICROBIT_ID_BUTTON_A,MICROBIT_PIN_BUTTON_A); //a number between 0 and 200 inclusive 
 
 ```
 <br/>
@@ -54,7 +54,7 @@ Constructor. Create a pin representation with the given ID.  MicroBitButton
 >  <div style='color:#008080; display:inline-block'>PinMode</div> *mode* - the configuration of internal pullups/pulldowns, as define in the mbed PinMode class. PullNone by default.
 #####Example
 ```c++
-buttonA(MICROBIT_ID_BUTTON_A,MICROBIT_PIN_BUTTON_A);//anumberbetween0and200inclusive
+ buttonA(MICROBIT_ID_BUTTON_A,MICROBIT_PIN_BUTTON_A); //a number between 0 and 200 inclusive 
 
 ```
 ##isPressed
@@ -66,8 +66,8 @@ Tests if this Button is currently pressed.
 1 if this button is pressed, 0 otherwise.
 #####Example
 ```c++
-if(uBit.buttonA.isPressed())
-print("Pressed!");
+ if(uBit.buttonA.isPressed()) 
+ print("Pressed!"); 
 
 ```
 ##setEventConfiguration
@@ -80,11 +80,11 @@ Changes the event configuraiton of this button to the given value. All subsequen
 >  <div style='color:#008080; display:inline-block'>MicroBitButtonEventConfiguration</div> *config* - The new configuration for this button. Legal values are MICROBIT_BUTTON_ALL_EVENTS or MICROBIT_BUTTON_SIMPLE_EVENTS.
 #####Example
 ```c++
-//Configureabuttontogenerateallpossibleevents.
-uBit.buttonA.setEventConfiguration(MICROBIT_BUTTON_ALL_EVENTS);
-
-//ConfigureabuttontosuppressMICROBIT_BUTTON_EVT_CLICKandMICROBIT_BUTTON_EVT_LONG_CLICKevents.
-uBit.buttonA.setEventConfiguration(MICROBIT_BUTTON_SIMPLE_EVENTS);
+ // Configure a button to generate all possible events. 
+ uBit.buttonA.setEventConfiguration(MICROBIT_BUTTON_ALL_EVENTS); 
+ 
+ // Configure a button to suppress MICROBIT_BUTTON_EVT_CLICK and MICROBIT_BUTTON_EVT_LONG_CLICK events. 
+ uBit.buttonA.setEventConfiguration(MICROBIT_BUTTON_SIMPLE_EVENTS); 
 
 ```
 ##~MicroBitButton

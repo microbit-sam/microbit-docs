@@ -18,7 +18,7 @@ Constructor. Create new object that can sense temperature.  MicroBitThermometer
 >  <div style='color:#008080; display:inline-block'>uint16_t</div> *id* - the ID of the new  MicroBitThermometer  object.
 #####Example
 ```c++
-thermometer(MICROBIT_ID_THERMOMETER);
+ thermometer(MICROBIT_ID_THERMOMETER); 
 
 ```
 ##setPeriod
@@ -45,7 +45,7 @@ Gets the current temperature of the microbit.
 the current temperature, in degrees celsius.
 #####Example
 ```c++
-uBit.thermometer.getTemperature();
+ uBit.thermometer.getTemperature(); 
 
 ```
 ##isIdleCallbackNeeded

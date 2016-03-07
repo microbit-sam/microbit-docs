@@ -23,10 +23,10 @@ Queues the given event to be sent to all registered recipients.
 >  <div style='color:#008080; display:inline-block'>MicroBitEvent</div> *evt*
 #####Example
 ```c++
-MicroBitEventevt(id,MICROBIT_BUTTON_EVT_DOWN,ticks,false);
-evt.fire();
-//ORYOUCANDOTHIS...
-MicroBitEventevt(id,MICROBIT_BUTTON_EVT_DOWN);
+ MicroBitEvent evt(id,MICROBIT_BUTTON_EVT_DOWN,ticks,false); 
+ evt.fire(); 
+ //OR YOU CAN DO THIS... 
+ MicroBitEvent evt(id,MICROBIT_BUTTON_EVT_DOWN); 
 
 ```
 ##process
@@ -66,11 +66,11 @@ Register a listener function.
 MICROBIT_OK on success MICROBIT_INVALID_PARAMETER
 #####Example
 ```c++
-voidonButtonBClick()
-{
-//dosomething
-}
-uBit.MessageBus.listen(MICROBIT_ID_BUTTON_B,MICROBIT_BUTTON_EVT_CLICK,onButtonBClick);//callfunctionwheneveraclickeventisdetected.
+ void onButtonBClick() 
+ { 
+ //do something 
+ } 
+ uBit.MessageBus.listen(MICROBIT_ID_BUTTON_B, MICROBIT_BUTTON_EVT_CLICK, onButtonBClick); // call function when ever a click event is detected. 
 
 ```
 <br/>
@@ -90,11 +90,11 @@ Register a listener function.
 MICROBIT_OK on success MICROBIT_INVALID_PARAMETER
 #####Example
 ```c++
-voidonButtonBClick()
-{
-//dosomething
-}
-uBit.MessageBus.listen(MICROBIT_ID_BUTTON_B,MICROBIT_BUTTON_EVT_CLICK,onButtonBClick);//callfunctionwheneveraclickeventisdetected.
+ void onButtonBClick() 
+ { 
+ //do something 
+ } 
+ uBit.MessageBus.listen(MICROBIT_ID_BUTTON_B, MICROBIT_BUTTON_EVT_CLICK, onButtonBClick); // call function when ever a click event is detected. 
 
 ```
 <br/>
@@ -114,11 +114,11 @@ Register a listener function.
 MICROBIT_OK on success MICROBIT_INVALID_PARAMETER
 #####Example
 ```c++
-voidonButtonBClick(void*arg)
-{
-//dosomething
-}
-uBit.MessageBus.listen(MICROBIT_ID_BUTTON_B,MICROBIT_BUTTON_EVT_CLICK,onButtonBClick);//callfunctionwheneveraclickeventisdetected.
+ void onButtonBClick(void *arg) 
+ { 
+ //do something 
+ } 
+ uBit.MessageBus.listen(MICROBIT_ID_BUTTON_B, MICROBIT_BUTTON_EVT_CLICK, onButtonBClick); // call function when ever a click event is detected. 
 
 ```
 <br/>
@@ -140,11 +140,11 @@ Register a listener function.
 MICROBIT_OK on success MICROBIT_INVALID_PARAMETER
 #####Example
 ```c++
-voidonButtonBClick(void*arg)
-{
-//dosomething
-}
-uBit.MessageBus.listen(MICROBIT_ID_BUTTON_B,MICROBIT_BUTTON_EVT_CLICK,onButtonBClick);//callfunctionwheneveraclickeventisdetected.
+ void onButtonBClick(void *arg) 
+ { 
+ //do something 
+ } 
+ uBit.MessageBus.listen(MICROBIT_ID_BUTTON_B, MICROBIT_BUTTON_EVT_CLICK, onButtonBClick); // call function when ever a click event is detected. 
 
 ```
 <br/>
@@ -166,13 +166,13 @@ Register a listener function.
 MICROBIT_OK on success MICROBIT_INVALID_PARAMETER
 #####Example
 ```c++
-voidSomeClass::onButtonBClick()
-{
-//dosomething
-}
-
-SomeClasss=newSomeClass();
-uBit.MessageBus.listen(MICROBIT_ID_BUTTON_B,MICROBIT_BUTTON_EVT_CLICK,s,&SomeClass::onButtonBClick);
+ void SomeClass::onButtonBClick() 
+ { 
+ //do something 
+ } 
+ 
+ SomeClass s = new SomeClass(); 
+ uBit.MessageBus.listen(MICROBIT_ID_BUTTON_B, MICROBIT_BUTTON_EVT_CLICK, s, &SomeClass::onButtonBClick); 
 
 ```
 <br/>
@@ -196,13 +196,13 @@ Register a listener function.
 MICROBIT_OK on success MICROBIT_INVALID_PARAMETER
 #####Example
 ```c++
-voidSomeClass::onButtonBClick()
-{
-//dosomething
-}
-
-SomeClasss=newSomeClass();
-uBit.MessageBus.listen(MICROBIT_ID_BUTTON_B,MICROBIT_BUTTON_EVT_CLICK,s,&SomeClass::onButtonBClick);
+ void SomeClass::onButtonBClick() 
+ { 
+ //do something 
+ } 
+ 
+ SomeClass s = new SomeClass(); 
+ uBit.MessageBus.listen(MICROBIT_ID_BUTTON_B, MICROBIT_BUTTON_EVT_CLICK, s, &SomeClass::onButtonBClick); 
 
 ```
 ##ignore
@@ -221,12 +221,12 @@ Unregister a listener function. Listners are identified by the Event ID, Event V
 MICROBIT_OK on success MICROBIT_INVALID_PARAMETER
 #####Example
 ```c++
-voidonButtonBClick()
-{
-//dosomething
-}
-
-uBit.MessageBus.ignore(MICROBIT_ID_BUTTON_B,MICROBIT_BUTTON_EVT_CLICK,onButtonBClick);
+ void onButtonBClick() 
+ { 
+ //do something 
+ } 
+ 
+ uBit.MessageBus.ignore(MICROBIT_ID_BUTTON_B, MICROBIT_BUTTON_EVT_CLICK, onButtonBClick); 
 
 ```
 <br/>
@@ -244,12 +244,12 @@ Unregister a listener function. Listners are identified by the Event ID, Event V
 MICROBIT_OK on success MICROBIT_INVALID_PARAMETER
 #####Example
 ```c++
-voidonButtonBClick(void*arg)
-{
-//dosomething
-}
-
-uBit.MessageBus.ignore(MICROBIT_ID_BUTTON_B,MICROBIT_BUTTON_EVT_CLICK,onButtonBClick);
+ void onButtonBClick(void *arg) 
+ { 
+ //do something 
+ } 
+ 
+ uBit.MessageBus.ignore(MICROBIT_ID_BUTTON_B, MICROBIT_BUTTON_EVT_CLICK, onButtonBClick); 
 
 ```
 <br/>
@@ -271,13 +271,13 @@ Unregister a listener function. Listners are identified by the Event ID, Event V
 MICROBIT_OK on success MICROBIT_INVALID_PARAMETER
 #####Example
 ```c++
-voidSomeClass::onButtonBClick()
-{
-//dosomething
-}
-
-SomeClasss=newSomeClass();
-uBit.MessageBus.ignore(MICROBIT_ID_BUTTON_B,MICROBIT_BUTTON_EVT_CLICK,s,&SomeClass::onButtonBClick);
+ void SomeClass::onButtonBClick() 
+ { 
+ //do something 
+ } 
+ 
+ SomeClass s = new SomeClass(); 
+ uBit.MessageBus.ignore(MICROBIT_ID_BUTTON_B, MICROBIT_BUTTON_EVT_CLICK, s, &SomeClass::onButtonBClick); 
 
 ```
 ##elementAt

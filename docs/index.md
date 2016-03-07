@@ -38,8 +38,8 @@ Constructor. Create an image from a specially prepared constant array, with no c
 >  <div style='color:#008080; display:inline-block'>ImageData  *</div> *ptr* - The literal - first two bytes should be 0xff, then width, 0, height, 0, and the bitmap. Width and height are 16 bit. The literal has to be 4-byte aligned.
 #####Example
 ```c++
-staticconstuint8_theart[]__attribute__((aligned(4)))={0xff,0xff,10,0,5,0,0,1,0,1,0,0,0,0,0,0,1,1,1,1,1,0,1,0,1,0,1,1,1,1,1,0,1,1,1,0,0,1,1,1,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,};//acuteheart
-MicroBitImagei((ImageData*)(void*)heart);
+ static const uint8_t heart[] __attribute__ ((aligned (4))) = { 0xff, 0xff, 10, 0, 5, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart 
+ MicroBitImage i((ImageData*)(void*)heart); 
 
 ```
 <br/>
@@ -48,7 +48,7 @@ MicroBitImagei((ImageData*)(void*)heart);
 Default Constructor. Creates a new reference to the empty  MicroBitImage
 #####Example
 ```c++
-MicroBitImagei();//anemptyimage
+ MicroBitImage i(); //an empty image 
 
 ```
 <br/>
@@ -60,8 +60,8 @@ Copy Constructor. Add ourselves as a reference to an existing  MicroBitImage
 >  <div style='color:#008080; display:inline-block'>const  MicroBitImage  &</div> *image* - The  MicroBitImage  to reference.
 #####Example
 ```c++
-MicroBitImagei("0,1,0,1,0\n");
-MicroBitImagei2(i);//pointstoi
+ MicroBitImage i("0,1,0,1,0\n"); 
+ MicroBitImage i2(i); //points to i 
 
 ```
 <br/>
@@ -73,7 +73,7 @@ Constructor. Create a blank bitmap representation of a given size.
 >  <div style='color:#008080; display:inline-block'>const char *</div> *s* - A text based representation of the image given whitespace delimited numeric values.
 #####Example
 ```c++
-MicroBitImagei("0,1,0,1,0\n1,0,1,0,1\n0,1,0,1,0\n1,0,1,0,1\n0,1,0,1,0\n");//5x5image
+ MicroBitImage i("0,1,0,1,0\n1,0,1,0,1\n0,1,0,1,0\n1,0,1,0,1\n0,1,0,1,0\n"); // 5x5 image 
 
 ```
 <br/>
@@ -87,7 +87,7 @@ Constructor. Create a blank bitmap representation of a given size.
 >  <div style='color:#008080; display:inline-block'>const int16_t</div> *y* - the height of the image.
 #####Example
 ```c++
-MicroBitImagei(5,5);//ablank5x5image
+ MicroBitImage i(5,5); // a blank 5x5 image 
 
 ```
 <br/>
@@ -103,8 +103,8 @@ Constructor. Create a bitmap representation of a given size, based on a given bu
 >  <div style='color:#008080; display:inline-block'>const uint8_t *</div> *bitmap* - a 2D array representing the image.
 #####Example
 ```c++
-constuint8_theart[]={0,1,0,1,0,0,0,0,0,0,1,1,1,1,1,0,1,0,1,0,1,1,1,1,1,0,1,1,1,0,0,1,1,1,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,};//acuteheart
-MicroBitImagei(10,5,heart);
+ const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart 
+ MicroBitImage i(10,5,heart); 
 
 ```
 ##~MicroBitImage
@@ -122,10 +122,10 @@ Copy assign operation.
 >  <div style='color:#008080; display:inline-block'>const  MicroBitImage  &</div> *i*
 #####Example
 ```c++
-constuint8_theart[]={0,1,0,1,0,0,0,0,0,0,1,1,1,1,1,0,1,0,1,0,1,1,1,1,1,0,1,1,1,0,0,1,1,1,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,};//acuteheart
-MicroBitImagei(10,5,heart);
-MicroBitImagei1();
-i1=1;//i1nowreferencesi
+ const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart 
+ MicroBitImage i(10,5,heart); 
+ MicroBitImage i1(); 
+ i1 = 1; // i1 now references i 
 
 ```
 ##operator==
@@ -140,11 +140,11 @@ Equality operation.
 true if this  MicroBitImage  is identical to the one supplied, false otherwise.
 #####Example
 ```c++
-MicroBitImagei();
-MicroBitImagei1();
-
-if(i==i1)//willbetrue
-print("true");
+ MicroBitImage i(); 
+ MicroBitImage i1(); 
+ 
+ if(i == i1) //will be true 
+ print("true"); 
 
 ```
 ##clear
@@ -154,8 +154,8 @@ print("true");
 Clears all pixels in this image
 #####Example
 ```c++
-MicroBitImagei("0,1,0,1,0\n1,0,1,0,1\n0,1,0,1,0\n1,0,1,0,1\n0,1,0,1,0\n");//5x5image
-i.clear();
+ MicroBitImage i("0,1,0,1,0\n1,0,1,0,1\n0,1,0,1,0\n1,0,1,0,1\n0,1,0,1,0\n"); // 5x5 image 
+ i.clear(); 
 
 ```
 ##setPixelValue
@@ -174,8 +174,8 @@ Sets the pixel at the given co-ordinates to a given value.
 MICROBIT_OK, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
-MicroBitImagei("0,1,0,1,0\n1,0,1,0,1\n0,1,0,1,0\n1,0,1,0,1\n0,1,0,1,0\n");//5x5image
-i.setPixelValue(0,0,255);
+ MicroBitImage i("0,1,0,1,0\n1,0,1,0,1\n0,1,0,1,0\n1,0,1,0,1\n0,1,0,1,0\n"); // 5x5 image 
+ i.setPixelValue(0,0,255); 
 
 ```
 ##getPixelValue
@@ -192,8 +192,8 @@ Determines the value of a given pixel.
 The value assigned to the given pixel location (the brightness level 0-255), or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
-MicroBitImagei("0,1,0,1,0\n1,0,1,0,1\n0,1,0,1,0\n1,0,1,0,1\n0,1,0,1,0\n");//5x5image
-i.getPixelValue(0,0);//shouldbe0;
+ MicroBitImage i("0,1,0,1,0\n1,0,1,0,1\n0,1,0,1,0\n1,0,1,0,1\n0,1,0,1,0\n"); // 5x5 image 
+ i.getPixelValue(0,0); //should be 0; 
 
 ```
 ##printImage
@@ -212,9 +212,9 @@ Replaces the content of this image with that of a given 2D array representing th
 MICROBIT_OK on success, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
-constuint8_theart[]={0,1,0,1,0,0,0,0,0,0,1,1,1,1,1,0,1,0,1,0,1,1,1,1,1,0,1,1,1,0,0,1,1,1,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,};//acuteheart
-MicroBitImagei();
-i.printImage(0,0,heart);
+ const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart 
+ MicroBitImage i(); 
+ i.printImage(0,0,heart); 
 
 ```
 ##paste
@@ -235,9 +235,9 @@ Pastes a given bitmap at the given co-ordinates. Any pixels in the relvant area 
 The number of pixels written, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
-constuint8_theart[]={0,1,0,1,0,0,0,0,0,0,1,1,1,1,1,0,1,0,1,0,1,1,1,1,1,0,1,1,1,0,0,1,1,1,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,};//acuteheart
-MicroBitImagei(10,5,heart);//ifyoushowthisimage-youwillseeabigheart
-i.paste(-5,0,i);//displaysasmallheart:)
+ const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart 
+ MicroBitImage i(10,5,heart); //if you show this image - you will see a big heart 
+ i.paste(-5,0,i); //displays a small heart :) 
 
 ```
 ##print
@@ -256,8 +256,8 @@ Prints a character to the display at the given location
 MICROBIT_OK on success, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
-MicroBitImagei(5,5);
-i.print('a',0,0);
+ MicroBitImage i(5,5); 
+ i.print('a',0,0); 
 
 ```
 ##shiftLeft
@@ -272,9 +272,9 @@ Shifts the pixels in this Image a given number of pixels to the Left.
 MICROBIT_OK on success, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
-constuint8_theart[]={0,1,0,1,0,0,0,0,0,0,1,1,1,1,1,0,1,0,1,0,1,1,1,1,1,0,1,1,1,0,0,1,1,1,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,};//acuteheart
-MicroBitImagei(10,5,heart);//ifyoushowthisimage-youwillseeabigheart
-i.shiftLeft(5);//displaysasmallheart:)
+ const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart 
+ MicroBitImage i(10,5,heart); //if you show this image - you will see a big heart 
+ i.shiftLeft(5); //displays a small heart :) 
 
 ```
 ##shiftRight
@@ -289,10 +289,10 @@ Shifts the pixels in this Image a given number of pixels to the Right.
 MICROBIT_OK on success, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
-constuint8_theart[]={0,1,0,1,0,0,0,0,0,0,1,1,1,1,1,0,1,0,1,0,1,1,1,1,1,0,1,1,1,0,0,1,1,1,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,};//acuteheart
-MicroBitImagei(10,5,heart);
-i.shiftLeft(5);//displaysasmallheart:)
-i.shiftRight(5);//displaysabigheart:)
+ const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart 
+ MicroBitImage i(10,5,heart); 
+ i.shiftLeft(5); //displays a small heart :) 
+ i.shiftRight(5); //displays a big heart :) 
 
 ```
 ##shiftUp
@@ -307,9 +307,9 @@ Shifts the pixels in this Image a given number of pixels to Upward.
 MICROBIT_OK on success, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
-constuint8_theart[]={0,1,0,1,0,0,0,0,0,0,1,1,1,1,1,0,1,0,1,0,1,1,1,1,1,0,1,1,1,0,0,1,1,1,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,};//acuteheart
-MicroBitImagei(10,5,heart);
-i.shiftUp(1);
+ const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart 
+ MicroBitImage i(10,5,heart); 
+ i.shiftUp(1); 
 
 ```
 ##shiftDown
@@ -324,9 +324,9 @@ Shifts the pixels in this Image a given number of pixels to Downward.
 MICROBIT_OK on success, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
-constuint8_theart[]={0,1,0,1,0,0,0,0,0,0,1,1,1,1,1,0,1,0,1,0,1,1,1,1,1,0,1,1,1,0,0,1,1,1,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,};//acuteheart
-MicroBitImagei(10,5,heart);
-i.shiftDown(1);
+ const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart 
+ MicroBitImage i(10,5,heart); 
+ i.shiftDown(1); 
 
 ```
 ##getWidth
@@ -338,9 +338,9 @@ Gets the width of this image.
 The width of this image.
 #####Example
 ```c++
-constuint8_theart[]={0,1,0,1,0,0,0,0,0,0,1,1,1,1,1,0,1,0,1,0,1,1,1,1,1,0,1,1,1,0,0,1,1,1,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,};//acuteheart
-MicroBitImagei(10,5,heart);
-i.getWidth();//equals10...
+ const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart 
+ MicroBitImage i(10,5,heart); 
+ i.getWidth(); //equals 10... 
 
 ```
 ##getHeight
@@ -352,9 +352,9 @@ Gets the height of this image.
 The height of this image.
 #####Example
 ```c++
-constuint8_theart[]={0,1,0,1,0,0,0,0,0,0,1,1,1,1,1,0,1,0,1,0,1,1,1,1,1,0,1,1,1,0,0,1,1,1,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,};//acuteheart
-MicroBitImagei(10,5,heart);
-i.getHeight();//equals5...
+ const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart 
+ MicroBitImage i(10,5,heart); 
+ i.getHeight(); //equals 5... 
 
 ```
 ##getSize
@@ -366,9 +366,9 @@ Gets number of bytes in the bitmap, ie., width * height.
 The size of the bitmap.
 #####Example
 ```c++
-constuint8_theart[]={0,1,0,1,0,0,0,0,0,0,1,1,1,1,1,0,1,0,1,0,1,1,1,1,1,0,1,1,1,0,0,1,1,1,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,};//acuteheart
-MicroBitImagei(10,5,heart);
-i.getSize();//equals50...
+ const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart 
+ MicroBitImage i(10,5,heart); 
+ i.getSize(); //equals 50... 
 
 ```
 ##toString
@@ -378,9 +378,9 @@ i.getSize();//equals50...
 Converts the bitmap to a csv string.
 #####Example
 ```c++
-constuint8_theart[]={0,1,0,1,0,0,0,0,0,0,1,1,1,1,1,0,1,0,1,0,1,1,1,1,1,0,1,1,1,0,0,1,1,1,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,};//acuteheart
-MicroBitImagei(10,5,heart);
-uBit.serial.printString(i.toString());//"0,1,0,1,0,0,0,0,0,0\n..."
+ const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart 
+ MicroBitImage i(10,5,heart); 
+ uBit.serial.printString(i.toString()); // "0,1,0,1,0,0,0,0,0,0\n..." 
 
 ```
 ##crop
@@ -401,9 +401,9 @@ Crops the image to the given dimensions
 an instance of  MicroBitImage  with your cropped region
 #####Example
 ```c++
-constuint8_theart[]={0,1,0,1,0,0,0,0,0,0,1,1,1,1,1,0,1,0,1,0,1,1,1,1,1,0,1,1,1,0,0,1,1,1,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,};//acuteheart
-MicroBitImagei(10,5,heart);
-uBit.serial.printImage(i.crop(0,0,2,2));//"0,1\n1,1\n"
+ const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart 
+ MicroBitImage i(10,5,heart); 
+ uBit.serial.printImage(i.crop(0,0,2,2)); // "0,1\n1,1\n" 
 
 ```
 ##isReadOnly
