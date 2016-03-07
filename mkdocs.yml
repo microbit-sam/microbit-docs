@@ -1,0 +1,31 @@
+
+#<img src="https://cdn.photographylife.com/wp-content/uploads/2014/06/Nikon-D810-Image-Sample-6.jpg"></img>
+site_name: 'runtime'
+pages:
+    - Introduction: 'index.md'
+    - uBit:
+        - i2c: 'i2c.md'
+        - serial: 'serial.md'
+        - MessageBus: 'MessageBus.md'
+        - buttonA: 'button.md'
+        - buttonB: 'button.md'
+        - buttonAB: 'button.md'
+        - display: 'display.md'
+        - accelerometer: 'accelerometer.md'
+        - compass: 'compass.md'
+        - thermometer: 'thermometer.md'
+        - io: 'io.md'
+        - radio: 'radio.md'
+    - Utility:
+        - MicroBitImage: "image.md"
+        - MicroBitEvent: "event.md"
+markdown_extensions:
+    - toc:
+        permalink: True
+    - admonition:
+extra_css:
+    - css/extra.css
+extra:
+    logo_url: './img/logo[whiteruntime].png'
+    logo_author: 'Aluna Everitt (@AlunaEveritt on Twitter)'
+theme_dir: 'runtime-theme'
