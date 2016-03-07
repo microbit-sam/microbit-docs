@@ -374,10 +374,6 @@ def gen_param_text(param):
 
     return text
 
-def add_spacing(lines):
-    lines.append('\n')
-    lines.append("<br/><br/>\n")
-
 ###
 # given a list of member functions, this function returns a list of new lines for the
 # file currently being processed.
@@ -409,8 +405,6 @@ def gen_member_func_doc(class_name, member_functions):
         member_functions_derived = []
 
         if index is 0 or member_func['short_name'] != member_functions[index - 1]['short_name']:
-            lines.append("____\n")
-
             if class_name == member_func["short_name"]:
                 lines.append("##Constructor\n")
             else:
@@ -451,14 +445,13 @@ def gen_member_func_doc(class_name, member_functions):
                 else:
                     short_name = short_name + text
 
-            lines.append(short_name + ")\n<br/>\n")
+            lines.append(short_name + ")\n")
             #-----------------------------
 
             #---- description ----
             if len(derived_func['description']) is not 0:
                 lines.append("#####Description\n")
                 lines.append(' '.join(derived_func['description']) + "\n")
-                add_spacing(lines)
             #-----------------------------
 
             #---- parameters ----
@@ -467,15 +460,12 @@ def gen_member_func_doc(class_name, member_functions):
 
                 for param in derived_func['params']:
                     lines.append(gen_param_text(param) + "\n")
-
-                add_spacing(lines)
             #-----------------------------
 
             #---- returns ----
             if len(derived_func['returns']) is not 0:
                 lines.append("#####Returns\n")
                 lines.append(derived_func['returns'] + "\n")
-                add_spacing(lines)
             #-----------------------------
 
             #---- examples ----
@@ -484,14 +474,12 @@ def gen_member_func_doc(class_name, member_functions):
                 lines.append("```c++\n")
                 lines.append(derived_func['examples'] + "\n")
                 lines.append("```\n")
-                add_spacing(lines)
             #-----------------------------
 
             #---- notes ----
             if len(derived_func['notes']) is not 0:
                 lines.append("\n!!! note\n")
                 lines.append("    " + derived_func['notes'].replace('\n','\n    '))
-                add_spacing(lines)
             #-----------------------------
 
     lines.append("____\n")

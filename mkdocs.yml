@@ -16,9 +16,15 @@ pages:
         - thermometer: 'thermometer.md'
         - io: 'io.md'
         - radio: 'radio.md'
-    - Utility:
+    - Data Types:
         - MicroBitImage: "image.md"
         - MicroBitEvent: "event.md"
+        - ManagedString: "string.md"
+    - BLE:
+        - MicroBitLightSensor: "light-sensing.md"
+    - Extras:
+        - MicroBitLightSensor: "light-sensing.md"
+
 markdown_extensions:
     - toc:
         permalink: True
