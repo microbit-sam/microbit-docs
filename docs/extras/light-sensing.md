@@ -12,7 +12,7 @@ than any other colour because that is the colour of light the display emits.
 The display is architected with 3 rows, each with 9 columns. This is illustrated
 below:
 
-![light-sensing info graphic](resources/light-sensing.png)
+![light-sensing info graphic](../resources/light-sensing.png)
 
 <center>*Where the format is: **ROW**.**COLUMN***</center>
 
@@ -45,11 +45,11 @@ This places restrictions on our sensing window.
 
 ###Interleaving
 In the current implementation, the display and the Light sensor can operate in an
-interleaving manner. This interleaving is enabled due to a special display mode on the [display](display.md)
+interleaving manner. This interleaving is enabled due to a special display mode on the [display](../ubit/display.md)
 which is automatically activated when `readLightLevel` is called by the user.
 
 This special mode (`DISPLAY_MODE_BLACK_AND_WHITE_LIGHT_SENSE`), increases the rate of the `systemTick` callback to 5ms, and the
-[display](display.md) is thusly configured to drop the 4th frame for user processing,
+[display](../ubit/display.md) is thusly configured to drop the 4th frame for user processing,
 which in this case, is entirely consumed by the light sensor. This reduces the display
 refresh rate from 55Hz to around 50Hz.
 
@@ -62,7 +62,7 @@ This will trigger an event handler in the `MicroBitLightSensor` class.
 
 ##Sensing Life Cycle
 
-In the previous section we discussed how the [display](display.md) and the Light
+In the previous section we discussed how the [display](../ubit/display.md) and the Light
 Sensor interleave. This section will cover the actual operation of the sensor during
 the `MICROBIT_DISPLAY_EVT_LIGHT_SENSE` event.
 
@@ -138,7 +138,7 @@ for regular usage until the next interleave is signaled by the display.
 <br/>
 ####MicroBitLightSensor()
 #####Description
-Constructor. Create a representation of the light sensor 
+Constructor. Create a representation of the light sensor
 ##read
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> read()
@@ -152,6 +152,6 @@ returns a value in the range 0 - 255 where 0 is dark, and 255 is very bright
 <br/>
 ####~MicroBitLightSensor()
 #####Description
-The destructor restores the default Display Mode and tick speed, and also removes the listener from the MessageBus. 
+The destructor restores the default Display Mode and tick speed, and also removes the listener from the MessageBus.
 ____
 [comment]: <> ({"end":"MicroBitLightSensor"})

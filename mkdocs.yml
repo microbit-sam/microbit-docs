@@ -4,26 +4,24 @@ site_name: 'runtime'
 pages:
     - Introduction: 'index.md'
     - uBit:
-        - i2c: 'i2c.md'
-        - serial: 'serial.md'
-        - MessageBus: 'MessageBus.md'
-        - buttonA: 'button.md'
-        - buttonB: 'button.md'
-        - buttonAB: 'button.md'
-        - display: 'display.md'
-        - accelerometer: 'accelerometer.md'
-        - compass: 'compass.md'
-        - thermometer: 'thermometer.md'
-        - io: 'io.md'
-        - radio: 'radio.md'
+        - i2c: 'ubit/i2c.md'
+        - serial: 'ubit/serial.md'
+        - MessageBus: 'ubit/MessageBus.md'
+        - button: 'ubit/button.md'
+        - display: 'ubit/display.md'
+        - accelerometer: 'ubit/accelerometer.md'
+        - compass: 'ubit/compass.md'
+        - thermometer: 'ubit/thermometer.md'
+        - io: 'ubit/io.md'
+        - radio: 'ubit/radio.md'
     - Data Types:
-        - MicroBitImage: "image.md"
-        - MicroBitEvent: "event.md"
-        - ManagedString: "string.md"
+        - MicroBitImage: "data-types/image.md"
+        - MicroBitEvent: "data-types/event.md"
+        - ManagedString: "data-types/string.md"
     - BLE:
-        - MicroBitLightSensor: "light-sensing.md"
+        - Profile: "ble/profile.md"
     - Extras:
-        - MicroBitLightSensor: "light-sensing.md"
+        - MicroBitLightSensor: "extras/light-sensing.md"
 
 markdown_extensions:
     - toc:
