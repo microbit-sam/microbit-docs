@@ -94,3 +94,14 @@ h4{
 .navbar {
     min-height:50px !important
 }
+
+/*
+Hackily override permanent link default styles, to add a micro:bit twist!
+*/
+.headerlink{
+    content:"";
+    background-image: url("../img/permalink.png");
+    background-size:cover;
+    color:transparent !important;
+    padding-left: 0.68em;
+}
