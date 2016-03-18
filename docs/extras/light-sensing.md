@@ -138,7 +138,7 @@ for regular usage until the next interleave is signaled by the display.
 <br/>
 ####MicroBitLightSensor()
 #####Description
-Constructor. Create a representation of the light sensor
+Constructor. Create a representation of the light sensor 
 ##read
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> read()
@@ -148,10 +148,12 @@ This method returns a summed average of the three sections of the display.
 returns a value in the range 0 - 255 where 0 is dark, and 255 is very bright
 
 !!! note
-    currently returns a value in the range 0 - 255 where 0 is dark, and 255 is very bright perhaps we should normalise the returned values into an SI unit! TODO. ##~MicroBitLightSensor
+    currently returns a value in the range 0 - 255 where 0 is dark, and 255 is very bright perhaps we should normalise the returned values into an SI unit! TODO. 
+
+##~MicroBitLightSensor
 <br/>
 ####~MicroBitLightSensor()
 #####Description
-The destructor restores the default Display Mode and tick speed, and also removes the listener from the MessageBus.
+The destructor restores the default Display Mode and tick speed, and also removes the listener from the MessageBus. 
 ____
 [comment]: <> ({"end":"MicroBitLightSensor"})

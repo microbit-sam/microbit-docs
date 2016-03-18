@@ -1,9 +1,12 @@
-
-#<img src="https://cdn.photographylife.com/wp-content/uploads/2014/06/Nikon-D810-Image-Sample-6.jpg"></img>
-site_name: 'runtime'
+site_name: 'micro:bit runtime'
 pages:
-    - Introduction: 'index.md'
+    - General:
+        - Introduction: 'index.md'
+        - Offline Development: 'installing-yotta.md'
+        - Concepts: 'concepts.md'
+        - The Device: 'device.md'
     - uBit:
+        - uBit: 'ubit.md'
         - i2c: 'ubit/i2c.md'
         - serial: 'ubit/serial.md'
         - MessageBus: 'ubit/MessageBus.md'
@@ -13,6 +16,8 @@ pages:
         - compass: 'ubit/compass.md'
         - thermometer: 'ubit/thermometer.md'
         - io: 'ubit/io.md'
+        - ble: 'ubit/ble.md'
+        - bleManager: 'ubit/blemanager.md'
         - radio: 'ubit/radio.md'
     - Data Types:
         - MicroBitImage: "data-types/image.md"
@@ -22,7 +27,10 @@ pages:
         - Profile: "ble/profile.md"
     - Extras:
         - MicroBitLightSensor: "extras/light-sensing.md"
-
+#--------------HIDDEN PAGES BEGIN
+#unfortunately this is required, otherwise mkdocs doesn't build pages not linked by nav.
+    - _blemanager: "ubit/blemanager.md"
+#--------------HIDDEN PAGES END
 markdown_extensions:
     - toc:
         permalink: True

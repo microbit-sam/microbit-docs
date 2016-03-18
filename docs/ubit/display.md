@@ -641,7 +641,9 @@ Captures the bitmap currently being rendered on the display.
 Constructs an instance of a  MicroBitLightSensor
 
 !!! note
-    this will return 0 on the first call to this method, a light reading will be available after the display has activated the light sensor for the first time. ##~MicroBitDisplay
+    this will return 0 on the first call to this method, a light reading will be available after the display has activated the light sensor for the first time. 
+
+##~MicroBitDisplay
 <br/>
 ####~MicroBitDisplay()
 #####Description

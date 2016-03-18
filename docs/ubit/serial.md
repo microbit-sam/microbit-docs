@@ -25,7 +25,9 @@ Constructor. Create an instance of  MicroBitSerial MicroBitSerial
 ```
 
 !!! note
-    the default baud rate is 115200 ##sendString
+    the default baud rate is 115200 
+
+##sendString
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>void</div> sendString( <div style='color:#008080; display:inline-block'>ManagedString</div> s)
 #####Description
@@ -51,7 +53,9 @@ Reads a  ManagedString
 
 !!! note
     this member function will wait until either the buffer is full, or a  
-     is received <br/>
+     is received 
+
+<br/>
 ####<div style='color:#FF69B4; display:inline-block'>ManagedString</div> readString( <div style='color:#008080; display:inline-block'>int</div> len)
 #####Description
 Reads a  ManagedString
@@ -66,7 +70,9 @@ Reads a  ManagedString
 
 !!! note
     this member function will wait until either the buffer is full, or a  
-     is received ##sendImage
+     is received 
+
+##sendImage
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>void</div> sendImage( <div style='color:#008080; display:inline-block'>MicroBitImage</div> i)
 #####Description
@@ -100,7 +106,9 @@ a  MicroBitImage  with the format described over serial
 ```
 
 !!! note
-    this will finish once the dimensions are met.##sendDisplayState
+    this will finish once the dimensions are met.
+
+##sendDisplayState
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>void</div> sendDisplayState()
 #####Description

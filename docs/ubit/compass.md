@@ -177,7 +177,9 @@ Perform a calibration of the compass.
 MICROBIT_OK, MICROBIT_I2C_ERROR if the magnetometer could not be accessed, or MICROBIT_CALIBRATION_REQUIRED if the calibration algorithm failed to complete succesfully. 
 
 !!! note
-    THIS MUST BE CALLED TO GAIN RELIABLE VALUES FROM THE COMPASS ##calibrateAsync
+    THIS MUST BE CALLED TO GAIN RELIABLE VALUES FROM THE COMPASS 
+
+##calibrateAsync
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>void</div> calibrateAsync()
 #####Description
@@ -186,7 +188,9 @@ Perform the asynchronous calibration of the compass. This will fire MICROBIT_COM
 MICROBIT_OK, or MICROBIT_I2C_ERROR if the magnetometer could not be accessed.
 
 !!! note
-    *** THIS FUNCITON IS NOW DEPRECATED AND WILL BE REMOVED IN THE NEXT MAJOR RELEASE *** ##calibrateStart
+    *** THIS FUNCITON IS NOW DEPRECATED AND WILL BE REMOVED IN THE NEXT MAJOR RELEASE *** 
+
+##calibrateStart
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> calibrateStart()
 #####Description
@@ -195,14 +199,18 @@ Perform a calibration of the compass. This will fire MICROBIT_COMPASS_EVT_CAL_ST
 MICROBIT_OK, or MICROBIT_I2C_ERROR if the magnetometer could not be accessed.
 
 !!! note
-    *** THIS FUNCITON IS NOW DEPRECATED AND WILL BE REMOVED IN THE NEXT MAJOR RELEASE *** ##calibrateEnd
+    *** THIS FUNCITON IS NOW DEPRECATED AND WILL BE REMOVED IN THE NEXT MAJOR RELEASE *** 
+
+##calibrateEnd
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>void</div> calibrateEnd()
 #####Description
 Complete the calibration of the compass. This will fire MICROBIT_COMPASS_EVT_CAL_END.
 
 !!! note
-    *** THIS FUNCITON IS NOW DEPRECATED AND WILL BE REMOVED IN THE NEXT MAJOR RELEASE ***##setCalibration
+    *** THIS FUNCITON IS NOW DEPRECATED AND WILL BE REMOVED IN THE NEXT MAJOR RELEASE ***
+
+##setCalibration
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>void</div> setCalibration( <div style='color:#008080; display:inline-block'>CompassSample</div> calibration)
 #####Description

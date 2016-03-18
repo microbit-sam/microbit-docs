@@ -27,7 +27,9 @@ Constructor. Create an instance of i2c
                             
 
 !!! note
-    this should prevent i2c lockups as well. ##read
+    this should prevent i2c lockups as well. 
+
+##read
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> read( <div style='color:#008080; display:inline-block'>int</div> address,  <div style='color:#008080; display:inline-block'>char *</div> data,  <div style='color:#008080; display:inline-block'>int</div> length)
 #####Description

@@ -60,7 +60,9 @@ Sets the RSSI for the most recent packet.
 >  <div style='color:#008080; display:inline-block'>uint8_t</div> *rssi* - the new rssi value
 
 !!! note
-    should only be called from RADIO_IRQHandler... ##getRSSI
+    should only be called from RADIO_IRQHandler... 
+
+##getRSSI
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> getRSSI()
 #####Description

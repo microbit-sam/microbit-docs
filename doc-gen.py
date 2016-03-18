@@ -480,6 +480,7 @@ def gen_member_func_doc(class_name, member_functions):
             if len(derived_func['notes']) is not 0:
                 lines.append("\n!!! note\n")
                 lines.append("    " + derived_func['notes'].replace('\n','\n    '))
+                lines.append('\n\n')
             #-----------------------------
 
     lines.append("____\n")
