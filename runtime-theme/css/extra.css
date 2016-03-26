@@ -51,7 +51,7 @@
 
 .navbar-custom{
     background-color:#000;
-    font-size:20px;
+    font-size:18px;
     font-family:'GTWalsheim';
 }
 
@@ -59,11 +59,7 @@
 When we are in the small device boot strap category 20px is too big! reduce the size
 */
 @media(min-width:767px) and (max-width:991px)  {
-    .navbar-custom{
-        background-color:#000;
-        font-size:17px;
-        font-family:'GTWalsheim';
-    }
+
 }
 
 
