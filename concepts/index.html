@@ -371,18 +371,18 @@ mechanism for the runtime.</p>
 <p>Of course, the prior is still possible in the runtime.</p>
 <p>Listeners are either executed in the idle fiber, or in their own fiber (created by the MessageBus),
 unless explicitly indicated otherwise in the <a href="../data-types/event/"><code>MicroBitEvent</code></a>
-that is placed onto the <a href="ubit/MessageBus.md"><code>MicroBitMessageBus</code></a>.</p>
+that is placed onto the <a href="../ubit/messageBus/"><code>MicroBitMessageBus</code></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This is achieved through changing the <a href="something.md"><code>MicroBitEventLaunchMode</code></a>
 when constructing the <a href="../data-types/event/"><code>MicroBitEvent</code></a></p>
 </div>
-<p>There are a number of different variations of <code>listen</code> applicable to the shared <a href="ubit/MessageBus.md"><code>MicroBitMessageBus</code></a>.
+<p>There are a number of different variations of <code>listen</code> applicable to the shared <a href="../ubit/messageBus/"><code>MicroBitMessageBus</code></a>.
 This means as well as the ability to call standard functions, member functions can also be
-called on the reception of an event from the <a href="ubit/MessageBus.md"><code>MicroBitMessageBus</code></a>.</p>
-<p>There also exists a form of reflection for the <a href="ubit/MessageBus.md"><code>MicroBitMessageBus</code></a>.
+called on the reception of an event from the <a href="../ubit/messageBus/"><code>MicroBitMessageBus</code></a>.</p>
+<p>There also exists a form of reflection for the <a href="../ubit/messageBus/"><code>MicroBitMessageBus</code></a>.
 Each time a listener is created, and successfully added, an event is created, with
-the ID of the <a href="ubit/MessageBus.md"><code>MicroBitMessageBus</code></a>, and the id of the newly
+the ID of the <a href="../ubit/messageBus/"><code>MicroBitMessageBus</code></a>, and the id of the newly
 added listener. This is used in the runtime to provide lazy instantiation for
 components that are not always fully utilised by users.</p>
 <h1 id="concurrency">Concurrency<a class="headerlink" href="#concurrency" title="Permanent link">&para;</a></h1>
