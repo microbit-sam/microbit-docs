@@ -36,7 +36,7 @@ Will transition between Digital and Analog output every second.
 
 ### Shared Functionality
 
-As well as being **G**eneral **P**urpose **I**nput **O**utput pins, some pins on the
+As well as being General Purpose Input Output (**GPIO**) pins, some pins on the
 micro:bit have other functionality used internally by the micro:bit.
 
 Therefore, some functionality on the micro:bit may have to be disabled in order
