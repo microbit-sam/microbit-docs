@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    
+        
+    <url>
+     <loc>None/</loc>
+     <lastmod>2016-03-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/installing-yotta/</loc>
+     <lastmod>2016-03-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/concepts/</loc>
+     <lastmod>2016-03-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/device/</loc>
+     <lastmod>2016-03-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>None/ubit/</loc>
+     <lastmod>2016-03-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/ubit/i2c/</loc>
+     <lastmod>2016-03-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/ubit/storage/</loc>
+     <lastmod>2016-03-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/ubit/serial/</loc>
+     <lastmod>2016-03-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/ubit/messageBus/</loc>
+     <lastmod>2016-03-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/ubit/button/</loc>
+     <lastmod>2016-03-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/ubit/display/</loc>
+     <lastmod>2016-03-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/ubit/accelerometer/</loc>
+     <lastmod>2016-03-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/ubit/compass/</loc>
+     <lastmod>2016-03-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/ubit/thermometer/</loc>
+     <lastmod>2016-03-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/ubit/io/</loc>
+     <lastmod>2016-03-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/ubit/ble/</loc>
+     <lastmod>2016-03-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/ubit/blemanager/</loc>
+     <lastmod>2016-03-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/ubit/radio/</loc>
+     <lastmod>2016-03-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>None/data-types/image/</loc>
+     <lastmod>2016-03-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/data-types/event/</loc>
+     <lastmod>2016-03-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/data-types/string/</loc>
+     <lastmod>2016-03-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>None/ble/profile/</loc>
+     <lastmod>2016-03-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>None/extras/light-sensing/</loc>
+     <lastmod>2016-03-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+    <url>
+     <loc>None/ubit/blemanager/</loc>
+     <lastmod>2016-03-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+</urlset>

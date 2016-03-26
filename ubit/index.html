@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+
+	<title>uBit - micro:bit runtime</title>
+
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+        <link href="../css/base.css" rel="stylesheet">
+        <link href="../css/extra.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-custom navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            
+                <a class="navbar-brand" rel="home" href="#" title="micro:bit runtime">
+                    
+                    <!-- Logo author: Aluna Everitt (@AlunaEveritt on Twitter) --->
+                    
+                    <img style="max-width:200px; margin-top: -7px;" src=".././img/logo[whiteruntime].png">
+                </a>
+            
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">General <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        
+<li >
+    <a href="..">Introduction</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../installing-yotta/">Offline Development</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../concepts/">Concepts</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../device/">The Device</a>
+</li>
+
+                    
+                    </ul>
+                </li>
+            
+            
+
+            
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">uBit <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        
+<li class="active">
+    <a href="./">uBit</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="i2c/">i2c</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="storage/">storage</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="serial/">serial</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="messageBus/">MessageBus</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="button/">button</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="display/">display</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="accelerometer/">accelerometer</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="compass/">compass</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="thermometer/">thermometer</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="io/">io</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="ble/">ble</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="blemanager/">bleManager</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="radio/">radio</a>
+</li>
+
+                    
+                    </ul>
+                </li>
+            
+            
+
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Data Types <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        
+<li >
+    <a href="../data-types/image/">MicroBitImage</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../data-types/event/">MicroBitEvent</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../data-types/string/">ManagedString</a>
+</li>
+
+                    
+                    </ul>
+                </li>
+            
+            
+
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">BLE <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        
+<li >
+    <a href="../ble/profile/">Profile</a>
+</li>
+
+                    
+                    </ul>
+                </li>
+            
+            
+
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Extras <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        
+<li >
+    <a href="../extras/light-sensing/">MicroBitLightSensor</a>
+</li>
+
+                    
+                    </ul>
+                </li>
+            
+            
+
+            
+
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right hidden-md hidden-sm">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                <li >
+                    <a rel="next" href="../device/">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="i2c/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#ubit">uBit</a></li>
+        
+            <li><a href="#overview">Overview</a></li>
+        
+            <li><a href="#message-bus-id">Message Bus ID</a></li>
+        
+            <li><a href="#message-bus-events">Message Bus Events</a></li>
+        
+            <li><a href="#api">API</a></li>
+        
+            <li><a href="#constructor">Constructor</a></li>
+        
+            <li><a href="#init">init</a></li>
+        
+            <li><a href="#getname">getName</a></li>
+        
+            <li><a href="#getserial">getSerial</a></li>
+        
+            <li><a href="#reset">reset</a></li>
+        
+            <li><a href="#sleep">sleep</a></li>
+        
+            <li><a href="#seedrandom">seedRandom</a></li>
+        
+            <li><a href="#random">random</a></li>
+        
+            <li><a href="#systemtasks">systemTasks</a></li>
+        
+            <li><a href="#addsystemcomponent">addSystemComponent</a></li>
+        
+            <li><a href="#removesystemcomponent">removeSystemComponent</a></li>
+        
+            <li><a href="#addidlecomponent">addIdleComponent</a></li>
+        
+            <li><a href="#removeidlecomponent">removeIdleComponent</a></li>
+        
+            <li><a href="#settickperiod">setTickPeriod</a></li>
+        
+            <li><a href="#gettickperiod">getTickPeriod</a></li>
+        
+            <li><a href="#systemtime">systemTime</a></li>
+        
+            <li><a href="#systemversion">systemVersion</a></li>
+        
+            <li><a href="#panic">panic</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="ubit">uBit<a class="headerlink" href="#ubit" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>uBit is the global singleton provided by the runtime and is an instance of the
+MicroBit class.</p>
+<p>The MicroBit class has a number of member variables, that operate as device drivers
+to control the various features of the micro:bit.</p>
+<blockquote>
+<p>uBit {<br/>
+   &emsp;&emsp;<a href="i2c/">.i2c</a>,<br/>
+   &emsp;&emsp;<a href="serial/">.serial</a>,<br/>
+   &emsp;&emsp;<a href="ubit/MessageBus.md">.MessageBus</a>,<br/>
+   &emsp;&emsp;<a href="button/">.buttonA</a>,<br/>
+   &emsp;&emsp;<a href="button/">.buttonB</a>,<br/>
+   &emsp;&emsp;<a href="button/">.buttonAB</a>,<br/>
+   &emsp;&emsp;<a href="display/">.display</a>,<br/>
+   &emsp;&emsp;<a href="accelerometer/">.accelerometer</a>,<br/>
+   &emsp;&emsp;<a href="compass/">.compass</a>,<br/>
+   &emsp;&emsp;<a href="thermometer/">.thermometer</a>,<br/>
+   &emsp;&emsp;<a href="io/">.io</a>,<br/>
+   &emsp;&emsp;<a href="ble/">.ble</a>,<br/>
+   &emsp;&emsp;<a href="blemanager/">.BLEManager</a>,<br/>
+   &emsp;&emsp;<a href="radio/">.radio</a>,<br/>
+   }</p>
+</blockquote>
+<p>For example, if we needed to scroll some text across the display, we simply would
+write the following:</p>
+<pre><code class="c++">uBit.display.scroll(&quot;HELLO!&quot;);
+</code></pre>
+
+<p>Similarly, if we wanted to send some text over serial, we could write the following
+code:</p>
+<pre><code class="c++">for(int i = 3; i &gt; 0; i--)
+{
+    uBit.serial.printf(&quot;%d...&quot;, i);
+    uBit.sleep(1000);
+}
+
+uBit.serial.sendString(&quot;Code!&quot;);
+</code></pre>
+
+<p>uBit also provides a number of utility functions that allow the plug and play
+of additional components that developers may create. These are namely <a href="#addsystemcomponent">addSystemComponent()</a>
+and <a href="#addidlecomponent">addIdleComponent()</a>. <a href="todo.md">Read more about how to plug your own device drivers into the runtime.</a></p>
+<p>The runtime also contains a scheduler, which uses lightweight threads (called fibers)
+to control the rate of execution.</p>
+<p>To place the current fiber into a power efficient <a href="#sleep">sleep</a> write the following:</p>
+<pre><code class="c++">// where X is an integer in milliseconds for the amount of time you would like to sleep for.
+uBit.sleep(X);
+</code></pre>
+
+<p><a href="todo.md">Read more about the scheduler.</a></p>
+<h2 id="message-bus-id">Message Bus ID<a class="headerlink" href="#message-bus-id" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>None</p>
+</blockquote>
+<h2 id="message-bus-events">Message Bus Events<a class="headerlink" href="#message-bus-events" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>None</p>
+</blockquote>
+<h2 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
+<h2 id="constructor">Constructor<a class="headerlink" href="#constructor" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="microbit">MicroBit()<a class="headerlink" href="#microbit" title="Permanent link">&para;</a></h4>
+<h5 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h5>
+<p>Constructor. Create a representation of a  MicroBit MicroBitMessageBus</p>
+<h5 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h5>
+<pre><code class="c++"> uBit.systemTicker; //the Ticker callback that performs routines like updating the display.
+ uBit.MessageBus; //The message bus where events are fired.
+ uBit.display; //The display object for the LED matrix.
+ uBit.buttonA; //The buttonA object for button a.
+ uBit.buttonB; //The buttonB object for button b.
+ uBit.resetButton; //The resetButton used for soft resets.
+ uBit.accelerometer; //The object that represents the inbuilt accelerometer
+ uBit.compass; //The object that represents the inbuilt compass(magnetometer)
+ uBit.io.P*; //Where P* is P0 to P16, P19 &amp; P20 on the edge connector
+
+</code></pre>
+
+<h2 id="init">init<a class="headerlink" href="#init" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="void-init"><div style='color:#FF69B4; display:inline-block'>void</div> init()<a class="headerlink" href="#void-init" title="Permanent link">&para;</a></h4>
+<h5 id="description_1">Description<a class="headerlink" href="#description_1" title="Permanent link">&para;</a></h5>
+<p>Post constructor initialisation method. After  main()</p>
+<h5 id="example_1">Example<a class="headerlink" href="#example_1" title="Permanent link">&para;</a></h5>
+<pre><code class="c++"> uBit.init();
+
+</code></pre>
+
+<h2 id="getname">getName<a class="headerlink" href="#getname" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="managedstring-getname"><div style='color:#FF69B4; display:inline-block'>ManagedString</div> getName()<a class="headerlink" href="#managedstring-getname" title="Permanent link">&para;</a></h4>
+<h5 id="description_2">Description<a class="headerlink" href="#description_2" title="Permanent link">&para;</a></h5>
+<p>Return the friendly name for this device.</p>
+<h5 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h5>
+<p>A string representing the friendly name of this device.</p>
+<h2 id="getserial">getSerial<a class="headerlink" href="#getserial" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="managedstring-getserial"><div style='color:#FF69B4; display:inline-block'>ManagedString</div> getSerial()<a class="headerlink" href="#managedstring-getserial" title="Permanent link">&para;</a></h4>
+<h5 id="description_3">Description<a class="headerlink" href="#description_3" title="Permanent link">&para;</a></h5>
+<p>Return the serial number of this device.</p>
+<h5 id="returns_1">Returns<a class="headerlink" href="#returns_1" title="Permanent link">&para;</a></h5>
+<p>A string representing the serial number of this device.</p>
+<h2 id="reset">reset<a class="headerlink" href="#reset" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="void-reset"><div style='color:#FF69B4; display:inline-block'>void</div> reset()<a class="headerlink" href="#void-reset" title="Permanent link">&para;</a></h4>
+<h5 id="description_4">Description<a class="headerlink" href="#description_4" title="Permanent link">&para;</a></h5>
+<p>Will reset the micro:bit when called.</p>
+<h5 id="example_2">Example<a class="headerlink" href="#example_2" title="Permanent link">&para;</a></h5>
+<pre><code class="c++"> uBit.reset();
+
+</code></pre>
+
+<h2 id="sleep">sleep<a class="headerlink" href="#sleep" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="int-sleep-int-milliseconds"><div style='color:#FF69B4; display:inline-block'>int</div> sleep( <div style='color:#008080; display:inline-block'>int</div> milliseconds)<a class="headerlink" href="#int-sleep-int-milliseconds" title="Permanent link">&para;</a></h4>
+<h5 id="description_5">Description<a class="headerlink" href="#description_5" title="Permanent link">&para;</a></h5>
+<p>Delay for the given amount of time. If the scheduler is running, this will deschedule the current fiber and perform a power efficent, concurrent sleep operation. If the scheduler is disabled or we're running in an interrupt context, this will revert to a busy wait.</p>
+<h5 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><div style='color:#008080; display:inline-block'>int</div> <em>milliseconds</em> - the amount of time, in ms, to wait for. This number cannot be negative.</p>
+</blockquote>
+<h5 id="returns_2">Returns<a class="headerlink" href="#returns_2" title="Permanent link">&para;</a></h5>
+<p>MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER milliseconds is less than zero.</p>
+<h5 id="example_3">Example<a class="headerlink" href="#example_3" title="Permanent link">&para;</a></h5>
+<pre><code class="c++"> uBit.sleep(20); //sleep for 20ms
+
+</code></pre>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Values of 6 and below tend to lose resolution - do you really need to sleep for this short amount of time?</p>
+</div>
+<h2 id="seedrandom">seedRandom<a class="headerlink" href="#seedrandom" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="void-seedrandom"><div style='color:#FF69B4; display:inline-block'>void</div> seedRandom()<a class="headerlink" href="#void-seedrandom" title="Permanent link">&para;</a></h4>
+<h5 id="description_6">Description<a class="headerlink" href="#description_6" title="Permanent link">&para;</a></h5>
+<p>Seed the pseudo random number generator using the hardware generator.</p>
+<h5 id="example_4">Example<a class="headerlink" href="#example_4" title="Permanent link">&para;</a></h5>
+<pre><code class="c++"> uBit.seedRandom();
+
+</code></pre>
+
+<p><br/></p>
+<h4 id="void-seedrandom-uint32_t-seed"><div style='color:#FF69B4; display:inline-block'>void</div> seedRandom( <div style='color:#008080; display:inline-block'>uint32_t</div> seed)<a class="headerlink" href="#void-seedrandom-uint32_t-seed" title="Permanent link">&para;</a></h4>
+<h5 id="description_7">Description<a class="headerlink" href="#description_7" title="Permanent link">&para;</a></h5>
+<p>Seed the pseudo random number generator using the given value.</p>
+<h5 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><div style='color:#008080; display:inline-block'>uint32_t</div> <em>seed</em> - The 32-bit value to seed the generator with.</p>
+</blockquote>
+<h5 id="example_5">Example<a class="headerlink" href="#example_5" title="Permanent link">&para;</a></h5>
+<pre><code class="c++"> uBit.seedRandom(0x12345678);
+
+</code></pre>
+
+<h2 id="random">random<a class="headerlink" href="#random" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="int-random-int-max"><div style='color:#FF69B4; display:inline-block'>int</div> random( <div style='color:#008080; display:inline-block'>int</div> max)<a class="headerlink" href="#int-random-int-max" title="Permanent link">&para;</a></h4>
+<h5 id="description_8">Description<a class="headerlink" href="#description_8" title="Permanent link">&para;</a></h5>
+<p>Generate a random number in the given range. We use the NRF51822 in built random number generator here TODO: Determine if we want to, given its relatively high power consumption!</p>
+<h5 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><div style='color:#008080; display:inline-block'>int</div> <em>max</em> - the upper range to generate a number for. This number cannot be negative</p>
+</blockquote>
+<h5 id="returns_3">Returns<a class="headerlink" href="#returns_3" title="Permanent link">&para;</a></h5>
+<p>A random, natural number between 0 and the max-1. Or MICROBIT_INVALID_PARAMETER if max is &lt;= 0.</p>
+<h5 id="example_6">Example<a class="headerlink" href="#example_6" title="Permanent link">&para;</a></h5>
+<pre><code class="c++"> uBit.random(200); //a number between 0 and 199
+
+</code></pre>
+
+<h2 id="systemtasks">systemTasks<a class="headerlink" href="#systemtasks" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="void-systemtasks"><div style='color:#FF69B4; display:inline-block'>void</div> systemTasks()<a class="headerlink" href="#void-systemtasks" title="Permanent link">&para;</a></h4>
+<h5 id="description_9">Description<a class="headerlink" href="#description_9" title="Permanent link">&para;</a></h5>
+<p>System tasks to be executed by the idle thread when the Micro:Bit isn't busy or when data needs to be read.</p>
+<h2 id="addsystemcomponent">addSystemComponent<a class="headerlink" href="#addsystemcomponent" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="int-addsystemcomponent-microbitcomponent-component"><div style='color:#FF69B4; display:inline-block'>int</div> addSystemComponent( <div style='color:#008080; display:inline-block'>MicroBitComponent  *</div> component)<a class="headerlink" href="#int-addsystemcomponent-microbitcomponent-component" title="Permanent link">&para;</a></h4>
+<h5 id="description_10">Description<a class="headerlink" href="#description_10" title="Permanent link">&para;</a></h5>
+<p>add a component to the array of system components which invocate the systemTick member function during a systemTick</p>
+<h5 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><div style='color:#008080; display:inline-block'>MicroBitComponent  <em></div> </em>component* - The component to add.</p>
+</blockquote>
+<h5 id="returns_4">Returns<a class="headerlink" href="#returns_4" title="Permanent link">&para;</a></h5>
+<p>MICROBIT_OK on success. MICROBIT_NO_RESOURCES is returned if further components cannot be supported.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>this will be converted into a dynamic list of components</p>
+</div>
+<h2 id="removesystemcomponent">removeSystemComponent<a class="headerlink" href="#removesystemcomponent" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="int-removesystemcomponent-microbitcomponent-component"><div style='color:#FF69B4; display:inline-block'>int</div> removeSystemComponent( <div style='color:#008080; display:inline-block'>MicroBitComponent  *</div> component)<a class="headerlink" href="#int-removesystemcomponent-microbitcomponent-component" title="Permanent link">&para;</a></h4>
+<h5 id="description_11">Description<a class="headerlink" href="#description_11" title="Permanent link">&para;</a></h5>
+<p>remove a component from the array of system components</p>
+<h5 id="parameters_4">Parameters<a class="headerlink" href="#parameters_4" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><div style='color:#008080; display:inline-block'>MicroBitComponent  <em></div> </em>component* - The component to remove.</p>
+</blockquote>
+<h5 id="returns_5">Returns<a class="headerlink" href="#returns_5" title="Permanent link">&para;</a></h5>
+<p>MICROBIT_OK on success. MICROBIT_INVALID_PARAMETER is returned if the given component has not been previous added.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>this will be converted into a dynamic list of components</p>
+</div>
+<h2 id="addidlecomponent">addIdleComponent<a class="headerlink" href="#addidlecomponent" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="int-addidlecomponent-microbitcomponent-component"><div style='color:#FF69B4; display:inline-block'>int</div> addIdleComponent( <div style='color:#008080; display:inline-block'>MicroBitComponent  *</div> component)<a class="headerlink" href="#int-addidlecomponent-microbitcomponent-component" title="Permanent link">&para;</a></h4>
+<h5 id="description_12">Description<a class="headerlink" href="#description_12" title="Permanent link">&para;</a></h5>
+<p>add a component to the array of of idle thread components. isIdleCallbackNeeded is polled during a systemTick to determine if the idle thread should jump to the front of the queue</p>
+<h5 id="parameters_5">Parameters<a class="headerlink" href="#parameters_5" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><div style='color:#008080; display:inline-block'>MicroBitComponent  <em></div> </em>component* - The component to add.</p>
+</blockquote>
+<h5 id="returns_6">Returns<a class="headerlink" href="#returns_6" title="Permanent link">&para;</a></h5>
+<p>MICROBIT_OK on success. MICROBIT_NO_RESOURCES is returned if further components cannot be supported.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>this will be converted into a dynamic list of components</p>
+</div>
+<h2 id="removeidlecomponent">removeIdleComponent<a class="headerlink" href="#removeidlecomponent" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="int-removeidlecomponent-microbitcomponent-component"><div style='color:#FF69B4; display:inline-block'>int</div> removeIdleComponent( <div style='color:#008080; display:inline-block'>MicroBitComponent  *</div> component)<a class="headerlink" href="#int-removeidlecomponent-microbitcomponent-component" title="Permanent link">&para;</a></h4>
+<h5 id="description_13">Description<a class="headerlink" href="#description_13" title="Permanent link">&para;</a></h5>
+<p>remove a component from the array of idle thread components</p>
+<h5 id="parameters_6">Parameters<a class="headerlink" href="#parameters_6" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><div style='color:#008080; display:inline-block'>MicroBitComponent  <em></div> </em>component* - The component to remove.</p>
+</blockquote>
+<h5 id="returns_7">Returns<a class="headerlink" href="#returns_7" title="Permanent link">&para;</a></h5>
+<p>MICROBIT_OK on success. MICROBIT_INVALID_PARAMETER is returned if the given component has not been previous added.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>this will be converted into a dynamic list of components</p>
+</div>
+<h2 id="settickperiod">setTickPeriod<a class="headerlink" href="#settickperiod" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="int-settickperiod-int-speedms"><div style='color:#FF69B4; display:inline-block'>int</div> setTickPeriod( <div style='color:#008080; display:inline-block'>int</div> speedMs)<a class="headerlink" href="#int-settickperiod-int-speedms" title="Permanent link">&para;</a></h4>
+<h5 id="parameters_7">Parameters<a class="headerlink" href="#parameters_7" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><div style='color:#008080; display:inline-block'>int</div> <em>speedMs</em></p>
+</blockquote>
+<h2 id="gettickperiod">getTickPeriod<a class="headerlink" href="#gettickperiod" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="int-gettickperiod"><div style='color:#FF69B4; display:inline-block'>int</div> getTickPeriod()<a class="headerlink" href="#int-gettickperiod" title="Permanent link">&para;</a></h4>
+<h2 id="systemtime">systemTime<a class="headerlink" href="#systemtime" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="unsigned-long-systemtime"><div style='color:#FF69B4; display:inline-block'>unsigned long</div> systemTime()<a class="headerlink" href="#unsigned-long-systemtime" title="Permanent link">&para;</a></h4>
+<h5 id="description_14">Description<a class="headerlink" href="#description_14" title="Permanent link">&para;</a></h5>
+<p>Determine the time since this  MicroBit</p>
+<h5 id="returns_8">Returns<a class="headerlink" href="#returns_8" title="Permanent link">&para;</a></h5>
+<p>The time since the last reset, in milliseconds. This will result in overflow after 1.6 months. TODO: handle overflow case.</p>
+<h2 id="systemversion">systemVersion<a class="headerlink" href="#systemversion" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="const-char-systemversion"><div style='color:#FF69B4; display:inline-block'>const char *</div> systemVersion()<a class="headerlink" href="#const-char-systemversion" title="Permanent link">&para;</a></h4>
+<h5 id="description_15">Description<a class="headerlink" href="#description_15" title="Permanent link">&para;</a></h5>
+<p>Determine the version of the micro:bit runtime currently in use.</p>
+<h5 id="returns_9">Returns<a class="headerlink" href="#returns_9" title="Permanent link">&para;</a></h5>
+<p>A textual description of the currentlt executing micro:bit runtime. TODO: handle overflow case.</p>
+<h2 id="panic">panic<a class="headerlink" href="#panic" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="void-panic"><div style='color:#FF69B4; display:inline-block'>void</div> panic()<a class="headerlink" href="#void-panic" title="Permanent link">&para;</a></h4>
+<h5 id="description_16">Description<a class="headerlink" href="#description_16" title="Permanent link">&para;</a></h5>
+<p>Triggers a microbit panic where an infinite loop will occur swapping between the panicFace and statusCode if provided.
+<br/></p>
+<h4 id="void-panic-int-statuscode"><div style='color:#FF69B4; display:inline-block'>void</div> panic( <div style='color:#008080; display:inline-block'>int</div> statusCode)<a class="headerlink" href="#void-panic-int-statuscode" title="Permanent link">&para;</a></h4>
+<h5 id="description_17">Description<a class="headerlink" href="#description_17" title="Permanent link">&para;</a></h5>
+<p>Triggers a microbit panic where an infinite loop will occur swapping between the panicFace and statusCode if provided.</p>
+<h5 id="parameters_8">Parameters<a class="headerlink" href="#parameters_8" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><div style='color:#008080; display:inline-block'>int</div> <em>statusCode</em> - the status code of the associated error. Status codes must be in the range 0-255.</p>
+</blockquote>
+<hr /></div>
+        </div>
+
+        <footer class="col-md-12">
+            
+            <center><a href="https://www.lancaster.ac.uk"><image height="61" src="../img/lancs-logo.png"></image></a></center>
+            <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+        </footer>
+
+        <script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script>
+        <script>var base_url = '..';</script>
+        <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+        <script src="../js/base.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
