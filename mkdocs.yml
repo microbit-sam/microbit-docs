@@ -8,8 +8,9 @@ pages:
     - uBit:
         - uBit: 'ubit.md'
         - i2c: 'ubit/i2c.md'
+        - storage: 'ubit/storage.md'
         - serial: 'ubit/serial.md'
-        - MessageBus: 'ubit/MessageBus.md'
+        - MessageBus: 'ubit/messageBus.md'
         - button: 'ubit/button.md'
         - display: 'ubit/display.md'
         - accelerometer: 'ubit/accelerometer.md'

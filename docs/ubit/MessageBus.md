@@ -1,4 +1,4 @@
-#uBit.MessageBus
+#uBit.messageBus
 
 ##Overview
 
@@ -23,10 +23,10 @@ Queues the given event to be sent to all registered recipients.
 >  <div style='color:#008080; display:inline-block'>MicroBitEvent</div> *evt*
 #####Example
 ```c++
- MicroBitEvent evt(id,MICROBIT_BUTTON_EVT_DOWN,ticks,false); 
- evt.fire(); 
- //OR YOU CAN DO THIS... 
- MicroBitEvent evt(id,MICROBIT_BUTTON_EVT_DOWN); 
+ MicroBitEvent evt(id,MICROBIT_BUTTON_EVT_DOWN,ticks,false);
+ evt.fire();
+ //OR YOU CAN DO THIS...
+ MicroBitEvent evt(id,MICROBIT_BUTTON_EVT_DOWN);
 
 ```
 ##process
@@ -36,20 +36,20 @@ Queues the given event to be sent to all registered recipients.
 Internal function, used to deliver the given event to all relevant recipients. Normally, this is called once an event has been removed from the event queue.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>MicroBitEvent  &</div> *evt* - The event to send. 
+>  <div style='color:#008080; display:inline-block'>MicroBitEvent  &</div> *evt* - The event to send.
 #####Returns
-1 if all matching listeners were processed, 0 if further processing is required. 
+1 if all matching listeners were processed, 0 if further processing is required.
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> process( <div style='color:#008080; display:inline-block'>MicroBitEvent  &</div> evt,  <div style='color:#008080; display:inline-block'>bool</div> urgent)
 #####Description
 Internal function, used to deliver the given event to all relevant recipients. Normally, this is called once an event has been removed from the event queue.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>MicroBitEvent  &</div> *evt* - The event to send. 
+>  <div style='color:#008080; display:inline-block'>MicroBitEvent  &</div> *evt* - The event to send.
 
->  <div style='color:#008080; display:inline-block'>bool</div> *urgent* - The type of listeners to process (optional). If set to true, only listeners defined as urgent and non-blocking will be processed otherwise, all other (standard) listeners will be processed. 
+>  <div style='color:#008080; display:inline-block'>bool</div> *urgent* - The type of listeners to process (optional). If set to true, only listeners defined as urgent and non-blocking will be processed otherwise, all other (standard) listeners will be processed.
 #####Returns
-1 if all matching listeners were processed, 0 if further processing is required. 
+1 if all matching listeners were processed, 0 if further processing is required.
 ##listen
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> listen( <div style='color:#008080; display:inline-block'>int</div> id,  <div style='color:#008080; display:inline-block'>int</div> value,  <div style='color:#008080; display:inline-block'>void(*)( MicroBitEvent )</div> handler)
@@ -66,11 +66,11 @@ Register a listener function.
 MICROBIT_OK on success MICROBIT_INVALID_PARAMETER
 #####Example
 ```c++
- void onButtonBClick() 
- { 
- //do something 
- } 
- uBit.MessageBus.listen(MICROBIT_ID_BUTTON_B, MICROBIT_BUTTON_EVT_CLICK, onButtonBClick); // call function when ever a click event is detected. 
+ void onButtonBClick()
+ {
+ //do something
+ }
+ uBit.MessageBus.listen(MICROBIT_ID_BUTTON_B, MICROBIT_BUTTON_EVT_CLICK, onButtonBClick); // call function when ever a click event is detected.
 
 ```
 <br/>
@@ -90,11 +90,11 @@ Register a listener function.
 MICROBIT_OK on success MICROBIT_INVALID_PARAMETER
 #####Example
 ```c++
- void onButtonBClick() 
- { 
- //do something 
- } 
- uBit.MessageBus.listen(MICROBIT_ID_BUTTON_B, MICROBIT_BUTTON_EVT_CLICK, onButtonBClick); // call function when ever a click event is detected. 
+ void onButtonBClick()
+ {
+ //do something
+ }
+ uBit.MessageBus.listen(MICROBIT_ID_BUTTON_B, MICROBIT_BUTTON_EVT_CLICK, onButtonBClick); // call function when ever a click event is detected.
 
 ```
 <br/>
@@ -114,11 +114,11 @@ Register a listener function.
 MICROBIT_OK on success MICROBIT_INVALID_PARAMETER
 #####Example
 ```c++
- void onButtonBClick(void *arg) 
- { 
- //do something 
- } 
- uBit.MessageBus.listen(MICROBIT_ID_BUTTON_B, MICROBIT_BUTTON_EVT_CLICK, onButtonBClick); // call function when ever a click event is detected. 
+ void onButtonBClick(void *arg)
+ {
+ //do something
+ }
+ uBit.MessageBus.listen(MICROBIT_ID_BUTTON_B, MICROBIT_BUTTON_EVT_CLICK, onButtonBClick); // call function when ever a click event is detected.
 
 ```
 <br/>
@@ -140,11 +140,11 @@ Register a listener function.
 MICROBIT_OK on success MICROBIT_INVALID_PARAMETER
 #####Example
 ```c++
- void onButtonBClick(void *arg) 
- { 
- //do something 
- } 
- uBit.MessageBus.listen(MICROBIT_ID_BUTTON_B, MICROBIT_BUTTON_EVT_CLICK, onButtonBClick); // call function when ever a click event is detected. 
+ void onButtonBClick(void *arg)
+ {
+ //do something
+ }
+ uBit.MessageBus.listen(MICROBIT_ID_BUTTON_B, MICROBIT_BUTTON_EVT_CLICK, onButtonBClick); // call function when ever a click event is detected.
 
 ```
 <br/>
@@ -166,13 +166,13 @@ Register a listener function.
 MICROBIT_OK on success MICROBIT_INVALID_PARAMETER
 #####Example
 ```c++
- void SomeClass::onButtonBClick() 
- { 
- //do something 
- } 
- 
- SomeClass s = new SomeClass(); 
- uBit.MessageBus.listen(MICROBIT_ID_BUTTON_B, MICROBIT_BUTTON_EVT_CLICK, s, &SomeClass::onButtonBClick); 
+ void SomeClass::onButtonBClick()
+ {
+ //do something
+ }
+
+ SomeClass s = new SomeClass();
+ uBit.MessageBus.listen(MICROBIT_ID_BUTTON_B, MICROBIT_BUTTON_EVT_CLICK, s, &SomeClass::onButtonBClick);
 
 ```
 <br/>
@@ -196,13 +196,13 @@ Register a listener function.
 MICROBIT_OK on success MICROBIT_INVALID_PARAMETER
 #####Example
 ```c++
- void SomeClass::onButtonBClick() 
- { 
- //do something 
- } 
- 
- SomeClass s = new SomeClass(); 
- uBit.MessageBus.listen(MICROBIT_ID_BUTTON_B, MICROBIT_BUTTON_EVT_CLICK, s, &SomeClass::onButtonBClick); 
+ void SomeClass::onButtonBClick()
+ {
+ //do something
+ }
+
+ SomeClass s = new SomeClass();
+ uBit.MessageBus.listen(MICROBIT_ID_BUTTON_B, MICROBIT_BUTTON_EVT_CLICK, s, &SomeClass::onButtonBClick);
 
 ```
 ##ignore
@@ -212,21 +212,21 @@ MICROBIT_OK on success MICROBIT_INVALID_PARAMETER
 Unregister a listener function. Listners are identified by the Event ID, Event VALUE and handler registered using  listen()
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>int</div> *id* - The Event ID used to register the listener. 
+>  <div style='color:#008080; display:inline-block'>int</div> *id* - The Event ID used to register the listener.
 
->  <div style='color:#008080; display:inline-block'>int</div> *value* - The Event VALUE used to register the listener. 
+>  <div style='color:#008080; display:inline-block'>int</div> *value* - The Event VALUE used to register the listener.
 
 >  <div style='color:#008080; display:inline-block'>void(*)( MicroBitEvent )</div> *handler* - The function used to register the listener.
 #####Returns
 MICROBIT_OK on success MICROBIT_INVALID_PARAMETER
 #####Example
 ```c++
- void onButtonBClick() 
- { 
- //do something 
- } 
- 
- uBit.MessageBus.ignore(MICROBIT_ID_BUTTON_B, MICROBIT_BUTTON_EVT_CLICK, onButtonBClick); 
+ void onButtonBClick()
+ {
+ //do something
+ }
+
+ uBit.MessageBus.ignore(MICROBIT_ID_BUTTON_B, MICROBIT_BUTTON_EVT_CLICK, onButtonBClick);
 
 ```
 <br/>
@@ -235,21 +235,21 @@ MICROBIT_OK on success MICROBIT_INVALID_PARAMETER
 Unregister a listener function. Listners are identified by the Event ID, Event VALUE and handler registered using  listen()
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>int</div> *id* - The Event ID used to register the listener. 
+>  <div style='color:#008080; display:inline-block'>int</div> *id* - The Event ID used to register the listener.
 
->  <div style='color:#008080; display:inline-block'>int</div> *value* - The Event VALUE used to register the listener. 
+>  <div style='color:#008080; display:inline-block'>int</div> *value* - The Event VALUE used to register the listener.
 
 >  <div style='color:#008080; display:inline-block'>void(*)( MicroBitEvent , void *)</div> *handler* - The function used to register the listener.
 #####Returns
 MICROBIT_OK on success MICROBIT_INVALID_PARAMETER
 #####Example
 ```c++
- void onButtonBClick(void *arg) 
- { 
- //do something 
- } 
- 
- uBit.MessageBus.ignore(MICROBIT_ID_BUTTON_B, MICROBIT_BUTTON_EVT_CLICK, onButtonBClick); 
+ void onButtonBClick(void *arg)
+ {
+ //do something
+ }
+
+ uBit.MessageBus.ignore(MICROBIT_ID_BUTTON_B, MICROBIT_BUTTON_EVT_CLICK, onButtonBClick);
 
 ```
 <br/>
@@ -260,9 +260,9 @@ Unregister a listener function. Listners are identified by the Event ID, Event V
 
 >  <div style='color:#008080; display:inline-block'>typename T</div> **
 
->  <div style='color:#008080; display:inline-block'>uint16_t</div> *id* - The Event ID used to register the listener. 
+>  <div style='color:#008080; display:inline-block'>uint16_t</div> *id* - The Event ID used to register the listener.
 
->  <div style='color:#008080; display:inline-block'>uint16_t</div> *value* - The Event VALUE used to register the listener. 
+>  <div style='color:#008080; display:inline-block'>uint16_t</div> *value* - The Event VALUE used to register the listener.
 
 >  <div style='color:#008080; display:inline-block'>T *</div> *object*
 
@@ -271,13 +271,13 @@ Unregister a listener function. Listners are identified by the Event ID, Event V
 MICROBIT_OK on success MICROBIT_INVALID_PARAMETER
 #####Example
 ```c++
- void SomeClass::onButtonBClick() 
- { 
- //do something 
- } 
- 
- SomeClass s = new SomeClass(); 
- uBit.MessageBus.ignore(MICROBIT_ID_BUTTON_B, MICROBIT_BUTTON_EVT_CLICK, s, &SomeClass::onButtonBClick); 
+ void SomeClass::onButtonBClick()
+ {
+ //do something
+ }
+
+ SomeClass s = new SomeClass();
+ uBit.MessageBus.ignore(MICROBIT_ID_BUTTON_B, MICROBIT_BUTTON_EVT_CLICK, s, &SomeClass::onButtonBClick);
 
 ```
 ##elementAt
@@ -287,9 +287,9 @@ MICROBIT_OK on success MICROBIT_INVALID_PARAMETER
 Returns the microBitListener with the given position in our list.  MicroBitListener
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>int</div> *n* - The position in the list to return. 
+>  <div style='color:#008080; display:inline-block'>int</div> *n* - The position in the list to return.
 #####Returns
-the  MicroBitListener  at postion n in the list, or NULL if the position is invalid. 
+the  MicroBitListener  at postion n in the list, or NULL if the position is invalid.
 ##~MicroBitMessageBus
 <br/>
 ####~MicroBitMessageBus()
