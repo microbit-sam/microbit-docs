@@ -315,11 +315,11 @@ important that the micro:bit is seen to react in a timely manner. Any delay or l
 of responsiveness can be the difference between frustration and enthusiasm.</p>
 <p>The design of the software therefore lends itself to an event driven model.</p>
 <h2 id="message-bus">Message Bus<a class="headerlink" href="#message-bus" title="Permanent link">&para;</a></h2>
-<p>The <a href="ubit/MessageBus.md"><code>MicroBitMessageBus</code></a> is the core mechanism that enables
-the reactivity exhibited by the micro:bit. The <a href="ubit/MessageBus.md"><code>MicroBitMessageBus</code></a>
+<p>The <a href="../ubit/messageBus/"><code>MicroBitMessageBus</code></a> is the core mechanism that enables
+the reactivity exhibited by the micro:bit. The <a href="../ubit/messageBus/"><code>MicroBitMessageBus</code></a>
 consumes <a href="../data-types/event/"><code>MicroBitEvent</code></a>s and delivers these events asynchronously
 to listeners created with a call to <code>uBit.MessageBus.listen</code>.</p>
-<p>The <a href="ubit/MessageBus.md"><code>MicroBitMessageBus</code></a> has many purposes:</p>
+<p>The <a href="../ubit/messageBus/"><code>MicroBitMessageBus</code></a> has many purposes:</p>
 <ul>
 <li>It provides an abstraction that is platform independent.</li>
 <li>It provides a mechanism to decouple user and system code.</li>
@@ -345,7 +345,7 @@ which means that allocation of memory in the user written handlers is entirely s
 <p>Below are two equivalent examples of this mechanism in operation, using the native C++
 calls, and the Microsoft Blocks environment.</p>
 <h3 id="c-example">C++ Example<a class="headerlink" href="#c-example" title="Permanent link">&para;</a></h3>
-<pre><code class="c++">void onButtonA(MicroBitEvent e)
+<pre><code class="cpp">void onButtonA(MicroBitEvent e)
 {
     uBit.display.print('A');
 }

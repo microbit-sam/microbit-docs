@@ -480,9 +480,9 @@ to use some GPIO pins.</p>
 </table>
 <h2 id="message-bus-events">Message Bus Events<a class="headerlink" href="#message-bus-events" title="Permanent link">&para;</a></h2>
 <p>When <code>isTouched()</code> is called, provided that the selected pin has touch capabilities
-(outlined above), an instance of <a href="ubit/button.md">button</a> will be created. Listeners
+(outlined above), an instance of <a href="../button/">button</a> will be created. Listeners
 can therefore be placed using the desired pins' ID, with the exact same events
-produced by a standard <a href="ubit/button.md">button</a>.</p>
+produced by a standard <a href="../button/">button</a>.</p>
 <pre><code class="c++">uBit.messageBus.listen(MICROBIT_ID_IO_P0, MICROBIT_EVT_ANY, someFunction);
 uBit.io.P0.isTouched();
 </code></pre>
