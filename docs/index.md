@@ -46,7 +46,7 @@ The uBit object looks like this:
 >    uBit {<br/>
 >    &emsp;&emsp;[.i2c](ubit/i2c.md),<br/>
 >    &emsp;&emsp;[.serial](ubit/serial.md),<br/>
->    &emsp;&emsp;[.MessageBus](ubit/MessageBus.md),<br/>
+>    &emsp;&emsp;[.MessageBus](ubit/messageBus.md),<br/>
 >    &emsp;&emsp;[.buttonA](ubit/button.md),<br/>
 >    &emsp;&emsp;[.buttonB](ubit/button.md),<br/>
 >    &emsp;&emsp;[.buttonAB](ubit/button.md),<br/>

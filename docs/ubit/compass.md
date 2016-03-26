@@ -2,15 +2,15 @@
 
 ##Overview
 
-Onboard the micro:bit is an electronic magnetometer. Like the [accelerometer](ubit/accelerometer.md), the  
-magnetometer is linked to the [i2c](ubit/i2c.md) bus, which is used to access data
+Onboard the micro:bit is an electronic magnetometer. Like the [accelerometer](accelerometer.md), the  
+magnetometer is linked to the [i2c](i2c.md) bus, which is used to access data
 on the magnetometer.
 
 The magnetometer provides information about the magnetic field where a micro:bit
 is situated, crucially providing an indication of where magnetic North is located.
 
 Raw magnetic field information alone is not enough to provide accurate
-compass headings. Therefore, the [accelerometer](ubit/accelerometer.md) is used in
+compass headings. Therefore, the [accelerometer](accelerometer.md) is used in
 conjunction with the magnetometer to reduce the inaccuracy of the magnetometer reading.
 
 The magnetometer is inaccurate because it considers all 3 planes: x, y and z.

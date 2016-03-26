@@ -3,7 +3,7 @@
 ##Overview
 
 Onboard the micro:bit is an accelerometer. The accelerometer is linked to the
-[i2c](ubit/i2c.md) bus, which is used to read data from the accelerometer.
+[i2c](i2c.md) bus, which is used to read data from the accelerometer.
 
 When using the standard uBit presentation, the accelerometer is continuously updated
 in the background using an idle thread, which is executed whenever the micro:bit

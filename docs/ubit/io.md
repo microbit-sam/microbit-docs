@@ -74,9 +74,9 @@ This is illustrated by the diagram below:
 ##Message Bus Events
 
 When `isTouched()` is called, provided that the selected pin has touch capabilities
-(outlined above), an instance of [button](ubit/button.md) will be created. Listeners
+(outlined above), an instance of [button](button.md) will be created. Listeners
 can therefore be placed using the desired pins' ID, with the exact same events
-produced by a standard [button](ubit/button.md).
+produced by a standard [button](button.md).
 
 ```c++
 uBit.messageBus.listen(MICROBIT_ID_IO_P0, MICROBIT_EVT_ANY, someFunction);

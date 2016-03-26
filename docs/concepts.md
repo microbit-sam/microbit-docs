@@ -9,12 +9,12 @@ The design of the software therefore lends itself to an event driven model.
 
 ## Message Bus
 
-The [`MicroBitMessageBus`](ubit/MessageBus.md) is the core mechanism that enables
-the reactivity exhibited by the micro:bit. The [`MicroBitMessageBus`](ubit/MessageBus.md)
+The [`MicroBitMessageBus`](ubit/messageBus.md) is the core mechanism that enables
+the reactivity exhibited by the micro:bit. The [`MicroBitMessageBus`](ubit/messageBus.md)
 consumes [`MicroBitEvent`](data-types/event.md)s and delivers these events asynchronously
 to listeners created with a call to `uBit.MessageBus.listen`.
 
-The [`MicroBitMessageBus`](ubit/MessageBus.md) has many purposes:
+The [`MicroBitMessageBus`](ubit/messageBus.md) has many purposes:
 
 - It provides an abstraction that is platform independent.
 - It provides a mechanism to decouple user and system code.
@@ -47,7 +47,7 @@ calls, and the Microsoft Blocks environment.
 
 ### C++ Example
 
-```c++
+```cpp
 void onButtonA(MicroBitEvent e)
 {
     uBit.display.print('A');
@@ -82,19 +82,19 @@ Of course, the prior is still possible in the runtime.
 
 Listeners are either executed in the idle fiber, or in their own fiber (created by the MessageBus),
 unless explicitly indicated otherwise in the [`MicroBitEvent`](data-types/event.md)
-that is placed onto the [`MicroBitMessageBus`](ubit/MessageBus.md).
+that is placed onto the [`MicroBitMessageBus`](ubit/messageBus.md).
 
 !!!note
     This is achieved through changing the [`MicroBitEventLaunchMode`](something.md)
     when constructing the [`MicroBitEvent`](data-types/event.md)
 
-There are a number of different variations of `listen` applicable to the shared [`MicroBitMessageBus`](ubit/MessageBus.md).
+There are a number of different variations of `listen` applicable to the shared [`MicroBitMessageBus`](ubit/messageBus.md).
 This means as well as the ability to call standard functions, member functions can also be
-called on the reception of an event from the [`MicroBitMessageBus`](ubit/MessageBus.md).
+called on the reception of an event from the [`MicroBitMessageBus`](ubit/messageBus.md).
 
-There also exists a form of reflection for the [`MicroBitMessageBus`](ubit/MessageBus.md).
+There also exists a form of reflection for the [`MicroBitMessageBus`](ubit/messageBus.md).
 Each time a listener is created, and successfully added, an event is created, with
-the ID of the [`MicroBitMessageBus`](ubit/MessageBus.md), and the id of the newly
+the ID of the [`MicroBitMessageBus`](ubit/messageBus.md), and the id of the newly
 added listener. This is used in the runtime to provide lazy instantiation for
 components that are not always fully utilised by users.
 

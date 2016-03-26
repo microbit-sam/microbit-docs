@@ -7,7 +7,7 @@ over a wire. i2c uses a very simple addressing scheme to access these other
 devices.
 
 Onboard the micro:bit itself there are two components which use i2c bus as a communication
-mechanism, the [accelerometer](ubit/accelerometer.md) and the [compass](ubit/compass.md).
+mechanism, the [accelerometer](accelerometer.md) and the [compass](compass.md).
 
 As well as being used internally, the i2c bus is exposed on two edge connector
 pins, P19 and P20. This means other accessories that use i2c to communicate
