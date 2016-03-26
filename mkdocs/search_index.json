@@ -602,7 +602,7 @@
         }, 
         {
             "location": "/ubit/storage/", 
-            "text": "uBit.storage\n\n\nOverview\n\n\nMessage Bus ID\n\n\n\n\nNone.\n\n\n\n\nMessage Bus Events\n\n\n\n\nNone.\n\n\n\n\nAPI", 
+            "text": "uBit.storage\n\n\nOverview\n\n\nMicroBitStorage provides a simple way to store data on the micro:bit that persists\nthrough resets. It currently takes the form of a Key Value store which contains\na number of Key Value pairs.\n\n\nYou can \nput()\n, \nget()\n and \nremove()\n Key Value pairs from the store.\n\n\nKey Value pairs have a fixed length Key of \n16 bytes\n, and a fixed length value of\n\n32 bytes\n. This class only populates a single block (\n1024 bytes\n) in its current state,\nwhich means that \n21\n one Key Value pairs can be stored.\n\n\nCurrently, this class is utilised by the \ncompass\n, \naccelerometer\n\nand \nbleManager\n to improve the user experience by persisting calibration\nand bonding data.\n\n\nMessage Bus ID\n\n\n\n\nNone.\n\n\n\n\nMessage Bus Events\n\n\n\n\nNone.\n\n\n\n\nAPI", 
             "title": "storage"
         }, 
         {
@@ -612,7 +612,7 @@
         }, 
         {
             "location": "/ubit/storage/#overview", 
-            "text": "", 
+            "text": "MicroBitStorage provides a simple way to store data on the micro:bit that persists\nthrough resets. It currently takes the form of a Key Value store which contains\na number of Key Value pairs.  You can  put() ,  get()  and  remove()  Key Value pairs from the store.  Key Value pairs have a fixed length Key of  16 bytes , and a fixed length value of 32 bytes . This class only populates a single block ( 1024 bytes ) in its current state,\nwhich means that  21  one Key Value pairs can be stored.  Currently, this class is utilised by the  compass ,  accelerometer \nand  bleManager  to improve the user experience by persisting calibration\nand bonding data.", 
             "title": "Overview"
         }, 
         {
