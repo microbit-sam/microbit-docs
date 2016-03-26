@@ -1,4 +1,5 @@
 site_name: 'micro:bit runtime'
+repo_url: https://github.com/lancaster-university/microbit-dal/
 pages:
     - General:
         - Introduction: 'index.md'
