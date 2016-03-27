@@ -129,7 +129,7 @@
                     
                         
 <li >
-    <a href="../button/">button</a>
+    <a href="../button/">buttons</a>
 </li>
 
                     
@@ -250,6 +250,11 @@
 
             
             
+
+            
+
+            
+            
             </ul>
 
             <!-- Search, Navigation and Repo links -->
@@ -341,15 +346,29 @@
 
 <h1 id="ubitaccelerometer">uBit.accelerometer<a class="headerlink" href="#ubitaccelerometer" title="Permanent link">&para;</a></h1>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>Onboard the micro:bit is an accelerometer. The accelerometer is linked to the
-<a href="../i2c/">i2c</a> bus, which is used to read data from the accelerometer.</p>
+<p>Onboard the micro:bit is an accelerometer, and it is linked to the
+<a href="../i2c/">i2c</a> bus which is used to read data from the accelerometer.</p>
+<p>The accelerometer on the micro:bit detects the acceleration (<em>in milli-g</em>) in 3 planes: x and y
+(<em>the horizontal planes</em>), and z (<em>the vertical plane</em>).</p>
+<p>As well as detecting acceleration, accelerometers can also detect orientation, which
+is used in smart phones and tablets to rotate content as you tilt the device. This means
+that the micro:bit can infer its own orientation as well!</p>
+<p>As well as being used to detect acceleration, accelerometers are also used to detect
+the rate of deceleration. A great example of an application of accelerometers are
+airbags in modern vehicles, where an accelerometer is used to detect the rapid deceleration
+of a vehicle. If rapid deceleration were to occur, the airbags are deployed.</p>
+<p>Accelerometers can also be used to detect when an object is in free fall, which is
+when only the force gravity is acting upon an object. If you were to throw a ball directly
+into the air, free fall would begin as soon as the ball begins its decent after the
+acceleration from your throw has subsided.</p>
+<p>The micro:bit uses the <a href="http://www.nxp.com/products/sensors/accelerometers/3-axis-accelerometers/2g-4g-8g-low-g-10-bit-digital-accelerometer:MMA8653FC">NXP MMA8653 accelerometer</a>.</p>
+<h3 id="real-time-updates">Real time updates<a class="headerlink" href="#real-time-updates" title="Permanent link">&para;</a></h3>
 <p>When using the standard uBit presentation, the accelerometer is continuously updated
-in the background using an idle thread, which is executed whenever the micro:bit
-has no other tasks to perform..</p>
+in the background using an idle thread (after it is first used), which is executed
+whenever the micro:bit has no other tasks to perform..</p>
 <p>If there is no scheduler running, the values are synchronously read on <code>get[X,Y,Z]()</code>
 calls. Additionally, if you would like to drive accelerometer updates manually <code>updateSample()</code>
 can be used.</p>
-<p>The micro:bit uses the <a href="http://www.nxp.com/products/sensors/accelerometers/3-axis-accelerometers/2g-4g-8g-low-g-10-bit-digital-accelerometer:MMA8653FC">NXP MMA8653 accelerometer</a>.</p>
 <h2 id="message-bus-id">Message Bus ID<a class="headerlink" href="#message-bus-id" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

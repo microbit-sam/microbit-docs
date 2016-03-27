@@ -129,7 +129,7 @@
                     
                         
 <li >
-    <a href="../button/">button</a>
+    <a href="../button/">buttons</a>
 </li>
 
                     
@@ -250,6 +250,11 @@
 
             
             
+
+            
+
+            
+            
             </ul>
 
             <!-- Search, Navigation and Repo links -->
@@ -321,11 +326,7 @@
 
 <h1 id="ubitserial">uBit.serial<a class="headerlink" href="#ubitserial" title="Permanent link">&para;</a></h1>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>Serial communication is really simple on the micro:bit and is exposed through the
-USB interface chip, the <a href="https://www.mbed.com/en/development/hardware/prototyping-production/daplink/daplink-on-kl26z/#Updating_your_DAPLink_firmware">KL26Z</a>.</p>
-<p>The runtime's implementation of serial is general purpose and supports a number
-of different modes. It has a circular buffer for both the reception and transmission
-of data, and provides notifications to the user through the MessageBus.</p>
+<p>Serial communication provides a simple way to exchange a series of bytes between one computer and another.  The runtime's implementation of serial is general purpose and supports a number of different modes. It has a circular buffer for both the reception and transmission of data, and provides notifications to the user through the MessageBus.</p>
 <p>By default, the baud rate for MicroBitSerial is <code>115200</code> and has very little overhead up until
 it is used to <code>send()</code> or <code>read()</code>, at which point buffers are allocated in order
 to accommodate incoming or outgoing data.</p>
@@ -334,6 +335,7 @@ class, which exposes a lightweight version of <code>printf()</code> and incurs m
 as MicroBitSerial's buffers will not be allocated.</p>
 <p>The MicroBitSerial class supports multithreaded operation, ensuring that only
 one fiber can access the Serial port at a time.</p>
+<p>The USB interface on the micro:bit is the <a href="https://www.mbed.com/en/development/hardware/prototyping-production/daplink/daplink-on-kl26z/#Updating_your_DAPLink_firmware">KL26Z</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>On Mac OSX and Linux Serial communication works out of the box, however on Windows an additional

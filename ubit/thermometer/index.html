@@ -129,7 +129,7 @@
                     
                         
 <li >
-    <a href="../button/">button</a>
+    <a href="../button/">buttons</a>
 </li>
 
                     
@@ -250,6 +250,11 @@
 
             
             
+
+            
+
+            
+            
             </ul>
 
             <!-- Search, Navigation and Repo links -->
@@ -315,8 +320,51 @@
 
 <h1 id="ubitthermometer">uBit.thermometer<a class="headerlink" href="#ubitthermometer" title="Permanent link">&para;</a></h1>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>MicroBitThermometer provides access to the surface temperature of the nrf51822.
+The temperature reading therefore is not representative of the ambient temperature,
+but rather the temperature relative to the surface temperature of the chip.</p>
+<p>However, we can make it representative of the ambient temperature in software
+through "calibrating" the thermometer.</p>
+<p>Calibration is very simple, and is calculated by giving the current temperature
+to the <code>setCalibration()</code> member function. From the temperature, an offset is
+calculated, and is subsequently used to offset future temperature readings.</p>
+<h3 id="real-time-updates">Real time updates<a class="headerlink" href="#real-time-updates" title="Permanent link">&para;</a></h3>
+<p>When using the standard uBit presentation, the thermometer is continuously updated
+in the background using an idle thread (after it is first used), which is executed
+whenever the micro:bit has no other tasks to perform.</p>
+<p>If there is no scheduler running, the values are synchronously read on <code>getTemperature()</code>
+calls. Additionally, if you would like to drive thermometer updates manually <code>updateSample()</code>
+can be used.</p>
 <h2 id="message-bus-id">Message Bus ID<a class="headerlink" href="#message-bus-id" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MICROBIT_ID_THERMOMETER</td>
+<td>28</td>
+</tr>
+</tbody>
+</table>
 <h2 id="message-bus-events">Message Bus Events<a class="headerlink" href="#message-bus-events" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MICROBIT_THERMOMETER_EVT_UPDATE</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
 <h2 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
 <h2 id="constructor">Constructor<a class="headerlink" href="#constructor" title="Permanent link">&para;</a></h2>
 <p><br/></p>
@@ -328,7 +376,7 @@
 <p><div style='color:#008080; display:inline-block'>uint16_t</div> <em>id</em> - the ID of the new  MicroBitThermometer  object.</p>
 </blockquote>
 <h5 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h5>
-<pre><code class="c++"> thermometer(MICROBIT_ID_THERMOMETER); 
+<pre><code class="c++"> thermometer(MICROBIT_ID_THERMOMETER);
 
 </code></pre>
 
@@ -336,27 +384,27 @@
 <p><br/></p>
 <h4 id="void-setperiod-int-period"><div style='color:#FF69B4; display:inline-block'>void</div> setPeriod( <div style='color:#008080; display:inline-block'>int</div> period)<a class="headerlink" href="#void-setperiod-int-period" title="Permanent link">&para;</a></h4>
 <h5 id="description_1">Description<a class="headerlink" href="#description_1" title="Permanent link">&para;</a></h5>
-<p>Set the sample rate at which the temperatureis read (in ms). n.b. the temperature is alwasy read in the background, so wis only updated when the processor is idle, or when the temperature is explicitly read. The default sample period is 1 second. </p>
+<p>Set the sample rate at which the temperatureis read (in ms). n.b. the temperature is alwasy read in the background, so wis only updated when the processor is idle, or when the temperature is explicitly read. The default sample period is 1 second.</p>
 <h5 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#008080; display:inline-block'>int</div> <em>period</em> - the requested time between samples, in milliseconds. </p>
+<p><div style='color:#008080; display:inline-block'>int</div> <em>period</em> - the requested time between samples, in milliseconds.</p>
 </blockquote>
 <h2 id="getperiod">getPeriod<a class="headerlink" href="#getperiod" title="Permanent link">&para;</a></h2>
 <p><br/></p>
 <h4 id="int-getperiod"><div style='color:#FF69B4; display:inline-block'>int</div> getPeriod()<a class="headerlink" href="#int-getperiod" title="Permanent link">&para;</a></h4>
 <h5 id="description_2">Description<a class="headerlink" href="#description_2" title="Permanent link">&para;</a></h5>
-<p>Reads the currently configured sample rate of the thermometer. </p>
+<p>Reads the currently configured sample rate of the thermometer.</p>
 <h5 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h5>
-<p>The time between samples, in milliseconds. </p>
+<p>The time between samples, in milliseconds.</p>
 <h2 id="gettemperature">getTemperature<a class="headerlink" href="#gettemperature" title="Permanent link">&para;</a></h2>
 <p><br/></p>
 <h4 id="int-gettemperature"><div style='color:#FF69B4; display:inline-block'>int</div> getTemperature()<a class="headerlink" href="#int-gettemperature" title="Permanent link">&para;</a></h4>
 <h5 id="description_3">Description<a class="headerlink" href="#description_3" title="Permanent link">&para;</a></h5>
-<p>Gets the current temperature of the microbit. </p>
+<p>Gets the current temperature of the microbit.</p>
 <h5 id="returns_1">Returns<a class="headerlink" href="#returns_1" title="Permanent link">&para;</a></h5>
 <p>the current temperature, in degrees celsius.</p>
 <h5 id="example_1">Example<a class="headerlink" href="#example_1" title="Permanent link">&para;</a></h5>
-<pre><code class="c++"> uBit.thermometer.getTemperature(); 
+<pre><code class="c++"> uBit.thermometer.getTemperature();
 
 </code></pre>
 
@@ -364,9 +412,9 @@
 <p><br/></p>
 <h4 id="int-isidlecallbackneeded"><div style='color:#FF69B4; display:inline-block'>int</div> isIdleCallbackNeeded()<a class="headerlink" href="#int-isidlecallbackneeded" title="Permanent link">&para;</a></h4>
 <h5 id="description_4">Description<a class="headerlink" href="#description_4" title="Permanent link">&para;</a></h5>
-<p>Indicates if we'd like some processor time to sense the temperature. 0 means we're not due to read the tmeperature yet. </p>
+<p>Indicates if we'd like some processor time to sense the temperature. 0 means we're not due to read the tmeperature yet.</p>
 <h5 id="returns_2">Returns<a class="headerlink" href="#returns_2" title="Permanent link">&para;</a></h5>
-<p>1 if we'd like some processor time, 0 otherwise. </p>
+<p>1 if we'd like some processor time, 0 otherwise.</p>
 <hr /></div>
         </div>
 
