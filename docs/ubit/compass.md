@@ -20,15 +20,17 @@ to make our headings far more accurate. You can see this in action when calibrat
 
 After calibration has been performed, the end product is an e-compass!
 
+The micro:bit uses the [NXP MAG3110](http://www.nxp.com/products/sensors/magnetometers/sample-data-sets-for-inertial-and-magnetic-sensors/freescale-high-accuracy-3d-magnetometer:MAG3110).
+
+### Real time updates
+
 When using the standard uBit presentation, the compass is continuously updated
-in the background using an idle thread, which is executed whenever the micro:bit
-has no other tasks to perform.
+in the background using an idle thread (after it is first used), which is executed
+whenever the micro:bit has no other tasks to perform.
 
 If there is no scheduler running, the values are synchronously read on `get[X,Y,Z]()` and `heading()`
 calls. Additionally, if you would like to drive compass updates manually `updateSample()`
 can be used.
-
-The micro:bit uses the [NXP MAG3110](http://www.nxp.com/products/sensors/magnetometers/sample-data-sets-for-inertial-and-magnetic-sensors/freescale-high-accuracy-3d-magnetometer:MAG3110).
 
 
 ##Message Bus ID

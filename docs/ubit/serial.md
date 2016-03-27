@@ -2,12 +2,7 @@
 
 ##Overview
 
-Serial communication is really simple on the micro:bit and is exposed through the
-USB interface chip, the [KL26Z](https://www.mbed.com/en/development/hardware/prototyping-production/daplink/daplink-on-kl26z/#Updating_your_DAPLink_firmware).
-
-The runtime's implementation of serial is general purpose and supports a number
-of different modes. It has a circular buffer for both the reception and transmission
-of data, and provides notifications to the user through the MessageBus.
+Serial communication provides a simple way to exchange a series of bytes between one computer and another.  The runtime's implementation of serial is general purpose and supports a number of different modes. It has a circular buffer for both the reception and transmission of data, and provides notifications to the user through the MessageBus.
 
 By default, the baud rate for MicroBitSerial is `115200` and has very little overhead up until
 it is used to `send()` or `read()`, at which point buffers are allocated in order
@@ -19,6 +14,8 @@ as MicroBitSerial's buffers will not be allocated.
 
 The MicroBitSerial class supports multithreaded operation, ensuring that only
 one fiber can access the Serial port at a time.
+
+The USB interface on the micro:bit is the [KL26Z](https://www.mbed.com/en/development/hardware/prototyping-production/daplink/daplink-on-kl26z/#Updating_your_DAPLink_firmware).
 
 !!! note
     On Mac OSX and Linux Serial communication works out of the box, however on Windows an additional
