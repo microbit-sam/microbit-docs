@@ -2,10 +2,6 @@
 
 ##Overview
 
-##Message Bus ID
-
-##Message Bus Events
-
 #API
 [comment]: <> ({"className":"MicroBitImage"})
 ##leakData
@@ -17,7 +13,7 @@ Get current ptr, do not decr() it, and set the current instance to empty image. 
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>uint8_t *</div> getBitmap()
 #####Description
-Return a 2D array representing the bitmap image. 
+Return a 2D array representing the bitmap image.
 ##Constructor
 <br/>
 ####MicroBitImage( <div style='color:#008080; display:inline-block'>ImageData  *</div> ptr)
@@ -28,8 +24,8 @@ Constructor. Create an image from a specially prepared constant array, with no c
 >  <div style='color:#008080; display:inline-block'>ImageData  *</div> *ptr* - The literal - first two bytes should be 0xff, then width, 0, height, 0, and the bitmap. Width and height are 16 bit. The literal has to be 4-byte aligned.
 #####Example
 ```c++
- static const uint8_t heart[] __attribute__ ((aligned (4))) = { 0xff, 0xff, 10, 0, 5, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart 
- MicroBitImage i((ImageData*)(void*)heart); 
+ static const uint8_t heart[] __attribute__ ((aligned (4))) = { 0xff, 0xff, 10, 0, 5, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart
+ MicroBitImage i((ImageData*)(void*)heart);
 
 ```
 <br/>
@@ -38,7 +34,7 @@ Constructor. Create an image from a specially prepared constant array, with no c
 Default Constructor. Creates a new reference to the empty  MicroBitImage
 #####Example
 ```c++
- MicroBitImage i(); //an empty image 
+ MicroBitImage i(); //an empty image
 
 ```
 <br/>
@@ -50,8 +46,8 @@ Copy Constructor. Add ourselves as a reference to an existing  MicroBitImage
 >  <div style='color:#008080; display:inline-block'>const  MicroBitImage  &</div> *image* - The  MicroBitImage  to reference.
 #####Example
 ```c++
- MicroBitImage i("0,1,0,1,0\n"); 
- MicroBitImage i2(i); //points to i 
+ MicroBitImage i("0,1,0,1,0\n");
+ MicroBitImage i2(i); //points to i
 
 ```
 <br/>
@@ -63,7 +59,7 @@ Constructor. Create a blank bitmap representation of a given size.
 >  <div style='color:#008080; display:inline-block'>const char *</div> *s* - A text based representation of the image given whitespace delimited numeric values.
 #####Example
 ```c++
- MicroBitImage i("0,1,0,1,0\n1,0,1,0,1\n0,1,0,1,0\n1,0,1,0,1\n0,1,0,1,0\n"); // 5x5 image 
+ MicroBitImage i("0,1,0,1,0\n1,0,1,0,1\n0,1,0,1,0\n1,0,1,0,1\n0,1,0,1,0\n"); // 5x5 image
 
 ```
 <br/>
@@ -72,12 +68,12 @@ Constructor. Create a blank bitmap representation of a given size.
 Constructor. Create a blank bitmap representation of a given size.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>const int16_t</div> *x* - the width of the image. 
+>  <div style='color:#008080; display:inline-block'>const int16_t</div> *x* - the width of the image.
 
 >  <div style='color:#008080; display:inline-block'>const int16_t</div> *y* - the height of the image.
 #####Example
 ```c++
- MicroBitImage i(5,5); // a blank 5x5 image 
+ MicroBitImage i(5,5); // a blank 5x5 image
 
 ```
 <br/>
@@ -86,22 +82,22 @@ Constructor. Create a blank bitmap representation of a given size.
 Constructor. Create a bitmap representation of a given size, based on a given buffer.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>const int16_t</div> *x* - the width of the image. 
+>  <div style='color:#008080; display:inline-block'>const int16_t</div> *x* - the width of the image.
 
->  <div style='color:#008080; display:inline-block'>const int16_t</div> *y* - the height of the image. 
+>  <div style='color:#008080; display:inline-block'>const int16_t</div> *y* - the height of the image.
 
 >  <div style='color:#008080; display:inline-block'>const uint8_t *</div> *bitmap* - a 2D array representing the image.
 #####Example
 ```c++
- const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart 
- MicroBitImage i(10,5,heart); 
+ const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart
+ MicroBitImage i(10,5,heart);
 
 ```
 ##~MicroBitImage
 <br/>
 ####~MicroBitImage()
 #####Description
-Destructor. Removes buffer resources held by the instance. 
+Destructor. Removes buffer resources held by the instance.
 ##operator=
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>MicroBitImage</div> operator=( <div style='color:#008080; display:inline-block'>const  MicroBitImage  &</div> i)
@@ -112,10 +108,10 @@ Copy assign operation.
 >  <div style='color:#008080; display:inline-block'>const  MicroBitImage  &</div> *i*
 #####Example
 ```c++
- const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart 
- MicroBitImage i(10,5,heart); 
- MicroBitImage i1(); 
- i1 = 1; // i1 now references i 
+ const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart
+ MicroBitImage i(10,5,heart);
+ MicroBitImage i1();
+ i1 = 1; // i1 now references i
 
 ```
 ##operator==
@@ -125,16 +121,16 @@ Copy assign operation.
 Equality operation.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>const  MicroBitImage  &</div> *i* - The  MicroBitImage  to test ourselves against. 
+>  <div style='color:#008080; display:inline-block'>const  MicroBitImage  &</div> *i* - The  MicroBitImage  to test ourselves against.
 #####Returns
 true if this  MicroBitImage  is identical to the one supplied, false otherwise.
 #####Example
 ```c++
- MicroBitImage i(); 
- MicroBitImage i1(); 
- 
- if(i == i1) //will be true 
- print("true"); 
+ MicroBitImage i();
+ MicroBitImage i1();
+
+ if(i == i1) //will be true
+ print("true");
 
 ```
 ##clear
@@ -144,28 +140,28 @@ true if this  MicroBitImage  is identical to the one supplied, false otherwise.
 Clears all pixels in this image
 #####Example
 ```c++
- MicroBitImage i("0,1,0,1,0\n1,0,1,0,1\n0,1,0,1,0\n1,0,1,0,1\n0,1,0,1,0\n"); // 5x5 image 
- i.clear(); 
+ MicroBitImage i("0,1,0,1,0\n1,0,1,0,1\n0,1,0,1,0\n1,0,1,0,1\n0,1,0,1,0\n"); // 5x5 image
+ i.clear();
 
 ```
 ##setPixelValue
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> setPixelValue( <div style='color:#008080; display:inline-block'>int16_t</div> x,  <div style='color:#008080; display:inline-block'>int16_t</div> y,  <div style='color:#008080; display:inline-block'>uint8_t</div> value)
 #####Description
-Sets the pixel at the given co-ordinates to a given value. 
+Sets the pixel at the given co-ordinates to a given value.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>int16_t</div> *x* - The co-ordinate of the pixel to change w.r.t. top left origin. 
+>  <div style='color:#008080; display:inline-block'>int16_t</div> *x* - The co-ordinate of the pixel to change w.r.t. top left origin.
 
->  <div style='color:#008080; display:inline-block'>int16_t</div> *y* - The co-ordinate of the pixel to change w.r.t. top left origin. 
+>  <div style='color:#008080; display:inline-block'>int16_t</div> *y* - The co-ordinate of the pixel to change w.r.t. top left origin.
 
->  <div style='color:#008080; display:inline-block'>uint8_t</div> *value* - The new value of the pixel (the brightness level 0-255) 
+>  <div style='color:#008080; display:inline-block'>uint8_t</div> *value* - The new value of the pixel (the brightness level 0-255)
 #####Returns
 MICROBIT_OK, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
- MicroBitImage i("0,1,0,1,0\n1,0,1,0,1\n0,1,0,1,0\n1,0,1,0,1\n0,1,0,1,0\n"); // 5x5 image 
- i.setPixelValue(0,0,255); 
+ MicroBitImage i("0,1,0,1,0\n1,0,1,0,1\n0,1,0,1,0\n1,0,1,0,1\n0,1,0,1,0\n"); // 5x5 image
+ i.setPixelValue(0,0,255);
 
 ```
 ##getPixelValue
@@ -175,15 +171,15 @@ MICROBIT_OK, or MICROBIT_INVALID_PARAMETER.
 Determines the value of a given pixel.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>int16_t</div> *x* - The x co-ordinate of the pixel to read. Must be within the dimensions of the image. 
+>  <div style='color:#008080; display:inline-block'>int16_t</div> *x* - The x co-ordinate of the pixel to read. Must be within the dimensions of the image.
 
->  <div style='color:#008080; display:inline-block'>int16_t</div> *y* - The y co-ordinate of the pixel to read. Must be within the dimensions of the image. 
+>  <div style='color:#008080; display:inline-block'>int16_t</div> *y* - The y co-ordinate of the pixel to read. Must be within the dimensions of the image.
 #####Returns
 The value assigned to the given pixel location (the brightness level 0-255), or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
- MicroBitImage i("0,1,0,1,0\n1,0,1,0,1\n0,1,0,1,0\n1,0,1,0,1\n0,1,0,1,0\n"); // 5x5 image 
- i.getPixelValue(0,0); //should be 0; 
+ MicroBitImage i("0,1,0,1,0\n1,0,1,0,1\n0,1,0,1,0\n1,0,1,0,1\n0,1,0,1,0\n"); // 5x5 image
+ i.getPixelValue(0,0); //should be 0;
 
 ```
 ##printImage
@@ -193,18 +189,18 @@ The value assigned to the given pixel location (the brightness level 0-255), or 
 Replaces the content of this image with that of a given 2D array representing the image. Origin is in the top left corner of the image.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>int16_t</div> *x* - the width of the image. Must be within the dimensions of the image. 
+>  <div style='color:#008080; display:inline-block'>int16_t</div> *x* - the width of the image. Must be within the dimensions of the image.
 
->  <div style='color:#008080; display:inline-block'>int16_t</div> *y* - the width of the image. Must be within the dimensions of the image. 
+>  <div style='color:#008080; display:inline-block'>int16_t</div> *y* - the width of the image. Must be within the dimensions of the image.
 
->  <div style='color:#008080; display:inline-block'>const uint8_t *</div> *bitmap* - a 2D array representing the image. 
+>  <div style='color:#008080; display:inline-block'>const uint8_t *</div> *bitmap* - a 2D array representing the image.
 #####Returns
 MICROBIT_OK on success, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
- const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart 
- MicroBitImage i(); 
- i.printImage(0,0,heart); 
+ const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart
+ MicroBitImage i();
+ i.printImage(0,0,heart);
 
 ```
 ##paste
@@ -214,20 +210,20 @@ MICROBIT_OK on success, or MICROBIT_INVALID_PARAMETER.
 Pastes a given bitmap at the given co-ordinates. Any pixels in the relvant area of this image are replaced.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>const  MicroBitImage  &</div> *image* - The  MicroBitImage  to paste. 
+>  <div style='color:#008080; display:inline-block'>const  MicroBitImage  &</div> *image* - The  MicroBitImage  to paste.
 
->  <div style='color:#008080; display:inline-block'>int16_t</div> *x* - The leftmost X co-ordinate in this image where the given image should be pasted. 
+>  <div style='color:#008080; display:inline-block'>int16_t</div> *x* - The leftmost X co-ordinate in this image where the given image should be pasted.
 
->  <div style='color:#008080; display:inline-block'>int16_t</div> *y* - The uppermost Y co-ordinate in this image where the given image should be pasted. 
+>  <div style='color:#008080; display:inline-block'>int16_t</div> *y* - The uppermost Y co-ordinate in this image where the given image should be pasted.
 
->  <div style='color:#008080; display:inline-block'>uint8_t</div> *alpha* - set to 1 if transparency clear pixels in given image should be treated as transparent. Set to 0 otherwise. 
+>  <div style='color:#008080; display:inline-block'>uint8_t</div> *alpha* - set to 1 if transparency clear pixels in given image should be treated as transparent. Set to 0 otherwise.
 #####Returns
 The number of pixels written, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
- const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart 
- MicroBitImage i(10,5,heart); //if you show this image - you will see a big heart 
- i.paste(-5,0,i); //displays a small heart :) 
+ const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart
+ MicroBitImage i(10,5,heart); //if you show this image - you will see a big heart
+ i.paste(-5,0,i); //displays a small heart :)
 
 ```
 ##print
@@ -237,17 +233,17 @@ The number of pixels written, or MICROBIT_INVALID_PARAMETER.
 Prints a character to the display at the given location
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>char</div> *c* - The character to display. 
+>  <div style='color:#008080; display:inline-block'>char</div> *c* - The character to display.
 
->  <div style='color:#008080; display:inline-block'>int16_t</div> *x* - The x co-ordinate of on the image to place the top left of the character 
+>  <div style='color:#008080; display:inline-block'>int16_t</div> *x* - The x co-ordinate of on the image to place the top left of the character
 
->  <div style='color:#008080; display:inline-block'>int16_t</div> *y* - The y co-ordinate of on the image to place the top left of the character 
+>  <div style='color:#008080; display:inline-block'>int16_t</div> *y* - The y co-ordinate of on the image to place the top left of the character
 #####Returns
 MICROBIT_OK on success, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
- MicroBitImage i(5,5); 
- i.print('a',0,0); 
+ MicroBitImage i(5,5);
+ i.print('a',0,0);
 
 ```
 ##shiftLeft
@@ -257,14 +253,14 @@ MICROBIT_OK on success, or MICROBIT_INVALID_PARAMETER.
 Shifts the pixels in this Image a given number of pixels to the Left.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>int16_t</div> *n* - The number of pixels to shift. 
+>  <div style='color:#008080; display:inline-block'>int16_t</div> *n* - The number of pixels to shift.
 #####Returns
 MICROBIT_OK on success, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
- const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart 
- MicroBitImage i(10,5,heart); //if you show this image - you will see a big heart 
- i.shiftLeft(5); //displays a small heart :) 
+ const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart
+ MicroBitImage i(10,5,heart); //if you show this image - you will see a big heart
+ i.shiftLeft(5); //displays a small heart :)
 
 ```
 ##shiftRight
@@ -274,15 +270,15 @@ MICROBIT_OK on success, or MICROBIT_INVALID_PARAMETER.
 Shifts the pixels in this Image a given number of pixels to the Right.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>int16_t</div> *n* - The number of pixels to shift. 
+>  <div style='color:#008080; display:inline-block'>int16_t</div> *n* - The number of pixels to shift.
 #####Returns
 MICROBIT_OK on success, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
- const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart 
- MicroBitImage i(10,5,heart); 
- i.shiftLeft(5); //displays a small heart :) 
- i.shiftRight(5); //displays a big heart :) 
+ const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart
+ MicroBitImage i(10,5,heart);
+ i.shiftLeft(5); //displays a small heart :)
+ i.shiftRight(5); //displays a big heart :)
 
 ```
 ##shiftUp
@@ -292,14 +288,14 @@ MICROBIT_OK on success, or MICROBIT_INVALID_PARAMETER.
 Shifts the pixels in this Image a given number of pixels to Upward.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>int16_t</div> *n* - The number of pixels to shift. 
+>  <div style='color:#008080; display:inline-block'>int16_t</div> *n* - The number of pixels to shift.
 #####Returns
 MICROBIT_OK on success, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
- const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart 
- MicroBitImage i(10,5,heart); 
- i.shiftUp(1); 
+ const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart
+ MicroBitImage i(10,5,heart);
+ i.shiftUp(1);
 
 ```
 ##shiftDown
@@ -309,14 +305,14 @@ MICROBIT_OK on success, or MICROBIT_INVALID_PARAMETER.
 Shifts the pixels in this Image a given number of pixels to Downward.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>int16_t</div> *n* - The number of pixels to shift. 
+>  <div style='color:#008080; display:inline-block'>int16_t</div> *n* - The number of pixels to shift.
 #####Returns
 MICROBIT_OK on success, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```c++
- const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart 
- MicroBitImage i(10,5,heart); 
- i.shiftDown(1); 
+ const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart
+ MicroBitImage i(10,5,heart);
+ i.shiftDown(1);
 
 ```
 ##getWidth
@@ -328,9 +324,9 @@ Gets the width of this image.
 The width of this image.
 #####Example
 ```c++
- const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart 
- MicroBitImage i(10,5,heart); 
- i.getWidth(); //equals 10... 
+ const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart
+ MicroBitImage i(10,5,heart);
+ i.getWidth(); //equals 10...
 
 ```
 ##getHeight
@@ -342,9 +338,9 @@ Gets the height of this image.
 The height of this image.
 #####Example
 ```c++
- const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart 
- MicroBitImage i(10,5,heart); 
- i.getHeight(); //equals 5... 
+ const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart
+ MicroBitImage i(10,5,heart);
+ i.getHeight(); //equals 5...
 
 ```
 ##getSize
@@ -356,9 +352,9 @@ Gets number of bytes in the bitmap, ie., width * height.
 The size of the bitmap.
 #####Example
 ```c++
- const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart 
- MicroBitImage i(10,5,heart); 
- i.getSize(); //equals 50... 
+ const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart
+ MicroBitImage i(10,5,heart);
+ i.getSize(); //equals 50...
 
 ```
 ##toString
@@ -368,9 +364,9 @@ The size of the bitmap.
 Converts the bitmap to a csv string.
 #####Example
 ```c++
- const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart 
- MicroBitImage i(10,5,heart); 
- uBit.serial.printString(i.toString()); // "0,1,0,1,0,0,0,0,0,0\n..." 
+ const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart
+ MicroBitImage i(10,5,heart);
+ uBit.serial.printString(i.toString()); // "0,1,0,1,0,0,0,0,0,0\n..."
 
 ```
 ##crop
@@ -380,9 +376,9 @@ Converts the bitmap to a csv string.
 Crops the image to the given dimensions
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>int</div> *startx* - the location to start the crop in the x-axis 
+>  <div style='color:#008080; display:inline-block'>int</div> *startx* - the location to start the crop in the x-axis
 
->  <div style='color:#008080; display:inline-block'>int</div> *starty* - the location to start the crop in the y-axis 
+>  <div style='color:#008080; display:inline-block'>int</div> *starty* - the location to start the crop in the y-axis
 
 >  <div style='color:#008080; display:inline-block'>int</div> *finx*
 
@@ -391,22 +387,22 @@ Crops the image to the given dimensions
 an instance of  MicroBitImage  with your cropped region
 #####Example
 ```c++
- const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart 
- MicroBitImage i(10,5,heart); 
- uBit.serial.printImage(i.crop(0,0,2,2)); // "0,1\n1,1\n" 
+ const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart
+ MicroBitImage i(10,5,heart);
+ uBit.serial.printImage(i.crop(0,0,2,2)); // "0,1\n1,1\n"
 
 ```
 ##isReadOnly
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>bool</div> isReadOnly()
 #####Description
-Check if image is read-only (i.e., residing in flash). 
+Check if image is read-only (i.e., residing in flash).
 ##clone
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>MicroBitImage</div> clone()
 #####Description
 Create a copy of the image bitmap. Used particularly, when  isReadOnly()
 #####Returns
-an instance of  MicroBitImage  which can be modified independently of the current instance 
+an instance of  MicroBitImage  which can be modified independently of the current instance
 ____
 [comment]: <> ({"end":"MicroBitImage"})

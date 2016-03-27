@@ -2,10 +2,6 @@
 
 ##Overview
 
-##Message Bus ID
-
-##Message Bus Events
-
 #API
 [comment]: <> ({"className":"ManagedString"})
 ##Constructor
@@ -18,8 +14,8 @@ Constructor. Create a managed string from a specially prepared string literal. I
 >  <div style='color:#008080; display:inline-block'>StringData  *</div> *ptr* - The literal - first two bytes should be 0xff, then the length in little endian, then the literal. The literal has to be 4-byte aligned.
 #####Example
 ```c++
- static const char hello[] __attribute__ ((aligned (4))) = "\xff\xff\x05\x00" "Hello"; 
- ManagedString s((StringData*)(void*)hello); 
+ static const char hello[] __attribute__ ((aligned (4))) = "\xff\xff\x05\x00" "Hello";
+ ManagedString s((StringData*)(void*)hello);
 
 ```
 ##leakData
@@ -37,7 +33,7 @@ Constructor. Create a managed string from a pointer to an 8-bit character buffer
 >  <div style='color:#008080; display:inline-block'>const char *</div> *str* - The character array on which to base the new  ManagedString .
 #####Example
 ```c++
- ManagedString s("abcdefg"); 
+ ManagedString s("abcdefg");
 
 ```
 <br/>
@@ -49,7 +45,7 @@ Constructor. Create a managed string from a given integer.
 >  <div style='color:#008080; display:inline-block'>const int</div> *value* - The integer from which to create the  ManagedString
 #####Example
 ```c++
- ManagedString s(20); 
+ ManagedString s(20);
 
 ```
 <br/>
@@ -61,7 +57,7 @@ Constructor. Create a managed string from a given char.
 >  <div style='color:#008080; display:inline-block'>const char</div> *value* - The char from which to create the  ManagedString
 #####Example
 ```c++
- ManagedString s('a'); 
+ ManagedString s('a');
 
 ```
 <br/>
@@ -70,12 +66,12 @@ Constructor. Create a managed string from a given char.
 Constructor. Create a managed string from a pointer to an 8-bit character buffer of a given length. The buffer is copied to ensure sane memory management (the supplied character buffer may be declared on the stack for instance).
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>const char *</div> *str* - The character array on which to base the new  ManagedString . 
+>  <div style='color:#008080; display:inline-block'>const char *</div> *str* - The character array on which to base the new  ManagedString .
 
 >  <div style='color:#008080; display:inline-block'>const int16_t</div> *length* - The length of the character array
 #####Example
 ```c++
- ManagedString s("abcdefg",7); // this is generally used for substring... why not use a normal char * constructor? 
+ ManagedString s("abcdefg",7); // this is generally used for substring... why not use a normal char * constructor?
 
 ```
 <br/>
@@ -87,8 +83,8 @@ Copy constructor. Makes a new  ManagedString ManagedString
 >  <div style='color:#008080; display:inline-block'>const  ManagedString  &</div> *s* - The  ManagedString  to copy.
 #####Example
 ```c++
- ManagedString s("abcdefg"); 
- ManagedString p(s); 
+ ManagedString s("abcdefg");
+ ManagedString p(s);
 
 ```
 <br/>
@@ -97,7 +93,7 @@ Copy constructor. Makes a new  ManagedString ManagedString
 Default constructor.
 #####Example
 ```c++
- ManagedString s(); 
+ ManagedString s();
 
 ```
 ##~ManagedString
@@ -115,9 +111,9 @@ Copy assign operation.
 >  <div style='color:#008080; display:inline-block'>const  ManagedString  &</div> *s* - The  ManagedString  to copy.
 #####Example
 ```c++
- ManagedString s("abcd"); 
- ManagedString p("efgh"); 
- p = s // p now points to s, s' ref is incremented 
+ ManagedString s("abcd");
+ ManagedString p("efgh");
+ p = s // p now points to s, s' ref is incremented
 
 ```
 ##operator==
@@ -127,18 +123,18 @@ Copy assign operation.
 Equality operation.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>const  ManagedString  &</div> *s* - The  ManagedString  to test ourselves against. 
+>  <div style='color:#008080; display:inline-block'>const  ManagedString  &</div> *s* - The  ManagedString  to test ourselves against.
 #####Returns
 true if this  ManagedString  is identical to the one supplied, false otherwise.
 #####Example
 ```c++
- ManagedString s("abcd"); 
- ManagedString p("efgh"); 
- 
- if(p==s) 
- print("We are the same!"); 
- else 
- print("We are different!"); //p is not equal to s - this will be called 
+ ManagedString s("abcd");
+ ManagedString p("efgh");
+
+ if(p==s)
+ print("We are the same!");
+ else
+ print("We are different!"); //p is not equal to s - this will be called
 
 ```
 ##operator<
@@ -148,18 +144,18 @@ true if this  ManagedString  is identical to the one supplied, false otherwise.
 Inequality operation.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>const  ManagedString  &</div> *s* - The  ManagedString  to test ourselves against. 
+>  <div style='color:#008080; display:inline-block'>const  ManagedString  &</div> *s* - The  ManagedString  to test ourselves against.
 #####Returns
 true if this  ManagedString  is alphabetically less than to the one supplied, false otherwise.
 #####Example
 ```c++
- ManagedString s("a"); 
- ManagedString p("b"); 
- 
- if(s<p) 
- print("a is before b!"); //a is before b 
- else 
- print("b is before a!"); 
+ ManagedString s("a");
+ ManagedString p("b");
+
+ if(s<p)
+ print("a is before b!"); //a is before b
+ else
+ print("b is before a!");
 
 ```
 ##operator>
@@ -169,18 +165,18 @@ true if this  ManagedString  is alphabetically less than to the one supplied, fa
 Inequality operation.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>const  ManagedString  &</div> *s* - The  ManagedString  to test ourselves against. 
+>  <div style='color:#008080; display:inline-block'>const  ManagedString  &</div> *s* - The  ManagedString  to test ourselves against.
 #####Returns
 true if this  ManagedString  is alphabetically greater than to the one supplied, false otherwise.
 #####Example
 ```c++
- ManagedString s("a"); 
- ManagedString p("b"); 
- 
- if(p>a) 
- print("b is after a!"); //b is after a 
- else 
- print("a is after b!"); 
+ ManagedString s("a");
+ ManagedString p("b");
+
+ if(p>a)
+ print("b is after a!"); //b is after a
+ else
+ print("a is after b!");
 
 ```
 ##substring
@@ -190,16 +186,16 @@ true if this  ManagedString  is alphabetically greater than to the one supplied,
 Extracts a  ManagedString
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>int16_t</div> *start* - The index of the first character to extract, indexed from zero. 
+>  <div style='color:#008080; display:inline-block'>int16_t</div> *start* - The index of the first character to extract, indexed from zero.
 
->  <div style='color:#008080; display:inline-block'>int16_t</div> *length* - The number of characters to extract from the start position 
+>  <div style='color:#008080; display:inline-block'>int16_t</div> *length* - The number of characters to extract from the start position
 #####Returns
 a  ManagedString  representing the requested substring.
 #####Example
 ```c++
- ManagedString s("abcdefg"); 
- 
- print(s.substring(0,2)) // prints "ab" 
+ ManagedString s("abcdefg");
+
+ print(s.substring(0,2)) // prints "ab"
 
 ```
 ##operator+
@@ -209,15 +205,15 @@ a  ManagedString  representing the requested substring.
 Concatenates this string with the one provided.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>ManagedString  &</div> *s* - The  ManagedString  to concatenate. 
+>  <div style='color:#008080; display:inline-block'>ManagedString  &</div> *s* - The  ManagedString  to concatenate.
 #####Returns
 a new  ManagedString  representing the joined strings.
 #####Example
 ```c++
- ManagedString s("abcd"); 
- ManagedString p("efgh") 
- 
- print(s + p) // prints "abcdefgh" 
+ ManagedString s("abcd");
+ ManagedString p("efgh")
+
+ print(s + p) // prints "abcdefgh"
 
 ```
 ##charAt
@@ -227,14 +223,14 @@ a new  ManagedString  representing the joined strings.
 Provides a character value at a given position in the string, indexed from zero.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>int16_t</div> *index* - The position of the character to return. 
+>  <div style='color:#008080; display:inline-block'>int16_t</div> *index* - The position of the character to return.
 #####Returns
 the character at posisiton index, zero if index is invalid.
 #####Example
 ```c++
- ManagedString s("abcd"); 
- 
- print(s.charAt(1)) // prints "b" 
+ ManagedString s("abcd");
+
+ print(s.charAt(1)) // prints "b"
 
 ```
 ##toCharArray
@@ -243,7 +239,7 @@ the character at posisiton index, zero if index is invalid.
 #####Description
 Provides an immutable 8 bit wide character buffer representing this string.
 #####Returns
-a pointer to the character buffer. 
+a pointer to the character buffer.
 ##length
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int16_t</div> length()
@@ -253,9 +249,9 @@ Determines the length of this  ManagedString
 the length of the string in characters.
 #####Example
 ```c++
- ManagedString s("abcd"); 
- 
- print(s.length()) // prints "4" 
+ ManagedString s("abcd");
+
+ print(s.length()) // prints "4"
 
 ```
 ____
