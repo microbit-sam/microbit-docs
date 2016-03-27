@@ -12,7 +12,7 @@ pages:
         - storage: 'ubit/storage.md'
         - serial: 'ubit/serial.md'
         - messageBus: 'ubit/messageBus.md'
-        - button: 'ubit/button.md'
+        - buttons: 'ubit/button.md'
         - display: 'ubit/display.md'
         - accelerometer: 'ubit/accelerometer.md'
         - compass: 'ubit/compass.md'
@@ -32,6 +32,7 @@ pages:
 #--------------HIDDEN PAGES BEGIN
 #unfortunately this is required, otherwise mkdocs doesn't build pages not linked by nav.
     - _blemanager: "ubit/blemanager.md"
+    - _buttonAB: 'ubit/multibutton.md'
 #--------------HIDDEN PAGES END
 markdown_extensions:
     - toc:
