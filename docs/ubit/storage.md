@@ -10,7 +10,7 @@ You can `put()`, `get()` and `remove()` Key Value pairs from the store.
 
 Key Value pairs have a fixed length Key of `16 bytes`, and a fixed length value of
 `32 bytes`. This class only populates a single block (`1024 bytes`) in its current state,
-which means that **21** one Key Value pairs can be stored.
+which means that **21** Key Value pairs can be stored.
 
 Currently, this class is utilised by the [compass](compass.md), [accelerometer](compass.md)
 and [bleManager](blemanager.md) to improve the user experience by persisting calibration
