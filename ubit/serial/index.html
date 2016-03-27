@@ -296,6 +296,8 @@
         
             <li><a href="#message-bus-events">Message Bus Events</a></li>
         
+            <li><a href="#notify-events">Notify Events</a></li>
+        
             <li><a href="#api">API</a></li>
         
             <li><a href="#constructor">Constructor</a></li>
@@ -319,8 +321,95 @@
 
 <h1 id="ubitserial">uBit.serial<a class="headerlink" href="#ubitserial" title="Permanent link">&para;</a></h1>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>Serial communication is really simple on the micro:bit and is exposed through the
+USB interface chip, the <a href="https://www.mbed.com/en/development/hardware/prototyping-production/daplink/daplink-on-kl26z/#Updating_your_DAPLink_firmware">KL26Z</a>.</p>
+<p>The runtime's implementation of serial is general purpose and supports a number
+of different modes. It has a circular buffer for both the reception and transmission
+of data, and provides notifications to the user through the MessageBus.</p>
+<p>By default, the baud rate for MicroBitSerial is <code>115200</code> and has very little overhead up until
+it is used to <code>send()</code> or <code>read()</code>, at which point buffers are allocated in order
+to accommodate incoming or outgoing data.</p>
+<p>MicroBitSerial inherits from mbeds' <a href="https://developer.mbed.org/users/mbed_official/code/mbed/docs/252557024ec3/classmbed_1_1RawSerial.html"><code>RawSerial</code></a>
+class, which exposes a lightweight version of <code>printf()</code> and incurs minimal overhead
+as MicroBitSerial's buffers will not be allocated.</p>
+<p>The MicroBitSerial class supports multithreaded operation, ensuring that only
+one fiber can access the Serial port at a time.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On Mac OSX and Linux Serial communication works out of the box, however on Windows an additional
+<strong><a href="https://developer.mbed.org/handbook/Windows-serial-configuration">driver</a></strong> is required.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The baud rate is shared across all instances of MicroBitSerial (this is enforced in hardware).</p>
+</div>
+<h3 id="serial-modes">Serial modes<a class="headerlink" href="#serial-modes" title="Permanent link">&para;</a></h3>
+<p>There are three modes of operation for all <code>send()</code> or <code>read()</code> calls:</p>
+<ul>
+<li><code>ASYNC</code> - Returns immediately after fetching any available data for a given call</li>
+<li><code>SYNC_SPINWAIT</code> - Synchronously access the serial port until the selected operation is complete.
+                    This mode will lock up the processor, and isn't recommended if multiple fibers are in use.</li>
+<li><code>SYNC_SLEEP</code> - Blocks the current fiber until the selected operation is complete. This mode cooperates with the
+                 Fiber scheduler, and should be used in a multi-fiber program.</li>
+</ul>
+<h3 id="serial-debug">Serial debug<a class="headerlink" href="#serial-debug" title="Permanent link">&para;</a></h3>
+<p>In MicroBitConfig.h, the configuration option <code>MICROBIT_DEBUG</code> can be used to activate serial debugging
+for many of the components in the runtime.</p>
 <h2 id="message-bus-id">Message Bus ID<a class="headerlink" href="#message-bus-id" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MICROBIT_ID_SERIAL</td>
+<td>32</td>
+</tr>
+</tbody>
+</table>
 <h2 id="message-bus-events">Message Bus Events<a class="headerlink" href="#message-bus-events" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MICROBIT_SERIAL_EVT_DELIM_MATCH</td>
+<td>1</td>
+</tr>
+<tr>
+<td>MICROBIT_SERIAL_EVT_HEAD_MATCH</td>
+<td>2</td>
+</tr>
+<tr>
+<td>MICROBIT_SERIAL_EVT_RX_FULL</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<h2 id="notify-events">Notify Events<a class="headerlink" href="#notify-events" title="Permanent link">&para;</a></h2>
+<p>These events use the notification channel <code>MICROBIT_ID_NOTIFY</code>, which provides
+general purpose synchronisation.</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MICROBIT_SERIAL_EVT_TX_EMPTY</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
 <h2 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
 <h2 id="constructor">Constructor<a class="headerlink" href="#constructor" title="Permanent link">&para;</a></h2>
 <p><br/></p>
@@ -333,13 +422,13 @@
 <p><div style='color:#008080; display:inline-block'>PinName</div> <em>rx</em></p>
 </blockquote>
 <h5 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h5>
-<pre><code class="c++"> MicroBitSerial serial(USBTX, USBRX); 
+<pre><code class="c++"> MicroBitSerial serial(USBTX, USBRX);
 
 </code></pre>
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>the default baud rate is 115200 </p>
+<p>the default baud rate is 115200</p>
 </div>
 <h2 id="sendstring">sendString<a class="headerlink" href="#sendstring" title="Permanent link">&para;</a></h2>
 <p><br/></p>
@@ -351,7 +440,7 @@
 <p><div style='color:#008080; display:inline-block'>ManagedString</div> <em>s</em> - the  ManagedString  to send</p>
 </blockquote>
 <h5 id="example_1">Example<a class="headerlink" href="#example_1" title="Permanent link">&para;</a></h5>
-<pre><code class="c++"> uBit.serial.printString(&quot;abc123&quot;); 
+<pre><code class="c++"> uBit.serial.printString(&quot;abc123&quot;);
 
 </code></pre>
 
@@ -361,14 +450,14 @@
 <h5 id="description_2">Description<a class="headerlink" href="#description_2" title="Permanent link">&para;</a></h5>
 <p>Reads a  ManagedString</p>
 <h5 id="example_2">Example<a class="headerlink" href="#example_2" title="Permanent link">&para;</a></h5>
-<pre><code class="c++"> uBit.serial.readString(); 
+<pre><code class="c++"> uBit.serial.readString();
 
 </code></pre>
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>this member function will wait until either the buffer is full, or a<br />
- is received </p>
+ is received</p>
 </div>
 <p><br/></p>
 <h4 id="managedstring-readstring-int-len"><div style='color:#FF69B4; display:inline-block'>ManagedString</div> readString( <div style='color:#008080; display:inline-block'>int</div> len)<a class="headerlink" href="#managedstring-readstring-int-len" title="Permanent link">&para;</a></h4>
@@ -379,14 +468,14 @@
 <p><div style='color:#008080; display:inline-block'>int</div> <em>len</em> - the buffer size for the string, default is defined by MICROBIT_SERIAL_BUFFER_SIZE</p>
 </blockquote>
 <h5 id="example_3">Example<a class="headerlink" href="#example_3" title="Permanent link">&para;</a></h5>
-<pre><code class="c++"> uBit.serial.readString(); 
+<pre><code class="c++"> uBit.serial.readString();
 
 </code></pre>
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>this member function will wait until either the buffer is full, or a<br />
- is received </p>
+ is received</p>
 </div>
 <h2 id="sendimage">sendImage<a class="headerlink" href="#sendimage" title="Permanent link">&para;</a></h2>
 <p><br/></p>
@@ -398,9 +487,9 @@
 <p><div style='color:#008080; display:inline-block'>MicroBitImage</div> <em>i</em> - the instance of  MicroBitImage  you would like to send.</p>
 </blockquote>
 <h5 id="example_4">Example<a class="headerlink" href="#example_4" title="Permanent link">&para;</a></h5>
-<pre><code class="c++"> const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart 
- MicroBitImage i(10,5,heart); 
- uBit.serial.sendImage(i); 
+<pre><code class="c++"> const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart
+ MicroBitImage i(10,5,heart);
+ uBit.serial.sendImage(i);
 
 </code></pre>
 
@@ -417,7 +506,7 @@
 <h5 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h5>
 <p>a  MicroBitImage  with the format described over serial</p>
 <h5 id="example_5">Example<a class="headerlink" href="#example_5" title="Permanent link">&para;</a></h5>
-<pre><code class="c++"> MicroBitImage i = uBit.serial.readImage(2,2); 
+<pre><code class="c++"> MicroBitImage i = uBit.serial.readImage(2,2);
 
 </code></pre>
 
@@ -431,7 +520,7 @@
 <h5 id="description_6">Description<a class="headerlink" href="#description_6" title="Permanent link">&para;</a></h5>
 <p>Sends the current pixel values, byte-per-pixel, over serial</p>
 <h5 id="example_6">Example<a class="headerlink" href="#example_6" title="Permanent link">&para;</a></h5>
-<pre><code class="c++"> uBit.serial.sendDisplayState(); 
+<pre><code class="c++"> uBit.serial.sendDisplayState();
 
 </code></pre>
 
@@ -441,7 +530,7 @@
 <h5 id="description_7">Description<a class="headerlink" href="#description_7" title="Permanent link">&para;</a></h5>
 <p>Reads pixel values, byte-per-pixel, from serial, and sets the display.</p>
 <h5 id="example_7">Example<a class="headerlink" href="#example_7" title="Permanent link">&para;</a></h5>
-<pre><code class="c++"> uBit.serial.readDisplayState(); 
+<pre><code class="c++"> uBit.serial.readDisplayState();
 
 </code></pre>
 

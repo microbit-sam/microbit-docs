@@ -602,7 +602,7 @@
         }, 
         {
             "location": "/ubit/storage/", 
-            "text": "uBit.storage\n\n\nOverview\n\n\nMicroBitStorage provides a simple way to store data on the micro:bit that persists\nthrough resets. It currently takes the form of a Key Value store which contains\na number of Key Value pairs.\n\n\nYou can \nput()\n, \nget()\n and \nremove()\n Key Value pairs from the store.\n\n\nKey Value pairs have a fixed length Key of \n16 bytes\n, and a fixed length value of\n\n32 bytes\n. This class only populates a single block (\n1024 bytes\n) in its current state,\nwhich means that \n21\n one Key Value pairs can be stored.\n\n\nCurrently, this class is utilised by the \ncompass\n, \naccelerometer\n\nand \nbleManager\n to improve the user experience by persisting calibration\nand bonding data.\n\n\nMessage Bus ID\n\n\n\n\nNone.\n\n\n\n\nMessage Bus Events\n\n\n\n\nNone.\n\n\n\n\nAPI", 
+            "text": "uBit.storage\n\n\nOverview\n\n\nMicroBitStorage provides a simple way to store data on the micro:bit that persists\nthrough resets. It currently takes the form of a Key Value store which contains\na number of Key Value pairs.\n\n\nYou can \nput()\n, \nget()\n and \nremove()\n Key Value pairs from the store.\n\n\nKey Value pairs have a fixed length Key of \n16 bytes\n, and a fixed length value of\n\n32 bytes\n. This class only populates a single block (\n1024 bytes\n) in its current state,\nwhich means that \n21\n Key Value pairs can be stored.\n\n\nCurrently, this class is utilised by the \ncompass\n, \naccelerometer\n\nand \nbleManager\n to improve the user experience by persisting calibration\nand bonding data.\n\n\nMessage Bus ID\n\n\n\n\nNone.\n\n\n\n\nMessage Bus Events\n\n\n\n\nNone.\n\n\n\n\nAPI", 
             "title": "storage"
         }, 
         {
@@ -612,7 +612,7 @@
         }, 
         {
             "location": "/ubit/storage/#overview", 
-            "text": "MicroBitStorage provides a simple way to store data on the micro:bit that persists\nthrough resets. It currently takes the form of a Key Value store which contains\na number of Key Value pairs.  You can  put() ,  get()  and  remove()  Key Value pairs from the store.  Key Value pairs have a fixed length Key of  16 bytes , and a fixed length value of 32 bytes . This class only populates a single block ( 1024 bytes ) in its current state,\nwhich means that  21  one Key Value pairs can be stored.  Currently, this class is utilised by the  compass ,  accelerometer \nand  bleManager  to improve the user experience by persisting calibration\nand bonding data.", 
+            "text": "MicroBitStorage provides a simple way to store data on the micro:bit that persists\nthrough resets. It currently takes the form of a Key Value store which contains\na number of Key Value pairs.  You can  put() ,  get()  and  remove()  Key Value pairs from the store.  Key Value pairs have a fixed length Key of  16 bytes , and a fixed length value of 32 bytes . This class only populates a single block ( 1024 bytes ) in its current state,\nwhich means that  21  Key Value pairs can be stored.  Currently, this class is utilised by the  compass ,  accelerometer \nand  bleManager  to improve the user experience by persisting calibration\nand bonding data.", 
             "title": "Overview"
         }, 
         {
@@ -632,7 +632,7 @@
         }, 
         {
             "location": "/ubit/serial/", 
-            "text": "uBit.serial\n\n\nOverview\n\n\nMessage Bus ID\n\n\nMessage Bus Events\n\n\nAPI\n\n\nConstructor\n\n\n\n\nMicroBitSerial( \nPinName\n tx,  \nPinName\n rx)\n\n\nDescription\n\n\nConstructor. Create an instance of  MicroBitSerial MicroBitSerial\n\n\nParameters\n\n\n\n\nPinName\n \ntx\n\n\nPinName\n \nrx\n\n\n\n\nExample\n\n\n MicroBitSerial serial(USBTX, USBRX); \n\n\n\n\n\n\n\nNote\n\n\nthe default baud rate is 115200 \n\n\n\n\nsendString\n\n\n\n\nvoid\n sendString( \nManagedString\n s)\n\n\nDescription\n\n\nSends a managed string over serial.\n\n\nParameters\n\n\n\n\nManagedString\n \ns\n - the  ManagedString  to send\n\n\n\n\nExample\n\n\n uBit.serial.printString(\nabc123\n); \n\n\n\n\n\nreadString\n\n\n\n\nManagedString\n readString()\n\n\nDescription\n\n\nReads a  ManagedString\n\n\nExample\n\n\n uBit.serial.readString(); \n\n\n\n\n\n\n\nNote\n\n\nthis member function will wait until either the buffer is full, or a\n\n is received \n\n\n\n\n\n\nManagedString\n readString( \nint\n len)\n\n\nDescription\n\n\nReads a  ManagedString\n\n\nParameters\n\n\n\n\nint\n \nlen\n - the buffer size for the string, default is defined by MICROBIT_SERIAL_BUFFER_SIZE\n\n\n\n\nExample\n\n\n uBit.serial.readString(); \n\n\n\n\n\n\n\nNote\n\n\nthis member function will wait until either the buffer is full, or a\n\n is received \n\n\n\n\nsendImage\n\n\n\n\nvoid\n sendImage( \nMicroBitImage\n i)\n\n\nDescription\n\n\nSends a  MicroBitImage\n\n\nParameters\n\n\n\n\nMicroBitImage\n \ni\n - the instance of  MicroBitImage  you would like to send.\n\n\n\n\nExample\n\n\n const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart \n MicroBitImage i(10,5,heart); \n uBit.serial.sendImage(i); \n\n\n\n\n\nreadImage\n\n\n\n\nMicroBitImage\n readImage( \nint\n width,  \nint\n height)\n\n\nDescription\n\n\nReads a  MicroBitImage\n\n\nParameters\n\n\n\n\nint\n \nwidth\n\n\nint\n \nheight\n\n\n\n\nReturns\n\n\na  MicroBitImage  with the format described over serial\n\n\nExample\n\n\n MicroBitImage i = uBit.serial.readImage(2,2); \n\n\n\n\n\n\n\nNote\n\n\nthis will finish once the dimensions are met.\n\n\n\n\nsendDisplayState\n\n\n\n\nvoid\n sendDisplayState()\n\n\nDescription\n\n\nSends the current pixel values, byte-per-pixel, over serial\n\n\nExample\n\n\n uBit.serial.sendDisplayState(); \n\n\n\n\n\nreadDisplayState\n\n\n\n\nvoid\n readDisplayState()\n\n\nDescription\n\n\nReads pixel values, byte-per-pixel, from serial, and sets the display.\n\n\nExample\n\n\n uBit.serial.readDisplayState();", 
+            "text": "uBit.serial\n\n\nOverview\n\n\nSerial communication is really simple on the micro:bit and is exposed through the\nUSB interface chip, the \nKL26Z\n.\n\n\nThe runtime's implementation of serial is general purpose and supports a number\nof different modes. It has a circular buffer for both the reception and transmission\nof data, and provides notifications to the user through the MessageBus.\n\n\nBy default, the baud rate for MicroBitSerial is \n115200\n and has very little overhead up until\nit is used to \nsend()\n or \nread()\n, at which point buffers are allocated in order\nto accommodate incoming or outgoing data.\n\n\nMicroBitSerial inherits from mbeds' \nRawSerial\n\nclass, which exposes a lightweight version of \nprintf()\n and incurs minimal overhead\nas MicroBitSerial's buffers will not be allocated.\n\n\nThe MicroBitSerial class supports multithreaded operation, ensuring that only\none fiber can access the Serial port at a time.\n\n\n\n\nNote\n\n\nOn Mac OSX and Linux Serial communication works out of the box, however on Windows an additional\n\ndriver\n is required.\n\n\n\n\n\n\nWarning\n\n\nThe baud rate is shared across all instances of MicroBitSerial (this is enforced in hardware).\n\n\n\n\nSerial modes\n\n\nThere are three modes of operation for all \nsend()\n or \nread()\n calls:\n\n\n\n\nASYNC\n - Returns immediately after fetching any available data for a given call\n\n\nSYNC_SPINWAIT\n - Synchronously access the serial port until the selected operation is complete.\n                    This mode will lock up the processor, and isn't recommended if multiple fibers are in use.\n\n\nSYNC_SLEEP\n - Blocks the current fiber until the selected operation is complete. This mode cooperates with the\n                 Fiber scheduler, and should be used in a multi-fiber program.\n\n\n\n\nSerial debug\n\n\nIn MicroBitConfig.h, the configuration option \nMICROBIT_DEBUG\n can be used to activate serial debugging\nfor many of the components in the runtime.\n\n\nMessage Bus ID\n\n\n\n\n\n\n\n\nConstant\n\n\nValue\n\n\n\n\n\n\n\n\n\n\nMICROBIT_ID_SERIAL\n\n\n32\n\n\n\n\n\n\n\n\nMessage Bus Events\n\n\n\n\n\n\n\n\nConstant\n\n\nValue\n\n\n\n\n\n\n\n\n\n\nMICROBIT_SERIAL_EVT_DELIM_MATCH\n\n\n1\n\n\n\n\n\n\nMICROBIT_SERIAL_EVT_HEAD_MATCH\n\n\n2\n\n\n\n\n\n\nMICROBIT_SERIAL_EVT_RX_FULL\n\n\n3\n\n\n\n\n\n\n\n\nNotify Events\n\n\nThese events use the notification channel \nMICROBIT_ID_NOTIFY\n, which provides\ngeneral purpose synchronisation.\n\n\n\n\n\n\n\n\nConstant\n\n\nValue\n\n\n\n\n\n\n\n\n\n\nMICROBIT_SERIAL_EVT_TX_EMPTY\n\n\n2\n\n\n\n\n\n\n\n\nAPI\n\n\nConstructor\n\n\n\n\nMicroBitSerial( \nPinName\n tx,  \nPinName\n rx)\n\n\nDescription\n\n\nConstructor. Create an instance of  MicroBitSerial MicroBitSerial\n\n\nParameters\n\n\n\n\nPinName\n \ntx\n\n\nPinName\n \nrx\n\n\n\n\nExample\n\n\n MicroBitSerial serial(USBTX, USBRX);\n\n\n\n\n\n\n\nNote\n\n\nthe default baud rate is 115200\n\n\n\n\nsendString\n\n\n\n\nvoid\n sendString( \nManagedString\n s)\n\n\nDescription\n\n\nSends a managed string over serial.\n\n\nParameters\n\n\n\n\nManagedString\n \ns\n - the  ManagedString  to send\n\n\n\n\nExample\n\n\n uBit.serial.printString(\nabc123\n);\n\n\n\n\n\nreadString\n\n\n\n\nManagedString\n readString()\n\n\nDescription\n\n\nReads a  ManagedString\n\n\nExample\n\n\n uBit.serial.readString();\n\n\n\n\n\n\n\nNote\n\n\nthis member function will wait until either the buffer is full, or a\n\n is received\n\n\n\n\n\n\nManagedString\n readString( \nint\n len)\n\n\nDescription\n\n\nReads a  ManagedString\n\n\nParameters\n\n\n\n\nint\n \nlen\n - the buffer size for the string, default is defined by MICROBIT_SERIAL_BUFFER_SIZE\n\n\n\n\nExample\n\n\n uBit.serial.readString();\n\n\n\n\n\n\n\nNote\n\n\nthis member function will wait until either the buffer is full, or a\n\n is received\n\n\n\n\nsendImage\n\n\n\n\nvoid\n sendImage( \nMicroBitImage\n i)\n\n\nDescription\n\n\nSends a  MicroBitImage\n\n\nParameters\n\n\n\n\nMicroBitImage\n \ni\n - the instance of  MicroBitImage  you would like to send.\n\n\n\n\nExample\n\n\n const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart\n MicroBitImage i(10,5,heart);\n uBit.serial.sendImage(i);\n\n\n\n\n\nreadImage\n\n\n\n\nMicroBitImage\n readImage( \nint\n width,  \nint\n height)\n\n\nDescription\n\n\nReads a  MicroBitImage\n\n\nParameters\n\n\n\n\nint\n \nwidth\n\n\nint\n \nheight\n\n\n\n\nReturns\n\n\na  MicroBitImage  with the format described over serial\n\n\nExample\n\n\n MicroBitImage i = uBit.serial.readImage(2,2);\n\n\n\n\n\n\n\nNote\n\n\nthis will finish once the dimensions are met.\n\n\n\n\nsendDisplayState\n\n\n\n\nvoid\n sendDisplayState()\n\n\nDescription\n\n\nSends the current pixel values, byte-per-pixel, over serial\n\n\nExample\n\n\n uBit.serial.sendDisplayState();\n\n\n\n\n\nreadDisplayState\n\n\n\n\nvoid\n readDisplayState()\n\n\nDescription\n\n\nReads pixel values, byte-per-pixel, from serial, and sets the display.\n\n\nExample\n\n\n uBit.serial.readDisplayState();", 
             "title": "serial"
         }, 
         {
@@ -642,18 +642,33 @@
         }, 
         {
             "location": "/ubit/serial/#overview", 
-            "text": "", 
+            "text": "Serial communication is really simple on the micro:bit and is exposed through the\nUSB interface chip, the  KL26Z .  The runtime's implementation of serial is general purpose and supports a number\nof different modes. It has a circular buffer for both the reception and transmission\nof data, and provides notifications to the user through the MessageBus.  By default, the baud rate for MicroBitSerial is  115200  and has very little overhead up until\nit is used to  send()  or  read() , at which point buffers are allocated in order\nto accommodate incoming or outgoing data.  MicroBitSerial inherits from mbeds'  RawSerial \nclass, which exposes a lightweight version of  printf()  and incurs minimal overhead\nas MicroBitSerial's buffers will not be allocated.  The MicroBitSerial class supports multithreaded operation, ensuring that only\none fiber can access the Serial port at a time.   Note  On Mac OSX and Linux Serial communication works out of the box, however on Windows an additional driver  is required.    Warning  The baud rate is shared across all instances of MicroBitSerial (this is enforced in hardware).", 
             "title": "Overview"
         }, 
         {
+            "location": "/ubit/serial/#serial-modes", 
+            "text": "There are three modes of operation for all  send()  or  read()  calls:   ASYNC  - Returns immediately after fetching any available data for a given call  SYNC_SPINWAIT  - Synchronously access the serial port until the selected operation is complete.\n                    This mode will lock up the processor, and isn't recommended if multiple fibers are in use.  SYNC_SLEEP  - Blocks the current fiber until the selected operation is complete. This mode cooperates with the\n                 Fiber scheduler, and should be used in a multi-fiber program.", 
+            "title": "Serial modes"
+        }, 
+        {
+            "location": "/ubit/serial/#serial-debug", 
+            "text": "In MicroBitConfig.h, the configuration option  MICROBIT_DEBUG  can be used to activate serial debugging\nfor many of the components in the runtime.", 
+            "title": "Serial debug"
+        }, 
+        {
             "location": "/ubit/serial/#message-bus-id", 
-            "text": "", 
+            "text": "Constant  Value      MICROBIT_ID_SERIAL  32", 
             "title": "Message Bus ID"
         }, 
         {
             "location": "/ubit/serial/#message-bus-events", 
-            "text": "", 
+            "text": "Constant  Value      MICROBIT_SERIAL_EVT_DELIM_MATCH  1    MICROBIT_SERIAL_EVT_HEAD_MATCH  2    MICROBIT_SERIAL_EVT_RX_FULL  3", 
             "title": "Message Bus Events"
+        }, 
+        {
+            "location": "/ubit/serial/#notify-events", 
+            "text": "These events use the notification channel  MICROBIT_ID_NOTIFY , which provides\ngeneral purpose synchronisation.     Constant  Value      MICROBIT_SERIAL_EVT_TX_EMPTY  2", 
+            "title": "Notify Events"
         }, 
         {
             "location": "/ubit/serial/#api", 
@@ -682,7 +697,7 @@
         }, 
         {
             "location": "/ubit/serial/#example", 
-            "text": "MicroBitSerial serial(USBTX, USBRX);    Note  the default baud rate is 115200", 
+            "text": "MicroBitSerial serial(USBTX, USBRX);   Note  the default baud rate is 115200", 
             "title": "Example"
         }, 
         {
@@ -727,7 +742,7 @@
         }, 
         {
             "location": "/ubit/serial/#example_2", 
-            "text": "uBit.serial.readString();    Note  this member function will wait until either the buffer is full, or a \n is received", 
+            "text": "uBit.serial.readString();   Note  this member function will wait until either the buffer is full, or a \n is received", 
             "title": "Example"
         }, 
         {
@@ -747,7 +762,7 @@
         }, 
         {
             "location": "/ubit/serial/#example_3", 
-            "text": "uBit.serial.readString();    Note  this member function will wait until either the buffer is full, or a \n is received", 
+            "text": "uBit.serial.readString();   Note  this member function will wait until either the buffer is full, or a \n is received", 
             "title": "Example"
         }, 
         {
@@ -772,7 +787,7 @@
         }, 
         {
             "location": "/ubit/serial/#example_4", 
-            "text": "const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart \n MicroBitImage i(10,5,heart); \n uBit.serial.sendImage(i);", 
+            "text": "const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart\n MicroBitImage i(10,5,heart);\n uBit.serial.sendImage(i);", 
             "title": "Example"
         }, 
         {
@@ -802,7 +817,7 @@
         }, 
         {
             "location": "/ubit/serial/#example_5", 
-            "text": "MicroBitImage i = uBit.serial.readImage(2,2);    Note  this will finish once the dimensions are met.", 
+            "text": "MicroBitImage i = uBit.serial.readImage(2,2);   Note  this will finish once the dimensions are met.", 
             "title": "Example"
         }, 
         {
