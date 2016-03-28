@@ -10,7 +10,7 @@ When using `yotta` to build micro:bit projects there are currently two supported
 * GCC
 * ARMCC
 
-## 1. Install yotta and dependencies
+## Install yotta and dependencies
 
 The first step is to get `yotta` and its dependencies onto your machine, to do this follow the install guide [here](http://docs.yottabuild.org/#installing)
 
@@ -23,14 +23,14 @@ sudo apt-get install srecord
 On **Mac OS X** you can use brew (`brew install srecord`), or you can install it manually from [here](http://srecord.sourceforge.net/) if you are on **Windows**. srecord is used to create the final binaries for the micro:bit so is an essential dependency.
 
 
-## 2. Fetch the example project
+## Fetch the example project
 
 ```bash
 git clone https://github.com/lancaster-university/microbit
 cd microbit #The following instructions assume you're in the example directory
 ```
 
-## 3. Set your yotta target
+## Set your yotta target
 
 A `yotta` target contains the information required by `yotta` in order to build a project for a specific combination of hardware. This includes the type of compiler. The microbit projects can build with both `armcc` and `gcc`, but as it gets installed with the `yotta` installer, we'll use `gcc` by default and choose a micro:bit specific target that knows about the hardware on the board.
 
@@ -44,13 +44,13 @@ The 'classic' part of this target name referes to the fact that the micro:bit us
 
 You only need to set the target once per project. All future `yotta` commands will use this target information (for example, when resolving dependencies).
 
-### 4. Build the project
+### Build the project
 
 ```
 yt build
 ```
 
-## 5. Flash your micro:bit
+## Flash your micro:bit
 The final step is to check your hex works.
 
 The `yotta build` command will place files in `/build/<TARGET_NAME>/source`. The file you will need to flash will be microbit-combined.hex. Simply drag and drop the hex.
