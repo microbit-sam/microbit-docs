@@ -1,5 +1,43 @@
-import glob, os, fnmatch, re, json, copy
+import glob, os, fnmatch, re, json, copy, shutil
 import xml.etree.ElementTree
+from optparse import OptionParser
+
+parser = OptionParser()
+
+#command line options
+parser.add_option("-d", "--dal-headers",
+                  action="store",
+	              type="string",
+                  dest="dal_headers",
+                  default="",
+                  help="The relative path to the headers for the microbit-dal.")
+
+parser.add_option("-m", "--microbit-headers",
+                  action="store",
+	              type="string",
+                  dest="microbit_headers",
+                  default="",
+                  help="The relative path to the headers for MicroBit (MicroBit.h), if not supplied, this will use the same location as specified by -d.")
+
+parser.add_option("--no-clean",
+                  action="store",
+	              type="string",
+                  dest="no_clean",
+                  help="If set, doxygen documentation will not be regenerated.")
+
+parser.add_option("--no-filter",
+                  action="store",
+	              type="string",
+                  dest="hashtag_no_filter",
+                  help="If set, doxygen documentation will not be regenerated.")
+
+(options, args) = parser.parse_args()
+
+if not options.dal_headers:
+    parser.error('A path was not given to the microbit-dal')
+
+if not options.microbit_headers:
+    options.microbit_headers = options.dal_headers
 
 type_color = "#008080"
 variable_colour = "#FFA500"
@@ -7,9 +45,18 @@ variable_colour = "#FFA500"
 separate_defaults = True
 display_defaults = False
 
-generate_doxygen = False
+filters = True
 
-member_func_filter = ["idleTick", "systemTick"]
+if options.hashtag_no_filter:
+    filters = False
+
+generate_doxygen = True
+
+if options.no_clean:
+    generate_doxygen = False
+
+member_func_filter = ["idleTick", "systemTick", "~"]
+folder_filter = ["ble", "ble-nrf51822", "mbed-classic","nrf51-sdk"]
 
 md_special_chars =[
     {
@@ -29,10 +76,40 @@ md_special_chars =[
 #http://stackoverflow.com/questions/2186525/use-a-glob-to-find-files-recursively-in-python
 def find_files(directory, pattern):
     for root, dirs, files in os.walk(directory):
+        if filters and any(dir in root for dir in folder_filter):
+            continue
+
         for basename in files:
             if fnmatch.fnmatch(basename, pattern):
                 filename = os.path.join(root, basename)
                 yield filename
+
+###
+# removes files from a folder.
+###
+def clean_dir(dir):
+    for root, dirs, files in os.walk(dir):
+        for f in files:
+            os.unlink(os.path.join(root, f))
+        for d in dirs:
+            shutil.rmtree(os.path.join(root, d))
+
+###
+# this files from one location to another
+###
+def copy_files(from_dir, to_dir, pattern):
+    files = find_files(from_dir, pattern)
+
+    for file in files:
+        shutil.copy(file,to_dir)
+
+###
+# this function copies headers recursively from a source director to a destination
+# directory.
+###
+def get_headers(from_dir, to_dir):
+    copy_files(from_dir, to_dir, "*.h")
+
 
 ###
 # this function extracts data from an element tag ignoring the tag 'ref', but
@@ -149,7 +226,8 @@ def extract_member_function(root, xml_element):
     function['name'] = xml_element.find('definition').text
     function['short_name'] = xml_element.find('name').text
 
-    if function['short_name'] in member_func_filter:
+    if filters and any(filtered_func in function['short_name'] for filtered_func in member_func_filter):
+        print "Filtered out: " + function['short_name']
         return
 
     print "Generating documentation for: " + function['short_name']
@@ -226,9 +304,6 @@ def extract_member_function(root, xml_element):
              for descriptor in function['params']:
                  if param_descriptor['name'] in descriptor['name']:
                      descriptor['description'] = param_descriptor['description']
-
-    if function['short_name'] == "getFont":
-        print function
 
     return function
 
@@ -542,12 +617,24 @@ def generate_mkdocs():
 
                 between = gen_member_func_doc(meta_data['className'] ,member_functions)
 
-                if meta_data['className']  == "MicroBitDisplay":
-                    print between
-
                 write(filename, before + between + after)
 
 if generate_doxygen:
+    header_dest = "./inc"
+    doxygen_dest = "./xml"
+
+    if not os.path.exists(header_dest):
+        os.makedirs(header_dest)
+
+    clean_dir(header_dest)
+
+    get_headers(options.dal_headers, header_dest)
+    get_headers(options.microbit_headers, header_dest)
+
+
+    if os.path.exists(doxygen_dest):
+        clean_dir(doxygen_dest)
+
     os.system('doxygen doxy-config.cfg')
 
 generate_mkdocs()

@@ -10,6 +10,10 @@
 [comment]: <> ({"className":"MicroBitRadio"})
 ##Constructor
 <br/>
+####MicroBitRadio()
+#####Description
+Constructor.
+<br/>
 ####MicroBitRadio( <div style='color:#008080; display:inline-block'>uint16_t</div> id)
 #####Description
 Constructor.
@@ -42,7 +46,7 @@ MICROBIT_OK on success, or MICROBIT_INVALID_PARAMETER if the value is out of ran
 #####Description
 Retrieve a pointer to the currently allocated recieve buffer. This is the area of memory actively being used by the radio hardware to store incoming data.
 #####Returns
-a pointer to the current receive buffer
+a pointer to the current receive buffer 
 ##queueRxBuf
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> queueRxBuf()
@@ -57,11 +61,7 @@ MICROBIT_OK on success, or MICROBIT_NO_RESOURCES if a replacement receiver buffe
 Sets the RSSI for the most recent packet.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>uint8_t</div> *rssi* - the new rssi value
-
-!!! note
-    should only be called from RADIO_IRQHandler... 
-
+>  <div style='color:#008080; display:inline-block'>uint8_t</div> *rssi* - the new rssi value 
 ##getRSSI
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> getRSSI()
@@ -73,7 +73,7 @@ Retrieves the current RSSI for the most recent packet.
 #####Description
 Initialises the radio for use as a multipoint sender/receiver 
 #####Returns
-MICROBIT_OK on success, MICROBIT_NOT_SUPPORTED if SoftDevice is enabled.
+MICROBIT_OK on success, MICROBIT_NOT_SUPPORTED if SoftDevice is enabled. 
 ##disable
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> disable()

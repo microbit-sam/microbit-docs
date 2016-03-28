@@ -136,9 +136,12 @@ for regular usage until the next interleave is signaled by the display.
 [comment]: <> ({"className":"MicroBitLightSensor"})
 ##Constructor
 <br/>
-####MicroBitLightSensor()
+####MicroBitLightSensor( <div style='color:#008080; display:inline-block'>const  MatrixMap  &</div> map)
 #####Description
 Constructor. Create a representation of the light sensor 
+#####Parameters
+
+>  <div style='color:#008080; display:inline-block'>const  MatrixMap  &</div> *map*
 ##read
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> read()
@@ -150,10 +153,13 @@ returns a value in the range 0 - 255 where 0 is dark, and 255 is very bright
 !!! note
     currently returns a value in the range 0 - 255 where 0 is dark, and 255 is very bright perhaps we should normalise the returned values into an SI unit! TODO. 
 
-##~MicroBitLightSensor
+##startSensing
 <br/>
-####~MicroBitLightSensor()
+####<div style='color:#FF69B4; display:inline-block'>void</div> startSensing( <div style='color:#008080; display:inline-block'>MicroBitEvent</div> )
 #####Description
-The destructor restores the default Display Mode and tick speed, and also removes the listener from the MessageBus. 
+The method that is invoked by sending MICROBIT_DISPLAY_EVT_LIGHT_SENSE using the id MICROBIT_ID_DISPLAY. 
+#####Parameters
+
+>  <div style='color:#008080; display:inline-block'>MicroBitEvent</div> **
 ____
 [comment]: <> ({"end":"MicroBitLightSensor"})

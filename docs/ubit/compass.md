@@ -54,43 +54,245 @@ can be used.
 [comment]: <> ({"className":"MicroBitCompass"})
 ##Constructor
 <br/>
-####MicroBitCompass( <div style='color:#008080; display:inline-block'>uint16_t</div> id,  <div style='color:#008080; display:inline-block'>uint16_t</div> address)
+####MicroBitCompass( <div style='color:#008080; display:inline-block'>MicroBitI2C  &</div> _i2c,  <div style='color:#008080; display:inline-block'>MicroBitAccelerometer  &</div> _accelerometer,  <div style='color:#008080; display:inline-block'>MicroBitStorage  &</div> _storage)
 #####Description
-Constructor. Create a compass representation with the given ID.
+Constructor. Create a compass representation with the given ID.  MicroBitStorage
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>uint16_t</div> *id* - the event ID of the compass object.
+>  <div style='color:#008080; display:inline-block'>MicroBitI2C  &</div> *_i2c* - an instance of i2c, which the compass is accessible from. 
 
->  <div style='color:#008080; display:inline-block'>uint16_t</div> *address* - the default address for the compass register
+>  <div style='color:#008080; display:inline-block'>MicroBitAccelerometer  &</div> *_accelerometer* - an instance of the accelerometer, used for tilt compensation. 
+
+>  <div style='color:#008080; display:inline-block'>MicroBitStorage  &</div> *_storage* - an instance of  MicroBitStorage , used to persist calibration data across resets.
 #####Example
-```c++
- compass(MICROBIT_ID_COMPASS, MAG3110_DEFAULT_ADDR);
+```cpp
+ compass(MICROBIT_ID_COMPASS, MAG3110_DEFAULT_ADDR); 
 
 ```
+<br/>
+####MicroBitCompass( <div style='color:#008080; display:inline-block'>MicroBitI2C  &</div> _i2c,  <div style='color:#008080; display:inline-block'>MicroBitAccelerometer  &</div> _accelerometer,  <div style='color:#008080; display:inline-block'>MicroBitStorage  &</div> _storage,  <div style='color:#008080; display:inline-block'>uint16_t</div> address)
+#####Description
+Constructor. Create a compass representation with the given ID.  MicroBitStorage
+#####Parameters
+
+>  <div style='color:#008080; display:inline-block'>MicroBitI2C  &</div> *_i2c* - an instance of i2c, which the compass is accessible from. 
+
+>  <div style='color:#008080; display:inline-block'>MicroBitAccelerometer  &</div> *_accelerometer* - an instance of the accelerometer, used for tilt compensation. 
+
+>  <div style='color:#008080; display:inline-block'>MicroBitStorage  &</div> *_storage* - an instance of  MicroBitStorage , used to persist calibration data across resets.
+
+>  <div style='color:#008080; display:inline-block'>uint16_t</div> *address* - the default address for the compass register 
+#####Example
+```cpp
+ compass(MICROBIT_ID_COMPASS, MAG3110_DEFAULT_ADDR); 
+
+```
+<br/>
+####MicroBitCompass( <div style='color:#008080; display:inline-block'>MicroBitI2C  &</div> _i2c,  <div style='color:#008080; display:inline-block'>MicroBitAccelerometer  &</div> _accelerometer,  <div style='color:#008080; display:inline-block'>MicroBitStorage  &</div> _storage,  <div style='color:#008080; display:inline-block'>uint16_t</div> address,  <div style='color:#008080; display:inline-block'>uint16_t</div> id)
+#####Description
+Constructor. Create a compass representation with the given ID.  MicroBitStorage
+#####Parameters
+
+>  <div style='color:#008080; display:inline-block'>MicroBitI2C  &</div> *_i2c* - an instance of i2c, which the compass is accessible from. 
+
+>  <div style='color:#008080; display:inline-block'>MicroBitAccelerometer  &</div> *_accelerometer* - an instance of the accelerometer, used for tilt compensation. 
+
+>  <div style='color:#008080; display:inline-block'>MicroBitStorage  &</div> *_storage* - an instance of  MicroBitStorage , used to persist calibration data across resets.
+
+>  <div style='color:#008080; display:inline-block'>uint16_t</div> *address* - the default address for the compass register 
+
+>  <div style='color:#008080; display:inline-block'>uint16_t</div> *id* - the event ID of the compass object. 
+#####Example
+```cpp
+ compass(MICROBIT_ID_COMPASS, MAG3110_DEFAULT_ADDR); 
+
+```
+<br/>
+####MicroBitCompass( <div style='color:#008080; display:inline-block'>MicroBitI2C  &</div> _i2c,  <div style='color:#008080; display:inline-block'>MicroBitAccelerometer  &</div> _accelerometer)
+#####Description
+Constructor. Create a compass representation with the given ID. 
+#####Parameters
+
+>  <div style='color:#008080; display:inline-block'>MicroBitI2C  &</div> *_i2c* - an instance of i2c, which the compass is accessible from. 
+
+>  <div style='color:#008080; display:inline-block'>MicroBitAccelerometer  &</div> *_accelerometer* - an instance of the accelerometer, used for tilt compensation.
+#####Example
+```cpp
+ compass(MICROBIT_ID_COMPASS, MAG3110_DEFAULT_ADDR); 
+
+```
+<br/>
+####MicroBitCompass( <div style='color:#008080; display:inline-block'>MicroBitI2C  &</div> _i2c,  <div style='color:#008080; display:inline-block'>MicroBitAccelerometer  &</div> _accelerometer,  <div style='color:#008080; display:inline-block'>uint16_t</div> address)
+#####Description
+Constructor. Create a compass representation with the given ID. 
+#####Parameters
+
+>  <div style='color:#008080; display:inline-block'>MicroBitI2C  &</div> *_i2c* - an instance of i2c, which the compass is accessible from. 
+
+>  <div style='color:#008080; display:inline-block'>MicroBitAccelerometer  &</div> *_accelerometer* - an instance of the accelerometer, used for tilt compensation.
+
+>  <div style='color:#008080; display:inline-block'>uint16_t</div> *address* - the default address for the compass register 
+#####Example
+```cpp
+ compass(MICROBIT_ID_COMPASS, MAG3110_DEFAULT_ADDR); 
+
+```
+<br/>
+####MicroBitCompass( <div style='color:#008080; display:inline-block'>MicroBitI2C  &</div> _i2c,  <div style='color:#008080; display:inline-block'>MicroBitAccelerometer  &</div> _accelerometer,  <div style='color:#008080; display:inline-block'>uint16_t</div> address,  <div style='color:#008080; display:inline-block'>uint16_t</div> id)
+#####Description
+Constructor. Create a compass representation with the given ID. 
+#####Parameters
+
+>  <div style='color:#008080; display:inline-block'>MicroBitI2C  &</div> *_i2c* - an instance of i2c, which the compass is accessible from. 
+
+>  <div style='color:#008080; display:inline-block'>MicroBitAccelerometer  &</div> *_accelerometer* - an instance of the accelerometer, used for tilt compensation.
+
+>  <div style='color:#008080; display:inline-block'>uint16_t</div> *address* - the default address for the compass register 
+
+>  <div style='color:#008080; display:inline-block'>uint16_t</div> *id* - the event ID of the compass object. 
+#####Example
+```cpp
+ compass(MICROBIT_ID_COMPASS, MAG3110_DEFAULT_ADDR); 
+
+```
+<br/>
+####MicroBitCompass( <div style='color:#008080; display:inline-block'>MicroBitI2C  &</div> _i2c,  <div style='color:#008080; display:inline-block'>MicroBitStorage  &</div> _storage)
+#####Description
+Constructor. Create a compass representation with the given ID.  MicroBitStorage
+#####Parameters
+
+>  <div style='color:#008080; display:inline-block'>MicroBitI2C  &</div> *_i2c* - an instance of i2c, which the compass is accessible from. 
+
+>  <div style='color:#008080; display:inline-block'>MicroBitStorage  &</div> *_storage* - an instance of  MicroBitStorage , used to persist calibration data across resets.
+#####Example
+```cpp
+ compass(MICROBIT_ID_COMPASS, MAG3110_DEFAULT_ADDR); 
+
+```
+
+!!! note
+    This creates a non-tilt compensated compass.
+
+<br/>
+####MicroBitCompass( <div style='color:#008080; display:inline-block'>MicroBitI2C  &</div> _i2c,  <div style='color:#008080; display:inline-block'>MicroBitStorage  &</div> _storage,  <div style='color:#008080; display:inline-block'>uint16_t</div> address)
+#####Description
+Constructor. Create a compass representation with the given ID.  MicroBitStorage
+#####Parameters
+
+>  <div style='color:#008080; display:inline-block'>MicroBitI2C  &</div> *_i2c* - an instance of i2c, which the compass is accessible from. 
+
+>  <div style='color:#008080; display:inline-block'>MicroBitStorage  &</div> *_storage* - an instance of  MicroBitStorage , used to persist calibration data across resets.
+
+>  <div style='color:#008080; display:inline-block'>uint16_t</div> *address* - the default address for the compass register 
+#####Example
+```cpp
+ compass(MICROBIT_ID_COMPASS, MAG3110_DEFAULT_ADDR); 
+
+```
+
+!!! note
+    This creates a non-tilt compensated compass.
+
+<br/>
+####MicroBitCompass( <div style='color:#008080; display:inline-block'>MicroBitI2C  &</div> _i2c,  <div style='color:#008080; display:inline-block'>MicroBitStorage  &</div> _storage,  <div style='color:#008080; display:inline-block'>uint16_t</div> address,  <div style='color:#008080; display:inline-block'>uint16_t</div> id)
+#####Description
+Constructor. Create a compass representation with the given ID.  MicroBitStorage
+#####Parameters
+
+>  <div style='color:#008080; display:inline-block'>MicroBitI2C  &</div> *_i2c* - an instance of i2c, which the compass is accessible from. 
+
+>  <div style='color:#008080; display:inline-block'>MicroBitStorage  &</div> *_storage* - an instance of  MicroBitStorage , used to persist calibration data across resets.
+
+>  <div style='color:#008080; display:inline-block'>uint16_t</div> *address* - the default address for the compass register 
+
+>  <div style='color:#008080; display:inline-block'>uint16_t</div> *id* - the event ID of the compass object. 
+#####Example
+```cpp
+ compass(MICROBIT_ID_COMPASS, MAG3110_DEFAULT_ADDR); 
+
+```
+
+!!! note
+    This creates a non-tilt compensated compass.
+
+<br/>
+####MicroBitCompass( <div style='color:#008080; display:inline-block'>MicroBitI2C  &</div> _i2c)
+#####Description
+Constructor. Create a compass representation with the given ID. 
+#####Parameters
+
+>  <div style='color:#008080; display:inline-block'>MicroBitI2C  &</div> *_i2c* - an instance of i2c, which the compass is accessible from.
+#####Example
+```cpp
+ compass(MICROBIT_ID_COMPASS, MAG3110_DEFAULT_ADDR); 
+
+```
+
+!!! note
+    This creates a non-tilt compensated compass.
+
+<br/>
+####MicroBitCompass( <div style='color:#008080; display:inline-block'>MicroBitI2C  &</div> _i2c,  <div style='color:#008080; display:inline-block'>uint16_t</div> address)
+#####Description
+Constructor. Create a compass representation with the given ID. 
+#####Parameters
+
+>  <div style='color:#008080; display:inline-block'>MicroBitI2C  &</div> *_i2c* - an instance of i2c, which the compass is accessible from.
+
+>  <div style='color:#008080; display:inline-block'>uint16_t</div> *address* - the default address for the compass register 
+#####Example
+```cpp
+ compass(MICROBIT_ID_COMPASS, MAG3110_DEFAULT_ADDR); 
+
+```
+
+!!! note
+    This creates a non-tilt compensated compass.
+
+<br/>
+####MicroBitCompass( <div style='color:#008080; display:inline-block'>MicroBitI2C  &</div> _i2c,  <div style='color:#008080; display:inline-block'>uint16_t</div> address,  <div style='color:#008080; display:inline-block'>uint16_t</div> id)
+#####Description
+Constructor. Create a compass representation with the given ID. 
+#####Parameters
+
+>  <div style='color:#008080; display:inline-block'>MicroBitI2C  &</div> *_i2c* - an instance of i2c, which the compass is accessible from.
+
+>  <div style='color:#008080; display:inline-block'>uint16_t</div> *address* - the default address for the compass register 
+
+>  <div style='color:#008080; display:inline-block'>uint16_t</div> *id* - the event ID of the compass object. 
+#####Example
+```cpp
+ compass(MICROBIT_ID_COMPASS, MAG3110_DEFAULT_ADDR); 
+
+```
+
+!!! note
+    This creates a non-tilt compensated compass.
+
 ##configure
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> configure()
 #####Description
-Configures the compass for the sample rate defined in this object. The nearest values are chosen to those defined that are supported by the hardware. The instance variables are then updated to reflect reality.
+Configures the compass for the sample rate defined in this object. The nearest values are chosen to those defined that are supported by the hardware. The instance variables are then updated to reflect reality. 
 #####Returns
-MICROBIT_OK or MICROBIT_I2C_ERROR if the magnetometer could not be configured.
+MICROBIT_OK or MICROBIT_I2C_ERROR if the magnetometer could not be configured. 
 ##setPeriod
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> setPeriod( <div style='color:#008080; display:inline-block'>int</div> period)
 #####Description
-Attempts to set the sample rate of the compass to the specified value (in ms). n.b. the requested rate may not be possible on the hardware. In this case, the nearest lower rate is chosen.
+Attempts to set the sample rate of the compass to the specified value (in ms). n.b. the requested rate may not be possible on the hardware. In this case, the nearest lower rate is chosen. 
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>int</div> *period* - the requested time between samples, in milliseconds.
+>  <div style='color:#008080; display:inline-block'>int</div> *period* - the requested time between samples, in milliseconds. 
 #####Returns
-MICROBIT_OK or MICROBIT_I2C_ERROR if the magnetometer could not be updated.
+MICROBIT_OK or MICROBIT_I2C_ERROR if the magnetometer could not be updated. 
 ##getPeriod
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> getPeriod()
 #####Description
-Reads the currently configured sample rate of the compass.
+Reads the currently configured sample rate of the compass. 
 #####Returns
-The time between samples, in milliseconds.
+The time between samples, in milliseconds. 
 ##heading
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> heading()
@@ -99,129 +301,129 @@ Gets the current heading of the device, relative to magnetic north. If the compa
 #####Returns
 the current heading, in degrees. Or MICROBIT_CALIBRATION_IN_PROGRESS if the compass is calibrating.
 #####Example
-```c++
- uBit.compass.heading();
+```cpp
+ uBit.compass.heading(); 
 
 ```
 ##whoAmI
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> whoAmI()
 #####Description
-Attempts to determine the 8 bit ID from the magnetometer.
+Attempts to determine the 8 bit ID from the magnetometer. 
 #####Returns
 the id of the compass (magnetometer), or MICROBIT_I2C_ERROR if the magnetometer could not be updated.
 #####Example
-```c++
- uBit.compass.whoAmI();
+```cpp
+ uBit.compass.whoAmI(); 
 
 ```
 ##getX
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> getX()
 #####Description
-Reads the X axis value of the latest update from the compass.
+Reads the X axis value of the latest update from the compass. 
 #####Returns
 The magnetic force measured in the X axis, in nano teslas.
 #####Example
-```c++
- uBit.compass.getX();
+```cpp
+ uBit.compass.getX(); 
 
 ```
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> getX( <div style='color:#008080; display:inline-block'>MicroBitCoordinateSystem</div> system)
 #####Description
-Reads the X axis value of the latest update from the compass.
+Reads the X axis value of the latest update from the compass. 
 #####Parameters
 
 >  <div style='color:#008080; display:inline-block'>MicroBitCoordinateSystem</div> *system*
 #####Returns
 The magnetic force measured in the X axis, in nano teslas.
 #####Example
-```c++
- uBit.compass.getX();
+```cpp
+ uBit.compass.getX(); 
 
 ```
 ##getY
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> getY()
 #####Description
-Reads the Y axis value of the latest update from the compass.
+Reads the Y axis value of the latest update from the compass. 
 #####Returns
 The magnetic force measured in the Y axis, in nano teslas.
 #####Example
-```c++
- uBit.compass.getY();
+```cpp
+ uBit.compass.getY(); 
 
 ```
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> getY( <div style='color:#008080; display:inline-block'>MicroBitCoordinateSystem</div> system)
 #####Description
-Reads the Y axis value of the latest update from the compass.
+Reads the Y axis value of the latest update from the compass. 
 #####Parameters
 
 >  <div style='color:#008080; display:inline-block'>MicroBitCoordinateSystem</div> *system*
 #####Returns
 The magnetic force measured in the Y axis, in nano teslas.
 #####Example
-```c++
- uBit.compass.getY();
+```cpp
+ uBit.compass.getY(); 
 
 ```
 ##getZ
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> getZ()
 #####Description
-Reads the Z axis value of the latest update from the compass.
+Reads the Z axis value of the latest update from the compass. 
 #####Returns
 The magnetic force measured in the Z axis, in nano teslas.
 #####Example
-```c++
- uBit.compass.getZ();
+```cpp
+ uBit.compass.getZ(); 
 
 ```
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> getZ( <div style='color:#008080; display:inline-block'>MicroBitCoordinateSystem</div> system)
 #####Description
-Reads the Z axis value of the latest update from the compass.
+Reads the Z axis value of the latest update from the compass. 
 #####Parameters
 
 >  <div style='color:#008080; display:inline-block'>MicroBitCoordinateSystem</div> *system*
 #####Returns
 The magnetic force measured in the Z axis, in nano teslas.
 #####Example
-```c++
- uBit.compass.getZ();
+```cpp
+ uBit.compass.getZ(); 
 
 ```
 ##getFieldStrength
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> getFieldStrength()
 #####Description
-Determines the overall magnetic field strength based on the latest update from the compass.
+Determines the overall magnetic field strength based on the latest update from the compass. 
 #####Returns
 The magnetic force measured across all axes, in nano teslas.
 #####Example
-```c++
- uBit.compass.getFieldStrength();
+```cpp
+ uBit.compass.getFieldStrength(); 
 
 ```
 ##readTemperature
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> readTemperature()
 #####Description
-Reads the current die temperature of the compass.
+Reads the current die temperature of the compass. 
 #####Returns
-the temperature in degrees celsius, or MICROBIT_I2C_ERROR if the magnetometer could not be updated.
+the temperature in degrees celsius, or MICROBIT_I2C_ERROR if the magnetometer could not be updated. 
 ##calibrate
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> calibrate()
 #####Description
 Perform a calibration of the compass.
 #####Returns
-MICROBIT_OK, MICROBIT_I2C_ERROR if the magnetometer could not be accessed, or MICROBIT_CALIBRATION_REQUIRED if the calibration algorithm failed to complete succesfully.
+MICROBIT_OK, MICROBIT_I2C_ERROR if the magnetometer could not be accessed, or MICROBIT_CALIBRATION_REQUIRED if the calibration algorithm failed to complete succesfully. 
 
 !!! note
-    THIS MUST BE CALLED TO GAIN RELIABLE VALUES FROM THE COMPASS
+    THIS MUST BE CALLED TO GAIN RELIABLE VALUES FROM THE COMPASS 
 
 ##calibrateAsync
 <br/>
@@ -232,18 +434,16 @@ Perform the asynchronous calibration of the compass. This will fire MICROBIT_COM
 MICROBIT_OK, or MICROBIT_I2C_ERROR if the magnetometer could not be accessed.
 
 !!! note
-    *** THIS FUNCITON IS NOW DEPRECATED AND WILL BE REMOVED IN THE NEXT MAJOR RELEASE ***
+    *** THIS FUNCITON IS NOW DEPRECATED AND WILL BE REMOVED IN THE NEXT MAJOR RELEASE *** 
 
 ##calibrateStart
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> calibrateStart()
 #####Description
 Perform a calibration of the compass. This will fire MICROBIT_COMPASS_EVT_CAL_START.
-#####Returns
-MICROBIT_OK, or MICROBIT_I2C_ERROR if the magnetometer could not be accessed.
 
 !!! note
-    *** THIS FUNCITON IS NOW DEPRECATED AND WILL BE REMOVED IN THE NEXT MAJOR RELEASE ***
+    *** THIS FUNCITON IS NOW DEPRECATED AND WILL BE REMOVED IN THE NEXT MAJOR RELEASE *** 
 
 ##calibrateEnd
 <br/>
@@ -252,7 +452,7 @@ MICROBIT_OK, or MICROBIT_I2C_ERROR if the magnetometer could not be accessed.
 Complete the calibration of the compass. This will fire MICROBIT_COMPASS_EVT_CAL_END.
 
 !!! note
-    *** THIS FUNCITON IS NOW DEPRECATED AND WILL BE REMOVED IN THE NEXT MAJOR RELEASE ***
+    *** THIS FUNCITON IS NOW DEPRECATED AND WILL BE REMOVED IN THE NEXT MAJOR RELEASE *** 
 
 ##setCalibration
 <br/>
@@ -268,31 +468,35 @@ Configure the compass to use the given calibration data. Calibration data is com
 #####Description
 Provides the calibration data currently in use by the compass. More specifically, the x, y and z zero offsets of the compass.
 #####Returns
-The x, y and z xero offsets of the compass.
+The x, y and z xero offsets of the compass. 
+##updateSample
+<br/>
+####<div style='color:#FF69B4; display:inline-block'>int</div> updateSample()
+#####Description
+Updates the local sample, only if the compass indicates that data is stale.
+
+!!! note
+    Required if the device is running without a scheduler. Also called by all get[X,Y,Z]() member functions. 
+
 ##isCalibrated
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> isCalibrated()
 #####Description
-Returns 0 or 1. 1 indicates that the compass is calibrated, zero means the compass requires calibration.
+Returns 0 or 1. 1 indicates that the compass is calibrated, zero means the compass requires calibration. 
 ##isCalibrating
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> isCalibrating()
 #####Description
-Returns 0 or 1. 1 indicates that the compass is calibrating, zero means the compass is not currently calibrating.
+Returns 0 or 1. 1 indicates that the compass is calibrating, zero means the compass is not currently calibrating. 
 ##clearCalibration
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>void</div> clearCalibration()
 #####Description
-Clears the calibration held in persistent storage, and sets the calibrated flag to zero.
+Clears the calibration held in persistent storage, and sets the calibrated flag to zero. 
 ##isIdleCallbackNeeded
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> isIdleCallbackNeeded()
 #####Description
-Returns 0 or 1. 1 indicates data is waiting to be read, zero means data is not ready to be read.
-##~MicroBitCompass
-<br/>
-####~MicroBitCompass()
-#####Description
-Destructor for  MicroBitCompass
+Returns 0 or 1. 1 indicates data is waiting to be read, zero means data is not ready to be read. 
 ____
 [comment]: <> ({"end":"MicroBitCompass"})
