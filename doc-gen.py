@@ -28,8 +28,8 @@ parser.add_option("--no-clean",
 parser.add_option("--no-filter",
                   action="store",
 	              type="string",
-                  dest="hashtag_no_filter",
-                  help="If set, doxygen documentation will not be regenerated.")
+                  dest="no_filter",
+                  help="If set, filters for member functions and header copying will not be applied")
 
 (options, args) = parser.parse_args()
 
@@ -47,7 +47,7 @@ display_defaults = False
 
 filters = True
 
-if options.hashtag_no_filter:
+if options.no_filter:
     filters = False
 
 generate_doxygen = True
