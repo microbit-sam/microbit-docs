@@ -547,7 +547,7 @@ def gen_member_func_doc(class_name, member_functions):
             if len(derived_func['examples']) is not 0:
                 lines.append("#####Example\n")
                 lines.append("```cpp\n")
-                lines.append(derived_func['examples'] + "\n")
+                lines.append(derived_func['examples'])
                 lines.append("```\n")
             #-----------------------------
 
