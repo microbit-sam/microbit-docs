@@ -12,7 +12,7 @@ live accelerometer data to any attached BLE master device. You do not need to ex
 
 This service is disabled by default. To enable the service, simply create an instance of this class in your program, at any time after the uBit object has been initialised:
 
-```c++
+```cpp
     new MicroBitLEDService(*uBit.ble, uBit.display);
 ```
 

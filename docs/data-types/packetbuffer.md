@@ -14,23 +14,23 @@ accessing of a managed type for byte arrays used to hold network data packets.
 
 PacketBuffers are simple to create - just create them like a variable, and provide the size (in bytes) of the buffer you want to create.
 
-```c++
+```cpp
     PacketBuffer b(16);
 ```
 
 Alternatively, if you already have an array of bytes allocated, then you can somply refer to that using a slightly different form:
 
-```c++
+```cpp
     uint8_t data[16];
     PacketBuffer b(data,16);
 ```
 
 ## Manipulating PacketBuffers
 
-Once created, the data inside PacketBuffers can be freely changed at any time. The simplest way to do this is through the array operators '[' and ']'. 
+Once created, the data inside PacketBuffers can be freely changed at any time. The simplest way to do this is through the array operators '[' and ']'.
 You can read or write bytes to the buffer by simply dereferencing it with square bracket. e.g. to create, set and send a PacketBuffer on the micro:bit radio:
 
-```c++
+```cpp
     PacketBuffer b(2);
     b[0] = 255;
     b[1] = 10;
@@ -40,14 +40,14 @@ You can read or write bytes to the buffer by simply dereferencing it with square
 
 PacketBuffers can also be assigned a value. For example, all these are legal:
 
-```c++
+```cpp
     PacketBuffer b;
     b = uBit.radio.datagram.recv();
 ```
 
 If you need more granualar access, the getBytes function provides direct access to the memory buffer, presented as a byte array:
 
-```c++
+```cpp
     PacketBuffer b(16);
     uint8_t *buf = b.getBytes();
 
@@ -56,7 +56,7 @@ If you need more granualar access, the getBytes function provides direct access 
 
 Finally, it is also possible to extract the received signal strength of a packet from a PakcetBuffer. This can provide both a rough indicaiton of the reliability of the link, and a crude but moderatley effective mechanism to estimate the distance between two micro:bts.
 
-```c++
+```cpp
     PacketBuffer b;
     b = uBit.radio.datagram.recv();
 
@@ -75,8 +75,8 @@ Constructor. Create a managed string from a specially prepared string literal.
 >  <div style='color:#008080; display:inline-block'>StringData  *</div> *ptr* - The literal - first two bytes should be 0xff, then the length in little endian, then the literal. The literal has to be 4-byte aligned.
 #####Example
 ```cpp
- static const char hello[] __attribute__ ((aligned (4))) = "\xff\xff\x05\x00" "Hello"; 
- ManagedString s((StringData*)(void*)hello); 
+ static const char hello[] __attribute__ ((aligned (4))) = "\xff\xff\x05\x00" "Hello";
+ ManagedString s((StringData*)(void*)hello);
 ```
 ##leakData
 <br/>
@@ -93,7 +93,7 @@ Constructor.
 >  <div style='color:#008080; display:inline-block'>const char *</div> *str* - The character array on which to base the new  ManagedString .
 #####Example
 ```cpp
- ManagedString s("abcdefg"); 
+ ManagedString s("abcdefg");
 ```
 <br/>
 ####ManagedString( <div style='color:#008080; display:inline-block'>const int</div> value)
@@ -104,7 +104,7 @@ Constructor.
 >  <div style='color:#008080; display:inline-block'>const int</div> *value* - The integer from which to create the  ManagedString .
 #####Example
 ```cpp
- ManagedString s(20); 
+ ManagedString s(20);
 ```
 <br/>
 ####ManagedString( <div style='color:#008080; display:inline-block'>const char</div> value)
@@ -115,7 +115,7 @@ Constructor. Create a managed string from a given char.
 >  <div style='color:#008080; display:inline-block'>const char</div> *value* - The character from which to create the  ManagedString .
 #####Example
 ```cpp
- ManagedString s('a'); 
+ ManagedString s('a');
 ```
 <br/>
 ####ManagedString( <div style='color:#008080; display:inline-block'>PacketBuffer</div> buffer)
@@ -126,7 +126,7 @@ Constructor. Create a  ManagedString PacketBuffer PacketBuffer ManagedString
 >  <div style='color:#008080; display:inline-block'>PacketBuffer</div> *buffer* - The PacktBuffer from which to create the  ManagedString .
 #####Example
 ```cpp
- ManagedString s = radio.datagram.recv(); 
+ ManagedString s = radio.datagram.recv();
 ```
 <br/>
 ####ManagedString( <div style='color:#008080; display:inline-block'>const char *</div> str,  <div style='color:#008080; display:inline-block'>const int16_t</div> length)
@@ -139,7 +139,7 @@ Constructor. Create a  ManagedString
 >  <div style='color:#008080; display:inline-block'>const int16_t</div> *length* - The length of the character array
 #####Example
 ```cpp
- ManagedString s("abcdefg",7); 
+ ManagedString s("abcdefg",7);
 ```
 <br/>
 ####ManagedString( <div style='color:#008080; display:inline-block'>const  ManagedString  &</div> s)
@@ -150,8 +150,8 @@ Copy constructor. Makes a new  ManagedString
 >  <div style='color:#008080; display:inline-block'>const  ManagedString  &</div> *s* - The  ManagedString  to copy.
 #####Example
 ```cpp
- ManagedString s("abcdefg"); 
- ManagedString p(s); 
+ ManagedString s("abcdefg");
+ ManagedString p(s);
 ```
 <br/>
 ####ManagedString()
@@ -159,7 +159,7 @@ Copy constructor. Makes a new  ManagedString
 Default constructor.
 #####Example
 ```cpp
- ManagedString s(); 
+ ManagedString s();
 ```
 ##operator=
 <br/>
@@ -171,9 +171,9 @@ Copy assign operation.
 >  <div style='color:#008080; display:inline-block'>const  ManagedString  &</div> *s* - The  ManagedString  to copy.
 #####Example
 ```cpp
- ManagedString s("abcd"); 
- ManagedString p("efgh"); 
- p = s // p now points to s, s' ref is incremented 
+ ManagedString s("abcd");
+ ManagedString p("efgh");
+ p = s // p now points to s, s' ref is incremented
 ```
 ##operator==
 <br/>
@@ -187,14 +187,14 @@ Equality operation.
 true if this  ManagedString  is identical to the one supplied, false otherwise.
 #####Example
 ```cpp
- MicroBitDisplay display; 
- ManagedString s("abcd"); 
- ManagedString p("efgh"); 
- 
- if(p == s) 
- display.scroll("We are the same!"); 
- else 
- display.scroll("We are different!"); //p is not equal to s - this will be called 
+ MicroBitDisplay display;
+ ManagedString s("abcd");
+ ManagedString p("efgh");
+
+ if(p == s)
+ display.scroll("We are the same!");
+ else
+ display.scroll("We are different!"); //p is not equal to s - this will be called
 ```
 ##operator<
 <br/>
@@ -208,14 +208,14 @@ Inequality operation.
 true if this  ManagedString  is alphabetically less than to the one supplied, false otherwise.
 #####Example
 ```cpp
- MicroBitDisplay display; 
- ManagedString s("a"); 
- ManagedString p("b"); 
- 
- if(s < p) 
- display.scroll("a is before b!"); //a is before b 
- else 
- display.scroll("b is before a!"); 
+ MicroBitDisplay display;
+ ManagedString s("a");
+ ManagedString p("b");
+
+ if(s < p)
+ display.scroll("a is before b!"); //a is before b
+ else
+ display.scroll("b is before a!");
 ```
 ##operator>
 <br/>
@@ -229,14 +229,14 @@ Inequality operation.
 true if this  ManagedString  is alphabetically greater than to the one supplied, false otherwise.
 #####Example
 ```cpp
- MicroBitDisplay display; 
- ManagedString s("a"); 
- ManagedString p("b"); 
- 
- if(p>a) 
- display.scroll("b is after a!"); //b is after a 
- else 
- display.scroll("a is after b!"); 
+ MicroBitDisplay display;
+ ManagedString s("a");
+ ManagedString p("b");
+
+ if(p>a)
+ display.scroll("b is after a!"); //b is after a
+ else
+ display.scroll("a is after b!");
 ```
 ##substring
 <br/>
@@ -252,10 +252,10 @@ Extracts a  ManagedString
 a  ManagedString  representing the requested substring.
 #####Example
 ```cpp
- MicroBitDisplay display; 
- ManagedString s("abcdefg"); 
- 
- display.scroll(s.substring(0,2)) // displays "ab" 
+ MicroBitDisplay display;
+ ManagedString s("abcdefg");
+
+ display.scroll(s.substring(0,2)) // displays "ab"
 ```
 ##operator+
 <br/>
@@ -269,11 +269,11 @@ Concatenates this string with the one provided.
 a new  ManagedString  representing the joined strings.
 #####Example
 ```cpp
- MicroBitDisplay display; 
- ManagedString s("abcd"); 
- ManagedString p("efgh") 
- 
- display.scroll(s + p) // scrolls "abcdefgh" 
+ MicroBitDisplay display;
+ ManagedString s("abcd");
+ ManagedString p("efgh")
+
+ display.scroll(s + p) // scrolls "abcdefgh"
 ```
 ##charAt
 <br/>
@@ -287,10 +287,10 @@ Provides a character value at a given position in the string, indexed from zero.
 the character at posisiton index, zero if index is invalid.
 #####Example
 ```cpp
- MicroBitDisplay display; 
- ManagedString s("abcd"); 
- 
- display.scroll(s.charAt(1)) // scrolls "b" 
+ MicroBitDisplay display;
+ ManagedString s("abcd");
+
+ display.scroll(s.charAt(1)) // scrolls "b"
 ```
 ##toCharArray
 <br/>
@@ -298,7 +298,7 @@ the character at posisiton index, zero if index is invalid.
 #####Description
 Provides an immutable 8 bit wide character buffer representing this string.
 #####Returns
-a pointer to the character buffer. 
+a pointer to the character buffer.
 ##length
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int16_t</div> length()
@@ -308,10 +308,10 @@ Determines the length of this  ManagedString
 the length of the string in characters.
 #####Example
 ```cpp
- MicroBitDisplay display; 
- ManagedString s("abcd"); 
- 
- display.scroll(s.length()) // scrolls "4" 
+ MicroBitDisplay display;
+ ManagedString s("abcd");
+
+ display.scroll(s.length()) // scrolls "4"
 ```
 ____
 [comment]: <> ({"end":"ManagedString"})

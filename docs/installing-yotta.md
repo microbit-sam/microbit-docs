@@ -26,8 +26,8 @@ On **Mac OS X** you can use brew (`brew install srecord`), or you can install it
 ## Fetch the example project
 
 ```bash
-git clone https://github.com/lancaster-university/microbit
-cd microbit #The following instructions assume you're in the example directory
+git clone https://github.com/lancaster-university/microbit-samples
+cd microbit-samples #The following instructions assume you're in the example directory
 ```
 
 ## Set your yotta target

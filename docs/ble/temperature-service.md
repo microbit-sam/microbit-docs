@@ -11,7 +11,7 @@ a linear shift (although changes in temperature will be accurate). See [MicroBit
 
 This service is disabled by default. To enable the service, simply create an instance of this class in your program, at any time after the uBit object has been initialised:
 
-```c++
+```cpp
     new MicroBitTemperatureService(*uBit.ble, uBit.thermometer);
 ```
 

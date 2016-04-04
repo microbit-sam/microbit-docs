@@ -10,7 +10,7 @@ This data can be transparently read and written from any attached BLE master dev
 
 This service is disabled by default. To enable the service, simply create an instance of this class in your program, at any time after the uBit object has been initialised:
 
-```c++
+```cpp
     new MicroBitIOPinService(*uBit.ble, uBit.io);
 ```
 

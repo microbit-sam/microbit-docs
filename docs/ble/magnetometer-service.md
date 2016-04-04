@@ -9,7 +9,7 @@ background as your main program is running. It provides live electronic compass 
 
 This service is disabled by default. To enable the service, simply create an instance of this class in your program, at any time after the uBit object has been initialised:
 
-```c++
+```cpp
     new MicroBitMagnetometerService(*uBit.ble, uBit.compass);    
 ```
 

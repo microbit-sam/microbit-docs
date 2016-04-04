@@ -23,7 +23,7 @@ and an event MICROBIT_BUTTON_EVT_CLICK with the value '3' is generted when a but
 
 Creating an event is easy - just create a MicroBitEvent with the source avd value you need, and the runtime takes care of the rest:
 
-```c++
+```cpp
 MicroBitEvent(MICROBIT_ID_BUTTON_A, MICROBIT_BUTTON_EVT_CLICK);
 ```
 

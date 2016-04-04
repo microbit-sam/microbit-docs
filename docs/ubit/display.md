@@ -45,13 +45,13 @@ Simply use the scroll function specify the message you want to scroll, and sit b
 If you take a look at the documentation for the scroll function in the API below, you will notice that you can also specify the speed of the scroll as an optional final parameter. The lower the delay, the
 faster your text will scroll across the screen.
 
-```c++
+```cpp
 uBit.display.scroll("HELLO!");
 uBit.display.scroll("HELLO!", 100);
 ```
 
 Notice that you can also scroll numbers (either constants of variables):
-```c++
+```cpp
 int c = 42;
 uBit.display.scroll(c);
 ```
@@ -60,7 +60,7 @@ uBit.display.scroll(c);
 Sometimes it is better to show the letters/numbers in turn on the screen rather than scrolling them. If you want to do this, the 'print' function has exactly the same parameters as 'scroll', but
 with this behaviour.  e.g.
 
-```c++
+```cpp
 uBit.display.print("HELLO!");
 uBit.display.print("HELLO!", 100);
 uBit.display.print(42);
@@ -69,7 +69,7 @@ uBit.display.print(42);
 Do notice that print behaves slightly differently if you provide a single character or numeric digit though. if you do this, the value you proviode will sty on the screen until you explicitly
 change the screen. if you ask the runtime to print a strong with two or more characters, then each will appear in turn, then disappear. e.g. try this and you will find it stays on the screen:
 
-```c++
+```cpp
 uBit.display.print(7);
 ```
 
@@ -80,13 +80,13 @@ where in the screen you would like to the image to appear - and you can even tre
 See the [MicroBitImage page](../data-types/image.md) for more details on images, but here are a few simple examples:
 
 
-```c++
+```cpp
 // show your smiley on the screen...
 MicroBitImage smiley("0,255,0,255, 0\n0,255,0,255,0\n0,0,0,0,0\n255,0,0,0,255\n0,255,255,255,0\n");
 uBit.display.print(smiley);
 ```
 
-```c++
+```cpp
 // make your smiley peep up from the bottom of the screen...
 MicroBitImage smiley("0,255,0,255, 0\n0,255,0,255,0\n0,0,0,0,0\n255,0,0,0,255\n0,255,255,255,0\n");
 for (int y=4; i>=0; y--)
@@ -97,7 +97,7 @@ for (int y=4; i>=0; y--)
 
 ```
 
-```c++
+```cpp
 // scroll your smiley across the screen...
 MicroBitImage smiley("0,255,0,255, 0\n0,255,0,255,0\n0,0,0,0,0\n255,0,0,0,255\n0,255,255,255,0\n");
 uBit.display.scroll(smiley);
@@ -108,7 +108,7 @@ By now you have probably noticed that the scroll, print and animate functions al
 However, sometimes you want to launch an effect, and let it run in the background while your program does something else. For this, you can use the *Async* variations of the scroll, print and animate functions.
 These all have identical parameters and capabilities, but will return immediately. Try some of the examples above with their Async equivalents to understand this different behaviour.  For example:
 
-```c++
+```cpp
 // scroll your smiley across the screen, without waiting for it to finish...
 MicroBitImage smiley("0,255,0,255, 0\n0,255,0,255,0\n0,0,0,0,0\n255,0,0,0,255\n0,255,255,255,0\n");
 uBit.display.scrollAsync(smiley);
@@ -129,7 +129,7 @@ operate, so is the default. The latter does provide more useful effect though, s
 
 for example:
 
-```c++
+```cpp
 // show a smiley with bright eyes!
 MicroBitImage smiley("0,255,0,255, 0\n0,255,0,255,0\n0,0,0,0,0\n32,0,0,0,32\n0,32,32,32,0\n");
 uBit.display.setDisplayMode(DISPLAY_MODE_GREYSCALE);
@@ -141,7 +141,7 @@ uBit.display.print(smiley);
 The memory buffer that is used to drive the LEDs is itself a [MicroBitImage](../data-types/image.md). This means that you can also access and call any of the functions listed in the [MicroBitImage API documentation](../data-types/image.md)
 directly on the dipslay buffer. Examples here include setPixelValue, as illustrated below, but read the above documentation link for full details.
 
-```c++
+```cpp
 // set a single pixel by co-ordinate
 uBit.display.image.setPixelValue(2,2,255);
 ```

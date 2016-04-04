@@ -55,7 +55,7 @@ that some data is ready to be read.
 For example, imagine you were creating a simple remote control car with one micro:bit acting as a remote controller, and another connected to some servos on the car.
 You might decide that simply sending a '1' means turn left, and a '2' means turn right, so you may write a program like this for the remote control:
 
-```c++
+```cpp
 int main()
 {
     uBit.radio.enable();
@@ -76,7 +76,7 @@ int main()
 ...and one like this for the remote control car:
 
 
-```c++
+```cpp
 void onData(MicroBitEvent e)
 {
     ManagedString s = uBit.radio.datagram.recv();
@@ -104,7 +104,7 @@ This gives total freedom over the data being shared. Simply create a PacketBuffe
 array syntax. For example, here is an similar program using a PacketBuffers:
 
 
-```c++
+```cpp
 int main()
 {
     uBit.radio.enable();
@@ -130,7 +130,7 @@ int main()
 ...and one like this for the remote control car:
 
 
-```c++
+```cpp
 void onData(MicroBitEvent e)
 {
     PacketBuffer p = uBit.radio.datagram.recv();
@@ -164,7 +164,7 @@ event handlers.
 
 For example, if you wanted to share an event SOMETHING with another micro:bit whenever ButtonA is pressed, you might write code like this on the sending micro:bit:
 
-```c++
+```cpp
 #define MY_APP_ID           4000
 #define SOMETHING           1
 
@@ -188,7 +188,7 @@ int main()
 ...and on the micro:bits wanting to receive the event:
 
 
-```c++
+```cpp
 #define MY_APP_ID           4000
 #define SOMETHING           1
 
@@ -213,7 +213,7 @@ It is easy to imagine situations where you would like to have different groups o
 projects - it would not be very useful if packets sent by one group interfered with the other groups! To address this, the MicroBitRadio allows users to define a **group** to which their micro:bit belongs. micro:bits can
 only ever be a member of one group at a time, and any packets sent will only be received by  other micro:bits in the same group. Groups are simply numbers, and a micro:bit's group can be set at anytime by the programmer through the setGroup function. If a group is not specified, the default group of 0 will be used. For example:
 
-```c++
+```cpp
     uBit.radio.setGroup(10);
 ```
 

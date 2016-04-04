@@ -78,7 +78,7 @@ When `isTouched()` is called, provided that the selected pin has touch capabilit
 can therefore be placed using the desired pins' ID, with the exact same events
 produced by a standard [button](button.md).
 
-```c++
+```cpp
 uBit.messageBus.listen(MICROBIT_ID_IO_P0, MICROBIT_EVT_ANY, someFunction);
 uBit.io.P0.isTouched();
 ```
@@ -109,7 +109,7 @@ Constructor. Create a  MicroBitPin
 >  <div style='color:#008080; display:inline-block'>PinCapability</div> *capability* - the capabilities this  MicroBitPin  instance should have. (PIN_CAPABILITY_DIGITAL, PIN_CAPABILITY_ANALOG, PIN_CAPABILITY_TOUCH, PIN_CAPABILITY_AD, PIN_CAPABILITY_ALL)
 #####Example
 ```cpp
- MicroBitPin P0(MICROBIT_ID_IO_P0, MICROBIT_PIN_P0, PIN_CAPABILITY_ALL); 
+ MicroBitPin P0(MICROBIT_ID_IO_P0, MICROBIT_PIN_P0, PIN_CAPABILITY_ALL);
 ```
 ##setDigitalValue
 <br/>
@@ -123,8 +123,8 @@ Configures this IO pin as a digital output (if necessary) and sets the pin to 'v
 MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if value is out of range, or MICROBIT_NOT_SUPPORTED if the given pin does not have digital capability.
 #####Example
 ```cpp
- MicroBitPin P0(MICROBIT_ID_IO_P0, MICROBIT_PIN_P0, PIN_CAPABILITY_BOTH); 
- P0.setDigitalValue(1); // P0 is now HI 
+ MicroBitPin P0(MICROBIT_ID_IO_P0, MICROBIT_PIN_P0, PIN_CAPABILITY_BOTH);
+ P0.setDigitalValue(1); // P0 is now HI
 ```
 ##getDigitalValue
 <br/>
@@ -135,8 +135,8 @@ Configures this IO pin as a digital input (if necessary) and tests its current v
 1 if this input is high, 0 if input is LO, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability.
 #####Example
 ```cpp
- MicroBitPin P0(MICROBIT_ID_IO_P0, MICROBIT_PIN_P0, PIN_CAPABILITY_BOTH); 
- P0.getDigitalValue(); // P0 is either 0 or 1; 
+ MicroBitPin P0(MICROBIT_ID_IO_P0, MICROBIT_PIN_P0, PIN_CAPABILITY_BOTH);
+ P0.getDigitalValue(); // P0 is either 0 or 1;
 ```
 ##setAnalogValue
 <br/>
@@ -147,7 +147,7 @@ Configures this IO pin as an analog/pwm output, and change the output value to t
 
 >  <div style='color:#008080; display:inline-block'>int</div> *value* - the level to set on the output pin, in the range 0 - 1024
 #####Returns
-MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if value is out of range, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability. 
+MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if value is out of range, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability.
 ##setServoValue
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> setServoValue( <div style='color:#008080; display:inline-block'>int</div> value)
@@ -157,7 +157,7 @@ Configures this IO pin as an analog/pwm output (if necessary) and configures the
 
 >  <div style='color:#008080; display:inline-block'>int</div> *value* - the level to set on the output pin, in the range 0 - 180.
 #####Returns
-MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if value is out of range, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability. 
+MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if value is out of range, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability.
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> setServoValue( <div style='color:#008080; display:inline-block'>int</div> value,  <div style='color:#008080; display:inline-block'>int</div> range)
 #####Description
@@ -168,7 +168,7 @@ Configures this IO pin as an analog/pwm output (if necessary) and configures the
 
 >  <div style='color:#008080; display:inline-block'>int</div> *range* - which gives the span of possible values the i.e. the lower and upper bounds (center +/- range/2). Defaults to MICROBIT_PIN_DEFAULT_SERVO_RANGE.
 #####Returns
-MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if value is out of range, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability. 
+MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if value is out of range, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability.
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> setServoValue( <div style='color:#008080; display:inline-block'>int</div> value,  <div style='color:#008080; display:inline-block'>int</div> range,  <div style='color:#008080; display:inline-block'>int</div> center)
 #####Description
@@ -181,7 +181,7 @@ Configures this IO pin as an analog/pwm output (if necessary) and configures the
 
 >  <div style='color:#008080; display:inline-block'>int</div> *center* - the center point from which to calculate the lower and upper bounds. Defaults to MICROBIT_PIN_DEFAULT_SERVO_CENTER
 #####Returns
-MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if value is out of range, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability. 
+MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if value is out of range, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability.
 ##getAnalogValue
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> getAnalogValue()
@@ -191,8 +191,8 @@ Configures this IO pin as an analogue input (if necessary), and samples the Pin 
 the current analogue level on the pin, in the range 0 - 1024, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability.
 #####Example
 ```cpp
- MicroBitPin P0(MICROBIT_ID_IO_P0, MICROBIT_PIN_P0, PIN_CAPABILITY_BOTH); 
- P0.getAnalogValue(); // P0 is a value in the range of 0 - 1024 
+ MicroBitPin P0(MICROBIT_ID_IO_P0, MICROBIT_PIN_P0, PIN_CAPABILITY_BOTH);
+ P0.getAnalogValue(); // P0 is a value in the range of 0 - 1024
 ```
 ##isInput
 <br/>
@@ -200,28 +200,28 @@ the current analogue level on the pin, in the range 0 - 1024, or MICROBIT_NOT_SU
 #####Description
 Determines if this IO pin is currently configured as an input.
 #####Returns
-1 if pin is an analog or digital input, 0 otherwise. 
+1 if pin is an analog or digital input, 0 otherwise.
 ##isOutput
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> isOutput()
 #####Description
 Determines if this IO pin is currently configured as an output.
 #####Returns
-1 if pin is an analog or digital output, 0 otherwise. 
+1 if pin is an analog or digital output, 0 otherwise.
 ##isDigital
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> isDigital()
 #####Description
 Determines if this IO pin is currently configured for digital use.
 #####Returns
-1 if pin is digital, 0 otherwise. 
+1 if pin is digital, 0 otherwise.
 ##isAnalog
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> isAnalog()
 #####Description
 Determines if this IO pin is currently configured for analog use.
 #####Returns
-1 if pin is analog, 0 otherwise. 
+1 if pin is analog, 0 otherwise.
 ##isTouched
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> isTouched()
@@ -231,16 +231,16 @@ Configures this IO pin as a "makey makey" style touch sensor (if necessary) and 
 1 if pin is touched, 0 if not, or MICROBIT_NOT_SUPPORTED if this pin does not support touch capability.
 #####Example
 ```cpp
- MicroBitMessageBus bus; 
- 
- MicroBitPin P0(MICROBIT_ID_IO_P0, MICROBIT_PIN_P0, PIN_CAPABILITY_ALL); 
- if(P0.isTouched()) 
- { 
- //do something! 
- } 
- 
- // subscribe to events generated by this pin! 
- bus.listen(MICROBIT_ID_IO_P0, MICROBIT_BUTTON_EVT_CLICK, someFunction); 
+ MicroBitMessageBus bus;
+
+ MicroBitPin P0(MICROBIT_ID_IO_P0, MICROBIT_PIN_P0, PIN_CAPABILITY_ALL);
+ if(P0.isTouched())
+ {
+ //do something!
+ }
+
+ // subscribe to events generated by this pin!
+ bus.listen(MICROBIT_ID_IO_P0, MICROBIT_BUTTON_EVT_CLICK, someFunction);
 ```
 ##setServoPulseUs
 <br/>
@@ -251,7 +251,7 @@ Configures this IO pin as an analog/pwm output if it isn't already, configures t
 
 >  <div style='color:#008080; display:inline-block'>int</div> *pulseWidth* - the desired pulse width in microseconds.
 #####Returns
-MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if value is out of range, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability. 
+MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if value is out of range, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability.
 ##setAnalogPeriod
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> setAnalogPeriod( <div style='color:#008080; display:inline-block'>int</div> period)
@@ -261,7 +261,7 @@ Configures the PWM period of the analog output to the given value.
 
 >  <div style='color:#008080; display:inline-block'>int</div> *period* - The new period for the analog output in milliseconds.
 #####Returns
-MICROBIT_OK on success, or MICROBIT_NOT_SUPPORTED if the given pin is not configured as an analog output. 
+MICROBIT_OK on success, or MICROBIT_NOT_SUPPORTED if the given pin is not configured as an analog output.
 ##setAnalogPeriodUs
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> setAnalogPeriodUs( <div style='color:#008080; display:inline-block'>int</div> period)
@@ -271,20 +271,20 @@ Configures the PWM period of the analog output to the given value.
 
 >  <div style='color:#008080; display:inline-block'>int</div> *period* - The new period for the analog output in microseconds.
 #####Returns
-MICROBIT_OK on success, or MICROBIT_NOT_SUPPORTED if the given pin is not configured as an analog output. 
+MICROBIT_OK on success, or MICROBIT_NOT_SUPPORTED if the given pin is not configured as an analog output.
 ##getAnalogPeriodUs
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> getAnalogPeriodUs()
 #####Description
 Obtains the PWM period of the analog output in microseconds.
 #####Returns
-the period on success, or MICROBIT_NOT_SUPPORTED if the given pin is not configured as an analog output. 
+the period on success, or MICROBIT_NOT_SUPPORTED if the given pin is not configured as an analog output.
 ##getAnalogPeriod
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> getAnalogPeriod()
 #####Description
 Obtains the PWM period of the analog output in milliseconds.
 #####Returns
-the period on success, or MICROBIT_NOT_SUPPORTED if the given pin is not configured as an analog output. 
+the period on success, or MICROBIT_NOT_SUPPORTED if the given pin is not configured as an analog output.
 ____
 [comment]: <> ({"end":"MicroBitPin"})

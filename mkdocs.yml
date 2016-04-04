@@ -4,7 +4,6 @@ pages:
     - General:
         - Introduction: 'index.md'
         - Concepts: 'concepts.md'
-        - Getting Started: 'getting-started.md'
         - Online Development: 'installing-yotta.md'
         - Offline Development: 'installing-yotta.md'
         - The Device: 'device.md'

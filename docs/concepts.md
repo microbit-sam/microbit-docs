@@ -36,7 +36,7 @@ To show just how easy it is to get started, the following code shows how you wou
 This uses the uBit object to access the display component, then instructs the display to scroll the given string across
 the LEDs. Try to use the ```uBit``` menu tab above to find the documentation for this scroll() function!
 
-```c++
+```cpp
    uBit.display.scroll("Hello micro:bit!");
 ```
 
@@ -66,7 +66,7 @@ and an event MICROBIT_BUTTON_EVT_CLICK with the value '3' is generted when a but
 
 Creating an event is easy - just create a MicroBitEvent with the source avd value you need:
 
-```c++
+```cpp
 MicroBitEvent(MICROBIT_ID_BUTTON_A, MICROBIT_BUTTON_EVT_CLICK);
 ```
 
