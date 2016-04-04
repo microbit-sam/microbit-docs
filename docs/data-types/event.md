@@ -2,6 +2,40 @@
 
 ##Overview
 
+Computer programs execute sequentially - one line after another, following the logic of the progrmam you have written.
+Sometimes though, we wnt to be able to determine *when* something has happened, and write some code to decide what should 
+happen in that case. For example, maybe you want to know when a button has been pressed, when your micro:bit has been shaken,
+or when some data has been sent to you over the micro:bit radio. For these sorts of cases, we create a [MicroBitEvent](data-types/event.md).
+
+
+## Creating Events
+Many componets will raise events when interesting things occur (e.g. MicroBitAccelerometer will raise events to indicate that the
+micro:bit has be been shaken, or is in freefall. MicroBitButton will send events on a range of button up, down, click and hold events. 
+Programmers are also free to send their own events whenever they feel it would be useful. MicroBitvents are *very* simple, and consist of
+only two numbers:
+
+  - A source. A number identifying the component that created the event.
+  - A value. A number unqiue to the source that identifies the event.
+
+The documentation for each component defines its event source, and all the events it may generate, and also gives a name to these
+event values. For example, take a look at the [button documentation](ubit/button.md) to see that the source MICROBIT_ID_BUTTON_A has the value '1',
+and an event MICROBIT_BUTTON_EVT_CLICK with the value '3' is generted when a button is clicked.
+
+Creating an event is easy - just create a MicroBitEvent with the source avd value you need, and the runtime takes care of the rest:
+
+```c++
+MicroBitEvent(MICROBIT_ID_BUTTON_A, MICROBIT_BUTTON_EVT_CLICK);
+```
+
+Feel free to create your own events lke this too. Just try to avoid using any source ID that is already used by the runtime! :-)
+See the [messageBus](ubit/messageBus.md) page for a complete table of the reserved source IDs.
+
+
+## Detecting Events
+The micro:bit runtime has a component called the MicroBitMessgeBus, and its job is remember which events your program is interested in, and 
+to deliver those MicroBitEvents to your program as they occur. To find out when an event happens, you need to create a function in your program,
+then tell the message bus which event you want to attach this function to. This is known as writing an **event handler**.  
+You do this through the MicroBitMessageBus [listen](ubit/messagebus.md) function.  
 
 
 #API

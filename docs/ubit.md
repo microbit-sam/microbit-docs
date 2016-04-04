@@ -2,11 +2,11 @@
 
 ##Overview
 
-uBit is the global singleton provided by the runtime and is an instance of the
-MicroBit class.
+Although the runtime is built from lots of small components, we also provide an easy to use pre-packaged collection of the commonly used components 
+all in one place. This makes it much easier to start programming your micro:bit in C. This grouping is provided by a C++ class called MicroBit.  The MicroBit class has a number of 
+member variables, that operate as device drivers to control the most commonly used features of the micro:bit.
 
-The MicroBit class has a number of member variables, that operate as device drivers
-to control the various features of the micro:bit.
+There is an instance of the MicroBit class created as a global variable in all the sample programs, and it contains:
 
 >    uBit {<br/>
 >    &emsp;&emsp;[.i2c](ubit/i2c.md),<br/>
@@ -25,8 +25,10 @@ to control the various features of the micro:bit.
 >    &emsp;&emsp;[.radio](ubit/radio.md),<br/>
 >    }
 
-For example, if we needed to scroll some text across the display, we simply would
-write the following:
+You can use dot operator '.' to any of these resources inside uBit, then again to access any of the functions they provide. There is a complete list of the
+functions available under the ```uBit``` menu item above.
+
+For example, if we needed to scroll some text across the display, we simply would write the following:
 
 ```c++
 uBit.display.scroll("HELLO!");
@@ -42,6 +44,7 @@ for(int i = 3; i > 0; i--)
     uBit.sleep(1000);
 }
 
+// or alternatively...
 uBit.serial.sendString("Code!");
 ```
 

@@ -3,8 +3,10 @@ repo_url: https://github.com/lancaster-university/microbit-dal/
 pages:
     - General:
         - Introduction: 'index.md'
-        - Offline Development: 'installing-yotta.md'
         - Concepts: 'concepts.md'
+        - Getting Started: 'getting-started.md'
+        - Online Development: 'installing-yotta.md'
+        - Offline Development: 'installing-yotta.md'
         - The Device: 'device.md'
     - uBit:
         - uBit: 'ubit.md'
@@ -25,8 +27,17 @@ pages:
         - MicroBitImage: "data-types/image.md"
         - MicroBitEvent: "data-types/event.md"
         - ManagedString: "data-types/string.md"
+        - PacketBuffer: "data-types/packetbuffer.md"
     - BLE:
         - Profile: "ble/profile.md"
+        - AccelerometerService: "ble/accelerometer-service.md"
+        - ButtonService: "ble/button-service.md"
+        - DFUService: "ble/dfu-service.md"
+        - EventService: "ble/event-service.md"
+        - IOPinService: "ble/iopin-service.md"
+        - LEDService: "ble/led-service.md"
+        - MagnetometerService: "ble/magnetometer-service.md"
+        - TemperatureService: "ble/temperature-service.md"
     - Extras:
         - MicroBitLightSensor: "extras/light-sensing.md"
 #--------------HIDDEN PAGES BEGIN
