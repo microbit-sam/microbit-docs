@@ -566,6 +566,8 @@ def gen_member_func_doc(class_name, member_functions):
 # the trigger for generating our documentation
 ###
 def generate_mkdocs():
+    global member_func_filter
+
     file_names = find_files('docs','*.md')
     section_kind = ["public-func"]
     meta_data_regex = re.compile( r'\[comment\]: <> \((.*?)\)', re.MULTILINE | re.DOTALL )
@@ -582,6 +584,8 @@ def generate_mkdocs():
         previous = ""
 
         for line_number, line in enumerate(file_lines, 1):
+
+            filter_preserved = member_func_filter
 
             result = re.findall(meta_data_regex,line)
 
@@ -600,6 +604,11 @@ def generate_mkdocs():
                 else:
                     raise Exception('There isn\'t a match for the meta_data \''+ previous + "'")
 
+                if "filter" in meta_data:
+                    for member_function in meta_data["filter"]:
+                        member_func_filter = member_func_filter + [ str(member_function) ]
+
+                    print "Custom filter applied: " + str(member_func_filter)
 
                 doxygen_class_xml = xml.etree.ElementTree.parse("./xml/class" + meta_data['className'] + ".xml").getroot()
 
@@ -612,12 +621,19 @@ def generate_mkdocs():
                             if new_member is not None:
                                 member_functions.append(new_member)
 
+                if meta_data['className'] is "MicroBit":
+                    print str(member_functions)
+                    exit(1)
+
                 before = file_lines[:line_number]
                 after = file_lines[line_number:]
 
                 between = gen_member_func_doc(meta_data['className'] ,member_functions)
 
                 write(filename, before + between + after)
+
+                #restore our default filter.
+                member_func_filter = filter_preserved
 
 if generate_doxygen:
     header_dest = "./inc"
