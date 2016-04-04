@@ -165,7 +165,7 @@ taking place with a component. This is primarily used as a power management mech
 <br/>
 ####MicroBitMessageBus()
 #####Description
-Default constructor. Anticipating only one MessageBus per device, as filtering is handled within the class. 
+Default constructor.
 ##send
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> send( <div style='color:#008080; display:inline-block'>MicroBitEvent</div> evt)
@@ -173,14 +173,21 @@ Default constructor. Anticipating only one MessageBus per device, as filtering i
 Queues the given event to be sent to all registered recipients.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>MicroBitEvent</div> *evt*
+>  <div style='color:#008080; display:inline-block'>MicroBitEvent</div> *evt* - The event to send.
 #####Example
 ```cpp
- MicroBitEvent evt(id,MICROBIT_BUTTON_EVT_DOWN,ticks,false); 
- evt.fire(); 
- //OR YOU CAN DO THIS... 
- MicroBitEvent evt(id,MICROBIT_BUTTON_EVT_DOWN); 
-
+ MicroBitMessageBus bus; 
+ 
+ // Creates and sends the MicroBitEvent using bus. 
+ MicrobitEvent evt(MICROBIT_ID_BUTTON_A, MICROBIT_BUTTON_EVT_CLICK); 
+ 
+ // Creates the MicrobitEvent, but delays the sending of that event. 
+ MicrobitEvent evt1(MICROBIT_ID_BUTTON_A, MICROBIT_BUTTON_EVT_CLICK, CREATE_ONLY); 
+ 
+ bus.send(evt1); 
+ 
+ // This has the same effect! 
+ evt1.fire() 
 ```
 ##process
 <br/>
@@ -189,35 +196,43 @@ Queues the given event to be sent to all registered recipients.
 Internal function, used to deliver the given event to all relevant recipients. Normally, this is called once an event has been removed from the event queue.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>MicroBitEvent  &</div> *evt* - The event to send. 
+>  <div style='color:#008080; display:inline-block'>MicroBitEvent  &</div> *evt* - The event to send.
 #####Returns
-1 if all matching listeners were processed, 0 if further processing is required. 
+1 if all matching listeners were processed, 0 if further processing is required.
+
+!!! note
+    It is recommended that all external code uses the  send()  function instead of this function, or the constructors provided by MicrobitEvent. 
+
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> process( <div style='color:#008080; display:inline-block'>MicroBitEvent  &</div> evt,  <div style='color:#008080; display:inline-block'>bool</div> urgent)
 #####Description
 Internal function, used to deliver the given event to all relevant recipients. Normally, this is called once an event has been removed from the event queue.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>MicroBitEvent  &</div> *evt* - The event to send. 
+>  <div style='color:#008080; display:inline-block'>MicroBitEvent  &</div> *evt* - The event to send.
 
->  <div style='color:#008080; display:inline-block'>bool</div> *urgent* - The type of listeners to process (optional). If set to true, only listeners defined as urgent and non-blocking will be processed otherwise, all other (standard) listeners will be processed. 
+>  <div style='color:#008080; display:inline-block'>bool</div> *urgent* - The type of listeners to process (optional). If set to true, only listeners defined as urgent and non-blocking will be processed otherwise, all other (standard) listeners will be processed. Defaults to false.
 #####Returns
-1 if all matching listeners were processed, 0 if further processing is required. 
+1 if all matching listeners were processed, 0 if further processing is required.
+
+!!! note
+    It is recommended that all external code uses the  send()  function instead of this function, or the constructors provided by MicrobitEvent. 
+
 ##elementAt
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>MicroBitListener</div> elementAt( <div style='color:#008080; display:inline-block'>int</div> n)
 #####Description
-Returns the microBitListener with the given position in our list.  MicroBitListener
+Returns the microBitListener with the given position in our list.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>int</div> *n* - The position in the list to return. 
+>  <div style='color:#008080; display:inline-block'>int</div> *n* - The position in the list to return.
 #####Returns
 the  MicroBitListener  at postion n in the list, or NULL if the position is invalid. 
 ##add
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> add( <div style='color:#008080; display:inline-block'>MicroBitListener  *</div> newListener)
 #####Description
-Add the given  MicroBitListener MicroBitListener
+Add the given  MicroBitListener
 #####Parameters
 
 >  <div style='color:#008080; display:inline-block'>MicroBitListener  *</div> *newListener*
@@ -227,7 +242,7 @@ MICROBIT_OK if the listener is valid, MICROBIT_INVALID_PARAMETER otherwise.
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> remove( <div style='color:#008080; display:inline-block'>MicroBitListener  *</div> newListener)
 #####Description
-Remove the given  MicroBitListener MicroBitListener
+Remove the given  MicroBitListener
 #####Parameters
 
 >  <div style='color:#008080; display:inline-block'>MicroBitListener  *</div> *newListener*

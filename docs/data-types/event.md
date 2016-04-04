@@ -3,14 +3,14 @@
 ##Overview
 
 Computer programs execute sequentially - one line after another, following the logic of the progrmam you have written.
-Sometimes though, we wnt to be able to determine *when* something has happened, and write some code to decide what should 
+Sometimes though, we wnt to be able to determine *when* something has happened, and write some code to decide what should
 happen in that case. For example, maybe you want to know when a button has been pressed, when your micro:bit has been shaken,
-or when some data has been sent to you over the micro:bit radio. For these sorts of cases, we create a [MicroBitEvent](data-types/event.md).
+or when some data has been sent to you over the micro:bit radio. For these sorts of cases, we create a MicroBitEvent.
 
 
 ## Creating Events
 Many componets will raise events when interesting things occur (e.g. MicroBitAccelerometer will raise events to indicate that the
-micro:bit has be been shaken, or is in freefall. MicroBitButton will send events on a range of button up, down, click and hold events. 
+micro:bit has be been shaken, or is in freefall. MicroBitButton will send events on a range of button up, down, click and hold events.
 Programmers are also free to send their own events whenever they feel it would be useful. MicroBitvents are *very* simple, and consist of
 only two numbers:
 
@@ -18,7 +18,7 @@ only two numbers:
   - A value. A number unqiue to the source that identifies the event.
 
 The documentation for each component defines its event source, and all the events it may generate, and also gives a name to these
-event values. For example, take a look at the [button documentation](ubit/button.md) to see that the source MICROBIT_ID_BUTTON_A has the value '1',
+event values. For example, take a look at the [button documentation](../ubit/button.md) to see that the source MICROBIT_ID_BUTTON_A has the value '1',
 and an event MICROBIT_BUTTON_EVT_CLICK with the value '3' is generted when a button is clicked.
 
 Creating an event is easy - just create a MicroBitEvent with the source avd value you need, and the runtime takes care of the rest:
@@ -28,14 +28,14 @@ MicroBitEvent(MICROBIT_ID_BUTTON_A, MICROBIT_BUTTON_EVT_CLICK);
 ```
 
 Feel free to create your own events lke this too. Just try to avoid using any source ID that is already used by the runtime! :-)
-See the [messageBus](ubit/messageBus.md) page for a complete table of the reserved source IDs.
+See the [messageBus](../ubit/messageBus.md) page for a complete table of the reserved source IDs.
 
 
 ## Detecting Events
-The micro:bit runtime has a component called the MicroBitMessgeBus, and its job is remember which events your program is interested in, and 
+The micro:bit runtime has a component called the MicroBitMessgeBus, and its job is remember which events your program is interested in, and
 to deliver those MicroBitEvents to your program as they occur. To find out when an event happens, you need to create a function in your program,
 then tell the message bus which event you want to attach this function to. This is known as writing an **event handler**.  
-You do this through the MicroBitMessageBus [listen](ubit/messagebus.md) function.  
+You do this through the MicroBitMessageBus [listen](../ubit/messageBus.md) function.  
 
 
 #API
@@ -44,41 +44,47 @@ You do this through the MicroBitMessageBus [listen](ubit/messagebus.md) function
 <br/>
 ####MicroBitEvent( <div style='color:#008080; display:inline-block'>uint16_t</div> source,  <div style='color:#008080; display:inline-block'>uint16_t</div> value)
 #####Description
-Constructor.  MicroBit MicroBitEvent MicroBitEvent EventModel MicroBitEvent
+Constructor.
 #####Parameters
 
 >  <div style='color:#008080; display:inline-block'>uint16_t</div> *source*
 
->  <div style='color:#008080; display:inline-block'>uint16_t</div> *value* - Component specific code indicating the cause of the event. 
+>  <div style='color:#008080; display:inline-block'>uint16_t</div> *value* - A component specific code indicating the cause of the event.
 #####Example
 ```cpp
- MicrobitEvent evt(id,MICROBIT_BUTTON_EVT_CLICK); 
+ // Create and launch an event using the default configuration
+ MicrobitEvent evt(id,MICROBIT_BUTTON_EVT_CLICK);
 
+ // Create an event only, do not fire onto an EventModel.
+ MicrobitEvent evt(id,MICROBIT_BUTTON_EVT_CLICK,CREATE_AND_FIRE);
 ```
 <br/>
 ####MicroBitEvent( <div style='color:#008080; display:inline-block'>uint16_t</div> source,  <div style='color:#008080; display:inline-block'>uint16_t</div> value,  <div style='color:#008080; display:inline-block'>MicroBitEventLaunchMode</div> mode)
 #####Description
-Constructor.  MicroBit MicroBitEvent MicroBitEvent EventModel MicroBitEvent
+Constructor.
 #####Parameters
 
 >  <div style='color:#008080; display:inline-block'>uint16_t</div> *source*
 
->  <div style='color:#008080; display:inline-block'>uint16_t</div> *value* - Component specific code indicating the cause of the event. 
+>  <div style='color:#008080; display:inline-block'>uint16_t</div> *value* - A component specific code indicating the cause of the event.
 
->  <div style='color:#008080; display:inline-block'>MicroBitEventLaunchMode</div> *mode* - optional definition of how the event should be processed after construction (if at all):
+>  <div style='color:#008080; display:inline-block'>MicroBitEventLaunchMode</div> *mode* - Optional definition of how the event should be processed after construction (if at all): CREATE_ONLY:  MicroBitEvent  is initialised, and no further processing takes place. CREATE_AND_FIRE:  MicroBitEvent  is initialised, and its event handlers are immediately fired (not suitable for use in interrupts!).
 #####Example
 ```cpp
- MicrobitEvent evt(id,MICROBIT_BUTTON_EVT_CLICK); 
+ // Create and launch an event using the default configuration
+ MicrobitEvent evt(id,MICROBIT_BUTTON_EVT_CLICK);
 
+ // Create an event only, do not fire onto an EventModel.
+ MicrobitEvent evt(id,MICROBIT_BUTTON_EVT_CLICK,CREATE_AND_FIRE);
 ```
 <br/>
 ####MicroBitEvent()
 #####Description
-Default constructor - initialises all values, and sets timestamp to the current time. 
+Default constructor - initialises all values, and sets timestamp to the current time.
 ##fire
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>void</div> fire()
 #####Description
-Fires the represented event onto the message bus using the default configuration. 
+Fires this  MicroBitEvent EventModel
 ____
 [comment]: <> ({"end":"MicroBitEvent"})

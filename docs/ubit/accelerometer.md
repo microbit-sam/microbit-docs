@@ -62,44 +62,47 @@ can be used.
 <br/>
 ####MicroBitAccelerometer( <div style='color:#008080; display:inline-block'>MicroBitI2C  &</div> _i2c)
 #####Description
-Constructor. Create an accelerometer representation with the given ID. 
+Constructor. Create a software abstraction of an accelerometer.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>MicroBitI2C  &</div> *_i2c*
+>  <div style='color:#008080; display:inline-block'>MicroBitI2C  &</div> *_i2c* - an instance of  MicroBitI2C  used to communicate with the onboard accelerometer.
 #####Example
 ```cpp
- accelerometer(MICROBIT_ID_ACCELEROMETER, MMA8653_DEFAULT_ADDR) 
-
+ MicroBitI2C i2c = MicroBitI2C(I2C_SDA0, I2C_SCL0); 
+ 
+ MicroBitAccelerometer accelerometer = MicroBitAccelerometer(i2c); 
 ```
 <br/>
 ####MicroBitAccelerometer( <div style='color:#008080; display:inline-block'>MicroBitI2C  &</div> _i2c,  <div style='color:#008080; display:inline-block'>uint16_t</div> address)
 #####Description
-Constructor. Create an accelerometer representation with the given ID. 
+Constructor. Create a software abstraction of an accelerometer.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>MicroBitI2C  &</div> *_i2c*
+>  <div style='color:#008080; display:inline-block'>MicroBitI2C  &</div> *_i2c* - an instance of  MicroBitI2C  used to communicate with the onboard accelerometer.
 
->  <div style='color:#008080; display:inline-block'>uint16_t</div> *address* - the default base address of the accelerometer.
+>  <div style='color:#008080; display:inline-block'>uint16_t</div> *address* - the default I2C address of the accelerometer. Defaults to: MMA8653_DEFAULT_ADDR.
 #####Example
 ```cpp
- accelerometer(MICROBIT_ID_ACCELEROMETER, MMA8653_DEFAULT_ADDR) 
-
+ MicroBitI2C i2c = MicroBitI2C(I2C_SDA0, I2C_SCL0); 
+ 
+ MicroBitAccelerometer accelerometer = MicroBitAccelerometer(i2c); 
 ```
 <br/>
 ####MicroBitAccelerometer( <div style='color:#008080; display:inline-block'>MicroBitI2C  &</div> _i2c,  <div style='color:#008080; display:inline-block'>uint16_t</div> address,  <div style='color:#008080; display:inline-block'>uint16_t</div> id)
 #####Description
-Constructor. Create an accelerometer representation with the given ID. 
+Constructor. Create a software abstraction of an accelerometer.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>MicroBitI2C  &</div> *_i2c*
+>  <div style='color:#008080; display:inline-block'>MicroBitI2C  &</div> *_i2c* - an instance of  MicroBitI2C  used to communicate with the onboard accelerometer.
 
->  <div style='color:#008080; display:inline-block'>uint16_t</div> *address* - the default base address of the accelerometer.
+>  <div style='color:#008080; display:inline-block'>uint16_t</div> *address* - the default I2C address of the accelerometer. Defaults to: MMA8653_DEFAULT_ADDR.
 
->  <div style='color:#008080; display:inline-block'>uint16_t</div> *id* - the ID of the new object. 
+>  <div style='color:#008080; display:inline-block'>uint16_t</div> *id* - the unique  EventModel  id of this component. Defaults to: MICROBIT_ID_ACCELEROMETER
 #####Example
 ```cpp
- accelerometer(MICROBIT_ID_ACCELEROMETER, MMA8653_DEFAULT_ADDR) 
-
+ MicroBitI2C i2c = MicroBitI2C(I2C_SDA0, I2C_SCL0); 
+ 
+ MicroBitAccelerometer accelerometer = MicroBitAccelerometer(i2c); 
 ```
 ##configure
 <br/>
@@ -112,97 +115,111 @@ MICROBIT_OK on success, MICROBIT_I2C_ERROR if the accelerometer could not be con
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> updateSample()
 #####Description
-Reads the acceleration data from the accelerometer, and stores it in our buffer. This is called by the idle thread, when the accelerometer indicates it needs updating.
+Reads the acceleration data from the accelerometer, and stores it in our buffer. This only happens if the accelerometer indicates that it has new data via int1.
 #####Returns
 MICROBIT_OK on success, MICROBIT_I2C_ERROR if the read request fails. 
 ##setPeriod
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> setPeriod( <div style='color:#008080; display:inline-block'>int</div> period)
 #####Description
-Attempts to set the sample rate of the accelerometer to the specified value (in ms). n.b. the requested rate may not be possible on the hardware. In this case, the nearest lower rate is chosen. 
+Attempts to set the sample rate of the accelerometer to the specified value (in ms).
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>int</div> *period* - the requested time between samples, in milliseconds. 
+>  <div style='color:#008080; display:inline-block'>int</div> *period* - the requested time between samples, in milliseconds.
 #####Returns
-MICROBIT_OK on success, MICROBIT_I2C_ERROR is the request fails. 
+MICROBIT_OK on success, MICROBIT_I2C_ERROR is the request fails.
+#####Example
+```cpp
+ // sample rate is now 20 ms. 
+ accelerometer.setPeriod(20); 
+```
+
+!!! note
+    The requested rate may not be possible on the hardware. In this case, the nearest lower rate is chosen. 
+
 ##getPeriod
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> getPeriod()
 #####Description
-Reads the currently configured sample rate of the accelerometer. 
+Reads the currently configured sample rate of the accelerometer.
 #####Returns
 The time between samples, in milliseconds. 
 ##setRange
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> setRange( <div style='color:#008080; display:inline-block'>int</div> range)
 #####Description
-Attempts to set the sample range of the accelerometer to the specified value (in g). n.b. the requested range may not be possible on the hardware. In this case, the nearest lower rate is chosen. 
+Attempts to set the sample range of the accelerometer to the specified value (in g).
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>int</div> *range* - The requested sample range of samples, in g. 
+>  <div style='color:#008080; display:inline-block'>int</div> *range* - The requested sample range of samples, in g.
 #####Returns
-MICROBIT_OK on success, MICROBIT_I2C_ERROR is the request fails. 
+MICROBIT_OK on success, MICROBIT_I2C_ERROR is the request fails.
+#####Example
+```cpp
+ // the sample range of the accelerometer is now 8G. 
+ accelerometer.setRange(8); 
+```
+
+!!! note
+    The requested range may not be possible on the hardware. In this case, the nearest lower range is chosen. 
+
 ##getRange
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> getRange()
 #####Description
-Reads the currently configured sample range of the accelerometer. 
+Reads the currently configured sample range of the accelerometer.
 #####Returns
 The sample range, in g. 
 ##whoAmI
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> whoAmI()
 #####Description
-Attempts to determine the 8 bit ID from the accelerometer. 
+Attempts to read the 8 bit ID from the accelerometer, this can be used for validation purposes.
 #####Returns
 the 8 bit ID returned by the accelerometer, or MICROBIT_I2C_ERROR if the request fails.
 #####Example
 ```cpp
- uBit.accelerometer.whoAmI(); 
-
+ accelerometer.whoAmI(); 
 ```
 ##getX
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> getX()
 #####Description
-Reads the X axis value of the latest update from the accelerometer. 
+Reads the value of the X axis from the latest update retrieved from the accelerometer.
 #####Returns
 The force measured in the X axis, in milli-g.
 #####Example
 ```cpp
- uBit.accelerometer.getX(); 
-
+ accelerometer.getX(); 
 ```
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> getX( <div style='color:#008080; display:inline-block'>MicroBitCoordinateSystem</div> system)
 #####Description
-Reads the X axis value of the latest update from the accelerometer. 
+Reads the value of the X axis from the latest update retrieved from the accelerometer.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>MicroBitCoordinateSystem</div> *system* - The coordinate system to use. By default, a simple cartesian system is provided. 
+>  <div style='color:#008080; display:inline-block'>MicroBitCoordinateSystem</div> *system* - The coordinate system to use. By default, a simple cartesian system is provided.
 #####Returns
 The force measured in the X axis, in milli-g.
 #####Example
 ```cpp
- uBit.accelerometer.getX(); 
-
+ accelerometer.getX(); 
 ```
 ##getY
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> getY()
 #####Description
-Reads the Y axis value of the latest update from the accelerometer. 
+Reads the value of the Y axis from the latest update retrieved from the accelerometer.
 #####Returns
 The force measured in the Y axis, in milli-g.
 #####Example
 ```cpp
- uBit.accelerometer.getY(); 
-
+ accelerometer.getY(); 
 ```
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> getY( <div style='color:#008080; display:inline-block'>MicroBitCoordinateSystem</div> system)
 #####Description
-Reads the Y axis value of the latest update from the accelerometer. 
+Reads the value of the Y axis from the latest update retrieved from the accelerometer.
 #####Parameters
 
 >  <div style='color:#008080; display:inline-block'>MicroBitCoordinateSystem</div> *system*
@@ -210,25 +227,23 @@ Reads the Y axis value of the latest update from the accelerometer.
 The force measured in the Y axis, in milli-g.
 #####Example
 ```cpp
- uBit.accelerometer.getY(); 
-
+ accelerometer.getY(); 
 ```
 ##getZ
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> getZ()
 #####Description
-Reads the Z axis value of the latest update from the accelerometer. 
+Reads the value of the Z axis from the latest update retrieved from the accelerometer.
 #####Returns
 The force measured in the Z axis, in milli-g.
 #####Example
 ```cpp
- uBit.accelerometer.getZ(); 
-
+ accelerometer.getZ(); 
 ```
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> getZ( <div style='color:#008080; display:inline-block'>MicroBitCoordinateSystem</div> system)
 #####Description
-Reads the Z axis value of the latest update from the accelerometer. 
+Reads the value of the Z axis from the latest update retrieved from the accelerometer.
 #####Parameters
 
 >  <div style='color:#008080; display:inline-block'>MicroBitCoordinateSystem</div> *system*
@@ -236,55 +251,70 @@ Reads the Z axis value of the latest update from the accelerometer.
 The force measured in the Z axis, in milli-g.
 #####Example
 ```cpp
- uBit.accelerometer.getZ(); 
-
+ accelerometer.getZ(); 
 ```
 ##getPitch
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> getPitch()
 #####Description
-Provides a rotation compensated pitch of the device, based on the latest update from the accelerometer. 
+Provides a rotation compensated pitch of the device, based on the latest update retrieved from the accelerometer.
 #####Returns
 The pitch of the device, in degrees.
 #####Example
 ```cpp
- uBit.accelerometer.getPitch(); 
-
+ accelerometer.getPitch(); 
 ```
 ##getPitchRadians
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>float</div> getPitchRadians()
+#####Description
+Provides a rotation compensated pitch of the device, based on the latest update retrieved from the accelerometer.
+#####Returns
+The pitch of the device, in radians.
+#####Example
+```cpp
+ accelerometer.getPitchRadians(); 
+```
 ##getRoll
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> getRoll()
 #####Description
-Provides a rotation compensated roll of the device, based on the latest update from the accelerometer. 
+Provides a rotation compensated roll of the device, based on the latest update retrieved from the accelerometer.
 #####Returns
 The roll of the device, in degrees.
 #####Example
 ```cpp
- uBit.accelerometer.getRoll(); 
-
+ accelerometer.getRoll(); 
 ```
 ##getRollRadians
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>float</div> getRollRadians()
+#####Description
+Provides a rotation compensated roll of the device, based on the latest update retrieved from the accelerometer.
+#####Returns
+The roll of the device, in radians.
+#####Example
+```cpp
+ accelerometer.getRollRadians(); 
+```
 ##getGesture
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>BasicGesture</div> getGesture()
 #####Description
-Reads the last recorded gesture detected. 
+Retrieves the last recorded gesture.
 #####Returns
-The last gesture detected.
+The last gesture that was detected.
 #####Example
 ```cpp
- if (uBit.accelerometer.getGesture() == SHAKE) 
-
+ MicroBitDisplay display; 
+ 
+ if (accelerometer.getGesture() == SHAKE) 
+ display.scroll("SHAKE!"); 
 ```
 ##isIdleCallbackNeeded
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> isIdleCallbackNeeded()
 #####Description
-Returns 0 or 1. 1 indicates data is waiting to be read, zero means data is not ready to be read. 
+Returns 0 or 1. 1 indicates data is waiting to be read, zero means data is not ready to be read.
 ____
 [comment]: <> ({"end":"MicroBitAccelerometer"})

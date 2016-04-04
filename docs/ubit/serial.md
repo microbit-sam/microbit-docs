@@ -72,17 +72,16 @@ general purpose synchronisation.
 Constructor. Create an instance of  MicroBitSerial
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>PinName</div> *tx* - the Pin to be used for transmission 
+>  <div style='color:#008080; display:inline-block'>PinName</div> *tx* - the Pin to be used for transmission
 
->  <div style='color:#008080; display:inline-block'>PinName</div> *rx* - the Pin to be used for receiving data 
+>  <div style='color:#008080; display:inline-block'>PinName</div> *rx* - the Pin to be used for receiving data
 #####Example
 ```cpp
  MicroBitSerial serial(USBTX, USBRX); 
-
 ```
 
 !!! note
-    the default baud rate is 115200. More API details can be found: -https://github.com/mbedmicro/mbed/blob/master/libraries/mbed/api/SerialBase.h -https://github.com/mbedmicro/mbed/blob/master/libraries/mbed/api/Serial.h
+    the default baud rate is 115200. More API details can be found: -https://github.com/mbedmicro/mbed/blob/master/libraries/mbed/api/SerialBase.h -https://github.com/mbedmicro/mbed/blob/master/libraries/mbed/api/RawSerial.h
 
 <br/>
 ####MicroBitSerial( <div style='color:#008080; display:inline-block'>PinName</div> tx,  <div style='color:#008080; display:inline-block'>PinName</div> rx,  <div style='color:#008080; display:inline-block'>uint8_t</div> rxBufferSize)
@@ -90,19 +89,18 @@ Constructor. Create an instance of  MicroBitSerial
 Constructor. Create an instance of  MicroBitSerial
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>PinName</div> *tx* - the Pin to be used for transmission 
+>  <div style='color:#008080; display:inline-block'>PinName</div> *tx* - the Pin to be used for transmission
 
->  <div style='color:#008080; display:inline-block'>PinName</div> *rx* - the Pin to be used for receiving data 
+>  <div style='color:#008080; display:inline-block'>PinName</div> *rx* - the Pin to be used for receiving data
 
->  <div style='color:#008080; display:inline-block'>uint8_t</div> *rxBufferSize* - the size of the buffer to be used for receiving bytes 
+>  <div style='color:#008080; display:inline-block'>uint8_t</div> *rxBufferSize* - the size of the buffer to be used for receiving bytes
 #####Example
 ```cpp
  MicroBitSerial serial(USBTX, USBRX); 
-
 ```
 
 !!! note
-    the default baud rate is 115200. More API details can be found: -https://github.com/mbedmicro/mbed/blob/master/libraries/mbed/api/SerialBase.h -https://github.com/mbedmicro/mbed/blob/master/libraries/mbed/api/Serial.h
+    the default baud rate is 115200. More API details can be found: -https://github.com/mbedmicro/mbed/blob/master/libraries/mbed/api/SerialBase.h -https://github.com/mbedmicro/mbed/blob/master/libraries/mbed/api/RawSerial.h
 
 <br/>
 ####MicroBitSerial( <div style='color:#008080; display:inline-block'>PinName</div> tx,  <div style='color:#008080; display:inline-block'>PinName</div> rx,  <div style='color:#008080; display:inline-block'>uint8_t</div> rxBufferSize,  <div style='color:#008080; display:inline-block'>uint8_t</div> txBufferSize)
@@ -110,39 +108,38 @@ Constructor. Create an instance of  MicroBitSerial
 Constructor. Create an instance of  MicroBitSerial
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>PinName</div> *tx* - the Pin to be used for transmission 
+>  <div style='color:#008080; display:inline-block'>PinName</div> *tx* - the Pin to be used for transmission
 
->  <div style='color:#008080; display:inline-block'>PinName</div> *rx* - the Pin to be used for receiving data 
+>  <div style='color:#008080; display:inline-block'>PinName</div> *rx* - the Pin to be used for receiving data
 
->  <div style='color:#008080; display:inline-block'>uint8_t</div> *rxBufferSize* - the size of the buffer to be used for receiving bytes 
+>  <div style='color:#008080; display:inline-block'>uint8_t</div> *rxBufferSize* - the size of the buffer to be used for receiving bytes
 
 >  <div style='color:#008080; display:inline-block'>uint8_t</div> *txBufferSize* - the size of the buffer to be used for transmitting bytes
 #####Example
 ```cpp
  MicroBitSerial serial(USBTX, USBRX); 
-
 ```
 
 !!! note
-    the default baud rate is 115200. More API details can be found: -https://github.com/mbedmicro/mbed/blob/master/libraries/mbed/api/SerialBase.h -https://github.com/mbedmicro/mbed/blob/master/libraries/mbed/api/Serial.h
+    the default baud rate is 115200. More API details can be found: -https://github.com/mbedmicro/mbed/blob/master/libraries/mbed/api/SerialBase.h -https://github.com/mbedmicro/mbed/blob/master/libraries/mbed/api/RawSerial.h
 
 ##sendChar
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> sendChar( <div style='color:#008080; display:inline-block'>char</div> c)
 #####Description
-Sends a single character via Serial
+Sends a single character over the serial line.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>char</div> *c* - the character to send 
+>  <div style='color:#008080; display:inline-block'>char</div> *c* - the character to send
 #####Returns
 the number of bytes written, or MICROBIT_SERIAL_IN_USE if another fiber is using the serial instance for transmission. 
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> sendChar( <div style='color:#008080; display:inline-block'>char</div> c,  <div style='color:#008080; display:inline-block'>MicroBitSerialMode</div> mode)
 #####Description
-Sends a single character via Serial
+Sends a single character over the serial line.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>char</div> *c* - the character to send 
+>  <div style='color:#008080; display:inline-block'>char</div> *c* - the character to send
 
 >  <div style='color:#008080; display:inline-block'>MicroBitSerialMode</div> *mode* - the selected mode, one of: ASYNC, SYNC_SPINWAIT, SYNC_SLEEP. Each mode gives a different behaviour:  ASYNC - the character is copied into the txBuff and returns immediately.
 
@@ -163,7 +160,7 @@ the number of bytes written, or MICROBIT_SERIAL_IN_USE if another fiber is using
 Sends a  ManagedString
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>ManagedString</div> *s* - the string to send 
+>  <div style='color:#008080; display:inline-block'>ManagedString</div> *s* - the string to send
 #####Returns
 the number of bytes written, or MICROBIT_SERIAL_IN_USE if another fiber is using the serial instance for transmission. 
 <br/>
@@ -172,7 +169,7 @@ the number of bytes written, or MICROBIT_SERIAL_IN_USE if another fiber is using
 Sends a  ManagedString
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>ManagedString</div> *s* - the string to send 
+>  <div style='color:#008080; display:inline-block'>ManagedString</div> *s* - the string to send
 
 >  <div style='color:#008080; display:inline-block'>MicroBitSerialMode</div> *mode* - the selected mode, one of: ASYNC, SYNC_SPINWAIT, SYNC_SLEEP. Each mode gives a different behaviour:  ASYNC - bytes are copied into the txBuff and returns immediately.
 
@@ -189,23 +186,23 @@ the number of bytes written, or MICROBIT_SERIAL_IN_USE if another fiber is using
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> send( <div style='color:#008080; display:inline-block'>uint8_t *</div> buffer,  <div style='color:#008080; display:inline-block'>int</div> bufferLen)
 #####Description
-Sends a buffer of known length via serial
+Sends a buffer of known length over the serial line.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>uint8_t *</div> *buffer* - a pointer to the first character of the buffer 
+>  <div style='color:#008080; display:inline-block'>uint8_t *</div> *buffer* - a pointer to the first character of the buffer
 
->  <div style='color:#008080; display:inline-block'>int</div> *bufferLen* - a pointer to the first character of the buffer 
+>  <div style='color:#008080; display:inline-block'>int</div> *bufferLen* - a pointer to the first character of the buffer
 #####Returns
 the number of bytes written, or MICROBIT_SERIAL_IN_USE if another fiber is using the serial instance for transmission. 
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> send( <div style='color:#008080; display:inline-block'>uint8_t *</div> buffer,  <div style='color:#008080; display:inline-block'>int</div> bufferLen,  <div style='color:#008080; display:inline-block'>MicroBitSerialMode</div> mode)
 #####Description
-Sends a buffer of known length via serial
+Sends a buffer of known length over the serial line.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>uint8_t *</div> *buffer* - a pointer to the first character of the buffer 
+>  <div style='color:#008080; display:inline-block'>uint8_t *</div> *buffer* - a pointer to the first character of the buffer
 
->  <div style='color:#008080; display:inline-block'>int</div> *bufferLen* - a pointer to the first character of the buffer 
+>  <div style='color:#008080; display:inline-block'>int</div> *bufferLen* - a pointer to the first character of the buffer
 
 >  <div style='color:#008080; display:inline-block'>MicroBitSerialMode</div> *mode* - the selected mode, one of: ASYNC, SYNC_SPINWAIT, SYNC_SLEEP. Each mode gives a different behaviour:  ASYNC - bytes are copied into the txBuff and returns immediately.
 
@@ -251,16 +248,16 @@ a character, MICROBIT_SERIAL_IN_USE if another fiber is using the serial instanc
 Reads multiple characters from the rxBuff and returns them as a  ManagedString
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>int</div> *size* - the number of characters to read. 
+>  <div style='color:#008080; display:inline-block'>int</div> *size* - the number of characters to read.
 #####Returns
-A  ManagedString  with the length > 0, or an empty  ManagedString  if an error was encountered during the read. 
+A  ManagedString , or an empty  ManagedString  if an error was encountered during the read. 
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>ManagedString</div> read( <div style='color:#008080; display:inline-block'>int</div> size,  <div style='color:#008080; display:inline-block'>MicroBitSerialMode</div> mode)
 #####Description
 Reads multiple characters from the rxBuff and returns them as a  ManagedString
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>int</div> *size* - the number of characters to read. 
+>  <div style='color:#008080; display:inline-block'>int</div> *size* - the number of characters to read.
 
 >  <div style='color:#008080; display:inline-block'>MicroBitSerialMode</div> *mode* - the selected mode, one of: ASYNC, SYNC_SPINWAIT, SYNC_SLEEP. Each mode gives a different behaviour:  ASYNC - If the desired number of characters are available, this will return
         a ManagedString with the expected size. Otherwise, it will read however
@@ -275,16 +272,16 @@ SYNC_SLEEP - If the desired number of characters are available, this will return
              until the desired number of characters have been read.
 
 #####Returns
-A  ManagedString  with the length > 0, or an empty  ManagedString  if an error was encountered during the read. 
+A  ManagedString , or an empty  ManagedString  if an error was encountered during the read. 
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> read( <div style='color:#008080; display:inline-block'>uint8_t *</div> buffer,  <div style='color:#008080; display:inline-block'>int</div> bufferLen)
 #####Description
 Reads multiple characters from the rxBuff and fills a user buffer.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>uint8_t *</div> *buffer* - a pointer to a user allocated buffer 
+>  <div style='color:#008080; display:inline-block'>uint8_t *</div> *buffer* - a pointer to a user allocated buffer.
 
->  <div style='color:#008080; display:inline-block'>int</div> *bufferLen* - the amount of data that can be safely stored 
+>  <div style='color:#008080; display:inline-block'>int</div> *bufferLen* - the amount of data that can be safely stored
 #####Returns
 the number of characters read, or MICROBIT_SERIAL_IN_USE if another fiber is using the instance for receiving. 
 <br/>
@@ -293,9 +290,9 @@ the number of characters read, or MICROBIT_SERIAL_IN_USE if another fiber is usi
 Reads multiple characters from the rxBuff and fills a user buffer.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>uint8_t *</div> *buffer* - a pointer to a user allocated buffer 
+>  <div style='color:#008080; display:inline-block'>uint8_t *</div> *buffer* - a pointer to a user allocated buffer.
 
->  <div style='color:#008080; display:inline-block'>int</div> *bufferLen* - the amount of data that can be safely stored 
+>  <div style='color:#008080; display:inline-block'>int</div> *bufferLen* - the amount of data that can be safely stored
 
 >  <div style='color:#008080; display:inline-block'>MicroBitSerialMode</div> *mode* - the selected mode, one of: ASYNC, SYNC_SPINWAIT, SYNC_SLEEP. Each mode gives a different behaviour:  ASYNC - If the desired number of characters are available, this will fill
         the given buffer. Otherwise, it will fill the buffer with however
@@ -318,7 +315,7 @@ the number of characters read, or MICROBIT_SERIAL_IN_USE if another fiber is usi
 Reads until one of the delimeters matches a character in the rxBuff
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>ManagedString</div> *delimeters* - a  ManagedString  containing a sequence of delimeter characters e.g.  ManagedString ("\r\n") 
+>  <div style='color:#008080; display:inline-block'>ManagedString</div> *delimeters* - a  ManagedString  containing a sequence of delimeter characters e.g.  ManagedString ("\r\n")
 #####Returns
 A  ManagedString  containing the characters up to a delimeter, or an Empty  ManagedString , if another fiber is currently using this instance for reception.
 
@@ -331,7 +328,7 @@ A  ManagedString  containing the characters up to a delimeter, or an Empty  Mana
 Reads until one of the delimeters matches a character in the rxBuff
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>ManagedString</div> *delimeters* - a  ManagedString  containing a sequence of delimeter characters e.g.  ManagedString ("\r\n") 
+>  <div style='color:#008080; display:inline-block'>ManagedString</div> *delimeters* - a  ManagedString  containing a sequence of delimeter characters e.g.  ManagedString ("\r\n")
 
 >  <div style='color:#008080; display:inline-block'>MicroBitSerialMode</div> *mode* - the selected mode, one of: ASYNC, SYNC_SPINWAIT, SYNC_SLEEP. Each mode gives a different behaviour:  ASYNC - If one of the delimeters matches a character already in the rxBuff
         this method will return a ManagedString up to the delimeter.
@@ -376,7 +373,7 @@ MICROBIT_INVALID_PARAMETER if baud rate is less than 0, otherwise MICROBIT_OK.
 A way of dynamically configuring the serial instance to use pins other than USBTX and USBRX.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>PinName</div> *tx* - the new transmission pin. 
+>  <div style='color:#008080; display:inline-block'>PinName</div> *tx* - the new transmission pin.
 
 >  <div style='color:#008080; display:inline-block'>PinName</div> *rx* - the new reception pin.
 #####Returns
@@ -388,7 +385,7 @@ MICROBIT_SERIAL_IN_USE if another fiber is currently transmitting or receiving, 
 Configures an event to be fired after "len" characters.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>int</div> *len* - the number of characters to wait before triggering the event 
+>  <div style='color:#008080; display:inline-block'>int</div> *len* - the number of characters to wait before triggering the event.
 #####Returns
 MICROBIT_INVALID_PARAMETER if the mode given is SYNC_SPINWAIT, otherwise MICROBIT_OK. 
 <br/>
@@ -397,7 +394,7 @@ MICROBIT_INVALID_PARAMETER if the mode given is SYNC_SPINWAIT, otherwise MICROBI
 Configures an event to be fired after "len" characters.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>int</div> *len* - the number of characters to wait before triggering the event 
+>  <div style='color:#008080; display:inline-block'>int</div> *len* - the number of characters to wait before triggering the event.
 
 >  <div style='color:#008080; display:inline-block'>MicroBitSerialMode</div> *mode* - the selected mode, one of: ASYNC, SYNC_SPINWAIT, SYNC_SLEEP. Each mode gives a different behaviour:  ASYNC - Will configure the event and return immediately.
 
@@ -415,7 +412,7 @@ MICROBIT_INVALID_PARAMETER if the mode given is SYNC_SPINWAIT, otherwise MICROBI
 Configures an event to be fired on a match with one of the delimeters.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>ManagedString</div> *delimeters* - the characters to match received characters against e.g.  ManagedString ("\r\n") 
+>  <div style='color:#008080; display:inline-block'>ManagedString</div> *delimeters* - the characters to match received characters against e.g.  ManagedString ("\r\n")
 #####Returns
 MICROBIT_INVALID_PARAMETER if the mode given is SYNC_SPINWAIT, otherwise MICROBIT_OK.
 
@@ -428,7 +425,7 @@ MICROBIT_INVALID_PARAMETER if the mode given is SYNC_SPINWAIT, otherwise MICROBI
 Configures an event to be fired on a match with one of the delimeters.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>ManagedString</div> *delimeters* - the characters to match received characters against e.g.  ManagedString ("\r\n") 
+>  <div style='color:#008080; display:inline-block'>ManagedString</div> *delimeters* - the characters to match received characters against e.g.  ManagedString ("\r\n")
 
 >  <div style='color:#008080; display:inline-block'>MicroBitSerialMode</div> *mode* - the selected mode, one of: ASYNC, SYNC_SPINWAIT, SYNC_SLEEP. Each mode gives a different behaviour:  ASYNC - Will configure the event and return immediately.
 
@@ -452,7 +449,7 @@ Determines whether there is any data waiting in our Rx buffer.
 1 if we have space, 0 if we do not.
 
 !!! note
-    the reason we do not wrap the super's readable() method is so that we don't interfere with communities that use manual calls to uBit.serial.readable() 
+    We do not wrap the super's readable() method as we don't want to interfere with communities that use manual calls to serial.readable(). 
 
 ##isWriteable
 <br/>
@@ -463,13 +460,13 @@ Determines if we have space in our txBuff.
 1 if we have space, 0 if we do not.
 
 !!! note
-    the reason we do not wrap the super's write() method is so that we don't interfere with communities that use manual calls to uBit.serial.writeable() 
+    We do not wrap the super's writeable() method as we don't want to interfere with communities that use manual calls to serial.writeable(). 
 
 ##setRxBufferSize
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> setRxBufferSize( <div style='color:#008080; display:inline-block'>uint8_t</div> size)
 #####Description
-reconfigures the size of our rxBuff
+Reconfigures the size of our rxBuff
 #####Parameters
 
 >  <div style='color:#008080; display:inline-block'>uint8_t</div> *size* - the new size for our rxBuff
@@ -479,7 +476,7 @@ MICROBIT_SERIAL_IN_USE if another fiber is currently using this instance for rec
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> setTxBufferSize( <div style='color:#008080; display:inline-block'>uint8_t</div> size)
 #####Description
-reconfigures the size of our txBuff
+Reconfigures the size of our txBuff
 #####Parameters
 
 >  <div style='color:#008080; display:inline-block'>uint8_t</div> *size* - the new size for our txBuff
@@ -488,54 +485,66 @@ MICROBIT_SERIAL_IN_USE if another fiber is currently using this instance for tra
 ##getRxBufferSize
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> getRxBufferSize()
+#####Description
+The size of our rx buffer in bytes.
 #####Returns
-the current size of our rxBuff in bytes 
+the current size of rxBuff in bytes 
 ##getTxBufferSize
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> getTxBufferSize()
+#####Description
+The size of our tx buffer in bytes.
 #####Returns
-the current size of our txBuff in bytes 
+the current size of txBuff in bytes 
 ##clearRxBuffer
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> clearRxBuffer()
 #####Description
-Sets the tail to match the head of our circular buffer for reception
+Sets the tail to match the head of our circular buffer for reception, effectively clearing the reception buffer.
 #####Returns
 MICROBIT_SERIAL_IN_USE if another fiber is currently using this instance for reception, otherwise MICROBIT_OK. 
 ##clearTxBuffer
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> clearTxBuffer()
 #####Description
-Sets the tail to match the head of our circular buffer for transmission
+Sets the tail to match the head of our circular buffer for transmission, effectively clearing the transmission buffer.
 #####Returns
 MICROBIT_SERIAL_IN_USE if another fiber is currently using this instance for transmission, otherwise MICROBIT_OK. 
 ##rxBufferedSize
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> rxBufferedSize()
+#####Description
+The number of bytes currently stored in our rx buffer waiting to be digested, by the user.
 #####Returns
 The currently buffered number of bytes in our rxBuff. 
 ##txBufferedSize
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> txBufferedSize()
+#####Description
+The number of bytes currently stored in our tx buffer waiting to be transmitted by the hardware.
 #####Returns
 The currently buffered number of bytes in our txBuff. 
 ##rxInUse
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> rxInUse()
+#####Description
+Determines if the serial bus is currently in use by another fiber for reception.
 #####Returns
 The state of our mutex lock for reception.
 
 !!! note
-    only one fiber can call read at a time 
+    Only one fiber can call read at a time 
 
 ##txInUse
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> txInUse()
+#####Description
+Determines if the serial bus is currently in use by another fiber for transmission.
 #####Returns
 The state of our mutex lock for transmition.
 
 !!! note
-    only one fiber can call send at a time 
+    Only one fiber can call send at a time 
 
 ##detach
 <br/>
@@ -545,9 +554,5 @@ Detaches a previously configured interrupt
 #####Parameters
 
 >  <div style='color:#008080; display:inline-block'>Serial::IrqType</div> *interuptType*
-
-!!! note
-    #HACK, this should really be further up in the mbed libs, after attaching, you would expect to be able to detach... 
-
 ____
 [comment]: <> ({"end":"MicroBitSerial"})

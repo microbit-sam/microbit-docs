@@ -87,7 +87,6 @@ Constructor. Create a representation of a  MicroBit MicroBitMessageBus
  uBit.accelerometer; //The object that represents the inbuilt accelerometer 
  uBit.compass; //The object that represents the inbuilt compass(magnetometer) 
  uBit.io.P*; //Where P* is P0 to P16, P19 & P20 on the edge connector 
-
 ```
 ##init
 <br/>
@@ -97,7 +96,6 @@ Post constructor initialisation method. After
 #####Example
 ```cpp
  uBit.init(); 
-
 ```
 ##reset
 <br/>
@@ -107,7 +105,6 @@ Will reset the micro:bit when called.
 #####Example
 ```cpp
  uBit.reset(); 
-
 ```
 ##sleep
 <br/>
@@ -122,7 +119,6 @@ MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER milliseconds is less than zer
 #####Example
 ```cpp
  MicroBit::sleep(20); //sleep for 20ms 
-
 ```
 
 !!! note
@@ -136,7 +132,6 @@ Seed the pseudo random number generator using the hardware generator.
 #####Example
 ```cpp
  uBit.seedRandom(); 
-
 ```
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>void</div> seedRandom( <div style='color:#008080; display:inline-block'>uint32_t</div> seed)
@@ -148,7 +143,6 @@ Seed the pseudo random number generator using the given value.
 #####Example
 ```cpp
  uBit.seedRandom(0x12345678); 
-
 ```
 ##random
 <br/>
@@ -163,7 +157,6 @@ A random, natural number between 0 and the max-1. Or MICROBIT_INVALID_PARAMETER 
 #####Example
 ```cpp
  uBit.random(200); //a number between 0 and 199 
-
 ```
 ##systemTime
 <br/>

@@ -9,8 +9,8 @@ On board the micro:bit there is already:
 
 - a 5 x 5 LED matrix [display](ubit/display.md).
 - 2 programmable [buttons](ubit/button.md).
-- an [accelerometer](ubit/accelerometer.md).
+- a 3-axis [accelerometer](ubit/accelerometer.md).
 - a [compass](ubit/compass.md).
-- [Bluetooth](ubit/bleManager.md).
-- 20 user controlled [pins](ubit/io.md).
-- [serial](ubit/serial.md) capabilities.
+- [Bluetooth](ubit/blemanager.md).
+- 20 user controlled [pins](ubit/io.md), with Analog and Digital capabilities.
+- [serial](ubit/serial.md) capabilities over USB and the edge connector.

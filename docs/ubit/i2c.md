@@ -27,16 +27,19 @@ can be used in conjunction with the micro:bit.
 <br/>
 ####MicroBitI2C( <div style='color:#008080; display:inline-block'>PinName</div> sda,  <div style='color:#008080; display:inline-block'>PinName</div> scl)
 #####Description
-Constructor. Create an instance of i2c 
+Constructor.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>PinName</div> *sda* - the Pin to be used for SDA 
+>  <div style='color:#008080; display:inline-block'>PinName</div> *sda* - the Pin to be used for SDA
 
->  <div style='color:#008080; display:inline-block'>PinName</div> *scl* - the Pin to be used for SCL Example:  MicroBitI2C i2c(MICROBIT_PIN_SDA, MICROBIT_PIN_SCL); 
-  
+>  <div style='color:#008080; display:inline-block'>PinName</div> *scl* - the Pin to be used for SCL
+#####Example
+```cpp
+ MicroBitI2C i2c(I2C_SDA0, I2C_SCL0); 
+```
 
 !!! note
-    this should prevent i2c lockups as well. 
+    This class presents a wrapped mbed call to capture failed I2C operations caused by a known silicon bug in the nrf51822. Attempts to automatically reset and restart the I2C hardware if this case is detected.
 
 ##read
 <br/>
@@ -45,11 +48,11 @@ Constructor. Create an instance of i2c
 Performs a complete read transaction. The bottom bit of the address is forced to 1 to indicate a read.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>int</div> *address*
+>  <div style='color:#008080; display:inline-block'>int</div> *address* - 8-bit I2C slave address [ addr | 1 ]
 
->  <div style='color:#008080; display:inline-block'>char *</div> *data*
+>  <div style='color:#008080; display:inline-block'>char *</div> *data* - A pointer to a byte buffer used for storing retrieved data.
 
->  <div style='color:#008080; display:inline-block'>int</div> *length*
+>  <div style='color:#008080; display:inline-block'>int</div> *length* - Number of bytes to read.
 #####Returns
 MICROBIT_OK on success, MICROBIT_I2C_ERROR if an unresolved read failure is detected. 
 <br/>
@@ -58,13 +61,13 @@ MICROBIT_OK on success, MICROBIT_I2C_ERROR if an unresolved read failure is dete
 Performs a complete read transaction. The bottom bit of the address is forced to 1 to indicate a read.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>int</div> *address*
+>  <div style='color:#008080; display:inline-block'>int</div> *address* - 8-bit I2C slave address [ addr | 1 ]
 
->  <div style='color:#008080; display:inline-block'>char *</div> *data*
+>  <div style='color:#008080; display:inline-block'>char *</div> *data* - A pointer to a byte buffer used for storing retrieved data.
 
->  <div style='color:#008080; display:inline-block'>int</div> *length*
+>  <div style='color:#008080; display:inline-block'>int</div> *length* - Number of bytes to read.
 
->  <div style='color:#008080; display:inline-block'>bool</div> *repeated*
+>  <div style='color:#008080; display:inline-block'>bool</div> *repeated* - if true, stop is not sent at the end. Defaults to false.
 #####Returns
 MICROBIT_OK on success, MICROBIT_I2C_ERROR if an unresolved read failure is detected. 
 ##write
@@ -74,11 +77,11 @@ MICROBIT_OK on success, MICROBIT_I2C_ERROR if an unresolved read failure is dete
 Performs a complete write transaction. The bottom bit of the address is forced to 0 to indicate a write.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>int</div> *address*
+>  <div style='color:#008080; display:inline-block'>int</div> *address* - 8-bit I2C slave address [ addr | 0 ]
 
->  <div style='color:#008080; display:inline-block'>const char *</div> *data*
+>  <div style='color:#008080; display:inline-block'>const char *</div> *data* - A pointer to a byte buffer containing the data to write.
 
->  <div style='color:#008080; display:inline-block'>int</div> *length*
+>  <div style='color:#008080; display:inline-block'>int</div> *length* - Number of bytes to write
 #####Returns
 MICROBIT_OK on success, MICROBIT_I2C_ERROR if an unresolved write failure is detected. 
 <br/>
@@ -87,13 +90,13 @@ MICROBIT_OK on success, MICROBIT_I2C_ERROR if an unresolved write failure is det
 Performs a complete write transaction. The bottom bit of the address is forced to 0 to indicate a write.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>int</div> *address*
+>  <div style='color:#008080; display:inline-block'>int</div> *address* - 8-bit I2C slave address [ addr | 0 ]
 
->  <div style='color:#008080; display:inline-block'>const char *</div> *data*
+>  <div style='color:#008080; display:inline-block'>const char *</div> *data* - A pointer to a byte buffer containing the data to write.
 
->  <div style='color:#008080; display:inline-block'>int</div> *length*
+>  <div style='color:#008080; display:inline-block'>int</div> *length* - Number of bytes to write
 
->  <div style='color:#008080; display:inline-block'>bool</div> *repeated*
+>  <div style='color:#008080; display:inline-block'>bool</div> *repeated* - if true, stop is not sent at the end. Defaults to false.
 #####Returns
 MICROBIT_OK on success, MICROBIT_I2C_ERROR if an unresolved write failure is detected. 
 ____

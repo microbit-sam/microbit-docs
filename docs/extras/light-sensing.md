@@ -138,28 +138,28 @@ for regular usage until the next interleave is signaled by the display.
 <br/>
 ####MicroBitLightSensor( <div style='color:#008080; display:inline-block'>const  MatrixMap  &</div> map)
 #####Description
-Constructor. Create a representation of the light sensor 
+Constructor.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>const  MatrixMap  &</div> *map*
+>  <div style='color:#008080; display:inline-block'>const  MatrixMap  &</div> *map* - The mapping information that relates pin inputs/outputs to physical screen coordinates. Defaults to microbitMatrixMap, defined in  MicroBitMatrixMaps.h . 
 ##read
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> read()
 #####Description
 This method returns a summed average of the three sections of the display.
 #####Returns
-returns a value in the range 0 - 255 where 0 is dark, and 255 is very bright
-
-!!! note
-    currently returns a value in the range 0 - 255 where 0 is dark, and 255 is very bright perhaps we should normalise the returned values into an SI unit! TODO. 
-
+returns a value in the range 0 - 255 where 0 is dark, and 255 is very bright 
 ##startSensing
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>void</div> startSensing( <div style='color:#008080; display:inline-block'>MicroBitEvent</div> )
 #####Description
-The method that is invoked by sending MICROBIT_DISPLAY_EVT_LIGHT_SENSE using the id MICROBIT_ID_DISPLAY. 
+The method that is invoked by sending MICROBIT_DISPLAY_EVT_LIGHT_SENSE using the id MICROBIT_ID_DISPLAY.
 #####Parameters
 
 >  <div style='color:#008080; display:inline-block'>MicroBitEvent</div> **
+
+!!! note
+    this can be manually driven by calling this member function, with a  MicroBitEvent  using the CREATE_ONLY option of the  MicroBitEvent  constructor. 
+
 ____
 [comment]: <> ({"end":"MicroBitLightSensor"})

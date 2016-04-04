@@ -11,6 +11,6 @@ On board the micro:bit there is already:
 - 2 programmable [buttons](ubit/button.md).
 - an [accelerometer](ubit/accelerometer.md).
 - a [compass](ubit/compass.md).
-- [Bluetooth](ubit/bleManager.md).
+- [Bluetooth](ubit/blemanager.md).
 - 20 user controlled [pins](ubit/io.md).
 - [serial](ubit/serial.md) capabilities.
