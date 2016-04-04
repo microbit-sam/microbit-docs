@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This Bluetooth Low Energy (BLE) service is an optional part of the standard bluetooth profile for the micro:bit. It is a passive service, that can operate transparently in the 
+This Bluetooth Low Energy (BLE) service is an optional part of the standard bluetooth profile for the micro:bit. It is a passive service, that can operate transparently in the
 background as your main program is running. It provides the ability to read and write digital and analog values onto any of the pins exposed on the micro:bit edge connector, including the 3 main ring ports.
 This data can be transparently read and written from any attached BLE master device. You do not need to explicity address and API on the service to acheive this.
 
@@ -19,14 +19,8 @@ This service is disabled by default. To enable the service, simply create an ins
 
 ## BLE Service Specification
 
- Please see the [micro:bit BLE profile specification](/ble/profile-specification.zip).
+ Please see the [micro:bit BLE profile specification](../resources/bluetooth/microbit-profile-V1.7-Level-2.pdf).
 
 ## Example Applications for Android/IOS/Android
 
  COMING SOON
-
-
-
-
-
-

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This Bluetooth Low Energy (BLE) service is an optional part of the standard bluetooth profile for the micro:bit. It is a passive service, that can operate transparently in the 
+This Bluetooth Low Energy (BLE) service is an optional part of the standard bluetooth profile for the micro:bit. It is a passive service, that can operate transparently in the
 background as your main program is running. It provides live temperature data to any attached BLE master device. You do not need to explicity address and API on the service to acheive this.
 Please note that the temperature data is inferred from the die temperature of the Nordic nrf51822 CPU. Whilst this sensor has a high precision, it is not calibrated, so will exhibit
 a linear shift (although changes in temperature will be accurate). See [MicroBitThermometer](/ubit/thermometer.md) for informaiton on the API to allow calibration.
@@ -20,14 +20,8 @@ This service is disabled by default. To enable the service, simply create an ins
 
 ## BLE Service Specification
 
- Please see the [micro:bit BLE profile specification](/ble/profile-specification.zip).
+ Please see the [micro:bit BLE profile specification](../resources/bluetooth/microbit-profile-V1.7-Level-2.pdf).
 
 ## Example Applications for Android/IOS/Android
 
  COMING SOON
-
-
-
-
-
-

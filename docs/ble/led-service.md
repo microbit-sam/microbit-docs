@@ -2,8 +2,8 @@
 
 ## Introduction
 
-This Bluetooth Low Energy (BLE) service is an optional part of the standard bluetooth profile for the micro:bit. It is a passive service, that can operate transparently in the 
-background as your main program is running. It allows any attached BLE master device to read and write the status of the LEDs on the display. This includes reading and writing 
+This Bluetooth Low Energy (BLE) service is an optional part of the standard bluetooth profile for the micro:bit. It is a passive service, that can operate transparently in the
+background as your main program is running. It allows any attached BLE master device to read and write the status of the LEDs on the display. This includes reading and writing
 nitmap values to the display, and activating simple animations such as scrolling text messages.
 
 live accelerometer data to any attached BLE master device. You do not need to explicity address and API on the service to acheive this.
@@ -21,14 +21,8 @@ This service is disabled by default. To enable the service, simply create an ins
 
 ## BLE Service Specification
 
- Please see the [micro:bit BLE profile specification](/ble/profile-specification.zip).
+ Please see the [micro:bit BLE profile specification](../resources/bluetooth/microbit-profile-V1.7-Level-2.pdf).
 
 ## Example Applications for Android/IOS/Android
 
  COMING SOON
-
-
-
-
-
-
