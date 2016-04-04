@@ -71,13 +71,25 @@
                     
                         
 <li >
-    <a href="../../installing-yotta/">Offline Development</a>
+    <a href="../../concepts/">Concepts</a>
 </li>
 
                     
                         
 <li >
-    <a href="../../concepts/">Concepts</a>
+    <a href="../../getting-started/">Getting Started</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../installing-yotta/">Online Development</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../installing-yotta/">Offline Development</a>
 </li>
 
                     
@@ -209,6 +221,12 @@
 </li>
 
                     
+                        
+<li >
+    <a href="../packetbuffer/">PacketBuffer</a>
+</li>
+
+                    
                     </ul>
                 </li>
             
@@ -222,6 +240,54 @@
                         
 <li >
     <a href="../../ble/profile/">Profile</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/accelerometer-service/">AccelerometerService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/button-service/">ButtonService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/dfu-service/">DFUService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/event-service/">EventService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/iopin-service/">IOPinService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/led-service/">LEDService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/magnetometer-service/">MagnetometerService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/temperature-service/">TemperatureService</a>
 </li>
 
                     
@@ -297,9 +363,9 @@
         
             <li><a href="#overview">Overview</a></li>
         
-            <li><a href="#message-bus-id">Message Bus ID</a></li>
+            <li><a href="#creating-events">Creating Events</a></li>
         
-            <li><a href="#message-bus-events">Message Bus Events</a></li>
+            <li><a href="#detecting-events">Detecting Events</a></li>
         
     
         <li class="main "><a href="#api">API</a></li>
@@ -315,37 +381,68 @@
 
 <h1 id="microbitevent">MicroBitEvent<a class="headerlink" href="#microbitevent" title="Permanent link">&para;</a></h1>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<h2 id="message-bus-id">Message Bus ID<a class="headerlink" href="#message-bus-id" title="Permanent link">&para;</a></h2>
-<h2 id="message-bus-events">Message Bus Events<a class="headerlink" href="#message-bus-events" title="Permanent link">&para;</a></h2>
+<p>Computer programs execute sequentially - one line after another, following the logic of the progrmam you have written.
+Sometimes though, we wnt to be able to determine <em>when</em> something has happened, and write some code to decide what should 
+happen in that case. For example, maybe you want to know when a button has been pressed, when your micro:bit has been shaken,
+or when some data has been sent to you over the micro:bit radio. For these sorts of cases, we create a <a href="data-types/event.md">MicroBitEvent</a>.</p>
+<h2 id="creating-events">Creating Events<a class="headerlink" href="#creating-events" title="Permanent link">&para;</a></h2>
+<p>Many componets will raise events when interesting things occur (e.g. MicroBitAccelerometer will raise events to indicate that the
+micro:bit has be been shaken, or is in freefall. MicroBitButton will send events on a range of button up, down, click and hold events. 
+Programmers are also free to send their own events whenever they feel it would be useful. MicroBitvents are <em>very</em> simple, and consist of
+only two numbers:</p>
+<ul>
+<li>A source. A number identifying the component that created the event.</li>
+<li>A value. A number unqiue to the source that identifies the event.</li>
+</ul>
+<p>The documentation for each component defines its event source, and all the events it may generate, and also gives a name to these
+event values. For example, take a look at the <a href="ubit/button.md">button documentation</a> to see that the source MICROBIT_ID_BUTTON_A has the value '1',
+and an event MICROBIT_BUTTON_EVT_CLICK with the value '3' is generted when a button is clicked.</p>
+<p>Creating an event is easy - just create a MicroBitEvent with the source avd value you need, and the runtime takes care of the rest:</p>
+<pre><code class="c++">MicroBitEvent(MICROBIT_ID_BUTTON_A, MICROBIT_BUTTON_EVT_CLICK);
+</code></pre>
+
+<p>Feel free to create your own events lke this too. Just try to avoid using any source ID that is already used by the runtime! :-)
+See the <a href="ubit/messageBus.md">messageBus</a> page for a complete table of the reserved source IDs.</p>
+<h2 id="detecting-events">Detecting Events<a class="headerlink" href="#detecting-events" title="Permanent link">&para;</a></h2>
+<p>The micro:bit runtime has a component called the MicroBitMessgeBus, and its job is remember which events your program is interested in, and 
+to deliver those MicroBitEvents to your program as they occur. To find out when an event happens, you need to create a function in your program,
+then tell the message bus which event you want to attach this function to. This is known as writing an <strong>event handler</strong>.<br />
+You do this through the MicroBitMessageBus <a href="ubit/messagebus.md">listen</a> function.  </p>
 <h1 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h1>
 <h2 id="constructor">Constructor<a class="headerlink" href="#constructor" title="Permanent link">&para;</a></h2>
 <p><br/></p>
 <h4 id="microbitevent-uint16_t-source-uint16_t-value">MicroBitEvent( <div style='color:#008080; display:inline-block'>uint16_t</div> source,  <div style='color:#008080; display:inline-block'>uint16_t</div> value)<a class="headerlink" href="#microbitevent-uint16_t-source-uint16_t-value" title="Permanent link">&para;</a></h4>
 <h5 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h5>
-<p>Constructor.  MicroBit MicroBitEvent MicroBitEvent MicroBitMessageBus MicroBitEvent</p>
+<p>Constructor.</p>
 <h5 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h5>
 <blockquote>
 <p><div style='color:#008080; display:inline-block'>uint16_t</div> <em>source</em></p>
-<p><div style='color:#008080; display:inline-block'>uint16_t</div> <em>value</em> - Component specific code indicating the cause of the event. </p>
+<p><div style='color:#008080; display:inline-block'>uint16_t</div> <em>value</em> - A component specific code indicating the cause of the event.</p>
 </blockquote>
 <h5 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h5>
-<pre><code class="c++"> MicrobitEvent evt(id,MICROBIT_BUTTON_EVT_CLICK); 
+<pre><code class="cpp"> // Create and launch an event using the default configuration 
+ MicrobitEvent evt(id,MICROBIT_BUTTON_EVT_CLICK); 
 
+ // Create an event only, do not fire onto an EventModel. 
+ MicrobitEvent evt(id,MICROBIT_BUTTON_EVT_CLICK,CREATE_AND_FIRE); 
 </code></pre>
 
 <p><br/></p>
 <h4 id="microbitevent-uint16_t-source-uint16_t-value-microbiteventlaunchmode-mode">MicroBitEvent( <div style='color:#008080; display:inline-block'>uint16_t</div> source,  <div style='color:#008080; display:inline-block'>uint16_t</div> value,  <div style='color:#008080; display:inline-block'>MicroBitEventLaunchMode</div> mode)<a class="headerlink" href="#microbitevent-uint16_t-source-uint16_t-value-microbiteventlaunchmode-mode" title="Permanent link">&para;</a></h4>
 <h5 id="description_1">Description<a class="headerlink" href="#description_1" title="Permanent link">&para;</a></h5>
-<p>Constructor.  MicroBit MicroBitEvent MicroBitEvent MicroBitMessageBus MicroBitEvent</p>
+<p>Constructor.</p>
 <h5 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h5>
 <blockquote>
 <p><div style='color:#008080; display:inline-block'>uint16_t</div> <em>source</em></p>
-<p><div style='color:#008080; display:inline-block'>uint16_t</div> <em>value</em> - Component specific code indicating the cause of the event. </p>
-<p><div style='color:#008080; display:inline-block'>MicroBitEventLaunchMode</div> <em>mode</em> - optional definition of how the event should be processed after construction (if at all):</p>
+<p><div style='color:#008080; display:inline-block'>uint16_t</div> <em>value</em> - A component specific code indicating the cause of the event.</p>
+<p><div style='color:#008080; display:inline-block'>MicroBitEventLaunchMode</div> <em>mode</em> - Optional definition of how the event should be processed after construction (if at all): CREATE_ONLY:  MicroBitEvent  is initialised, and no further processing takes place. CREATE_AND_FIRE:  MicroBitEvent  is initialised, and its event handlers are immediately fired (not suitable for use in interrupts!).</p>
 </blockquote>
 <h5 id="example_1">Example<a class="headerlink" href="#example_1" title="Permanent link">&para;</a></h5>
-<pre><code class="c++"> MicrobitEvent evt(id,MICROBIT_BUTTON_EVT_CLICK); 
+<pre><code class="cpp"> // Create and launch an event using the default configuration 
+ MicrobitEvent evt(id,MICROBIT_BUTTON_EVT_CLICK); 
 
+ // Create an event only, do not fire onto an EventModel. 
+ MicrobitEvent evt(id,MICROBIT_BUTTON_EVT_CLICK,CREATE_AND_FIRE); 
 </code></pre>
 
 <p><br/></p>
@@ -356,15 +453,7 @@
 <p><br/></p>
 <h4 id="void-fire"><div style='color:#FF69B4; display:inline-block'>void</div> fire()<a class="headerlink" href="#void-fire" title="Permanent link">&para;</a></h4>
 <h5 id="description_3">Description<a class="headerlink" href="#description_3" title="Permanent link">&para;</a></h5>
-<p>Fires the represented event onto the message bus using the default configuration.
-<br/></p>
-<h4 id="void-fire-microbiteventlaunchmode-mode"><div style='color:#FF69B4; display:inline-block'>void</div> fire( <div style='color:#008080; display:inline-block'>MicroBitEventLaunchMode</div> mode)<a class="headerlink" href="#void-fire-microbiteventlaunchmode-mode" title="Permanent link">&para;</a></h4>
-<h5 id="description_4">Description<a class="headerlink" href="#description_4" title="Permanent link">&para;</a></h5>
-<p>Fires the represented event onto the message bus. </p>
-<h5 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">&para;</a></h5>
-<blockquote>
-<p><div style='color:#008080; display:inline-block'>MicroBitEventLaunchMode</div> <em>mode</em> - Configuration of how the event is processed.</p>
-</blockquote>
+<p>Fires this  MicroBitEvent EventModel</p>
 <hr /></div>
         </div>
 

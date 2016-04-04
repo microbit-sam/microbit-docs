@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
 
-	<title>blemanager - micro:bit runtime</title>
+	<title>AccelerometerService - micro:bit runtime</title>
 
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -111,85 +111,85 @@
                     
                         
 <li >
-    <a href="../">uBit</a>
+    <a href="../../ubit/">uBit</a>
 </li>
 
                     
                         
 <li >
-    <a href="../i2c/">i2c</a>
+    <a href="../../ubit/i2c/">i2c</a>
 </li>
 
                     
                         
 <li >
-    <a href="../storage/">storage</a>
+    <a href="../../ubit/storage/">storage</a>
 </li>
 
                     
                         
 <li >
-    <a href="../serial/">serial</a>
+    <a href="../../ubit/serial/">serial</a>
 </li>
 
                     
                         
 <li >
-    <a href="../messageBus/">messageBus</a>
+    <a href="../../ubit/messageBus/">messageBus</a>
 </li>
 
                     
                         
 <li >
-    <a href="../button/">buttons</a>
+    <a href="../../ubit/button/">buttons</a>
 </li>
 
                     
                         
 <li >
-    <a href="../display/">display</a>
+    <a href="../../ubit/display/">display</a>
 </li>
 
                     
                         
 <li >
-    <a href="../accelerometer/">accelerometer</a>
+    <a href="../../ubit/accelerometer/">accelerometer</a>
 </li>
 
                     
                         
 <li >
-    <a href="../compass/">compass</a>
+    <a href="../../ubit/compass/">compass</a>
 </li>
 
                     
                         
 <li >
-    <a href="../thermometer/">thermometer</a>
+    <a href="../../ubit/thermometer/">thermometer</a>
 </li>
 
                     
                         
 <li >
-    <a href="../io/">io</a>
+    <a href="../../ubit/io/">io</a>
 </li>
 
                     
                         
 <li >
-    <a href="../ble/">ble</a>
+    <a href="../../ubit/ble/">ble</a>
 </li>
 
                     
                         
 <li >
-    <a href="./">bleManager</a>
+    <a href="../../ubit/blemanager/">bleManager</a>
 </li>
 
                     
                         
 <li >
-    <a href="../radio/">radio</a>
+    <a href="../../ubit/radio/">radio</a>
 </li>
 
                     
@@ -233,61 +233,61 @@
             
 
             
-                <li class="dropdown">
+                <li class="dropdown active">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">BLE <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                     
                         
 <li >
-    <a href="../../ble/profile/">Profile</a>
+    <a href="../profile/">Profile</a>
+</li>
+
+                    
+                        
+<li class="active">
+    <a href="./">AccelerometerService</a>
 </li>
 
                     
                         
 <li >
-    <a href="../../ble/accelerometer-service/">AccelerometerService</a>
+    <a href="../button-service/">ButtonService</a>
 </li>
 
                     
                         
 <li >
-    <a href="../../ble/button-service/">ButtonService</a>
+    <a href="../dfu-service/">DFUService</a>
 </li>
 
                     
                         
 <li >
-    <a href="../../ble/dfu-service/">DFUService</a>
+    <a href="../event-service/">EventService</a>
 </li>
 
                     
                         
 <li >
-    <a href="../../ble/event-service/">EventService</a>
+    <a href="../iopin-service/">IOPinService</a>
 </li>
 
                     
                         
 <li >
-    <a href="../../ble/iopin-service/">IOPinService</a>
+    <a href="../led-service/">LEDService</a>
 </li>
 
                     
                         
 <li >
-    <a href="../../ble/led-service/">LEDService</a>
+    <a href="../magnetometer-service/">MagnetometerService</a>
 </li>
 
                     
                         
 <li >
-    <a href="../../ble/magnetometer-service/">MagnetometerService</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../../ble/temperature-service/">TemperatureService</a>
+    <a href="../temperature-service/">TemperatureService</a>
 </li>
 
                     
@@ -331,12 +331,12 @@
                     </a>
                 </li>
                 <li >
-                    <a rel="next" href="../../extras/light-sensing/">
+                    <a rel="next" href="../profile/">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../multibutton/">
+                    <a rel="prev" href="../button-service/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -359,11 +359,38 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
+        <li class="main active"><a href="#bluetooth-accelerometer-service">Bluetooth Accelerometer Service</a></li>
+        
+            <li><a href="#introduction">Introduction</a></li>
+        
+            <li><a href="#enabling-the-service">Enabling the Service</a></li>
+        
+            <li><a href="#ble-service-specification">BLE Service Specification</a></li>
+        
+            <li><a href="#example-applications-for-androidiosandroid">Example Applications for Android/IOS/Android</a></li>
+        
+    
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
+<h1 id="bluetooth-accelerometer-service">Bluetooth Accelerometer Service<a class="headerlink" href="#bluetooth-accelerometer-service" title="Permanent link">&para;</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>This Bluetooth Low Energy (BLE) service is an optional part of the standard bluetooth profile for the micro:bit. It is a passive service, that can operate transparently in the 
+background as your main program is running. It provides live accelerometer data to any attached BLE master device. You do not need to explicity address and API on the service to acheive this.</p>
+<h2 id="enabling-the-service">Enabling the Service<a class="headerlink" href="#enabling-the-service" title="Permanent link">&para;</a></h2>
+<p>This service is disabled by default. To enable the service, simply create an instance of this class in your program, at any time after the uBit object has been initialised:</p>
+<pre><code class="c++">    new MicroBitAccelerometerService(*uBit.ble, uBit.accelerometer);
+</code></pre>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Using BLE services is memory hungry. By default, some of the memory normally used by Nordic's BLE protocol stack (knwon as a SoftDevice), is reclaimed by the micro:bit runtime as general purpose memory for your applications. if you enable more BLE services, then you may need to provide more memory back to Soft Device to ensure proper operation. If after enabling this service your BLE applicaiton cannot access the service reliably, you should consider increasing the value of MICROBIT_SD_GATT_TABLE_SIZE in your inc/MicroBitConfig.h. The more service you add, the larger this will need to be, up to the limit defined in MicroBitConfig.h.</p>
 </div>
+<h2 id="ble-service-specification">BLE Service Specification<a class="headerlink" href="#ble-service-specification" title="Permanent link">&para;</a></h2>
+<p>Please see the <a href="../../ble/profile-specification.zip">micro:bit BLE profile specification</a>.</p>
+<h2 id="example-applications-for-androidiosandroid">Example Applications for Android/IOS/Android<a class="headerlink" href="#example-applications-for-androidiosandroid" title="Permanent link">&para;</a></h2>
+<p>COMING SOON</p></div>
         </div>
 
         <footer class="col-md-12">

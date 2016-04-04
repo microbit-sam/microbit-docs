@@ -71,13 +71,25 @@
                     
                         
 <li >
-    <a href="../../installing-yotta/">Offline Development</a>
+    <a href="../../concepts/">Concepts</a>
 </li>
 
                     
                         
 <li >
-    <a href="../../concepts/">Concepts</a>
+    <a href="../../getting-started/">Getting Started</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../installing-yotta/">Online Development</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../installing-yotta/">Offline Development</a>
 </li>
 
                     
@@ -209,6 +221,12 @@
 </li>
 
                     
+                        
+<li >
+    <a href="../../data-types/packetbuffer/">PacketBuffer</a>
+</li>
+
+                    
                     </ul>
                 </li>
             
@@ -222,6 +240,54 @@
                         
 <li >
     <a href="../../ble/profile/">Profile</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/accelerometer-service/">AccelerometerService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/button-service/">ButtonService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/dfu-service/">DFUService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/event-service/">EventService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/iopin-service/">IOPinService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/led-service/">LEDService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/magnetometer-service/">MagnetometerService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/temperature-service/">TemperatureService</a>
 </li>
 
                     
@@ -303,6 +369,12 @@
         
             <li><a href="#api">API</a></li>
         
+            <li><a href="#constructor">Constructor</a></li>
+        
+            <li><a href="#ispressed">isPressed</a></li>
+        
+            <li><a href="#seteventconfiguration">setEventConfiguration</a></li>
+        
     
     </ul>
 </div></div>
@@ -363,7 +435,52 @@ the same events as as a <a href="../button/"><code>MicroBitButton</code></a>.</p
 </tr>
 </tbody>
 </table>
-<h2 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2></div>
+<h2 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
+<h2 id="constructor">Constructor<a class="headerlink" href="#constructor" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="microbitmultibutton-uint16_t-button1-uint16_t-button2-uint16_t-id">MicroBitMultiButton( <div style='color:#008080; display:inline-block'>uint16_t</div> button1,  <div style='color:#008080; display:inline-block'>uint16_t</div> button2,  <div style='color:#008080; display:inline-block'>uint16_t</div> id)<a class="headerlink" href="#microbitmultibutton-uint16_t-button1-uint16_t-button2-uint16_t-id" title="Permanent link">&para;</a></h4>
+<h5 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h5>
+<p>Constructor.</p>
+<h5 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><div style='color:#008080; display:inline-block'>uint16_t</div> <em>button1</em> - the unique ID of the first button to watch.</p>
+<p><div style='color:#008080; display:inline-block'>uint16_t</div> <em>button2</em> - the unique ID of the second button to watch.</p>
+<p><div style='color:#008080; display:inline-block'>uint16_t</div> <em>id</em> - the unique  EventModel  id of this  MicroBitMultiButton  instance.</p>
+</blockquote>
+<h5 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h5>
+<pre><code class="cpp"> multiButton(MICROBIT_ID_BUTTON_A, MICROBIT_ID_BUTTON_B, MICROBIT_ID_BUTTON_AB); 
+</code></pre>
+
+<h2 id="ispressed">isPressed<a class="headerlink" href="#ispressed" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="int-ispressed"><div style='color:#FF69B4; display:inline-block'>int</div> isPressed()<a class="headerlink" href="#int-ispressed" title="Permanent link">&para;</a></h4>
+<h5 id="description_1">Description<a class="headerlink" href="#description_1" title="Permanent link">&para;</a></h5>
+<p>Tests if this  MicroBitMultiButton</p>
+<h5 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h5>
+<p>1 if both physical buttons are pressed simultaneously.</p>
+<h5 id="example_1">Example<a class="headerlink" href="#example_1" title="Permanent link">&para;</a></h5>
+<pre><code class="cpp"> if(buttonAB.isPressed()) 
+ display.scroll(&quot;Pressed!&quot;); 
+</code></pre>
+
+<h2 id="seteventconfiguration">setEventConfiguration<a class="headerlink" href="#seteventconfiguration" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="void-seteventconfiguration-microbitbuttoneventconfiguration-config"><div style='color:#FF69B4; display:inline-block'>void</div> setEventConfiguration( <div style='color:#008080; display:inline-block'>MicroBitButtonEventConfiguration</div> config)<a class="headerlink" href="#void-seteventconfiguration-microbitbuttoneventconfiguration-config" title="Permanent link">&para;</a></h4>
+<h5 id="description_2">Description<a class="headerlink" href="#description_2" title="Permanent link">&para;</a></h5>
+<p>Changes the event configuration of this button to the given MicroBitButtonEventConfiguration. All subsequent events generated by this button will then be informed by this configuraiton.</p>
+<h5 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><div style='color:#008080; display:inline-block'>MicroBitButtonEventConfiguration</div> <em>config</em> - The new configuration for this button. Legal values are MICROBIT_BUTTON_ALL_EVENTS or MICROBIT_BUTTON_SIMPLE_EVENTS.</p>
+</blockquote>
+<h5 id="example_2">Example<a class="headerlink" href="#example_2" title="Permanent link">&para;</a></h5>
+<pre><code class="cpp"> // Configure a button to generate all possible events. 
+ buttonAB.setEventConfiguration(MICROBIT_BUTTON_ALL_EVENTS); 
+
+ // Configure a button to suppress MICROBIT_BUTTON_EVT_CLICK and MICROBIT_BUTTON_EVT_LONG_CLICK events. 
+ buttonAB.setEventConfiguration(MICROBIT_BUTTON_SIMPLE_EVENTS); 
+</code></pre>
+
+<hr /></div>
         </div>
 
         <footer class="col-md-12">

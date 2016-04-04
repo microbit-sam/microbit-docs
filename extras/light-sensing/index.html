@@ -71,13 +71,25 @@
                     
                         
 <li >
-    <a href="../../installing-yotta/">Offline Development</a>
+    <a href="../../concepts/">Concepts</a>
 </li>
 
                     
                         
 <li >
-    <a href="../../concepts/">Concepts</a>
+    <a href="../../getting-started/">Getting Started</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../installing-yotta/">Online Development</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../installing-yotta/">Offline Development</a>
 </li>
 
                     
@@ -209,6 +221,12 @@
 </li>
 
                     
+                        
+<li >
+    <a href="../../data-types/packetbuffer/">PacketBuffer</a>
+</li>
+
+                    
                     </ul>
                 </li>
             
@@ -222,6 +240,54 @@
                         
 <li >
     <a href="../../ble/profile/">Profile</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/accelerometer-service/">AccelerometerService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/button-service/">ButtonService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/dfu-service/">DFUService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/event-service/">EventService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/iopin-service/">IOPinService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/led-service/">LEDService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/magnetometer-service/">MagnetometerService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/temperature-service/">TemperatureService</a>
 </li>
 
                     
@@ -265,7 +331,7 @@
                     </a>
                 </li>
                 <li >
-                    <a rel="next" href="../../ble/profile/">
+                    <a rel="next" href="../../ble/temperature-service/">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
@@ -310,7 +376,7 @@
         
             <li><a href="#read">read</a></li>
         
-            <li><a href="#microbitlightsensor_2">~MicroBitLightSensor</a></li>
+            <li><a href="#startsensing">startSensing</a></li>
         
     
     </ul>
@@ -428,25 +494,33 @@ for regular usage until the next interleave is signaled by the display.</p>
 <h1 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h1>
 <h2 id="constructor">Constructor<a class="headerlink" href="#constructor" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="microbitlightsensor_1">MicroBitLightSensor()<a class="headerlink" href="#microbitlightsensor_1" title="Permanent link">&para;</a></h4>
+<h4 id="microbitlightsensor-const-matrixmap-map">MicroBitLightSensor( <div style='color:#008080; display:inline-block'>const  MatrixMap  &amp;</div> map)<a class="headerlink" href="#microbitlightsensor-const-matrixmap-map" title="Permanent link">&para;</a></h4>
 <h5 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h5>
-<p>Constructor. Create a representation of the light sensor </p>
+<p>Constructor.</p>
+<h5 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><div style='color:#008080; display:inline-block'>const  MatrixMap  &amp;</div> <em>map</em> - The mapping information that relates pin inputs/outputs to physical screen coordinates. Defaults to microbitMatrixMap, defined in  MicroBitMatrixMaps.h . </p>
+</blockquote>
 <h2 id="read">read<a class="headerlink" href="#read" title="Permanent link">&para;</a></h2>
 <p><br/></p>
 <h4 id="int-read"><div style='color:#FF69B4; display:inline-block'>int</div> read()<a class="headerlink" href="#int-read" title="Permanent link">&para;</a></h4>
 <h5 id="description_1">Description<a class="headerlink" href="#description_1" title="Permanent link">&para;</a></h5>
 <p>This method returns a summed average of the three sections of the display.</p>
 <h5 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h5>
-<p>returns a value in the range 0 - 255 where 0 is dark, and 255 is very bright</p>
+<p>returns a value in the range 0 - 255 where 0 is dark, and 255 is very bright </p>
+<h2 id="startsensing">startSensing<a class="headerlink" href="#startsensing" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="void-startsensing-microbitevent"><div style='color:#FF69B4; display:inline-block'>void</div> startSensing( <div style='color:#008080; display:inline-block'>MicroBitEvent</div> )<a class="headerlink" href="#void-startsensing-microbitevent" title="Permanent link">&para;</a></h4>
+<h5 id="description_2">Description<a class="headerlink" href="#description_2" title="Permanent link">&para;</a></h5>
+<p>The method that is invoked by sending MICROBIT_DISPLAY_EVT_LIGHT_SENSE using the id MICROBIT_ID_DISPLAY.</p>
+<h5 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><div style='color:#008080; display:inline-block'>MicroBitEvent</div> **</p>
+</blockquote>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>currently returns a value in the range 0 - 255 where 0 is dark, and 255 is very bright perhaps we should normalise the returned values into an SI unit! TODO. </p>
+<p>this can be manually driven by calling this member function, with a  MicroBitEvent  using the CREATE_ONLY option of the  MicroBitEvent  constructor. </p>
 </div>
-<h2 id="microbitlightsensor_2">~MicroBitLightSensor<a class="headerlink" href="#microbitlightsensor_2" title="Permanent link">&para;</a></h2>
-<p><br/></p>
-<h4 id="microbitlightsensor_3">~MicroBitLightSensor()<a class="headerlink" href="#microbitlightsensor_3" title="Permanent link">&para;</a></h4>
-<h5 id="description_2">Description<a class="headerlink" href="#description_2" title="Permanent link">&para;</a></h5>
-<p>The destructor restores the default Display Mode and tick speed, and also removes the listener from the MessageBus. </p>
 <hr /></div>
         </div>
 

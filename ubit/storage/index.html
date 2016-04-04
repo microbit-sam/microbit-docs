@@ -71,13 +71,25 @@
                     
                         
 <li >
-    <a href="../../installing-yotta/">Offline Development</a>
+    <a href="../../concepts/">Concepts</a>
 </li>
 
                     
                         
 <li >
-    <a href="../../concepts/">Concepts</a>
+    <a href="../../getting-started/">Getting Started</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../installing-yotta/">Online Development</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../installing-yotta/">Offline Development</a>
 </li>
 
                     
@@ -209,6 +221,12 @@
 </li>
 
                     
+                        
+<li >
+    <a href="../../data-types/packetbuffer/">PacketBuffer</a>
+</li>
+
+                    
                     </ul>
                 </li>
             
@@ -222,6 +240,54 @@
                         
 <li >
     <a href="../../ble/profile/">Profile</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/accelerometer-service/">AccelerometerService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/button-service/">ButtonService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/dfu-service/">DFUService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/event-service/">EventService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/iopin-service/">IOPinService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/led-service/">LEDService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/magnetometer-service/">MagnetometerService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/temperature-service/">TemperatureService</a>
 </li>
 
                     
@@ -303,6 +369,22 @@
         
             <li><a href="#api">API</a></li>
         
+            <li><a href="#constructor">Constructor</a></li>
+        
+            <li><a href="#writebytes">writeBytes</a></li>
+        
+            <li><a href="#flashpageerase">flashPageErase</a></li>
+        
+            <li><a href="#flashwordwrite">flashWordWrite</a></li>
+        
+            <li><a href="#put">put</a></li>
+        
+            <li><a href="#get">get</a></li>
+        
+            <li><a href="#remove">remove</a></li>
+        
+            <li><a href="#size">size</a></li>
+        
     
     </ul>
 </div></div>
@@ -310,16 +392,23 @@
 
 <h1 id="ubitstorage">uBit.storage<a class="headerlink" href="#ubitstorage" title="Permanent link">&para;</a></h1>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>MicroBitStorage provides a simple way to store data on the micro:bit that persists
-through resets. It currently takes the form of a Key Value store which contains
+<p><code>MicroBitStorage</code> provides a simple way to store data on the micro:bit that persists
+through power cycles. It currently takes the form of a key value store which contains
 a number of Key Value pairs.</p>
-<p>You can <code>put()</code>, <code>get()</code> and <code>remove()</code> Key Value pairs from the store.</p>
-<p>Key Value pairs have a fixed length Key of <code>16 bytes</code>, and a fixed length value of
-<code>32 bytes</code>. This class only populates a single block (<code>1024 bytes</code>) in its current state,
-which means that <strong>21</strong> Key Value pairs can be stored.</p>
-<p>Currently, this class is utilised by the <a href="../compass/">compass</a>, <a href="../compass/">accelerometer</a>
+<p>The micro:bit has 256 kB flash memory and 16 kB random access memory (RAM). Flash memory
+is <em>non-volatile</em>, which essentially means that data is not forgotten when the device
+is powered off, this is the technology that many USB sticks use.</p>
+<p>The alternative, RAM (known as <em>volatile</em> memory), cannot be persisted through power cycling the device as its
+operation relies upon maintaining a constant supply of power.</p>
+<p>Therefore, <code>MicroBitStorage</code> utilises the <em>non-volatile</em> nature of flash memory, to
+store its data. This class is utilised by the <a href="../compass/">compass</a>, <a href="../compass/">accelerometer</a>
 and <a href="../blemanager/">bleManager</a> to improve the user experience by persisting calibration
 and bonding data.</p>
+<h3 id="operations">Operations<a class="headerlink" href="#operations" title="Permanent link">&para;</a></h3>
+<p>You can <code>put()</code>, <code>get()</code> and <code>remove()</code> key value pairs from the store.</p>
+<p>Key Value pairs have a fixed length key of <code>16 bytes</code>, and a fixed length value of
+<code>32 bytes</code>. This class only populates a single block (<code>1024 bytes</code>) in its current state,
+which means that <strong>21</strong> Key Value pairs can be stored.</p>
 <h2 id="message-bus-id">Message Bus ID<a class="headerlink" href="#message-bus-id" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p>None.</p>
@@ -328,7 +417,127 @@ and bonding data.</p>
 <blockquote>
 <p>None.</p>
 </blockquote>
-<h2 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2></div>
+<h2 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
+<h2 id="constructor">Constructor<a class="headerlink" href="#constructor" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="microbitstorage">MicroBitStorage()<a class="headerlink" href="#microbitstorage" title="Permanent link">&para;</a></h4>
+<h5 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h5>
+<p>Default constructor.</p>
+<h2 id="writebytes">writeBytes<a class="headerlink" href="#writebytes" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="int-writebytes-uint8_t-buffer-uint32_t-address-int-length"><div style='color:#FF69B4; display:inline-block'>int</div> writeBytes( <div style='color:#008080; display:inline-block'>uint8_t *</div> buffer,  <div style='color:#008080; display:inline-block'>uint32_t</div> address,  <div style='color:#008080; display:inline-block'>int</div> length)<a class="headerlink" href="#int-writebytes-uint8_t-buffer-uint32_t-address-int-length" title="Permanent link">&para;</a></h4>
+<h5 id="description_1">Description<a class="headerlink" href="#description_1" title="Permanent link">&para;</a></h5>
+<p>Writes the given number of bytes to the address specified.</p>
+<h5 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><div style='color:#008080; display:inline-block'>uint8_t <em></div> </em>buffer* - the data to write.</p>
+<p><div style='color:#008080; display:inline-block'>uint32_t</div> <em>address</em> - the location in memory to write to.</p>
+<p><div style='color:#008080; display:inline-block'>int</div> <em>length</em> - the number of bytes to write.</p>
+</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>currently not implemented. </p>
+</div>
+<h2 id="flashpageerase">flashPageErase<a class="headerlink" href="#flashpageerase" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="void-flashpageerase-uint32_t-page_address"><div style='color:#FF69B4; display:inline-block'>void</div> flashPageErase( <div style='color:#008080; display:inline-block'>uint32_t *</div> page_address)<a class="headerlink" href="#void-flashpageerase-uint32_t-page_address" title="Permanent link">&para;</a></h4>
+<h5 id="description_2">Description<a class="headerlink" href="#description_2" title="Permanent link">&para;</a></h5>
+<p>Method for erasing a page in flash.</p>
+<h5 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><div style='color:#008080; display:inline-block'>uint32_t <em></div> </em>page_address* - Address of the first word in the page to be erased. </p>
+</blockquote>
+<h2 id="flashwordwrite">flashWordWrite<a class="headerlink" href="#flashwordwrite" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="void-flashwordwrite-uint32_t-address-uint32_t-value"><div style='color:#FF69B4; display:inline-block'>void</div> flashWordWrite( <div style='color:#008080; display:inline-block'>uint32_t *</div> address,  <div style='color:#008080; display:inline-block'>uint32_t</div> value)<a class="headerlink" href="#void-flashwordwrite-uint32_t-address-uint32_t-value" title="Permanent link">&para;</a></h4>
+<h5 id="description_3">Description<a class="headerlink" href="#description_3" title="Permanent link">&para;</a></h5>
+<p>Method for writing a word of data in flash with a value.</p>
+<h5 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><div style='color:#008080; display:inline-block'>uint32_t <em></div> </em>address* - Address of the word to change.</p>
+<p><div style='color:#008080; display:inline-block'>uint32_t</div> <em>value</em> - Value to be written to flash. </p>
+</blockquote>
+<h2 id="put">put<a class="headerlink" href="#put" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="int-put-const-char-key-uint8_t-data"><div style='color:#FF69B4; display:inline-block'>int</div> put( <div style='color:#008080; display:inline-block'>const char <em></div> key,  <div style='color:#008080; display:inline-block'>uint8_t </em></div> data)<a class="headerlink" href="#int-put-const-char-key-uint8_t-data" title="Permanent link">&para;</a></h4>
+<h5 id="description_4">Description<a class="headerlink" href="#description_4" title="Permanent link">&para;</a></h5>
+<p>Places a given key, and it's corresponding value into flash at the earliest available point.</p>
+<h5 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><div style='color:#008080; display:inline-block'>const char <em></div> </em>key* - the unique name that should be used as an identifier for the given data. The key is presumed to be null terminated.</p>
+<p><div style='color:#008080; display:inline-block'>uint8_t <em></div> </em>data* - a pointer to the beginning of the data to be persisted.</p>
+</blockquote>
+<h5 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h5>
+<p>MICROBIT_OK on success, or MICROBIT_NO_RESOURCES if the storage page is full 
+<br/></p>
+<h4 id="int-put-managedstring-key-uint8_t-data"><div style='color:#FF69B4; display:inline-block'>int</div> put( <div style='color:#008080; display:inline-block'>ManagedString</div> key,  <div style='color:#008080; display:inline-block'>uint8_t *</div> data)<a class="headerlink" href="#int-put-managedstring-key-uint8_t-data" title="Permanent link">&para;</a></h4>
+<h5 id="description_5">Description<a class="headerlink" href="#description_5" title="Permanent link">&para;</a></h5>
+<p>Places a given key, and it's corresponding value into flash at the earliest available point.</p>
+<h5 id="parameters_4">Parameters<a class="headerlink" href="#parameters_4" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><div style='color:#008080; display:inline-block'>ManagedString</div> <em>key</em> - the unique name that should be used as an identifier for the given data.</p>
+<p><div style='color:#008080; display:inline-block'>uint8_t <em></div> </em>data* - a pointer to the beginning of the data to be persisted.</p>
+</blockquote>
+<h5 id="returns_1">Returns<a class="headerlink" href="#returns_1" title="Permanent link">&para;</a></h5>
+<p>MICROBIT_OK on success, or MICROBIT_NO_RESOURCES if the storage page is full </p>
+<h2 id="get">get<a class="headerlink" href="#get" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="keyvaluepair-get-const-char-key"><div style='color:#FF69B4; display:inline-block'>KeyValuePair</div> get( <div style='color:#008080; display:inline-block'>const char *</div> key)<a class="headerlink" href="#keyvaluepair-get-const-char-key" title="Permanent link">&para;</a></h4>
+<h5 id="description_6">Description<a class="headerlink" href="#description_6" title="Permanent link">&para;</a></h5>
+<p>Retreives a  KeyValuePair</p>
+<h5 id="parameters_5">Parameters<a class="headerlink" href="#parameters_5" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><div style='color:#008080; display:inline-block'>const char <em></div> </em>key* - the unique name used to identify a  KeyValuePair  in flash.</p>
+</blockquote>
+<h5 id="returns_2">Returns<a class="headerlink" href="#returns_2" title="Permanent link">&para;</a></h5>
+<p>a pointer to a heap allocated  KeyValuePair  struct, this pointer will be NULL if the key was not found in storage.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>it is up to the user to free memory after use. </p>
+</div>
+<p><br/></p>
+<h4 id="keyvaluepair-get-managedstring-key"><div style='color:#FF69B4; display:inline-block'>KeyValuePair</div> get( <div style='color:#008080; display:inline-block'>ManagedString</div> key)<a class="headerlink" href="#keyvaluepair-get-managedstring-key" title="Permanent link">&para;</a></h4>
+<h5 id="description_7">Description<a class="headerlink" href="#description_7" title="Permanent link">&para;</a></h5>
+<p>Retreives a  KeyValuePair</p>
+<h5 id="parameters_6">Parameters<a class="headerlink" href="#parameters_6" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><div style='color:#008080; display:inline-block'>ManagedString</div> <em>key</em> - the unique name used to identify a  KeyValuePair  in flash.</p>
+</blockquote>
+<h5 id="returns_3">Returns<a class="headerlink" href="#returns_3" title="Permanent link">&para;</a></h5>
+<p>a pointer to a heap allocated  KeyValuePair  struct, this pointer will be NULL if the key was not found in storage.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>it is up to the user to free memory after use. </p>
+</div>
+<h2 id="remove">remove<a class="headerlink" href="#remove" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="int-remove-const-char-key"><div style='color:#FF69B4; display:inline-block'>int</div> remove( <div style='color:#008080; display:inline-block'>const char *</div> key)<a class="headerlink" href="#int-remove-const-char-key" title="Permanent link">&para;</a></h4>
+<h5 id="description_8">Description<a class="headerlink" href="#description_8" title="Permanent link">&para;</a></h5>
+<p>Removes a  KeyValuePair</p>
+<h5 id="parameters_7">Parameters<a class="headerlink" href="#parameters_7" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><div style='color:#008080; display:inline-block'>const char <em></div> </em>key* - the unique name used to identify a  KeyValuePair  in flash.</p>
+</blockquote>
+<h5 id="returns_4">Returns<a class="headerlink" href="#returns_4" title="Permanent link">&para;</a></h5>
+<p>MICROBIT_OK on success, or MICROBIT_NO_DATA if the given key was not found in flash. 
+<br/></p>
+<h4 id="int-remove-managedstring-key"><div style='color:#FF69B4; display:inline-block'>int</div> remove( <div style='color:#008080; display:inline-block'>ManagedString</div> key)<a class="headerlink" href="#int-remove-managedstring-key" title="Permanent link">&para;</a></h4>
+<h5 id="description_9">Description<a class="headerlink" href="#description_9" title="Permanent link">&para;</a></h5>
+<p>Removes a  KeyValuePair</p>
+<h5 id="parameters_8">Parameters<a class="headerlink" href="#parameters_8" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><div style='color:#008080; display:inline-block'>ManagedString</div> <em>key</em> - the unique name used to identify a  KeyValuePair  in flash.</p>
+</blockquote>
+<h5 id="returns_5">Returns<a class="headerlink" href="#returns_5" title="Permanent link">&para;</a></h5>
+<p>MICROBIT_OK on success, or MICROBIT_NO_DATA if the given key was not found in flash. </p>
+<h2 id="size">size<a class="headerlink" href="#size" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="int-size"><div style='color:#FF69B4; display:inline-block'>int</div> size()<a class="headerlink" href="#int-size" title="Permanent link">&para;</a></h4>
+<h5 id="description_10">Description<a class="headerlink" href="#description_10" title="Permanent link">&para;</a></h5>
+<p>The size of the flash based  KeyValueStore</p>
+<h5 id="returns_6">Returns<a class="headerlink" href="#returns_6" title="Permanent link">&para;</a></h5>
+<p>the number of entries in the key value store </p>
+<hr /></div>
         </div>
 
         <footer class="col-md-12">

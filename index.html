@@ -71,13 +71,25 @@
                     
                         
 <li >
-    <a href="installing-yotta/">Offline Development</a>
+    <a href="concepts/">Concepts</a>
 </li>
 
                     
                         
 <li >
-    <a href="concepts/">Concepts</a>
+    <a href="getting-started/">Getting Started</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="installing-yotta/">Online Development</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="installing-yotta/">Offline Development</a>
 </li>
 
                     
@@ -209,6 +221,12 @@
 </li>
 
                     
+                        
+<li >
+    <a href="data-types/packetbuffer/">PacketBuffer</a>
+</li>
+
+                    
                     </ul>
                 </li>
             
@@ -222,6 +240,54 @@
                         
 <li >
     <a href="ble/profile/">Profile</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="ble/accelerometer-service/">AccelerometerService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="ble/button-service/">ButtonService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="ble/dfu-service/">DFUService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="ble/event-service/">EventService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="ble/iopin-service/">IOPinService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="ble/led-service/">LEDService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="ble/magnetometer-service/">MagnetometerService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="ble/temperature-service/">TemperatureService</a>
 </li>
 
                     
@@ -270,7 +336,7 @@
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="installing-yotta/">
+                    <a rel="prev" href="concepts/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -293,21 +359,7 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#welcome-to-our-documentation">Welcome to our Documentation!</a></li>
-        
-    
-        <li class="main "><a href="#installing">Installing</a></li>
-        
-    
-        <li class="main "><a href="#layout">Layout</a></li>
-        
-            <li><a href="#ubit">uBit</a></li>
-        
-            <li><a href="#data-types">Data Types</a></li>
-        
-            <li><a href="#ble">BLE</a></li>
-        
-            <li><a href="#extras">Extras</a></li>
+        <li class="main active"><a href="#introduction">Introduction</a></li>
         
     
     </ul>
@@ -318,75 +370,25 @@
 <!-- Created using @ntoll's microbit animator: http://pycomic.github.io/microbit.html -->
 <img alt="&quot;welcome to the runtime&quot; on a microbit" src="./resources/welcome.gif" />
 </center></p>
-<h1 id="welcome-to-our-documentation">Welcome to our Documentation!<a class="headerlink" href="#welcome-to-our-documentation" title="Permanent link">&para;</a></h1>
-<p>The micro:bit runtime, also known as the micro:bit DAL (Device Abstraction Layer), is
-essentially a small, lightweight operating system that controls every aspect of
-the BBC micro:bit.</p>
-<p>The runtime is built on a platform called <a href="https://www.mbed.com">mbed</a>, provided by ARM,
-which provides a common abstraction layer for many ARM based devices.</p>
-<p>This resource supplies an abstract overview of the key elements of the runtime,
-including the general concepts used by the runtime, and the best practices for
-programming the micro:bit when programming at the C/C++ layer.</p>
-<h1 id="installing">Installing<a class="headerlink" href="#installing" title="Permanent link">&para;</a></h1>
-<p>If you want to write code for the micro:bit at the C/C++ layer, then you will need
-to install <a href="https://yotta.mbed.com/">Yotta</a>. Detailed instructions on how to install
-and get our basic project building with Yotta can be found <a href="installing-yotta/">here</a>.</p>
-<h1 id="layout">Layout<a class="headerlink" href="#layout" title="Permanent link">&para;</a></h1>
-<p>The remainder of the page will discuss the general layout of the documentation on
-this site.</p>
-<p>Member documentation is generated using <a href="http://www.stack.nl/~dimitri/doxygen/">doxygen</a>,
-which is translated into markdown for use by <a href="http://www.mkdocs.org/">mkdocs</a>.</p>
-<h2 id="ubit">uBit<a class="headerlink" href="#ubit" title="Permanent link">&para;</a></h2>
-<p>uBit, a condensed name for micro:bit,  presents our common abstraction
-used by Microsoft Blocks, Microsoft TouchDevelop and CodeKingdoms Javascript.</p>
-<p>It is broken down by classes, which are instantiated and attached to the uBit object
-at runtime.</p>
-<p>Each document provides a brief overview of the class, MessageBus IDs and possible events
-that could be generated by that class. It also lists the member functions that can
-executed by the user to perform various actions with the micro:bit.</p>
-<p>The uBit object looks like this:</p>
-<blockquote>
-<p>uBit {<br/>
-   &emsp;&emsp;<a href="ubit/i2c/">.i2c</a>,<br/>
-   &emsp;&emsp;<a href="ubit/serial/">.serial</a>,<br/>
-   &emsp;&emsp;<a href="ubit/messageBus/">.MessageBus</a>,<br/>
-   &emsp;&emsp;<a href="ubit/button/">.buttonA</a>,<br/>
-   &emsp;&emsp;<a href="ubit/button/">.buttonB</a>,<br/>
-   &emsp;&emsp;<a href="ubit/button/">.buttonAB</a>,<br/>
-   &emsp;&emsp;<a href="ubit/display/">.display</a>,<br/>
-   &emsp;&emsp;<a href="ubit/accelerometer/">.accelerometer</a>,<br/>
-   &emsp;&emsp;<a href="ubit/compass/">.compass</a>,<br/>
-   &emsp;&emsp;<a href="ubit/thermometer/">.thermometer</a>,<br/>
-   &emsp;&emsp;<a href="ubit/io/">.io</a>,<br/>
-   &emsp;&emsp;<a href="ubit/ble/">.ble</a>,<br/>
-   &emsp;&emsp;<a href="ubit/blemanager/">.BLEManager</a>,<br/>
-   &emsp;&emsp;<a href="ubit/radio/">.radio</a>,<br/>
-   }</p>
-</blockquote>
-<h2 id="data-types">Data Types<a class="headerlink" href="#data-types" title="Permanent link">&para;</a></h2>
-<p>The 'Data Types' drop down lists the various different structures used to hold,
-pass, and evaluate data used in the runtime.</p>
-<blockquote>
-<p><a href="data-types/image/">MicroBitImage</a> - This data type is used in the runtime when interacting
-with various components, in particular the display. It contains bit map information
-and supports various manipulations of this information.<br/><br/>
-<a href="data-types/event/">MicroBitEvent</a> - Events are used throughout the runtime to pass messages
-between components or between the system and the user.<br/><br/>
-<a href="data-types/string/">ManagedString</a> - Strings are used when interacting with buffers containing
-text intended for any one of our interfaces that support ManagedString, namely the display.
-This data type supports many operations on the buffer wrapped by this type. It also, most
-importantly, manages the memory allocation for the user, and maintains a count of the references
-pointing to an instance of this type.<br/><br/></p>
-</blockquote>
-<h2 id="ble">BLE<a class="headerlink" href="#ble" title="Permanent link">&para;</a></h2>
-<p>The ability to communicate is an important aspect of an IOT device. There are a number of ways
-to communicate with a micro:bit from another device, Bluetooth Low Energy (BLE) is one of them.</p>
-<p>The documentation covered in this section outlines important elements required to communicate
-with a micro:bit over BLE, including documentation around the pairing process, and the specification
-of the default micro:bit profile.</p>
-<h2 id="extras">Extras<a class="headerlink" href="#extras" title="Permanent link">&para;</a></h2>
-<p>This navigation list commonly covers classes that are hidden or wrapped by other elements of the runtime
-to simplify APIs for other languages that target the runtime.</p></div>
+<h1 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h1>
+<p>The micro:bit runtime provides an easy to use environment for programming the BBC micro:bit
+in the C/C++ language, written by Lancaster University. It contains device drivers for all the hardware capabilities of the micro:bit,
+and also a suite of runtime mechanisms to make programming the micro:bit easier and more flexible. These
+range from control of the LED mtrix display to peer-to-peer radio communication and secure 
+Bluetooth Low Energy services. The micro:bit runtime is proudly built on the <a href="https://www.mbed.com">ARM mbed</a> 
+and <a href="http://www.nordicsemi.com">Nordic nrf51</a> platforms.</p>
+<p>In addition to supporting development in C/C++, the runtime is also designed specifically to support 
+higher level languages provided by our partners that target the micro:bit. It is currently used as a support library for all the 
+languages on the BBC <a href="http://www.microbit.co.uk">www.microbit.co.uk</a> website, including Microsoft Block, Microsoft TouchDevelop, Code Kingdoms 
+JavaScript and Micropython languages.</p>
+<p>On these pages you will find guidance on how to start using the runtime in C/C++, summaries of all the
+components that make up the system and a full set of API documentation (the functions you can use to control the micro:bit).</p>
+<p>Just to show how easy it is to get started, here is how you would write a traditional Hello World program... </p>
+<pre><code class="c++">   uBit.display.scroll(&quot;Hello micro:bit!&quot;);
+</code></pre>
+
+<p>Not so scary after all, eh? 
+So, see the getting started and concepts sections to learn more... then go and create!</p></div>
         </div>
 
         <footer class="col-md-12">

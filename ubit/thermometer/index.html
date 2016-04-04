@@ -71,13 +71,25 @@
                     
                         
 <li >
-    <a href="../../installing-yotta/">Offline Development</a>
+    <a href="../../concepts/">Concepts</a>
 </li>
 
                     
                         
 <li >
-    <a href="../../concepts/">Concepts</a>
+    <a href="../../getting-started/">Getting Started</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../installing-yotta/">Online Development</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../installing-yotta/">Offline Development</a>
 </li>
 
                     
@@ -209,6 +221,12 @@
 </li>
 
                     
+                        
+<li >
+    <a href="../../data-types/packetbuffer/">PacketBuffer</a>
+</li>
+
+                    
                     </ul>
                 </li>
             
@@ -222,6 +240,54 @@
                         
 <li >
     <a href="../../ble/profile/">Profile</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/accelerometer-service/">AccelerometerService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/button-service/">ButtonService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/dfu-service/">DFUService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/event-service/">EventService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/iopin-service/">IOPinService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/led-service/">LEDService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/magnetometer-service/">MagnetometerService</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../ble/temperature-service/">TemperatureService</a>
 </li>
 
                     
@@ -309,7 +375,15 @@
         
             <li><a href="#getperiod">getPeriod</a></li>
         
+            <li><a href="#setoffset">setOffset</a></li>
+        
+            <li><a href="#getoffset">getOffset</a></li>
+        
+            <li><a href="#setcalibration">setCalibration</a></li>
+        
             <li><a href="#gettemperature">getTemperature</a></li>
+        
+            <li><a href="#updatesample">updateSample</a></li>
         
             <li><a href="#isidlecallbackneeded">isIdleCallbackNeeded</a></li>
         
@@ -368,53 +442,126 @@ can be used.</p>
 <h2 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
 <h2 id="constructor">Constructor<a class="headerlink" href="#constructor" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="microbitthermometer-uint16_t-id">MicroBitThermometer( <div style='color:#008080; display:inline-block'>uint16_t</div> id)<a class="headerlink" href="#microbitthermometer-uint16_t-id" title="Permanent link">&para;</a></h4>
+<h4 id="microbitthermometer-microbitstorage-_storage">MicroBitThermometer( <div style='color:#008080; display:inline-block'>MicroBitStorage  &amp;</div> _storage)<a class="headerlink" href="#microbitthermometer-microbitstorage-_storage" title="Permanent link">&para;</a></h4>
 <h5 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h5>
-<p>Constructor. Create new object that can sense temperature.  MicroBitThermometer</p>
+<p>Constructor. Create new  MicroBitThermometer</p>
 <h5 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#008080; display:inline-block'>uint16_t</div> <em>id</em> - the ID of the new  MicroBitThermometer  object.</p>
+<p><div style='color:#008080; display:inline-block'>MicroBitStorage  &amp;</div> <em>_storage</em> - an instance of  MicroBitStorage  used to persist temperature offset data</p>
 </blockquote>
 <h5 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h5>
-<pre><code class="c++"> thermometer(MICROBIT_ID_THERMOMETER);
+<pre><code class="cpp"> MicroBitStorage storage; 
+ MicroBitThermometer thermometer(storage); 
+</code></pre>
 
+<p><br/></p>
+<h4 id="microbitthermometer-microbitstorage-_storage-uint16_t-id">MicroBitThermometer( <div style='color:#008080; display:inline-block'>MicroBitStorage  &amp;</div> _storage,  <div style='color:#008080; display:inline-block'>uint16_t</div> id)<a class="headerlink" href="#microbitthermometer-microbitstorage-_storage-uint16_t-id" title="Permanent link">&para;</a></h4>
+<h5 id="description_1">Description<a class="headerlink" href="#description_1" title="Permanent link">&para;</a></h5>
+<p>Constructor. Create new  MicroBitThermometer</p>
+<h5 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><div style='color:#008080; display:inline-block'>MicroBitStorage  &amp;</div> <em>_storage</em> - an instance of  MicroBitStorage  used to persist temperature offset data</p>
+<p><div style='color:#008080; display:inline-block'>uint16_t</div> <em>id</em> - the unique  EventModel  id of this component. Defaults to MICROBIT_ID_THERMOMETER.</p>
+</blockquote>
+<h5 id="example_1">Example<a class="headerlink" href="#example_1" title="Permanent link">&para;</a></h5>
+<pre><code class="cpp"> MicroBitStorage storage; 
+ MicroBitThermometer thermometer(storage); 
+</code></pre>
+
+<p><br/></p>
+<h4 id="microbitthermometer">MicroBitThermometer()<a class="headerlink" href="#microbitthermometer" title="Permanent link">&para;</a></h4>
+<h5 id="description_2">Description<a class="headerlink" href="#description_2" title="Permanent link">&para;</a></h5>
+<p>Constructor. Create new  MicroBitThermometer</p>
+<h5 id="example_2">Example<a class="headerlink" href="#example_2" title="Permanent link">&para;</a></h5>
+<pre><code class="cpp"> MicroBitThermometer thermometer; 
+</code></pre>
+
+<p><br/></p>
+<h4 id="microbitthermometer-uint16_t-id">MicroBitThermometer( <div style='color:#008080; display:inline-block'>uint16_t</div> id)<a class="headerlink" href="#microbitthermometer-uint16_t-id" title="Permanent link">&para;</a></h4>
+<h5 id="description_3">Description<a class="headerlink" href="#description_3" title="Permanent link">&para;</a></h5>
+<p>Constructor. Create new  MicroBitThermometer</p>
+<h5 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><div style='color:#008080; display:inline-block'>uint16_t</div> <em>id</em> - the unique  EventModel  id of this component. Defaults to MICROBIT_ID_THERMOMETER.</p>
+</blockquote>
+<h5 id="example_3">Example<a class="headerlink" href="#example_3" title="Permanent link">&para;</a></h5>
+<pre><code class="cpp"> MicroBitThermometer thermometer; 
 </code></pre>
 
 <h2 id="setperiod">setPeriod<a class="headerlink" href="#setperiod" title="Permanent link">&para;</a></h2>
 <p><br/></p>
 <h4 id="void-setperiod-int-period"><div style='color:#FF69B4; display:inline-block'>void</div> setPeriod( <div style='color:#008080; display:inline-block'>int</div> period)<a class="headerlink" href="#void-setperiod-int-period" title="Permanent link">&para;</a></h4>
-<h5 id="description_1">Description<a class="headerlink" href="#description_1" title="Permanent link">&para;</a></h5>
-<p>Set the sample rate at which the temperatureis read (in ms). n.b. the temperature is alwasy read in the background, so wis only updated when the processor is idle, or when the temperature is explicitly read. The default sample period is 1 second.</p>
-<h5 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h5>
+<h5 id="description_4">Description<a class="headerlink" href="#description_4" title="Permanent link">&para;</a></h5>
+<p>Set the sample rate at which the temperatureis read (in ms).</p>
+<h5 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">&para;</a></h5>
 <blockquote>
 <p><div style='color:#008080; display:inline-block'>int</div> <em>period</em> - the requested time between samples, in milliseconds.</p>
 </blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>the temperature is always read in the background, and is only updated when the processor is idle, or when the temperature is explicitly read. </p>
+</div>
 <h2 id="getperiod">getPeriod<a class="headerlink" href="#getperiod" title="Permanent link">&para;</a></h2>
 <p><br/></p>
 <h4 id="int-getperiod"><div style='color:#FF69B4; display:inline-block'>int</div> getPeriod()<a class="headerlink" href="#int-getperiod" title="Permanent link">&para;</a></h4>
-<h5 id="description_2">Description<a class="headerlink" href="#description_2" title="Permanent link">&para;</a></h5>
+<h5 id="description_5">Description<a class="headerlink" href="#description_5" title="Permanent link">&para;</a></h5>
 <p>Reads the currently configured sample rate of the thermometer.</p>
 <h5 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h5>
-<p>The time between samples, in milliseconds.</p>
+<p>The time between samples, in milliseconds. </p>
+<h2 id="setoffset">setOffset<a class="headerlink" href="#setoffset" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="int-setoffset-int-offset"><div style='color:#FF69B4; display:inline-block'>int</div> setOffset( <div style='color:#008080; display:inline-block'>int</div> offset)<a class="headerlink" href="#int-setoffset-int-offset" title="Permanent link">&para;</a></h4>
+<h5 id="description_6">Description<a class="headerlink" href="#description_6" title="Permanent link">&para;</a></h5>
+<p>Set the value that is used to offset the raw silicon temperature.</p>
+<h5 id="parameters_4">Parameters<a class="headerlink" href="#parameters_4" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><div style='color:#008080; display:inline-block'>int</div> <em>offset</em> - the offset for the silicon temperature</p>
+</blockquote>
+<h5 id="returns_1">Returns<a class="headerlink" href="#returns_1" title="Permanent link">&para;</a></h5>
+<p>MICROBIT_OK on success </p>
+<h2 id="getoffset">getOffset<a class="headerlink" href="#getoffset" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="int-getoffset"><div style='color:#FF69B4; display:inline-block'>int</div> getOffset()<a class="headerlink" href="#int-getoffset" title="Permanent link">&para;</a></h4>
+<h5 id="description_7">Description<a class="headerlink" href="#description_7" title="Permanent link">&para;</a></h5>
+<p>Retreive the value that is used to offset the raw silicon temperature.</p>
+<h5 id="returns_2">Returns<a class="headerlink" href="#returns_2" title="Permanent link">&para;</a></h5>
+<p>the current offset. </p>
+<h2 id="setcalibration">setCalibration<a class="headerlink" href="#setcalibration" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="int-setcalibration-int-calibrationtemp"><div style='color:#FF69B4; display:inline-block'>int</div> setCalibration( <div style='color:#008080; display:inline-block'>int</div> calibrationTemp)<a class="headerlink" href="#int-setcalibration-int-calibrationtemp" title="Permanent link">&para;</a></h4>
+<h5 id="description_8">Description<a class="headerlink" href="#description_8" title="Permanent link">&para;</a></h5>
+<p>This member function fetches the raw silicon temperature, and calculates the value used to offset the raw silicon temperature based on a given temperature.</p>
+<h5 id="parameters_5">Parameters<a class="headerlink" href="#parameters_5" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><div style='color:#008080; display:inline-block'>int</div> <em>calibrationTemp</em> - the temperature used to calculate the raw silicon temperature offset.</p>
+</blockquote>
+<h5 id="returns_3">Returns<a class="headerlink" href="#returns_3" title="Permanent link">&para;</a></h5>
+<p>MICROBIT_OK on success </p>
 <h2 id="gettemperature">getTemperature<a class="headerlink" href="#gettemperature" title="Permanent link">&para;</a></h2>
 <p><br/></p>
 <h4 id="int-gettemperature"><div style='color:#FF69B4; display:inline-block'>int</div> getTemperature()<a class="headerlink" href="#int-gettemperature" title="Permanent link">&para;</a></h4>
-<h5 id="description_3">Description<a class="headerlink" href="#description_3" title="Permanent link">&para;</a></h5>
+<h5 id="description_9">Description<a class="headerlink" href="#description_9" title="Permanent link">&para;</a></h5>
 <p>Gets the current temperature of the microbit.</p>
-<h5 id="returns_1">Returns<a class="headerlink" href="#returns_1" title="Permanent link">&para;</a></h5>
+<h5 id="returns_4">Returns<a class="headerlink" href="#returns_4" title="Permanent link">&para;</a></h5>
 <p>the current temperature, in degrees celsius.</p>
-<h5 id="example_1">Example<a class="headerlink" href="#example_1" title="Permanent link">&para;</a></h5>
-<pre><code class="c++"> uBit.thermometer.getTemperature();
-
+<h5 id="example_4">Example<a class="headerlink" href="#example_4" title="Permanent link">&para;</a></h5>
+<pre><code class="cpp"> thermometer.getTemperature(); 
 </code></pre>
 
+<h2 id="updatesample">updateSample<a class="headerlink" href="#updatesample" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="int-updatesample"><div style='color:#FF69B4; display:inline-block'>int</div> updateSample()<a class="headerlink" href="#int-updatesample" title="Permanent link">&para;</a></h4>
+<h5 id="description_10">Description<a class="headerlink" href="#description_10" title="Permanent link">&para;</a></h5>
+<p>Updates the temperature sample of this instance of  MicroBitThermometer isSampleNeeded()</p>
+<h5 id="returns_5">Returns<a class="headerlink" href="#returns_5" title="Permanent link">&para;</a></h5>
+<p>MICROBIT_OK on success. </p>
 <h2 id="isidlecallbackneeded">isIdleCallbackNeeded<a class="headerlink" href="#isidlecallbackneeded" title="Permanent link">&para;</a></h2>
 <p><br/></p>
 <h4 id="int-isidlecallbackneeded"><div style='color:#FF69B4; display:inline-block'>int</div> isIdleCallbackNeeded()<a class="headerlink" href="#int-isidlecallbackneeded" title="Permanent link">&para;</a></h4>
-<h5 id="description_4">Description<a class="headerlink" href="#description_4" title="Permanent link">&para;</a></h5>
-<p>Indicates if we'd like some processor time to sense the temperature. 0 means we're not due to read the tmeperature yet.</p>
-<h5 id="returns_2">Returns<a class="headerlink" href="#returns_2" title="Permanent link">&para;</a></h5>
-<p>1 if we'd like some processor time, 0 otherwise.</p>
+<h5 id="description_11">Description<a class="headerlink" href="#description_11" title="Permanent link">&para;</a></h5>
+<p>Indicates if we'd like some processor time to sense the temperature.</p>
+<h5 id="returns_6">Returns<a class="headerlink" href="#returns_6" title="Permanent link">&para;</a></h5>
+<p>1 if we'd like some processor time, 0 otherwise. </p>
 <hr /></div>
         </div>
 
