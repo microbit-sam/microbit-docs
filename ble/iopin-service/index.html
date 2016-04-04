@@ -376,7 +376,7 @@
 
 <h1 id="bluetooth-io-pin-service">Bluetooth IO Pin Service<a class="headerlink" href="#bluetooth-io-pin-service" title="Permanent link">&para;</a></h1>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
-<p>This Bluetooth Low Energy (BLE) service is an optional part of the standard bluetooth profile for the micro:bit. It is a passive service, that can operate transparently in the 
+<p>This Bluetooth Low Energy (BLE) service is an optional part of the standard bluetooth profile for the micro:bit. It is a passive service, that can operate transparently in the
 background as your main program is running. It provides the ability to read and write digital and analog values onto any of the pins exposed on the micro:bit edge connector, including the 3 main ring ports.
 This data can be transparently read and written from any attached BLE master device. You do not need to explicity address and API on the service to acheive this.</p>
 <h2 id="enabling-the-service">Enabling the Service<a class="headerlink" href="#enabling-the-service" title="Permanent link">&para;</a></h2>
@@ -389,7 +389,7 @@ This data can be transparently read and written from any attached BLE master dev
 <p>Using BLE services is memory hungry. By default, some of the memory normally used by Nordic's BLE protocol stack (knwon as a SoftDevice), is reclaimed by the micro:bit runtime as general purpose memory for your applications. if you enable more BLE services, then you may need to provide more memory back to Soft Device to ensure proper operation. If after enabling this service your BLE applicaiton cannot access the service reliably, you should consider increasing the value of MICROBIT_SD_GATT_TABLE_SIZE in your inc/MicroBitConfig.h. The more service you add, the larger this will need to be, up to the limit defined in MicroBitConfig.h.</p>
 </div>
 <h2 id="ble-service-specification">BLE Service Specification<a class="headerlink" href="#ble-service-specification" title="Permanent link">&para;</a></h2>
-<p>Please see the <a href="../../ble/profile-specification.zip">micro:bit BLE profile specification</a>.</p>
+<p>Please see the <a href="../../resources/bluetooth/microbit-profile-V1.7-Level-2.pdf">micro:bit BLE profile specification</a>.</p>
 <h2 id="example-applications-for-androidiosandroid">Example Applications for Android/IOS/Android<a class="headerlink" href="#example-applications-for-androidiosandroid" title="Permanent link">&para;</a></h2>
 <p>COMING SOON</p></div>
         </div>
