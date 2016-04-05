@@ -71,19 +71,7 @@
                     
                         
 <li >
-    <a href="../../concepts/">Concepts</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../../getting-started/">Getting Started</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../../installing-yotta/">Online Development</a>
+    <a href="../../online-toolchains/">Online Development</a>
 </li>
 
                     
@@ -95,7 +83,13 @@
                     
                         
 <li >
-    <a href="../../device/">The Device</a>
+    <a href="../../concepts/">Concepts</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../device/">The device</a>
 </li>
 
                     
@@ -111,7 +105,7 @@
                     
                         
 <li >
-    <a href="../">uBit</a>
+    <a href="../">Overview</a>
 </li>
 
                     
@@ -172,18 +166,6 @@
                         
 <li >
     <a href="../io/">io</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../ble/">ble</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../blemanager/">bleManager</a>
 </li>
 
                     
@@ -321,6 +303,16 @@
 
             
             
+
+            
+
+            
+            
+
+            
+
+            
+            
             </ul>
 
             <!-- Search, Navigation and Repo links -->
@@ -394,11 +386,35 @@
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <p><code>MicroBitStorage</code> provides a simple way to store data on the micro:bit that persists
 through power cycles. It currently takes the form of a key value store which contains
-a number of Key Value pairs.</p>
+a number of key value pairs.</p>
+<p>If a user wanted to determine if a micro:bit has just been flashed over USB they
+could simply write the following:</p>
+<pre><code class="cpp">int main()
+{
+    KeyValuePair firstTime = uBit.storage.get(&quot;boot&quot;);
+
+    int stored;
+
+    if(firstTime == NULL)
+    {
+        //this is the first boot after a flash. Store a value!
+        stored = 1;
+        uBit.storage.put(&quot;boot&quot;, (uint8_t *)&amp;stored);
+    }
+    else
+    {
+        //this is not the first boot, scroll our stored value.
+        memcpy(&amp;stored, firstTime-&gt;value, sizeof(int));
+        uBit.display.scroll(stored);
+    }
+}
+</code></pre>
+
+<h3 id="what-is-flash-memory">What is flash memory?<a class="headerlink" href="#what-is-flash-memory" title="Permanent link">&para;</a></h3>
 <p>The micro:bit has 256 kB flash memory and 16 kB random access memory (RAM). Flash memory
 is <em>non-volatile</em>, which essentially means that data is not forgotten when the device
 is powered off, this is the technology that many USB sticks use.</p>
-<p>The alternative, RAM (known as <em>volatile</em> memory), cannot be persisted through power cycling the device as its
+<p>The alternative, Random Access Memory (also known as <em>volatile</em> memory), cannot be persisted through power cycling the device as its
 operation relies upon maintaining a constant supply of power.</p>
 <p>Therefore, <code>MicroBitStorage</code> utilises the <em>non-volatile</em> nature of flash memory, to
 store its data. This class is utilised by the <a href="../compass/">compass</a>, <a href="../compass/">accelerometer</a>
@@ -436,7 +452,7 @@ which means that <strong>21</strong> Key Value pairs can be stored.</p>
 </blockquote>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>currently not implemented. </p>
+<p>currently not implemented.</p>
 </div>
 <h2 id="flashpageerase">flashPageErase<a class="headerlink" href="#flashpageerase" title="Permanent link">&para;</a></h2>
 <p><br/></p>
@@ -445,7 +461,7 @@ which means that <strong>21</strong> Key Value pairs can be stored.</p>
 <p>Method for erasing a page in flash.</p>
 <h5 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#008080; display:inline-block'>uint32_t <em></div> </em>page_address* - Address of the first word in the page to be erased. </p>
+<p><div style='color:#008080; display:inline-block'>uint32_t <em></div> </em>page_address* - Address of the first word in the page to be erased.</p>
 </blockquote>
 <h2 id="flashwordwrite">flashWordWrite<a class="headerlink" href="#flashwordwrite" title="Permanent link">&para;</a></h2>
 <p><br/></p>
@@ -455,7 +471,7 @@ which means that <strong>21</strong> Key Value pairs can be stored.</p>
 <h5 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">&para;</a></h5>
 <blockquote>
 <p><div style='color:#008080; display:inline-block'>uint32_t <em></div> </em>address* - Address of the word to change.</p>
-<p><div style='color:#008080; display:inline-block'>uint32_t</div> <em>value</em> - Value to be written to flash. </p>
+<p><div style='color:#008080; display:inline-block'>uint32_t</div> <em>value</em> - Value to be written to flash.</p>
 </blockquote>
 <h2 id="put">put<a class="headerlink" href="#put" title="Permanent link">&para;</a></h2>
 <p><br/></p>
@@ -468,7 +484,7 @@ which means that <strong>21</strong> Key Value pairs can be stored.</p>
 <p><div style='color:#008080; display:inline-block'>uint8_t <em></div> </em>data* - a pointer to the beginning of the data to be persisted.</p>
 </blockquote>
 <h5 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h5>
-<p>MICROBIT_OK on success, or MICROBIT_NO_RESOURCES if the storage page is full 
+<p>MICROBIT_OK on success, or MICROBIT_NO_RESOURCES if the storage page is full
 <br/></p>
 <h4 id="int-put-managedstring-key-uint8_t-data"><div style='color:#FF69B4; display:inline-block'>int</div> put( <div style='color:#008080; display:inline-block'>ManagedString</div> key,  <div style='color:#008080; display:inline-block'>uint8_t *</div> data)<a class="headerlink" href="#int-put-managedstring-key-uint8_t-data" title="Permanent link">&para;</a></h4>
 <h5 id="description_5">Description<a class="headerlink" href="#description_5" title="Permanent link">&para;</a></h5>
@@ -479,7 +495,7 @@ which means that <strong>21</strong> Key Value pairs can be stored.</p>
 <p><div style='color:#008080; display:inline-block'>uint8_t <em></div> </em>data* - a pointer to the beginning of the data to be persisted.</p>
 </blockquote>
 <h5 id="returns_1">Returns<a class="headerlink" href="#returns_1" title="Permanent link">&para;</a></h5>
-<p>MICROBIT_OK on success, or MICROBIT_NO_RESOURCES if the storage page is full </p>
+<p>MICROBIT_OK on success, or MICROBIT_NO_RESOURCES if the storage page is full</p>
 <h2 id="get">get<a class="headerlink" href="#get" title="Permanent link">&para;</a></h2>
 <p><br/></p>
 <h4 id="keyvaluepair-get-const-char-key"><div style='color:#FF69B4; display:inline-block'>KeyValuePair</div> get( <div style='color:#008080; display:inline-block'>const char *</div> key)<a class="headerlink" href="#keyvaluepair-get-const-char-key" title="Permanent link">&para;</a></h4>
@@ -493,7 +509,7 @@ which means that <strong>21</strong> Key Value pairs can be stored.</p>
 <p>a pointer to a heap allocated  KeyValuePair  struct, this pointer will be NULL if the key was not found in storage.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>it is up to the user to free memory after use. </p>
+<p>it is up to the user to free memory after use.</p>
 </div>
 <p><br/></p>
 <h4 id="keyvaluepair-get-managedstring-key"><div style='color:#FF69B4; display:inline-block'>KeyValuePair</div> get( <div style='color:#008080; display:inline-block'>ManagedString</div> key)<a class="headerlink" href="#keyvaluepair-get-managedstring-key" title="Permanent link">&para;</a></h4>
@@ -507,7 +523,7 @@ which means that <strong>21</strong> Key Value pairs can be stored.</p>
 <p>a pointer to a heap allocated  KeyValuePair  struct, this pointer will be NULL if the key was not found in storage.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>it is up to the user to free memory after use. </p>
+<p>it is up to the user to free memory after use.</p>
 </div>
 <h2 id="remove">remove<a class="headerlink" href="#remove" title="Permanent link">&para;</a></h2>
 <p><br/></p>
@@ -519,7 +535,7 @@ which means that <strong>21</strong> Key Value pairs can be stored.</p>
 <p><div style='color:#008080; display:inline-block'>const char <em></div> </em>key* - the unique name used to identify a  KeyValuePair  in flash.</p>
 </blockquote>
 <h5 id="returns_4">Returns<a class="headerlink" href="#returns_4" title="Permanent link">&para;</a></h5>
-<p>MICROBIT_OK on success, or MICROBIT_NO_DATA if the given key was not found in flash. 
+<p>MICROBIT_OK on success, or MICROBIT_NO_DATA if the given key was not found in flash.
 <br/></p>
 <h4 id="int-remove-managedstring-key"><div style='color:#FF69B4; display:inline-block'>int</div> remove( <div style='color:#008080; display:inline-block'>ManagedString</div> key)<a class="headerlink" href="#int-remove-managedstring-key" title="Permanent link">&para;</a></h4>
 <h5 id="description_9">Description<a class="headerlink" href="#description_9" title="Permanent link">&para;</a></h5>
@@ -529,14 +545,14 @@ which means that <strong>21</strong> Key Value pairs can be stored.</p>
 <p><div style='color:#008080; display:inline-block'>ManagedString</div> <em>key</em> - the unique name used to identify a  KeyValuePair  in flash.</p>
 </blockquote>
 <h5 id="returns_5">Returns<a class="headerlink" href="#returns_5" title="Permanent link">&para;</a></h5>
-<p>MICROBIT_OK on success, or MICROBIT_NO_DATA if the given key was not found in flash. </p>
+<p>MICROBIT_OK on success, or MICROBIT_NO_DATA if the given key was not found in flash.</p>
 <h2 id="size">size<a class="headerlink" href="#size" title="Permanent link">&para;</a></h2>
 <p><br/></p>
 <h4 id="int-size"><div style='color:#FF69B4; display:inline-block'>int</div> size()<a class="headerlink" href="#int-size" title="Permanent link">&para;</a></h4>
 <h5 id="description_10">Description<a class="headerlink" href="#description_10" title="Permanent link">&para;</a></h5>
 <p>The size of the flash based  KeyValueStore</p>
 <h5 id="returns_6">Returns<a class="headerlink" href="#returns_6" title="Permanent link">&para;</a></h5>
-<p>the number of entries in the key value store </p>
+<p>the number of entries in the key value store</p>
 <hr /></div>
         </div>
 

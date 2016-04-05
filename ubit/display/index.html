@@ -71,19 +71,7 @@
                     
                         
 <li >
-    <a href="../../concepts/">Concepts</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../../getting-started/">Getting Started</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../../installing-yotta/">Online Development</a>
+    <a href="../../online-toolchains/">Online Development</a>
 </li>
 
                     
@@ -95,7 +83,13 @@
                     
                         
 <li >
-    <a href="../../device/">The Device</a>
+    <a href="../../concepts/">Concepts</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../device/">The device</a>
 </li>
 
                     
@@ -111,7 +105,7 @@
                     
                         
 <li >
-    <a href="../">uBit</a>
+    <a href="../">Overview</a>
 </li>
 
                     
@@ -172,18 +166,6 @@
                         
 <li >
     <a href="../io/">io</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../ble/">ble</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../blemanager/">bleManager</a>
 </li>
 
                     
@@ -309,6 +291,16 @@
                     
                     </ul>
                 </li>
+            
+            
+
+            
+
+            
+            
+
+            
+
             
             
 
@@ -460,26 +452,26 @@ LED display. Here are a few examples to get you started though!</p>
 <p>Simply use the scroll function specify the message you want to scroll, and sit back and watch the result. The messgae you provide will be scrolled, pixel by pixel across the display from right to left.
 If you take a look at the documentation for the scroll function in the API below, you will notice that you can also specify the speed of the scroll as an optional final parameter. The lower the delay, the
 faster your text will scroll across the screen.</p>
-<pre><code class="c++">uBit.display.scroll(&quot;HELLO!&quot;);
+<pre><code class="cpp">uBit.display.scroll(&quot;HELLO!&quot;);
 uBit.display.scroll(&quot;HELLO!&quot;, 100);
 </code></pre>
 
 <p>Notice that you can also scroll numbers (either constants of variables):</p>
-<pre><code class="c++">int c = 42;
+<pre><code class="cpp">int c = 42;
 uBit.display.scroll(c);
 </code></pre>
 
 <h3 id="printing-text">Printing Text<a class="headerlink" href="#printing-text" title="Permanent link">&para;</a></h3>
 <p>Sometimes it is better to show the letters/numbers in turn on the screen rather than scrolling them. If you want to do this, the 'print' function has exactly the same parameters as 'scroll', but
 with this behaviour.  e.g.</p>
-<pre><code class="c++">uBit.display.print(&quot;HELLO!&quot;);
+<pre><code class="cpp">uBit.display.print(&quot;HELLO!&quot;);
 uBit.display.print(&quot;HELLO!&quot;, 100);
 uBit.display.print(42);
 </code></pre>
 
 <p>Do notice that print behaves slightly differently if you provide a single character or numeric digit though. if you do this, the value you proviode will sty on the screen until you explicitly
 change the screen. if you ask the runtime to print a strong with two or more characters, then each will appear in turn, then disappear. e.g. try this and you will find it stays on the screen:</p>
-<pre><code class="c++">uBit.display.print(7);
+<pre><code class="cpp">uBit.display.print(7);
 </code></pre>
 
 <h3 id="showing-images">Showing Images<a class="headerlink" href="#showing-images" title="Permanent link">&para;</a></h3>
@@ -487,12 +479,12 @@ change the screen. if you ask the runtime to print a strong with two or more cha
 you create any variable. Onve created, you can then provide them as a parameter to the scroll and print functions. Unlike the text based animation functions, you can also specif exactly
 where in the screen you would like to the image to appear - and you can even treat pixel values of zero as transparent if you like!
 See the <a href="../../data-types/image/">MicroBitImage page</a> for more details on images, but here are a few simple examples:</p>
-<pre><code class="c++">// show your smiley on the screen...
+<pre><code class="cpp">// show your smiley on the screen...
 MicroBitImage smiley(&quot;0,255,0,255, 0\n0,255,0,255,0\n0,0,0,0,0\n255,0,0,0,255\n0,255,255,255,0\n&quot;);
 uBit.display.print(smiley);
 </code></pre>
 
-<pre><code class="c++">// make your smiley peep up from the bottom of the screen...
+<pre><code class="cpp">// make your smiley peep up from the bottom of the screen...
 MicroBitImage smiley(&quot;0,255,0,255, 0\n0,255,0,255,0\n0,0,0,0,0\n255,0,0,0,255\n0,255,255,255,0\n&quot;);
 for (int y=4; i&gt;=0; y--)
 {
@@ -502,7 +494,7 @@ for (int y=4; i&gt;=0; y--)
 
 </code></pre>
 
-<pre><code class="c++">// scroll your smiley across the screen...
+<pre><code class="cpp">// scroll your smiley across the screen...
 MicroBitImage smiley(&quot;0,255,0,255, 0\n0,255,0,255,0\n0,0,0,0,0\n255,0,0,0,255\n0,255,255,255,0\n&quot;);
 uBit.display.scroll(smiley);
 </code></pre>
@@ -511,7 +503,7 @@ uBit.display.scroll(smiley);
 <p>By now you have probably noticed that the scroll, print and animate functions all wait for the effect requested to finished before returning. This is by design, to allow you to easily synchronise your programs.
 However, sometimes you want to launch an effect, and let it run in the background while your program does something else. For this, you can use the <em>Async</em> variations of the scroll, print and animate functions.
 These all have identical parameters and capabilities, but will return immediately. Try some of the examples above with their Async equivalents to understand this different behaviour.  For example:</p>
-<pre><code class="c++">// scroll your smiley across the screen, without waiting for it to finish...
+<pre><code class="cpp">// scroll your smiley across the screen, without waiting for it to finish...
 MicroBitImage smiley(&quot;0,255,0,255, 0\n0,255,0,255,0\n0,0,0,0,0\n255,0,0,0,255\n0,255,255,255,0\n&quot;);
 uBit.display.scrollAsync(smiley);
 </code></pre>
@@ -542,7 +534,7 @@ operate, so is the default. The latter does provide more useful effect though, s
 </tbody>
 </table>
 <p>for example:</p>
-<pre><code class="c++">// show a smiley with bright eyes!
+<pre><code class="cpp">// show a smiley with bright eyes!
 MicroBitImage smiley(&quot;0,255,0,255, 0\n0,255,0,255,0\n0,0,0,0,0\n32,0,0,0,32\n0,32,32,32,0\n&quot;);
 uBit.display.setDisplayMode(DISPLAY_MODE_GREYSCALE);
 uBit.display.print(smiley);
@@ -551,7 +543,7 @@ uBit.display.print(smiley);
 <h3 id="accessing-the-display-buffer">Accessing the Display Buffer<a class="headerlink" href="#accessing-the-display-buffer" title="Permanent link">&para;</a></h3>
 <p>The memory buffer that is used to drive the LEDs is itself a <a href="../../data-types/image/">MicroBitImage</a>. This means that you can also access and call any of the functions listed in the <a href="../../data-types/image/">MicroBitImage API documentation</a>
 directly on the dipslay buffer. Examples here include setPixelValue, as illustrated below, but read the above documentation link for full details.</p>
-<pre><code class="c++">// set a single pixel by co-ordinate
+<pre><code class="cpp">// set a single pixel by co-ordinate
 uBit.display.image.setPixelValue(2,2,255);
 </code></pre>
 

@@ -71,19 +71,7 @@
                     
                         
 <li >
-    <a href="../../concepts/">Concepts</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../../getting-started/">Getting Started</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../../installing-yotta/">Online Development</a>
+    <a href="../../online-toolchains/">Online Development</a>
 </li>
 
                     
@@ -95,7 +83,13 @@
                     
                         
 <li >
-    <a href="../../device/">The Device</a>
+    <a href="../../concepts/">Concepts</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../device/">The device</a>
 </li>
 
                     
@@ -111,7 +105,7 @@
                     
                         
 <li >
-    <a href="../../ubit/">uBit</a>
+    <a href="../../ubit/">Overview</a>
 </li>
 
                     
@@ -172,18 +166,6 @@
                         
 <li >
     <a href="../../ubit/io/">io</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../../ubit/ble/">ble</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../../ubit/blemanager/">bleManager</a>
 </li>
 
                     
@@ -321,6 +303,16 @@
 
             
             
+
+            
+
+            
+            
+
+            
+
+            
+            
             </ul>
 
             <!-- Search, Navigation and Repo links -->
@@ -401,72 +393,79 @@
 
 <h1 id="managedstring">ManagedString<a class="headerlink" href="#managedstring" title="Permanent link">&para;</a></h1>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>ManagedString represents a text string in the micro:bit runtime. A string is simply a sequency of characters such as 'joe' or 'microbit'. 
-In the C language, and the end of the string is marked by a special character (a NULL character, with the value zero). 
-Simple strings are often represented as literal character arrays e.g. </p>
-<pre><code class="cpp">    uBit.display.scroll(&quot;HELLO&quot;);
+<p><code>ManagedString</code> represents a text string in the micro:bit runtime.</p>
+<p>A string is simply a sequence of characters such as "joe" or "micro:bit".</p>
+<p>In the C language, the end of the string is marked by a special character (a <strong>NULL</strong> character, commonly with the value zero).</p>
+<p>Simple strings are often represented as literal character arrays:</p>
+<pre><code class="cpp">uBit.display.scroll(&quot;HELLO&quot;);
 </code></pre>
 
-<p>is actually almost exactly the same as:</p>
-<pre><code class="cpp">    char message[6] = {'H', 'E', 'L', 'L', 'O', 0};
-    uBit.display.scroll(message);
+<p>Which is almost exactly the same as:</p>
+<pre><code class="cpp">char message[6] = {'H', 'E', 'L', 'L', 'O', 0};
+uBit.display.scroll(message);
 </code></pre>
 
-<p>Although fantastically simple, strings of this form are well known to lead to memory leaks and be sources of bugs in code (especially when the programmers are still learning!), so most modern
-high level languages such as Java, C#, Javascript and TouchDevelop do not use strings of this format. Instead, they provide code that is capable of ensuring strings remain safe. ManagedString 
-provides this equivalent functionality for the micro:bit, as a building block for these hgher level languages. However, it can also makes programming the micro:bit in C easier too!</p>
+<p>Although fantastically simple, strings of this form are well known to lead to memory leaks and be sources of bugs in code (especially when the programmers are still learning!).</p>
+<p>As a result, most modern high level languages such as Java, C#, Javascript and TouchDevelop do not use strings of this format.
+Instead, they provide code that is capable of ensuring strings remain safe.</p>
+<p><code>ManagedString</code> provides this equivalent functionality for the micro:bit, as a building block for higher level languages. However, it can also makes programming the micro:bit in C easier too!</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This is a <strong>managed type</strong>. This means that it will automatically use and release memory as needed. There is no need for you to explicitly free or release memory when your done - the memory will be freed as soon as the last piece of code stops using the data.</p>
 </div>
 <h2 id="creating-strings">Creating Strings<a class="headerlink" href="#creating-strings" title="Permanent link">&para;</a></h2>
-<p>Images are simple to create - just create them like a variable, and provide the text or number you would like to build the string from. For example:</p>
-<pre><code class="c++">    ManagedString hi(&quot;HELLO&quot;);
-    ManagedString message(&quot;micro:bit&quot;);
-    ManagedString n(42);
+<p>Images are simple to create - just create them like a variable, and provide the text or number you would like to build the string from.</p>
+<p>For example:</p>
+<pre><code class="cpp">ManagedString hi(&quot;HELLO&quot;);
+ManagedString message(&quot;micro:bit&quot;);
+ManagedString n(42);
 </code></pre>
 
-<p>The runtime will also create a ManagedString for you from a number or quoted literal anytime a function needs a ManagedString. For example, even though the scroll funciton in microBitDisplay expects a ManagedString,
-it is totally fine to pass a literal value in quotes or a number (or in fact, any parameter that is listed in the API secion as a legal constructor will work). For example:</p>
-<pre><code class="c++">    ManagedString hi(&quot;HELLO&quot;);
-    ManagedString message(&quot;micro:bit&quot;);
-    ManagedString n(42);
+<p>The runtime will also create a <code>ManagedString</code> for you from a number or quoted literal anytime a function requires a <code>ManagedString</code>.</p>
+<p>In the example below, even though the scroll function of <a href="../../ubit/display/"><code>MicroBitDisplay</code></a> expects a <code>ManagedString</code>,
+it is totally fine to pass a literal value in quotes or a number (or in fact, any parameter that is listed in the API section as a legal constructor will work):</p>
+<pre><code class="cpp">ManagedString hi(&quot;HELLO&quot;);
+ManagedString message(&quot;micro:bit&quot;);
+ManagedString n(42);
 
-    // All these calls are legal:
-    uBit.display.scroll(hi);
-    uBit.display.scroll(n);
-    uBit.display.scroll(&quot;THANKS!&quot;);
+// All these calls are legal:
+uBit.display.scroll(hi);
+uBit.display.scroll(n);
+uBit.display.scroll(&quot;THANKS!&quot;);
 </code></pre>
 
 <h2 id="manipulating-strings">Manipulating Strings<a class="headerlink" href="#manipulating-strings" title="Permanent link">&para;</a></h2>
-<p>ManagedStrings are <strong>immutable</strong>, meaning that once created, they cannot be changed. However, you can join them, search them, extract characters from them and create other strings! The micro:bur runtime makes use of <strong>operator overloading</strong> to keep this easy to use. In other works, we make use of the '=' '+' '&lt;' '&gt;' and '==' operators to let you easily assign and compare strings. Although this may sound complex, it is easy once you see how to do it. For example, here is how you would join together more than one string, and assign it to a new one:</p>
-<pre><code class="c++">    ManagedString hi(&quot;HELLO&quot;);
-    ManagedString message(&quot;micro:bit&quot;);
-    ManagedString space(&quot; &quot;);
+<p>ManagedStrings are <strong>immutable</strong>, meaning that once created, they cannot be changed. However, you can join them, search them, extract characters from them and create other strings!</p>
+<p>The micro:bit runtime makes use of <strong>operator overloading</strong> to keep this easy to use.</p>
+<p>In other words, we make use of the <code>=</code> <code>+</code> <code>&lt;</code> <code>&gt;</code> and <code>==</code> operators to let you easily assign and compare strings.</p>
+<p>Although this may sound complex, it is easy once you see how to do it.</p>
+<p>Here is how you would join together more than one string, and assign it to a new one:</p>
+<pre><code class="cpp">ManagedString hi(&quot;HELLO&quot;);
+ManagedString message(&quot;micro:bit&quot;);
+ManagedString space(&quot; &quot;);
 
-    ManagedString s = hi + space + message;
+ManagedString s = hi + space + message;
 
-    // This would say &quot;HELLO micro:bit&quot; on the LED display.
-    uBit.display.scroll(s);
+// This would say &quot;HELLO micro:bit&quot; on the LED display.
+uBit.display.scroll(s);
 </code></pre>
 
 <p>You can compare strings (alphabetically) in a similar way:</p>
-<pre><code class="c++">
-    ManagedString hi(&quot;HELLO&quot;);
-    ManagedString message(&quot;micro:bit&quot;);
+<pre><code class="cpp">ManagedString hi(&quot;HELLO&quot;);
+ManagedString message(&quot;micro:bit&quot;);
 
-    if (hi == message)
-        uBit.display.scroll(&quot;SAME&quot;);
+if (hi == message)
+    uBit.display.scroll(&quot;SAME&quot;);
 
-    if (hi &lt; message)
-        uBit.display.scroll(&quot;LESS&quot;);
+if (hi &lt; message)
+    uBit.display.scroll(&quot;LESS&quot;);
 
-    if (hi &gt; message)
-        uBit.display.scroll(&quot;MORE&quot;);
-
+if (hi &gt; message)
+    uBit.display.scroll(&quot;MORE&quot;);
 </code></pre>
 
-<p>You can also determine the length of a string, extract parts of strings, retrieve individual characters at a given index or convert a ManagedString to a C-style character array using the <strong>'length'</strong>, <strong>'substring'</strong>, <strong>'charAt'</strong> and <strong>'toCharArray'</strong> functions respectively. See the API docuemntation below for further details.</p>
+<p>You can also determine the length of a string, extract parts of strings, retrieve individual characters at a given index or convert a ManagedString to a C-style character array using the <code>length</code>, <code>substring</code>, <code>charAt</code> and <code>toCharArray</code> functions respectively.</p>
+<p>See the API documentation below for further details.</p>
 <h1 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h1>
 <h2 id="constructor">Constructor<a class="headerlink" href="#constructor" title="Permanent link">&para;</a></h2>
 <p><br/></p>
@@ -478,8 +477,8 @@ it is totally fine to pass a literal value in quotes or a number (or in fact, an
 <p><div style='color:#008080; display:inline-block'>StringData  <em></div> </em>ptr* - The literal - first two bytes should be 0xff, then the length in little endian, then the literal. The literal has to be 4-byte aligned.</p>
 </blockquote>
 <h5 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> static const char hello[] __attribute__ ((aligned (4))) = &quot;\xff\xff\x05\x00&quot; &quot;Hello&quot;; 
- ManagedString s((StringData*)(void*)hello); 
+<pre><code class="cpp"> static const char hello[] __attribute__ ((aligned (4))) = &quot;\xff\xff\x05\x00&quot; &quot;Hello&quot;;
+ ManagedString s((StringData*)(void*)hello);
 </code></pre>
 
 <h2 id="leakdata">leakData<a class="headerlink" href="#leakdata" title="Permanent link">&para;</a></h2>
@@ -497,7 +496,7 @@ it is totally fine to pass a literal value in quotes or a number (or in fact, an
 <p><div style='color:#008080; display:inline-block'>const char <em></div> </em>str* - The character array on which to base the new  ManagedString .</p>
 </blockquote>
 <h5 id="example_1">Example<a class="headerlink" href="#example_1" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> ManagedString s(&quot;abcdefg&quot;); 
+<pre><code class="cpp"> ManagedString s(&quot;abcdefg&quot;);
 </code></pre>
 
 <p><br/></p>
@@ -509,7 +508,7 @@ it is totally fine to pass a literal value in quotes or a number (or in fact, an
 <p><div style='color:#008080; display:inline-block'>const int</div> <em>value</em> - The integer from which to create the  ManagedString .</p>
 </blockquote>
 <h5 id="example_2">Example<a class="headerlink" href="#example_2" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> ManagedString s(20); 
+<pre><code class="cpp"> ManagedString s(20);
 </code></pre>
 
 <p><br/></p>
@@ -521,7 +520,7 @@ it is totally fine to pass a literal value in quotes or a number (or in fact, an
 <p><div style='color:#008080; display:inline-block'>const char</div> <em>value</em> - The character from which to create the  ManagedString .</p>
 </blockquote>
 <h5 id="example_3">Example<a class="headerlink" href="#example_3" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> ManagedString s('a'); 
+<pre><code class="cpp"> ManagedString s('a');
 </code></pre>
 
 <p><br/></p>
@@ -533,7 +532,7 @@ it is totally fine to pass a literal value in quotes or a number (or in fact, an
 <p><div style='color:#008080; display:inline-block'>PacketBuffer</div> <em>buffer</em> - The PacktBuffer from which to create the  ManagedString .</p>
 </blockquote>
 <h5 id="example_4">Example<a class="headerlink" href="#example_4" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> ManagedString s = radio.datagram.recv(); 
+<pre><code class="cpp"> ManagedString s = radio.datagram.recv();
 </code></pre>
 
 <p><br/></p>
@@ -546,7 +545,7 @@ it is totally fine to pass a literal value in quotes or a number (or in fact, an
 <p><div style='color:#008080; display:inline-block'>const int16_t</div> <em>length</em> - The length of the character array</p>
 </blockquote>
 <h5 id="example_5">Example<a class="headerlink" href="#example_5" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> ManagedString s(&quot;abcdefg&quot;,7); 
+<pre><code class="cpp"> ManagedString s(&quot;abcdefg&quot;,7);
 </code></pre>
 
 <p><br/></p>
@@ -558,8 +557,8 @@ it is totally fine to pass a literal value in quotes or a number (or in fact, an
 <p><div style='color:#008080; display:inline-block'>const  ManagedString  &amp;</div> <em>s</em> - The  ManagedString  to copy.</p>
 </blockquote>
 <h5 id="example_6">Example<a class="headerlink" href="#example_6" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> ManagedString s(&quot;abcdefg&quot;); 
- ManagedString p(s); 
+<pre><code class="cpp"> ManagedString s(&quot;abcdefg&quot;);
+ ManagedString p(s);
 </code></pre>
 
 <p><br/></p>
@@ -567,7 +566,7 @@ it is totally fine to pass a literal value in quotes or a number (or in fact, an
 <h5 id="description_8">Description<a class="headerlink" href="#description_8" title="Permanent link">&para;</a></h5>
 <p>Default constructor.</p>
 <h5 id="example_7">Example<a class="headerlink" href="#example_7" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> ManagedString s(); 
+<pre><code class="cpp"> ManagedString s();
 </code></pre>
 
 <h2 id="operator">operator=<a class="headerlink" href="#operator" title="Permanent link">&para;</a></h2>
@@ -580,9 +579,9 @@ it is totally fine to pass a literal value in quotes or a number (or in fact, an
 <p><div style='color:#008080; display:inline-block'>const  ManagedString  &amp;</div> <em>s</em> - The  ManagedString  to copy.</p>
 </blockquote>
 <h5 id="example_8">Example<a class="headerlink" href="#example_8" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> ManagedString s(&quot;abcd&quot;); 
- ManagedString p(&quot;efgh&quot;); 
- p = s // p now points to s, s' ref is incremented 
+<pre><code class="cpp"> ManagedString s(&quot;abcd&quot;);
+ ManagedString p(&quot;efgh&quot;);
+ p = s // p now points to s, s' ref is incremented
 </code></pre>
 
 <h2 id="operator_1">operator==<a class="headerlink" href="#operator_1" title="Permanent link">&para;</a></h2>
@@ -597,14 +596,14 @@ it is totally fine to pass a literal value in quotes or a number (or in fact, an
 <h5 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h5>
 <p>true if this  ManagedString  is identical to the one supplied, false otherwise.</p>
 <h5 id="example_9">Example<a class="headerlink" href="#example_9" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> MicroBitDisplay display; 
- ManagedString s(&quot;abcd&quot;); 
- ManagedString p(&quot;efgh&quot;); 
+<pre><code class="cpp"> MicroBitDisplay display;
+ ManagedString s(&quot;abcd&quot;);
+ ManagedString p(&quot;efgh&quot;);
 
- if(p == s) 
- display.scroll(&quot;We are the same!&quot;); 
- else 
- display.scroll(&quot;We are different!&quot;); //p is not equal to s - this will be called 
+ if(p == s)
+ display.scroll(&quot;We are the same!&quot;);
+ else
+ display.scroll(&quot;We are different!&quot;); //p is not equal to s - this will be called
 </code></pre>
 
 <h2 id="operator_2">operator&lt;<a class="headerlink" href="#operator_2" title="Permanent link">&para;</a></h2>
@@ -619,14 +618,14 @@ it is totally fine to pass a literal value in quotes or a number (or in fact, an
 <h5 id="returns_1">Returns<a class="headerlink" href="#returns_1" title="Permanent link">&para;</a></h5>
 <p>true if this  ManagedString  is alphabetically less than to the one supplied, false otherwise.</p>
 <h5 id="example_10">Example<a class="headerlink" href="#example_10" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> MicroBitDisplay display; 
- ManagedString s(&quot;a&quot;); 
- ManagedString p(&quot;b&quot;); 
+<pre><code class="cpp"> MicroBitDisplay display;
+ ManagedString s(&quot;a&quot;);
+ ManagedString p(&quot;b&quot;);
 
- if(s &lt; p) 
- display.scroll(&quot;a is before b!&quot;); //a is before b 
- else 
- display.scroll(&quot;b is before a!&quot;); 
+ if(s &lt; p)
+ display.scroll(&quot;a is before b!&quot;); //a is before b
+ else
+ display.scroll(&quot;b is before a!&quot;);
 </code></pre>
 
 <h2 id="operator_3">operator&gt;<a class="headerlink" href="#operator_3" title="Permanent link">&para;</a></h2>
@@ -641,14 +640,14 @@ it is totally fine to pass a literal value in quotes or a number (or in fact, an
 <h5 id="returns_2">Returns<a class="headerlink" href="#returns_2" title="Permanent link">&para;</a></h5>
 <p>true if this  ManagedString  is alphabetically greater than to the one supplied, false otherwise.</p>
 <h5 id="example_11">Example<a class="headerlink" href="#example_11" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> MicroBitDisplay display; 
- ManagedString s(&quot;a&quot;); 
- ManagedString p(&quot;b&quot;); 
+<pre><code class="cpp"> MicroBitDisplay display;
+ ManagedString s(&quot;a&quot;);
+ ManagedString p(&quot;b&quot;);
 
- if(p&gt;a) 
- display.scroll(&quot;b is after a!&quot;); //b is after a 
- else 
- display.scroll(&quot;a is after b!&quot;); 
+ if(p&gt;a)
+ display.scroll(&quot;b is after a!&quot;); //b is after a
+ else
+ display.scroll(&quot;a is after b!&quot;);
 </code></pre>
 
 <h2 id="substring">substring<a class="headerlink" href="#substring" title="Permanent link">&para;</a></h2>
@@ -664,10 +663,10 @@ it is totally fine to pass a literal value in quotes or a number (or in fact, an
 <h5 id="returns_3">Returns<a class="headerlink" href="#returns_3" title="Permanent link">&para;</a></h5>
 <p>a  ManagedString  representing the requested substring.</p>
 <h5 id="example_12">Example<a class="headerlink" href="#example_12" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> MicroBitDisplay display; 
- ManagedString s(&quot;abcdefg&quot;); 
+<pre><code class="cpp"> MicroBitDisplay display;
+ ManagedString s(&quot;abcdefg&quot;);
 
- display.scroll(s.substring(0,2)) // displays &quot;ab&quot; 
+ display.scroll(s.substring(0,2)) // displays &quot;ab&quot;
 </code></pre>
 
 <h2 id="operator_4">operator+<a class="headerlink" href="#operator_4" title="Permanent link">&para;</a></h2>
@@ -682,11 +681,11 @@ it is totally fine to pass a literal value in quotes or a number (or in fact, an
 <h5 id="returns_4">Returns<a class="headerlink" href="#returns_4" title="Permanent link">&para;</a></h5>
 <p>a new  ManagedString  representing the joined strings.</p>
 <h5 id="example_13">Example<a class="headerlink" href="#example_13" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> MicroBitDisplay display; 
- ManagedString s(&quot;abcd&quot;); 
- ManagedString p(&quot;efgh&quot;) 
+<pre><code class="cpp"> MicroBitDisplay display;
+ ManagedString s(&quot;abcd&quot;);
+ ManagedString p(&quot;efgh&quot;)
 
- display.scroll(s + p) // scrolls &quot;abcdefgh&quot; 
+ display.scroll(s + p) // scrolls &quot;abcdefgh&quot;
 </code></pre>
 
 <h2 id="charat">charAt<a class="headerlink" href="#charat" title="Permanent link">&para;</a></h2>
@@ -701,10 +700,10 @@ it is totally fine to pass a literal value in quotes or a number (or in fact, an
 <h5 id="returns_5">Returns<a class="headerlink" href="#returns_5" title="Permanent link">&para;</a></h5>
 <p>the character at posisiton index, zero if index is invalid.</p>
 <h5 id="example_14">Example<a class="headerlink" href="#example_14" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> MicroBitDisplay display; 
- ManagedString s(&quot;abcd&quot;); 
+<pre><code class="cpp"> MicroBitDisplay display;
+ ManagedString s(&quot;abcd&quot;);
 
- display.scroll(s.charAt(1)) // scrolls &quot;b&quot; 
+ display.scroll(s.charAt(1)) // scrolls &quot;b&quot;
 </code></pre>
 
 <h2 id="tochararray">toCharArray<a class="headerlink" href="#tochararray" title="Permanent link">&para;</a></h2>
@@ -713,7 +712,7 @@ it is totally fine to pass a literal value in quotes or a number (or in fact, an
 <h5 id="description_16">Description<a class="headerlink" href="#description_16" title="Permanent link">&para;</a></h5>
 <p>Provides an immutable 8 bit wide character buffer representing this string.</p>
 <h5 id="returns_6">Returns<a class="headerlink" href="#returns_6" title="Permanent link">&para;</a></h5>
-<p>a pointer to the character buffer. </p>
+<p>a pointer to the character buffer.</p>
 <h2 id="length">length<a class="headerlink" href="#length" title="Permanent link">&para;</a></h2>
 <p><br/></p>
 <h4 id="int16_t-length"><div style='color:#FF69B4; display:inline-block'>int16_t</div> length()<a class="headerlink" href="#int16_t-length" title="Permanent link">&para;</a></h4>
@@ -722,10 +721,10 @@ it is totally fine to pass a literal value in quotes or a number (or in fact, an
 <h5 id="returns_7">Returns<a class="headerlink" href="#returns_7" title="Permanent link">&para;</a></h5>
 <p>the length of the string in characters.</p>
 <h5 id="example_15">Example<a class="headerlink" href="#example_15" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> MicroBitDisplay display; 
- ManagedString s(&quot;abcd&quot;); 
+<pre><code class="cpp"> MicroBitDisplay display;
+ ManagedString s(&quot;abcd&quot;);
 
- display.scroll(s.length()) // scrolls &quot;4&quot; 
+ display.scroll(s.length()) // scrolls &quot;4&quot;
 </code></pre>
 
 <hr /></div>

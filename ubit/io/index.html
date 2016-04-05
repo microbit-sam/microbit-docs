@@ -71,19 +71,7 @@
                     
                         
 <li >
-    <a href="../../concepts/">Concepts</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../../getting-started/">Getting Started</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../../installing-yotta/">Online Development</a>
+    <a href="../../online-toolchains/">Online Development</a>
 </li>
 
                     
@@ -95,7 +83,13 @@
                     
                         
 <li >
-    <a href="../../device/">The Device</a>
+    <a href="../../concepts/">Concepts</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../device/">The device</a>
 </li>
 
                     
@@ -111,7 +105,7 @@
                     
                         
 <li >
-    <a href="../">uBit</a>
+    <a href="../">Overview</a>
 </li>
 
                     
@@ -172,18 +166,6 @@
                         
 <li class="active">
     <a href="./">io</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../ble/">ble</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../blemanager/">bleManager</a>
 </li>
 
                     
@@ -321,6 +303,16 @@
 
             
             
+
+            
+
+            
+            
+
+            
+
+            
+            
             </ul>
 
             <!-- Search, Navigation and Repo links -->
@@ -336,7 +328,7 @@
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../ble/">
+                    <a rel="prev" href="../radio/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -554,7 +546,7 @@ to use some GPIO pins.</p>
 (outlined above), an instance of <a href="../button/">button</a> will be created. Listeners
 can therefore be placed using the desired pins' ID, with the exact same events
 produced by a standard <a href="../button/">button</a>.</p>
-<pre><code class="c++">uBit.messageBus.listen(MICROBIT_ID_IO_P0, MICROBIT_EVT_ANY, someFunction);
+<pre><code class="cpp">uBit.messageBus.listen(MICROBIT_ID_IO_P0, MICROBIT_EVT_ANY, someFunction);
 uBit.io.P0.isTouched();
 </code></pre>
 
@@ -605,7 +597,7 @@ uBit.io.P0.isTouched();
 <p><div style='color:#008080; display:inline-block'>PinCapability</div> <em>capability</em> - the capabilities this  MicroBitPin  instance should have. (PIN_CAPABILITY_DIGITAL, PIN_CAPABILITY_ANALOG, PIN_CAPABILITY_TOUCH, PIN_CAPABILITY_AD, PIN_CAPABILITY_ALL)</p>
 </blockquote>
 <h5 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> MicroBitPin P0(MICROBIT_ID_IO_P0, MICROBIT_PIN_P0, PIN_CAPABILITY_ALL); 
+<pre><code class="cpp"> MicroBitPin P0(MICROBIT_ID_IO_P0, MICROBIT_PIN_P0, PIN_CAPABILITY_ALL);
 </code></pre>
 
 <h2 id="setdigitalvalue">setDigitalValue<a class="headerlink" href="#setdigitalvalue" title="Permanent link">&para;</a></h2>
@@ -620,8 +612,8 @@ uBit.io.P0.isTouched();
 <h5 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h5>
 <p>MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if value is out of range, or MICROBIT_NOT_SUPPORTED if the given pin does not have digital capability.</p>
 <h5 id="example_1">Example<a class="headerlink" href="#example_1" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> MicroBitPin P0(MICROBIT_ID_IO_P0, MICROBIT_PIN_P0, PIN_CAPABILITY_BOTH); 
- P0.setDigitalValue(1); // P0 is now HI 
+<pre><code class="cpp"> MicroBitPin P0(MICROBIT_ID_IO_P0, MICROBIT_PIN_P0, PIN_CAPABILITY_BOTH);
+ P0.setDigitalValue(1); // P0 is now HI
 </code></pre>
 
 <h2 id="getdigitalvalue">getDigitalValue<a class="headerlink" href="#getdigitalvalue" title="Permanent link">&para;</a></h2>
@@ -632,8 +624,8 @@ uBit.io.P0.isTouched();
 <h5 id="returns_1">Returns<a class="headerlink" href="#returns_1" title="Permanent link">&para;</a></h5>
 <p>1 if this input is high, 0 if input is LO, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability.</p>
 <h5 id="example_2">Example<a class="headerlink" href="#example_2" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> MicroBitPin P0(MICROBIT_ID_IO_P0, MICROBIT_PIN_P0, PIN_CAPABILITY_BOTH); 
- P0.getDigitalValue(); // P0 is either 0 or 1; 
+<pre><code class="cpp"> MicroBitPin P0(MICROBIT_ID_IO_P0, MICROBIT_PIN_P0, PIN_CAPABILITY_BOTH);
+ P0.getDigitalValue(); // P0 is either 0 or 1;
 </code></pre>
 
 <h2 id="setanalogvalue">setAnalogValue<a class="headerlink" href="#setanalogvalue" title="Permanent link">&para;</a></h2>
@@ -646,7 +638,7 @@ uBit.io.P0.isTouched();
 <p><div style='color:#008080; display:inline-block'>int</div> <em>value</em> - the level to set on the output pin, in the range 0 - 1024</p>
 </blockquote>
 <h5 id="returns_2">Returns<a class="headerlink" href="#returns_2" title="Permanent link">&para;</a></h5>
-<p>MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if value is out of range, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability. </p>
+<p>MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if value is out of range, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability.</p>
 <h2 id="setservovalue">setServoValue<a class="headerlink" href="#setservovalue" title="Permanent link">&para;</a></h2>
 <p><br/></p>
 <h4 id="int-setservovalue-int-value"><div style='color:#FF69B4; display:inline-block'>int</div> setServoValue( <div style='color:#008080; display:inline-block'>int</div> value)<a class="headerlink" href="#int-setservovalue-int-value" title="Permanent link">&para;</a></h4>
@@ -657,7 +649,7 @@ uBit.io.P0.isTouched();
 <p><div style='color:#008080; display:inline-block'>int</div> <em>value</em> - the level to set on the output pin, in the range 0 - 180.</p>
 </blockquote>
 <h5 id="returns_3">Returns<a class="headerlink" href="#returns_3" title="Permanent link">&para;</a></h5>
-<p>MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if value is out of range, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability. 
+<p>MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if value is out of range, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability.
 <br/></p>
 <h4 id="int-setservovalue-int-value-int-range"><div style='color:#FF69B4; display:inline-block'>int</div> setServoValue( <div style='color:#008080; display:inline-block'>int</div> value,  <div style='color:#008080; display:inline-block'>int</div> range)<a class="headerlink" href="#int-setservovalue-int-value-int-range" title="Permanent link">&para;</a></h4>
 <h5 id="description_5">Description<a class="headerlink" href="#description_5" title="Permanent link">&para;</a></h5>
@@ -668,7 +660,7 @@ uBit.io.P0.isTouched();
 <p><div style='color:#008080; display:inline-block'>int</div> <em>range</em> - which gives the span of possible values the i.e. the lower and upper bounds (center +/- range/2). Defaults to MICROBIT_PIN_DEFAULT_SERVO_RANGE.</p>
 </blockquote>
 <h5 id="returns_4">Returns<a class="headerlink" href="#returns_4" title="Permanent link">&para;</a></h5>
-<p>MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if value is out of range, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability. 
+<p>MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if value is out of range, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability.
 <br/></p>
 <h4 id="int-setservovalue-int-value-int-range-int-center"><div style='color:#FF69B4; display:inline-block'>int</div> setServoValue( <div style='color:#008080; display:inline-block'>int</div> value,  <div style='color:#008080; display:inline-block'>int</div> range,  <div style='color:#008080; display:inline-block'>int</div> center)<a class="headerlink" href="#int-setservovalue-int-value-int-range-int-center" title="Permanent link">&para;</a></h4>
 <h5 id="description_6">Description<a class="headerlink" href="#description_6" title="Permanent link">&para;</a></h5>
@@ -680,7 +672,7 @@ uBit.io.P0.isTouched();
 <p><div style='color:#008080; display:inline-block'>int</div> <em>center</em> - the center point from which to calculate the lower and upper bounds. Defaults to MICROBIT_PIN_DEFAULT_SERVO_CENTER</p>
 </blockquote>
 <h5 id="returns_5">Returns<a class="headerlink" href="#returns_5" title="Permanent link">&para;</a></h5>
-<p>MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if value is out of range, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability. </p>
+<p>MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if value is out of range, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability.</p>
 <h2 id="getanalogvalue">getAnalogValue<a class="headerlink" href="#getanalogvalue" title="Permanent link">&para;</a></h2>
 <p><br/></p>
 <h4 id="int-getanalogvalue"><div style='color:#FF69B4; display:inline-block'>int</div> getAnalogValue()<a class="headerlink" href="#int-getanalogvalue" title="Permanent link">&para;</a></h4>
@@ -689,8 +681,8 @@ uBit.io.P0.isTouched();
 <h5 id="returns_6">Returns<a class="headerlink" href="#returns_6" title="Permanent link">&para;</a></h5>
 <p>the current analogue level on the pin, in the range 0 - 1024, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability.</p>
 <h5 id="example_3">Example<a class="headerlink" href="#example_3" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> MicroBitPin P0(MICROBIT_ID_IO_P0, MICROBIT_PIN_P0, PIN_CAPABILITY_BOTH); 
- P0.getAnalogValue(); // P0 is a value in the range of 0 - 1024 
+<pre><code class="cpp"> MicroBitPin P0(MICROBIT_ID_IO_P0, MICROBIT_PIN_P0, PIN_CAPABILITY_BOTH);
+ P0.getAnalogValue(); // P0 is a value in the range of 0 - 1024
 </code></pre>
 
 <h2 id="isinput">isInput<a class="headerlink" href="#isinput" title="Permanent link">&para;</a></h2>
@@ -699,28 +691,28 @@ uBit.io.P0.isTouched();
 <h5 id="description_8">Description<a class="headerlink" href="#description_8" title="Permanent link">&para;</a></h5>
 <p>Determines if this IO pin is currently configured as an input.</p>
 <h5 id="returns_7">Returns<a class="headerlink" href="#returns_7" title="Permanent link">&para;</a></h5>
-<p>1 if pin is an analog or digital input, 0 otherwise. </p>
+<p>1 if pin is an analog or digital input, 0 otherwise.</p>
 <h2 id="isoutput">isOutput<a class="headerlink" href="#isoutput" title="Permanent link">&para;</a></h2>
 <p><br/></p>
 <h4 id="int-isoutput"><div style='color:#FF69B4; display:inline-block'>int</div> isOutput()<a class="headerlink" href="#int-isoutput" title="Permanent link">&para;</a></h4>
 <h5 id="description_9">Description<a class="headerlink" href="#description_9" title="Permanent link">&para;</a></h5>
 <p>Determines if this IO pin is currently configured as an output.</p>
 <h5 id="returns_8">Returns<a class="headerlink" href="#returns_8" title="Permanent link">&para;</a></h5>
-<p>1 if pin is an analog or digital output, 0 otherwise. </p>
+<p>1 if pin is an analog or digital output, 0 otherwise.</p>
 <h2 id="isdigital">isDigital<a class="headerlink" href="#isdigital" title="Permanent link">&para;</a></h2>
 <p><br/></p>
 <h4 id="int-isdigital"><div style='color:#FF69B4; display:inline-block'>int</div> isDigital()<a class="headerlink" href="#int-isdigital" title="Permanent link">&para;</a></h4>
 <h5 id="description_10">Description<a class="headerlink" href="#description_10" title="Permanent link">&para;</a></h5>
 <p>Determines if this IO pin is currently configured for digital use.</p>
 <h5 id="returns_9">Returns<a class="headerlink" href="#returns_9" title="Permanent link">&para;</a></h5>
-<p>1 if pin is digital, 0 otherwise. </p>
+<p>1 if pin is digital, 0 otherwise.</p>
 <h2 id="isanalog">isAnalog<a class="headerlink" href="#isanalog" title="Permanent link">&para;</a></h2>
 <p><br/></p>
 <h4 id="int-isanalog"><div style='color:#FF69B4; display:inline-block'>int</div> isAnalog()<a class="headerlink" href="#int-isanalog" title="Permanent link">&para;</a></h4>
 <h5 id="description_11">Description<a class="headerlink" href="#description_11" title="Permanent link">&para;</a></h5>
 <p>Determines if this IO pin is currently configured for analog use.</p>
 <h5 id="returns_10">Returns<a class="headerlink" href="#returns_10" title="Permanent link">&para;</a></h5>
-<p>1 if pin is analog, 0 otherwise. </p>
+<p>1 if pin is analog, 0 otherwise.</p>
 <h2 id="istouched">isTouched<a class="headerlink" href="#istouched" title="Permanent link">&para;</a></h2>
 <p><br/></p>
 <h4 id="int-istouched"><div style='color:#FF69B4; display:inline-block'>int</div> isTouched()<a class="headerlink" href="#int-istouched" title="Permanent link">&para;</a></h4>
@@ -729,16 +721,16 @@ uBit.io.P0.isTouched();
 <h5 id="returns_11">Returns<a class="headerlink" href="#returns_11" title="Permanent link">&para;</a></h5>
 <p>1 if pin is touched, 0 if not, or MICROBIT_NOT_SUPPORTED if this pin does not support touch capability.</p>
 <h5 id="example_4">Example<a class="headerlink" href="#example_4" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> MicroBitMessageBus bus; 
+<pre><code class="cpp"> MicroBitMessageBus bus;
 
- MicroBitPin P0(MICROBIT_ID_IO_P0, MICROBIT_PIN_P0, PIN_CAPABILITY_ALL); 
- if(P0.isTouched()) 
- { 
- //do something! 
- } 
+ MicroBitPin P0(MICROBIT_ID_IO_P0, MICROBIT_PIN_P0, PIN_CAPABILITY_ALL);
+ if(P0.isTouched())
+ {
+ //do something!
+ }
 
- // subscribe to events generated by this pin! 
- bus.listen(MICROBIT_ID_IO_P0, MICROBIT_BUTTON_EVT_CLICK, someFunction); 
+ // subscribe to events generated by this pin!
+ bus.listen(MICROBIT_ID_IO_P0, MICROBIT_BUTTON_EVT_CLICK, someFunction);
 </code></pre>
 
 <h2 id="setservopulseus">setServoPulseUs<a class="headerlink" href="#setservopulseus" title="Permanent link">&para;</a></h2>
@@ -751,7 +743,7 @@ uBit.io.P0.isTouched();
 <p><div style='color:#008080; display:inline-block'>int</div> <em>pulseWidth</em> - the desired pulse width in microseconds.</p>
 </blockquote>
 <h5 id="returns_12">Returns<a class="headerlink" href="#returns_12" title="Permanent link">&para;</a></h5>
-<p>MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if value is out of range, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability. </p>
+<p>MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if value is out of range, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability.</p>
 <h2 id="setanalogperiod">setAnalogPeriod<a class="headerlink" href="#setanalogperiod" title="Permanent link">&para;</a></h2>
 <p><br/></p>
 <h4 id="int-setanalogperiod-int-period"><div style='color:#FF69B4; display:inline-block'>int</div> setAnalogPeriod( <div style='color:#008080; display:inline-block'>int</div> period)<a class="headerlink" href="#int-setanalogperiod-int-period" title="Permanent link">&para;</a></h4>
@@ -762,7 +754,7 @@ uBit.io.P0.isTouched();
 <p><div style='color:#008080; display:inline-block'>int</div> <em>period</em> - The new period for the analog output in milliseconds.</p>
 </blockquote>
 <h5 id="returns_13">Returns<a class="headerlink" href="#returns_13" title="Permanent link">&para;</a></h5>
-<p>MICROBIT_OK on success, or MICROBIT_NOT_SUPPORTED if the given pin is not configured as an analog output. </p>
+<p>MICROBIT_OK on success, or MICROBIT_NOT_SUPPORTED if the given pin is not configured as an analog output.</p>
 <h2 id="setanalogperiodus">setAnalogPeriodUs<a class="headerlink" href="#setanalogperiodus" title="Permanent link">&para;</a></h2>
 <p><br/></p>
 <h4 id="int-setanalogperiodus-int-period"><div style='color:#FF69B4; display:inline-block'>int</div> setAnalogPeriodUs( <div style='color:#008080; display:inline-block'>int</div> period)<a class="headerlink" href="#int-setanalogperiodus-int-period" title="Permanent link">&para;</a></h4>
@@ -773,21 +765,21 @@ uBit.io.P0.isTouched();
 <p><div style='color:#008080; display:inline-block'>int</div> <em>period</em> - The new period for the analog output in microseconds.</p>
 </blockquote>
 <h5 id="returns_14">Returns<a class="headerlink" href="#returns_14" title="Permanent link">&para;</a></h5>
-<p>MICROBIT_OK on success, or MICROBIT_NOT_SUPPORTED if the given pin is not configured as an analog output. </p>
+<p>MICROBIT_OK on success, or MICROBIT_NOT_SUPPORTED if the given pin is not configured as an analog output.</p>
 <h2 id="getanalogperiodus">getAnalogPeriodUs<a class="headerlink" href="#getanalogperiodus" title="Permanent link">&para;</a></h2>
 <p><br/></p>
 <h4 id="int-getanalogperiodus"><div style='color:#FF69B4; display:inline-block'>int</div> getAnalogPeriodUs()<a class="headerlink" href="#int-getanalogperiodus" title="Permanent link">&para;</a></h4>
 <h5 id="description_16">Description<a class="headerlink" href="#description_16" title="Permanent link">&para;</a></h5>
 <p>Obtains the PWM period of the analog output in microseconds.</p>
 <h5 id="returns_15">Returns<a class="headerlink" href="#returns_15" title="Permanent link">&para;</a></h5>
-<p>the period on success, or MICROBIT_NOT_SUPPORTED if the given pin is not configured as an analog output. </p>
+<p>the period on success, or MICROBIT_NOT_SUPPORTED if the given pin is not configured as an analog output.</p>
 <h2 id="getanalogperiod">getAnalogPeriod<a class="headerlink" href="#getanalogperiod" title="Permanent link">&para;</a></h2>
 <p><br/></p>
 <h4 id="int-getanalogperiod"><div style='color:#FF69B4; display:inline-block'>int</div> getAnalogPeriod()<a class="headerlink" href="#int-getanalogperiod" title="Permanent link">&para;</a></h4>
 <h5 id="description_17">Description<a class="headerlink" href="#description_17" title="Permanent link">&para;</a></h5>
 <p>Obtains the PWM period of the analog output in milliseconds.</p>
 <h5 id="returns_16">Returns<a class="headerlink" href="#returns_16" title="Permanent link">&para;</a></h5>
-<p>the period on success, or MICROBIT_NOT_SUPPORTED if the given pin is not configured as an analog output. </p>
+<p>the period on success, or MICROBIT_NOT_SUPPORTED if the given pin is not configured as an analog output.</p>
 <hr /></div>
         </div>
 

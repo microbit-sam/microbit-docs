@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
 
-	<title>ble - micro:bit runtime</title>
+	<title>radioevent - micro:bit runtime</title>
 
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -71,19 +71,7 @@
                     
                         
 <li >
-    <a href="../../concepts/">Concepts</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../../getting-started/">Getting Started</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../../installing-yotta/">Online Development</a>
+    <a href="../../online-toolchains/">Online Development</a>
 </li>
 
                     
@@ -95,7 +83,13 @@
                     
                         
 <li >
-    <a href="../../device/">The Device</a>
+    <a href="../../concepts/">Concepts</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../device/">The device</a>
 </li>
 
                     
@@ -105,13 +99,13 @@
             
 
             
-                <li class="dropdown active">
+                <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">uBit <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                     
                         
 <li >
-    <a href="../">uBit</a>
+    <a href="../">Overview</a>
 </li>
 
                     
@@ -172,18 +166,6 @@
                         
 <li >
     <a href="../io/">io</a>
-</li>
-
-                    
-                        
-<li class="active">
-    <a href="./">ble</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../blemanager/">bleManager</a>
 </li>
 
                     
@@ -321,6 +303,16 @@
 
             
             
+
+            
+
+            
+            
+
+            
+
+            
+            
             </ul>
 
             <!-- Search, Navigation and Repo links -->
@@ -331,12 +323,12 @@
                     </a>
                 </li>
                 <li >
-                    <a rel="next" href="../io/">
+                    <a rel="next" href="../multibutton/">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../blemanager/">
+                    <a rel="prev" href="../radiodatagram/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -359,11 +351,79 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
+        <li class="main active"><a href="#ubitradioevent">uBit.radio.event</a></li>
+        
+            <li><a href="#overview">Overview</a></li>
+        
+            <li><a href="#message-bus-id">Message Bus ID</a></li>
+        
+            <li><a href="#message-bus-events">Message Bus Events</a></li>
+        
+    
+        <li class="main "><a href="#api">API</a></li>
+        
+    
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-</div>
+<h1 id="ubitradioevent">uBit.radio.event<a class="headerlink" href="#ubitradioevent" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>It is also possible to transparently send and receive events over the <code>MicroBitRadio</code> channel. This can provide very simple and easy to integrate
+support for event driven applications. Once configured, an event raised on one micro:bit can be detected on another - in the just the same way as
+a local event such as a button click.</p>
+<p>To use this functionality, all that is needed is to register the event codes that you would like to be sent over the radio, then write event handlers
+for the message bus as with all other events. See the documentation for the <a href="../messageBus/"><code>MicroBitMessageBus</code></a> for details of how to write
+event handlers.</p>
+<p>For example, if you wanted to share an event SOMETHING with another micro:bit whenever ButtonA is pressed, you might write code like this on the sending micro:bit:</p>
+<pre><code class="cpp">#define MY_APP_ID           4000
+#define SOMETHING           1
+
+int main()
+{
+    uBit.radio.enable();
+
+    // Ensure the radio is listening out to forward our events
+    uBit.radio.event.listen(MY_APP_ID, MICROBIT_EVT_ANY);
+
+    while(1)
+    {
+        if (uBit.buttonA.isPressed())
+            MicroBitEvent(MY_APP_ID, SOMETHING);
+
+        uBit.sleep(1000);
+    }
+}
+</code></pre>
+
+<p>...and on the micro:bits wanting to receive the event:</p>
+<pre><code class="cpp">#define MY_APP_ID           4000
+#define SOMETHING           1
+
+void onSomething(MicroBitEvent e)
+{
+    uBit.display.scrollAsync(&quot;Something!&quot;);
+}
+
+int main()
+{
+    uBit.messageBus.listen(MY_APP_ID, SOMETHING, onSomething);
+    uBit.radio.enable();
+
+    while(1)
+        uBit.sleep(1000);
+}
+</code></pre>
+
+<h2 id="message-bus-id">Message Bus ID<a class="headerlink" href="#message-bus-id" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>None.</p>
+</blockquote>
+<h2 id="message-bus-events">Message Bus Events<a class="headerlink" href="#message-bus-events" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>None.</p>
+</blockquote>
+<h1 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h1></div>
         </div>
 
         <footer class="col-md-12">

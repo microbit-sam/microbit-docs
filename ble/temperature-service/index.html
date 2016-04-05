@@ -71,19 +71,7 @@
                     
                         
 <li >
-    <a href="../../concepts/">Concepts</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../../getting-started/">Getting Started</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../../installing-yotta/">Online Development</a>
+    <a href="../../online-toolchains/">Online Development</a>
 </li>
 
                     
@@ -95,7 +83,13 @@
                     
                         
 <li >
-    <a href="../../device/">The Device</a>
+    <a href="../../concepts/">Concepts</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../device/">The device</a>
 </li>
 
                     
@@ -111,7 +105,7 @@
                     
                         
 <li >
-    <a href="../../ubit/">uBit</a>
+    <a href="../../ubit/">Overview</a>
 </li>
 
                     
@@ -172,18 +166,6 @@
                         
 <li >
     <a href="../../ubit/io/">io</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../../ubit/ble/">ble</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../../ubit/blemanager/">bleManager</a>
 </li>
 
                     
@@ -321,6 +303,16 @@
 
             
             
+
+            
+
+            
+            
+
+            
+
+            
+            
             </ul>
 
             <!-- Search, Navigation and Repo links -->
@@ -382,7 +374,7 @@ Please note that the temperature data is inferred from the die temperature of th
 a linear shift (although changes in temperature will be accurate). See <a href="../../ubit/thermometer/">MicroBitThermometer</a> for informaiton on the API to allow calibration.</p>
 <h2 id="enabling-the-service">Enabling the Service<a class="headerlink" href="#enabling-the-service" title="Permanent link">&para;</a></h2>
 <p>This service is disabled by default. To enable the service, simply create an instance of this class in your program, at any time after the uBit object has been initialised:</p>
-<pre><code class="c++">    new MicroBitTemperatureService(*uBit.ble, uBit.thermometer);
+<pre><code class="cpp">    new MicroBitTemperatureService(*uBit.ble, uBit.thermometer);
 </code></pre>
 
 <div class="admonition note">

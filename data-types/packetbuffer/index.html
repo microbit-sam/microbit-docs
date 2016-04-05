@@ -71,19 +71,7 @@
                     
                         
 <li >
-    <a href="../../concepts/">Concepts</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../../getting-started/">Getting Started</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../../installing-yotta/">Online Development</a>
+    <a href="../../online-toolchains/">Online Development</a>
 </li>
 
                     
@@ -95,7 +83,13 @@
                     
                         
 <li >
-    <a href="../../device/">The Device</a>
+    <a href="../../concepts/">Concepts</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../device/">The device</a>
 </li>
 
                     
@@ -111,7 +105,7 @@
                     
                         
 <li >
-    <a href="../../ubit/">uBit</a>
+    <a href="../../ubit/">Overview</a>
 </li>
 
                     
@@ -172,18 +166,6 @@
                         
 <li >
     <a href="../../ubit/io/">io</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../../ubit/ble/">ble</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../../ubit/blemanager/">bleManager</a>
 </li>
 
                     
@@ -321,6 +303,16 @@
 
             
             
+
+            
+
+            
+            
+
+            
+
+            
+            
             </ul>
 
             <!-- Search, Navigation and Repo links -->
@@ -401,50 +393,54 @@
 
 <h1 id="packetbuffer">PacketBuffer<a class="headerlink" href="#packetbuffer" title="Permanent link">&para;</a></h1>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>The <a href="../../ubit/radio/">MicroBitRadio</a> classes provided direct micro:bit to micro:bit communication. It is often beneficial in both wired and wireless communication
-protocols to send and receive data in a raw format, viewed as an ordered sequence of bytes. This class provies a basic set of functions for the creation, manipulation and
+<p>The <a href="../../ubit/radio/">MicroBitRadio</a> class provides direct micro:bit to micro:bit communication.</p>
+<p>It is often beneficial in both wired and wireless communication protocols to send
+and receive data in a raw format, viewed as an ordered sequence of bytes.</p>
+<p>This class provides a basic set of functions for the creation, manipulation and
 accessing of a managed type for byte arrays used to hold network data packets.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This is a <strong>managed type</strong>. This means that it will automatically use and release memory as needed. There is no need for you to explicitly free or release memory when your done - the memory will be freed as soon as the last piece of code stops using the data.</p>
 </div>
 <h2 id="creating-packetbuffers">Creating PacketBuffers<a class="headerlink" href="#creating-packetbuffers" title="Permanent link">&para;</a></h2>
-<p>PacketBuffers are simple to create - just create them like a variable, and provide the size (in bytes) of the buffer you want to create.</p>
-<pre><code class="c++">    PacketBuffer b(16);
+<p><code>PacketBuffer</code>s are simple to create - just create them like a variable, and provide the size (in bytes) of the buffer you want to create.</p>
+<pre><code class="cpp">PacketBuffer b(16);
 </code></pre>
 
-<p>Alternatively, if you already have an array of bytes allocated, then you can somply refer to that using a slightly different form:</p>
-<pre><code class="c++">    uint8_t data[16];
-    PacketBuffer b(data,16);
+<p>Alternatively, if you already have an array of bytes allocated, then you can simply refer to that using a slightly different form:</p>
+<pre><code class="cpp">uint8_t data[16];
+PacketBuffer b(data,16);
 </code></pre>
 
 <h2 id="manipulating-packetbuffers">Manipulating PacketBuffers<a class="headerlink" href="#manipulating-packetbuffers" title="Permanent link">&para;</a></h2>
-<p>Once created, the data inside PacketBuffers can be freely changed at any time. The simplest way to do this is through the array operators '[' and ']'. 
-You can read or write bytes to the buffer by simply dereferencing it with square bracket. e.g. to create, set and send a PacketBuffer on the micro:bit radio:</p>
-<pre><code class="c++">    PacketBuffer b(2);
-    b[0] = 255;
-    b[1] = 10;
+<p>Once created, the data inside <code>PacketBuffer</code>s can be freely changed at any time. The simplest way to do this is through the array operators <code>[</code> and <code>]</code>.</p>
+<p>You can read or write bytes to the buffer by simply dereferencing it with square bracket.</p>
+<p>For example: to create, set and send a PacketBuffer on the micro:bit radio, you could do the following:</p>
+<pre><code class="cpp">PacketBuffer b(2);
+b[0] = 255;
+b[1] = 10;
 
-    uBit.radio.datagram.send(b);
+uBit.radio.datagram.send(b);
 </code></pre>
 
-<p>PacketBuffers can also be assigned a value. For example, all these are legal:</p>
-<pre><code class="c++">    PacketBuffer b;
-    b = uBit.radio.datagram.recv();
+<p><code>PacketBuffer</code>s can also be assigned a value:</p>
+<pre><code class="cpp">PacketBuffer b;
+b = uBit.radio.datagram.recv();
 </code></pre>
 
-<p>If you need more granualar access, the getBytes function provides direct access to the memory buffer, presented as a byte array:</p>
-<pre><code class="c++">    PacketBuffer b(16);
-    uint8_t *buf = b.getBytes();
+<p>If you need more granular access, the <code>getBytes</code> function provides direct access to the memory buffer, presented as a byte array:</p>
+<pre><code class="cpp">PacketBuffer b(16);
+uint8_t *buf = b.getBytes();
 
-    memcpy(buf, &quot;HI&quot;, 2);
+memcpy(buf, &quot;HI&quot;, 2);
 </code></pre>
 
-<p>Finally, it is also possible to extract the received signal strength of a packet from a PakcetBuffer. This can provide both a rough indicaiton of the reliability of the link, and a crude but moderatley effective mechanism to estimate the distance between two micro:bts.</p>
-<pre><code class="c++">    PacketBuffer b;
-    b = uBit.radio.datagram.recv();
+<p>Finally, it is also possible to extract the received signal strength of a packet from a <code>PacketBuffer</code>.</p>
+<p>This can provide both a rough indication of the reliability of the link, and a crude but moderately effective mechanism to estimate the distance between two micro:bits.</p>
+<pre><code class="cpp">PacketBuffer b;
+b = uBit.radio.datagram.recv();
 
-    uBit.display.scroll(b.getRSSI());
+uBit.display.scroll(b.getRSSI());
 </code></pre>
 
 <h1 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h1>
@@ -458,8 +454,8 @@ You can read or write bytes to the buffer by simply dereferencing it with square
 <p><div style='color:#008080; display:inline-block'>StringData  <em></div> </em>ptr* - The literal - first two bytes should be 0xff, then the length in little endian, then the literal. The literal has to be 4-byte aligned.</p>
 </blockquote>
 <h5 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> static const char hello[] __attribute__ ((aligned (4))) = &quot;\xff\xff\x05\x00&quot; &quot;Hello&quot;; 
- ManagedString s((StringData*)(void*)hello); 
+<pre><code class="cpp"> static const char hello[] __attribute__ ((aligned (4))) = &quot;\xff\xff\x05\x00&quot; &quot;Hello&quot;;
+ ManagedString s((StringData*)(void*)hello);
 </code></pre>
 
 <h2 id="leakdata">leakData<a class="headerlink" href="#leakdata" title="Permanent link">&para;</a></h2>
@@ -477,7 +473,7 @@ You can read or write bytes to the buffer by simply dereferencing it with square
 <p><div style='color:#008080; display:inline-block'>const char <em></div> </em>str* - The character array on which to base the new  ManagedString .</p>
 </blockquote>
 <h5 id="example_1">Example<a class="headerlink" href="#example_1" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> ManagedString s(&quot;abcdefg&quot;); 
+<pre><code class="cpp"> ManagedString s(&quot;abcdefg&quot;);
 </code></pre>
 
 <p><br/></p>
@@ -489,7 +485,7 @@ You can read or write bytes to the buffer by simply dereferencing it with square
 <p><div style='color:#008080; display:inline-block'>const int</div> <em>value</em> - The integer from which to create the  ManagedString .</p>
 </blockquote>
 <h5 id="example_2">Example<a class="headerlink" href="#example_2" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> ManagedString s(20); 
+<pre><code class="cpp"> ManagedString s(20);
 </code></pre>
 
 <p><br/></p>
@@ -501,7 +497,7 @@ You can read or write bytes to the buffer by simply dereferencing it with square
 <p><div style='color:#008080; display:inline-block'>const char</div> <em>value</em> - The character from which to create the  ManagedString .</p>
 </blockquote>
 <h5 id="example_3">Example<a class="headerlink" href="#example_3" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> ManagedString s('a'); 
+<pre><code class="cpp"> ManagedString s('a');
 </code></pre>
 
 <p><br/></p>
@@ -513,7 +509,7 @@ You can read or write bytes to the buffer by simply dereferencing it with square
 <p><div style='color:#008080; display:inline-block'>PacketBuffer</div> <em>buffer</em> - The PacktBuffer from which to create the  ManagedString .</p>
 </blockquote>
 <h5 id="example_4">Example<a class="headerlink" href="#example_4" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> ManagedString s = radio.datagram.recv(); 
+<pre><code class="cpp"> ManagedString s = radio.datagram.recv();
 </code></pre>
 
 <p><br/></p>
@@ -526,7 +522,7 @@ You can read or write bytes to the buffer by simply dereferencing it with square
 <p><div style='color:#008080; display:inline-block'>const int16_t</div> <em>length</em> - The length of the character array</p>
 </blockquote>
 <h5 id="example_5">Example<a class="headerlink" href="#example_5" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> ManagedString s(&quot;abcdefg&quot;,7); 
+<pre><code class="cpp"> ManagedString s(&quot;abcdefg&quot;,7);
 </code></pre>
 
 <p><br/></p>
@@ -538,8 +534,8 @@ You can read or write bytes to the buffer by simply dereferencing it with square
 <p><div style='color:#008080; display:inline-block'>const  ManagedString  &amp;</div> <em>s</em> - The  ManagedString  to copy.</p>
 </blockquote>
 <h5 id="example_6">Example<a class="headerlink" href="#example_6" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> ManagedString s(&quot;abcdefg&quot;); 
- ManagedString p(s); 
+<pre><code class="cpp"> ManagedString s(&quot;abcdefg&quot;);
+ ManagedString p(s);
 </code></pre>
 
 <p><br/></p>
@@ -547,7 +543,7 @@ You can read or write bytes to the buffer by simply dereferencing it with square
 <h5 id="description_8">Description<a class="headerlink" href="#description_8" title="Permanent link">&para;</a></h5>
 <p>Default constructor.</p>
 <h5 id="example_7">Example<a class="headerlink" href="#example_7" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> ManagedString s(); 
+<pre><code class="cpp"> ManagedString s();
 </code></pre>
 
 <h2 id="operator">operator=<a class="headerlink" href="#operator" title="Permanent link">&para;</a></h2>
@@ -560,9 +556,9 @@ You can read or write bytes to the buffer by simply dereferencing it with square
 <p><div style='color:#008080; display:inline-block'>const  ManagedString  &amp;</div> <em>s</em> - The  ManagedString  to copy.</p>
 </blockquote>
 <h5 id="example_8">Example<a class="headerlink" href="#example_8" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> ManagedString s(&quot;abcd&quot;); 
- ManagedString p(&quot;efgh&quot;); 
- p = s // p now points to s, s' ref is incremented 
+<pre><code class="cpp"> ManagedString s(&quot;abcd&quot;);
+ ManagedString p(&quot;efgh&quot;);
+ p = s // p now points to s, s' ref is incremented
 </code></pre>
 
 <h2 id="operator_1">operator==<a class="headerlink" href="#operator_1" title="Permanent link">&para;</a></h2>
@@ -577,14 +573,14 @@ You can read or write bytes to the buffer by simply dereferencing it with square
 <h5 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h5>
 <p>true if this  ManagedString  is identical to the one supplied, false otherwise.</p>
 <h5 id="example_9">Example<a class="headerlink" href="#example_9" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> MicroBitDisplay display; 
- ManagedString s(&quot;abcd&quot;); 
- ManagedString p(&quot;efgh&quot;); 
+<pre><code class="cpp"> MicroBitDisplay display;
+ ManagedString s(&quot;abcd&quot;);
+ ManagedString p(&quot;efgh&quot;);
 
- if(p == s) 
- display.scroll(&quot;We are the same!&quot;); 
- else 
- display.scroll(&quot;We are different!&quot;); //p is not equal to s - this will be called 
+ if(p == s)
+ display.scroll(&quot;We are the same!&quot;);
+ else
+ display.scroll(&quot;We are different!&quot;); //p is not equal to s - this will be called
 </code></pre>
 
 <h2 id="operator_2">operator&lt;<a class="headerlink" href="#operator_2" title="Permanent link">&para;</a></h2>
@@ -599,14 +595,14 @@ You can read or write bytes to the buffer by simply dereferencing it with square
 <h5 id="returns_1">Returns<a class="headerlink" href="#returns_1" title="Permanent link">&para;</a></h5>
 <p>true if this  ManagedString  is alphabetically less than to the one supplied, false otherwise.</p>
 <h5 id="example_10">Example<a class="headerlink" href="#example_10" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> MicroBitDisplay display; 
- ManagedString s(&quot;a&quot;); 
- ManagedString p(&quot;b&quot;); 
+<pre><code class="cpp"> MicroBitDisplay display;
+ ManagedString s(&quot;a&quot;);
+ ManagedString p(&quot;b&quot;);
 
- if(s &lt; p) 
- display.scroll(&quot;a is before b!&quot;); //a is before b 
- else 
- display.scroll(&quot;b is before a!&quot;); 
+ if(s &lt; p)
+ display.scroll(&quot;a is before b!&quot;); //a is before b
+ else
+ display.scroll(&quot;b is before a!&quot;);
 </code></pre>
 
 <h2 id="operator_3">operator&gt;<a class="headerlink" href="#operator_3" title="Permanent link">&para;</a></h2>
@@ -621,14 +617,14 @@ You can read or write bytes to the buffer by simply dereferencing it with square
 <h5 id="returns_2">Returns<a class="headerlink" href="#returns_2" title="Permanent link">&para;</a></h5>
 <p>true if this  ManagedString  is alphabetically greater than to the one supplied, false otherwise.</p>
 <h5 id="example_11">Example<a class="headerlink" href="#example_11" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> MicroBitDisplay display; 
- ManagedString s(&quot;a&quot;); 
- ManagedString p(&quot;b&quot;); 
+<pre><code class="cpp"> MicroBitDisplay display;
+ ManagedString s(&quot;a&quot;);
+ ManagedString p(&quot;b&quot;);
 
- if(p&gt;a) 
- display.scroll(&quot;b is after a!&quot;); //b is after a 
- else 
- display.scroll(&quot;a is after b!&quot;); 
+ if(p&gt;a)
+ display.scroll(&quot;b is after a!&quot;); //b is after a
+ else
+ display.scroll(&quot;a is after b!&quot;);
 </code></pre>
 
 <h2 id="substring">substring<a class="headerlink" href="#substring" title="Permanent link">&para;</a></h2>
@@ -644,10 +640,10 @@ You can read or write bytes to the buffer by simply dereferencing it with square
 <h5 id="returns_3">Returns<a class="headerlink" href="#returns_3" title="Permanent link">&para;</a></h5>
 <p>a  ManagedString  representing the requested substring.</p>
 <h5 id="example_12">Example<a class="headerlink" href="#example_12" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> MicroBitDisplay display; 
- ManagedString s(&quot;abcdefg&quot;); 
+<pre><code class="cpp"> MicroBitDisplay display;
+ ManagedString s(&quot;abcdefg&quot;);
 
- display.scroll(s.substring(0,2)) // displays &quot;ab&quot; 
+ display.scroll(s.substring(0,2)) // displays &quot;ab&quot;
 </code></pre>
 
 <h2 id="operator_4">operator+<a class="headerlink" href="#operator_4" title="Permanent link">&para;</a></h2>
@@ -662,11 +658,11 @@ You can read or write bytes to the buffer by simply dereferencing it with square
 <h5 id="returns_4">Returns<a class="headerlink" href="#returns_4" title="Permanent link">&para;</a></h5>
 <p>a new  ManagedString  representing the joined strings.</p>
 <h5 id="example_13">Example<a class="headerlink" href="#example_13" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> MicroBitDisplay display; 
- ManagedString s(&quot;abcd&quot;); 
- ManagedString p(&quot;efgh&quot;) 
+<pre><code class="cpp"> MicroBitDisplay display;
+ ManagedString s(&quot;abcd&quot;);
+ ManagedString p(&quot;efgh&quot;)
 
- display.scroll(s + p) // scrolls &quot;abcdefgh&quot; 
+ display.scroll(s + p) // scrolls &quot;abcdefgh&quot;
 </code></pre>
 
 <h2 id="charat">charAt<a class="headerlink" href="#charat" title="Permanent link">&para;</a></h2>
@@ -681,10 +677,10 @@ You can read or write bytes to the buffer by simply dereferencing it with square
 <h5 id="returns_5">Returns<a class="headerlink" href="#returns_5" title="Permanent link">&para;</a></h5>
 <p>the character at posisiton index, zero if index is invalid.</p>
 <h5 id="example_14">Example<a class="headerlink" href="#example_14" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> MicroBitDisplay display; 
- ManagedString s(&quot;abcd&quot;); 
+<pre><code class="cpp"> MicroBitDisplay display;
+ ManagedString s(&quot;abcd&quot;);
 
- display.scroll(s.charAt(1)) // scrolls &quot;b&quot; 
+ display.scroll(s.charAt(1)) // scrolls &quot;b&quot;
 </code></pre>
 
 <h2 id="tochararray">toCharArray<a class="headerlink" href="#tochararray" title="Permanent link">&para;</a></h2>
@@ -693,7 +689,7 @@ You can read or write bytes to the buffer by simply dereferencing it with square
 <h5 id="description_16">Description<a class="headerlink" href="#description_16" title="Permanent link">&para;</a></h5>
 <p>Provides an immutable 8 bit wide character buffer representing this string.</p>
 <h5 id="returns_6">Returns<a class="headerlink" href="#returns_6" title="Permanent link">&para;</a></h5>
-<p>a pointer to the character buffer. </p>
+<p>a pointer to the character buffer.</p>
 <h2 id="length">length<a class="headerlink" href="#length" title="Permanent link">&para;</a></h2>
 <p><br/></p>
 <h4 id="int16_t-length"><div style='color:#FF69B4; display:inline-block'>int16_t</div> length()<a class="headerlink" href="#int16_t-length" title="Permanent link">&para;</a></h4>
@@ -702,10 +698,10 @@ You can read or write bytes to the buffer by simply dereferencing it with square
 <h5 id="returns_7">Returns<a class="headerlink" href="#returns_7" title="Permanent link">&para;</a></h5>
 <p>the length of the string in characters.</p>
 <h5 id="example_15">Example<a class="headerlink" href="#example_15" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> MicroBitDisplay display; 
- ManagedString s(&quot;abcd&quot;); 
+<pre><code class="cpp"> MicroBitDisplay display;
+ ManagedString s(&quot;abcd&quot;);
 
- display.scroll(s.length()) // scrolls &quot;4&quot; 
+ display.scroll(s.length()) // scrolls &quot;4&quot;
 </code></pre>
 
 <hr /></div>

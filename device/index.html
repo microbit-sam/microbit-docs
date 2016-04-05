@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../img/favicon.ico">
 
-	<title>The Device - micro:bit runtime</title>
+	<title>The device - micro:bit runtime</title>
 
         <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -71,19 +71,7 @@
                     
                         
 <li >
-    <a href="../concepts/">Concepts</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../getting-started/">Getting Started</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../installing-yotta/">Online Development</a>
+    <a href="../online-toolchains/">Online Development</a>
 </li>
 
                     
@@ -94,8 +82,14 @@
 
                     
                         
+<li >
+    <a href="../concepts/">Concepts</a>
+</li>
+
+                    
+                        
 <li class="active">
-    <a href="./">The Device</a>
+    <a href="./">The device</a>
 </li>
 
                     
@@ -111,7 +105,7 @@
                     
                         
 <li >
-    <a href="../ubit/">uBit</a>
+    <a href="../ubit/">Overview</a>
 </li>
 
                     
@@ -172,18 +166,6 @@
                         
 <li >
     <a href="../ubit/io/">io</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../ubit/ble/">ble</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../ubit/blemanager/">bleManager</a>
 </li>
 
                     
@@ -321,6 +303,16 @@
 
             
             
+
+            
+
+            
+            
+
+            
+
+            
+            
             </ul>
 
             <!-- Search, Navigation and Repo links -->
@@ -331,7 +323,7 @@
                     </a>
                 </li>
                 <li >
-                    <a rel="next" href="../installing-yotta/">
+                    <a rel="next" href="../concepts/">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
@@ -359,27 +351,68 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#about-the-microbit"> About the micro:bit </a></li>
+        <li class="main active"><a href="#about-the-microbit">About the micro:bit</a></li>
+        
+            <li><a href="#datasheets">Datasheets</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="about-the-microbit"><center> About the micro:bit </center><a class="headerlink" href="#about-the-microbit" title="Permanent link">&para;</a></h1>
+<h1 id="about-the-microbit">About the micro:bit<a class="headerlink" href="#about-the-microbit" title="Permanent link">&para;</a></h1>
 <p><img alt="microbit from the front and the back" src="../resources/microbit_front_back.png" /></p>
-<p>The brain of the micro:bit is a <a href="https://www.nordicsemi.com/eng/Products/Bluetooth-Smart-Bluetooth-low-energy/nRF51822">Nordic nRF51822</a>
+<p>The central processing unit (CPU) for the micro:bit is the <a href="https://www.nordicsemi.com/eng/Products/Bluetooth-Smart-Bluetooth-low-energy/nRF51822">Nordic nRF51822</a>
 and it controls all functionality offered by the micro:bit.</p>
 <p>On board the micro:bit there is already:</p>
 <ul>
 <li>a 5 x 5 LED matrix <a href="../ubit/display/">display</a>.</li>
 <li>2 programmable <a href="../ubit/button/">buttons</a>.</li>
 <li>a 3-axis <a href="../ubit/accelerometer/">accelerometer</a>.</li>
-<li>a <a href="../ubit/compass/">compass</a>.</li>
+<li>an <a href="../ubit/compass/">e-compass</a>.</li>
 <li><a href="../ubit/blemanager/">Bluetooth</a>.</li>
 <li>20 user controlled <a href="../ubit/io/">pins</a>, with Analog and Digital capabilities.</li>
 <li><a href="../ubit/serial/">serial</a> capabilities over USB and the edge connector.</li>
-</ul></div>
+</ul>
+<h2 id="datasheets">Datasheets<a class="headerlink" href="#datasheets" title="Permanent link">&para;</a></h2>
+<div class="col-sm-4">
+    <h3>Nordic nRF51822</h3>
+    <p>
+        The central processing unit of the micro:bit, the nRF51822, controls and drives all functionality on
+        the micro:bit.
+    </p>
+    <p>
+        <a target="_blank" href="../resources/datasheets/nrf51822.pdf" class="btn btn-lg btn-outline">
+            Datasheet
+        </a>
+    </p>
+</div>
+
+<div class="col-sm-4">
+    <h3>NXP MAG3110</h3>
+    <p>
+        The MAG3110 magnetometer is used in conjunction with with the 3-axis accelerometer
+        (MMA8653) to create an e-compass.
+    </p>
+    <p>
+        <a target="_blank" href="../resources/datasheets/MAG3110.pdf" class="btn btn-lg btn-outline">
+            Datasheet
+        </a>
+    </p>
+</div>
+
+<div class="col-sm-4">
+    <h3>NXP MMA8653</h3>
+    <p>
+        The MMA8653 accelerometer provides orientation and acceleration information
+        of the micro:bit.
+    </p>
+    <p>
+        <a target="_blank" href="../resources/datasheets/MMA8653.pdf" class="btn btn-lg btn-outline">
+            Datasheet
+        </a>
+    </p>
+</div></div>
         </div>
 
         <footer class="col-md-12">
