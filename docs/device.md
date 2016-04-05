@@ -20,8 +20,8 @@ On board the micro:bit there is already:
 <div class="col-sm-4">
     <h3>Nordic nRF51822</h3>
     <p>
-        The central processing unit of the micro:bit, the nRF51822, controls all functionality on
-        the micro:bit and runs the code that users' create.
+        The central processing unit of the micro:bit, the nRF51822, controls and drives all functionality on
+        the micro:bit.
     </p>
     <p>
         <a href="resources/datasheets/nrf51822.pdf" class="btn btn-lg btn-outline">
