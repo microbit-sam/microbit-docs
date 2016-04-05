@@ -2,17 +2,17 @@
 
 ##Overview
 
-The central processor unit (CPU) on the micro:bit is a Nordic Semiconductor nrf51822. In addition to being a general purpose
-computer processor, this chip also contains a built-in 2.4GHz radio module.  This radio can be configured in a nummber of
+The central processor unit (CPU) on the micro:bit is a Nordic Semiconductor [nRF51822](../resources/datasheets/nrf51822.pdf). In addition to being a general purpose
+computer processor, this chip also contains a built-in 2.4GHz radio module.  This radio can be configured in a number of
 ways, and is primarily designed to run the Bluetooth Low Energy (BLE) protocol. However, it can also be placed into a much
 simpler mode of operation based that allows simple, direct micro:bit to micro:bit communication.
 
-The MicroBitRadio component is made up of three classes - MicroBitRadio, MicroBitRadioEvent and MicroBitRadioDatagram. Together,
+The `MicroBitRadio` component is made up of three classes - `MicroBitRadio`, [`MicroBitRadioEvent`](radioevent.md) and [`MicroBitRadioDatagram`](radiodatagram.md). Together,
 these provide the ability to send general purpose data packets from one micro:bit to another, and to extend a message bus to span multiple micro:bits...
 so if you raise an event on one micro:bit, you can receive it on another using the normal [listen](messageBus.md) mechanism!
 
 !!! note
-    It is not currenlty possible to run the MicroBitRadio component and Bluetooth Low Energy (BLE) at the same time. If you want to us the MicroBitRadio functionality, you need to disable the BLE stack on your micro:bit by compiling the runtime with '#define MICROBIT_BLE_ENABLED 0' in your inc/MicroBitConfig.h file.
+    It is not currently possible to run the `MicroBitRadio` component and Bluetooth Low Energy (BLE) at the same time. If you want to use the `MicroBitRadio` functionality, you need to disable the BLE stack on your micro:bit by compiling the runtime with `#define MICROBIT_BLE_ENABLED 0` in your `inc/MicroBitConfig.h` file.
 
 
 ## Capabilities
@@ -37,17 +37,18 @@ which can be used to identify you or your micro:bit. All devices look identical.
 | Meshing | None. (yet!) |
 | Error Detection | 16 bit hardware CRC. |
 | Transmisson Power| Eight user configurable settings from 0 (-30dbm) to 7 (+4dbm). |
-| Transmisson Range| Approx 20m at 0dbm. |
+| Transmisson Range| Approx. 20m at 0dbm. |
 
 
 ## Using MicroBitRadio
 
-To write your radio enabled applicaitons, you will likely want to use either the MicroBiRadioDatagram class, or the MicroBitRadioEvent class.
+To write your radio enabled applications, you will likely want to use either the [`MicroBitRadioDatagram`](radiodatagram.md) class, or the [`MicroBitRadioEvent`](radioevent.md) class.
+
 Both of these are created for you as part of the standard uBit object, so this is a choice, not a compromise! :-)
 
 ### [MicroBitRadioDatagram](radiodatagram.md)
 This is the most flexible way to use the radio, and lets you easily send and receive up to 32 bytes of data at a time.
-This data can be provided as array of bytes, a text string, or PacketBuffer.
+This data can be provided as array of bytes, a text string, or [`PacketBuffer`](../data-types/packetbuffer.md).
 
 You can send a packet at any time using the `uBit.radio.datagram.send` function.
 
@@ -105,11 +106,11 @@ int main()
 ```
 
 ### Using PacketBuffers
-If you prefer to send a raw series of bytes rather than a text string (which is much more common in communication networks), you can use the PacketBuffer type.
-This gives total freedom over the data being shared. Simply create a PacketBuffer of the size you need, and you can read or write data using standard C
+If you prefer to send a raw series of bytes rather than a text string (which is much more common in communication networks), you can use the [`PacketBuffer`](../data-types/packetbuffer.md) type.
+This gives total freedom over the data being shared. Simply create a [`PacketBuffer`](../data-types/packetbuffer.md) of the size you need, and you can read or write data using standard C
 array syntax.
 
-For example, here is an similar program using a PacketBuffers:
+For example, here is an similar program using a [`PacketBuffer`](../data-types/packetbuffer.md):
 ```cpp
 int main()
 {
@@ -160,12 +161,12 @@ int main()
 
 ### [MicroBitRadioEvent](radioevent.md)
 
-It is also possible to transparently send and receive events over the MicroBitRadio channel. This can provide very simple and easy to integrate
+It is also possible to transparently send and receive events over the `MicroBitRadio` channel. This can provide very simple and easy to integrate
 support for event driven applications. Once configured, an event raised on one micro:bit can be detected on another - in the just the same way as
 a local event such as a button click.
 
 To use this functionality, all that is needed is to register the event codes that you would like to be sent over the radio, then write event handlers
-for the message bus as with all other events. See the documentation for the [MicroBitMessageBus](messageBus.md) for details of how to write
+for the message bus as with all other events. See the documentation for the [`MicroBitMessageBus`](messageBus.md) for details of how to write
 event handlers.
 
 For example, if you wanted to share an event SOMETHING with another micro:bit whenever ButtonA is pressed, you might write code like this on the sending micro:bit:
@@ -215,10 +216,18 @@ int main()
 
 ### Defining Groups
 
-It is easy to imagine situations where you would like to have different groups of micro:bits communicating independently. For example, consider a classroom where 8 groups of four children are working on different
-projects - it would not be very useful if packets sent by one group interfered with the other groups! To address this, the MicroBitRadio allows users to define a **group** to which their micro:bit belongs. micro:bits can
-only ever be a member of one group at a time, and any packets sent will only be received by  other micro:bits in the same group. Groups are simply numbers, and a micro:bit's group can be set at anytime by the programmer through the setGroup function. If a group is not specified, the default group of 0 will be used. For example:
+It is easy to imagine situations where you would like to have different groups of micro:bits communicating independently.
 
+For example, consider a classroom where 8 groups of four children are working on different
+projects - it would not be very useful if packets sent by one group interfered with the other groups!
+
+To address this, the `MicroBitRadio` allows users to define a **group** to which their micro:bit belongs.
+
+micro:bits can only ever be a member of one group at a time, and any packets sent will only be received by other micro:bits in the same group.
+
+Groups are simply numbers, and a micro:bit's group can be set at anytime by the programmer through the `setGroup` function. If a group is not specified, the default group of 0 will be used.
+
+For example:
 ```cpp
     uBit.radio.setGroup(10);
 ```

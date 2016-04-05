@@ -1,15 +1,18 @@
-#uBit
+#MicroBit
 
 ##Overview
 
 Although the runtime is built from lots of small components, we also provide an easy to use pre-packaged collection of the commonly used components
-all in one place. This makes it much easier to start programming your micro:bit in C. This grouping is provided by a C++ class called MicroBit.  The MicroBit class has a number of
+all in one place. This makes it much easier to start programming your micro:bit in C.
+
+This grouping is provided by a C++ class called `MicroBit`.  The `MicroBit` class has a number of
 member variables, that operate as device drivers to control the most commonly used features of the micro:bit.
 
-There is an instance of the MicroBit class created as a global variable in all the sample programs, and it contains:
+There is an instance of the `MicroBit` class created as a global variable in all the sample programs, called `uBit`:
 
 >    uBit {<br/>
 >    &emsp;&emsp;[.i2c](ubit/i2c.md),<br/>
+>    &emsp;&emsp;[.storage](ubit/storage.md),<br/>
 >    &emsp;&emsp;[.serial](ubit/serial.md),<br/>
 >    &emsp;&emsp;[.MessageBus](ubit/messageBus.md),<br/>
 >    &emsp;&emsp;[.buttonA](ubit/button.md),<br/>
@@ -25,8 +28,8 @@ There is an instance of the MicroBit class created as a global variable in all t
 >    &emsp;&emsp;[.radio](ubit/radio.md),<br/>
 >    }
 
-You can use dot operator '.' to any of these resources inside uBit, then again to access any of the functions they provide. There is a complete list of the
-functions available under the ```uBit``` menu item above.
+You can use dot operator '.' to any of these resources inside uBit to access any of the functions they provide. There is a complete list of the
+functions available under the `uBit` menu item in the navigation bar at the top of the page.
 
 For example, if we needed to scroll some text across the display, we simply would write the following:
 
@@ -48,10 +51,6 @@ for(int i = 3; i > 0; i--)
 uBit.serial.send("Code!");
 ```
 
-uBit also provides a number of utility functions that allow the plug and play
-of additional components that developers may create. These are namely <a href="#addsystemcomponent">addSystemComponent()</a>
-and <a href="#addidlecomponent">addIdleComponent()</a>. [Read more about how to plug your own device drivers into the runtime.](todo.md)
-
 The runtime also contains a scheduler, which uses lightweight threads (called fibers)
 to control the rate of execution.
 
@@ -60,7 +59,6 @@ To place the current fiber into a power efficient <a href="#sleep">sleep</a> wri
 // where X is an integer in milliseconds for the amount of time you would like to sleep for.
 uBit.sleep(X);
 ```
-[Read more about the scheduler.](todo.md)
 
 ##Message Bus ID
 
@@ -70,7 +68,7 @@ uBit.sleep(X);
 
 > None
 
-##API
+#API
 [comment]: <> ({"className":"MicroBit"})
 ##Constructor
 <br/>

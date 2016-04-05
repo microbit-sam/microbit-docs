@@ -1,4 +1,4 @@
-# <center> About the micro:bit </center>
+#About the micro:bit
 
 ![microbit from the front and the back](resources/microbit_front_back.png)
 

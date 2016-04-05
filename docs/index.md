@@ -22,28 +22,35 @@ Just to show how easy it is to get started, view a <a href="#next-steps">sample 
 Developing with the micro:bit runtime is simple, and there are multiple ways to create programs for your device.
 
 <div class="col-sm-6">
-    <h3 id="online-environments">Online development</h3>
+    <center>
+        <h3 id="online-environments">Online development</h3>
+    </center>
     <p>
         A basic quick start guide to getting an example project building in an
-        online programming environment. No command line usage required.
+        online programming environment.
     </p>
     <p>
-        <a href="todo" class="btn btn-lg btn-outline">
-            Online development tools
-        </a>
+        <center>
+            <a href="todo" class="btn btn-lg btn-outline">
+                Online development tools
+            </a>
+        </center>
     </p>
 </div>
 <div class="col-sm-6">
-    <h3 id="offline-environments">Offline development</h3>
+    <center>
+        <h3 id="offline-environments">Offline development</h3>
+    </center>
     <p>
         A full guide to installing offline development tools, and a tutorial on getting
         an example project building.
-        <b>Requires setup with usage of the command line.</b>
     </p>
     <p>
-        <a href="installing-yotta" class="btn btn-lg btn-outline">
-            Offline development tools
-        </a>
+        <center>
+            <a href="installing-yotta" class="btn btn-lg btn-outline">
+                Offline development tools
+            </a>
+        </center>
     </p>
 </div>
 
@@ -92,7 +99,8 @@ uBit.init();
 In this call the scheduler, memory allocator and Bluetooth stack are initialised.
 
 !!!note
-    This line is omitted in all examples you will find on this site.
+    This line is omitted in all examples you will find on this site simply to avoid
+    repetition!
 
 
 ### What is a fiber and why do we release it?

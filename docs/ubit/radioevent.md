@@ -2,12 +2,12 @@
 
 ##Overview
 
-It is also possible to transparently send and receive events over the MicroBitRadio channel. This can provide very simple and easy to integrate
+It is also possible to transparently send and receive events over the `MicroBitRadio` channel. This can provide very simple and easy to integrate
 support for event driven applications. Once configured, an event raised on one micro:bit can be detected on another - in the just the same way as
 a local event such as a button click.
 
 To use this functionality, all that is needed is to register the event codes that you would like to be sent over the radio, then write event handlers
-for the message bus as with all other events. See the documentation for the [MicroBitMessageBus](messageBus.md) for details of how to write
+for the message bus as with all other events. See the documentation for the [`MicroBitMessageBus`](messageBus.md) for details of how to write
 event handlers.
 
 For example, if you wanted to share an event SOMETHING with another micro:bit whenever ButtonA is pressed, you might write code like this on the sending micro:bit:

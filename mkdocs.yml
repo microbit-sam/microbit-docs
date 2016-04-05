@@ -8,7 +8,7 @@ pages:
         - Concepts: 'concepts.md'
         - The device: 'device.md'
     - uBit:
-        - MicroBit: 'ubit.md'
+        - Overview: 'ubit.md'
         - i2c: 'ubit/i2c.md'
         - storage: 'ubit/storage.md'
         - serial: 'ubit/serial.md'

@@ -3,7 +3,7 @@
 ##Overview
 
 This is the most flexible way to use the radio, and lets you easily send and receive up to 32 bytes of data at a time.
-This data can be provided as array of bytes, a text string, or PacketBuffer.
+This data can be provided as array of bytes, a text string, or [`PacketBuffer`](../data-types/packetbuffer.md).
 
 You can send a packet at any time using the `uBit.radio.datagram.send` function.
 

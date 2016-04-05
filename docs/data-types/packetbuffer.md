@@ -2,8 +2,12 @@
 
 ##Overview
 
-The [MicroBitRadio](/ubit/radio.md) classes provided direct micro:bit to micro:bit communication. It is often beneficial in both wired and wireless communication
-protocols to send and receive data in a raw format, viewed as an ordered sequence of bytes. This class provies a basic set of functions for the creation, manipulation and
+The [MicroBitRadio](../ubit/radio.md) class provides direct micro:bit to micro:bit communication.
+
+It is often beneficial in both wired and wireless communication protocols to send
+and receive data in a raw format, viewed as an ordered sequence of bytes.
+
+This class provides a basic set of functions for the creation, manipulation and
 accessing of a managed type for byte arrays used to hold network data packets.
 
 !!! note
@@ -12,55 +16,57 @@ accessing of a managed type for byte arrays used to hold network data packets.
 
 ## Creating PacketBuffers
 
-PacketBuffers are simple to create - just create them like a variable, and provide the size (in bytes) of the buffer you want to create.
+`PacketBuffer`s are simple to create - just create them like a variable, and provide the size (in bytes) of the buffer you want to create.
 
 ```cpp
-    PacketBuffer b(16);
+PacketBuffer b(16);
 ```
 
-Alternatively, if you already have an array of bytes allocated, then you can somply refer to that using a slightly different form:
+Alternatively, if you already have an array of bytes allocated, then you can simply refer to that using a slightly different form:
 
 ```cpp
-    uint8_t data[16];
-    PacketBuffer b(data,16);
+uint8_t data[16];
+PacketBuffer b(data,16);
 ```
 
 ## Manipulating PacketBuffers
 
-Once created, the data inside PacketBuffers can be freely changed at any time. The simplest way to do this is through the array operators '[' and ']'.
-You can read or write bytes to the buffer by simply dereferencing it with square bracket. e.g. to create, set and send a PacketBuffer on the micro:bit radio:
+Once created, the data inside `PacketBuffer`s can be freely changed at any time. The simplest way to do this is through the array operators `[` and `]`.
 
+You can read or write bytes to the buffer by simply dereferencing it with square bracket.
+
+For example: to create, set and send a PacketBuffer on the micro:bit radio, you could do the following:
 ```cpp
-    PacketBuffer b(2);
-    b[0] = 255;
-    b[1] = 10;
+PacketBuffer b(2);
+b[0] = 255;
+b[1] = 10;
 
-    uBit.radio.datagram.send(b);
+uBit.radio.datagram.send(b);
 ```
 
-PacketBuffers can also be assigned a value. For example, all these are legal:
-
+`PacketBuffer`s can also be assigned a value:
 ```cpp
-    PacketBuffer b;
-    b = uBit.radio.datagram.recv();
+PacketBuffer b;
+b = uBit.radio.datagram.recv();
 ```
 
-If you need more granualar access, the getBytes function provides direct access to the memory buffer, presented as a byte array:
-
+If you need more granular access, the `getBytes` function provides direct access to the memory buffer, presented as a byte array:
 ```cpp
-    PacketBuffer b(16);
-    uint8_t *buf = b.getBytes();
+PacketBuffer b(16);
+uint8_t *buf = b.getBytes();
 
-    memcpy(buf, "HI", 2);
+memcpy(buf, "HI", 2);
 ```
 
-Finally, it is also possible to extract the received signal strength of a packet from a PakcetBuffer. This can provide both a rough indicaiton of the reliability of the link, and a crude but moderatley effective mechanism to estimate the distance between two micro:bts.
+Finally, it is also possible to extract the received signal strength of a packet from a `PacketBuffer`.
+
+This can provide both a rough indication of the reliability of the link, and a crude but moderately effective mechanism to estimate the distance between two micro:bits.
 
 ```cpp
-    PacketBuffer b;
-    b = uBit.radio.datagram.recv();
+PacketBuffer b;
+b = uBit.radio.datagram.recv();
 
-    uBit.display.scroll(b.getRSSI());
+uBit.display.scroll(b.getRSSI());
 ```
 
 #API

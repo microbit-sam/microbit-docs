@@ -4,13 +4,38 @@
 
 `MicroBitStorage` provides a simple way to store data on the micro:bit that persists
 through power cycles. It currently takes the form of a key value store which contains
-a number of Key Value pairs.
+a number of key value pairs.
 
+If a user wanted to determine if a micro:bit has just been flashed over USB they
+could simply write the following:
+```cpp
+int main()
+{
+    KeyValuePair firstTime = uBit.storage.get("boot");
+
+    int stored;
+
+    if(firstTime == NULL)
+    {
+        //this is the first boot after a flash. Store a value!
+        stored = 1;
+        uBit.storage.put("boot", (uint8_t *)&stored);
+    }
+    else
+    {
+        //this is not the first boot, scroll our stored value.
+        memcpy(&stored, firstTime->value, sizeof(int));
+        uBit.display.scroll(stored);
+    }
+}
+```
+
+###What is flash memory?
 The micro:bit has 256 kB flash memory and 16 kB random access memory (RAM). Flash memory
 is *non-volatile*, which essentially means that data is not forgotten when the device
 is powered off, this is the technology that many USB sticks use.
 
-The alternative, RAM (known as *volatile* memory), cannot be persisted through power cycling the device as its
+The alternative, Random Access Memory (also known as *volatile* memory), cannot be persisted through power cycling the device as its
 operation relies upon maintaining a constant supply of power.
 
 Therefore, `MicroBitStorage` utilises the *non-volatile* nature of flash memory, to
@@ -56,7 +81,7 @@ Writes the given number of bytes to the address specified.
 >  <div style='color:#008080; display:inline-block'>int</div> *length* - the number of bytes to write.
 
 !!! note
-    currently not implemented. 
+    currently not implemented.
 
 ##flashPageErase
 <br/>
@@ -65,7 +90,7 @@ Writes the given number of bytes to the address specified.
 Method for erasing a page in flash.
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>uint32_t *</div> *page_address* - Address of the first word in the page to be erased. 
+>  <div style='color:#008080; display:inline-block'>uint32_t *</div> *page_address* - Address of the first word in the page to be erased.
 ##flashWordWrite
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>void</div> flashWordWrite( <div style='color:#008080; display:inline-block'>uint32_t *</div> address,  <div style='color:#008080; display:inline-block'>uint32_t</div> value)
@@ -75,7 +100,7 @@ Method for writing a word of data in flash with a value.
 
 >  <div style='color:#008080; display:inline-block'>uint32_t *</div> *address* - Address of the word to change.
 
->  <div style='color:#008080; display:inline-block'>uint32_t</div> *value* - Value to be written to flash. 
+>  <div style='color:#008080; display:inline-block'>uint32_t</div> *value* - Value to be written to flash.
 ##put
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> put( <div style='color:#008080; display:inline-block'>const char *</div> key,  <div style='color:#008080; display:inline-block'>uint8_t *</div> data)
@@ -87,7 +112,7 @@ Places a given key, and it's corresponding value into flash at the earliest avai
 
 >  <div style='color:#008080; display:inline-block'>uint8_t *</div> *data* - a pointer to the beginning of the data to be persisted.
 #####Returns
-MICROBIT_OK on success, or MICROBIT_NO_RESOURCES if the storage page is full 
+MICROBIT_OK on success, or MICROBIT_NO_RESOURCES if the storage page is full
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> put( <div style='color:#008080; display:inline-block'>ManagedString</div> key,  <div style='color:#008080; display:inline-block'>uint8_t *</div> data)
 #####Description
@@ -98,7 +123,7 @@ Places a given key, and it's corresponding value into flash at the earliest avai
 
 >  <div style='color:#008080; display:inline-block'>uint8_t *</div> *data* - a pointer to the beginning of the data to be persisted.
 #####Returns
-MICROBIT_OK on success, or MICROBIT_NO_RESOURCES if the storage page is full 
+MICROBIT_OK on success, or MICROBIT_NO_RESOURCES if the storage page is full
 ##get
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>KeyValuePair</div> get( <div style='color:#008080; display:inline-block'>const char *</div> key)
@@ -111,7 +136,7 @@ Retreives a  KeyValuePair
 a pointer to a heap allocated  KeyValuePair  struct, this pointer will be NULL if the key was not found in storage.
 
 !!! note
-    it is up to the user to free memory after use. 
+    it is up to the user to free memory after use.
 
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>KeyValuePair</div> get( <div style='color:#008080; display:inline-block'>ManagedString</div> key)
@@ -124,7 +149,7 @@ Retreives a  KeyValuePair
 a pointer to a heap allocated  KeyValuePair  struct, this pointer will be NULL if the key was not found in storage.
 
 !!! note
-    it is up to the user to free memory after use. 
+    it is up to the user to free memory after use.
 
 ##remove
 <br/>
@@ -135,7 +160,7 @@ Removes a  KeyValuePair
 
 >  <div style='color:#008080; display:inline-block'>const char *</div> *key* - the unique name used to identify a  KeyValuePair  in flash.
 #####Returns
-MICROBIT_OK on success, or MICROBIT_NO_DATA if the given key was not found in flash. 
+MICROBIT_OK on success, or MICROBIT_NO_DATA if the given key was not found in flash.
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> remove( <div style='color:#008080; display:inline-block'>ManagedString</div> key)
 #####Description
@@ -144,13 +169,13 @@ Removes a  KeyValuePair
 
 >  <div style='color:#008080; display:inline-block'>ManagedString</div> *key* - the unique name used to identify a  KeyValuePair  in flash.
 #####Returns
-MICROBIT_OK on success, or MICROBIT_NO_DATA if the given key was not found in flash. 
+MICROBIT_OK on success, or MICROBIT_NO_DATA if the given key was not found in flash.
 ##size
 <br/>
 ####<div style='color:#FF69B4; display:inline-block'>int</div> size()
 #####Description
 The size of the flash based  KeyValueStore
 #####Returns
-the number of entries in the key value store 
+the number of entries in the key value store
 ____
 [comment]: <> ({"end":"MicroBitStorage"})
