@@ -418,8 +418,8 @@ happen in that case.</p>
 <p>For example, maybe you want to know when a button has been pressed, when your micro:bit has been shaken,
 or when some data has been sent to you over the device's radio. For these sorts of cases, we create a <a href="../data-types/event/">MicroBitEvent</a>.</p>
 <h2 id="creating-events">Creating Events<a class="headerlink" href="#creating-events" title="Permanent link">&para;</a></h2>
-<p>Many components will raise events when interesting things occur. For example, <a href="../ubit/accelerometer.md">'MicroBitAccelerometer'</a> will raise events to indicate that the
-micro:bit has be been shaken, or is in freefall and <a href="../ubit/button.md">'MicroBitButton'</a> will send events on a range of button up, down, click and hold events.
+<p>Many components will raise events when interesting things occur. For example, <a href="../ubit/accelerometer/">'MicroBitAccelerometer'</a> will raise events to indicate that the
+micro:bit has be been shaken, or is in freefall and <a href="../ubit/button/">'MicroBitButton'</a> will send events on a range of button up, down, click and hold events.
 Programmers are also free to send their own events whenever they feel it would be useful. <code>MicroBitEvent</code>s are <em>very</em> simple, and consist of
 only two numbers:</p>
 <ul>
@@ -427,20 +427,20 @@ only two numbers:</p>
 <li><code>value</code> - A number unique to the source that identifies the event.</li>
 </ul>
 <p>The documentation for each component defines its event source, and all the events it may generate, and also gives a name to these
-event values. For example, take a look at the <a href="../ubit/button.md">button documentation</a> to see that the source MICROBIT_ID_BUTTON_A has the value '1',
+event values. For example, take a look at the <a href="../ubit/button/">button documentation</a> to see that the source MICROBIT_ID_BUTTON_A has the value '1',
 and an event MICROBIT_BUTTON_EVT_CLICK with the value '3' is generated when a button is clicked.</p>
 <p>Creating an event is easy - just create a MicroBitEvent with the <code>source</code> and <code>value</code> you need, and the runtime takes care of the rest:</p>
 <pre><code class="cpp">MicroBitEvent(MICROBIT_ID_BUTTON_A, MICROBIT_BUTTON_EVT_CLICK);
 </code></pre>
 
 <p>Feel free to create your own events lke this too. Just try to avoid using any source ID that is already used by the runtime! :-)
-See the <a href="../ubit/messageBus.md">messageBus</a> page for a complete table of the reserved source IDs.</p>
+See the <a href="../ubit/messageBus/">messageBus</a> page for a complete table of the reserved source IDs.</p>
 <h2 id="detecting-events">Detecting Events<a class="headerlink" href="#detecting-events" title="Permanent link">&para;</a></h2>
-<p>The micro:bit runtime has a component called the <a href="../ubit/messageBus.md"><code>MicroBitMessageBus</code></a>, and its job is remember which events your program is interested in, and
+<p>The micro:bit runtime has a component called the <a href="../ubit/messageBus/"><code>MicroBitMessageBus</code></a>, and its job is remember which events your program is interested in, and
 to deliver <code>MicroBitEvent</code>s to your program as they occur.</p>
 <p>To find out when an event happens, you need to create a function in your program,
 then tell the message bus which event you want to attach this function to. This is known as writing an <strong>event handler</strong>.</p>
-<p>You write an event handler through the <code>MicroBitMessageBus</code> <a href="../ubit/messageBus.md">listen</a> function.  </p>
+<p>You write an event handler through the <code>MicroBitMessageBus</code> <a href="../ubit/messageBus/">listen</a> function.  </p>
 <pre><code class="cpp">void onButtonA(MicroBitEvent e)
 {
     uBit.display.print(&quot;A&quot;);
