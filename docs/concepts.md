@@ -58,8 +58,8 @@ or when some data has been sent to you over the device's radio. For these sorts 
 
 
 ## Creating Events
-Many components will raise events when interesting things occur. For example, ['MicroBitAccelerometer'](../ubit/accelerometer.md) will raise events to indicate that the
-micro:bit has be been shaken, or is in freefall and ['MicroBitButton'](../ubit/button.md) will send events on a range of button up, down, click and hold events.
+Many components will raise events when interesting things occur. For example, ['MicroBitAccelerometer'](ubit/accelerometer.md) will raise events to indicate that the
+micro:bit has be been shaken, or is in freefall and ['MicroBitButton'](ubit/button.md) will send events on a range of button up, down, click and hold events.
 Programmers are also free to send their own events whenever they feel it would be useful. `MicroBitEvent`s are *very* simple, and consist of
 only two numbers:
 
@@ -67,7 +67,7 @@ only two numbers:
   - `value` - A number unique to the source that identifies the event.
 
 The documentation for each component defines its event source, and all the events it may generate, and also gives a name to these
-event values. For example, take a look at the [button documentation](../ubit/button.md) to see that the source MICROBIT_ID_BUTTON_A has the value '1',
+event values. For example, take a look at the [button documentation](ubit/button.md) to see that the source MICROBIT_ID_BUTTON_A has the value '1',
 and an event MICROBIT_BUTTON_EVT_CLICK with the value '3' is generated when a button is clicked.
 
 Creating an event is easy - just create a MicroBitEvent with the `source` and `value` you need, and the runtime takes care of the rest:
@@ -77,17 +77,17 @@ MicroBitEvent(MICROBIT_ID_BUTTON_A, MICROBIT_BUTTON_EVT_CLICK);
 ```
 
 Feel free to create your own events lke this too. Just try to avoid using any source ID that is already used by the runtime! :-)
-See the [messageBus](../ubit/messageBus.md) page for a complete table of the reserved source IDs.
+See the [messageBus](ubit/messageBus.md) page for a complete table of the reserved source IDs.
 
 
 ## Detecting Events
-The micro:bit runtime has a component called the [`MicroBitMessageBus`](../ubit/messageBus.md), and its job is remember which events your program is interested in, and
+The micro:bit runtime has a component called the [`MicroBitMessageBus`](ubit/messageBus.md), and its job is remember which events your program is interested in, and
 to deliver `MicroBitEvent`s to your program as they occur.
 
 To find out when an event happens, you need to create a function in your program,
 then tell the message bus which event you want to attach this function to. This is known as writing an **event handler**.
 
-You write an event handler through the `MicroBitMessageBus` [listen](../ubit/messageBus.md) function.  
+You write an event handler through the `MicroBitMessageBus` [listen](ubit/messageBus.md) function.  
 
 ```cpp
 void onButtonA(MicroBitEvent e)

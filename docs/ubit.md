@@ -23,8 +23,6 @@ There is an instance of the `MicroBit` class created as a global variable in all
 >    &emsp;&emsp;[.compass](ubit/compass.md),<br/>
 >    &emsp;&emsp;[.thermometer](ubit/thermometer.md),<br/>
 >    &emsp;&emsp;[.io](ubit/io.md),<br/>
->    &emsp;&emsp;[.ble](ubit/ble.md),<br/>
->    &emsp;&emsp;[.BLEManager](ubit/blemanager.md),<br/>
 >    &emsp;&emsp;[.radio](ubit/radio.md),<br/>
 >    }
 
