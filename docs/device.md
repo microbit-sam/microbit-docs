@@ -24,7 +24,7 @@ On board the micro:bit there is already:
         the micro:bit.
     </p>
     <p>
-        <a href="resources/datasheets/nrf51822.pdf" class="btn btn-lg btn-outline">
+        <a target="_blank" href="../resources/datasheets/nrf51822.pdf" class="btn btn-lg btn-outline">
             Datasheet
         </a>
     </p>
@@ -36,7 +36,7 @@ On board the micro:bit there is already:
         (MMA8653) to create an e-compass.
     </p>
     <p>
-        <a href="resources/datasheets/MAG3110.pdf" class="btn btn-lg btn-outline">
+        <a target="_blank" href="../resources/datasheets/MAG3110.pdf" class="btn btn-lg btn-outline">
             Datasheet
         </a>
     </p>
@@ -48,7 +48,7 @@ On board the micro:bit there is already:
         of the micro:bit.
     </p>
     <p>
-        <a href="resources/datasheets/MMA8653.pdf" class="btn btn-lg btn-outline">
+        <a target="_blank" href="../resources/datasheets/MMA8653.pdf" class="btn btn-lg btn-outline">
             Datasheet
         </a>
     </p>

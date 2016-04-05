@@ -20,7 +20,7 @@ to make our headings far more accurate. You can see this in action when calibrat
 
 After calibration has been performed, the end product is an e-compass!
 
-The micro:bit uses the NXP [MAG3110](resources/datasheets/MAG3110.pdf).
+The micro:bit uses the NXP [MAG3110](../resources/datasheets/MAG3110.pdf).
 
 ### Real time updates
 

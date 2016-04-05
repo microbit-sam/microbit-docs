@@ -22,7 +22,7 @@ when only the force gravity is acting upon an object. If you were to throw a bal
 into the air, free fall would begin as soon as the ball begins its decent after the
 acceleration from your throw has subsided.
 
-The micro:bit uses the [MMA8653](resources/datasheets/MMA8653.pdf).
+The micro:bit uses the [MMA8653](../resources/datasheets/MMA8653.pdf).
 
 ### Real time updates
 
