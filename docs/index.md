@@ -15,14 +15,7 @@ JavaScript and Micropython languages.
 On these pages you will find guidance on how to start using the runtime in C/C++, summaries of all the
 components that make up the system and a full set of API documentation (the functions you can use to control the micro:bit).
 
-Just to show how easy it is to get started, here is how you would write a traditional Hello World program...
-
-```cpp
-   uBit.display.scroll("Hello micro:bit!");
-```
-
-Not so scary after all, eh?
-So, see the getting started and concepts sections to learn more... then go and create!
+Just to show how easy it is to get started, view a <a href="#next-steps">sample program</a>.
 
 #Getting Started
 
@@ -53,3 +46,63 @@ Developing with the micro:bit runtime is simple, and there are multiple ways to 
         </a>
     </p>
 </div>
+
+## Next Steps
+
+After you've chosen your development environment, the next step is obvious: **PROGRAM**!
+
+Here is some sample code to get you started:
+
+```cpp
+#include "MicroBit.h"
+
+MicroBit uBit;
+
+int main()
+{
+    uBit.init();
+
+    uBit.display.scroll("HELLO WORLD!");
+
+    release_fiber();
+}
+```
+
+### What is uBit?
+
+uBit is an instance of the [MicroBit](ubit.md) class which provides a really simple way to interact
+with the various components on the micro:bit itself.
+
+This simplicity can be seen with this line of code:
+
+```cpp
+uBit.display.scroll("HELLO WORLD!");
+```
+
+This line scrolls the text `HELLO WORLD!` across the micro:bit's display.
+
+#### Initialisation
+
+In the above example, there is a line used to initialise the uBit object:
+
+```cpp
+uBit.init();
+```
+
+In this call the scheduler, memory allocator and Bluetooth stack are initialised.
+
+!!!note
+    This line is omitted in all examples you will find on this site, as it is presumed
+    that you (the developer) will know that this step is required.
+
+
+### What is a fiber and why do we release it?
+
+Fibers are lightweight threads used by the runtime to perform operations asynchronously.
+
+The function call `fiber_release();` is recommended at the end of main to release the main fiber, and enter
+the scheduler indefinitely as you may have other fibers running elsewhere in the code.
+It also means that the processor will enter a power efficient sleep if there are
+no other processes running.
+
+If this line is omitted, your program will cease all execution.
