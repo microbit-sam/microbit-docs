@@ -19,8 +19,6 @@ pages:
         - compass: 'ubit/compass.md'
         - thermometer: 'ubit/thermometer.md'
         - io: 'ubit/io.md'
-        - ble: 'ubit/ble.md'
-        - bleManager: 'ubit/blemanager.md'
         - radio: 'ubit/radio.md'
     - Data Types:
         - MicroBitImage: "data-types/image.md"
