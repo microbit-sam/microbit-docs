@@ -92,8 +92,7 @@ uBit.init();
 In this call the scheduler, memory allocator and Bluetooth stack are initialised.
 
 !!!note
-    This line is omitted in all examples you will find on this site, as it is presumed
-    that you (the developer) will know that this step is required.
+    This line is omitted in all examples you will find on this site.
 
 
 ### What is a fiber and why do we release it?
