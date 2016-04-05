@@ -3,12 +3,12 @@ repo_url: https://github.com/lancaster-university/microbit-dal/
 pages:
     - General:
         - Introduction: 'index.md'
-        - Concepts: 'concepts.md'
         - Online Development: 'installing-yotta.md'
         - Offline Development: 'installing-yotta.md'
+        - Concepts: 'concepts.md'
         - The Device: 'device.md'
     - uBit:
-        - uBit: 'ubit.md'
+        - MicroBit: 'ubit.md'
         - i2c: 'ubit/i2c.md'
         - storage: 'ubit/storage.md'
         - serial: 'ubit/serial.md'
@@ -43,6 +43,8 @@ pages:
 #unfortunately this is required, otherwise mkdocs doesn't build pages not linked by nav.
     - _blemanager: "ubit/blemanager.md"
     - _buttonAB: 'ubit/multibutton.md'
+    - _radioevent: 'ubit/radioevent.md'
+    - _radiodatagram: 'ubit/radiodatagram.md'
 #--------------HIDDEN PAGES END
 markdown_extensions:
     - toc:

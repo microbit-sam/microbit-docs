@@ -3,7 +3,7 @@
 ##Overview
 
 Although the runtime is built from lots of small components, we also provide an easy to use pre-packaged collection of the commonly used components
-all in one place. This makes it much easier to start programming your micro:bit in C. This grouping is provided by a C++ class called MicroBit.  The MicroBit class has a number of 
+all in one place. This makes it much easier to start programming your micro:bit in C. This grouping is provided by a C++ class called MicroBit.  The MicroBit class has a number of
 member variables, that operate as device drivers to control the most commonly used features of the micro:bit.
 
 There is an instance of the MicroBit class created as a global variable in all the sample programs, and it contains:
@@ -45,7 +45,7 @@ for(int i = 3; i > 0; i--)
 }
 
 // or alternatively...
-uBit.serial.sendString("Code!");
+uBit.serial.send("Code!");
 ```
 
 uBit also provides a number of utility functions that allow the plug and play

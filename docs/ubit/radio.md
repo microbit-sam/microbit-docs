@@ -45,15 +45,21 @@ which can be used to identify you or your micro:bit. All devices look identical.
 To write your radio enabled applicaitons, you will likely want to use either the MicroBiRadioDatagram class, or the MicroBitRadioEvent class.
 Both of these are created for you as part of the standard uBit object, so this is a choice, not a compromise! :-)
 
-### MicroBitRadioDatagram
+### [MicroBitRadioDatagram](radiodatagram.md)
 This is the most flexible way to use the radio, and lets you easily send and receive up to 32 bytes of data at a time.
-This data can be provided as array of bytes, a text string, or PacketBuffer. You can send a packet at any time using the
-'uBit.radio.datagram.send' function. Any other micro:bits in range will detect the transmitted packet, and make the packet available through the
-'uBit.radio.datagram.recv' function. Any micro:bits receiving a pdatagram packt will also raise a MICROBIT_RADIO_EVT_DATAGRAM event to indicate
+This data can be provided as array of bytes, a text string, or PacketBuffer.
+
+You can send a packet at any time using the `uBit.radio.datagram.send` function.
+
+Any other micro:bits in range will detect the transmitted packet, and make the packet available through the
+`uBit.radio.datagram.recv` function.
+
+Any micro:bits receiving a datagram packet will also raise a `MICROBIT_RADIO_EVT_DATAGRAM` event to indicate
 that some data is ready to be read.
 
 For example, imagine you were creating a simple remote control car with one micro:bit acting as a remote controller, and another connected to some servos on the car.
-You might decide that simply sending a '1' means turn left, and a '2' means turn right, so you may write a program like this for the remote control:
+
+You might decide that simply sending a `1` means turn left, and a `2` means turn right, so you may write a program like this for the remote control:
 
 ```cpp
 int main()
@@ -101,9 +107,9 @@ int main()
 ### Using PacketBuffers
 If you prefer to send a raw series of bytes rather than a text string (which is much more common in communication networks), you can use the PacketBuffer type.
 This gives total freedom over the data being shared. Simply create a PacketBuffer of the size you need, and you can read or write data using standard C
-array syntax. For example, here is an similar program using a PacketBuffers:
+array syntax.
 
-
+For example, here is an similar program using a PacketBuffers:
 ```cpp
 int main()
 {
@@ -152,13 +158,13 @@ int main()
 }
 ```
 
-### MicroBitRadioEvent
+### [MicroBitRadioEvent](radioevent.md)
 
 It is also possible to transparently send and receive events over the MicroBitRadio channel. This can provide very simple and easy to integrate
 support for event driven applications. Once configured, an event raised on one micro:bit can be detected on another - in the just the same way as
 a local event such as a button click.
 
-To use this funcitonality, all that is needed is to register the event codes that you would like to be sent over the radio, then write event handlers
+To use this functionality, all that is needed is to register the event codes that you would like to be sent over the radio, then write event handlers
 for the message bus as with all other events. See the documentation for the [MicroBitMessageBus](messageBus.md) for details of how to write
 event handlers.
 
@@ -172,7 +178,7 @@ int main()
 {
     uBit.radio.enable();
 
-    // Ensure the radio os listening out to forward our events
+    // Ensure the radio is listening out to forward our events
     uBit.radio.event.listen(MY_APP_ID, MICROBIT_EVT_ANY);
 
     while(1)
