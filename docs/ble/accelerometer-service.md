@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This Bluetooth service is an optional part of the standard Bluetooth profile for the micro:bit. It is a passive service, that can operate transparently in the background as your main program is running. It provides live accelerometer data to any connected Bluetooth central mode device. You do not need to explicitly address an API on the service object to achieve this.
+This Bluetooth service is an optional part of the standard Bluetooth profile for the micro:bit. It is a passive service, that can operate transparently in the background as your main program is running. It provides live accelerometer data to a connected Bluetooth master device such as a smartphone. You do not need to explicitly address an API on the service object to achieve this.
 
 ## Enabling the Service
 
@@ -34,7 +34,7 @@ Raw accelerometer data received from the micro:bit can be a bit "jerky" and so a
 
 ### Android
 
-<img src="../../resources/bluetooth/accelerometer_demo.jpg" alt="Accelerometer Demo">
+<img src="../../resources/bluetooth/accelerometer_demo.png" alt="Accelerometer Demo">
 
 #### Android Bluetooth APIs
 
@@ -44,7 +44,7 @@ Android developers should make themselves familiar with the [Android Bluetooth l
 
 The open source microbit-ble-demo-android application contains a full demonstration of the micro:bit Bluetooth accelerometer service. The main body of code for this demonstration can be found in ui.AccelerometerActivity.java except for the Bluetooth operations themselves which are in bluetooth.BleAdapterService which acts as a kind of higher level Bluetooth API for activities to use without needing to directly concern themselves too closely with the Android APIs themselves. In most cases, operations are asynchronous so that the activity code initiates a Bluetooth operation by calling one of the methods in bluetooth.BleAdapterService (e.g. readCharacteristic(....) ) and later receives a message containing the result of the operation from this object via a Handler object. The message is examined in the Handler code and acted upon.
 
-Key parts of the accelerometer demonstration in this apoplication are explained next.
+Key parts of the accelerometer demonstration in this application are explained next.
 
 #### In bluetooth.BleAdapterService
 
@@ -68,7 +68,9 @@ bluetooth_le_adapter.writeCharacteristic(Utility.normaliseUUID(BleAdapterService
 
 ``` java
 // enabling accelerometer notifications
-bluetooth_le_adapter.setNotificationsState(Utility.normaliseUUID(BleAdapterService.ACCELEROMETERSERVICE_SERVICE_UUID), Utility.normaliseUUID(BleAdapterService.ACCELEROMETERDATA_CHARACTERISTIC_UUID), true);
+bluetooth_le_adapter.setNotificationsState(
+                    Utility.normaliseUUID(BleAdapterService.ACCELEROMETERSERVICE_SERVICE_UUID), 
+                    Utility.normaliseUUID(BleAdapterService.ACCELEROMETERDATA_CHARACTERISTIC_UUID), true);
 ```
                        
 
@@ -128,8 +130,8 @@ case BleAdapterService.NOTIFICATION_RECEIVED:
 
 
 
-#### Video Demonstration
+#### Video Demonstration - starts at 0:18
 
-<iframe src="https://player.vimeo.com/video/153078747" width="750" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe src="https://player.vimeo.com/video/153078747" width="750" height="422" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 

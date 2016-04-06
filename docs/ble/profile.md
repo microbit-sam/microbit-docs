@@ -86,6 +86,9 @@ A simplified overview appears below.
 | Event Service | Custom | optional | Allows the micro:bit to inform the connected client of the types of event it wants to be informed about. Allows the client to inform the micro:bit of relevant events. Allows micro:bit to inform the client of events originating on the micro:bit.Event data includes both a type and a reason or origin. |
 | DFU Control Service | Custom | mandatory | Used to initiate device firmware update. Defined by Nordic Semiconductor. |
 
+
+Known issue: the firmware on micro:bits shipped initially to schools contains the full Bluetooth profile. Once the software has been changed by flashing an application created using any of the on-line code editors however, all services are lost except for Device Information Service, Event Serice and DFU Control Service. If you need other services you must retore your micro:bit to its original state by installing the [default hex file](../resources/BBC_MICROBIT_OOB_FINAL.hex) 
+
 The following sections elaborate on the description of a service and/or its characteristics. For full details see the [micro:bit Bluetooth profile specification](../resources/bluetooth/microbit-profile-V1.7-Level-2.pdf)
 
 ### About the Device Information Service
