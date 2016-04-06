@@ -2,6 +2,18 @@
 
 ##Overview
 
+```cpp
+void main()
+{
+
+}
+
+int main(int t)
+{
+
+}
+```
+
 Although the runtime is built from lots of small components, we also provide an easy to use pre-packaged collection of the commonly used components
 all in one place. This makes it much easier to start programming your micro:bit in C.
 
@@ -72,169 +84,310 @@ uBit.sleep(X);
 <br/>
 ####MicroBit()
 #####Description
-Constructor. Create a representation of a  MicroBit MicroBitMessageBus
-#####Example
-```cpp
- uBit.messageBus; //The message bus where events are fired.
- uBit.display; //The display object for the LED matrix.
- uBit.buttonA; //The buttonA object for button a.
- uBit.buttonB; //The buttonB object for button b.
- uBit.resetButton; //The resetButton used for soft resets.
- uBit.accelerometer; //The object that represents the inbuilt accelerometer
- uBit.compass; //The object that represents the inbuilt compass(magnetometer)
- uBit.io.P*; //Where P* is P0 to P16, P19 & P20 on the edge connector
-```
+Constructor.  
+
+ Create a representation of a  MicroBit  device, which includes member variables that represent various device drivers used to control aspects of the micro:bit.           
+
+
 ##init
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>void</div> init()
+####<div style='color:#a71d5d; display:inline-block'>void</div> <div style='color:#795da3; display:inline-block'>init</div>()
 #####Description
-Post constructor initialisation method. After
+Post constructor initialisation method.  
+
+ This call will initialised the scheduler, memory allocator and Bluetooth stack.  
+
+ This is required as the Bluetooth stack can't be brought up in a static context i.e. in a constructor.  
+
+ 
+
+ 
+
+
 #####Example
 ```cpp
- uBit.init();
+ uBit.init(); 
 ```
+
+!!! note
+    This method must be called before user code utilises any functionality contained by uBit. 
+
 ##reset
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>void</div> reset()
+####<div style='color:#a71d5d; display:inline-block'>void</div> <div style='color:#795da3; display:inline-block'>reset</div>()
 #####Description
-Will reset the micro:bit when called.
+Will reset the micro:bit when called.  
+
+ 
+
+
 #####Example
 ```cpp
- uBit.reset();
+ uBit.reset(); 
 ```
 ##sleep
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>void</div> sleep( <div style='color:#008080; display:inline-block'>uint32_t</div> milliseconds)
+####<div style='color:#a71d5d; display:inline-block'>void</div> <div style='color:#795da3; display:inline-block'>sleep</div>( <div style='color:#a71d5d; display:inline-block'>uint32_t</div> milliseconds)
 #####Description
-Delay for the given amount of time. If the scheduler is running, this will deschedule the current fiber and perform a power efficent, concurrent sleep operation. If the scheduler is disabled or we're running in an interrupt context, this will revert to a busy wait.
+Delay execution for the given amount of time.  
+
+ If the scheduler is running, this will deschedule the current fiber and perform a power efficent, concurrent sleep operation.  
+
+ If the scheduler is disabled or we're running in an interrupt context, this will revert to a busy wait.  
+
+ Alternatively: wait, wait_ms, wait_us can be used which will perform a blocking sleep operation.  
+
+ 
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>uint32_t</div> *milliseconds* - the amount of time, in ms, to wait for. This number cannot be negative.
+>  <div style='color:#a71d5d; display:inline-block'>uint32_t</div> milliseconds - the amount of time, in ms, to wait for. This number cannot be negative.
 #####Returns
 MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER milliseconds is less than zero.
 #####Example
 ```cpp
- MicroBit::sleep(20); //sleep for 20ms
+ uBit.sleep(20); //sleep for 20ms 
 ```
 
 !!! note
-    Values of 6 and below tend to lose resolution - do you really need to sleep for this short amount of time?
+    This operation is currently limited by the rate of the system timer, therefore the granularity of the sleep operation is limited to 6 ms unless the rate of the system timer is modified. 
 
 ##seedRandom
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>void</div> seedRandom()
+####<div style='color:#a71d5d; display:inline-block'>void</div> <div style='color:#795da3; display:inline-block'>seedRandom</div>()
 #####Description
-Seed the pseudo random number generator using the hardware generator.
+Seed the pseudo random number generator using the hardware random number generator.  
+
+ 
+
+
 #####Example
 ```cpp
- uBit.seedRandom();
+ uBit.seedRandom(); 
 ```
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>void</div> seedRandom( <div style='color:#008080; display:inline-block'>uint32_t</div> seed)
+####<div style='color:#a71d5d; display:inline-block'>void</div> <div style='color:#795da3; display:inline-block'>seedRandom</div>( <div style='color:#a71d5d; display:inline-block'>uint32_t</div> seed)
 #####Description
-Seed the pseudo random number generator using the given value.
+Seed the pseudo random number generator using the given value.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>uint32_t</div> *seed* - The 32-bit value to seed the generator with.
+>  <div style='color:#a71d5d; display:inline-block'>uint32_t</div> seed - The 32-bit value to seed the generator with.
 #####Example
 ```cpp
- uBit.seedRandom(0x12345678);
+ uBit.seedRandom(0xBB5EED); 
 ```
 ##random
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> random( <div style='color:#008080; display:inline-block'>int</div> max)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>random</div>( <div style='color:#a71d5d; display:inline-block'>int</div> max)
 #####Description
-Generate a random number in the given range. We use the NRF51822 in built random number generator here TODO: Determine if we want to, given its relatively high power consumption!
+Generate a random number in the given range. We use a simple Galois LFSR random number generator here, as a Galois LFSR is sufficient for our applications, and much more lightweight than the hardware random number generator built int the processor, which takes a long time and uses a lot of energy.  
+
+ KIDS: You shouldn't use this is the real world to generte cryptographic keys though... have a think why not. :-)  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>int</div> *max* - the upper range to generate a number for. This number cannot be negative
+>  <div style='color:#a71d5d; display:inline-block'>int</div> max - the upper range to generate a number for. This number cannot be negative.
 #####Returns
-A random, natural number between 0 and the max-1. Or MICROBIT_INVALID_PARAMETER if max is <= 0.
+A random, natural number between 0 and the max-1. Or MICROBIT_INVALID_VALUE if max is <= 0.
 #####Example
 ```cpp
- uBit.random(200); //a number between 0 and 199
+ uBit.random(200); //a number between 0 and 199 
 ```
 ##systemTime
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>unsigned long</div> systemTime()
+####<div style='color:#a71d5d; display:inline-block'>unsigned long</div> <div style='color:#795da3; display:inline-block'>systemTime</div>()
 #####Description
-Determine the time since this  MicroBit
-#####Returns
-The time since the last reset, in milliseconds. This will result in overflow after 1.6 months. TODO: handle overflow case.
-##systemVersion
-<br/>
-####<div style='color:#FF69B4; display:inline-block'>const char *</div> systemVersion()
-#####Description
-Determine the version of the micro:bit runtime currently in use.
-#####Returns
-A textual description of the currentlt executing micro:bit runtime. TODO: handle overflow case.
-##panic
-<br/>
-####<div style='color:#FF69B4; display:inline-block'>void</div> panic()
-#####Description
-Triggers a microbit panic where an infinite loop will occur swapping between the panicFace and statusCode if provided.
-<br/>
-####<div style='color:#FF69B4; display:inline-block'>void</div> panic( <div style='color:#008080; display:inline-block'>int</div> statusCode)
-#####Description
-Triggers a microbit panic where an infinite loop will occur swapping between the panicFace and statusCode if provided.
-#####Parameters
+Determine the time since this  MicroBit  was last reset.  
 
->  <div style='color:#008080; display:inline-block'>int</div> *statusCode* - the status code of the associated error. Status codes must be in the range 0-255.
-##addSystemComponent
-<br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> addSystemComponent( <div style='color:#008080; display:inline-block'>MicroBitComponent  *</div> component)
-#####Description
-add a component to the array of components which invocate the systemTick member function during a systemTick
-#####Parameters
+ 
 
->  <div style='color:#008080; display:inline-block'>MicroBitComponent  *</div> *component* - The component to add.
+
 #####Returns
-MICROBIT_OK on success. MICROBIT_NO_RESOURCES is returned if further components cannot be supported.
+The time since the last reset, in milliseconds.
 
 !!! note
-    This interface is now deprecated. See fiber_add_system_component().
+    This will value overflow after 1.6 months. 
+
+##systemVersion
+<br/>
+####<div style='color:#a71d5d; display:inline-block'>const char *</div> <div style='color:#795da3; display:inline-block'>systemVersion</div>()
+#####Description
+Determine the version of the micro:bit runtime currently in use.  
+
+ 
+
+
+#####Returns
+A textual description of the version of the micro:bit runtime that is currently running on this device. 
+##panic
+<br/>
+####<div style='color:#a71d5d; display:inline-block'>void</div> <div style='color:#795da3; display:inline-block'>panic</div>()
+#####Description
+Triggers a microbit panic where an loop will display a panic face and the status code, if provided.  
+
+ This loop will continue for panic_timeout iterations, defaults to 0 (infinite).  
+
+ panic_timeout can be configured via a call to microbit_panic_timeout.  
+
+ 
+
+
+#####Example
+```cpp
+ microbit_panic_timeout(4); 
+ 
+ // will display loop for 4 iterations. 
+ uBit.panic(10); 
+```
+<br/>
+####<div style='color:#a71d5d; display:inline-block'>void</div> <div style='color:#795da3; display:inline-block'>panic</div>( <div style='color:#a71d5d; display:inline-block'>int</div> statusCode)
+#####Description
+Triggers a microbit panic where an loop will display a panic face and the status code, if provided.  
+
+ This loop will continue for panic_timeout iterations, defaults to 0 (infinite).  
+
+ panic_timeout can be configured via a call to microbit_panic_timeout.  
+
+ 
+
+
+#####Parameters
+
+>  <div style='color:#a71d5d; display:inline-block'>int</div> statusCode - the status code of the associated error.
+#####Example
+```cpp
+ microbit_panic_timeout(4); 
+ 
+ // will display loop for 4 iterations. 
+ uBit.panic(10); 
+```
+##addSystemComponent
+<br/>
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>addSystemComponent</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitComponent  *</div> component)
+#####Description
+Add a component to the array of system components. This component will then receive periodic callbacks, once every tick period in interrupt context.  
+
+ 
+
+ 
+
+
+#####Parameters
+
+>  <div style='color:#a71d5d; display:inline-block'>MicroBitComponent  *</div> component - The component to add.
+#####Returns
+MICROBIT_OK on success or MICROBIT_NO_RESOURCES if the component array is full.
+#####Example
+```cpp
+ // heap allocated - otherwise it will be paged out! 
+ MicroBitDisplay* display = new MicroBitDisplay(); 
+ 
+ uBit.addSystemComponent(display); 
+```
+
+!!! note
+    This interface is now deprecated, and will be removed in the next major release. Please use  system_timer_add_component() . 
 
 ##removeSystemComponent
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> removeSystemComponent( <div style='color:#008080; display:inline-block'>MicroBitComponent  *</div> component)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>removeSystemComponent</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitComponent  *</div> component)
 #####Description
-remove a component from the array of components
+Remove a component from the array of system components. This component will no longer receive periodic callbacks.  
+
+ 
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>MicroBitComponent  *</div> *component* - The component to remove.
+>  <div style='color:#a71d5d; display:inline-block'>MicroBitComponent  *</div> component - The component to remove.
 #####Returns
-MICROBIT_OK on success. MICROBIT_INVALID_PARAMTER is returned if the given component has not been previous added.
+MICROBIT_OK on success or MICROBIT_INVALID_PARAMETER is returned if the given component has not been previously added.
+#####Example
+```cpp
+ // heap allocated - otherwise it will be paged out! 
+ MicroBitDisplay* display = new MicroBitDisplay(); 
+ 
+ uBit.addSystemComponent(display); 
+ 
+ uBit.removeSystemComponent(display); 
+```
 
 !!! note
-    This interface is now deprecated. See fiber_remove_system_component().
+    This interface is now deprecated, and will be removed in the next major release. Please use  system_timer_remove_component() . 
 
 ##addIdleComponent
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> addIdleComponent( <div style='color:#008080; display:inline-block'>MicroBitComponent  *</div> component)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>addIdleComponent</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitComponent  *</div> component)
 #####Description
-add a component to the array of components which invocate the systemTick member function during a systemTick  fiber_add_idle_component()
+Adds a component to the array of idle thread components, which are processed when the run queue is empty.  
+
+ The system timer will poll isIdleCallbackNeeded on each component to determine if the scheduler should schedule the idle_task imminently.  
+
+ 
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>MicroBitComponent  *</div> *component* - The component to add.
+>  <div style='color:#a71d5d; display:inline-block'>MicroBitComponent  *</div> component - The component to add to the array.
 #####Returns
-MICROBIT_OK on success. MICROBIT_NO_RESOURCES is returned if further components cannot be supported.
+MICROBIT_OK on success or MICROBIT_NO_RESOURCES if the fiber components array is full.
+#####Example
+```cpp
+ MicroBitI2C i2c(I2C_SDA0, I2C_SCL0); 
+ 
+ // heap allocated - otherwise it will be paged out! 
+ MicroBitAccelerometer* accelerometer = new MicroBitAccelerometer(i2c); 
+ 
+ fiber_add_idle_component(accelerometer); 
+```
 
 !!! note
-    This interface is now deprecated. See  fiber_add_idle_component() .
+    This interface is now deprecated, and will be removed in the next major release. Please use  fiber_add_idle_component() . 
 
 ##removeIdleComponent
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> removeIdleComponent( <div style='color:#008080; display:inline-block'>MicroBitComponent  *</div> component)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>removeIdleComponent</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitComponent  *</div> component)
 #####Description
-remove a component from the array of components  fiber_remove_idle_component()
+Remove a component from the array of idle thread components  
+
+ 
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>MicroBitComponent  *</div> *component* - The component to remove.
+>  <div style='color:#a71d5d; display:inline-block'>MicroBitComponent  *</div> component - The component to remove from the idle component array.
 #####Returns
-MICROBIT_OK on success. MICROBIT_INVALID_PARAMTER is returned if the given component has not been previous added.
+MICROBIT_OK on success. MICROBIT_INVALID_PARAMETER is returned if the given component has not been previously added.
+#####Example
+```cpp
+ MicroBitI2C i2c(I2C_SDA0, I2C_SCL0); 
+ 
+ // heap allocated - otherwise it will be paged out! 
+ MicroBitAccelerometer* accelerometer = new MicroBitAccelerometer(i2c); 
+ 
+ uBit.addIdleComponent(accelerometer); 
+ 
+ uBit.removeIdleComponent(accelerometer); 
+```
 
 !!! note
-    This interface is now deprecated. See  fiber_remove_idle_component() .
+    This interface is now deprecated, and will be removed in the next major release. Please use  fiber_remove_idle_component() . 
 
 ____
 [comment]: <> ({"end":"MicroBit"})

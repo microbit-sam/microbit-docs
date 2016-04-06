@@ -185,707 +185,919 @@ general purpose synchronisation.
 <br/>
 ####MicroBitDisplay()
 #####Description
-Constructor.
+Constructor.  
+
+ Create a software representation the micro:bit's 5x5 LED matrix. The display is initially blank.  
+
+ 
+
+
 #####Example
 ```cpp
- MicroBitDisplay display;
+ MicroBitDisplay display; 
 ```
 <br/>
-####MicroBitDisplay( <div style='color:#008080; display:inline-block'>uint16_t</div> id)
+####MicroBitDisplay( <div style='color:#a71d5d; display:inline-block'>uint16_t</div> id)
 #####Description
-Constructor.
+Constructor.  
+
+ Create a software representation the micro:bit's 5x5 LED matrix. The display is initially blank.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>uint16_t</div> *id* - The id the display should use when sending events on the MessageBus. Defaults to MICROBIT_ID_DISPLAY.
+>  <div style='color:#a71d5d; display:inline-block'>uint16_t</div> id - The id the display should use when sending events on the MessageBus. Defaults to MICROBIT_ID_DISPLAY.
 #####Example
 ```cpp
- MicroBitDisplay display;
+ MicroBitDisplay display; 
 ```
 <br/>
-####MicroBitDisplay( <div style='color:#008080; display:inline-block'>uint16_t</div> id,  <div style='color:#008080; display:inline-block'>const  MatrixMap  &</div> map)
+####MicroBitDisplay( <div style='color:#a71d5d; display:inline-block'>uint16_t</div> id,  <div style='color:#a71d5d; display:inline-block'>const  MatrixMap  &</div> map)
 #####Description
-Constructor.
+Constructor.  
+
+ Create a software representation the micro:bit's 5x5 LED matrix. The display is initially blank.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>uint16_t</div> *id* - The id the display should use when sending events on the MessageBus. Defaults to MICROBIT_ID_DISPLAY.
+>  <div style='color:#a71d5d; display:inline-block'>uint16_t</div> id - The id the display should use when sending events on the MessageBus. Defaults to MICROBIT_ID_DISPLAY.
 
->  <div style='color:#008080; display:inline-block'>const  MatrixMap  &</div> *map* - The mapping information that relates pin inputs/outputs to physical screen coordinates. Defaults to microbitMatrixMap, defined in  MicroBitMatrixMaps.h .
+>  <div style='color:#a71d5d; display:inline-block'>const  MatrixMap  &</div> map - The mapping information that relates pin inputs/outputs to physical screen coordinates. Defaults to microbitMatrixMap, defined in  MicroBitMatrixMaps.h .
 #####Example
 ```cpp
- MicroBitDisplay display;
+ MicroBitDisplay display; 
 ```
 ##stopAnimation
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>void</div> stopAnimation()
+####<div style='color:#a71d5d; display:inline-block'>void</div> <div style='color:#795da3; display:inline-block'>stopAnimation</div>()
 #####Description
-Stops any currently running animation, and any that are waiting to be displayed.
+Stops any currently running animation, and any that are waiting to be displayed.           
+
+
 ##printCharAsync
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> printCharAsync( <div style='color:#008080; display:inline-block'>char</div> c)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>printCharAsync</div>( <div style='color:#a71d5d; display:inline-block'>char</div> c)
 #####Description
-Prints the given character to the display, if it is not in use.
+Prints the given character to the display, if it is not in use.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>char</div> *c* - The character to display.
+>  <div style='color:#a71d5d; display:inline-block'>char</div> c - The character to display.
 #####Returns
 MICROBIT_OK, MICROBIT_BUSY is the screen is in use, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```cpp
- display.printAsync('p');
- display.printAsync('p',100);
+ display.printAsync('p'); 
+ display.printAsync('p',100); 
 ```
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> printCharAsync( <div style='color:#008080; display:inline-block'>char</div> c,  <div style='color:#008080; display:inline-block'>int</div> delay)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>printCharAsync</div>( <div style='color:#a71d5d; display:inline-block'>char</div> c,  <div style='color:#a71d5d; display:inline-block'>int</div> delay)
 #####Description
-Prints the given character to the display, if it is not in use.
+Prints the given character to the display, if it is not in use.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>char</div> *c* - The character to display.
+>  <div style='color:#a71d5d; display:inline-block'>char</div> c - The character to display.
 
->  <div style='color:#008080; display:inline-block'>int</div> *delay* - Optional parameter - the time for which to show the character. Zero displays the character forever, or until the Displays next use.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> delay - Optional parameter - the time for which to show the character. Zero displays the character forever, or until the Displays next use.
 #####Returns
 MICROBIT_OK, MICROBIT_BUSY is the screen is in use, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```cpp
- display.printAsync('p');
- display.printAsync('p',100);
+ display.printAsync('p'); 
+ display.printAsync('p',100); 
 ```
 ##printAsync
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> printAsync( <div style='color:#008080; display:inline-block'>ManagedString</div> s)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>printAsync</div>( <div style='color:#a71d5d; display:inline-block'>ManagedString</div> s)
 #####Description
-Prints the given  ManagedString
+Prints the given  ManagedString  to the display, one character at a time. Returns immediately, and executes the animation asynchronously.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>ManagedString</div> *s* - The string to display.
+>  <div style='color:#a71d5d; display:inline-block'>ManagedString</div> s - The string to display.
 #####Returns
 MICROBIT_OK, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```cpp
- display.printAsync("abc123",400);
+ display.printAsync("abc123",400); 
 ```
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> printAsync( <div style='color:#008080; display:inline-block'>ManagedString</div> s,  <div style='color:#008080; display:inline-block'>int</div> delay)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>printAsync</div>( <div style='color:#a71d5d; display:inline-block'>ManagedString</div> s,  <div style='color:#a71d5d; display:inline-block'>int</div> delay)
 #####Description
-Prints the given  ManagedString
+Prints the given  ManagedString  to the display, one character at a time. Returns immediately, and executes the animation asynchronously.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>ManagedString</div> *s* - The string to display.
+>  <div style='color:#a71d5d; display:inline-block'>ManagedString</div> s - The string to display.
 
->  <div style='color:#008080; display:inline-block'>int</div> *delay* - The time to delay between characters, in milliseconds. Must be > 0. Defaults to: MICROBIT_DEFAULT_PRINT_SPEED.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> delay - The time to delay between characters, in milliseconds. Must be > 0. Defaults to: MICROBIT_DEFAULT_PRINT_SPEED.
 #####Returns
 MICROBIT_OK, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```cpp
- display.printAsync("abc123",400);
+ display.printAsync("abc123",400); 
 ```
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> printAsync( <div style='color:#008080; display:inline-block'>MicroBitImage</div> i)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>printAsync</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> i)
 #####Description
-Prints the given image to the display, if the display is not in use. Returns immediately, and executes the animation asynchronously.
+Prints the given image to the display, if the display is not in use. Returns immediately, and executes the animation asynchronously.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>MicroBitImage</div> *i* - The image to display.
+>  <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> i - The image to display.
 #####Example
 ```cpp
- MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n");
- display.print(i,400);
+ MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n"); 
+ display.print(i,400); 
 ```
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> printAsync( <div style='color:#008080; display:inline-block'>MicroBitImage</div> i,  <div style='color:#008080; display:inline-block'>int</div> x)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>printAsync</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> i,  <div style='color:#a71d5d; display:inline-block'>int</div> x)
 #####Description
-Prints the given image to the display, if the display is not in use. Returns immediately, and executes the animation asynchronously.
+Prints the given image to the display, if the display is not in use. Returns immediately, and executes the animation asynchronously.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>MicroBitImage</div> *i* - The image to display.
+>  <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> i - The image to display.
 
->  <div style='color:#008080; display:inline-block'>int</div> *x* - The horizontal position on the screen to display the image. Defaults to 0.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> x - The horizontal position on the screen to display the image. Defaults to 0.
 #####Example
 ```cpp
- MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n");
- display.print(i,400);
+ MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n"); 
+ display.print(i,400); 
 ```
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> printAsync( <div style='color:#008080; display:inline-block'>MicroBitImage</div> i,  <div style='color:#008080; display:inline-block'>int</div> x,  <div style='color:#008080; display:inline-block'>int</div> y)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>printAsync</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> i,  <div style='color:#a71d5d; display:inline-block'>int</div> x,  <div style='color:#a71d5d; display:inline-block'>int</div> y)
 #####Description
-Prints the given image to the display, if the display is not in use. Returns immediately, and executes the animation asynchronously.
+Prints the given image to the display, if the display is not in use. Returns immediately, and executes the animation asynchronously.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>MicroBitImage</div> *i* - The image to display.
+>  <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> i - The image to display.
 
->  <div style='color:#008080; display:inline-block'>int</div> *x* - The horizontal position on the screen to display the image. Defaults to 0.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> x - The horizontal position on the screen to display the image. Defaults to 0.
 
->  <div style='color:#008080; display:inline-block'>int</div> *y* - The vertical position on the screen to display the image. Defaults to 0.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> y - The vertical position on the screen to display the image. Defaults to 0.
 #####Example
 ```cpp
- MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n");
- display.print(i,400);
+ MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n"); 
+ display.print(i,400); 
 ```
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> printAsync( <div style='color:#008080; display:inline-block'>MicroBitImage</div> i,  <div style='color:#008080; display:inline-block'>int</div> x,  <div style='color:#008080; display:inline-block'>int</div> y,  <div style='color:#008080; display:inline-block'>int</div> alpha)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>printAsync</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> i,  <div style='color:#a71d5d; display:inline-block'>int</div> x,  <div style='color:#a71d5d; display:inline-block'>int</div> y,  <div style='color:#a71d5d; display:inline-block'>int</div> alpha)
 #####Description
-Prints the given image to the display, if the display is not in use. Returns immediately, and executes the animation asynchronously.
+Prints the given image to the display, if the display is not in use. Returns immediately, and executes the animation asynchronously.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>MicroBitImage</div> *i* - The image to display.
+>  <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> i - The image to display.
 
->  <div style='color:#008080; display:inline-block'>int</div> *x* - The horizontal position on the screen to display the image. Defaults to 0.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> x - The horizontal position on the screen to display the image. Defaults to 0.
 
->  <div style='color:#008080; display:inline-block'>int</div> *y* - The vertical position on the screen to display the image. Defaults to 0.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> y - The vertical position on the screen to display the image. Defaults to 0.
 
->  <div style='color:#008080; display:inline-block'>int</div> *alpha* - Treats the brightness level '0' as transparent. Defaults to 0.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> alpha - Treats the brightness level '0' as transparent. Defaults to 0.
 #####Example
 ```cpp
- MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n");
- display.print(i,400);
+ MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n"); 
+ display.print(i,400); 
 ```
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> printAsync( <div style='color:#008080; display:inline-block'>MicroBitImage</div> i,  <div style='color:#008080; display:inline-block'>int</div> x,  <div style='color:#008080; display:inline-block'>int</div> y,  <div style='color:#008080; display:inline-block'>int</div> alpha,  <div style='color:#008080; display:inline-block'>int</div> delay)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>printAsync</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> i,  <div style='color:#a71d5d; display:inline-block'>int</div> x,  <div style='color:#a71d5d; display:inline-block'>int</div> y,  <div style='color:#a71d5d; display:inline-block'>int</div> alpha,  <div style='color:#a71d5d; display:inline-block'>int</div> delay)
 #####Description
-Prints the given image to the display, if the display is not in use. Returns immediately, and executes the animation asynchronously.
+Prints the given image to the display, if the display is not in use. Returns immediately, and executes the animation asynchronously.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>MicroBitImage</div> *i* - The image to display.
+>  <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> i - The image to display.
 
->  <div style='color:#008080; display:inline-block'>int</div> *x* - The horizontal position on the screen to display the image. Defaults to 0.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> x - The horizontal position on the screen to display the image. Defaults to 0.
 
->  <div style='color:#008080; display:inline-block'>int</div> *y* - The vertical position on the screen to display the image. Defaults to 0.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> y - The vertical position on the screen to display the image. Defaults to 0.
 
->  <div style='color:#008080; display:inline-block'>int</div> *alpha* - Treats the brightness level '0' as transparent. Defaults to 0.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> alpha - Treats the brightness level '0' as transparent. Defaults to 0.
 
->  <div style='color:#008080; display:inline-block'>int</div> *delay* - The time to delay between characters, in milliseconds. Defaults to 0.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> delay - The time to delay between characters, in milliseconds. Defaults to 0.
 #####Example
 ```cpp
- MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n");
- display.print(i,400);
+ MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n"); 
+ display.print(i,400); 
 ```
 ##printChar
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> printChar( <div style='color:#008080; display:inline-block'>char</div> c)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>printChar</div>( <div style='color:#a71d5d; display:inline-block'>char</div> c)
 #####Description
-Prints the given character to the display.
+Prints the given character to the display.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>char</div> *c* - The character to display.
+>  <div style='color:#a71d5d; display:inline-block'>char</div> c - The character to display.
 #####Returns
 MICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```cpp
- display.printAsync('p');
- display.printAsync('p',100);
+ display.printAsync('p'); 
+ display.printAsync('p',100); 
 ```
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> printChar( <div style='color:#008080; display:inline-block'>char</div> c,  <div style='color:#008080; display:inline-block'>int</div> delay)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>printChar</div>( <div style='color:#a71d5d; display:inline-block'>char</div> c,  <div style='color:#a71d5d; display:inline-block'>int</div> delay)
 #####Description
-Prints the given character to the display.
+Prints the given character to the display.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>char</div> *c* - The character to display.
+>  <div style='color:#a71d5d; display:inline-block'>char</div> c - The character to display.
 
->  <div style='color:#008080; display:inline-block'>int</div> *delay* - Optional parameter - the time for which to show the character. Zero displays the character forever, or until the Displays next use.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> delay - Optional parameter - the time for which to show the character. Zero displays the character forever, or until the Displays next use.
 #####Returns
 MICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```cpp
- display.printAsync('p');
- display.printAsync('p',100);
+ display.printAsync('p'); 
+ display.printAsync('p',100); 
 ```
 ##print
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> print( <div style='color:#008080; display:inline-block'>ManagedString</div> s)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>print</div>( <div style='color:#a71d5d; display:inline-block'>ManagedString</div> s)
 #####Description
-Prints the given string to the display, one character at a time.
+Prints the given string to the display, one character at a time.  
+
+ Blocks the calling thread until all the text has been displayed.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>ManagedString</div> *s* - The string to display.
+>  <div style='color:#a71d5d; display:inline-block'>ManagedString</div> s - The string to display.
 #####Returns
 MICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```cpp
- display.print("abc123",400);
+ display.print("abc123",400); 
 ```
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> print( <div style='color:#008080; display:inline-block'>ManagedString</div> s,  <div style='color:#008080; display:inline-block'>int</div> delay)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>print</div>( <div style='color:#a71d5d; display:inline-block'>ManagedString</div> s,  <div style='color:#a71d5d; display:inline-block'>int</div> delay)
 #####Description
-Prints the given string to the display, one character at a time.
+Prints the given string to the display, one character at a time.  
+
+ Blocks the calling thread until all the text has been displayed.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>ManagedString</div> *s* - The string to display.
+>  <div style='color:#a71d5d; display:inline-block'>ManagedString</div> s - The string to display.
 
->  <div style='color:#008080; display:inline-block'>int</div> *delay* - The time to delay between characters, in milliseconds. Defaults to: MICROBIT_DEFAULT_PRINT_SPEED.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> delay - The time to delay between characters, in milliseconds. Defaults to: MICROBIT_DEFAULT_PRINT_SPEED.
 #####Returns
 MICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```cpp
- display.print("abc123",400);
+ display.print("abc123",400); 
 ```
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> print( <div style='color:#008080; display:inline-block'>MicroBitImage</div> i)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>print</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> i)
 #####Description
-Prints the given image to the display. Blocks the calling thread until all the image has been displayed.
+Prints the given image to the display. Blocks the calling thread until all the image has been displayed.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>MicroBitImage</div> *i* - The image to display.
+>  <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> i - The image to display.
 #####Returns
 MICROBIT_OK, MICROBIT_BUSY if the display is already in use, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```cpp
- MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n");
- display.print(i,400);
+ MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n"); 
+ display.print(i,400); 
 ```
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> print( <div style='color:#008080; display:inline-block'>MicroBitImage</div> i,  <div style='color:#008080; display:inline-block'>int</div> x)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>print</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> i,  <div style='color:#a71d5d; display:inline-block'>int</div> x)
 #####Description
-Prints the given image to the display. Blocks the calling thread until all the image has been displayed.
+Prints the given image to the display. Blocks the calling thread until all the image has been displayed.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>MicroBitImage</div> *i* - The image to display.
+>  <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> i - The image to display.
 
->  <div style='color:#008080; display:inline-block'>int</div> *x* - The horizontal position on the screen to display the image. Defaults to 0.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> x - The horizontal position on the screen to display the image. Defaults to 0.
 #####Returns
 MICROBIT_OK, MICROBIT_BUSY if the display is already in use, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```cpp
- MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n");
- display.print(i,400);
+ MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n"); 
+ display.print(i,400); 
 ```
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> print( <div style='color:#008080; display:inline-block'>MicroBitImage</div> i,  <div style='color:#008080; display:inline-block'>int</div> x,  <div style='color:#008080; display:inline-block'>int</div> y)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>print</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> i,  <div style='color:#a71d5d; display:inline-block'>int</div> x,  <div style='color:#a71d5d; display:inline-block'>int</div> y)
 #####Description
-Prints the given image to the display. Blocks the calling thread until all the image has been displayed.
+Prints the given image to the display. Blocks the calling thread until all the image has been displayed.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>MicroBitImage</div> *i* - The image to display.
+>  <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> i - The image to display.
 
->  <div style='color:#008080; display:inline-block'>int</div> *x* - The horizontal position on the screen to display the image. Defaults to 0.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> x - The horizontal position on the screen to display the image. Defaults to 0.
 
->  <div style='color:#008080; display:inline-block'>int</div> *y* - The vertical position on the screen to display the image. Defaults to 0.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> y - The vertical position on the screen to display the image. Defaults to 0.
 #####Returns
 MICROBIT_OK, MICROBIT_BUSY if the display is already in use, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```cpp
- MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n");
- display.print(i,400);
+ MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n"); 
+ display.print(i,400); 
 ```
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> print( <div style='color:#008080; display:inline-block'>MicroBitImage</div> i,  <div style='color:#008080; display:inline-block'>int</div> x,  <div style='color:#008080; display:inline-block'>int</div> y,  <div style='color:#008080; display:inline-block'>int</div> alpha)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>print</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> i,  <div style='color:#a71d5d; display:inline-block'>int</div> x,  <div style='color:#a71d5d; display:inline-block'>int</div> y,  <div style='color:#a71d5d; display:inline-block'>int</div> alpha)
 #####Description
-Prints the given image to the display. Blocks the calling thread until all the image has been displayed.
+Prints the given image to the display. Blocks the calling thread until all the image has been displayed.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>MicroBitImage</div> *i* - The image to display.
+>  <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> i - The image to display.
 
->  <div style='color:#008080; display:inline-block'>int</div> *x* - The horizontal position on the screen to display the image. Defaults to 0.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> x - The horizontal position on the screen to display the image. Defaults to 0.
 
->  <div style='color:#008080; display:inline-block'>int</div> *y* - The vertical position on the screen to display the image. Defaults to 0.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> y - The vertical position on the screen to display the image. Defaults to 0.
 
->  <div style='color:#008080; display:inline-block'>int</div> *alpha* - Treats the brightness level '0' as transparent. Defaults to 0.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> alpha - Treats the brightness level '0' as transparent. Defaults to 0.
 #####Returns
 MICROBIT_OK, MICROBIT_BUSY if the display is already in use, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```cpp
- MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n");
- display.print(i,400);
+ MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n"); 
+ display.print(i,400); 
 ```
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> print( <div style='color:#008080; display:inline-block'>MicroBitImage</div> i,  <div style='color:#008080; display:inline-block'>int</div> x,  <div style='color:#008080; display:inline-block'>int</div> y,  <div style='color:#008080; display:inline-block'>int</div> alpha,  <div style='color:#008080; display:inline-block'>int</div> delay)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>print</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> i,  <div style='color:#a71d5d; display:inline-block'>int</div> x,  <div style='color:#a71d5d; display:inline-block'>int</div> y,  <div style='color:#a71d5d; display:inline-block'>int</div> alpha,  <div style='color:#a71d5d; display:inline-block'>int</div> delay)
 #####Description
-Prints the given image to the display. Blocks the calling thread until all the image has been displayed.
+Prints the given image to the display. Blocks the calling thread until all the image has been displayed.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>MicroBitImage</div> *i* - The image to display.
+>  <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> i - The image to display.
 
->  <div style='color:#008080; display:inline-block'>int</div> *x* - The horizontal position on the screen to display the image. Defaults to 0.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> x - The horizontal position on the screen to display the image. Defaults to 0.
 
->  <div style='color:#008080; display:inline-block'>int</div> *y* - The vertical position on the screen to display the image. Defaults to 0.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> y - The vertical position on the screen to display the image. Defaults to 0.
 
->  <div style='color:#008080; display:inline-block'>int</div> *alpha* - Treats the brightness level '0' as transparent. Defaults to 0.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> alpha - Treats the brightness level '0' as transparent. Defaults to 0.
 
->  <div style='color:#008080; display:inline-block'>int</div> *delay* - The time to display the image for, or zero to show the image forever. Defaults to 0.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> delay - The time to display the image for, or zero to show the image forever. Defaults to 0.
 #####Returns
 MICROBIT_OK, MICROBIT_BUSY if the display is already in use, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```cpp
- MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n");
- display.print(i,400);
+ MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n"); 
+ display.print(i,400); 
 ```
 ##scrollAsync
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> scrollAsync( <div style='color:#008080; display:inline-block'>ManagedString</div> s)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>scrollAsync</div>( <div style='color:#a71d5d; display:inline-block'>ManagedString</div> s)
 #####Description
-Scrolls the given string to the display, from right to left. Returns immediately, and executes the animation asynchronously.
+Scrolls the given string to the display, from right to left. Returns immediately, and executes the animation asynchronously.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>ManagedString</div> *s* - The string to display.
+>  <div style='color:#a71d5d; display:inline-block'>ManagedString</div> s - The string to display.
 #####Returns
 MICROBIT_OK, MICROBIT_BUSY if the display is already in use, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```cpp
- display.scrollAsync("abc123",100);
+ display.scrollAsync("abc123",100); 
 ```
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> scrollAsync( <div style='color:#008080; display:inline-block'>ManagedString</div> s,  <div style='color:#008080; display:inline-block'>int</div> delay)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>scrollAsync</div>( <div style='color:#a71d5d; display:inline-block'>ManagedString</div> s,  <div style='color:#a71d5d; display:inline-block'>int</div> delay)
 #####Description
-Scrolls the given string to the display, from right to left. Returns immediately, and executes the animation asynchronously.
+Scrolls the given string to the display, from right to left. Returns immediately, and executes the animation asynchronously.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>ManagedString</div> *s* - The string to display.
+>  <div style='color:#a71d5d; display:inline-block'>ManagedString</div> s - The string to display.
 
->  <div style='color:#008080; display:inline-block'>int</div> *delay* - The time to delay between characters, in milliseconds. Defaults to: MICROBIT_DEFAULT_SCROLL_SPEED.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> delay - The time to delay between characters, in milliseconds. Defaults to: MICROBIT_DEFAULT_SCROLL_SPEED.
 #####Returns
 MICROBIT_OK, MICROBIT_BUSY if the display is already in use, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```cpp
- display.scrollAsync("abc123",100);
+ display.scrollAsync("abc123",100); 
 ```
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> scrollAsync( <div style='color:#008080; display:inline-block'>MicroBitImage</div> image)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>scrollAsync</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> image)
 #####Description
-Scrolls the given image across the display, from right to left. Returns immediately, and executes the animation asynchronously.
+Scrolls the given image across the display, from right to left. Returns immediately, and executes the animation asynchronously.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>MicroBitImage</div> *image* - The image to display.
+>  <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> image - The image to display.
 #####Returns
 MICROBIT_OK, MICROBIT_BUSY if the display is already in use, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```cpp
- MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n");
- display.scrollAsync(i,100,1);
+ MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n"); 
+ display.scrollAsync(i,100,1); 
 ```
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> scrollAsync( <div style='color:#008080; display:inline-block'>MicroBitImage</div> image,  <div style='color:#008080; display:inline-block'>int</div> delay)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>scrollAsync</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> image,  <div style='color:#a71d5d; display:inline-block'>int</div> delay)
 #####Description
-Scrolls the given image across the display, from right to left. Returns immediately, and executes the animation asynchronously.
+Scrolls the given image across the display, from right to left. Returns immediately, and executes the animation asynchronously.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>MicroBitImage</div> *image* - The image to display.
+>  <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> image - The image to display.
 
->  <div style='color:#008080; display:inline-block'>int</div> *delay* - The time between updates, in milliseconds. Defaults to: MICROBIT_DEFAULT_SCROLL_SPEED.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> delay - The time between updates, in milliseconds. Defaults to: MICROBIT_DEFAULT_SCROLL_SPEED.
 #####Returns
 MICROBIT_OK, MICROBIT_BUSY if the display is already in use, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```cpp
- MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n");
- display.scrollAsync(i,100,1);
+ MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n"); 
+ display.scrollAsync(i,100,1); 
 ```
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> scrollAsync( <div style='color:#008080; display:inline-block'>MicroBitImage</div> image,  <div style='color:#008080; display:inline-block'>int</div> delay,  <div style='color:#008080; display:inline-block'>int</div> stride)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>scrollAsync</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> image,  <div style='color:#a71d5d; display:inline-block'>int</div> delay,  <div style='color:#a71d5d; display:inline-block'>int</div> stride)
 #####Description
-Scrolls the given image across the display, from right to left. Returns immediately, and executes the animation asynchronously.
+Scrolls the given image across the display, from right to left. Returns immediately, and executes the animation asynchronously.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>MicroBitImage</div> *image* - The image to display.
+>  <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> image - The image to display.
 
->  <div style='color:#008080; display:inline-block'>int</div> *delay* - The time between updates, in milliseconds. Defaults to: MICROBIT_DEFAULT_SCROLL_SPEED.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> delay - The time between updates, in milliseconds. Defaults to: MICROBIT_DEFAULT_SCROLL_SPEED.
 
->  <div style='color:#008080; display:inline-block'>int</div> *stride* - The number of pixels to shift by in each update. Defaults to MICROBIT_DEFAULT_SCROLL_STRIDE.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> stride - The number of pixels to shift by in each update. Defaults to MICROBIT_DEFAULT_SCROLL_STRIDE.
 #####Returns
 MICROBIT_OK, MICROBIT_BUSY if the display is already in use, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```cpp
- MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n");
- display.scrollAsync(i,100,1);
+ MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n"); 
+ display.scrollAsync(i,100,1); 
 ```
 ##scroll
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> scroll( <div style='color:#008080; display:inline-block'>ManagedString</div> s)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>scroll</div>( <div style='color:#a71d5d; display:inline-block'>ManagedString</div> s)
 #####Description
-Scrolls the given string across the display, from right to left. Blocks the calling thread until all text has been displayed.
+Scrolls the given string across the display, from right to left. Blocks the calling thread until all text has been displayed.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>ManagedString</div> *s* - The string to display.
+>  <div style='color:#a71d5d; display:inline-block'>ManagedString</div> s - The string to display.
 #####Returns
 MICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```cpp
- display.scroll("abc123",100);
+ display.scroll("abc123",100); 
 ```
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> scroll( <div style='color:#008080; display:inline-block'>ManagedString</div> s,  <div style='color:#008080; display:inline-block'>int</div> delay)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>scroll</div>( <div style='color:#a71d5d; display:inline-block'>ManagedString</div> s,  <div style='color:#a71d5d; display:inline-block'>int</div> delay)
 #####Description
-Scrolls the given string across the display, from right to left. Blocks the calling thread until all text has been displayed.
+Scrolls the given string across the display, from right to left. Blocks the calling thread until all text has been displayed.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>ManagedString</div> *s* - The string to display.
+>  <div style='color:#a71d5d; display:inline-block'>ManagedString</div> s - The string to display.
 
->  <div style='color:#008080; display:inline-block'>int</div> *delay* - The time to delay between characters, in milliseconds. Defaults to: MICROBIT_DEFAULT_SCROLL_SPEED.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> delay - The time to delay between characters, in milliseconds. Defaults to: MICROBIT_DEFAULT_SCROLL_SPEED.
 #####Returns
 MICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```cpp
- display.scroll("abc123",100);
+ display.scroll("abc123",100); 
 ```
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> scroll( <div style='color:#008080; display:inline-block'>MicroBitImage</div> image)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>scroll</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> image)
 #####Description
-Scrolls the given image across the display, from right to left. Blocks the calling thread until all the text has been displayed.
+Scrolls the given image across the display, from right to left. Blocks the calling thread until all the text has been displayed.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>MicroBitImage</div> *image* - The image to display.
+>  <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> image - The image to display.
 #####Returns
 MICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```cpp
- MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n");
- display.scroll(i,100,1);
+ MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n"); 
+ display.scroll(i,100,1); 
 ```
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> scroll( <div style='color:#008080; display:inline-block'>MicroBitImage</div> image,  <div style='color:#008080; display:inline-block'>int</div> delay)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>scroll</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> image,  <div style='color:#a71d5d; display:inline-block'>int</div> delay)
 #####Description
-Scrolls the given image across the display, from right to left. Blocks the calling thread until all the text has been displayed.
+Scrolls the given image across the display, from right to left. Blocks the calling thread until all the text has been displayed.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>MicroBitImage</div> *image* - The image to display.
+>  <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> image - The image to display.
 
->  <div style='color:#008080; display:inline-block'>int</div> *delay* - The time between updates, in milliseconds. Defaults to: MICROBIT_DEFAULT_SCROLL_SPEED.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> delay - The time between updates, in milliseconds. Defaults to: MICROBIT_DEFAULT_SCROLL_SPEED.
 #####Returns
 MICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```cpp
- MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n");
- display.scroll(i,100,1);
+ MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n"); 
+ display.scroll(i,100,1); 
 ```
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> scroll( <div style='color:#008080; display:inline-block'>MicroBitImage</div> image,  <div style='color:#008080; display:inline-block'>int</div> delay,  <div style='color:#008080; display:inline-block'>int</div> stride)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>scroll</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> image,  <div style='color:#a71d5d; display:inline-block'>int</div> delay,  <div style='color:#a71d5d; display:inline-block'>int</div> stride)
 #####Description
-Scrolls the given image across the display, from right to left. Blocks the calling thread until all the text has been displayed.
+Scrolls the given image across the display, from right to left. Blocks the calling thread until all the text has been displayed.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>MicroBitImage</div> *image* - The image to display.
+>  <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> image - The image to display.
 
->  <div style='color:#008080; display:inline-block'>int</div> *delay* - The time between updates, in milliseconds. Defaults to: MICROBIT_DEFAULT_SCROLL_SPEED.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> delay - The time between updates, in milliseconds. Defaults to: MICROBIT_DEFAULT_SCROLL_SPEED.
 
->  <div style='color:#008080; display:inline-block'>int</div> *stride* - The number of pixels to shift by in each update. Defaults to MICROBIT_DEFAULT_SCROLL_STRIDE.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> stride - The number of pixels to shift by in each update. Defaults to MICROBIT_DEFAULT_SCROLL_STRIDE.
 #####Returns
 MICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```cpp
- MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n");
- display.scroll(i,100,1);
+ MicrobitImage i("1,1,1,1,1\n1,1,1,1,1\n"); 
+ display.scroll(i,100,1); 
 ```
 ##animateAsync
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> animateAsync( <div style='color:#008080; display:inline-block'>MicroBitImage</div> image,  <div style='color:#008080; display:inline-block'>int</div> delay,  <div style='color:#008080; display:inline-block'>int</div> stride)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>animateAsync</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> image,  <div style='color:#a71d5d; display:inline-block'>int</div> delay,  <div style='color:#a71d5d; display:inline-block'>int</div> stride)
 #####Description
-"Animates" the current image across the display with a given stride, finishing on the last frame of the animation. Returns immediately.
+"Animates" the current image across the display with a given stride, finishing on the last frame of the animation. Returns immediately.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>MicroBitImage</div> *image* - The image to display.
+>  <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> image - The image to display.
 
->  <div style='color:#008080; display:inline-block'>int</div> *delay* - The time to delay between each update of the display, in milliseconds.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> delay - The time to delay between each update of the display, in milliseconds.
 
->  <div style='color:#008080; display:inline-block'>int</div> *stride* - The number of pixels to shift by in each update.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> stride - The number of pixels to shift by in each update.
 #####Returns
 MICROBIT_OK, MICROBIT_BUSY if the screen is in use, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```cpp
- const int heart_w = 10;
- const int heart_h = 5;
- const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, };
-
- MicroBitImage i(heart_w,heart_h,heart);
- display.animateAsync(i,100,5);
+ const int heart_w = 10; 
+ const int heart_h = 5; 
+ const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; 
+ 
+ MicroBitImage i(heart_w,heart_h,heart); 
+ display.animateAsync(i,100,5); 
 ```
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> animateAsync( <div style='color:#008080; display:inline-block'>MicroBitImage</div> image,  <div style='color:#008080; display:inline-block'>int</div> delay,  <div style='color:#008080; display:inline-block'>int</div> stride,  <div style='color:#008080; display:inline-block'>int</div> startingPosition)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>animateAsync</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> image,  <div style='color:#a71d5d; display:inline-block'>int</div> delay,  <div style='color:#a71d5d; display:inline-block'>int</div> stride,  <div style='color:#a71d5d; display:inline-block'>int</div> startingPosition)
 #####Description
-"Animates" the current image across the display with a given stride, finishing on the last frame of the animation. Returns immediately.
+"Animates" the current image across the display with a given stride, finishing on the last frame of the animation. Returns immediately.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>MicroBitImage</div> *image* - The image to display.
+>  <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> image - The image to display.
 
->  <div style='color:#008080; display:inline-block'>int</div> *delay* - The time to delay between each update of the display, in milliseconds.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> delay - The time to delay between each update of the display, in milliseconds.
 
->  <div style='color:#008080; display:inline-block'>int</div> *stride* - The number of pixels to shift by in each update.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> stride - The number of pixels to shift by in each update.
 
->  <div style='color:#008080; display:inline-block'>int</div> *startingPosition* - the starting position on the display for the animation to begin at. Defaults to MICROBIT_DISPLAY_ANIMATE_DEFAULT_POS.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> startingPosition - the starting position on the display for the animation to begin at. Defaults to MICROBIT_DISPLAY_ANIMATE_DEFAULT_POS.
 #####Returns
 MICROBIT_OK, MICROBIT_BUSY if the screen is in use, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```cpp
- const int heart_w = 10;
- const int heart_h = 5;
- const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, };
-
- MicroBitImage i(heart_w,heart_h,heart);
- display.animateAsync(i,100,5);
+ const int heart_w = 10; 
+ const int heart_h = 5; 
+ const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; 
+ 
+ MicroBitImage i(heart_w,heart_h,heart); 
+ display.animateAsync(i,100,5); 
 ```
 ##animate
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> animate( <div style='color:#008080; display:inline-block'>MicroBitImage</div> image,  <div style='color:#008080; display:inline-block'>int</div> delay,  <div style='color:#008080; display:inline-block'>int</div> stride)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>animate</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> image,  <div style='color:#a71d5d; display:inline-block'>int</div> delay,  <div style='color:#a71d5d; display:inline-block'>int</div> stride)
 #####Description
-"Animates" the current image across the display with a given stride, finishing on the last frame of the animation. Blocks the calling thread until the animation is complete.
+"Animates" the current image across the display with a given stride, finishing on the last frame of the animation. Blocks the calling thread until the animation is complete.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>MicroBitImage</div> *image*
+>  <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> image
 
->  <div style='color:#008080; display:inline-block'>int</div> *delay* - The time to delay between each update of the display, in milliseconds.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> delay - The time to delay between each update of the display, in milliseconds.
 
->  <div style='color:#008080; display:inline-block'>int</div> *stride* - The number of pixels to shift by in each update.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> stride - The number of pixels to shift by in each update.
 #####Returns
 MICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```cpp
- const int heart_w = 10;
- const int heart_h = 5;
- const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, };
-
- MicroBitImage i(heart_w,heart_h,heart);
- display.animate(i,100,5);
+ const int heart_w = 10; 
+ const int heart_h = 5; 
+ const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; 
+ 
+ MicroBitImage i(heart_w,heart_h,heart); 
+ display.animate(i,100,5); 
 ```
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> animate( <div style='color:#008080; display:inline-block'>MicroBitImage</div> image,  <div style='color:#008080; display:inline-block'>int</div> delay,  <div style='color:#008080; display:inline-block'>int</div> stride,  <div style='color:#008080; display:inline-block'>int</div> startingPosition)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>animate</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> image,  <div style='color:#a71d5d; display:inline-block'>int</div> delay,  <div style='color:#a71d5d; display:inline-block'>int</div> stride,  <div style='color:#a71d5d; display:inline-block'>int</div> startingPosition)
 #####Description
-"Animates" the current image across the display with a given stride, finishing on the last frame of the animation. Blocks the calling thread until the animation is complete.
+"Animates" the current image across the display with a given stride, finishing on the last frame of the animation. Blocks the calling thread until the animation is complete.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>MicroBitImage</div> *image*
+>  <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> image
 
->  <div style='color:#008080; display:inline-block'>int</div> *delay* - The time to delay between each update of the display, in milliseconds.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> delay - The time to delay between each update of the display, in milliseconds.
 
->  <div style='color:#008080; display:inline-block'>int</div> *stride* - The number of pixels to shift by in each update.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> stride - The number of pixels to shift by in each update.
 
->  <div style='color:#008080; display:inline-block'>int</div> *startingPosition* - the starting position on the display for the animation to begin at. Defaults to MICROBIT_DISPLAY_ANIMATE_DEFAULT_POS.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> startingPosition - the starting position on the display for the animation to begin at. Defaults to MICROBIT_DISPLAY_ANIMATE_DEFAULT_POS.
 #####Returns
 MICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```cpp
- const int heart_w = 10;
- const int heart_h = 5;
- const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, };
-
- MicroBitImage i(heart_w,heart_h,heart);
- display.animate(i,100,5);
+ const int heart_w = 10; 
+ const int heart_h = 5; 
+ const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; 
+ 
+ MicroBitImage i(heart_w,heart_h,heart); 
+ display.animate(i,100,5); 
 ```
 ##setBrightness
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> setBrightness( <div style='color:#008080; display:inline-block'>int</div> b)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>setBrightness</div>( <div style='color:#a71d5d; display:inline-block'>int</div> b)
 #####Description
-Configures the brightness of the display.
+Configures the brightness of the display.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>int</div> *b* - The brightness to set the brightness to, in the range 0 - 255.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> b - The brightness to set the brightness to, in the range 0 - 255.
 #####Returns
 MICROBIT_OK, or MICROBIT_INVALID_PARAMETER
 #####Example
 ```cpp
- display.setBrightness(255); //max brightness
+ display.setBrightness(255); //max brightness 
 ```
 ##setDisplayMode
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>void</div> setDisplayMode( <div style='color:#008080; display:inline-block'>DisplayMode</div> mode)
+####<div style='color:#a71d5d; display:inline-block'>void</div> <div style='color:#795da3; display:inline-block'>setDisplayMode</div>( <div style='color:#a71d5d; display:inline-block'>DisplayMode</div> mode)
 #####Description
-Configures the mode of the display.
+Configures the mode of the display.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>DisplayMode</div> *mode* - The mode to swap the display into. One of: DISPLAY_MODE_GREYSCALE, DISPLAY_MODE_BLACK_AND_WHITE, DISPLAY_MODE_BLACK_AND_WHITE_LIGHT_SENSE
+>  <div style='color:#a71d5d; display:inline-block'>DisplayMode</div> mode - The mode to swap the display into. One of: DISPLAY_MODE_GREYSCALE, DISPLAY_MODE_BLACK_AND_WHITE, DISPLAY_MODE_BLACK_AND_WHITE_LIGHT_SENSE
 #####Example
 ```cpp
- display.setDisplayMode(DISPLAY_MODE_GREYSCALE); //per pixel brightness
+ display.setDisplayMode(DISPLAY_MODE_GREYSCALE); //per pixel brightness 
 ```
 ##getDisplayMode
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> getDisplayMode()
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>getDisplayMode</div>()
 #####Description
-Retrieves the mode of the display.
+Retrieves the mode of the display.  
+
+ 
+
+
 #####Returns
-the current mode of the display
+the current mode of the display 
 ##getBrightness
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> getBrightness()
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>getBrightness</div>()
 #####Description
-Fetches the current brightness of this display.
+Fetches the current brightness of this display.  
+
+ 
+
+
 #####Returns
 the brightness of this display, in the range 0..255.
 #####Example
 ```cpp
- display.getBrightness(); //the current brightness
+ display.getBrightness(); //the current brightness 
 ```
 ##rotateTo
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>void</div> rotateTo( <div style='color:#008080; display:inline-block'>DisplayRotation</div> position)
+####<div style='color:#a71d5d; display:inline-block'>void</div> <div style='color:#795da3; display:inline-block'>rotateTo</div>( <div style='color:#a71d5d; display:inline-block'>DisplayRotation</div> position)
 #####Description
-Rotates the display to the given position.
+Rotates the display to the given position.  
+
+ Axis aligned values only.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>DisplayRotation</div> *position*
+>  <div style='color:#a71d5d; display:inline-block'>DisplayRotation</div> position
 #####Example
 ```cpp
- display.rotateTo(MICROBIT_DISPLAY_ROTATION_180); //rotates 180 degrees from original orientation
+ display.rotateTo(MICROBIT_DISPLAY_ROTATION_180); //rotates 180 degrees from original orientation 
 ```
 ##enable
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>void</div> enable()
+####<div style='color:#a71d5d; display:inline-block'>void</div> <div style='color:#795da3; display:inline-block'>enable</div>()
 #####Description
-Enables the display, should only be called if the display is disabled.
+Enables the display, should only be called if the display is disabled.  
+
+ 
+
+ 
+
+
 #####Example
 ```cpp
- display.enable(); //Enables the display mechanics
+ display.enable(); //Enables the display mechanics 
 ```
 
 !!! note
-    Only enables the display if the display is currently disabled.
+    Only enables the display if the display is currently disabled. 
 
 ##disable
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>void</div> disable()
+####<div style='color:#a71d5d; display:inline-block'>void</div> <div style='color:#795da3; display:inline-block'>disable</div>()
 #####Description
-Disables the display, which releases control of the GPIO pins used by the display, which are exposed on the edge connector.
+Disables the display, which releases control of the GPIO pins used by the display, which are exposed on the edge connector.  
+
+ 
+
+ 
+
+
 #####Example
 ```cpp
- display.disable(); //disables the display
+ display.disable(); //disables the display 
 ```
 
 !!! note
-    Only disables the display if the display is currently enabled.
+    Only disables the display if the display is currently enabled. 
 
 ##clear
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>void</div> clear()
+####<div style='color:#a71d5d; display:inline-block'>void</div> <div style='color:#795da3; display:inline-block'>clear</div>()
 #####Description
-Clears the display of any remaining pixels.
+Clears the display of any remaining pixels.  
+
+  display.image.clear()  can also be used!  
+
+ 
+
+
 #####Example
 ```cpp
- display.clear(); //clears the display
+ display.clear(); //clears the display 
 ```
 ##setFont
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>void</div> setFont( <div style='color:#008080; display:inline-block'>MicroBitFont</div> font)
+####<div style='color:#a71d5d; display:inline-block'>void</div> <div style='color:#795da3; display:inline-block'>setFont</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitFont</div> font)
 #####Description
-Updates the font that will be used for display operations.
+Updates the font that will be used for display operations.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>MicroBitFont</div> *font* - the new font that will be used to render characters.
+>  <div style='color:#a71d5d; display:inline-block'>MicroBitFont</div> font - the new font that will be used to render characters.
 
 !!! note
-    DEPRECATED! Please use  MicroBitFont::setSystemFont()  instead.
+    DEPRECATED! Please use  MicroBitFont::setSystemFont()  instead. 
 
 ##getFont
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>MicroBitFont</div> getFont()
+####<div style='color:#a71d5d; display:inline-block'>MicroBitFont</div> <div style='color:#795da3; display:inline-block'>getFont</div>()
 #####Description
-Retrieves the font object used for rendering characters on the display.
+Retrieves the font object used for rendering characters on the display.  
+
+ 
+
+
 
 !!! note
-    DEPRECATED! Please use  MicroBitFont::getSystemFont()  instead.
+    DEPRECATED! Please use  MicroBitFont::getSystemFont()  instead. 
 
 ##screenShot
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>MicroBitImage</div> screenShot()
+####<div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> <div style='color:#795da3; display:inline-block'>screenShot</div>()
 #####Description
-Captures the bitmap currently being rendered on the display.
+Captures the bitmap currently being rendered on the display.  
+
+ 
+
+
 #####Returns
-a  MicroBitImage  containing the captured data.
+a  MicroBitImage  containing the captured data. 
 ##readLightLevel
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> readLightLevel()
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>readLightLevel</div>()
 #####Description
-Gives a representative figure of the light level in the current environment where are micro:bit is situated.
+Gives a representative figure of the light level in the current environment where are micro:bit is situated.  
+
+ Internally, it constructs an instance of a  MicroBitLightSensor  if not already configured and sets the display mode to DISPLAY_MODE_BLACK_AND_WHITE_LIGHT_SENSE.  
+
+ This also changes the tickPeriod to MICROBIT_LIGHT_SENSOR_TICK_SPEED so that the display does not suffer from artifacts.  
+
+ 
+
+
 #####Returns
 an indicative light level in the range 0 - 255.
 
 !!! note
-    this will return 0 on the first call to this method, a light reading will be available after the display has activated the light sensor for the first time.
+    this will return 0 on the first call to this method, a light reading will be available after the display has activated the light sensor for the first time. 
 
 ____
 [comment]: <> ({"end":"MicroBitDisplay"})

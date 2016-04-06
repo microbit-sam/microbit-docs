@@ -40,26 +40,34 @@ can be used.
 [comment]: <> ({"className":"MicroBitThermometer"})
 ##Constructor
 <br/>
-####MicroBitThermometer( <div style='color:#008080; display:inline-block'>MicroBitStorage  &</div> _storage)
+####MicroBitThermometer( <div style='color:#a71d5d; display:inline-block'>MicroBitStorage  &</div> _storage)
 #####Description
-Constructor. Create new  MicroBitThermometer
+Constructor. Create new  MicroBitThermometer  that gives an indication of the current temperature.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>MicroBitStorage  &</div> *_storage* - an instance of  MicroBitStorage  used to persist temperature offset data
+>  <div style='color:#a71d5d; display:inline-block'>MicroBitStorage  &</div> _storage - an instance of  MicroBitStorage  used to persist temperature offset data
 #####Example
 ```cpp
  MicroBitStorage storage; 
  MicroBitThermometer thermometer(storage); 
 ```
 <br/>
-####MicroBitThermometer( <div style='color:#008080; display:inline-block'>MicroBitStorage  &</div> _storage,  <div style='color:#008080; display:inline-block'>uint16_t</div> id)
+####MicroBitThermometer( <div style='color:#a71d5d; display:inline-block'>MicroBitStorage  &</div> _storage,  <div style='color:#a71d5d; display:inline-block'>uint16_t</div> id)
 #####Description
-Constructor. Create new  MicroBitThermometer
+Constructor. Create new  MicroBitThermometer  that gives an indication of the current temperature.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>MicroBitStorage  &</div> *_storage* - an instance of  MicroBitStorage  used to persist temperature offset data
+>  <div style='color:#a71d5d; display:inline-block'>MicroBitStorage  &</div> _storage - an instance of  MicroBitStorage  used to persist temperature offset data
 
->  <div style='color:#008080; display:inline-block'>uint16_t</div> *id* - the unique  EventModel  id of this component. Defaults to MICROBIT_ID_THERMOMETER.
+>  <div style='color:#a71d5d; display:inline-block'>uint16_t</div> id - the unique  EventModel  id of this component. Defaults to MICROBIT_ID_THERMOMETER.
 #####Example
 ```cpp
  MicroBitStorage storage; 
@@ -68,73 +76,107 @@ Constructor. Create new  MicroBitThermometer
 <br/>
 ####MicroBitThermometer()
 #####Description
-Constructor. Create new  MicroBitThermometer
+Constructor. Create new  MicroBitThermometer  that gives an indication of the current temperature.  
+
+ 
+
+
 #####Example
 ```cpp
  MicroBitThermometer thermometer; 
 ```
 <br/>
-####MicroBitThermometer( <div style='color:#008080; display:inline-block'>uint16_t</div> id)
+####MicroBitThermometer( <div style='color:#a71d5d; display:inline-block'>uint16_t</div> id)
 #####Description
-Constructor. Create new  MicroBitThermometer
+Constructor. Create new  MicroBitThermometer  that gives an indication of the current temperature.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>uint16_t</div> *id* - the unique  EventModel  id of this component. Defaults to MICROBIT_ID_THERMOMETER.
+>  <div style='color:#a71d5d; display:inline-block'>uint16_t</div> id - the unique  EventModel  id of this component. Defaults to MICROBIT_ID_THERMOMETER.
 #####Example
 ```cpp
  MicroBitThermometer thermometer; 
 ```
 ##setPeriod
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>void</div> setPeriod( <div style='color:#008080; display:inline-block'>int</div> period)
+####<div style='color:#a71d5d; display:inline-block'>void</div> <div style='color:#795da3; display:inline-block'>setPeriod</div>( <div style='color:#a71d5d; display:inline-block'>int</div> period)
 #####Description
-Set the sample rate at which the temperatureis read (in ms).
+Set the sample rate at which the temperatureis read (in ms).  
+
+ The default sample period is 1 second.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>int</div> *period* - the requested time between samples, in milliseconds.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> period - the requested time between samples, in milliseconds.
 
 !!! note
     the temperature is always read in the background, and is only updated when the processor is idle, or when the temperature is explicitly read. 
 
 ##getPeriod
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> getPeriod()
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>getPeriod</div>()
 #####Description
-Reads the currently configured sample rate of the thermometer.
+Reads the currently configured sample rate of the thermometer.  
+
+ 
+
+
 #####Returns
 The time between samples, in milliseconds. 
 ##setOffset
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> setOffset( <div style='color:#008080; display:inline-block'>int</div> offset)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>setOffset</div>( <div style='color:#a71d5d; display:inline-block'>int</div> offset)
 #####Description
-Set the value that is used to offset the raw silicon temperature.
+Set the value that is used to offset the raw silicon temperature.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>int</div> *offset* - the offset for the silicon temperature
+>  <div style='color:#a71d5d; display:inline-block'>int</div> offset - the offset for the silicon temperature
 #####Returns
 MICROBIT_OK on success 
 ##getOffset
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> getOffset()
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>getOffset</div>()
 #####Description
-Retreive the value that is used to offset the raw silicon temperature.
+Retreive the value that is used to offset the raw silicon temperature.  
+
+ 
+
+
 #####Returns
 the current offset. 
 ##setCalibration
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> setCalibration( <div style='color:#008080; display:inline-block'>int</div> calibrationTemp)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>setCalibration</div>( <div style='color:#a71d5d; display:inline-block'>int</div> calibrationTemp)
 #####Description
-This member function fetches the raw silicon temperature, and calculates the value used to offset the raw silicon temperature based on a given temperature.
+This member function fetches the raw silicon temperature, and calculates the value used to offset the raw silicon temperature based on a given temperature.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>int</div> *calibrationTemp* - the temperature used to calculate the raw silicon temperature offset.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> calibrationTemp - the temperature used to calculate the raw silicon temperature offset.
 #####Returns
 MICROBIT_OK on success 
 ##getTemperature
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> getTemperature()
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>getTemperature</div>()
 #####Description
-Gets the current temperature of the microbit.
+Gets the current temperature of the microbit.  
+
+ 
+
+
 #####Returns
 the current temperature, in degrees celsius.
 #####Example
@@ -143,16 +185,26 @@ the current temperature, in degrees celsius.
 ```
 ##updateSample
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> updateSample()
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>updateSample</div>()
 #####Description
-Updates the temperature sample of this instance of  MicroBitThermometer isSampleNeeded()
+Updates the temperature sample of this instance of  MicroBitThermometer  only if  isSampleNeeded()  indicates that an update is required.  
+
+ This call also will add the thermometer to fiber components to receive periodic callbacks.  
+
+ 
+
+
 #####Returns
 MICROBIT_OK on success. 
 ##isIdleCallbackNeeded
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> isIdleCallbackNeeded()
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>isIdleCallbackNeeded</div>()
 #####Description
-Indicates if we'd like some processor time to sense the temperature.
+Indicates if we'd like some processor time to sense the temperature.  
+
+ 
+
+
 #####Returns
 1 if we'd like some processor time, 0 otherwise. 
 ____

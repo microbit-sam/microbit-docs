@@ -45,49 +45,61 @@ You write an event handler through the `MicroBitMessageBus` [listen](../ubit/mes
 [comment]: <> ({"className":"MicroBitEvent"})
 ##Constructor
 <br/>
-####MicroBitEvent( <div style='color:#008080; display:inline-block'>uint16_t</div> source,  <div style='color:#008080; display:inline-block'>uint16_t</div> value)
+####MicroBitEvent( <div style='color:#a71d5d; display:inline-block'>uint16_t</div> source,  <div style='color:#a71d5d; display:inline-block'>uint16_t</div> value)
 #####Description
-Constructor.
+Constructor.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>uint16_t</div> *source*
+>  <div style='color:#a71d5d; display:inline-block'>uint16_t</div> source
 
->  <div style='color:#008080; display:inline-block'>uint16_t</div> *value* - A component specific code indicating the cause of the event.
+>  <div style='color:#a71d5d; display:inline-block'>uint16_t</div> value - A component specific code indicating the cause of the event.
 #####Example
 ```cpp
- // Create and launch an event using the default configuration
- MicrobitEvent evt(id,MICROBIT_BUTTON_EVT_CLICK);
-
- // Create an event only, do not fire onto an EventModel.
- MicrobitEvent evt(id,MICROBIT_BUTTON_EVT_CLICK,CREATE_AND_FIRE);
+ // Create and launch an event using the default configuration 
+ MicrobitEvent evt(id,MICROBIT_BUTTON_EVT_CLICK); 
+ 
+ // Create an event only, do not fire onto an EventModel. 
+ MicrobitEvent evt(id,MICROBIT_BUTTON_EVT_CLICK,CREATE_AND_FIRE); 
 ```
 <br/>
-####MicroBitEvent( <div style='color:#008080; display:inline-block'>uint16_t</div> source,  <div style='color:#008080; display:inline-block'>uint16_t</div> value,  <div style='color:#008080; display:inline-block'>MicroBitEventLaunchMode</div> mode)
+####MicroBitEvent( <div style='color:#a71d5d; display:inline-block'>uint16_t</div> source,  <div style='color:#a71d5d; display:inline-block'>uint16_t</div> value,  <div style='color:#a71d5d; display:inline-block'>MicroBitEventLaunchMode</div> mode)
 #####Description
-Constructor.
+Constructor.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>uint16_t</div> *source*
+>  <div style='color:#a71d5d; display:inline-block'>uint16_t</div> source
 
->  <div style='color:#008080; display:inline-block'>uint16_t</div> *value* - A component specific code indicating the cause of the event.
+>  <div style='color:#a71d5d; display:inline-block'>uint16_t</div> value - A component specific code indicating the cause of the event.
 
->  <div style='color:#008080; display:inline-block'>MicroBitEventLaunchMode</div> *mode* - Optional definition of how the event should be processed after construction (if at all): CREATE_ONLY:  MicroBitEvent  is initialised, and no further processing takes place. CREATE_AND_FIRE:  MicroBitEvent  is initialised, and its event handlers are immediately fired (not suitable for use in interrupts!).
+>  <div style='color:#a71d5d; display:inline-block'>MicroBitEventLaunchMode</div> mode - Optional definition of how the event should be processed after construction (if at all): CREATE_ONLY:  MicroBitEvent  is initialised, and no further processing takes place. CREATE_AND_FIRE:  MicroBitEvent  is initialised, and its event handlers are immediately fired (not suitable for use in interrupts!).
 #####Example
 ```cpp
- // Create and launch an event using the default configuration
- MicrobitEvent evt(id,MICROBIT_BUTTON_EVT_CLICK);
-
- // Create an event only, do not fire onto an EventModel.
- MicrobitEvent evt(id,MICROBIT_BUTTON_EVT_CLICK,CREATE_AND_FIRE);
+ // Create and launch an event using the default configuration 
+ MicrobitEvent evt(id,MICROBIT_BUTTON_EVT_CLICK); 
+ 
+ // Create an event only, do not fire onto an EventModel. 
+ MicrobitEvent evt(id,MICROBIT_BUTTON_EVT_CLICK,CREATE_AND_FIRE); 
 ```
 <br/>
 ####MicroBitEvent()
 #####Description
-Default constructor - initialises all values, and sets timestamp to the current time.
+Default constructor - initialises all values, and sets timestamp to the current time.           
+
+
 ##fire
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>void</div> fire()
+####<div style='color:#a71d5d; display:inline-block'>void</div> <div style='color:#795da3; display:inline-block'>fire</div>()
 #####Description
-Fires this  MicroBitEvent EventModel
+Fires this  MicroBitEvent  onto the Default  EventModel , or a custom one!           
+
+
 ____
 [comment]: <> ({"end":"MicroBitEvent"})

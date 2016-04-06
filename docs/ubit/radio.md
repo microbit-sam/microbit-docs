@@ -251,126 +251,186 @@ For example:
 <br/>
 ####MicroBitRadio()
 #####Description
-Constructor.
+Constructor.  
+
+ Initialise the  MicroBitRadio .  
+
+ 
+
+
 
 !!! note
-    This class is demand activated, as a result most resources are only committed if send/recv or event registrations calls are made.
+    This class is demand activated, as a result most resources are only committed if send/recv or event registrations calls are made. 
 
 <br/>
-####MicroBitRadio( <div style='color:#008080; display:inline-block'>uint16_t</div> id)
+####MicroBitRadio( <div style='color:#a71d5d; display:inline-block'>uint16_t</div> id)
 #####Description
-Constructor.
+Constructor.  
+
+ Initialise the  MicroBitRadio .  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>uint16_t</div> *id*
+>  <div style='color:#a71d5d; display:inline-block'>uint16_t</div> id
 
 !!! note
-    This class is demand activated, as a result most resources are only committed if send/recv or event registrations calls are made.
+    This class is demand activated, as a result most resources are only committed if send/recv or event registrations calls are made. 
 
 ##setTransmitPower
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> setTransmitPower( <div style='color:#008080; display:inline-block'>int</div> power)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>setTransmitPower</div>( <div style='color:#a71d5d; display:inline-block'>int</div> power)
 #####Description
-Change the output power level of the transmitter to the given value.
+Change the output power level of the transmitter to the given value.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>int</div> *power* - a value in the range 0..7, where 0 is the lowest power and 7 is the highest.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> power - a value in the range 0..7, where 0 is the lowest power and 7 is the highest.
 #####Returns
-MICROBIT_OK on success, or MICROBIT_INVALID_PARAMETER if the value is out of range.
+MICROBIT_OK on success, or MICROBIT_INVALID_PARAMETER if the value is out of range. 
 ##setFrequencyBand
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> setFrequencyBand( <div style='color:#008080; display:inline-block'>int</div> band)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>setFrequencyBand</div>( <div style='color:#a71d5d; display:inline-block'>int</div> band)
 #####Description
-Change the transmission and reception band of the radio to the given channel
+Change the transmission and reception band of the radio to the given channel  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>int</div> *band* - a frequency band in the range 0 - 100. Each step is 1MHz wide, based at 2400MHz.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> band - a frequency band in the range 0 - 100. Each step is 1MHz wide, based at 2400MHz.
 #####Returns
-MICROBIT_OK on success, or MICROBIT_INVALID_PARAMETER if the value is out of range, or MICROBIT_NOT_SUPPORTED if the BLE stack is running.
+MICROBIT_OK on success, or MICROBIT_INVALID_PARAMETER if the value is out of range, or MICROBIT_NOT_SUPPORTED if the BLE stack is running. 
 ##getRxBuf
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>FrameBuffer</div> getRxBuf()
+####<div style='color:#a71d5d; display:inline-block'>FrameBuffer</div> <div style='color:#795da3; display:inline-block'>getRxBuf</div>()
 #####Description
-Retrieve a pointer to the currently allocated receive buffer. This is the area of memory actively being used by the radio hardware to store incoming data.
+Retrieve a pointer to the currently allocated receive buffer. This is the area of memory actively being used by the radio hardware to store incoming data.  
+
+ 
+
+
 #####Returns
-a pointer to the current receive buffer.
+a pointer to the current receive buffer. 
 ##queueRxBuf
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> queueRxBuf()
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>queueRxBuf</div>()
 #####Description
-Attempt to queue a buffer received by the radio hardware, if sufficient space is available.
+Attempt to queue a buffer received by the radio hardware, if sufficient space is available.  
+
+ 
+
+
 #####Returns
-MICROBIT_OK on success, or MICROBIT_NO_RESOURCES if a replacement receiver buffer could not be allocated (either by policy or memory exhaustion).
+MICROBIT_OK on success, or MICROBIT_NO_RESOURCES if a replacement receiver buffer could not be allocated (either by policy or memory exhaustion). 
 ##setRSSI
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> setRSSI( <div style='color:#008080; display:inline-block'>uint8_t</div> rssi)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>setRSSI</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t</div> rssi)
 #####Description
-Sets the RSSI for the most recent packet.
+Sets the RSSI for the most recent packet.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>uint8_t</div> *rssi* - the new rssi value.
+>  <div style='color:#a71d5d; display:inline-block'>uint8_t</div> rssi - the new rssi value.
 
 !!! note
-    should only be called from RADIO_IRQHandler...
+    should only be called from RADIO_IRQHandler... 
 
 ##getRSSI
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> getRSSI()
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>getRSSI</div>()
 #####Description
-Retrieves the current RSSI for the most recent packet.
+Retrieves the current RSSI for the most recent packet.  
+
+ 
+
+
 #####Returns
-the most recent RSSI value or MICROBIT_NOT_SUPPORTED if the BLE stack is running.
+the most recent RSSI value or MICROBIT_NOT_SUPPORTED if the BLE stack is running. 
 ##enable
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> enable()
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>enable</div>()
 #####Description
-Initialises the radio for use as a multipoint sender/receiver
+Initialises the radio for use as a multipoint sender/receiver  
+
+ 
+
+
 #####Returns
-MICROBIT_OK on success, MICROBIT_NOT_SUPPORTED if the BLE stack is running.
+MICROBIT_OK on success, MICROBIT_NOT_SUPPORTED if the BLE stack is running. 
 ##disable
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> disable()
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>disable</div>()
 #####Description
-Disables the radio for use as a multipoint sender/receiver.
+Disables the radio for use as a multipoint sender/receiver.  
+
+ 
+
+
 #####Returns
-MICROBIT_OK on success, MICROBIT_NOT_SUPPORTED if the BLE stack is running.
+MICROBIT_OK on success, MICROBIT_NOT_SUPPORTED if the BLE stack is running. 
 ##setGroup
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> setGroup( <div style='color:#008080; display:inline-block'>uint8_t</div> group)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>setGroup</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t</div> group)
 #####Description
-Sets the radio to listen to packets sent with the given group id.
+Sets the radio to listen to packets sent with the given group id.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>uint8_t</div> *group* - The group to join. A micro:bit can only listen to one group ID at any time.
+>  <div style='color:#a71d5d; display:inline-block'>uint8_t</div> group - The group to join. A micro:bit can only listen to one group ID at any time.
 #####Returns
-MICROBIT_OK on success, or MICROBIT_NOT_SUPPORTED if the BLE stack is running.
+MICROBIT_OK on success, or MICROBIT_NOT_SUPPORTED if the BLE stack is running. 
 ##dataReady
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> dataReady()
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>dataReady</div>()
 #####Description
-Determines the number of packets ready to be processed.
+Determines the number of packets ready to be processed.  
+
+ 
+
+
 #####Returns
-The number of packets in the receive buffer.
+The number of packets in the receive buffer. 
 ##recv
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>FrameBuffer</div> recv()
+####<div style='color:#a71d5d; display:inline-block'>FrameBuffer</div> <div style='color:#795da3; display:inline-block'>recv</div>()
 #####Description
-Retrieves the next packet from the receive buffer. If a data packet is available, then it will be returned immediately to the caller. This call will also dequeue the buffer.
+Retrieves the next packet from the receive buffer. If a data packet is available, then it will be returned immediately to the caller. This call will also dequeue the buffer.  
+
+ 
+
+
 #####Returns
 The buffer containing the the packet. If no data is available, NULL is returned.
 
 !!! note
-    Once  recv()  has been called, it is the callers resposibility to delete the buffer when appropriate.
+    Once  recv()  has been called, it is the callers resposibility to delete the buffer when appropriate. 
 
 ##send
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> send( <div style='color:#008080; display:inline-block'>FrameBuffer  *</div> buffer)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>send</div>( <div style='color:#a71d5d; display:inline-block'>FrameBuffer  *</div> buffer)
 #####Description
-Transmits the given buffer onto the broadcast radio. The call will wait until the transmission of the packet has completed before returning.
+Transmits the given buffer onto the broadcast radio. The call will wait until the transmission of the packet has completed before returning.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>FrameBuffer  *</div> *buffer*
+>  <div style='color:#a71d5d; display:inline-block'>FrameBuffer  *</div> buffer
 #####Returns
-MICROBIT_OK on success, or MICROBIT_NOT_SUPPORTED if the BLE stack is running.
+MICROBIT_OK on success, or MICROBIT_NOT_SUPPORTED if the BLE stack is running. 
 ____
 [comment]: <> ({"end":"MicroBitRadio"})

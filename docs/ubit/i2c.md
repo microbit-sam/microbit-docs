@@ -25,14 +25,26 @@ can be used in conjunction with the micro:bit.
 [comment]: <> ({"className":"MicroBitI2C"})
 ##Constructor
 <br/>
-####MicroBitI2C( <div style='color:#008080; display:inline-block'>PinName</div> sda,  <div style='color:#008080; display:inline-block'>PinName</div> scl)
+####MicroBitI2C( <div style='color:#a71d5d; display:inline-block'>PinName</div> sda,  <div style='color:#a71d5d; display:inline-block'>PinName</div> scl)
 #####Description
-Constructor.
+Constructor.  
+
+ Create an instance of  MicroBitI2C  for I2C communication.  
+
+ 
+
+ 
+
+  https://www.nordicsemi.com/eng/nordic/Products/nRF51822/PAN-nRF51822/24634   
+
+ v2.0 through to v2.4           
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>PinName</div> *sda* - the Pin to be used for SDA
+>  <div style='color:#a71d5d; display:inline-block'>PinName</div> sda - the Pin to be used for SDA
 
->  <div style='color:#008080; display:inline-block'>PinName</div> *scl* - the Pin to be used for SCL
+>  <div style='color:#a71d5d; display:inline-block'>PinName</div> scl - the Pin to be used for SCL
 #####Example
 ```cpp
  MicroBitI2C i2c(I2C_SDA0, I2C_SCL0); 
@@ -43,60 +55,76 @@ Constructor.
 
 ##read
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> read( <div style='color:#008080; display:inline-block'>int</div> address,  <div style='color:#008080; display:inline-block'>char *</div> data,  <div style='color:#008080; display:inline-block'>int</div> length)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>read</div>( <div style='color:#a71d5d; display:inline-block'>int</div> address,  <div style='color:#a71d5d; display:inline-block'>char *</div> data,  <div style='color:#a71d5d; display:inline-block'>int</div> length)
 #####Description
-Performs a complete read transaction. The bottom bit of the address is forced to 1 to indicate a read.
+Performs a complete read transaction. The bottom bit of the address is forced to 1 to indicate a read.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>int</div> *address* - 8-bit I2C slave address [ addr | 1 ]
+>  <div style='color:#a71d5d; display:inline-block'>int</div> address - 8-bit I2C slave address [ addr | 1 ]
 
->  <div style='color:#008080; display:inline-block'>char *</div> *data* - A pointer to a byte buffer used for storing retrieved data.
+>  <div style='color:#a71d5d; display:inline-block'>char *</div> data - A pointer to a byte buffer used for storing retrieved data.
 
->  <div style='color:#008080; display:inline-block'>int</div> *length* - Number of bytes to read.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> length - Number of bytes to read.
 #####Returns
 MICROBIT_OK on success, MICROBIT_I2C_ERROR if an unresolved read failure is detected. 
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> read( <div style='color:#008080; display:inline-block'>int</div> address,  <div style='color:#008080; display:inline-block'>char *</div> data,  <div style='color:#008080; display:inline-block'>int</div> length,  <div style='color:#008080; display:inline-block'>bool</div> repeated)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>read</div>( <div style='color:#a71d5d; display:inline-block'>int</div> address,  <div style='color:#a71d5d; display:inline-block'>char *</div> data,  <div style='color:#a71d5d; display:inline-block'>int</div> length,  <div style='color:#a71d5d; display:inline-block'>bool</div> repeated)
 #####Description
-Performs a complete read transaction. The bottom bit of the address is forced to 1 to indicate a read.
+Performs a complete read transaction. The bottom bit of the address is forced to 1 to indicate a read.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>int</div> *address* - 8-bit I2C slave address [ addr | 1 ]
+>  <div style='color:#a71d5d; display:inline-block'>int</div> address - 8-bit I2C slave address [ addr | 1 ]
 
->  <div style='color:#008080; display:inline-block'>char *</div> *data* - A pointer to a byte buffer used for storing retrieved data.
+>  <div style='color:#a71d5d; display:inline-block'>char *</div> data - A pointer to a byte buffer used for storing retrieved data.
 
->  <div style='color:#008080; display:inline-block'>int</div> *length* - Number of bytes to read.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> length - Number of bytes to read.
 
->  <div style='color:#008080; display:inline-block'>bool</div> *repeated* - if true, stop is not sent at the end. Defaults to false.
+>  <div style='color:#a71d5d; display:inline-block'>bool</div> repeated - if true, stop is not sent at the end. Defaults to false.
 #####Returns
 MICROBIT_OK on success, MICROBIT_I2C_ERROR if an unresolved read failure is detected. 
 ##write
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> write( <div style='color:#008080; display:inline-block'>int</div> address,  <div style='color:#008080; display:inline-block'>const char *</div> data,  <div style='color:#008080; display:inline-block'>int</div> length)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>write</div>( <div style='color:#a71d5d; display:inline-block'>int</div> address,  <div style='color:#a71d5d; display:inline-block'>const char *</div> data,  <div style='color:#a71d5d; display:inline-block'>int</div> length)
 #####Description
-Performs a complete write transaction. The bottom bit of the address is forced to 0 to indicate a write.
+Performs a complete write transaction. The bottom bit of the address is forced to 0 to indicate a write.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>int</div> *address* - 8-bit I2C slave address [ addr | 0 ]
+>  <div style='color:#a71d5d; display:inline-block'>int</div> address - 8-bit I2C slave address [ addr | 0 ]
 
->  <div style='color:#008080; display:inline-block'>const char *</div> *data* - A pointer to a byte buffer containing the data to write.
+>  <div style='color:#a71d5d; display:inline-block'>const char *</div> data - A pointer to a byte buffer containing the data to write.
 
->  <div style='color:#008080; display:inline-block'>int</div> *length* - Number of bytes to write
+>  <div style='color:#a71d5d; display:inline-block'>int</div> length - Number of bytes to write
 #####Returns
 MICROBIT_OK on success, MICROBIT_I2C_ERROR if an unresolved write failure is detected. 
 <br/>
-####<div style='color:#FF69B4; display:inline-block'>int</div> write( <div style='color:#008080; display:inline-block'>int</div> address,  <div style='color:#008080; display:inline-block'>const char *</div> data,  <div style='color:#008080; display:inline-block'>int</div> length,  <div style='color:#008080; display:inline-block'>bool</div> repeated)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>write</div>( <div style='color:#a71d5d; display:inline-block'>int</div> address,  <div style='color:#a71d5d; display:inline-block'>const char *</div> data,  <div style='color:#a71d5d; display:inline-block'>int</div> length,  <div style='color:#a71d5d; display:inline-block'>bool</div> repeated)
 #####Description
-Performs a complete write transaction. The bottom bit of the address is forced to 0 to indicate a write.
+Performs a complete write transaction. The bottom bit of the address is forced to 0 to indicate a write.  
+
+ 
+
+
 #####Parameters
 
->  <div style='color:#008080; display:inline-block'>int</div> *address* - 8-bit I2C slave address [ addr | 0 ]
+>  <div style='color:#a71d5d; display:inline-block'>int</div> address - 8-bit I2C slave address [ addr | 0 ]
 
->  <div style='color:#008080; display:inline-block'>const char *</div> *data* - A pointer to a byte buffer containing the data to write.
+>  <div style='color:#a71d5d; display:inline-block'>const char *</div> data - A pointer to a byte buffer containing the data to write.
 
->  <div style='color:#008080; display:inline-block'>int</div> *length* - Number of bytes to write
+>  <div style='color:#a71d5d; display:inline-block'>int</div> length - Number of bytes to write
 
->  <div style='color:#008080; display:inline-block'>bool</div> *repeated* - if true, stop is not sent at the end. Defaults to false.
+>  <div style='color:#a71d5d; display:inline-block'>bool</div> repeated - if true, stop is not sent at the end. Defaults to false.
 #####Returns
 MICROBIT_OK on success, MICROBIT_I2C_ERROR if an unresolved write failure is detected. 
 ____

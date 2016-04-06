@@ -58,7 +58,7 @@ The `yotta build` command will place files in `/build/<TARGET_NAME>/source`. The
 In the case of our example, using `bbc-microbit-classic-gcc` we could flash the micro:bit (assuming it is plugged in and mounted at `/media/MICROBIT`) as follows:
 
 ```
-cp ./build/bbc-microbit-classic-gcc/source/microbit-combined.hex /media/MICROBIT
+cp ./build/bbc-microbit-classic-gcc/source/microbit-samples-combined.hex /media/MICROBIT
 ```
 The expected result will be that the micro:bit will scroll `BELLO! :)` on its display.
 
