@@ -3,9 +3,10 @@ repo_url: https://github.com/lancaster-university/microbit-dal/
 pages:
     - General:
         - Introduction: 'index.md'
+        - Concepts: 'concepts.md'
+        - Advanced: 'advanced.md'
         - Online Development: 'online-toolchains.md'
         - Offline Development: 'installing-yotta.md'
-        - Concepts: 'concepts.md'
         - The device: 'device.md'
     - uBit:
         - Overview: 'ubit.md'
