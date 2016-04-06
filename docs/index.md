@@ -9,7 +9,7 @@ and [Nordic nrf51](http://www.nordicsemi.com) platforms.
 
 In addition to supporting development in C/C++, the runtime is also designed specifically to support
 higher level languages provided by our partners that target the micro:bit. It is currently used as a support library for all the
-languages on the BBC [www.microbit.co.uk](http://www.microbit.co.uk) website, including Microsoft Block, Microsoft TouchDevelop, Code Kingdoms
+languages on the BBC [www.microbit.co.uk](http://www.microbit.co.uk) website, including the Microsoft Block Editor , Microsoft Touch Develop, Code Kingdom's
 JavaScript and Micropython languages.
 
 On these pages you will find guidance on how to start using the runtime in C/C++, summaries of all the
