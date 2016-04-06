@@ -39,8 +39,8 @@ if not options.dal_headers:
 if not options.microbit_headers:
     options.microbit_headers = options.dal_headers
 
-type_color = "#008080"
-variable_colour = "#FFA500"
+type_color = "#a71d5d"
+variable_colour = "#795da3"
 
 separate_defaults = True
 display_defaults = False
