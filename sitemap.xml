@@ -10,19 +10,25 @@
     </url>
         
     <url>
+     <loc>None/concepts/</loc>
+     <lastmod>2016-04-06</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/advanced/</loc>
+     <lastmod>2016-04-06</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
      <loc>None/online-toolchains/</loc>
      <lastmod>2016-04-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/installing-yotta/</loc>
-     <lastmod>2016-04-06</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/concepts/</loc>
+     <loc>None/offline-toolchains/</loc>
      <lastmod>2016-04-06</lastmod>
      <changefreq>daily</changefreq>
     </url>

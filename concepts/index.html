@@ -70,18 +70,6 @@
 
                     
                         
-<li >
-    <a href="../online-toolchains/">Online Development</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../installing-yotta/">Offline Development</a>
-</li>
-
-                    
-                        
 <li class="active">
     <a href="./">Concepts</a>
 </li>
@@ -89,7 +77,25 @@
                     
                         
 <li >
-    <a href="../device/">The device</a>
+    <a href="../advanced/">Advanced</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../online-toolchains/">Online Development</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../offline-toolchains/">Offline Development</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../device/">Hardware</a>
 </li>
 
                     
@@ -216,7 +222,7 @@
 
             
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">BLE <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bluetooth <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                     
                         
@@ -323,12 +329,12 @@
                     </a>
                 </li>
                 <li >
-                    <a rel="next" href="../installing-yotta/">
+                    <a rel="next" href="..">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../device/">
+                    <a rel="prev" href="../advanced/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -409,7 +415,7 @@ the LEDs. Try to use the <code>uBit</code> menu tab above to find the documentat
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Did you know that you don't need to use the uBit object? Advanced users will likely prefer to create only the components they need to conserve memory on the device. See the <a href="advanced.md">advanced</a> section for how to do this.</p>
+<p>Did you know that you don't need to use the uBit object? Advanced users will likely prefer to create only the components they need to conserve memory on the device. See the <a href="../advanced/">advanced</a> section for how to do this.</p>
 </div>
 <h1 id="events">Events<a class="headerlink" href="#events" title="Permanent link">&para;</a></h1>
 <p>Computer programs execute sequentially - one line after another, following the logic of the program you have written.
@@ -517,7 +523,7 @@ as they need it.</p>
 <p>In fact, whenever you write an event handler, the runtime will normally execute your handler in the background in this way, so that it reduces the impact on the rest of your program!</p>
 <p>The scheduler is a type of <em>non-preemptive scheduler</em>. This means that the runtime will never take control away from your program - it will wait for it to make a call to a runtime
 function that is <em>blocking</em>.</p>
-<p>All the functions that are blocking are listed as such in their documentation.  You can create <strong>fibers</strong> at any time. See the <a href="fiber_scheduler.md">create_fiber</a> function for more details.</p>
+<p>All the functions that are blocking are listed as such in their documentation.  You can create <strong>fibers</strong> at any time.</p>
 </li>
 </ul></div>
         </div>
