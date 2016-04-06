@@ -24,6 +24,8 @@ $(document).ready(function() {
     $search_modal.on('shown.bs.modal', function () {
         $search_modal.find('#mkdocs-search-query').focus();
     });
+
+    $('iframe[src*="vimeo.com"]').wrap('<div class="embed-container" />');
 });
 
 
@@ -48,6 +50,3 @@ $('a').click(function(e) {
 $("li.disabled a").click(function() {
     event.preventDefault();
 });
-
-
-
