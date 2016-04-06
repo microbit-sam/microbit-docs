@@ -6,8 +6,8 @@ pages:
         - Concepts: 'concepts.md'
         - Advanced: 'advanced.md'
         - Online Development: 'online-toolchains.md'
-        - Offline Development: 'installing-yotta.md'
-        - The device: 'device.md'
+        - Offline Development: 'offline-toolchains.md'
+        - Hardware: 'device.md'
     - uBit:
         - Overview: 'ubit.md'
         - i2c: 'ubit/i2c.md'

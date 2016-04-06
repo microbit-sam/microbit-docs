@@ -3,7 +3,7 @@
 The micro:bit runtime provides an easy to use environment for programming the BBC micro:bit
 in the C/C++ language, written by Lancaster University. It contains device drivers for all the hardware capabilities of the micro:bit,
 and also a suite of runtime mechanisms to make programming the micro:bit easier and more flexible. These
-range from control of the LED mtrix display to peer-to-peer radio communication and secure
+range from control of the LED matrix display to peer-to-peer radio communication and secure
 Bluetooth Low Energy services. The micro:bit runtime is proudly built on the [ARM mbed](https://www.mbed.com)
 and [Nordic nrf51](http://www.nordicsemi.com) platforms.
 
@@ -31,7 +31,7 @@ Developing with the micro:bit runtime is simple, and there are multiple ways to 
     </p>
     <p>
         <center>
-            <a href="todo" class="btn btn-lg btn-outline">
+            <a href="online-toolchains" class="btn btn-lg btn-outline">
                 Online development tools
             </a>
         </center>
@@ -47,7 +47,7 @@ Developing with the micro:bit runtime is simple, and there are multiple ways to 
     </p>
     <p>
         <center>
-            <a href="installing-yotta" class="btn btn-lg btn-outline">
+            <a href="offline-toolchains" class="btn btn-lg btn-outline">
                 Offline development tools
             </a>
         </center>

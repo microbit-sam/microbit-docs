@@ -190,4 +190,4 @@ as they need it.
     The scheduler is a type of *non-preemptive scheduler*. This means that the runtime will never take control away from your program - it will wait for it to make a call to a runtime
 function that is *blocking*.
 
-    All the functions that are blocking are listed as such in their documentation.  You can create **fibers** at any time. See the [create_fiber](fiber_scheduler.md) function for more details.
+    All the functions that are blocking are listed as such in their documentation.  You can create **fibers** at any time.

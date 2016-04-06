@@ -65,7 +65,7 @@ You are not required to initialise these components, but you should do so if you
 ## Initialising the Message Bus
 The [`MicroBitMessageBus`](ubit/messageBus.md) allows events to be created and delivered to applications.  So if a [`MicroBitMessageBus`](ubit/messageBus.md) is not created, then all events in the micro:bit runtime will be quietly ignored.
 
-To enable this functionality, simply create an instance of the [`MicroBitMessageBus`](ubit/messageBus.md) class. From that point onward in your program, you can raise and listen for events as described in the [`MicroBitMessageBus`](ubit/messagebus.md) documentation.
+To enable this functionality, simply create an instance of the [`MicroBitMessageBus`](ubit/messageBus.md) class. From that point onward in your program, you can raise and listen for events as described in the [`MicroBitMessageBus`](ubit/messageBus.md) documentation.
 
 ```cpp
 #include "MicroBit.h"
@@ -92,7 +92,7 @@ int main()
 ## Initialising the Fiber Scheduler
 
 Often when using asynchronous events, it is also useful to run the fiber scheduler. Without a scheduler in operation, all event handlers (such as the one above) will be executed with the threading mode `MESSAGE_BUS_LISTENER_IMMEDIATE`, as
-described on the [`MicroBitMessageBus`](ubit/messagebus.md) documentation.
+described on the [`MicroBitMessageBus`](ubit/messageBus.md) documentation.
 
 Also, it is not really possible to transparently enter a power efficient sleep - as illustrated in the busy loop in the above example.
 
