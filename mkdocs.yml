@@ -26,7 +26,7 @@ pages:
         - MicroBitEvent: "data-types/event.md"
         - ManagedString: "data-types/string.md"
         - PacketBuffer: "data-types/packetbuffer.md"
-    - BLE:
+    - Bluetooth:
         - Profile: "ble/profile.md"
         - AccelerometerService: "ble/accelerometer-service.md"
         - ButtonService: "ble/button-service.md"
