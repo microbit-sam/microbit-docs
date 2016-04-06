@@ -363,7 +363,7 @@
         
             <li><a href="#enabling-the-service">Enabling the Service</a></li>
         
-            <li><a href="#ble-service-specification">BLE Service Specification</a></li>
+            <li><a href="#bluetooth-service-specification">Bluetooth Service Specification</a></li>
         
             <li><a href="#example-applications-for-androidiosandroid">Example Applications for Android/IOS/Android</a></li>
         
@@ -375,7 +375,7 @@
 <h1 id="bluetooth-magnetometer-service">Bluetooth Magnetometer Service<a class="headerlink" href="#bluetooth-magnetometer-service" title="Permanent link">&para;</a></h1>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
 <p>This Bluetooth Low Energy (BLE) service is an optional part of the standard bluetooth profile for the micro:bit. It is a passive service, that can operate transparently in the
-background as your main program is running. It provides live electronic compass / magnetometer data to any attached BLE master device. You do not need to explicity address and API on the service to acheive this.</p>
+background as your main program is running. It provides live electronic compass / magnetometer data to a connected Bluetooth master device such as a smartphone. You do not need to explicity address an API on the service to achieve this.</p>
 <h2 id="enabling-the-service">Enabling the Service<a class="headerlink" href="#enabling-the-service" title="Permanent link">&para;</a></h2>
 <p>This service is disabled by default. To enable the service, simply create an instance of this class in your program, at any time after the uBit object has been initialised:</p>
 <pre><code class="cpp">    new MicroBitMagnetometerService(*uBit.ble, uBit.compass);    
@@ -383,12 +383,86 @@ background as your main program is running. It provides live electronic compass 
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Using BLE services is memory hungry. By default, some of the memory normally used by Nordic's BLE protocol stack (knwon as a SoftDevice), is reclaimed by the micro:bit runtime as general purpose memory for your applications. if you enable more BLE services, then you may need to provide more memory back to Soft Device to ensure proper operation. If after enabling this service your BLE applicaiton cannot access the service reliably, you should consider increasing the value of MICROBIT_SD_GATT_TABLE_SIZE in your inc/MicroBitConfig.h. The more service you add, the larger this will need to be, up to the limit defined in MicroBitConfig.h.</p>
+<p>Using Bluetooth services is memory hungry. By default, some of the memory normally used by Nordic's Bluetooth protocol stack (known as a SoftDevice), is reclaimed by the micro:bit runtime as general purpose memory for your applications. if you enable more Bluetooth services, then you may need to provide more memory back to Soft Device to ensure proper operation. If after enabling this service your Bluetooth applicaiton cannot access the service reliably, you should consider increasing the value of MICROBIT_SD_GATT_TABLE_SIZE in your inc/MicroBitConfig.h. The more service you add, the larger this will need to be, up to the limit defined in MicroBitConfig.h.</p>
 </div>
-<h2 id="ble-service-specification">BLE Service Specification<a class="headerlink" href="#ble-service-specification" title="Permanent link">&para;</a></h2>
-<p>Please see the <a href="../../resources/bluetooth/microbit-profile-V1.7-Level-2.pdf">micro:bit BLE profile specification</a>.</p>
+<h2 id="bluetooth-service-specification">Bluetooth Service Specification<a class="headerlink" href="#bluetooth-service-specification" title="Permanent link">&para;</a></h2>
+<p>Please see the <a href="../../resources/bluetooth/microbit-profile-V1.7-Level-2.pdf">micro:bit Bluetooth profile specification</a>.</p>
 <h2 id="example-applications-for-androidiosandroid">Example Applications for Android/IOS/Android<a class="headerlink" href="#example-applications-for-androidiosandroid" title="Permanent link">&para;</a></h2>
-<p>COMING SOON</p></div>
+<h3 id="general-procedures">General Procedures<a class="headerlink" href="#general-procedures" title="Permanent link">&para;</a></h3>
+<p>micro:bit has an LED display with 5 rows and 5 columns i.e. 25 LEDs in total. The Bluetooth LED service allows the entire grid to be addressed as a bitmap using the LED Matrix State characteristic which supports both read and write operations. Text strings can be sent to the micro:bit for display by writing to the LED Text characteristic and the speed with which it is scrolled can be controlled by setting a delay value in milliseconds by writing to the Scrolling Delay characteristic.</p>
+<p>See the profile page and profile reference documentation for data format and UUID details.</p>
+<h3 id="android">Android<a class="headerlink" href="#android" title="Permanent link">&para;</a></h3>
+<p><img src="../../resources/bluetooth/magnetometer_icon.png" alt="LED Demo"></p>
+<h4 id="android-bluetooth-apis">Android Bluetooth APIs<a class="headerlink" href="#android-bluetooth-apis" title="Permanent link">&para;</a></h4>
+<p>Android developers should make themselves familiar with the <a href="http://developer.android.com/guide/topics/connectivity/bluetooth-le.html">Android Bluetooth low energy APIs</a></p>
+<h4 id="microbit-ble-demo-android">microbit-ble-demo-android<a class="headerlink" href="#microbit-ble-demo-android" title="Permanent link">&para;</a></h4>
+<p>The open source microbit-ble-demo-android application contains a partial demonstration of the micro:bit Bluetooth Magnetometer service. The main body of code for this demonstration can be found in ui.MagnetometerActivity.java except for the Bluetooth operations themselves which are in bluetooth.BleAdapterService which acts as a kind of higher level Bluetooth API for activities to use without needing to directly concern themselves too closely with the Android APIs themselves. In most cases, operations are asynchronous so that the activity code initiates a Bluetooth operation by calling one of the methods in bluetooth.BleAdapterService (e.g. readCharacteristic(....) ) and later receives a message containing the result of the operation from this object via a Handler object. The message is examined in the Handler code and acted upon.</p>
+<p>Key parts of the magnetometer demonstration in this application are explained next.</p>
+<h4 id="in-bluetoothbleadapterservice">In bluetooth.BleAdapterService<a class="headerlink" href="#in-bluetoothbleadapterservice" title="Permanent link">&para;</a></h4>
+<pre><code class="java">public static String MAGNETOMETERSERVICE_SERVICE_UUID = &quot;E95DF2D8251D470AA062FA1922DFA9A8&quot;;
+public static String MAGNETOMETERDATA_CHARACTERISTIC_UUID = &quot;E95DFB11251D470AA062FA1922DFA9A8&quot;;
+public static String MAGNETOMETERPERIOD_CHARACTERISTIC_UUID = &quot;E95D386C251D470AA062FA1922DFA9A8&quot;;
+public static String MAGNETOMETERBEARING_CHARACTERISTIC_UUID = &quot;E95D9715251D470AA062FA1922DFA9A8&quot;;
+</code></pre>
+
+<h4 id="in-uimagnetometeractivity">In ui.MagnetometerActivity<a class="headerlink" href="#in-uimagnetometeractivity" title="Permanent link">&para;</a></h4>
+<pre><code class="java">// enabling notifications on the Magnetometer Bearing characteristic
+bluetooth_le_adapter.setNotificationsState(
+                    Utility.normaliseUUID(BleAdapterService.MAGNETOMETERSERVICE_SERVICE_UUID), 
+                    Utility.normaliseUUID(BleAdapterService.MAGNETOMETERBEARING_CHARACTERISTIC_UUID), true)
+
+// enabling notifications on the Magnetometer Data characteristic
+bluetooth_le_adapter.setNotificationsState(
+                    Utility.normaliseUUID(BleAdapterService.MAGNETOMETERSERVICE_SERVICE_UUID), 
+                    Utility.normaliseUUID(BleAdapterService.MAGNETOMETERDATA_CHARACTERISTIC_UUID), true)                    
+</code></pre>
+
+<pre><code class="java">// handlign notifications
+case BleAdapterService.NOTIFICATION_RECEIVED:
+    bundle = msg.getData();
+    service_uuid = bundle.getString(BleAdapterService.PARCEL_SERVICE_UUID);
+    characteristic_uuid = bundle.getString(BleAdapterService.PARCEL_CHARACTERISTIC_UUID);
+    b = bundle.getByteArray(BleAdapterService.PARCEL_VALUE);
+    Log.d(Constants.TAG, &quot;Value=&quot; + Utility.byteArrayAsHexString(b));
+    if (characteristic_uuid.equalsIgnoreCase((Utility.normaliseUUID(BleAdapterService.MAGNETOMETERDATA_CHARACTERISTIC_UUID)))) {
+        byte[] x_bytes = new byte[2];
+        byte[] y_bytes = new byte[2];
+        byte[] z_bytes = new byte[2];
+        System.arraycopy(b, 0, x_bytes, 0, 2);
+        System.arraycopy(b, 2, y_bytes, 0, 2);
+        System.arraycopy(b, 4, z_bytes, 0, 2);
+        short raw_x = Utility.shortFromLittleEndianBytes(x_bytes);
+        short raw_y = Utility.shortFromLittleEndianBytes(y_bytes);
+        short raw_z = Utility.shortFromLittleEndianBytes(z_bytes);
+        Log.d(Constants.TAG, &quot;Magnetometer Data received: x=&quot; + raw_x + &quot; y=&quot; + raw_y + &quot; z=&quot; + raw_z);
+
+        float magnet_x = raw_x / 1000f;
+        float magnet_y = raw_y / 1000f;
+        float magnet_z = raw_z / 1000f;
+        Log.d(Constants.TAG, &quot;magnetometer data converted: x=&quot; + magnet_x + &quot; y=&quot; + magnet_y + &quot; z=&quot; + magnet_z);
+
+        magnet_input[0] = magnet_x;
+        magnet_input[1] = magnet_y;
+        magnet_input[2] = magnet_z;
+        magnet_output = Utility.lowPass(magnet_input, magnet_output);
+        Log.d(Constants.TAG, &quot;Smoothed magnetometer data: x=&quot; + magnet_output[0] + &quot; y=&quot; + magnet_output[1] + &quot; z=&quot; + magnet_output[2]);
+
+        ((TextView) MagnetometerActivity.this.findViewById(R.id.magnet_x)).setText(&quot;X: &quot; + String.format(&quot;%.3f&quot;, magnet_output[0]));
+        ((TextView) MagnetometerActivity.this.findViewById(R.id.magnet_y)).setText(&quot;Y: &quot; + String.format(&quot;%.3f&quot;, magnet_output[1]));
+        ((TextView) MagnetometerActivity.this.findViewById(R.id.magnet_z)).setText(&quot;Z: &quot; + String.format(&quot;%.3f&quot;, magnet_output[2]));
+
+    } else {
+        if (characteristic_uuid.equalsIgnoreCase((Utility.normaliseUUID(BleAdapterService.MAGNETOMETERBEARING_CHARACTERISTIC_UUID)))) {
+            byte[] bearing_bytes = new byte[2];
+            System.arraycopy(b, 0, bearing_bytes, 0, 2);
+            short bearing = Utility.shortFromLittleEndianBytes(bearing_bytes);
+            Log.d(Constants.TAG, &quot;Magnetometer Bearing received: &quot; + bearing);
+            ((TextView) MagnetometerActivity.this.findViewById(R.id.bearing)).setText(bearing + &quot; degrees&quot;);
+            current_bearing = bearing;
+        }
+    }
+    break;
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">

@@ -363,7 +363,7 @@
         
             <li><a href="#enabling-the-service">Enabling the Service</a></li>
         
-            <li><a href="#ble-service-specification">BLE Service Specification</a></li>
+            <li><a href="#bluetooth-service-specification">Bluetooth Service Specification</a></li>
         
             <li><a href="#example-applications-for-androidiosandroid">Example Applications for Android/IOS/Android</a></li>
         
@@ -374,21 +374,76 @@
 
 <h1 id="bluetooth-button-service">Bluetooth Button Service<a class="headerlink" href="#bluetooth-button-service" title="Permanent link">&para;</a></h1>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
-<p>This Bluetooth Low Energy (BLE) service is an optional part of the standard bluetooth profile for the micro:bit. It is a passive service, that can operate transparently in the
-background as your main program is running. It provides live updates of the state of the physical buttons on the device to an BLE master device. You do not need to explicity address and API on the service to acheive this.</p>
+<p>This Bluetooth service is an optional part of the standard Bluetooth profile for the micro:bit. It is a passive service, that can operate transparently in the
+background as your main program is running. It provides live updates of the state of the physical buttons on the device to a connected Bluetooth master device such as a smartphone. You do not need to explicity address an API on the service to achieve this.</p>
 <h2 id="enabling-the-service">Enabling the Service<a class="headerlink" href="#enabling-the-service" title="Permanent link">&para;</a></h2>
-<p>This service is disabled by default. To enable the service, simply create an instance of this class in your program, at any time after the uBit object has been initialised:</p>
+<p>To enable the service, simply create an instance of this class in your program, at any time after the uBit object has been initialised:</p>
 <pre><code class="cpp">    new MicroBitButtonService(*uBit.ble);
 </code></pre>
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Using BLE services is memory hungry. By default, some of the memory normally used by Nordic's BLE protocol stack (knwon as a SoftDevice), is reclaimed by the micro:bit runtime as general purpose memory for your applications. if you enable more BLE services, then you may need to provide more memory back to Soft Device to ensure proper operation. If after enabling this service your BLE applicaiton cannot access the service reliably, you should consider increasing the value of MICROBIT_SD_GATT_TABLE_SIZE in your inc/MicroBitConfig.h. The more service you add, the larger this will need to be, up to the limit defined in MicroBitConfig.h.</p>
+<p>Using Bluetooth services is memory hungry. By default, some of the memory normally used by Nordic's Bluetooth protocol stack (known as a SoftDevice), is reclaimed by the micro:bit runtime as general purpose memory for your applications. if you enable more Bluetooth services, then you may need to provide more memory back to Soft Device to ensure proper operation. If after enabling this service your Bluetooth application cannot access the service reliably, you should consider increasing the value of MICROBIT_SD_GATT_TABLE_SIZE in your inc/MicroBitConfig.h. The more service you add, the larger this will need to be, up to the limit defined in MicroBitConfig.h.</p>
 </div>
-<h2 id="ble-service-specification">BLE Service Specification<a class="headerlink" href="#ble-service-specification" title="Permanent link">&para;</a></h2>
-<p>Please see the <a href="../../resources/bluetooth/microbit-profile-V1.7-Level-2.pdf">micro:bit BLE profile specification</a>.</p>
+<h2 id="bluetooth-service-specification">Bluetooth Service Specification<a class="headerlink" href="#bluetooth-service-specification" title="Permanent link">&para;</a></h2>
+<p>Please see the <a href="../../resources/bluetooth/microbit-profile-V1.7-Level-2.pdf">micro:bit Bluetooth profile specification</a>.</p>
 <h2 id="example-applications-for-androidiosandroid">Example Applications for Android/IOS/Android<a class="headerlink" href="#example-applications-for-androidiosandroid" title="Permanent link">&para;</a></h2>
-<p>COMING SOON</p></div>
+<h3 id="general-procedures">General Procedures<a class="headerlink" href="#general-procedures" title="Permanent link">&para;</a></h3>
+<p>Each of the two front panel buttons, Button A and Button B is represented in the Bluetooth profile by a characteristic in the Button Service. The two characteristics are called Button A State and Button B State. Each supports read and notify operations, the most useful of which is notify.</p>
+<p>To have your application notified of a change in the state of button A or button B, set the value of the Client Characteristic Configuration Descriptor (CCCD) associated with the appropriate characteristic to 0x0100. Once this has been done, notification messages will be received each time the state of a button changes. Note that buttons have 3 possible states; Not Pressed, Pressed and Long Press (pressed and held for at least 2 seconds) and these are represented by characteristic values 0, 1 and 2.</p>
+<p>See the profile page and profile reference documentation for data format and UUID details.</p>
+<h3 id="android">Android<a class="headerlink" href="#android" title="Permanent link">&para;</a></h3>
+<p><img src="../../resources/bluetooth/button_demo.png" alt="Button Demo"></p>
+<h4 id="android-bluetooth-apis">Android Bluetooth APIs<a class="headerlink" href="#android-bluetooth-apis" title="Permanent link">&para;</a></h4>
+<p>Android developers should make themselves familiar with the <a href="http://developer.android.com/guide/topics/connectivity/bluetooth-le.html">Android Bluetooth low energy APIs</a></p>
+<h4 id="microbit-ble-demo-android">microbit-ble-demo-android<a class="headerlink" href="#microbit-ble-demo-android" title="Permanent link">&para;</a></h4>
+<p>The open source microbit-ble-demo-android application contains a full demonstration of the micro:bit Bluetooth accelerometer service. The main body of code for this demonstration can be found in ui.ButtonActivity.java except for the Bluetooth operations themselves which are in bluetooth.BleAdapterService which acts as a kind of higher level Bluetooth API for activities to use without needing to directly concern themselves too closely with the Android APIs themselves. In most cases, operations are asynchronous so that the activity code initiates a Bluetooth operation by calling one of the methods in bluetooth.BleAdapterService (e.g. readCharacteristic(....) ) and later receives a message containing the result of the operation from this object via a Handler object. The message is examined in the Handler code and acted upon.</p>
+<p>Key parts of the button demonstration in this application are explained next.</p>
+<h4 id="in-bluetoothbleadapterservice">In bluetooth.BleAdapterService<a class="headerlink" href="#in-bluetoothbleadapterservice" title="Permanent link">&para;</a></h4>
+<pre><code class="java">public static String BUTTONSERVICE_SERVICE_UUID = &quot;E95D9882251D470AA062FA1922DFA9A8&quot;;
+public static String BUTTON1STATE_CHARACTERISTIC_UUID = &quot;E95DDA90251D470AA062FA1922DFA9A8&quot;;
+public static String BUTTON2STATE_CHARACTERISTIC_UUID = &quot;E95DDA91251D470AA062FA1922DFA9A8&quot;;
+</code></pre>
+
+<h4 id="in-uibuttonactivity">In ui.ButtonActivity<a class="headerlink" href="#in-uibuttonactivity" title="Permanent link">&para;</a></h4>
+<pre><code class="java">// enabling button state change notifications
+bluetooth_le_adapter.setNotificationsState(
+                    Utility.normaliseUUID(BleAdapterService.BUTTONSERVICE_SERVICE_UUID),
+                    Utility.normaliseUUID(BleAdapterService.BUTTON1STATE_CHARACTERISTIC_UUID), true)
+
+bluetooth_le_adapter.setNotificationsState(
+                    Utility.normaliseUUID(BleAdapterService.BUTTONSERVICE_SERVICE_UUID), 
+                    Utility.normaliseUUID(BleAdapterService.BUTTON2STATE_CHARACTERISTIC_UUID), true)                    
+</code></pre>
+
+<pre><code class="java">// receiving, decoding and responding to a notification
+case BleAdapterService.NOTIFICATION_RECEIVED:
+    bundle = msg.getData();
+    service_uuid = bundle.getString(BleAdapterService.PARCEL_SERVICE_UUID);
+    characteristic_uuid = bundle.getString(BleAdapterService.PARCEL_CHARACTERISTIC_UUID);
+    b = bundle.getByteArray(BleAdapterService.PARCEL_VALUE);
+    byte btn_state = b[0];
+    Log.d(Constants.TAG, &quot;Value=&quot; + Utility.byteArrayAsHexString(b));
+    if (characteristic_uuid.equalsIgnoreCase((Utility.normaliseUUID(BleAdapterService.BUTTON1STATE_CHARACTERISTIC_UUID)))) {
+        Log.d(Constants.TAG, &quot;Button 1 State received: &quot; + btn_state);
+        ImageView b1_image = (ImageView) ButtonActivity.this.findViewById(R.id.button1);
+        setButtonImage(b1_image, btn_state);
+        TextView b1_label = (TextView) ButtonActivity.this.findViewById(R.id.button1_state);
+        setButtonLabel(b1_label, btn_state);
+    } else {
+        if (characteristic_uuid.equalsIgnoreCase((Utility.normaliseUUID(BleAdapterService.BUTTON2STATE_CHARACTERISTIC_UUID)))) {
+            Log.d(Constants.TAG, &quot;Button 2 State received: &quot; + btn_state);
+            ImageView b2_image = (ImageView) ButtonActivity.this.findViewById(R.id.button2);
+            setButtonImage(b2_image, btn_state);
+            TextView b2_label = (TextView) ButtonActivity.this.findViewById(R.id.button2_state);
+            setButtonLabel(b2_label, btn_state);
+        }
+    }
+    break;
+</code></pre>
+
+<h4 id="video-demonstration-starts-at-059">Video Demonstration - starts at 0:59<a class="headerlink" href="#video-demonstration-starts-at-059" title="Permanent link">&para;</a></h4>
+<iframe src="https://player.vimeo.com/video/153078747" width="750" height="422" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>
         </div>
 
         <footer class="col-md-12">

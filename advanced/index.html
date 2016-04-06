@@ -357,7 +357,7 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#advanced-features-of-the-runtime">Advanced Features of the runtime</a></li>
+        <li class="main active"><a href="#advanced-features-of-the-runtime">Advanced Features of the Runtime</a></li>
         
             <li><a href="#using-components-directly">Using Components Directly</a></li>
         
@@ -376,7 +376,7 @@
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="advanced-features-of-the-runtime">Advanced Features of the runtime<a class="headerlink" href="#advanced-features-of-the-runtime" title="Permanent link">&para;</a></h1>
+<h1 id="advanced-features-of-the-runtime">Advanced Features of the Runtime<a class="headerlink" href="#advanced-features-of-the-runtime" title="Permanent link">&para;</a></h1>
 <p>Under the surface, the micro:bit runtime is a highly configurable, modular and component based piece of software.</p>
 <p>The <code>uBit</code> object is provided as a collection of the commonly used components, all gathered together in one place
 to make it easier for novice users to access the functionality of the device. However, there is no obligation to
@@ -388,7 +388,7 @@ at the expense of the user taking more responsibility and additional complexity 
 <p>Taking advantage of the modular structure of the micro:bit runtime is fairly straightforward.</p>
 <ul>
 <li>Firstly, create a program that does <strong>not</strong> create or initialise a uBit object.</li>
-<li>Include "MicroBit.h" (or if you prefer, just the header files of the components you want to use). Including "MicroBit.h" is however, simpler.</li>
+<li>Include <code>MicroBit.h</code> (or if you prefer, just the header files of the components you want to use). Including <code>MicroBit.h</code> is however, simpler.</li>
 <li>Instead, create C++ object instances of the classes that you want to use <strong>as global variables</strong> in your program. Create as many components as you need. You are free to use any of the constructors in this documentation.</li>
 <li>Call functions on those instances to elicit the behaviour you need, using the name of your object instances instead of <code>uBit.*</code></li>
 </ul>

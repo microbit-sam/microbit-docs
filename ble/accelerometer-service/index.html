@@ -363,7 +363,7 @@
         
             <li><a href="#enabling-the-service">Enabling the Service</a></li>
         
-            <li><a href="#ble-service-specification">BLE Service Specification</a></li>
+            <li><a href="#bluetooth-service-specification">Bluetooth Service Specification</a></li>
         
             <li><a href="#example-applications-for-androidiosandroid">Example Applications for Android/IOS/Android</a></li>
         
@@ -374,8 +374,7 @@
 
 <h1 id="bluetooth-accelerometer-service">Bluetooth Accelerometer Service<a class="headerlink" href="#bluetooth-accelerometer-service" title="Permanent link">&para;</a></h1>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
-<p>This Bluetooth Low Energy (BLE) service is an optional part of the standard bluetooth profile for the micro:bit. It is a passive service, that can operate transparently in the
-background as your main program is running. It provides live accelerometer data to any attached BLE master device. You do not need to explicity address and API on the service to acheive this.</p>
+<p>This Bluetooth service is an optional part of the standard Bluetooth profile for the micro:bit. It is a passive service, that can operate transparently in the background as your main program is running. It provides live accelerometer data to a connected Bluetooth master device such as a smartphone. You do not need to explicitly address an API on the service object to achieve this.</p>
 <h2 id="enabling-the-service">Enabling the Service<a class="headerlink" href="#enabling-the-service" title="Permanent link">&para;</a></h2>
 <p>This service is disabled by default. To enable the service, simply create an instance of this class in your program, at any time after the uBit object has been initialised:</p>
 <pre><code class="cpp">    new MicroBitAccelerometerService(*uBit.ble, uBit.accelerometer);
@@ -383,12 +382,99 @@ background as your main program is running. It provides live accelerometer data 
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Using BLE services is memory hungry. By default, some of the memory normally used by Nordic's BLE protocol stack (knwon as a SoftDevice), is reclaimed by the micro:bit runtime as general purpose memory for your applications. if you enable more BLE services, then you may need to provide more memory back to Soft Device to ensure proper operation. If after enabling this service your BLE applicaiton cannot access the service reliably, you should consider increasing the value of MICROBIT_SD_GATT_TABLE_SIZE in your inc/MicroBitConfig.h. The more service you add, the larger this will need to be, up to the limit defined in MicroBitConfig.h.</p>
+<p>Using Bluetooth services is memory hungry. By default, some of the memory normally used by Nordic's Bluetooth protocol stack (known as a SoftDevice), is reclaimed by the micro:bit runtime as general purpose memory for your applications. if you enable more Bluetooth services, then you may need to provide more memory back to Soft Device to ensure proper operation. If after enabling this service your Bluetooth applicaiton cannot access the service reliably, you should consider increasing the value of MICROBIT_SD_GATT_TABLE_SIZE in your inc/MicroBitConfig.h. The more service you add, the larger this will need to be, up to the limit defined in MicroBitConfig.h.</p>
 </div>
-<h2 id="ble-service-specification">BLE Service Specification<a class="headerlink" href="#ble-service-specification" title="Permanent link">&para;</a></h2>
-<p>Please see the <a href="../../resources/bluetooth/microbit-profile-V1.7-Level-2.pdf">micro:bit BLE profile specification</a>.</p>
+<h2 id="bluetooth-service-specification">Bluetooth Service Specification<a class="headerlink" href="#bluetooth-service-specification" title="Permanent link">&para;</a></h2>
+<p>Please see the <a href="../../resources/bluetooth/microbit-profile-V1.7-Level-2.pdf">micro:bit Bluetooth profile specification</a>.</p>
 <h2 id="example-applications-for-androidiosandroid">Example Applications for Android/IOS/Android<a class="headerlink" href="#example-applications-for-androidiosandroid" title="Permanent link">&para;</a></h2>
-<p>COMING SOON</p></div>
+<h3 id="general-procedures">General Procedures<a class="headerlink" href="#general-procedures" title="Permanent link">&para;</a></h3>
+<p>Accelerometer data may be obtained from the Bluetooth Accelerometer Service. Each time the accelerometer is polled, an X, Y and Z value becomes available. All three values may be transmitted to a connected client application as a Bluetooth Notification. To make this happen, the application must first subscribe to notifications relating to the Accelerometer Data characteristic by setting its associated Client Characteristic Configuration Descriptor (CCCD) to 0x0100. Once this has been done, notification messages will be delivered periodically.</p>
+<p>You can control how often the accelerometer is polled and therefore how often Accelerometer Data notifications are received by the client application by writing a value in milliseconds to the Accelerometer Service's Accelerometer Period characteristic.</p>
+<p>See the profile page and profile reference documentation for data format and UUID details.</p>
+<p>Raw accelerometer data received from the micro:bit can be a bit "jerky" and so a low pass filter function should be used to smooth the data. </p>
+<h3 id="android">Android<a class="headerlink" href="#android" title="Permanent link">&para;</a></h3>
+<p><img src="../../resources/bluetooth/accelerometer_demo.png" alt="Accelerometer Demo"></p>
+<h4 id="android-bluetooth-apis">Android Bluetooth APIs<a class="headerlink" href="#android-bluetooth-apis" title="Permanent link">&para;</a></h4>
+<p>Android developers should make themselves familiar with the <a href="http://developer.android.com/guide/topics/connectivity/bluetooth-le.html">Android Bluetooth low energy APIs</a></p>
+<h4 id="microbit-ble-demo-android">microbit-ble-demo-android<a class="headerlink" href="#microbit-ble-demo-android" title="Permanent link">&para;</a></h4>
+<p>The open source microbit-ble-demo-android application contains a full demonstration of the micro:bit Bluetooth accelerometer service. The main body of code for this demonstration can be found in ui.AccelerometerActivity.java except for the Bluetooth operations themselves which are in bluetooth.BleAdapterService which acts as a kind of higher level Bluetooth API for activities to use without needing to directly concern themselves too closely with the Android APIs themselves. In most cases, operations are asynchronous so that the activity code initiates a Bluetooth operation by calling one of the methods in bluetooth.BleAdapterService (e.g. readCharacteristic(....) ) and later receives a message containing the result of the operation from this object via a Handler object. The message is examined in the Handler code and acted upon.</p>
+<p>Key parts of the accelerometer demonstration in this application are explained next.</p>
+<h4 id="in-bluetoothbleadapterservice">In bluetooth.BleAdapterService<a class="headerlink" href="#in-bluetoothbleadapterservice" title="Permanent link">&para;</a></h4>
+<pre><code class="java">public static String ACCELEROMETERSERVICE_SERVICE_UUID = &quot;E95D0753251D470AA062FA1922DFA9A8&quot;;
+public static String ACCELEROMETERDATA_CHARACTERISTIC_UUID = &quot;E95DCA4B251D470AA062FA1922DFA9A8&quot;;
+public static String ACCELEROMETERPERIOD_CHARACTERISTIC_UUID = &quot;E95DFB24251D470AA062FA1922DFA9A8&quot;;
+</code></pre>
+
+<h4 id="in-uiaccelerometeractivity">In ui.AccelerometerActivity<a class="headerlink" href="#in-uiaccelerometeractivity" title="Permanent link">&para;</a></h4>
+<pre><code class="java">// initiate reading of the accelerometer period characteristic to establish the current value
+bluetooth_le_adapter.readCharacteristic(Utility.normaliseUUID(BleAdapterService.ACCELEROMETERSERVICE_SERVICE_UUID),Utility.normaliseUUID(BleAdapterService.ACCELEROMETERPERIOD_CHARACTERISTIC_UUID));
+</code></pre>
+
+<pre><code class="java">// changing the accelerometer polling period
+bluetooth_le_adapter.writeCharacteristic(Utility.normaliseUUID(BleAdapterService.ACCELEROMETERSERVICE_SERVICE_UUID), Utility.normaliseUUID(BleAdapterService.ACCELEROMETERPERIOD_CHARACTERISTIC_UUID), Utility.leBytesFromShort(Settings.getInstance().getAccelerometer_period()));
+</code></pre>
+
+<pre><code class="java">// enabling accelerometer notifications
+bluetooth_le_adapter.setNotificationsState(
+                    Utility.normaliseUUID(BleAdapterService.ACCELEROMETERSERVICE_SERVICE_UUID), 
+                    Utility.normaliseUUID(BleAdapterService.ACCELEROMETERDATA_CHARACTERISTIC_UUID), true);
+</code></pre>
+
+<pre><code class="java">// receiving, decoding and smoothing a notification
+case BleAdapterService.NOTIFICATION_RECEIVED:
+    bundle = msg.getData();
+    service_uuid = bundle.getString(BleAdapterService.PARCEL_SERVICE_UUID);
+    characteristic_uuid = bundle.getString(BleAdapterService.PARCEL_CHARACTERISTIC_UUID);
+    b = bundle.getByteArray(BleAdapterService.PARCEL_VALUE);
+    Log.d(Constants.TAG, &quot;Value=&quot; + Utility.byteArrayAsHexString(b));
+    if (characteristic_uuid.equalsIgnoreCase((Utility.normaliseUUID(BleAdapterService.ACCELEROMETERDATA_CHARACTERISTIC_UUID)))) {
+        notification_count++;
+        if (System.currentTimeMillis() - start_time &gt;= 60000) {
+            showBenchmark();
+            notification_count = 0;
+            minute_number++;
+            start_time = System.currentTimeMillis();
+        }
+        byte[] x_bytes = new byte[2];
+        byte[] y_bytes = new byte[2];
+        byte[] z_bytes = new byte[2];
+        System.arraycopy(b, 0, x_bytes, 0, 2);
+        System.arraycopy(b, 2, y_bytes, 0, 2);
+        System.arraycopy(b, 4, z_bytes, 0, 2);
+        short raw_x = Utility.shortFromLittleEndianBytes(x_bytes);
+        short raw_y = Utility.shortFromLittleEndianBytes(y_bytes);
+        short raw_z = Utility.shortFromLittleEndianBytes(z_bytes);
+        Log.d(Constants.TAG, &quot;Accelerometer Data received: x=&quot; + raw_x + &quot; y=&quot; + raw_y + &quot; z=&quot; + raw_z);
+
+
+        // range is -1024 : +1024
+        // Starting with the LED display face up and level (perpendicular to gravity) and edge connector towards your body:
+        // A negative X value means tilting left, a positive X value means tilting right
+        // A negative Y value means tilting away from you, a positive Y value means tilting towards you
+        // A negative Z value means ?
+
+        float accel_x = raw_x / 1000f;
+        float accel_y = raw_y / 1000f;
+        float accel_z = raw_z / 1000f;
+        Log.d(Constants.TAG, &quot;Accelerometer data converted: x=&quot; + accel_x + &quot; y=&quot; + accel_y + &quot; z=&quot; + accel_z);
+
+        accel_input[0] = accel_x;
+        accel_input[1] = accel_y;
+        accel_input[2] = accel_z;
+        accel_output = Utility.lowPass(accel_input, accel_output);
+        Log.d(Constants.TAG, &quot;Smoothed accelerometer data: x=&quot; + accel_output[0] + &quot; y=&quot; + accel_output[1] + &quot; z=&quot; + accel_output[2]);
+
+        double pitch = Math.atan(accel_output[0] / Math.sqrt(Math.pow(accel_output[1], 2) + Math.pow(accel_output[2], 2)));
+        double roll = Math.atan(accel_output[1] / Math.sqrt(Math.pow(accel_output[0], 2) + Math.pow(accel_output[2], 2)));
+        //convert radians into degrees
+        pitch = pitch * (180.0 / Math.PI);
+        roll = -1 * roll * (180.0 / Math.PI);
+
+        showAccelerometerData(accel_output,pitch,roll);
+</code></pre>
+
+<h4 id="video-demonstration-starts-at-018">Video Demonstration - starts at 0:18<a class="headerlink" href="#video-demonstration-starts-at-018" title="Permanent link">&para;</a></h4>
+<iframe src="https://player.vimeo.com/video/153078747" width="750" height="422" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>
         </div>
 
         <footer class="col-md-12">
