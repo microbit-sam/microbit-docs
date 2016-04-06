@@ -34,7 +34,7 @@ Raw accelerometer data received from the micro:bit can be a bit "jerky" and so a
 
 ### Android
 
-<img src="../resources/bluetooth/accelerometer_demo.jpg" alt="Accelerometer Demo">
+<img src="../../resources/bluetooth/accelerometer_demo.jpg" alt="Accelerometer Demo">
 
 #### Android Bluetooth APIs
 
@@ -49,82 +49,81 @@ Key parts of the accelerometer demonstration in this apoplication are explained 
 #### In bluetooth.BleAdapterService
 
 ``` java
-    public static String ACCELEROMETERSERVICE_SERVICE_UUID = "E95D0753251D470AA062FA1922DFA9A8";
-    public static String ACCELEROMETERDATA_CHARACTERISTIC_UUID = "E95DCA4B251D470AA062FA1922DFA9A8";
-    public static String ACCELEROMETERPERIOD_CHARACTERISTIC_UUID = "E95DFB24251D470AA062FA1922DFA9A8";
+public static String ACCELEROMETERSERVICE_SERVICE_UUID = "E95D0753251D470AA062FA1922DFA9A8";
+public static String ACCELEROMETERDATA_CHARACTERISTIC_UUID = "E95DCA4B251D470AA062FA1922DFA9A8";
+public static String ACCELEROMETERPERIOD_CHARACTERISTIC_UUID = "E95DFB24251D470AA062FA1922DFA9A8";
 ```
 
 #### In ui.AccelerometerActivity
 
 ``` java
-            // initiate reading of the accelerometer period characteristic to establish the current value
-            bluetooth_le_adapter.readCharacteristic(Utility.normaliseUUID(BleAdapterService.ACCELEROMETERSERVICE_SERVICE_UUID),Utility.normaliseUUID(BleAdapterService.ACCELEROMETERPERIOD_CHARACTERISTIC_UUID));
+// initiate reading of the accelerometer period characteristic to establish the current value
+bluetooth_le_adapter.readCharacteristic(Utility.normaliseUUID(BleAdapterService.ACCELEROMETERSERVICE_SERVICE_UUID),Utility.normaliseUUID(BleAdapterService.ACCELEROMETERPERIOD_CHARACTERISTIC_UUID));
 ```
 
 ``` java
-            // changing the accelerometer polling period
-            bluetooth_le_adapter.writeCharacteristic(Utility.normaliseUUID(BleAdapterService.ACCELEROMETERSERVICE_SERVICE_UUID), Utility.normaliseUUID(BleAdapterService.ACCELEROMETERPERIOD_CHARACTERISTIC_UUID), Utility.leBytesFromShort(Settings.getInstance().getAccelerometer_period()));
+// changing the accelerometer polling period
+bluetooth_le_adapter.writeCharacteristic(Utility.normaliseUUID(BleAdapterService.ACCELEROMETERSERVICE_SERVICE_UUID), Utility.normaliseUUID(BleAdapterService.ACCELEROMETERPERIOD_CHARACTERISTIC_UUID), Utility.leBytesFromShort(Settings.getInstance().getAccelerometer_period()));
 ```
 
 ``` java
-            // enabling accelerometer notifications
-            bluetooth_le_adapter.setNotificationsState(Utility.normaliseUUID(BleAdapterService.ACCELEROMETERSERVICE_SERVICE_UUID), Utility.normaliseUUID(BleAdapterService.ACCELEROMETERDATA_CHARACTERISTIC_UUID), true);
+// enabling accelerometer notifications
+bluetooth_le_adapter.setNotificationsState(Utility.normaliseUUID(BleAdapterService.ACCELEROMETERSERVICE_SERVICE_UUID), Utility.normaliseUUID(BleAdapterService.ACCELEROMETERDATA_CHARACTERISTIC_UUID), true);
 ```
                        
 
 ``` java
-            // receiving, decoding and smoothing a notification
+// receiving, decoding and smoothing a notification
+case BleAdapterService.NOTIFICATION_RECEIVED:
+    bundle = msg.getData();
+    service_uuid = bundle.getString(BleAdapterService.PARCEL_SERVICE_UUID);
+    characteristic_uuid = bundle.getString(BleAdapterService.PARCEL_CHARACTERISTIC_UUID);
+    b = bundle.getByteArray(BleAdapterService.PARCEL_VALUE);
+    Log.d(Constants.TAG, "Value=" + Utility.byteArrayAsHexString(b));
+    if (characteristic_uuid.equalsIgnoreCase((Utility.normaliseUUID(BleAdapterService.ACCELEROMETERDATA_CHARACTERISTIC_UUID)))) {
+        notification_count++;
+        if (System.currentTimeMillis() - start_time >= 60000) {
+            showBenchmark();
+            notification_count = 0;
+            minute_number++;
+            start_time = System.currentTimeMillis();
+        }
+        byte[] x_bytes = new byte[2];
+        byte[] y_bytes = new byte[2];
+        byte[] z_bytes = new byte[2];
+        System.arraycopy(b, 0, x_bytes, 0, 2);
+        System.arraycopy(b, 2, y_bytes, 0, 2);
+        System.arraycopy(b, 4, z_bytes, 0, 2);
+        short raw_x = Utility.shortFromLittleEndianBytes(x_bytes);
+        short raw_y = Utility.shortFromLittleEndianBytes(y_bytes);
+        short raw_z = Utility.shortFromLittleEndianBytes(z_bytes);
+        Log.d(Constants.TAG, "Accelerometer Data received: x=" + raw_x + " y=" + raw_y + " z=" + raw_z);
 
-                case BleAdapterService.NOTIFICATION_RECEIVED:
-                    bundle = msg.getData();
-                    service_uuid = bundle.getString(BleAdapterService.PARCEL_SERVICE_UUID);
-                    characteristic_uuid = bundle.getString(BleAdapterService.PARCEL_CHARACTERISTIC_UUID);
-                    b = bundle.getByteArray(BleAdapterService.PARCEL_VALUE);
-                    Log.d(Constants.TAG, "Value=" + Utility.byteArrayAsHexString(b));
-                    if (characteristic_uuid.equalsIgnoreCase((Utility.normaliseUUID(BleAdapterService.ACCELEROMETERDATA_CHARACTERISTIC_UUID)))) {
-                        notification_count++;
-                        if (System.currentTimeMillis() - start_time >= 60000) {
-                            showBenchmark();
-                            notification_count = 0;
-                            minute_number++;
-                            start_time = System.currentTimeMillis();
-                        }
-                        byte[] x_bytes = new byte[2];
-                        byte[] y_bytes = new byte[2];
-                        byte[] z_bytes = new byte[2];
-                        System.arraycopy(b, 0, x_bytes, 0, 2);
-                        System.arraycopy(b, 2, y_bytes, 0, 2);
-                        System.arraycopy(b, 4, z_bytes, 0, 2);
-                        short raw_x = Utility.shortFromLittleEndianBytes(x_bytes);
-                        short raw_y = Utility.shortFromLittleEndianBytes(y_bytes);
-                        short raw_z = Utility.shortFromLittleEndianBytes(z_bytes);
-                        Log.d(Constants.TAG, "Accelerometer Data received: x=" + raw_x + " y=" + raw_y + " z=" + raw_z);
 
+        // range is -1024 : +1024
+        // Starting with the LED display face up and level (perpendicular to gravity) and edge connector towards your body:
+        // A negative X value means tilting left, a positive X value means tilting right
+        // A negative Y value means tilting away from you, a positive Y value means tilting towards you
+        // A negative Z value means ?
 
-                        // range is -1024 : +1024
-                        // Starting with the LED display face up and level (perpendicular to gravity) and edge connector towards your body:
-                        // A negative X value means tilting left, a positive X value means tilting right
-                        // A negative Y value means tilting away from you, a positive Y value means tilting towards you
-                        // A negative Z value means ?
+        float accel_x = raw_x / 1000f;
+        float accel_y = raw_y / 1000f;
+        float accel_z = raw_z / 1000f;
+        Log.d(Constants.TAG, "Accelerometer data converted: x=" + accel_x + " y=" + accel_y + " z=" + accel_z);
 
-                        float accel_x = raw_x / 1000f;
-                        float accel_y = raw_y / 1000f;
-                        float accel_z = raw_z / 1000f;
-                        Log.d(Constants.TAG, "Accelerometer data converted: x=" + accel_x + " y=" + accel_y + " z=" + accel_z);
+        accel_input[0] = accel_x;
+        accel_input[1] = accel_y;
+        accel_input[2] = accel_z;
+        accel_output = Utility.lowPass(accel_input, accel_output);
+        Log.d(Constants.TAG, "Smoothed accelerometer data: x=" + accel_output[0] + " y=" + accel_output[1] + " z=" + accel_output[2]);
 
-                        accel_input[0] = accel_x;
-                        accel_input[1] = accel_y;
-                        accel_input[2] = accel_z;
-                        accel_output = Utility.lowPass(accel_input, accel_output);
-                        Log.d(Constants.TAG, "Smoothed accelerometer data: x=" + accel_output[0] + " y=" + accel_output[1] + " z=" + accel_output[2]);
+        double pitch = Math.atan(accel_output[0] / Math.sqrt(Math.pow(accel_output[1], 2) + Math.pow(accel_output[2], 2)));
+        double roll = Math.atan(accel_output[1] / Math.sqrt(Math.pow(accel_output[0], 2) + Math.pow(accel_output[2], 2)));
+        //convert radians into degrees
+        pitch = pitch * (180.0 / Math.PI);
+        roll = -1 * roll * (180.0 / Math.PI);
 
-                        double pitch = Math.atan(accel_output[0] / Math.sqrt(Math.pow(accel_output[1], 2) + Math.pow(accel_output[2], 2)));
-                        double roll = Math.atan(accel_output[1] / Math.sqrt(Math.pow(accel_output[0], 2) + Math.pow(accel_output[2], 2)));
-                        //convert radians into degrees
-                        pitch = pitch * (180.0 / Math.PI);
-                        roll = -1 * roll * (180.0 / Math.PI);
-
-                        showAccelerometerData(accel_output,pitch,roll);
+        showAccelerometerData(accel_output,pitch,roll);
 ```
 
 
