@@ -3,13 +3,13 @@
 The micro:bit runtime provides an easy to use environment for programming the BBC micro:bit
 in the C/C++ language. It contains device drivers for all the hardware capabilities of the micro:bit,
 and also a suite of runtime mechanisms to make programming the micro:bit easier and more flexible. These
-range from control of the LED mtrix display to peer-to-peer radio communication and secure
+range from control of the LED matrix display to peer-to-peer radio communication and secure
 Bluetooth Low Energy services. The micro:bit runtime is proudly built on the [ARM mbed](https://www.mbed.com)
 and [Nordic nrf51](http://www.nordicsemi.com) platforms.
 
 In addition to supporting development in C/C++, the runtime is also designed specifically to support
 higher level languages provided by our partners that target the micro:bit. It is currently used as a support library for all the
-languages on the BBC [www.microbit.co.uk](http://www.microbit.co.uk) website, including Microsoft Block, Microsoft TouchDevelop, Code Kingdoms
+languages on the BBC [www.microbit.co.uk](http://www.microbit.co.uk) website, including Microsoft Block Editor, Microsoft Touch Develop, Code Kingdoms
 JavaScript and Micropython languages.
 
 ![micro:bit runtime](resources/examples/concepts/architecture.png)
