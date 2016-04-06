@@ -39,8 +39,8 @@ if not options.dal_headers:
 if not options.microbit_headers:
     options.microbit_headers = options.dal_headers
 
-type_color = "#a71d5d"
-variable_colour = "#795da3"
+type_colour = "#a71d5d"
+function_name_colour = "#795da3"
 
 separate_defaults = True
 display_defaults = False
@@ -127,6 +127,30 @@ def extract_ignoring_refs(element):
 
     for ref in element.iter(tag="ref"):
         list.append(ref.text)
+
+    return list
+
+###
+# this function extracts data from an element tag including all sub elements
+# (recursive)
+#
+# @param element the element to process
+#
+# @return a list of extracted strings.
+###
+def extract_with_subelements(element):
+    list = []
+
+    list.append(element.text or "")
+
+    #if element.text is not None:
+        #list.append(element.text)
+
+    for subelement in element:
+        if subelement is not None:
+            list = list + extract_with_subelements(subelement)
+
+    list.append(element.tail or "")
 
     return list
 
@@ -266,8 +290,13 @@ def extract_member_function(root, xml_element):
 
     detailed_description = xml_element.find('detaileddescription')
 
-    if detailed_description.find("para") is not None:
-        function['description'] = function['description'] + extract_ignoring_refs(detailed_description.find("para"))
+    if len(detailed_description.findall("para")) is not 0:
+        for para in detailed_description.findall("para"):
+            if len(para.findall("programlisting")) is 0 and len(para.findall("simplesect")) is 0:
+                function['description'] = function['description'] + extract_with_subelements(para)
+
+            #para indicates a new paragraph - we should treat it as such... append \n!
+            function['description'] = function['description'] + ["\n\n"]
 
     if len(detailed_description.findall("para/simplesect[@kind='return']/para")) is not 0:
          return_section = detailed_description.findall("para/simplesect[@kind='return']/para")[0]
@@ -429,9 +458,9 @@ def gen_param_text(param):
     text = "\n> "
 
     if param['type'] is not None:
-        text = text + " " + wrap_text(param['type'], type_color)
+        text = text + " " + wrap_text(param['type'], type_colour)
 
-    text = text + " *" + param['name'] + "*"
+    text = text + " " + param['name']
 
     if display_defaults:
         if len(param['default']['name']) is not 0:
@@ -497,7 +526,7 @@ def gen_member_func_doc(class_name, member_functions):
             short_name = ""
 
             if len(derived_func["return_type"]) is not 0:
-                short_name = "####" + wrap_text(derived_func["return_type"],"#FF69B4") + " " + derived_func["short_name"] + "("
+                short_name = "####" + wrap_text(derived_func["return_type"],type_colour) + " " +wrap_text(derived_func["short_name"], function_name_colour)  + "("
             else:
                 short_name = "####" + derived_func["short_name"] + "("
 
@@ -511,7 +540,7 @@ def gen_member_func_doc(class_name, member_functions):
                 text = ""
 
                 if param['type'] is not None:
-                    text = text + " " + wrap_text(param['type'], type_color)
+                    text = text + " " + wrap_text(param['type'], type_colour)
 
                 text = text + " " + param['name']
 
