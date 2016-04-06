@@ -1,4 +1,4 @@
-# Advanced Features of the runtime
+# Advanced Features of the Runtime
 
 Under the surface, the micro:bit runtime is a highly configurable, modular and component based piece of software.
 
@@ -15,7 +15,7 @@ at the expense of the user taking more responsibility and additional complexity 
 Taking advantage of the modular structure of the micro:bit runtime is fairly straightforward.
 
  - Firstly, create a program that does **not** create or initialise a uBit object.
- - Include "MicroBit.h" (or if you prefer, just the header files of the components you want to use). Including "MicroBit.h" is however, simpler.
+ - Include `MicroBit.h` (or if you prefer, just the header files of the components you want to use). Including `MicroBit.h` is however, simpler.
  - Instead, create C++ object instances of the classes that you want to use **as global variables** in your program. Create as many components as you need. You are free to use any of the constructors in this documentation.
  - Call functions on those instances to elicit the behaviour you need, using the name of your object instances instead of `uBit.*`
 
