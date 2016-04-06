@@ -87,7 +87,7 @@ A simplified overview appears below.
 | DFU Control Service | Custom | mandatory | Used to initiate device firmware update. Defined by Nordic Semiconductor. |
 
 
-Known issue: the firmware on micro:bits shipped initially to schools contains the full Bluetooth profile. Once the software has been changed by flashing an application created using any of the on-line code editors however, all services are lost except for Device Information Service, Event Serice and DFU Control Service. If you need other services you must retore your micro:bit to its original state by installing the [default hex file](../resources/BBC_MICROBIT_OOB_FINAL.hex) 
+Known issue: the firmware on micro:bits shipped initially to schools contains the full Bluetooth profile. Once the software has been changed by flashing an application created using any of the on-line code editors however, all services are lost except for Device Information Service, Event Serice and DFU Control Service. If you need other services you must retore your micro:bit to its original state by installing the [default hex file](../resources/BBC_MICROBIT_OOB_FINAL.zip) 
 
 The following sections elaborate on the description of a service and/or its characteristics. For full details see the [micro:bit Bluetooth profile specification](../resources/bluetooth/microbit-profile-V1.7-Level-2.pdf)
 
