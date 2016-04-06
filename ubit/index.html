@@ -401,17 +401,6 @@
 
 <h1 id="microbit">MicroBit<a class="headerlink" href="#microbit" title="Permanent link">&para;</a></h1>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<pre><code class="cpp">void main()
-{
-
-}
-
-int main(int t)
-{
-
-}
-</code></pre>
-
 <p>Although the runtime is built from lots of small components, we also provide an easy to use pre-packaged collection of the commonly used components
 all in one place. This makes it much easier to start programming your micro:bit in C.</p>
 <p>This grouping is provided by a C++ class called <code>MicroBit</code>.  The <code>MicroBit</code> class has a number of
@@ -482,12 +471,12 @@ uBit.sleep(X);
 <p>This call will initialised the scheduler, memory allocator and Bluetooth stack.  </p>
 <p>This is required as the Bluetooth stack can't be brought up in a static context i.e. in a constructor.  </p>
 <h5 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> uBit.init(); 
+<pre><code class="cpp"> uBit.init();
 </code></pre>
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This method must be called before user code utilises any functionality contained by uBit. </p>
+<p>This method must be called before user code utilises any functionality contained by uBit.</p>
 </div>
 <h2 id="reset">reset<a class="headerlink" href="#reset" title="Permanent link">&para;</a></h2>
 <p><br/></p>
@@ -495,7 +484,7 @@ uBit.sleep(X);
 <h5 id="description_2">Description<a class="headerlink" href="#description_2" title="Permanent link">&para;</a></h5>
 <p>Will reset the micro:bit when called.  </p>
 <h5 id="example_1">Example<a class="headerlink" href="#example_1" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> uBit.reset(); 
+<pre><code class="cpp"> uBit.reset();
 </code></pre>
 
 <h2 id="sleep">sleep<a class="headerlink" href="#sleep" title="Permanent link">&para;</a></h2>
@@ -513,12 +502,12 @@ uBit.sleep(X);
 <h5 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h5>
 <p>MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER milliseconds is less than zero.</p>
 <h5 id="example_2">Example<a class="headerlink" href="#example_2" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> uBit.sleep(20); //sleep for 20ms 
+<pre><code class="cpp"> uBit.sleep(20); //sleep for 20ms
 </code></pre>
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This operation is currently limited by the rate of the system timer, therefore the granularity of the sleep operation is limited to 6 ms unless the rate of the system timer is modified. </p>
+<p>This operation is currently limited by the rate of the system timer, therefore the granularity of the sleep operation is limited to 6 ms unless the rate of the system timer is modified.</p>
 </div>
 <h2 id="seedrandom">seedRandom<a class="headerlink" href="#seedrandom" title="Permanent link">&para;</a></h2>
 <p><br/></p>
@@ -526,7 +515,7 @@ uBit.sleep(X);
 <h5 id="description_4">Description<a class="headerlink" href="#description_4" title="Permanent link">&para;</a></h5>
 <p>Seed the pseudo random number generator using the hardware random number generator.  </p>
 <h5 id="example_3">Example<a class="headerlink" href="#example_3" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> uBit.seedRandom(); 
+<pre><code class="cpp"> uBit.seedRandom();
 </code></pre>
 
 <p><br/></p>
@@ -538,7 +527,7 @@ uBit.sleep(X);
 <p><div style='color:#a71d5d; display:inline-block'>uint32_t</div> seed - The 32-bit value to seed the generator with.</p>
 </blockquote>
 <h5 id="example_4">Example<a class="headerlink" href="#example_4" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> uBit.seedRandom(0xBB5EED); 
+<pre><code class="cpp"> uBit.seedRandom(0xBB5EED);
 </code></pre>
 
 <h2 id="random">random<a class="headerlink" href="#random" title="Permanent link">&para;</a></h2>
@@ -554,7 +543,7 @@ uBit.sleep(X);
 <h5 id="returns_1">Returns<a class="headerlink" href="#returns_1" title="Permanent link">&para;</a></h5>
 <p>A random, natural number between 0 and the max-1. Or MICROBIT_INVALID_VALUE if max is &lt;= 0.</p>
 <h5 id="example_5">Example<a class="headerlink" href="#example_5" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> uBit.random(200); //a number between 0 and 199 
+<pre><code class="cpp"> uBit.random(200); //a number between 0 and 199
 </code></pre>
 
 <h2 id="systemtime">systemTime<a class="headerlink" href="#systemtime" title="Permanent link">&para;</a></h2>
@@ -566,7 +555,7 @@ uBit.sleep(X);
 <p>The time since the last reset, in milliseconds.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This will value overflow after 1.6 months. </p>
+<p>This will value overflow after 1.6 months.</p>
 </div>
 <h2 id="systemversion">systemVersion<a class="headerlink" href="#systemversion" title="Permanent link">&para;</a></h2>
 <p><br/></p>
@@ -574,7 +563,7 @@ uBit.sleep(X);
 <h5 id="description_8">Description<a class="headerlink" href="#description_8" title="Permanent link">&para;</a></h5>
 <p>Determine the version of the micro:bit runtime currently in use.  </p>
 <h5 id="returns_3">Returns<a class="headerlink" href="#returns_3" title="Permanent link">&para;</a></h5>
-<p>A textual description of the version of the micro:bit runtime that is currently running on this device. </p>
+<p>A textual description of the version of the micro:bit runtime that is currently running on this device.</p>
 <h2 id="panic">panic<a class="headerlink" href="#panic" title="Permanent link">&para;</a></h2>
 <p><br/></p>
 <h4 id="void-panic"><div style='color:#a71d5d; display:inline-block'>void</div> <div style='color:#795da3; display:inline-block'>panic</div>()<a class="headerlink" href="#void-panic" title="Permanent link">&para;</a></h4>
@@ -583,10 +572,10 @@ uBit.sleep(X);
 <p>This loop will continue for panic_timeout iterations, defaults to 0 (infinite).  </p>
 <p>panic_timeout can be configured via a call to microbit_panic_timeout.  </p>
 <h5 id="example_6">Example<a class="headerlink" href="#example_6" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> microbit_panic_timeout(4); 
+<pre><code class="cpp"> microbit_panic_timeout(4);
 
- // will display loop for 4 iterations. 
- uBit.panic(10); 
+ // will display loop for 4 iterations.
+ uBit.panic(10);
 </code></pre>
 
 <p><br/></p>
@@ -600,10 +589,10 @@ uBit.sleep(X);
 <p><div style='color:#a71d5d; display:inline-block'>int</div> statusCode - the status code of the associated error.</p>
 </blockquote>
 <h5 id="example_7">Example<a class="headerlink" href="#example_7" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> microbit_panic_timeout(4); 
+<pre><code class="cpp"> microbit_panic_timeout(4);
 
- // will display loop for 4 iterations. 
- uBit.panic(10); 
+ // will display loop for 4 iterations.
+ uBit.panic(10);
 </code></pre>
 
 <h2 id="addsystemcomponent">addSystemComponent<a class="headerlink" href="#addsystemcomponent" title="Permanent link">&para;</a></h2>
@@ -618,15 +607,15 @@ uBit.sleep(X);
 <h5 id="returns_4">Returns<a class="headerlink" href="#returns_4" title="Permanent link">&para;</a></h5>
 <p>MICROBIT_OK on success or MICROBIT_NO_RESOURCES if the component array is full.</p>
 <h5 id="example_8">Example<a class="headerlink" href="#example_8" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> // heap allocated - otherwise it will be paged out! 
- MicroBitDisplay* display = new MicroBitDisplay(); 
+<pre><code class="cpp"> // heap allocated - otherwise it will be paged out!
+ MicroBitDisplay* display = new MicroBitDisplay();
 
- uBit.addSystemComponent(display); 
+ uBit.addSystemComponent(display);
 </code></pre>
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This interface is now deprecated, and will be removed in the next major release. Please use  system_timer_add_component() . </p>
+<p>This interface is now deprecated, and will be removed in the next major release. Please use  system_timer_add_component() .</p>
 </div>
 <h2 id="removesystemcomponent">removeSystemComponent<a class="headerlink" href="#removesystemcomponent" title="Permanent link">&para;</a></h2>
 <p><br/></p>
@@ -640,17 +629,17 @@ uBit.sleep(X);
 <h5 id="returns_5">Returns<a class="headerlink" href="#returns_5" title="Permanent link">&para;</a></h5>
 <p>MICROBIT_OK on success or MICROBIT_INVALID_PARAMETER is returned if the given component has not been previously added.</p>
 <h5 id="example_9">Example<a class="headerlink" href="#example_9" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> // heap allocated - otherwise it will be paged out! 
- MicroBitDisplay* display = new MicroBitDisplay(); 
+<pre><code class="cpp"> // heap allocated - otherwise it will be paged out!
+ MicroBitDisplay* display = new MicroBitDisplay();
 
- uBit.addSystemComponent(display); 
+ uBit.addSystemComponent(display);
 
- uBit.removeSystemComponent(display); 
+ uBit.removeSystemComponent(display);
 </code></pre>
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This interface is now deprecated, and will be removed in the next major release. Please use  system_timer_remove_component() . </p>
+<p>This interface is now deprecated, and will be removed in the next major release. Please use  system_timer_remove_component() .</p>
 </div>
 <h2 id="addidlecomponent">addIdleComponent<a class="headerlink" href="#addidlecomponent" title="Permanent link">&para;</a></h2>
 <p><br/></p>
@@ -665,17 +654,17 @@ uBit.sleep(X);
 <h5 id="returns_6">Returns<a class="headerlink" href="#returns_6" title="Permanent link">&para;</a></h5>
 <p>MICROBIT_OK on success or MICROBIT_NO_RESOURCES if the fiber components array is full.</p>
 <h5 id="example_10">Example<a class="headerlink" href="#example_10" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> MicroBitI2C i2c(I2C_SDA0, I2C_SCL0); 
+<pre><code class="cpp"> MicroBitI2C i2c(I2C_SDA0, I2C_SCL0);
 
- // heap allocated - otherwise it will be paged out! 
- MicroBitAccelerometer* accelerometer = new MicroBitAccelerometer(i2c); 
+ // heap allocated - otherwise it will be paged out!
+ MicroBitAccelerometer* accelerometer = new MicroBitAccelerometer(i2c);
 
- fiber_add_idle_component(accelerometer); 
+ fiber_add_idle_component(accelerometer);
 </code></pre>
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This interface is now deprecated, and will be removed in the next major release. Please use  fiber_add_idle_component() . </p>
+<p>This interface is now deprecated, and will be removed in the next major release. Please use  fiber_add_idle_component() .</p>
 </div>
 <h2 id="removeidlecomponent">removeIdleComponent<a class="headerlink" href="#removeidlecomponent" title="Permanent link">&para;</a></h2>
 <p><br/></p>
@@ -689,19 +678,19 @@ uBit.sleep(X);
 <h5 id="returns_7">Returns<a class="headerlink" href="#returns_7" title="Permanent link">&para;</a></h5>
 <p>MICROBIT_OK on success. MICROBIT_INVALID_PARAMETER is returned if the given component has not been previously added.</p>
 <h5 id="example_11">Example<a class="headerlink" href="#example_11" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> MicroBitI2C i2c(I2C_SDA0, I2C_SCL0); 
+<pre><code class="cpp"> MicroBitI2C i2c(I2C_SDA0, I2C_SCL0);
 
- // heap allocated - otherwise it will be paged out! 
- MicroBitAccelerometer* accelerometer = new MicroBitAccelerometer(i2c); 
+ // heap allocated - otherwise it will be paged out!
+ MicroBitAccelerometer* accelerometer = new MicroBitAccelerometer(i2c);
 
- uBit.addIdleComponent(accelerometer); 
+ uBit.addIdleComponent(accelerometer);
 
- uBit.removeIdleComponent(accelerometer); 
+ uBit.removeIdleComponent(accelerometer);
 </code></pre>
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This interface is now deprecated, and will be removed in the next major release. Please use  fiber_remove_idle_component() . </p>
+<p>This interface is now deprecated, and will be removed in the next major release. Please use  fiber_remove_idle_component() .</p>
 </div>
 <hr /></div>
         </div>
