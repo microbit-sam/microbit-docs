@@ -593,199 +593,206 @@ uBit.io.P0.isTouched();
 <h1 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h1>
 <h2 id="constructor">Constructor<a class="headerlink" href="#constructor" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="microbitpin-int-id-pinname-name-pincapability-capability">MicroBitPin( <div style='color:#008080; display:inline-block'>int</div> id,  <div style='color:#008080; display:inline-block'>PinName</div> name,  <div style='color:#008080; display:inline-block'>PinCapability</div> capability)<a class="headerlink" href="#microbitpin-int-id-pinname-name-pincapability-capability" title="Permanent link">&para;</a></h4>
+<h4 id="microbitpin-int-id-pinname-name-pincapability-capability">MicroBitPin( <div style='color:#a71d5d; display:inline-block'>int</div> id,  <div style='color:#a71d5d; display:inline-block'>PinName</div> name,  <div style='color:#a71d5d; display:inline-block'>PinCapability</div> capability)<a class="headerlink" href="#microbitpin-int-id-pinname-name-pincapability-capability" title="Permanent link">&para;</a></h4>
 <h5 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h5>
-<p>Constructor. Create a  MicroBitPin</p>
+<p>Constructor. Create a  MicroBitPin  instance, generally used to represent a pin on the edge connector.  </p>
 <h5 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#008080; display:inline-block'>int</div> <em>id</em> - the unique  EventModel  id of this component.</p>
-<p><div style='color:#008080; display:inline-block'>PinName</div> <em>name</em> - the mbed PinName for this  MicroBitPin  instance.</p>
-<p><div style='color:#008080; display:inline-block'>PinCapability</div> <em>capability</em> - the capabilities this  MicroBitPin  instance should have. (PIN_CAPABILITY_DIGITAL, PIN_CAPABILITY_ANALOG, PIN_CAPABILITY_TOUCH, PIN_CAPABILITY_AD, PIN_CAPABILITY_ALL)</p>
+<p><div style='color:#a71d5d; display:inline-block'>int</div> id - the unique  EventModel  id of this component.</p>
+<p><div style='color:#a71d5d; display:inline-block'>PinName</div> name - the mbed PinName for this  MicroBitPin  instance.</p>
+<p><div style='color:#a71d5d; display:inline-block'>PinCapability</div> capability - the capabilities this  MicroBitPin  instance should have. (PIN_CAPABILITY_DIGITAL, PIN_CAPABILITY_ANALOG, PIN_CAPABILITY_TOUCH, PIN_CAPABILITY_AD, PIN_CAPABILITY_ALL)</p>
 </blockquote>
 <h5 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> MicroBitPin P0(MICROBIT_ID_IO_P0, MICROBIT_PIN_P0, PIN_CAPABILITY_ALL);
+<pre><code class="cpp"> MicroBitPin P0(MICROBIT_ID_IO_P0, MICROBIT_PIN_P0, PIN_CAPABILITY_ALL); 
 </code></pre>
 
 <h2 id="setdigitalvalue">setDigitalValue<a class="headerlink" href="#setdigitalvalue" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-setdigitalvalue-int-value"><div style='color:#FF69B4; display:inline-block'>int</div> setDigitalValue( <div style='color:#008080; display:inline-block'>int</div> value)<a class="headerlink" href="#int-setdigitalvalue-int-value" title="Permanent link">&para;</a></h4>
+<h4 id="int-setdigitalvalue-int-value"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>setDigitalValue</div>( <div style='color:#a71d5d; display:inline-block'>int</div> value)<a class="headerlink" href="#int-setdigitalvalue-int-value" title="Permanent link">&para;</a></h4>
 <h5 id="description_1">Description<a class="headerlink" href="#description_1" title="Permanent link">&para;</a></h5>
-<p>Configures this IO pin as a digital output (if necessary) and sets the pin to 'value'.</p>
+<p>Configures this IO pin as a digital output (if necessary) and sets the pin to 'value'.  </p>
 <h5 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#008080; display:inline-block'>int</div> <em>value</em> - 0 (LO) or 1 (HI)</p>
+<p><div style='color:#a71d5d; display:inline-block'>int</div> value - 0 (LO) or 1 (HI)</p>
 </blockquote>
 <h5 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h5>
 <p>MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if value is out of range, or MICROBIT_NOT_SUPPORTED if the given pin does not have digital capability.</p>
 <h5 id="example_1">Example<a class="headerlink" href="#example_1" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> MicroBitPin P0(MICROBIT_ID_IO_P0, MICROBIT_PIN_P0, PIN_CAPABILITY_BOTH);
- P0.setDigitalValue(1); // P0 is now HI
+<pre><code class="cpp"> MicroBitPin P0(MICROBIT_ID_IO_P0, MICROBIT_PIN_P0, PIN_CAPABILITY_BOTH); 
+ P0.setDigitalValue(1); // P0 is now HI 
 </code></pre>
 
 <h2 id="getdigitalvalue">getDigitalValue<a class="headerlink" href="#getdigitalvalue" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-getdigitalvalue"><div style='color:#FF69B4; display:inline-block'>int</div> getDigitalValue()<a class="headerlink" href="#int-getdigitalvalue" title="Permanent link">&para;</a></h4>
+<h4 id="int-getdigitalvalue"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>getDigitalValue</div>()<a class="headerlink" href="#int-getdigitalvalue" title="Permanent link">&para;</a></h4>
 <h5 id="description_2">Description<a class="headerlink" href="#description_2" title="Permanent link">&para;</a></h5>
-<p>Configures this IO pin as a digital input (if necessary) and tests its current value.</p>
+<p>Configures this IO pin as a digital input (if necessary) and tests its current value.  </p>
 <h5 id="returns_1">Returns<a class="headerlink" href="#returns_1" title="Permanent link">&para;</a></h5>
 <p>1 if this input is high, 0 if input is LO, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability.</p>
 <h5 id="example_2">Example<a class="headerlink" href="#example_2" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> MicroBitPin P0(MICROBIT_ID_IO_P0, MICROBIT_PIN_P0, PIN_CAPABILITY_BOTH);
- P0.getDigitalValue(); // P0 is either 0 or 1;
+<pre><code class="cpp"> MicroBitPin P0(MICROBIT_ID_IO_P0, MICROBIT_PIN_P0, PIN_CAPABILITY_BOTH); 
+ P0.getDigitalValue(); // P0 is either 0 or 1; 
 </code></pre>
 
 <h2 id="setanalogvalue">setAnalogValue<a class="headerlink" href="#setanalogvalue" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-setanalogvalue-int-value"><div style='color:#FF69B4; display:inline-block'>int</div> setAnalogValue( <div style='color:#008080; display:inline-block'>int</div> value)<a class="headerlink" href="#int-setanalogvalue-int-value" title="Permanent link">&para;</a></h4>
+<h4 id="int-setanalogvalue-int-value"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>setAnalogValue</div>( <div style='color:#a71d5d; display:inline-block'>int</div> value)<a class="headerlink" href="#int-setanalogvalue-int-value" title="Permanent link">&para;</a></h4>
 <h5 id="description_3">Description<a class="headerlink" href="#description_3" title="Permanent link">&para;</a></h5>
-<p>Configures this IO pin as an analog/pwm output, and change the output value to the given level.</p>
+<p>Configures this IO pin as an analog/pwm output, and change the output value to the given level.  </p>
 <h5 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#008080; display:inline-block'>int</div> <em>value</em> - the level to set on the output pin, in the range 0 - 1024</p>
+<p><div style='color:#a71d5d; display:inline-block'>int</div> value - the level to set on the output pin, in the range 0 - 1024</p>
 </blockquote>
 <h5 id="returns_2">Returns<a class="headerlink" href="#returns_2" title="Permanent link">&para;</a></h5>
-<p>MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if value is out of range, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability.</p>
+<p>MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if value is out of range, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability. </p>
 <h2 id="setservovalue">setServoValue<a class="headerlink" href="#setservovalue" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-setservovalue-int-value"><div style='color:#FF69B4; display:inline-block'>int</div> setServoValue( <div style='color:#008080; display:inline-block'>int</div> value)<a class="headerlink" href="#int-setservovalue-int-value" title="Permanent link">&para;</a></h4>
+<h4 id="int-setservovalue-int-value"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>setServoValue</div>( <div style='color:#a71d5d; display:inline-block'>int</div> value)<a class="headerlink" href="#int-setservovalue-int-value" title="Permanent link">&para;</a></h4>
 <h5 id="description_4">Description<a class="headerlink" href="#description_4" title="Permanent link">&para;</a></h5>
-<p>Configures this IO pin as an analog/pwm output (if necessary) and configures the period to be 20ms, with a duty cycle between 500 us and 2500 us.</p>
+<p>Configures this IO pin as an analog/pwm output (if necessary) and configures the period to be 20ms, with a duty cycle between 500 us and 2500 us.  </p>
+<p>A value of 180 sets the duty cycle to be 2500us, and a value of 0 sets the duty cycle to be 500us by default.  </p>
+<p>This range can be modified to fine tune, and also tolerate different servos.  </p>
 <h5 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#008080; display:inline-block'>int</div> <em>value</em> - the level to set on the output pin, in the range 0 - 180.</p>
+<p><div style='color:#a71d5d; display:inline-block'>int</div> value - the level to set on the output pin, in the range 0 - 180.</p>
 </blockquote>
 <h5 id="returns_3">Returns<a class="headerlink" href="#returns_3" title="Permanent link">&para;</a></h5>
-<p>MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if value is out of range, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability.
+<p>MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if value is out of range, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability. 
 <br/></p>
-<h4 id="int-setservovalue-int-value-int-range"><div style='color:#FF69B4; display:inline-block'>int</div> setServoValue( <div style='color:#008080; display:inline-block'>int</div> value,  <div style='color:#008080; display:inline-block'>int</div> range)<a class="headerlink" href="#int-setservovalue-int-value-int-range" title="Permanent link">&para;</a></h4>
+<h4 id="int-setservovalue-int-value-int-range"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>setServoValue</div>( <div style='color:#a71d5d; display:inline-block'>int</div> value,  <div style='color:#a71d5d; display:inline-block'>int</div> range)<a class="headerlink" href="#int-setservovalue-int-value-int-range" title="Permanent link">&para;</a></h4>
 <h5 id="description_5">Description<a class="headerlink" href="#description_5" title="Permanent link">&para;</a></h5>
-<p>Configures this IO pin as an analog/pwm output (if necessary) and configures the period to be 20ms, with a duty cycle between 500 us and 2500 us.</p>
+<p>Configures this IO pin as an analog/pwm output (if necessary) and configures the period to be 20ms, with a duty cycle between 500 us and 2500 us.  </p>
+<p>A value of 180 sets the duty cycle to be 2500us, and a value of 0 sets the duty cycle to be 500us by default.  </p>
+<p>This range can be modified to fine tune, and also tolerate different servos.  </p>
 <h5 id="parameters_4">Parameters<a class="headerlink" href="#parameters_4" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#008080; display:inline-block'>int</div> <em>value</em> - the level to set on the output pin, in the range 0 - 180.</p>
-<p><div style='color:#008080; display:inline-block'>int</div> <em>range</em> - which gives the span of possible values the i.e. the lower and upper bounds (center +/- range/2). Defaults to MICROBIT_PIN_DEFAULT_SERVO_RANGE.</p>
+<p><div style='color:#a71d5d; display:inline-block'>int</div> value - the level to set on the output pin, in the range 0 - 180.</p>
+<p><div style='color:#a71d5d; display:inline-block'>int</div> range - which gives the span of possible values the i.e. the lower and upper bounds (center +/- range/2). Defaults to MICROBIT_PIN_DEFAULT_SERVO_RANGE.</p>
 </blockquote>
 <h5 id="returns_4">Returns<a class="headerlink" href="#returns_4" title="Permanent link">&para;</a></h5>
-<p>MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if value is out of range, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability.
+<p>MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if value is out of range, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability. 
 <br/></p>
-<h4 id="int-setservovalue-int-value-int-range-int-center"><div style='color:#FF69B4; display:inline-block'>int</div> setServoValue( <div style='color:#008080; display:inline-block'>int</div> value,  <div style='color:#008080; display:inline-block'>int</div> range,  <div style='color:#008080; display:inline-block'>int</div> center)<a class="headerlink" href="#int-setservovalue-int-value-int-range-int-center" title="Permanent link">&para;</a></h4>
+<h4 id="int-setservovalue-int-value-int-range-int-center"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>setServoValue</div>( <div style='color:#a71d5d; display:inline-block'>int</div> value,  <div style='color:#a71d5d; display:inline-block'>int</div> range,  <div style='color:#a71d5d; display:inline-block'>int</div> center)<a class="headerlink" href="#int-setservovalue-int-value-int-range-int-center" title="Permanent link">&para;</a></h4>
 <h5 id="description_6">Description<a class="headerlink" href="#description_6" title="Permanent link">&para;</a></h5>
-<p>Configures this IO pin as an analog/pwm output (if necessary) and configures the period to be 20ms, with a duty cycle between 500 us and 2500 us.</p>
+<p>Configures this IO pin as an analog/pwm output (if necessary) and configures the period to be 20ms, with a duty cycle between 500 us and 2500 us.  </p>
+<p>A value of 180 sets the duty cycle to be 2500us, and a value of 0 sets the duty cycle to be 500us by default.  </p>
+<p>This range can be modified to fine tune, and also tolerate different servos.  </p>
 <h5 id="parameters_5">Parameters<a class="headerlink" href="#parameters_5" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#008080; display:inline-block'>int</div> <em>value</em> - the level to set on the output pin, in the range 0 - 180.</p>
-<p><div style='color:#008080; display:inline-block'>int</div> <em>range</em> - which gives the span of possible values the i.e. the lower and upper bounds (center +/- range/2). Defaults to MICROBIT_PIN_DEFAULT_SERVO_RANGE.</p>
-<p><div style='color:#008080; display:inline-block'>int</div> <em>center</em> - the center point from which to calculate the lower and upper bounds. Defaults to MICROBIT_PIN_DEFAULT_SERVO_CENTER</p>
+<p><div style='color:#a71d5d; display:inline-block'>int</div> value - the level to set on the output pin, in the range 0 - 180.</p>
+<p><div style='color:#a71d5d; display:inline-block'>int</div> range - which gives the span of possible values the i.e. the lower and upper bounds (center +/- range/2). Defaults to MICROBIT_PIN_DEFAULT_SERVO_RANGE.</p>
+<p><div style='color:#a71d5d; display:inline-block'>int</div> center - the center point from which to calculate the lower and upper bounds. Defaults to MICROBIT_PIN_DEFAULT_SERVO_CENTER</p>
 </blockquote>
 <h5 id="returns_5">Returns<a class="headerlink" href="#returns_5" title="Permanent link">&para;</a></h5>
-<p>MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if value is out of range, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability.</p>
+<p>MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if value is out of range, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability. </p>
 <h2 id="getanalogvalue">getAnalogValue<a class="headerlink" href="#getanalogvalue" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-getanalogvalue"><div style='color:#FF69B4; display:inline-block'>int</div> getAnalogValue()<a class="headerlink" href="#int-getanalogvalue" title="Permanent link">&para;</a></h4>
+<h4 id="int-getanalogvalue"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>getAnalogValue</div>()<a class="headerlink" href="#int-getanalogvalue" title="Permanent link">&para;</a></h4>
 <h5 id="description_7">Description<a class="headerlink" href="#description_7" title="Permanent link">&para;</a></h5>
-<p>Configures this IO pin as an analogue input (if necessary), and samples the Pin for its analog value.</p>
+<p>Configures this IO pin as an analogue input (if necessary), and samples the Pin for its analog value.  </p>
 <h5 id="returns_6">Returns<a class="headerlink" href="#returns_6" title="Permanent link">&para;</a></h5>
 <p>the current analogue level on the pin, in the range 0 - 1024, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability.</p>
 <h5 id="example_3">Example<a class="headerlink" href="#example_3" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> MicroBitPin P0(MICROBIT_ID_IO_P0, MICROBIT_PIN_P0, PIN_CAPABILITY_BOTH);
- P0.getAnalogValue(); // P0 is a value in the range of 0 - 1024
+<pre><code class="cpp"> MicroBitPin P0(MICROBIT_ID_IO_P0, MICROBIT_PIN_P0, PIN_CAPABILITY_BOTH); 
+ P0.getAnalogValue(); // P0 is a value in the range of 0 - 1024 
 </code></pre>
 
 <h2 id="isinput">isInput<a class="headerlink" href="#isinput" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-isinput"><div style='color:#FF69B4; display:inline-block'>int</div> isInput()<a class="headerlink" href="#int-isinput" title="Permanent link">&para;</a></h4>
+<h4 id="int-isinput"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>isInput</div>()<a class="headerlink" href="#int-isinput" title="Permanent link">&para;</a></h4>
 <h5 id="description_8">Description<a class="headerlink" href="#description_8" title="Permanent link">&para;</a></h5>
-<p>Determines if this IO pin is currently configured as an input.</p>
+<p>Determines if this IO pin is currently configured as an input.  </p>
 <h5 id="returns_7">Returns<a class="headerlink" href="#returns_7" title="Permanent link">&para;</a></h5>
-<p>1 if pin is an analog or digital input, 0 otherwise.</p>
+<p>1 if pin is an analog or digital input, 0 otherwise. </p>
 <h2 id="isoutput">isOutput<a class="headerlink" href="#isoutput" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-isoutput"><div style='color:#FF69B4; display:inline-block'>int</div> isOutput()<a class="headerlink" href="#int-isoutput" title="Permanent link">&para;</a></h4>
+<h4 id="int-isoutput"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>isOutput</div>()<a class="headerlink" href="#int-isoutput" title="Permanent link">&para;</a></h4>
 <h5 id="description_9">Description<a class="headerlink" href="#description_9" title="Permanent link">&para;</a></h5>
-<p>Determines if this IO pin is currently configured as an output.</p>
+<p>Determines if this IO pin is currently configured as an output.  </p>
 <h5 id="returns_8">Returns<a class="headerlink" href="#returns_8" title="Permanent link">&para;</a></h5>
-<p>1 if pin is an analog or digital output, 0 otherwise.</p>
+<p>1 if pin is an analog or digital output, 0 otherwise. </p>
 <h2 id="isdigital">isDigital<a class="headerlink" href="#isdigital" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-isdigital"><div style='color:#FF69B4; display:inline-block'>int</div> isDigital()<a class="headerlink" href="#int-isdigital" title="Permanent link">&para;</a></h4>
+<h4 id="int-isdigital"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>isDigital</div>()<a class="headerlink" href="#int-isdigital" title="Permanent link">&para;</a></h4>
 <h5 id="description_10">Description<a class="headerlink" href="#description_10" title="Permanent link">&para;</a></h5>
-<p>Determines if this IO pin is currently configured for digital use.</p>
+<p>Determines if this IO pin is currently configured for digital use.  </p>
 <h5 id="returns_9">Returns<a class="headerlink" href="#returns_9" title="Permanent link">&para;</a></h5>
-<p>1 if pin is digital, 0 otherwise.</p>
+<p>1 if pin is digital, 0 otherwise. </p>
 <h2 id="isanalog">isAnalog<a class="headerlink" href="#isanalog" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-isanalog"><div style='color:#FF69B4; display:inline-block'>int</div> isAnalog()<a class="headerlink" href="#int-isanalog" title="Permanent link">&para;</a></h4>
+<h4 id="int-isanalog"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>isAnalog</div>()<a class="headerlink" href="#int-isanalog" title="Permanent link">&para;</a></h4>
 <h5 id="description_11">Description<a class="headerlink" href="#description_11" title="Permanent link">&para;</a></h5>
-<p>Determines if this IO pin is currently configured for analog use.</p>
+<p>Determines if this IO pin is currently configured for analog use.  </p>
 <h5 id="returns_10">Returns<a class="headerlink" href="#returns_10" title="Permanent link">&para;</a></h5>
-<p>1 if pin is analog, 0 otherwise.</p>
+<p>1 if pin is analog, 0 otherwise. </p>
 <h2 id="istouched">isTouched<a class="headerlink" href="#istouched" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-istouched"><div style='color:#FF69B4; display:inline-block'>int</div> isTouched()<a class="headerlink" href="#int-istouched" title="Permanent link">&para;</a></h4>
+<h4 id="int-istouched"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>isTouched</div>()<a class="headerlink" href="#int-istouched" title="Permanent link">&para;</a></h4>
 <h5 id="description_12">Description<a class="headerlink" href="#description_12" title="Permanent link">&para;</a></h5>
-<p>Configures this IO pin as a "makey makey" style touch sensor (if necessary) and tests its current debounced state.</p>
+<p>Configures this IO pin as a "makey makey" style touch sensor (if necessary) and tests its current debounced state.  </p>
+<p>Users can also subscribe to  MicroBitButton  events generated from this pin.  </p>
 <h5 id="returns_11">Returns<a class="headerlink" href="#returns_11" title="Permanent link">&para;</a></h5>
 <p>1 if pin is touched, 0 if not, or MICROBIT_NOT_SUPPORTED if this pin does not support touch capability.</p>
 <h5 id="example_4">Example<a class="headerlink" href="#example_4" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> MicroBitMessageBus bus;
+<pre><code class="cpp"> MicroBitMessageBus bus; 
 
- MicroBitPin P0(MICROBIT_ID_IO_P0, MICROBIT_PIN_P0, PIN_CAPABILITY_ALL);
- if(P0.isTouched())
- {
- //do something!
- }
+ MicroBitPin P0(MICROBIT_ID_IO_P0, MICROBIT_PIN_P0, PIN_CAPABILITY_ALL); 
+ if(P0.isTouched()) 
+ { 
+ //do something! 
+ } 
 
- // subscribe to events generated by this pin!
- bus.listen(MICROBIT_ID_IO_P0, MICROBIT_BUTTON_EVT_CLICK, someFunction);
+ // subscribe to events generated by this pin! 
+ bus.listen(MICROBIT_ID_IO_P0, MICROBIT_BUTTON_EVT_CLICK, someFunction); 
 </code></pre>
 
 <h2 id="setservopulseus">setServoPulseUs<a class="headerlink" href="#setservopulseus" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-setservopulseus-int-pulsewidth"><div style='color:#FF69B4; display:inline-block'>int</div> setServoPulseUs( <div style='color:#008080; display:inline-block'>int</div> pulseWidth)<a class="headerlink" href="#int-setservopulseus-int-pulsewidth" title="Permanent link">&para;</a></h4>
+<h4 id="int-setservopulseus-int-pulsewidth"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>setServoPulseUs</div>( <div style='color:#a71d5d; display:inline-block'>int</div> pulseWidth)<a class="headerlink" href="#int-setservopulseus-int-pulsewidth" title="Permanent link">&para;</a></h4>
 <h5 id="description_13">Description<a class="headerlink" href="#description_13" title="Permanent link">&para;</a></h5>
-<p>Configures this IO pin as an analog/pwm output if it isn't already, configures the period to be 20ms, and sets the pulse width, based on the value it is given.</p>
+<p>Configures this IO pin as an analog/pwm output if it isn't already, configures the period to be 20ms, and sets the pulse width, based on the value it is given.  </p>
 <h5 id="parameters_6">Parameters<a class="headerlink" href="#parameters_6" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#008080; display:inline-block'>int</div> <em>pulseWidth</em> - the desired pulse width in microseconds.</p>
+<p><div style='color:#a71d5d; display:inline-block'>int</div> pulseWidth - the desired pulse width in microseconds.</p>
 </blockquote>
 <h5 id="returns_12">Returns<a class="headerlink" href="#returns_12" title="Permanent link">&para;</a></h5>
-<p>MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if value is out of range, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability.</p>
+<p>MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if value is out of range, or MICROBIT_NOT_SUPPORTED if the given pin does not have analog capability. </p>
 <h2 id="setanalogperiod">setAnalogPeriod<a class="headerlink" href="#setanalogperiod" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-setanalogperiod-int-period"><div style='color:#FF69B4; display:inline-block'>int</div> setAnalogPeriod( <div style='color:#008080; display:inline-block'>int</div> period)<a class="headerlink" href="#int-setanalogperiod-int-period" title="Permanent link">&para;</a></h4>
+<h4 id="int-setanalogperiod-int-period"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>setAnalogPeriod</div>( <div style='color:#a71d5d; display:inline-block'>int</div> period)<a class="headerlink" href="#int-setanalogperiod-int-period" title="Permanent link">&para;</a></h4>
 <h5 id="description_14">Description<a class="headerlink" href="#description_14" title="Permanent link">&para;</a></h5>
-<p>Configures the PWM period of the analog output to the given value.</p>
+<p>Configures the PWM period of the analog output to the given value.  </p>
 <h5 id="parameters_7">Parameters<a class="headerlink" href="#parameters_7" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#008080; display:inline-block'>int</div> <em>period</em> - The new period for the analog output in milliseconds.</p>
+<p><div style='color:#a71d5d; display:inline-block'>int</div> period - The new period for the analog output in milliseconds.</p>
 </blockquote>
 <h5 id="returns_13">Returns<a class="headerlink" href="#returns_13" title="Permanent link">&para;</a></h5>
-<p>MICROBIT_OK on success, or MICROBIT_NOT_SUPPORTED if the given pin is not configured as an analog output.</p>
+<p>MICROBIT_OK on success, or MICROBIT_NOT_SUPPORTED if the given pin is not configured as an analog output. </p>
 <h2 id="setanalogperiodus">setAnalogPeriodUs<a class="headerlink" href="#setanalogperiodus" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-setanalogperiodus-int-period"><div style='color:#FF69B4; display:inline-block'>int</div> setAnalogPeriodUs( <div style='color:#008080; display:inline-block'>int</div> period)<a class="headerlink" href="#int-setanalogperiodus-int-period" title="Permanent link">&para;</a></h4>
+<h4 id="int-setanalogperiodus-int-period"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>setAnalogPeriodUs</div>( <div style='color:#a71d5d; display:inline-block'>int</div> period)<a class="headerlink" href="#int-setanalogperiodus-int-period" title="Permanent link">&para;</a></h4>
 <h5 id="description_15">Description<a class="headerlink" href="#description_15" title="Permanent link">&para;</a></h5>
-<p>Configures the PWM period of the analog output to the given value.</p>
+<p>Configures the PWM period of the analog output to the given value.  </p>
 <h5 id="parameters_8">Parameters<a class="headerlink" href="#parameters_8" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#008080; display:inline-block'>int</div> <em>period</em> - The new period for the analog output in microseconds.</p>
+<p><div style='color:#a71d5d; display:inline-block'>int</div> period - The new period for the analog output in microseconds.</p>
 </blockquote>
 <h5 id="returns_14">Returns<a class="headerlink" href="#returns_14" title="Permanent link">&para;</a></h5>
-<p>MICROBIT_OK on success, or MICROBIT_NOT_SUPPORTED if the given pin is not configured as an analog output.</p>
+<p>MICROBIT_OK on success, or MICROBIT_NOT_SUPPORTED if the given pin is not configured as an analog output. </p>
 <h2 id="getanalogperiodus">getAnalogPeriodUs<a class="headerlink" href="#getanalogperiodus" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-getanalogperiodus"><div style='color:#FF69B4; display:inline-block'>int</div> getAnalogPeriodUs()<a class="headerlink" href="#int-getanalogperiodus" title="Permanent link">&para;</a></h4>
+<h4 id="int-getanalogperiodus"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>getAnalogPeriodUs</div>()<a class="headerlink" href="#int-getanalogperiodus" title="Permanent link">&para;</a></h4>
 <h5 id="description_16">Description<a class="headerlink" href="#description_16" title="Permanent link">&para;</a></h5>
-<p>Obtains the PWM period of the analog output in microseconds.</p>
+<p>Obtains the PWM period of the analog output in microseconds.  </p>
 <h5 id="returns_15">Returns<a class="headerlink" href="#returns_15" title="Permanent link">&para;</a></h5>
-<p>the period on success, or MICROBIT_NOT_SUPPORTED if the given pin is not configured as an analog output.</p>
+<p>the period on success, or MICROBIT_NOT_SUPPORTED if the given pin is not configured as an analog output. </p>
 <h2 id="getanalogperiod">getAnalogPeriod<a class="headerlink" href="#getanalogperiod" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-getanalogperiod"><div style='color:#FF69B4; display:inline-block'>int</div> getAnalogPeriod()<a class="headerlink" href="#int-getanalogperiod" title="Permanent link">&para;</a></h4>
+<h4 id="int-getanalogperiod"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>getAnalogPeriod</div>()<a class="headerlink" href="#int-getanalogperiod" title="Permanent link">&para;</a></h4>
 <h5 id="description_17">Description<a class="headerlink" href="#description_17" title="Permanent link">&para;</a></h5>
-<p>Obtains the PWM period of the analog output in milliseconds.</p>
+<p>Obtains the PWM period of the analog output in milliseconds.  </p>
 <h5 id="returns_16">Returns<a class="headerlink" href="#returns_16" title="Permanent link">&para;</a></h5>
-<p>the period on success, or MICROBIT_NOT_SUPPORTED if the given pin is not configured as an analog output.</p>
+<p>the period on success, or MICROBIT_NOT_SUPPORTED if the given pin is not configured as an analog output. </p>
 <hr /></div>
         </div>
 

@@ -667,133 +667,135 @@ projects - it would not be very useful if packets sent by one group interfered w
 <p><br/></p>
 <h4 id="microbitradio">MicroBitRadio()<a class="headerlink" href="#microbitradio" title="Permanent link">&para;</a></h4>
 <h5 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h5>
-<p>Constructor.</p>
+<p>Constructor.  </p>
+<p>Initialise the  MicroBitRadio .  </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This class is demand activated, as a result most resources are only committed if send/recv or event registrations calls are made.</p>
+<p>This class is demand activated, as a result most resources are only committed if send/recv or event registrations calls are made. </p>
 </div>
 <p><br/></p>
-<h4 id="microbitradio-uint16_t-id">MicroBitRadio( <div style='color:#008080; display:inline-block'>uint16_t</div> id)<a class="headerlink" href="#microbitradio-uint16_t-id" title="Permanent link">&para;</a></h4>
+<h4 id="microbitradio-uint16_t-id">MicroBitRadio( <div style='color:#a71d5d; display:inline-block'>uint16_t</div> id)<a class="headerlink" href="#microbitradio-uint16_t-id" title="Permanent link">&para;</a></h4>
 <h5 id="description_1">Description<a class="headerlink" href="#description_1" title="Permanent link">&para;</a></h5>
-<p>Constructor.</p>
+<p>Constructor.  </p>
+<p>Initialise the  MicroBitRadio .  </p>
 <h5 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#008080; display:inline-block'>uint16_t</div> <em>id</em></p>
+<p><div style='color:#a71d5d; display:inline-block'>uint16_t</div> id</p>
 </blockquote>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This class is demand activated, as a result most resources are only committed if send/recv or event registrations calls are made.</p>
+<p>This class is demand activated, as a result most resources are only committed if send/recv or event registrations calls are made. </p>
 </div>
 <h2 id="settransmitpower">setTransmitPower<a class="headerlink" href="#settransmitpower" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-settransmitpower-int-power"><div style='color:#FF69B4; display:inline-block'>int</div> setTransmitPower( <div style='color:#008080; display:inline-block'>int</div> power)<a class="headerlink" href="#int-settransmitpower-int-power" title="Permanent link">&para;</a></h4>
+<h4 id="int-settransmitpower-int-power"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>setTransmitPower</div>( <div style='color:#a71d5d; display:inline-block'>int</div> power)<a class="headerlink" href="#int-settransmitpower-int-power" title="Permanent link">&para;</a></h4>
 <h5 id="description_2">Description<a class="headerlink" href="#description_2" title="Permanent link">&para;</a></h5>
-<p>Change the output power level of the transmitter to the given value.</p>
+<p>Change the output power level of the transmitter to the given value.  </p>
 <h5 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#008080; display:inline-block'>int</div> <em>power</em> - a value in the range 0..7, where 0 is the lowest power and 7 is the highest.</p>
+<p><div style='color:#a71d5d; display:inline-block'>int</div> power - a value in the range 0..7, where 0 is the lowest power and 7 is the highest.</p>
 </blockquote>
 <h5 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h5>
-<p>MICROBIT_OK on success, or MICROBIT_INVALID_PARAMETER if the value is out of range.</p>
+<p>MICROBIT_OK on success, or MICROBIT_INVALID_PARAMETER if the value is out of range. </p>
 <h2 id="setfrequencyband">setFrequencyBand<a class="headerlink" href="#setfrequencyband" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-setfrequencyband-int-band"><div style='color:#FF69B4; display:inline-block'>int</div> setFrequencyBand( <div style='color:#008080; display:inline-block'>int</div> band)<a class="headerlink" href="#int-setfrequencyband-int-band" title="Permanent link">&para;</a></h4>
+<h4 id="int-setfrequencyband-int-band"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>setFrequencyBand</div>( <div style='color:#a71d5d; display:inline-block'>int</div> band)<a class="headerlink" href="#int-setfrequencyband-int-band" title="Permanent link">&para;</a></h4>
 <h5 id="description_3">Description<a class="headerlink" href="#description_3" title="Permanent link">&para;</a></h5>
-<p>Change the transmission and reception band of the radio to the given channel</p>
+<p>Change the transmission and reception band of the radio to the given channel  </p>
 <h5 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#008080; display:inline-block'>int</div> <em>band</em> - a frequency band in the range 0 - 100. Each step is 1MHz wide, based at 2400MHz.</p>
+<p><div style='color:#a71d5d; display:inline-block'>int</div> band - a frequency band in the range 0 - 100. Each step is 1MHz wide, based at 2400MHz.</p>
 </blockquote>
 <h5 id="returns_1">Returns<a class="headerlink" href="#returns_1" title="Permanent link">&para;</a></h5>
-<p>MICROBIT_OK on success, or MICROBIT_INVALID_PARAMETER if the value is out of range, or MICROBIT_NOT_SUPPORTED if the BLE stack is running.</p>
+<p>MICROBIT_OK on success, or MICROBIT_INVALID_PARAMETER if the value is out of range, or MICROBIT_NOT_SUPPORTED if the BLE stack is running. </p>
 <h2 id="getrxbuf">getRxBuf<a class="headerlink" href="#getrxbuf" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="framebuffer-getrxbuf"><div style='color:#FF69B4; display:inline-block'>FrameBuffer</div> getRxBuf()<a class="headerlink" href="#framebuffer-getrxbuf" title="Permanent link">&para;</a></h4>
+<h4 id="framebuffer-getrxbuf"><div style='color:#a71d5d; display:inline-block'>FrameBuffer</div> <div style='color:#795da3; display:inline-block'>getRxBuf</div>()<a class="headerlink" href="#framebuffer-getrxbuf" title="Permanent link">&para;</a></h4>
 <h5 id="description_4">Description<a class="headerlink" href="#description_4" title="Permanent link">&para;</a></h5>
-<p>Retrieve a pointer to the currently allocated receive buffer. This is the area of memory actively being used by the radio hardware to store incoming data.</p>
+<p>Retrieve a pointer to the currently allocated receive buffer. This is the area of memory actively being used by the radio hardware to store incoming data.  </p>
 <h5 id="returns_2">Returns<a class="headerlink" href="#returns_2" title="Permanent link">&para;</a></h5>
-<p>a pointer to the current receive buffer.</p>
+<p>a pointer to the current receive buffer. </p>
 <h2 id="queuerxbuf">queueRxBuf<a class="headerlink" href="#queuerxbuf" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-queuerxbuf"><div style='color:#FF69B4; display:inline-block'>int</div> queueRxBuf()<a class="headerlink" href="#int-queuerxbuf" title="Permanent link">&para;</a></h4>
+<h4 id="int-queuerxbuf"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>queueRxBuf</div>()<a class="headerlink" href="#int-queuerxbuf" title="Permanent link">&para;</a></h4>
 <h5 id="description_5">Description<a class="headerlink" href="#description_5" title="Permanent link">&para;</a></h5>
-<p>Attempt to queue a buffer received by the radio hardware, if sufficient space is available.</p>
+<p>Attempt to queue a buffer received by the radio hardware, if sufficient space is available.  </p>
 <h5 id="returns_3">Returns<a class="headerlink" href="#returns_3" title="Permanent link">&para;</a></h5>
-<p>MICROBIT_OK on success, or MICROBIT_NO_RESOURCES if a replacement receiver buffer could not be allocated (either by policy or memory exhaustion).</p>
+<p>MICROBIT_OK on success, or MICROBIT_NO_RESOURCES if a replacement receiver buffer could not be allocated (either by policy or memory exhaustion). </p>
 <h2 id="setrssi">setRSSI<a class="headerlink" href="#setrssi" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-setrssi-uint8_t-rssi"><div style='color:#FF69B4; display:inline-block'>int</div> setRSSI( <div style='color:#008080; display:inline-block'>uint8_t</div> rssi)<a class="headerlink" href="#int-setrssi-uint8_t-rssi" title="Permanent link">&para;</a></h4>
+<h4 id="int-setrssi-uint8_t-rssi"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>setRSSI</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t</div> rssi)<a class="headerlink" href="#int-setrssi-uint8_t-rssi" title="Permanent link">&para;</a></h4>
 <h5 id="description_6">Description<a class="headerlink" href="#description_6" title="Permanent link">&para;</a></h5>
-<p>Sets the RSSI for the most recent packet.</p>
+<p>Sets the RSSI for the most recent packet.  </p>
 <h5 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#008080; display:inline-block'>uint8_t</div> <em>rssi</em> - the new rssi value.</p>
+<p><div style='color:#a71d5d; display:inline-block'>uint8_t</div> rssi - the new rssi value.</p>
 </blockquote>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>should only be called from RADIO_IRQHandler...</p>
+<p>should only be called from RADIO_IRQHandler... </p>
 </div>
 <h2 id="getrssi">getRSSI<a class="headerlink" href="#getrssi" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-getrssi"><div style='color:#FF69B4; display:inline-block'>int</div> getRSSI()<a class="headerlink" href="#int-getrssi" title="Permanent link">&para;</a></h4>
+<h4 id="int-getrssi"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>getRSSI</div>()<a class="headerlink" href="#int-getrssi" title="Permanent link">&para;</a></h4>
 <h5 id="description_7">Description<a class="headerlink" href="#description_7" title="Permanent link">&para;</a></h5>
-<p>Retrieves the current RSSI for the most recent packet.</p>
+<p>Retrieves the current RSSI for the most recent packet.  </p>
 <h5 id="returns_4">Returns<a class="headerlink" href="#returns_4" title="Permanent link">&para;</a></h5>
-<p>the most recent RSSI value or MICROBIT_NOT_SUPPORTED if the BLE stack is running.</p>
+<p>the most recent RSSI value or MICROBIT_NOT_SUPPORTED if the BLE stack is running. </p>
 <h2 id="enable">enable<a class="headerlink" href="#enable" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-enable"><div style='color:#FF69B4; display:inline-block'>int</div> enable()<a class="headerlink" href="#int-enable" title="Permanent link">&para;</a></h4>
+<h4 id="int-enable"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>enable</div>()<a class="headerlink" href="#int-enable" title="Permanent link">&para;</a></h4>
 <h5 id="description_8">Description<a class="headerlink" href="#description_8" title="Permanent link">&para;</a></h5>
-<p>Initialises the radio for use as a multipoint sender/receiver</p>
+<p>Initialises the radio for use as a multipoint sender/receiver  </p>
 <h5 id="returns_5">Returns<a class="headerlink" href="#returns_5" title="Permanent link">&para;</a></h5>
-<p>MICROBIT_OK on success, MICROBIT_NOT_SUPPORTED if the BLE stack is running.</p>
+<p>MICROBIT_OK on success, MICROBIT_NOT_SUPPORTED if the BLE stack is running. </p>
 <h2 id="disable">disable<a class="headerlink" href="#disable" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-disable"><div style='color:#FF69B4; display:inline-block'>int</div> disable()<a class="headerlink" href="#int-disable" title="Permanent link">&para;</a></h4>
+<h4 id="int-disable"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>disable</div>()<a class="headerlink" href="#int-disable" title="Permanent link">&para;</a></h4>
 <h5 id="description_9">Description<a class="headerlink" href="#description_9" title="Permanent link">&para;</a></h5>
-<p>Disables the radio for use as a multipoint sender/receiver.</p>
+<p>Disables the radio for use as a multipoint sender/receiver.  </p>
 <h5 id="returns_6">Returns<a class="headerlink" href="#returns_6" title="Permanent link">&para;</a></h5>
-<p>MICROBIT_OK on success, MICROBIT_NOT_SUPPORTED if the BLE stack is running.</p>
+<p>MICROBIT_OK on success, MICROBIT_NOT_SUPPORTED if the BLE stack is running. </p>
 <h2 id="setgroup">setGroup<a class="headerlink" href="#setgroup" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-setgroup-uint8_t-group"><div style='color:#FF69B4; display:inline-block'>int</div> setGroup( <div style='color:#008080; display:inline-block'>uint8_t</div> group)<a class="headerlink" href="#int-setgroup-uint8_t-group" title="Permanent link">&para;</a></h4>
+<h4 id="int-setgroup-uint8_t-group"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>setGroup</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t</div> group)<a class="headerlink" href="#int-setgroup-uint8_t-group" title="Permanent link">&para;</a></h4>
 <h5 id="description_10">Description<a class="headerlink" href="#description_10" title="Permanent link">&para;</a></h5>
-<p>Sets the radio to listen to packets sent with the given group id.</p>
+<p>Sets the radio to listen to packets sent with the given group id.  </p>
 <h5 id="parameters_4">Parameters<a class="headerlink" href="#parameters_4" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#008080; display:inline-block'>uint8_t</div> <em>group</em> - The group to join. A micro:bit can only listen to one group ID at any time.</p>
+<p><div style='color:#a71d5d; display:inline-block'>uint8_t</div> group - The group to join. A micro:bit can only listen to one group ID at any time.</p>
 </blockquote>
 <h5 id="returns_7">Returns<a class="headerlink" href="#returns_7" title="Permanent link">&para;</a></h5>
-<p>MICROBIT_OK on success, or MICROBIT_NOT_SUPPORTED if the BLE stack is running.</p>
+<p>MICROBIT_OK on success, or MICROBIT_NOT_SUPPORTED if the BLE stack is running. </p>
 <h2 id="dataready">dataReady<a class="headerlink" href="#dataready" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-dataready"><div style='color:#FF69B4; display:inline-block'>int</div> dataReady()<a class="headerlink" href="#int-dataready" title="Permanent link">&para;</a></h4>
+<h4 id="int-dataready"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>dataReady</div>()<a class="headerlink" href="#int-dataready" title="Permanent link">&para;</a></h4>
 <h5 id="description_11">Description<a class="headerlink" href="#description_11" title="Permanent link">&para;</a></h5>
-<p>Determines the number of packets ready to be processed.</p>
+<p>Determines the number of packets ready to be processed.  </p>
 <h5 id="returns_8">Returns<a class="headerlink" href="#returns_8" title="Permanent link">&para;</a></h5>
-<p>The number of packets in the receive buffer.</p>
+<p>The number of packets in the receive buffer. </p>
 <h2 id="recv">recv<a class="headerlink" href="#recv" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="framebuffer-recv"><div style='color:#FF69B4; display:inline-block'>FrameBuffer</div> recv()<a class="headerlink" href="#framebuffer-recv" title="Permanent link">&para;</a></h4>
+<h4 id="framebuffer-recv"><div style='color:#a71d5d; display:inline-block'>FrameBuffer</div> <div style='color:#795da3; display:inline-block'>recv</div>()<a class="headerlink" href="#framebuffer-recv" title="Permanent link">&para;</a></h4>
 <h5 id="description_12">Description<a class="headerlink" href="#description_12" title="Permanent link">&para;</a></h5>
-<p>Retrieves the next packet from the receive buffer. If a data packet is available, then it will be returned immediately to the caller. This call will also dequeue the buffer.</p>
+<p>Retrieves the next packet from the receive buffer. If a data packet is available, then it will be returned immediately to the caller. This call will also dequeue the buffer.  </p>
 <h5 id="returns_9">Returns<a class="headerlink" href="#returns_9" title="Permanent link">&para;</a></h5>
 <p>The buffer containing the the packet. If no data is available, NULL is returned.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Once  recv()  has been called, it is the callers resposibility to delete the buffer when appropriate.</p>
+<p>Once  recv()  has been called, it is the callers resposibility to delete the buffer when appropriate. </p>
 </div>
 <h2 id="send">send<a class="headerlink" href="#send" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-send-framebuffer-buffer"><div style='color:#FF69B4; display:inline-block'>int</div> send( <div style='color:#008080; display:inline-block'>FrameBuffer  *</div> buffer)<a class="headerlink" href="#int-send-framebuffer-buffer" title="Permanent link">&para;</a></h4>
+<h4 id="int-send-framebuffer-buffer"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>send</div>( <div style='color:#a71d5d; display:inline-block'>FrameBuffer  *</div> buffer)<a class="headerlink" href="#int-send-framebuffer-buffer" title="Permanent link">&para;</a></h4>
 <h5 id="description_13">Description<a class="headerlink" href="#description_13" title="Permanent link">&para;</a></h5>
-<p>Transmits the given buffer onto the broadcast radio. The call will wait until the transmission of the packet has completed before returning.</p>
+<p>Transmits the given buffer onto the broadcast radio. The call will wait until the transmission of the packet has completed before returning.  </p>
 <h5 id="parameters_5">Parameters<a class="headerlink" href="#parameters_5" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#008080; display:inline-block'>FrameBuffer  <em></div> </em>buffer*</p>
+<p><div style='color:#a71d5d; display:inline-block'>FrameBuffer  *</div> buffer</p>
 </blockquote>
 <h5 id="returns_10">Returns<a class="headerlink" href="#returns_10" title="Permanent link">&para;</a></h5>
-<p>MICROBIT_OK on success, or MICROBIT_NOT_SUPPORTED if the BLE stack is running.</p>
+<p>MICROBIT_OK on success, or MICROBIT_NOT_SUPPORTED if the BLE stack is running. </p>
 <hr /></div>
         </div>
 

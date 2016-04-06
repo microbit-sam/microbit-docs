@@ -492,28 +492,41 @@ for regular usage until the next interleave is signaled by the display.</p>
 <h1 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h1>
 <h2 id="constructor">Constructor<a class="headerlink" href="#constructor" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="microbitlightsensor-const-matrixmap-map">MicroBitLightSensor( <div style='color:#008080; display:inline-block'>const  MatrixMap  &amp;</div> map)<a class="headerlink" href="#microbitlightsensor-const-matrixmap-map" title="Permanent link">&para;</a></h4>
+<h4 id="microbitlightsensor-const-matrixmap-map">MicroBitLightSensor( <div style='color:#a71d5d; display:inline-block'>const  MatrixMap  &amp;</div> map)<a class="headerlink" href="#microbitlightsensor-const-matrixmap-map" title="Permanent link">&para;</a></h4>
 <h5 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h5>
-<p>Constructor.</p>
+<p>Constructor.  </p>
+<p>Create a representation of the light sensor.  </p>
+<p>map </p>
+<p>The mapping information that relates pin inputs/outputs to physical screen coordinates. Defaults to microbitMatrixMap, defined in  MicroBitMatrixMaps.h .   </p>
 <h5 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#008080; display:inline-block'>const  MatrixMap  &amp;</div> <em>map</em> - The mapping information that relates pin inputs/outputs to physical screen coordinates. Defaults to microbitMatrixMap, defined in  MicroBitMatrixMaps.h . </p>
+<p><div style='color:#a71d5d; display:inline-block'>const  MatrixMap  &amp;</div> map - The mapping information that relates pin inputs/outputs to physical screen coordinates. Defaults to microbitMatrixMap, defined in  MicroBitMatrixMaps.h . </p>
 </blockquote>
 <h2 id="read">read<a class="headerlink" href="#read" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-read"><div style='color:#FF69B4; display:inline-block'>int</div> read()<a class="headerlink" href="#int-read" title="Permanent link">&para;</a></h4>
+<h4 id="int-read"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>read</div>()<a class="headerlink" href="#int-read" title="Permanent link">&para;</a></h4>
 <h5 id="description_1">Description<a class="headerlink" href="#description_1" title="Permanent link">&para;</a></h5>
-<p>This method returns a summed average of the three sections of the display.</p>
+<p>This method returns a summed average of the three sections of the display.  </p>
+<p>A section is defined as: <br />
+ | 1 | | 2 | | 3 | <br />
+<strong><em>    </em></strong>    <strong><em>    </em></strong>    ___     </p>
+<p><strong><em>    </em></strong>    <strong><em>    </em></strong>    ___    </p>
+<p>2         3         1    </p>
+<p><strong><em>    </em></strong>    <strong><em>    </em></strong>    ___    </p>
+<p><strong><em>    </em></strong>    <strong><em>    </em></strong>    ___    </p>
+<p>3         1         2    </p>
+<p><strong><em>    </em></strong>    <strong><em>    </em></strong>    ___    </p>
+<p>Where each number represents a different section on the 5 x 5 matrix display.  </p>
 <h5 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h5>
 <p>returns a value in the range 0 - 255 where 0 is dark, and 255 is very bright </p>
 <h2 id="startsensing">startSensing<a class="headerlink" href="#startsensing" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="void-startsensing-microbitevent"><div style='color:#FF69B4; display:inline-block'>void</div> startSensing( <div style='color:#008080; display:inline-block'>MicroBitEvent</div> )<a class="headerlink" href="#void-startsensing-microbitevent" title="Permanent link">&para;</a></h4>
+<h4 id="void-startsensing-microbitevent"><div style='color:#a71d5d; display:inline-block'>void</div> <div style='color:#795da3; display:inline-block'>startSensing</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitEvent</div> )<a class="headerlink" href="#void-startsensing-microbitevent" title="Permanent link">&para;</a></h4>
 <h5 id="description_2">Description<a class="headerlink" href="#description_2" title="Permanent link">&para;</a></h5>
-<p>The method that is invoked by sending MICROBIT_DISPLAY_EVT_LIGHT_SENSE using the id MICROBIT_ID_DISPLAY.</p>
+<p>The method that is invoked by sending MICROBIT_DISPLAY_EVT_LIGHT_SENSE using the id MICROBIT_ID_DISPLAY.  </p>
 <h5 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#008080; display:inline-block'>MicroBitEvent</div> **</p>
+<p><div style='color:#a71d5d; display:inline-block'>MicroBitEvent</div> </p>
 </blockquote>
 <div class="admonition note">
 <p class="admonition-title">Note</p>

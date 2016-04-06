@@ -436,14 +436,15 @@ the same events as as a <a href="../button/"><code>MicroBitButton</code></a>.</p
 <h2 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
 <h2 id="constructor">Constructor<a class="headerlink" href="#constructor" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="microbitmultibutton-uint16_t-button1-uint16_t-button2-uint16_t-id">MicroBitMultiButton( <div style='color:#008080; display:inline-block'>uint16_t</div> button1,  <div style='color:#008080; display:inline-block'>uint16_t</div> button2,  <div style='color:#008080; display:inline-block'>uint16_t</div> id)<a class="headerlink" href="#microbitmultibutton-uint16_t-button1-uint16_t-button2-uint16_t-id" title="Permanent link">&para;</a></h4>
+<h4 id="microbitmultibutton-uint16_t-button1-uint16_t-button2-uint16_t-id">MicroBitMultiButton( <div style='color:#a71d5d; display:inline-block'>uint16_t</div> button1,  <div style='color:#a71d5d; display:inline-block'>uint16_t</div> button2,  <div style='color:#a71d5d; display:inline-block'>uint16_t</div> id)<a class="headerlink" href="#microbitmultibutton-uint16_t-button1-uint16_t-button2-uint16_t-id" title="Permanent link">&para;</a></h4>
 <h5 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h5>
-<p>Constructor.</p>
+<p>Constructor.  </p>
+<p>Create a representation of a virtual button, that generates events based upon the combination of two given buttons.  </p>
 <h5 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#008080; display:inline-block'>uint16_t</div> <em>button1</em> - the unique ID of the first button to watch.</p>
-<p><div style='color:#008080; display:inline-block'>uint16_t</div> <em>button2</em> - the unique ID of the second button to watch.</p>
-<p><div style='color:#008080; display:inline-block'>uint16_t</div> <em>id</em> - the unique  EventModel  id of this  MicroBitMultiButton  instance.</p>
+<p><div style='color:#a71d5d; display:inline-block'>uint16_t</div> button1 - the unique ID of the first button to watch.</p>
+<p><div style='color:#a71d5d; display:inline-block'>uint16_t</div> button2 - the unique ID of the second button to watch.</p>
+<p><div style='color:#a71d5d; display:inline-block'>uint16_t</div> id - the unique  EventModel  id of this  MicroBitMultiButton  instance.</p>
 </blockquote>
 <h5 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h5>
 <pre><code class="cpp"> multiButton(MICROBIT_ID_BUTTON_A, MICROBIT_ID_BUTTON_B, MICROBIT_ID_BUTTON_AB); 
@@ -451,9 +452,9 @@ the same events as as a <a href="../button/"><code>MicroBitButton</code></a>.</p
 
 <h2 id="ispressed">isPressed<a class="headerlink" href="#ispressed" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-ispressed"><div style='color:#FF69B4; display:inline-block'>int</div> isPressed()<a class="headerlink" href="#int-ispressed" title="Permanent link">&para;</a></h4>
+<h4 id="int-ispressed"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>isPressed</div>()<a class="headerlink" href="#int-ispressed" title="Permanent link">&para;</a></h4>
 <h5 id="description_1">Description<a class="headerlink" href="#description_1" title="Permanent link">&para;</a></h5>
-<p>Tests if this  MicroBitMultiButton</p>
+<p>Tests if this  MicroBitMultiButton  instance is virtually pressed.  </p>
 <h5 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h5>
 <p>1 if both physical buttons are pressed simultaneously.</p>
 <h5 id="example_1">Example<a class="headerlink" href="#example_1" title="Permanent link">&para;</a></h5>
@@ -463,12 +464,12 @@ the same events as as a <a href="../button/"><code>MicroBitButton</code></a>.</p
 
 <h2 id="seteventconfiguration">setEventConfiguration<a class="headerlink" href="#seteventconfiguration" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="void-seteventconfiguration-microbitbuttoneventconfiguration-config"><div style='color:#FF69B4; display:inline-block'>void</div> setEventConfiguration( <div style='color:#008080; display:inline-block'>MicroBitButtonEventConfiguration</div> config)<a class="headerlink" href="#void-seteventconfiguration-microbitbuttoneventconfiguration-config" title="Permanent link">&para;</a></h4>
+<h4 id="void-seteventconfiguration-microbitbuttoneventconfiguration-config"><div style='color:#a71d5d; display:inline-block'>void</div> <div style='color:#795da3; display:inline-block'>setEventConfiguration</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitButtonEventConfiguration</div> config)<a class="headerlink" href="#void-seteventconfiguration-microbitbuttoneventconfiguration-config" title="Permanent link">&para;</a></h4>
 <h5 id="description_2">Description<a class="headerlink" href="#description_2" title="Permanent link">&para;</a></h5>
-<p>Changes the event configuration of this button to the given MicroBitButtonEventConfiguration. All subsequent events generated by this button will then be informed by this configuraiton.</p>
+<p>Changes the event configuration of this button to the given MicroBitButtonEventConfiguration. All subsequent events generated by this button will then be informed by this configuraiton.  </p>
 <h5 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#008080; display:inline-block'>MicroBitButtonEventConfiguration</div> <em>config</em> - The new configuration for this button. Legal values are MICROBIT_BUTTON_ALL_EVENTS or MICROBIT_BUTTON_SIMPLE_EVENTS.</p>
+<p><div style='color:#a71d5d; display:inline-block'>MicroBitButtonEventConfiguration</div> config - The new configuration for this button. Legal values are MICROBIT_BUTTON_ALL_EVENTS or MICROBIT_BUTTON_SIMPLE_EVENTS.</p>
 </blockquote>
 <h5 id="example_2">Example<a class="headerlink" href="#example_2" title="Permanent link">&para;</a></h5>
 <pre><code class="cpp"> // Configure a button to generate all possible events. 

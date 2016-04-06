@@ -399,13 +399,16 @@ can be used in conjunction with the micro:bit.</p>
 <h2 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
 <h2 id="constructor">Constructor<a class="headerlink" href="#constructor" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="microbiti2c-pinname-sda-pinname-scl">MicroBitI2C( <div style='color:#008080; display:inline-block'>PinName</div> sda,  <div style='color:#008080; display:inline-block'>PinName</div> scl)<a class="headerlink" href="#microbiti2c-pinname-sda-pinname-scl" title="Permanent link">&para;</a></h4>
+<h4 id="microbiti2c-pinname-sda-pinname-scl">MicroBitI2C( <div style='color:#a71d5d; display:inline-block'>PinName</div> sda,  <div style='color:#a71d5d; display:inline-block'>PinName</div> scl)<a class="headerlink" href="#microbiti2c-pinname-sda-pinname-scl" title="Permanent link">&para;</a></h4>
 <h5 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h5>
-<p>Constructor.</p>
+<p>Constructor.  </p>
+<p>Create an instance of  MicroBitI2C  for I2C communication.  </p>
+<p>https://www.nordicsemi.com/eng/nordic/Products/nRF51822/PAN-nRF51822/24634   </p>
+<p>v2.0 through to v2.4           </p>
 <h5 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#008080; display:inline-block'>PinName</div> <em>sda</em> - the Pin to be used for SDA</p>
-<p><div style='color:#008080; display:inline-block'>PinName</div> <em>scl</em> - the Pin to be used for SCL</p>
+<p><div style='color:#a71d5d; display:inline-block'>PinName</div> sda - the Pin to be used for SDA</p>
+<p><div style='color:#a71d5d; display:inline-block'>PinName</div> scl - the Pin to be used for SCL</p>
 </blockquote>
 <h5 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h5>
 <pre><code class="cpp"> MicroBitI2C i2c(I2C_SDA0, I2C_SCL0); 
@@ -417,53 +420,53 @@ can be used in conjunction with the micro:bit.</p>
 </div>
 <h2 id="read">read<a class="headerlink" href="#read" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-read-int-address-char-data-int-length"><div style='color:#FF69B4; display:inline-block'>int</div> read( <div style='color:#008080; display:inline-block'>int</div> address,  <div style='color:#008080; display:inline-block'>char *</div> data,  <div style='color:#008080; display:inline-block'>int</div> length)<a class="headerlink" href="#int-read-int-address-char-data-int-length" title="Permanent link">&para;</a></h4>
+<h4 id="int-read-int-address-char-data-int-length"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>read</div>( <div style='color:#a71d5d; display:inline-block'>int</div> address,  <div style='color:#a71d5d; display:inline-block'>char *</div> data,  <div style='color:#a71d5d; display:inline-block'>int</div> length)<a class="headerlink" href="#int-read-int-address-char-data-int-length" title="Permanent link">&para;</a></h4>
 <h5 id="description_1">Description<a class="headerlink" href="#description_1" title="Permanent link">&para;</a></h5>
-<p>Performs a complete read transaction. The bottom bit of the address is forced to 1 to indicate a read.</p>
+<p>Performs a complete read transaction. The bottom bit of the address is forced to 1 to indicate a read.  </p>
 <h5 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#008080; display:inline-block'>int</div> <em>address</em> - 8-bit I2C slave address [ addr | 1 ]</p>
-<p><div style='color:#008080; display:inline-block'>char <em></div> </em>data* - A pointer to a byte buffer used for storing retrieved data.</p>
-<p><div style='color:#008080; display:inline-block'>int</div> <em>length</em> - Number of bytes to read.</p>
+<p><div style='color:#a71d5d; display:inline-block'>int</div> address - 8-bit I2C slave address [ addr | 1 ]</p>
+<p><div style='color:#a71d5d; display:inline-block'>char *</div> data - A pointer to a byte buffer used for storing retrieved data.</p>
+<p><div style='color:#a71d5d; display:inline-block'>int</div> length - Number of bytes to read.</p>
 </blockquote>
 <h5 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h5>
 <p>MICROBIT_OK on success, MICROBIT_I2C_ERROR if an unresolved read failure is detected. 
 <br/></p>
-<h4 id="int-read-int-address-char-data-int-length-bool-repeated"><div style='color:#FF69B4; display:inline-block'>int</div> read( <div style='color:#008080; display:inline-block'>int</div> address,  <div style='color:#008080; display:inline-block'>char *</div> data,  <div style='color:#008080; display:inline-block'>int</div> length,  <div style='color:#008080; display:inline-block'>bool</div> repeated)<a class="headerlink" href="#int-read-int-address-char-data-int-length-bool-repeated" title="Permanent link">&para;</a></h4>
+<h4 id="int-read-int-address-char-data-int-length-bool-repeated"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>read</div>( <div style='color:#a71d5d; display:inline-block'>int</div> address,  <div style='color:#a71d5d; display:inline-block'>char *</div> data,  <div style='color:#a71d5d; display:inline-block'>int</div> length,  <div style='color:#a71d5d; display:inline-block'>bool</div> repeated)<a class="headerlink" href="#int-read-int-address-char-data-int-length-bool-repeated" title="Permanent link">&para;</a></h4>
 <h5 id="description_2">Description<a class="headerlink" href="#description_2" title="Permanent link">&para;</a></h5>
-<p>Performs a complete read transaction. The bottom bit of the address is forced to 1 to indicate a read.</p>
+<p>Performs a complete read transaction. The bottom bit of the address is forced to 1 to indicate a read.  </p>
 <h5 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#008080; display:inline-block'>int</div> <em>address</em> - 8-bit I2C slave address [ addr | 1 ]</p>
-<p><div style='color:#008080; display:inline-block'>char <em></div> </em>data* - A pointer to a byte buffer used for storing retrieved data.</p>
-<p><div style='color:#008080; display:inline-block'>int</div> <em>length</em> - Number of bytes to read.</p>
-<p><div style='color:#008080; display:inline-block'>bool</div> <em>repeated</em> - if true, stop is not sent at the end. Defaults to false.</p>
+<p><div style='color:#a71d5d; display:inline-block'>int</div> address - 8-bit I2C slave address [ addr | 1 ]</p>
+<p><div style='color:#a71d5d; display:inline-block'>char *</div> data - A pointer to a byte buffer used for storing retrieved data.</p>
+<p><div style='color:#a71d5d; display:inline-block'>int</div> length - Number of bytes to read.</p>
+<p><div style='color:#a71d5d; display:inline-block'>bool</div> repeated - if true, stop is not sent at the end. Defaults to false.</p>
 </blockquote>
 <h5 id="returns_1">Returns<a class="headerlink" href="#returns_1" title="Permanent link">&para;</a></h5>
 <p>MICROBIT_OK on success, MICROBIT_I2C_ERROR if an unresolved read failure is detected. </p>
 <h2 id="write">write<a class="headerlink" href="#write" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-write-int-address-const-char-data-int-length"><div style='color:#FF69B4; display:inline-block'>int</div> write( <div style='color:#008080; display:inline-block'>int</div> address,  <div style='color:#008080; display:inline-block'>const char *</div> data,  <div style='color:#008080; display:inline-block'>int</div> length)<a class="headerlink" href="#int-write-int-address-const-char-data-int-length" title="Permanent link">&para;</a></h4>
+<h4 id="int-write-int-address-const-char-data-int-length"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>write</div>( <div style='color:#a71d5d; display:inline-block'>int</div> address,  <div style='color:#a71d5d; display:inline-block'>const char *</div> data,  <div style='color:#a71d5d; display:inline-block'>int</div> length)<a class="headerlink" href="#int-write-int-address-const-char-data-int-length" title="Permanent link">&para;</a></h4>
 <h5 id="description_3">Description<a class="headerlink" href="#description_3" title="Permanent link">&para;</a></h5>
-<p>Performs a complete write transaction. The bottom bit of the address is forced to 0 to indicate a write.</p>
+<p>Performs a complete write transaction. The bottom bit of the address is forced to 0 to indicate a write.  </p>
 <h5 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#008080; display:inline-block'>int</div> <em>address</em> - 8-bit I2C slave address [ addr | 0 ]</p>
-<p><div style='color:#008080; display:inline-block'>const char <em></div> </em>data* - A pointer to a byte buffer containing the data to write.</p>
-<p><div style='color:#008080; display:inline-block'>int</div> <em>length</em> - Number of bytes to write</p>
+<p><div style='color:#a71d5d; display:inline-block'>int</div> address - 8-bit I2C slave address [ addr | 0 ]</p>
+<p><div style='color:#a71d5d; display:inline-block'>const char *</div> data - A pointer to a byte buffer containing the data to write.</p>
+<p><div style='color:#a71d5d; display:inline-block'>int</div> length - Number of bytes to write</p>
 </blockquote>
 <h5 id="returns_2">Returns<a class="headerlink" href="#returns_2" title="Permanent link">&para;</a></h5>
 <p>MICROBIT_OK on success, MICROBIT_I2C_ERROR if an unresolved write failure is detected. 
 <br/></p>
-<h4 id="int-write-int-address-const-char-data-int-length-bool-repeated"><div style='color:#FF69B4; display:inline-block'>int</div> write( <div style='color:#008080; display:inline-block'>int</div> address,  <div style='color:#008080; display:inline-block'>const char *</div> data,  <div style='color:#008080; display:inline-block'>int</div> length,  <div style='color:#008080; display:inline-block'>bool</div> repeated)<a class="headerlink" href="#int-write-int-address-const-char-data-int-length-bool-repeated" title="Permanent link">&para;</a></h4>
+<h4 id="int-write-int-address-const-char-data-int-length-bool-repeated"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>write</div>( <div style='color:#a71d5d; display:inline-block'>int</div> address,  <div style='color:#a71d5d; display:inline-block'>const char *</div> data,  <div style='color:#a71d5d; display:inline-block'>int</div> length,  <div style='color:#a71d5d; display:inline-block'>bool</div> repeated)<a class="headerlink" href="#int-write-int-address-const-char-data-int-length-bool-repeated" title="Permanent link">&para;</a></h4>
 <h5 id="description_4">Description<a class="headerlink" href="#description_4" title="Permanent link">&para;</a></h5>
-<p>Performs a complete write transaction. The bottom bit of the address is forced to 0 to indicate a write.</p>
+<p>Performs a complete write transaction. The bottom bit of the address is forced to 0 to indicate a write.  </p>
 <h5 id="parameters_4">Parameters<a class="headerlink" href="#parameters_4" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#008080; display:inline-block'>int</div> <em>address</em> - 8-bit I2C slave address [ addr | 0 ]</p>
-<p><div style='color:#008080; display:inline-block'>const char <em></div> </em>data* - A pointer to a byte buffer containing the data to write.</p>
-<p><div style='color:#008080; display:inline-block'>int</div> <em>length</em> - Number of bytes to write</p>
-<p><div style='color:#008080; display:inline-block'>bool</div> <em>repeated</em> - if true, stop is not sent at the end. Defaults to false.</p>
+<p><div style='color:#a71d5d; display:inline-block'>int</div> address - 8-bit I2C slave address [ addr | 0 ]</p>
+<p><div style='color:#a71d5d; display:inline-block'>const char *</div> data - A pointer to a byte buffer containing the data to write.</p>
+<p><div style='color:#a71d5d; display:inline-block'>int</div> length - Number of bytes to write</p>
+<p><div style='color:#a71d5d; display:inline-block'>bool</div> repeated - if true, stop is not sent at the end. Defaults to false.</p>
 </blockquote>
 <h5 id="returns_3">Returns<a class="headerlink" href="#returns_3" title="Permanent link">&para;</a></h5>
 <p>MICROBIT_OK on success, MICROBIT_I2C_ERROR if an unresolved write failure is detected. </p>

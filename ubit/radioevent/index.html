@@ -368,6 +368,16 @@
     
         <li class="main "><a href="#api">API</a></li>
         
+            <li><a href="#constructor">Constructor</a></li>
+        
+            <li><a href="#listen">listen</a></li>
+        
+            <li><a href="#ignore">ignore</a></li>
+        
+            <li><a href="#packetreceived">packetReceived</a></li>
+        
+            <li><a href="#eventreceived">eventReceived</a></li>
+        
     
     </ul>
 </div></div>
@@ -429,7 +439,101 @@ int main()
 <blockquote>
 <p>None.</p>
 </blockquote>
-<h1 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h1></div>
+<h1 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h1>
+<h2 id="constructor">Constructor<a class="headerlink" href="#constructor" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="microbitradioevent-microbitradio-r">MicroBitRadioEvent( <div style='color:#a71d5d; display:inline-block'>MicroBitRadio  &amp;</div> r)<a class="headerlink" href="#microbitradioevent-microbitradio-r" title="Permanent link">&para;</a></h4>
+<h5 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h5>
+<p>Constructor.  </p>
+<p>Creates an instance of  MicroBitRadioEvent  which offers the ability to extend the micro:bit's default  EventModel  to other micro:bits in the vicinity.  </p>
+<p>r </p>
+<p>The underlying radio module used to send and receive data.   </p>
+<h5 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><div style='color:#a71d5d; display:inline-block'>MicroBitRadio  &amp;</div> r - The underlying radio module used to send and receive data. </p>
+</blockquote>
+<h2 id="listen">listen<a class="headerlink" href="#listen" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="int-listen-uint16_t-id-uint16_t-value"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>listen</div>( <div style='color:#a71d5d; display:inline-block'>uint16_t</div> id,  <div style='color:#a71d5d; display:inline-block'>uint16_t</div> value)<a class="headerlink" href="#int-listen-uint16_t-id-uint16_t-value" title="Permanent link">&para;</a></h4>
+<h5 id="description_1">Description<a class="headerlink" href="#description_1" title="Permanent link">&para;</a></h5>
+<p>Associates the given event with the radio channel.  </p>
+<p>Once registered, all events matching the given registration sent to this micro:bit's default  EventModel  will be automatically retransmitted on the radio.  </p>
+<h5 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><div style='color:#a71d5d; display:inline-block'>uint16_t</div> id - The id of the event to register.</p>
+<p><div style='color:#a71d5d; display:inline-block'>uint16_t</div> value - the value of the event to register.</p>
+</blockquote>
+<h5 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h5>
+<p>MICROBIT_OK on success, or MICROBIT_NO_RESOURCES if no default  EventModel  is available.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The wildcards MICROBIT_ID_ANY and MICROBIT_EVT_ANY can also be in place of the id and value fields. </p>
+</div>
+<p><br/></p>
+<h4 id="int-listen-uint16_t-id-uint16_t-value-eventmodel-eventbus"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>listen</div>( <div style='color:#a71d5d; display:inline-block'>uint16_t</div> id,  <div style='color:#a71d5d; display:inline-block'>uint16_t</div> value,  <div style='color:#a71d5d; display:inline-block'>EventModel  &amp;</div> eventBus)<a class="headerlink" href="#int-listen-uint16_t-id-uint16_t-value-eventmodel-eventbus" title="Permanent link">&para;</a></h4>
+<h5 id="description_2">Description<a class="headerlink" href="#description_2" title="Permanent link">&para;</a></h5>
+<p>Associates the given event with the radio channel.  </p>
+<p>Once registered, all events matching the given registration sent to the given  EventModel  will be automatically retransmitted on the radio.  </p>
+<h5 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><div style='color:#a71d5d; display:inline-block'>uint16_t</div> id - The id of the events to register.</p>
+<p><div style='color:#a71d5d; display:inline-block'>uint16_t</div> value - the value of the event to register.</p>
+<p><div style='color:#a71d5d; display:inline-block'>EventModel  &amp;</div> eventBus - The  EventModel  to listen for events on.</p>
+</blockquote>
+<h5 id="returns_1">Returns<a class="headerlink" href="#returns_1" title="Permanent link">&para;</a></h5>
+<p>MICROBIT_OK on success.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The wildcards MICROBIT_ID_ANY and MICROBIT_EVT_ANY can also be in place of the id and value fields. </p>
+</div>
+<h2 id="ignore">ignore<a class="headerlink" href="#ignore" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="int-ignore-uint16_t-id-uint16_t-value"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>ignore</div>( <div style='color:#a71d5d; display:inline-block'>uint16_t</div> id,  <div style='color:#a71d5d; display:inline-block'>uint16_t</div> value)<a class="headerlink" href="#int-ignore-uint16_t-id-uint16_t-value" title="Permanent link">&para;</a></h4>
+<h5 id="description_3">Description<a class="headerlink" href="#description_3" title="Permanent link">&para;</a></h5>
+<p>Disassociates the given event with the radio channel.  </p>
+<h5 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><div style='color:#a71d5d; display:inline-block'>uint16_t</div> id - The id of the events to deregister.</p>
+<p><div style='color:#a71d5d; display:inline-block'>uint16_t</div> value - The value of the event to deregister.</p>
+</blockquote>
+<h5 id="returns_2">Returns<a class="headerlink" href="#returns_2" title="Permanent link">&para;</a></h5>
+<p>MICROBIT_OK on success, or MICROBIT_INVALID_PARAMETER if the default message bus does not exist.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>MICROBIT_EVT_ANY can be used to deregister all event values matching the given id. </p>
+</div>
+<p><br/></p>
+<h4 id="int-ignore-uint16_t-id-uint16_t-value-eventmodel-eventbus"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>ignore</div>( <div style='color:#a71d5d; display:inline-block'>uint16_t</div> id,  <div style='color:#a71d5d; display:inline-block'>uint16_t</div> value,  <div style='color:#a71d5d; display:inline-block'>EventModel  &amp;</div> eventBus)<a class="headerlink" href="#int-ignore-uint16_t-id-uint16_t-value-eventmodel-eventbus" title="Permanent link">&para;</a></h4>
+<h5 id="description_4">Description<a class="headerlink" href="#description_4" title="Permanent link">&para;</a></h5>
+<p>Disassociates the given events with the radio channel.  </p>
+<h5 id="parameters_4">Parameters<a class="headerlink" href="#parameters_4" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><div style='color:#a71d5d; display:inline-block'>uint16_t</div> id - The id of the events to deregister.</p>
+<p><div style='color:#a71d5d; display:inline-block'>uint16_t</div> value - The value of the event to deregister.</p>
+<p><div style='color:#a71d5d; display:inline-block'>EventModel  &amp;</div> eventBus - The  EventModel  to deregister on.</p>
+</blockquote>
+<h5 id="returns_3">Returns<a class="headerlink" href="#returns_3" title="Permanent link">&para;</a></h5>
+<p>MICROBIT_OK on success.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>MICROBIT_EVT_ANY can be used to deregister all event values matching the given id. </p>
+</div>
+<h2 id="packetreceived">packetReceived<a class="headerlink" href="#packetreceived" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="void-packetreceived"><div style='color:#a71d5d; display:inline-block'>void</div> <div style='color:#795da3; display:inline-block'>packetReceived</div>()<a class="headerlink" href="#void-packetreceived" title="Permanent link">&para;</a></h4>
+<h5 id="description_5">Description<a class="headerlink" href="#description_5" title="Permanent link">&para;</a></h5>
+<p>Protocol handler callback. This is called when the radio receives a packet marked as using the event protocol.  </p>
+<p>This function process this packet, and fires the event contained inside onto the default  EventModel .           </p>
+<h2 id="eventreceived">eventReceived<a class="headerlink" href="#eventreceived" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="void-eventreceived-microbitevent-e"><div style='color:#a71d5d; display:inline-block'>void</div> <div style='color:#795da3; display:inline-block'>eventReceived</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitEvent</div> e)<a class="headerlink" href="#void-eventreceived-microbitevent-e" title="Permanent link">&para;</a></h4>
+<h5 id="description_6">Description<a class="headerlink" href="#description_6" title="Permanent link">&para;</a></h5>
+<p>Event handler callback. This is called whenever an event is received matching one of those registered through the registerEvent() method described above. Upon receiving such an event, it is wrapped into a radio packet and transmitted to any other micro:bits in the same group.           </p>
+<h5 id="parameters_5">Parameters<a class="headerlink" href="#parameters_5" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><div style='color:#a71d5d; display:inline-block'>MicroBitEvent</div> e</p>
+</blockquote>
+<hr /></div>
         </div>
 
         <footer class="col-md-12">

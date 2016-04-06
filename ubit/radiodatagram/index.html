@@ -368,6 +368,14 @@
     
         <li class="main "><a href="#api">API</a></li>
         
+            <li><a href="#constructor">Constructor</a></li>
+        
+            <li><a href="#recv">recv</a></li>
+        
+            <li><a href="#send">send</a></li>
+        
+            <li><a href="#packetreceived">packetReceived</a></li>
+        
     
     </ul>
 </div></div>
@@ -431,7 +439,81 @@ int main()
 <blockquote>
 <p>None.</p>
 </blockquote>
-<h1 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h1></div>
+<h1 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h1>
+<h2 id="constructor">Constructor<a class="headerlink" href="#constructor" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="microbitradiodatagram-microbitradio-r">MicroBitRadioDatagram( <div style='color:#a71d5d; display:inline-block'>MicroBitRadio  &amp;</div> r)<a class="headerlink" href="#microbitradiodatagram-microbitradio-r" title="Permanent link">&para;</a></h4>
+<h5 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h5>
+<p>Constructor.  </p>
+<p>Creates an instance of a  MicroBitRadioDatagram  which offers the ability to broadcast simple text or binary messages to other micro:bits in the vicinity  </p>
+<p>r </p>
+<p>The underlying radio module used to send and receive data.   </p>
+<h5 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><div style='color:#a71d5d; display:inline-block'>MicroBitRadio  &amp;</div> r - The underlying radio module used to send and receive data. </p>
+</blockquote>
+<h2 id="recv">recv<a class="headerlink" href="#recv" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="int-recv-uint8_t-buf-int-len"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>recv</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t *</div> buf,  <div style='color:#a71d5d; display:inline-block'>int</div> len)<a class="headerlink" href="#int-recv-uint8_t-buf-int-len" title="Permanent link">&para;</a></h4>
+<h5 id="description_1">Description<a class="headerlink" href="#description_1" title="Permanent link">&para;</a></h5>
+<p>Retrieves packet payload data into the given buffer.  </p>
+<p>If a data packet is already available, then it will be returned immediately to the caller. If no data is available then MICROBIT_INVALID_PARAMETER is returned.  </p>
+<h5 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><div style='color:#a71d5d; display:inline-block'>uint8_t *</div> buf - A pointer to a valid memory location where the received data is to be stored</p>
+<p><div style='color:#a71d5d; display:inline-block'>int</div> len - The maximum amount of data that can safely be stored in 'buf'</p>
+</blockquote>
+<h5 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h5>
+<p>The length of the data stored, or MICROBIT_INVALID_PARAMETER if no data is available, or the memory regions provided are invalid. 
+<br/></p>
+<h4 id="packetbuffer-recv"><div style='color:#a71d5d; display:inline-block'>PacketBuffer</div> <div style='color:#795da3; display:inline-block'>recv</div>()<a class="headerlink" href="#packetbuffer-recv" title="Permanent link">&para;</a></h4>
+<h5 id="description_2">Description<a class="headerlink" href="#description_2" title="Permanent link">&para;</a></h5>
+<p>Retreives packet payload data into the given buffer.  </p>
+<p>If a data packet is already available, then it will be returned immediately to the caller in the form of a  PacketBuffer .  </p>
+<h5 id="returns_1">Returns<a class="headerlink" href="#returns_1" title="Permanent link">&para;</a></h5>
+<p>the data received, or an empty  PacketBuffer  if no data is available. </p>
+<h2 id="send">send<a class="headerlink" href="#send" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="int-send-uint8_t-buffer-int-len"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>send</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t *</div> buffer,  <div style='color:#a71d5d; display:inline-block'>int</div> len)<a class="headerlink" href="#int-send-uint8_t-buffer-int-len" title="Permanent link">&para;</a></h4>
+<h5 id="description_3">Description<a class="headerlink" href="#description_3" title="Permanent link">&para;</a></h5>
+<p>Transmits the given buffer onto the broadcast radio.  </p>
+<p>This is a synchronous call that will wait until the transmission of the packet has completed before returning.  </p>
+<h5 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><div style='color:#a71d5d; display:inline-block'>uint8_t *</div> buffer - The packet contents to transmit.</p>
+<p><div style='color:#a71d5d; display:inline-block'>int</div> len - The number of bytes to transmit.</p>
+</blockquote>
+<h5 id="returns_2">Returns<a class="headerlink" href="#returns_2" title="Permanent link">&para;</a></h5>
+<p>MICROBIT_OK on success, or MICROBIT_INVALID_PARAMETER if the buffer is invalid, or the number of bytes to transmit is greater than  MICROBIT_RADIO_MAX_PACKET_SIZE + MICROBIT_RADIO_HEADER_SIZE . 
+<br/></p>
+<h4 id="int-send-packetbuffer-data"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>send</div>( <div style='color:#a71d5d; display:inline-block'>PacketBuffer</div> data)<a class="headerlink" href="#int-send-packetbuffer-data" title="Permanent link">&para;</a></h4>
+<h5 id="description_4">Description<a class="headerlink" href="#description_4" title="Permanent link">&para;</a></h5>
+<p>Transmits the given string onto the broadcast radio.  </p>
+<p>This is a synchronous call that will wait until the transmission of the packet has completed before returning.  </p>
+<h5 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><div style='color:#a71d5d; display:inline-block'>PacketBuffer</div> data - The packet contents to transmit.</p>
+</blockquote>
+<h5 id="returns_3">Returns<a class="headerlink" href="#returns_3" title="Permanent link">&para;</a></h5>
+<p>MICROBIT_OK on success, or MICROBIT_INVALID_PARAMETER if the buffer is invalid, or the number of bytes to transmit is greater than  MICROBIT_RADIO_MAX_PACKET_SIZE + MICROBIT_RADIO_HEADER_SIZE . 
+<br/></p>
+<h4 id="int-send-managedstring-data"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>send</div>( <div style='color:#a71d5d; display:inline-block'>ManagedString</div> data)<a class="headerlink" href="#int-send-managedstring-data" title="Permanent link">&para;</a></h4>
+<h5 id="description_5">Description<a class="headerlink" href="#description_5" title="Permanent link">&para;</a></h5>
+<p>Transmits the given string onto the broadcast radio.  </p>
+<p>This is a synchronous call that will wait until the transmission of the packet has completed before returning.  </p>
+<h5 id="parameters_4">Parameters<a class="headerlink" href="#parameters_4" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p><div style='color:#a71d5d; display:inline-block'>ManagedString</div> data - The packet contents to transmit.</p>
+</blockquote>
+<h5 id="returns_4">Returns<a class="headerlink" href="#returns_4" title="Permanent link">&para;</a></h5>
+<p>MICROBIT_OK on success, or MICROBIT_INVALID_PARAMETER if the buffer is invalid, or the number of bytes to transmit is greater than  MICROBIT_RADIO_MAX_PACKET_SIZE + MICROBIT_RADIO_HEADER_SIZE . </p>
+<h2 id="packetreceived">packetReceived<a class="headerlink" href="#packetreceived" title="Permanent link">&para;</a></h2>
+<p><br/></p>
+<h4 id="void-packetreceived"><div style='color:#a71d5d; display:inline-block'>void</div> <div style='color:#795da3; display:inline-block'>packetReceived</div>()<a class="headerlink" href="#void-packetreceived" title="Permanent link">&para;</a></h4>
+<h5 id="description_6">Description<a class="headerlink" href="#description_6" title="Permanent link">&para;</a></h5>
+<p>Protocol handler callback. This is called when the radio receives a packet marked as a datagram.  </p>
+<p>This function process this packet, and queues it for user reception.           </p>
+<hr /></div>
         </div>
 
         <footer class="col-md-12">

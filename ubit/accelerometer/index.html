@@ -504,267 +504,270 @@ can be used.</p>
 <h2 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
 <h2 id="constructor">Constructor<a class="headerlink" href="#constructor" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="microbitaccelerometer-microbiti2c-_i2c">MicroBitAccelerometer( <div style='color:#008080; display:inline-block'>MicroBitI2C  &amp;</div> _i2c)<a class="headerlink" href="#microbitaccelerometer-microbiti2c-_i2c" title="Permanent link">&para;</a></h4>
+<h4 id="microbitaccelerometer-microbiti2c-_i2c">MicroBitAccelerometer( <div style='color:#a71d5d; display:inline-block'>MicroBitI2C  &amp;</div> _i2c)<a class="headerlink" href="#microbitaccelerometer-microbiti2c-_i2c" title="Permanent link">&para;</a></h4>
 <h5 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h5>
-<p>Constructor. Create a software abstraction of an accelerometer.</p>
+<p>Constructor. Create a software abstraction of an accelerometer.  </p>
 <h5 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#008080; display:inline-block'>MicroBitI2C  &amp;</div> <em>_i2c</em> - an instance of  MicroBitI2C  used to communicate with the onboard accelerometer.</p>
+<p><div style='color:#a71d5d; display:inline-block'>MicroBitI2C  &amp;</div> _i2c - an instance of  MicroBitI2C  used to communicate with the onboard accelerometer.</p>
 </blockquote>
 <h5 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> MicroBitI2C i2c = MicroBitI2C(I2C_SDA0, I2C_SCL0);
+<pre><code class="cpp"> MicroBitI2C i2c = MicroBitI2C(I2C_SDA0, I2C_SCL0); 
 
- MicroBitAccelerometer accelerometer = MicroBitAccelerometer(i2c);
+ MicroBitAccelerometer accelerometer = MicroBitAccelerometer(i2c); 
 </code></pre>
 
 <p><br/></p>
-<h4 id="microbitaccelerometer-microbiti2c-_i2c-uint16_t-address">MicroBitAccelerometer( <div style='color:#008080; display:inline-block'>MicroBitI2C  &amp;</div> _i2c,  <div style='color:#008080; display:inline-block'>uint16_t</div> address)<a class="headerlink" href="#microbitaccelerometer-microbiti2c-_i2c-uint16_t-address" title="Permanent link">&para;</a></h4>
+<h4 id="microbitaccelerometer-microbiti2c-_i2c-uint16_t-address">MicroBitAccelerometer( <div style='color:#a71d5d; display:inline-block'>MicroBitI2C  &amp;</div> _i2c,  <div style='color:#a71d5d; display:inline-block'>uint16_t</div> address)<a class="headerlink" href="#microbitaccelerometer-microbiti2c-_i2c-uint16_t-address" title="Permanent link">&para;</a></h4>
 <h5 id="description_1">Description<a class="headerlink" href="#description_1" title="Permanent link">&para;</a></h5>
-<p>Constructor. Create a software abstraction of an accelerometer.</p>
+<p>Constructor. Create a software abstraction of an accelerometer.  </p>
 <h5 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#008080; display:inline-block'>MicroBitI2C  &amp;</div> <em>_i2c</em> - an instance of  MicroBitI2C  used to communicate with the onboard accelerometer.</p>
-<p><div style='color:#008080; display:inline-block'>uint16_t</div> <em>address</em> - the default I2C address of the accelerometer. Defaults to: MMA8653_DEFAULT_ADDR.</p>
+<p><div style='color:#a71d5d; display:inline-block'>MicroBitI2C  &amp;</div> _i2c - an instance of  MicroBitI2C  used to communicate with the onboard accelerometer.</p>
+<p><div style='color:#a71d5d; display:inline-block'>uint16_t</div> address - the default I2C address of the accelerometer. Defaults to: MMA8653_DEFAULT_ADDR.</p>
 </blockquote>
 <h5 id="example_1">Example<a class="headerlink" href="#example_1" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> MicroBitI2C i2c = MicroBitI2C(I2C_SDA0, I2C_SCL0);
+<pre><code class="cpp"> MicroBitI2C i2c = MicroBitI2C(I2C_SDA0, I2C_SCL0); 
 
- MicroBitAccelerometer accelerometer = MicroBitAccelerometer(i2c);
+ MicroBitAccelerometer accelerometer = MicroBitAccelerometer(i2c); 
 </code></pre>
 
 <p><br/></p>
-<h4 id="microbitaccelerometer-microbiti2c-_i2c-uint16_t-address-uint16_t-id">MicroBitAccelerometer( <div style='color:#008080; display:inline-block'>MicroBitI2C  &amp;</div> _i2c,  <div style='color:#008080; display:inline-block'>uint16_t</div> address,  <div style='color:#008080; display:inline-block'>uint16_t</div> id)<a class="headerlink" href="#microbitaccelerometer-microbiti2c-_i2c-uint16_t-address-uint16_t-id" title="Permanent link">&para;</a></h4>
+<h4 id="microbitaccelerometer-microbiti2c-_i2c-uint16_t-address-uint16_t-id">MicroBitAccelerometer( <div style='color:#a71d5d; display:inline-block'>MicroBitI2C  &amp;</div> _i2c,  <div style='color:#a71d5d; display:inline-block'>uint16_t</div> address,  <div style='color:#a71d5d; display:inline-block'>uint16_t</div> id)<a class="headerlink" href="#microbitaccelerometer-microbiti2c-_i2c-uint16_t-address-uint16_t-id" title="Permanent link">&para;</a></h4>
 <h5 id="description_2">Description<a class="headerlink" href="#description_2" title="Permanent link">&para;</a></h5>
-<p>Constructor. Create a software abstraction of an accelerometer.</p>
+<p>Constructor. Create a software abstraction of an accelerometer.  </p>
 <h5 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#008080; display:inline-block'>MicroBitI2C  &amp;</div> <em>_i2c</em> - an instance of  MicroBitI2C  used to communicate with the onboard accelerometer.</p>
-<p><div style='color:#008080; display:inline-block'>uint16_t</div> <em>address</em> - the default I2C address of the accelerometer. Defaults to: MMA8653_DEFAULT_ADDR.</p>
-<p><div style='color:#008080; display:inline-block'>uint16_t</div> <em>id</em> - the unique  EventModel  id of this component. Defaults to: MICROBIT_ID_ACCELEROMETER</p>
+<p><div style='color:#a71d5d; display:inline-block'>MicroBitI2C  &amp;</div> _i2c - an instance of  MicroBitI2C  used to communicate with the onboard accelerometer.</p>
+<p><div style='color:#a71d5d; display:inline-block'>uint16_t</div> address - the default I2C address of the accelerometer. Defaults to: MMA8653_DEFAULT_ADDR.</p>
+<p><div style='color:#a71d5d; display:inline-block'>uint16_t</div> id - the unique  EventModel  id of this component. Defaults to: MICROBIT_ID_ACCELEROMETER</p>
 </blockquote>
 <h5 id="example_2">Example<a class="headerlink" href="#example_2" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> MicroBitI2C i2c = MicroBitI2C(I2C_SDA0, I2C_SCL0);
+<pre><code class="cpp"> MicroBitI2C i2c = MicroBitI2C(I2C_SDA0, I2C_SCL0); 
 
- MicroBitAccelerometer accelerometer = MicroBitAccelerometer(i2c);
+ MicroBitAccelerometer accelerometer = MicroBitAccelerometer(i2c); 
 </code></pre>
 
 <h2 id="configure">configure<a class="headerlink" href="#configure" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-configure"><div style='color:#FF69B4; display:inline-block'>int</div> configure()<a class="headerlink" href="#int-configure" title="Permanent link">&para;</a></h4>
+<h4 id="int-configure"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>configure</div>()<a class="headerlink" href="#int-configure" title="Permanent link">&para;</a></h4>
 <h5 id="description_3">Description<a class="headerlink" href="#description_3" title="Permanent link">&para;</a></h5>
-<p>Configures the accelerometer for G range and sample rate defined in this object. The nearest values are chosen to those defined that are supported by the hardware. The instance variables are then updated to reflect reality.</p>
+<p>Configures the accelerometer for G range and sample rate defined in this object. The nearest values are chosen to those defined that are supported by the hardware. The instance variables are then updated to reflect reality.  </p>
 <h5 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h5>
-<p>MICROBIT_OK on success, MICROBIT_I2C_ERROR if the accelerometer could not be configured.</p>
+<p>MICROBIT_OK on success, MICROBIT_I2C_ERROR if the accelerometer could not be configured. </p>
 <h2 id="updatesample">updateSample<a class="headerlink" href="#updatesample" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-updatesample"><div style='color:#FF69B4; display:inline-block'>int</div> updateSample()<a class="headerlink" href="#int-updatesample" title="Permanent link">&para;</a></h4>
+<h4 id="int-updatesample"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>updateSample</div>()<a class="headerlink" href="#int-updatesample" title="Permanent link">&para;</a></h4>
 <h5 id="description_4">Description<a class="headerlink" href="#description_4" title="Permanent link">&para;</a></h5>
-<p>Reads the acceleration data from the accelerometer, and stores it in our buffer. This only happens if the accelerometer indicates that it has new data via int1.</p>
+<p>Reads the acceleration data from the accelerometer, and stores it in our buffer. This only happens if the accelerometer indicates that it has new data via int1.  </p>
+<p>On first use, this member function will attempt to add this component to the list of fiber components in order to constantly update the values stored by this object.  </p>
+<p>This technique is called lazy instantiation, and it means that we do not obtain the overhead from non-chalantly adding this component to fiber components.  </p>
 <h5 id="returns_1">Returns<a class="headerlink" href="#returns_1" title="Permanent link">&para;</a></h5>
-<p>MICROBIT_OK on success, MICROBIT_I2C_ERROR if the read request fails.</p>
+<p>MICROBIT_OK on success, MICROBIT_I2C_ERROR if the read request fails. </p>
 <h2 id="setperiod">setPeriod<a class="headerlink" href="#setperiod" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-setperiod-int-period"><div style='color:#FF69B4; display:inline-block'>int</div> setPeriod( <div style='color:#008080; display:inline-block'>int</div> period)<a class="headerlink" href="#int-setperiod-int-period" title="Permanent link">&para;</a></h4>
+<h4 id="int-setperiod-int-period"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>setPeriod</div>( <div style='color:#a71d5d; display:inline-block'>int</div> period)<a class="headerlink" href="#int-setperiod-int-period" title="Permanent link">&para;</a></h4>
 <h5 id="description_5">Description<a class="headerlink" href="#description_5" title="Permanent link">&para;</a></h5>
-<p>Attempts to set the sample rate of the accelerometer to the specified value (in ms).</p>
+<p>Attempts to set the sample rate of the accelerometer to the specified value (in ms).  </p>
 <h5 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#008080; display:inline-block'>int</div> <em>period</em> - the requested time between samples, in milliseconds.</p>
+<p><div style='color:#a71d5d; display:inline-block'>int</div> period - the requested time between samples, in milliseconds.</p>
 </blockquote>
 <h5 id="returns_2">Returns<a class="headerlink" href="#returns_2" title="Permanent link">&para;</a></h5>
 <p>MICROBIT_OK on success, MICROBIT_I2C_ERROR is the request fails.</p>
 <h5 id="example_3">Example<a class="headerlink" href="#example_3" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> // sample rate is now 20 ms.
- accelerometer.setPeriod(20);
+<pre><code class="cpp"> // sample rate is now 20 ms. 
+ accelerometer.setPeriod(20); 
 </code></pre>
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The requested rate may not be possible on the hardware. In this case, the nearest lower rate is chosen.</p>
+<p>The requested rate may not be possible on the hardware. In this case, the nearest lower rate is chosen. </p>
 </div>
 <h2 id="getperiod">getPeriod<a class="headerlink" href="#getperiod" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-getperiod"><div style='color:#FF69B4; display:inline-block'>int</div> getPeriod()<a class="headerlink" href="#int-getperiod" title="Permanent link">&para;</a></h4>
+<h4 id="int-getperiod"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>getPeriod</div>()<a class="headerlink" href="#int-getperiod" title="Permanent link">&para;</a></h4>
 <h5 id="description_6">Description<a class="headerlink" href="#description_6" title="Permanent link">&para;</a></h5>
-<p>Reads the currently configured sample rate of the accelerometer.</p>
+<p>Reads the currently configured sample rate of the accelerometer.  </p>
 <h5 id="returns_3">Returns<a class="headerlink" href="#returns_3" title="Permanent link">&para;</a></h5>
-<p>The time between samples, in milliseconds.</p>
+<p>The time between samples, in milliseconds. </p>
 <h2 id="setrange">setRange<a class="headerlink" href="#setrange" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-setrange-int-range"><div style='color:#FF69B4; display:inline-block'>int</div> setRange( <div style='color:#008080; display:inline-block'>int</div> range)<a class="headerlink" href="#int-setrange-int-range" title="Permanent link">&para;</a></h4>
+<h4 id="int-setrange-int-range"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>setRange</div>( <div style='color:#a71d5d; display:inline-block'>int</div> range)<a class="headerlink" href="#int-setrange-int-range" title="Permanent link">&para;</a></h4>
 <h5 id="description_7">Description<a class="headerlink" href="#description_7" title="Permanent link">&para;</a></h5>
-<p>Attempts to set the sample range of the accelerometer to the specified value (in g).</p>
+<p>Attempts to set the sample range of the accelerometer to the specified value (in g).  </p>
 <h5 id="parameters_4">Parameters<a class="headerlink" href="#parameters_4" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#008080; display:inline-block'>int</div> <em>range</em> - The requested sample range of samples, in g.</p>
+<p><div style='color:#a71d5d; display:inline-block'>int</div> range - The requested sample range of samples, in g.</p>
 </blockquote>
 <h5 id="returns_4">Returns<a class="headerlink" href="#returns_4" title="Permanent link">&para;</a></h5>
 <p>MICROBIT_OK on success, MICROBIT_I2C_ERROR is the request fails.</p>
 <h5 id="example_4">Example<a class="headerlink" href="#example_4" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> // the sample range of the accelerometer is now 8G.
- accelerometer.setRange(8);
+<pre><code class="cpp"> // the sample range of the accelerometer is now 8G. 
+ accelerometer.setRange(8); 
 </code></pre>
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The requested range may not be possible on the hardware. In this case, the nearest lower range is chosen.</p>
+<p>The requested range may not be possible on the hardware. In this case, the nearest lower range is chosen. </p>
 </div>
 <h2 id="getrange">getRange<a class="headerlink" href="#getrange" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-getrange"><div style='color:#FF69B4; display:inline-block'>int</div> getRange()<a class="headerlink" href="#int-getrange" title="Permanent link">&para;</a></h4>
+<h4 id="int-getrange"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>getRange</div>()<a class="headerlink" href="#int-getrange" title="Permanent link">&para;</a></h4>
 <h5 id="description_8">Description<a class="headerlink" href="#description_8" title="Permanent link">&para;</a></h5>
-<p>Reads the currently configured sample range of the accelerometer.</p>
+<p>Reads the currently configured sample range of the accelerometer.  </p>
 <h5 id="returns_5">Returns<a class="headerlink" href="#returns_5" title="Permanent link">&para;</a></h5>
-<p>The sample range, in g.</p>
+<p>The sample range, in g. </p>
 <h2 id="whoami">whoAmI<a class="headerlink" href="#whoami" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-whoami"><div style='color:#FF69B4; display:inline-block'>int</div> whoAmI()<a class="headerlink" href="#int-whoami" title="Permanent link">&para;</a></h4>
+<h4 id="int-whoami"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>whoAmI</div>()<a class="headerlink" href="#int-whoami" title="Permanent link">&para;</a></h4>
 <h5 id="description_9">Description<a class="headerlink" href="#description_9" title="Permanent link">&para;</a></h5>
-<p>Attempts to read the 8 bit ID from the accelerometer, this can be used for validation purposes.</p>
+<p>Attempts to read the 8 bit ID from the accelerometer, this can be used for validation purposes.  </p>
 <h5 id="returns_6">Returns<a class="headerlink" href="#returns_6" title="Permanent link">&para;</a></h5>
 <p>the 8 bit ID returned by the accelerometer, or MICROBIT_I2C_ERROR if the request fails.</p>
 <h5 id="example_5">Example<a class="headerlink" href="#example_5" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> accelerometer.whoAmI();
+<pre><code class="cpp"> accelerometer.whoAmI(); 
 </code></pre>
 
 <h2 id="getx">getX<a class="headerlink" href="#getx" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-getx"><div style='color:#FF69B4; display:inline-block'>int</div> getX()<a class="headerlink" href="#int-getx" title="Permanent link">&para;</a></h4>
+<h4 id="int-getx"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>getX</div>()<a class="headerlink" href="#int-getx" title="Permanent link">&para;</a></h4>
 <h5 id="description_10">Description<a class="headerlink" href="#description_10" title="Permanent link">&para;</a></h5>
-<p>Reads the value of the X axis from the latest update retrieved from the accelerometer.</p>
+<p>Reads the value of the X axis from the latest update retrieved from the accelerometer.  </p>
 <h5 id="returns_7">Returns<a class="headerlink" href="#returns_7" title="Permanent link">&para;</a></h5>
 <p>The force measured in the X axis, in milli-g.</p>
 <h5 id="example_6">Example<a class="headerlink" href="#example_6" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> accelerometer.getX();
+<pre><code class="cpp"> accelerometer.getX(); 
 </code></pre>
 
 <p><br/></p>
-<h4 id="int-getx-microbitcoordinatesystem-system"><div style='color:#FF69B4; display:inline-block'>int</div> getX( <div style='color:#008080; display:inline-block'>MicroBitCoordinateSystem</div> system)<a class="headerlink" href="#int-getx-microbitcoordinatesystem-system" title="Permanent link">&para;</a></h4>
+<h4 id="int-getx-microbitcoordinatesystem-system"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>getX</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitCoordinateSystem</div> system)<a class="headerlink" href="#int-getx-microbitcoordinatesystem-system" title="Permanent link">&para;</a></h4>
 <h5 id="description_11">Description<a class="headerlink" href="#description_11" title="Permanent link">&para;</a></h5>
-<p>Reads the value of the X axis from the latest update retrieved from the accelerometer.</p>
+<p>Reads the value of the X axis from the latest update retrieved from the accelerometer.  </p>
 <h5 id="parameters_5">Parameters<a class="headerlink" href="#parameters_5" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#008080; display:inline-block'>MicroBitCoordinateSystem</div> <em>system</em> - The coordinate system to use. By default, a simple cartesian system is provided.</p>
+<p><div style='color:#a71d5d; display:inline-block'>MicroBitCoordinateSystem</div> system - The coordinate system to use. By default, a simple cartesian system is provided.</p>
 </blockquote>
 <h5 id="returns_8">Returns<a class="headerlink" href="#returns_8" title="Permanent link">&para;</a></h5>
 <p>The force measured in the X axis, in milli-g.</p>
 <h5 id="example_7">Example<a class="headerlink" href="#example_7" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> accelerometer.getX();
+<pre><code class="cpp"> accelerometer.getX(); 
 </code></pre>
 
 <h2 id="gety">getY<a class="headerlink" href="#gety" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-gety"><div style='color:#FF69B4; display:inline-block'>int</div> getY()<a class="headerlink" href="#int-gety" title="Permanent link">&para;</a></h4>
+<h4 id="int-gety"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>getY</div>()<a class="headerlink" href="#int-gety" title="Permanent link">&para;</a></h4>
 <h5 id="description_12">Description<a class="headerlink" href="#description_12" title="Permanent link">&para;</a></h5>
-<p>Reads the value of the Y axis from the latest update retrieved from the accelerometer.</p>
+<p>Reads the value of the Y axis from the latest update retrieved from the accelerometer.  </p>
 <h5 id="returns_9">Returns<a class="headerlink" href="#returns_9" title="Permanent link">&para;</a></h5>
 <p>The force measured in the Y axis, in milli-g.</p>
 <h5 id="example_8">Example<a class="headerlink" href="#example_8" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> accelerometer.getY();
+<pre><code class="cpp"> accelerometer.getY(); 
 </code></pre>
 
 <p><br/></p>
-<h4 id="int-gety-microbitcoordinatesystem-system"><div style='color:#FF69B4; display:inline-block'>int</div> getY( <div style='color:#008080; display:inline-block'>MicroBitCoordinateSystem</div> system)<a class="headerlink" href="#int-gety-microbitcoordinatesystem-system" title="Permanent link">&para;</a></h4>
+<h4 id="int-gety-microbitcoordinatesystem-system"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>getY</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitCoordinateSystem</div> system)<a class="headerlink" href="#int-gety-microbitcoordinatesystem-system" title="Permanent link">&para;</a></h4>
 <h5 id="description_13">Description<a class="headerlink" href="#description_13" title="Permanent link">&para;</a></h5>
-<p>Reads the value of the Y axis from the latest update retrieved from the accelerometer.</p>
+<p>Reads the value of the Y axis from the latest update retrieved from the accelerometer.  </p>
 <h5 id="parameters_6">Parameters<a class="headerlink" href="#parameters_6" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#008080; display:inline-block'>MicroBitCoordinateSystem</div> <em>system</em></p>
+<p><div style='color:#a71d5d; display:inline-block'>MicroBitCoordinateSystem</div> system</p>
 </blockquote>
 <h5 id="returns_10">Returns<a class="headerlink" href="#returns_10" title="Permanent link">&para;</a></h5>
 <p>The force measured in the Y axis, in milli-g.</p>
 <h5 id="example_9">Example<a class="headerlink" href="#example_9" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> accelerometer.getY();
+<pre><code class="cpp"> accelerometer.getY(); 
 </code></pre>
 
 <h2 id="getz">getZ<a class="headerlink" href="#getz" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-getz"><div style='color:#FF69B4; display:inline-block'>int</div> getZ()<a class="headerlink" href="#int-getz" title="Permanent link">&para;</a></h4>
+<h4 id="int-getz"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>getZ</div>()<a class="headerlink" href="#int-getz" title="Permanent link">&para;</a></h4>
 <h5 id="description_14">Description<a class="headerlink" href="#description_14" title="Permanent link">&para;</a></h5>
-<p>Reads the value of the Z axis from the latest update retrieved from the accelerometer.</p>
+<p>Reads the value of the Z axis from the latest update retrieved from the accelerometer.  </p>
 <h5 id="returns_11">Returns<a class="headerlink" href="#returns_11" title="Permanent link">&para;</a></h5>
 <p>The force measured in the Z axis, in milli-g.</p>
 <h5 id="example_10">Example<a class="headerlink" href="#example_10" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> accelerometer.getZ();
+<pre><code class="cpp"> accelerometer.getZ(); 
 </code></pre>
 
 <p><br/></p>
-<h4 id="int-getz-microbitcoordinatesystem-system"><div style='color:#FF69B4; display:inline-block'>int</div> getZ( <div style='color:#008080; display:inline-block'>MicroBitCoordinateSystem</div> system)<a class="headerlink" href="#int-getz-microbitcoordinatesystem-system" title="Permanent link">&para;</a></h4>
+<h4 id="int-getz-microbitcoordinatesystem-system"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>getZ</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitCoordinateSystem</div> system)<a class="headerlink" href="#int-getz-microbitcoordinatesystem-system" title="Permanent link">&para;</a></h4>
 <h5 id="description_15">Description<a class="headerlink" href="#description_15" title="Permanent link">&para;</a></h5>
-<p>Reads the value of the Z axis from the latest update retrieved from the accelerometer.</p>
+<p>Reads the value of the Z axis from the latest update retrieved from the accelerometer.  </p>
 <h5 id="parameters_7">Parameters<a class="headerlink" href="#parameters_7" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#008080; display:inline-block'>MicroBitCoordinateSystem</div> <em>system</em></p>
+<p><div style='color:#a71d5d; display:inline-block'>MicroBitCoordinateSystem</div> system</p>
 </blockquote>
 <h5 id="returns_12">Returns<a class="headerlink" href="#returns_12" title="Permanent link">&para;</a></h5>
 <p>The force measured in the Z axis, in milli-g.</p>
 <h5 id="example_11">Example<a class="headerlink" href="#example_11" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> accelerometer.getZ();
+<pre><code class="cpp"> accelerometer.getZ(); 
 </code></pre>
 
 <h2 id="getpitch">getPitch<a class="headerlink" href="#getpitch" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-getpitch"><div style='color:#FF69B4; display:inline-block'>int</div> getPitch()<a class="headerlink" href="#int-getpitch" title="Permanent link">&para;</a></h4>
+<h4 id="int-getpitch"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>getPitch</div>()<a class="headerlink" href="#int-getpitch" title="Permanent link">&para;</a></h4>
 <h5 id="description_16">Description<a class="headerlink" href="#description_16" title="Permanent link">&para;</a></h5>
-<p>Provides a rotation compensated pitch of the device, based on the latest update retrieved from the accelerometer.</p>
+<p>Provides a rotation compensated pitch of the device, based on the latest update retrieved from the accelerometer.  </p>
 <h5 id="returns_13">Returns<a class="headerlink" href="#returns_13" title="Permanent link">&para;</a></h5>
 <p>The pitch of the device, in degrees.</p>
 <h5 id="example_12">Example<a class="headerlink" href="#example_12" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> accelerometer.getPitch();
+<pre><code class="cpp"> accelerometer.getPitch(); 
 </code></pre>
 
 <h2 id="getpitchradians">getPitchRadians<a class="headerlink" href="#getpitchradians" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="float-getpitchradians"><div style='color:#FF69B4; display:inline-block'>float</div> getPitchRadians()<a class="headerlink" href="#float-getpitchradians" title="Permanent link">&para;</a></h4>
+<h4 id="float-getpitchradians"><div style='color:#a71d5d; display:inline-block'>float</div> <div style='color:#795da3; display:inline-block'>getPitchRadians</div>()<a class="headerlink" href="#float-getpitchradians" title="Permanent link">&para;</a></h4>
 <h5 id="description_17">Description<a class="headerlink" href="#description_17" title="Permanent link">&para;</a></h5>
-<p>Provides a rotation compensated pitch of the device, based on the latest update retrieved from the accelerometer.</p>
+<p>Provides a rotation compensated pitch of the device, based on the latest update retrieved from the accelerometer.  </p>
 <h5 id="returns_14">Returns<a class="headerlink" href="#returns_14" title="Permanent link">&para;</a></h5>
 <p>The pitch of the device, in radians.</p>
 <h5 id="example_13">Example<a class="headerlink" href="#example_13" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> accelerometer.getPitchRadians();
+<pre><code class="cpp"> accelerometer.getPitchRadians(); 
 </code></pre>
 
 <h2 id="getroll">getRoll<a class="headerlink" href="#getroll" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-getroll"><div style='color:#FF69B4; display:inline-block'>int</div> getRoll()<a class="headerlink" href="#int-getroll" title="Permanent link">&para;</a></h4>
+<h4 id="int-getroll"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>getRoll</div>()<a class="headerlink" href="#int-getroll" title="Permanent link">&para;</a></h4>
 <h5 id="description_18">Description<a class="headerlink" href="#description_18" title="Permanent link">&para;</a></h5>
-<p>Provides a rotation compensated roll of the device, based on the latest update retrieved from the accelerometer.</p>
+<p>Provides a rotation compensated roll of the device, based on the latest update retrieved from the accelerometer.  </p>
 <h5 id="returns_15">Returns<a class="headerlink" href="#returns_15" title="Permanent link">&para;</a></h5>
 <p>The roll of the device, in degrees.</p>
 <h5 id="example_14">Example<a class="headerlink" href="#example_14" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> accelerometer.getRoll();
+<pre><code class="cpp"> accelerometer.getRoll(); 
 </code></pre>
 
 <h2 id="getrollradians">getRollRadians<a class="headerlink" href="#getrollradians" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="float-getrollradians"><div style='color:#FF69B4; display:inline-block'>float</div> getRollRadians()<a class="headerlink" href="#float-getrollradians" title="Permanent link">&para;</a></h4>
+<h4 id="float-getrollradians"><div style='color:#a71d5d; display:inline-block'>float</div> <div style='color:#795da3; display:inline-block'>getRollRadians</div>()<a class="headerlink" href="#float-getrollradians" title="Permanent link">&para;</a></h4>
 <h5 id="description_19">Description<a class="headerlink" href="#description_19" title="Permanent link">&para;</a></h5>
-<p>Provides a rotation compensated roll of the device, based on the latest update retrieved from the accelerometer.</p>
+<p>Provides a rotation compensated roll of the device, based on the latest update retrieved from the accelerometer.  </p>
 <h5 id="returns_16">Returns<a class="headerlink" href="#returns_16" title="Permanent link">&para;</a></h5>
 <p>The roll of the device, in radians.</p>
 <h5 id="example_15">Example<a class="headerlink" href="#example_15" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> accelerometer.getRollRadians();
+<pre><code class="cpp"> accelerometer.getRollRadians(); 
 </code></pre>
 
 <h2 id="getgesture">getGesture<a class="headerlink" href="#getgesture" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="basicgesture-getgesture"><div style='color:#FF69B4; display:inline-block'>BasicGesture</div> getGesture()<a class="headerlink" href="#basicgesture-getgesture" title="Permanent link">&para;</a></h4>
+<h4 id="basicgesture-getgesture"><div style='color:#a71d5d; display:inline-block'>BasicGesture</div> <div style='color:#795da3; display:inline-block'>getGesture</div>()<a class="headerlink" href="#basicgesture-getgesture" title="Permanent link">&para;</a></h4>
 <h5 id="description_20">Description<a class="headerlink" href="#description_20" title="Permanent link">&para;</a></h5>
-<p>Retrieves the last recorded gesture.</p>
+<p>Retrieves the last recorded gesture.  </p>
 <h5 id="returns_17">Returns<a class="headerlink" href="#returns_17" title="Permanent link">&para;</a></h5>
 <p>The last gesture that was detected.</p>
 <h5 id="example_16">Example<a class="headerlink" href="#example_16" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> MicroBitDisplay display;
+<pre><code class="cpp"> MicroBitDisplay display; 
 
- if (accelerometer.getGesture() == SHAKE)
- display.scroll(&quot;SHAKE!&quot;);
+ if (accelerometer.getGesture() == SHAKE) 
+ display.scroll(&quot;SHAKE!&quot;); 
 </code></pre>
 
 <h2 id="isidlecallbackneeded">isIdleCallbackNeeded<a class="headerlink" href="#isidlecallbackneeded" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-isidlecallbackneeded"><div style='color:#FF69B4; display:inline-block'>int</div> isIdleCallbackNeeded()<a class="headerlink" href="#int-isidlecallbackneeded" title="Permanent link">&para;</a></h4>
+<h4 id="int-isidlecallbackneeded"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>isIdleCallbackNeeded</div>()<a class="headerlink" href="#int-isidlecallbackneeded" title="Permanent link">&para;</a></h4>
 <h5 id="description_21">Description<a class="headerlink" href="#description_21" title="Permanent link">&para;</a></h5>
-<p>Returns 0 or 1. 1 indicates data is waiting to be read, zero means data is not ready to be read.</p>
+<p>Returns 0 or 1. 1 indicates data is waiting to be read, zero means data is not ready to be read.  </p>
+<p>We check if any data is ready for reading by checking the interrupt flag on the accelerometer.           </p>
 <hr /></div>
         </div>
 
