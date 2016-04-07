@@ -63,8 +63,13 @@ For example, imagine you were creating a simple remote control car with one micr
 You might decide that simply sending a `1` means turn left, and a `2` means turn right, so you may write a program like this for the remote control:
 
 ```cpp
+#include "MicroBit.h"
+
+MicroBit    uBit;
+
 int main()
 {
+    uBit.init();
     uBit.radio.enable();
 
     while(1)
@@ -84,19 +89,30 @@ int main()
 
 
 ```cpp
+#include "MicroBit.h"
+
+MicroBit    uBit;
+
 void onData(MicroBitEvent e)
 {
     ManagedString s = uBit.radio.datagram.recv();
 
     if (s == "1")
+    {
         uBit.io.P0.setServoValue(0);
+        uBit.display.print("A");
+    }
 
     if (s == "2")
+    {
         uBit.io.P0.setServoValue(180);
+        uBit.display.print("B");
+    }
 }
 
 int main()
 {
+    uBit.init();
     uBit.messageBus.listen(MICROBIT_ID_RADIO, MICROBIT_RADIO_EVT_DATAGRAM, onData);
     uBit.radio.enable();
 
@@ -112,8 +128,13 @@ array syntax.
 
 For example, here is an similar program using a [`PacketBuffer`](../data-types/packetbuffer.md):
 ```cpp
+#include "MicroBit.h"
+
+MicroBit    uBit;
+
 int main()
 {
+    uBit.init();
     uBit.radio.enable();
 
     // Create a packet containing just a single byte.
@@ -138,19 +159,30 @@ int main()
 
 
 ```cpp
+#include "MicroBit.h"
+
+MicroBit    uBit;
+
 void onData(MicroBitEvent e)
 {
     PacketBuffer p = uBit.radio.datagram.recv();
 
     if (p[0] == 1)
+    {
         uBit.io.P0.setServoValue(0);
+        uBit.display.print("A");
+    }
 
     if (p[0] == 2)
+    {
         uBit.io.P0.setServoValue(180);
+        uBit.display.print("B");
+    }
 }
 
 int main()
 {
+    uBit.init();
     uBit.messageBus.listen(MICROBIT_ID_RADIO, MICROBIT_RADIO_EVT_DATAGRAM, onData);
     uBit.radio.enable();
 
@@ -172,22 +204,29 @@ event handlers.
 For example, if you wanted to share an event SOMETHING with another micro:bit whenever ButtonA is pressed, you might write code like this on the sending micro:bit:
 
 ```cpp
+#include "MicroBit.h"
+
+MicroBit    uBit;
+
 #define MY_APP_ID           4000
 #define SOMETHING           1
 
 int main()
 {
+    uBit.init();
     uBit.radio.enable();
 
     // Ensure the radio is listening out to forward our events
     uBit.radio.event.listen(MY_APP_ID, MICROBIT_EVT_ANY);
 
+    // Just for varierty, this time we'll periodically check to see if a button if pressed.
+    // We can, of course, use an event handler for this too.
     while(1)
     {
         if (uBit.buttonA.isPressed())
             MicroBitEvent(MY_APP_ID, SOMETHING);
 
-        uBit.sleep(1000);
+        uBit.sleep(100);
     }
 }
 ```
@@ -196,6 +235,10 @@ int main()
 
 
 ```cpp
+#include "MicroBit.h"
+
+MicroBit    uBit;
+
 #define MY_APP_ID           4000
 #define SOMETHING           1
 
@@ -206,6 +249,7 @@ void onSomething(MicroBitEvent e)
 
 int main()
 {
+    uBit.init();
     uBit.messageBus.listen(MY_APP_ID, SOMETHING, onSomething);
     uBit.radio.enable();
 
@@ -229,7 +273,15 @@ Groups are simply numbers, and a micro:bit's group can be set at anytime by the 
 
 For example:
 ```cpp
+#include "MicroBit.h"
+
+MicroBit    uBit;
+
+int main()
+{
+    uBit.init();
     uBit.radio.setGroup(10);
+}
 ```
 
 ##Message Bus ID
