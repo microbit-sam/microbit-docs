@@ -194,6 +194,7 @@ The following options are configurable at compile time through this mechanism:
 | `MICROBIT_DAL_VERSION` | Define the default version information of the runtime.|
 
 There are also some constants that define the geometry of the micro:bit memory
+
 !!! warning
     Only change these if you really know what you are doing!
 
