@@ -89,6 +89,9 @@ int main()
 }
 ```
 
+!!! warning
+    Running a MessageBus without the Fiber Scheduler will result in all event handlers being registered as MESSAGE_BUS_LISTENER_IMMEDIATE (see [`MicroBitMessageBus`](ubit/messageBus.md) for details). This means that your event handler will be executed in the context of the code that raised the event. This may include interrupt context, which may not be safe for all operations. It is recommend that you always run the MessageBus with the Fiber Scheduler in order to allow the event to be decoupled from interrupt context.
+
 ## Initialising the Fiber Scheduler
 
 Often when using asynchronous events, it is also useful to run the fiber scheduler. Without a scheduler in operation, all event handlers (such as the one above) will be executed with the threading mode `MESSAGE_BUS_LISTENER_IMMEDIATE`, as
