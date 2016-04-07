@@ -194,6 +194,8 @@ The following options are configurable at compile time through this mechanism:
 | `MICROBIT_DAL_VERSION` | Define the default version information of the runtime.|
 
 There are also some constants that define the geometry of the micro:bit memory
+!!! warning
+    Only change these if you really know what you are doing!
 
 | Configuration option | Brief Description |
 | ------------- |-------------|
@@ -205,5 +207,3 @@ There are also some constants that define the geometry of the micro:bit memory
 | `MICROBIT_STACK_SIZE` | Amount of memory reserved for the stack (in bytes). |
 | `MICROBIT_HEAP_END` | The end address of the mbed heap space |
 
-!!! warning
-    Only change these if you really know what you are doing!
