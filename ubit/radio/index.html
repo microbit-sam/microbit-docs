@@ -579,10 +579,16 @@ void onData(MicroBitEvent e)
     PacketBuffer p = uBit.radio.datagram.recv();
 
     if (p[0] == 1)
+    {
         uBit.io.P0.setServoValue(0);
+        uBit.display.print(&quot;A&quot;);
+    }
 
     if (p[0] == 2)
+    {
         uBit.io.P0.setServoValue(180);
+        uBit.display.print(&quot;B&quot;);
+    }
 }
 
 int main()
@@ -619,12 +625,14 @@ int main()
     // Ensure the radio is listening out to forward our events
     uBit.radio.event.listen(MY_APP_ID, MICROBIT_EVT_ANY);
 
+    // Just for varierty, this time we'll periodically check to see if a button if pressed.
+    // We can, of course, use an event handler for this too.
     while(1)
     {
         if (uBit.buttonA.isPressed())
             MicroBitEvent(MY_APP_ID, SOMETHING);
 
-        uBit.sleep(1000);
+        uBit.sleep(100);
     }
 }
 </code></pre>
