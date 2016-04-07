@@ -1,11 +1,4 @@
-
-
-/*.navbar-brand, .navbar-nav > li > a {
-    padding-top: : 150px !important;
-    padding-bottom:: 150px !important;
-}*/
 /* Style the admonitions. */
-
 .admonition {
     overflow-x: scroll;
     padding: 15px;
@@ -101,4 +94,25 @@ Hackily override permanent link default styles, to add a micro:bit twist!
     background-size:cover;
     color:transparent !important;
     padding-left: 0.68em;
+}
+
+.embed-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    height: auto;
+}
+
+.embed-container iframe, .embed-container object, .embed-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+code{
+    white-space: pre !important;
 }
