@@ -1,11 +1,4 @@
-
-
-/*.navbar-brand, .navbar-nav > li > a {
-    padding-top: : 150px !important;
-    padding-bottom:: 150px !important;
-}*/
 /* Style the admonitions. */
-
 .admonition {
     overflow-x: scroll;
     padding: 15px;
@@ -118,4 +111,8 @@ Hackily override permanent link default styles, to add a micro:bit twist!
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+code{
+    white-space: pre !important;
 }

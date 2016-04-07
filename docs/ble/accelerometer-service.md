@@ -29,7 +29,7 @@ You can control how often the accelerometer is polled and therefore how often Ac
 
 See the profile page and profile reference documentation for data format and UUID details.
 
-Raw accelerometer data received from the micro:bit can be a bit "jerky" and so a low pass filter function should be used to smooth the data. 
+Raw accelerometer data received from the micro:bit can be a bit "jerky" and so a low pass filter function should be used to smooth the data.
 
 
 ### Android
@@ -58,7 +58,7 @@ public static String ACCELEROMETERPERIOD_CHARACTERISTIC_UUID = "E95DFB24251D470A
 
 ``` java
 // initiate reading of the accelerometer period characteristic to establish the current value
-bluetooth_le_adapter.readCharacteristic(Utility.normaliseUUID(BleAdapterService.ACCELEROMETERSERVICE_SERVICE_UUID),Utility.normaliseUUID(BleAdapterService.ACCELEROMETERPERIOD_CHARACTERISTIC_UUID));
+bluetooth_le_adapter.readCharacteristic(Utility.normaliseUUID(BleAdapterService.ACCELEROMETERSERVICE_SERVICE_UUID), Utility.normaliseUUID(BleAdapterService.ACCELEROMETERPERIOD_CHARACTERISTIC_UUID));
 ```
 
 ``` java
@@ -69,10 +69,10 @@ bluetooth_le_adapter.writeCharacteristic(Utility.normaliseUUID(BleAdapterService
 ``` java
 // enabling accelerometer notifications
 bluetooth_le_adapter.setNotificationsState(
-                    Utility.normaliseUUID(BleAdapterService.ACCELEROMETERSERVICE_SERVICE_UUID), 
+                    Utility.normaliseUUID(BleAdapterService.ACCELEROMETERSERVICE_SERVICE_UUID),
                     Utility.normaliseUUID(BleAdapterService.ACCELEROMETERDATA_CHARACTERISTIC_UUID), true);
 ```
-                       
+
 
 ``` java
 // receiving, decoding and smoothing a notification
@@ -133,5 +133,3 @@ case BleAdapterService.NOTIFICATION_RECEIVED:
 #### Video Demonstration - starts at 0:18
 
 <iframe src="https://player.vimeo.com/video/153078747" width="750" height="422" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-
-
