@@ -5,37 +5,37 @@
         
     <url>
      <loc>None/</loc>
-     <lastmod>2016-04-07</lastmod>
+     <lastmod>2016-04-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/concepts/</loc>
-     <lastmod>2016-04-07</lastmod>
+     <lastmod>2016-04-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/advanced/</loc>
-     <lastmod>2016-04-07</lastmod>
+     <lastmod>2016-04-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/online-toolchains/</loc>
-     <lastmod>2016-04-07</lastmod>
+     <lastmod>2016-04-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/offline-toolchains/</loc>
-     <lastmod>2016-04-07</lastmod>
+     <lastmod>2016-04-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/device/</loc>
-     <lastmod>2016-04-07</lastmod>
+     <lastmod>2016-04-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -45,73 +45,73 @@
         
     <url>
      <loc>None/ubit/</loc>
-     <lastmod>2016-04-07</lastmod>
+     <lastmod>2016-04-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/ubit/i2c/</loc>
-     <lastmod>2016-04-07</lastmod>
+     <lastmod>2016-04-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/ubit/storage/</loc>
-     <lastmod>2016-04-07</lastmod>
+     <lastmod>2016-04-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/ubit/serial/</loc>
-     <lastmod>2016-04-07</lastmod>
+     <lastmod>2016-04-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/ubit/messageBus/</loc>
-     <lastmod>2016-04-07</lastmod>
+     <lastmod>2016-04-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/ubit/button/</loc>
-     <lastmod>2016-04-07</lastmod>
+     <lastmod>2016-04-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/ubit/display/</loc>
-     <lastmod>2016-04-07</lastmod>
+     <lastmod>2016-04-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/ubit/accelerometer/</loc>
-     <lastmod>2016-04-07</lastmod>
+     <lastmod>2016-04-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/ubit/compass/</loc>
-     <lastmod>2016-04-07</lastmod>
+     <lastmod>2016-04-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/ubit/thermometer/</loc>
-     <lastmod>2016-04-07</lastmod>
+     <lastmod>2016-04-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/ubit/io/</loc>
-     <lastmod>2016-04-07</lastmod>
+     <lastmod>2016-04-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/ubit/radio/</loc>
-     <lastmod>2016-04-07</lastmod>
+     <lastmod>2016-04-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -121,25 +121,25 @@
         
     <url>
      <loc>None/data-types/image/</loc>
-     <lastmod>2016-04-07</lastmod>
+     <lastmod>2016-04-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/data-types/event/</loc>
-     <lastmod>2016-04-07</lastmod>
+     <lastmod>2016-04-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/data-types/string/</loc>
-     <lastmod>2016-04-07</lastmod>
+     <lastmod>2016-04-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/data-types/packetbuffer/</loc>
-     <lastmod>2016-04-07</lastmod>
+     <lastmod>2016-04-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -149,55 +149,55 @@
         
     <url>
      <loc>None/ble/profile/</loc>
-     <lastmod>2016-04-07</lastmod>
+     <lastmod>2016-04-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/ble/accelerometer-service/</loc>
-     <lastmod>2016-04-07</lastmod>
+     <lastmod>2016-04-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/ble/button-service/</loc>
-     <lastmod>2016-04-07</lastmod>
+     <lastmod>2016-04-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/ble/dfu-service/</loc>
-     <lastmod>2016-04-07</lastmod>
+     <lastmod>2016-04-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/ble/event-service/</loc>
-     <lastmod>2016-04-07</lastmod>
+     <lastmod>2016-04-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/ble/iopin-service/</loc>
-     <lastmod>2016-04-07</lastmod>
+     <lastmod>2016-04-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/ble/led-service/</loc>
-     <lastmod>2016-04-07</lastmod>
+     <lastmod>2016-04-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/ble/magnetometer-service/</loc>
-     <lastmod>2016-04-07</lastmod>
+     <lastmod>2016-04-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/ble/temperature-service/</loc>
-     <lastmod>2016-04-07</lastmod>
+     <lastmod>2016-04-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -207,7 +207,7 @@
         
     <url>
      <loc>None/extras/light-sensing/</loc>
-     <lastmod>2016-04-07</lastmod>
+     <lastmod>2016-04-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -216,7 +216,7 @@
     
     <url>
      <loc>None/ubit/blemanager/</loc>
-     <lastmod>2016-04-07</lastmod>
+     <lastmod>2016-04-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -224,7 +224,7 @@
     
     <url>
      <loc>None/ubit/multibutton/</loc>
-     <lastmod>2016-04-07</lastmod>
+     <lastmod>2016-04-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -232,7 +232,7 @@
     
     <url>
      <loc>None/ubit/radioevent/</loc>
-     <lastmod>2016-04-07</lastmod>
+     <lastmod>2016-04-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -240,7 +240,7 @@
     
     <url>
      <loc>None/ubit/radiodatagram/</loc>
-     <lastmod>2016-04-07</lastmod>
+     <lastmod>2016-04-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
