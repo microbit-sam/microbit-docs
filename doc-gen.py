@@ -20,18 +20,29 @@ parser.add_option("-m", "--microbit-headers",
                   help="The relative path to the headers for MicroBit (MicroBit.h), if not supplied, this will use the same location as specified by -d.")
 
 parser.add_option("--no-clean",
-                  action="store",
-	              type="string",
+                  action="store_true",
                   dest="no_clean",
                   help="If set, doxygen documentation will not be regenerated.")
 
 parser.add_option("--no-filter",
-                  action="store",
-	              type="string",
+                  action="store_true",
                   dest="no_filter",
                   help="If set, filters for member functions and header copying will not be applied")
 
+parser.add_option("-g","--github-deploy",
+                  action="store_true",
+                  dest="github_deploy",
+                  help="If set, filters for member functions and header copying will not be applied")
+
 (options, args) = parser.parse_args()
+
+if options.github_deploy:
+    if options.dal_headers or options.microbit_headers:
+        print "The -g flag only deploys, no documentation will be generated."
+
+    os.system('mkdocs gh-deploy --clean')
+    exit(0)
+
 
 if not options.dal_headers:
     parser.error('A path was not given to the microbit-dal')
