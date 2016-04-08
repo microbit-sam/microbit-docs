@@ -36,9 +36,9 @@ $( document ).ready(function() {
     $('table').addClass('table table-striped table-hover');
 
     if(window.location.pathname.indexOf("online-toolchains") > 0){
-        $(".table td:nth-child(1)").width('25%');
-        $(".table").attr("layout","fixed");
-        $(".table td:nth-child(2)").width('75%');
+        $(".table th:nth-child(1)").css("width",'25%');
+        $(".table").css("table-layout","fixed");
+        $(".table th:nth-child(2)").css("width",'75%');
     }
 });
 
