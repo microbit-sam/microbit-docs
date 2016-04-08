@@ -36,8 +36,9 @@ $( document ).ready(function() {
     $('table').addClass('table table-striped table-hover');
 
     if(window.location.pathname.indexOf("online-toolchains") > 0){
-        $(".table td:nth-child(1)").addClass("col-md-4");
-        $(".table td:nth-child(2)").addClass("col-md-8");
+        $(".table td:nth-child(1)").width('25%');
+        $(".table td img").width('100%');
+        $(".table td:nth-child(2)").width('75%');
     }
 });
 
