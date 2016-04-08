@@ -125,3 +125,8 @@ code{
 .cell-hover>tbody>tr>td:hover, .table-hover>tbody>tr>td:hover{
     background-color: #f5f5f5!important; // Or any colour you like
 }
+
+@-moz-document url-prefix() {
+    /* Firefox doesn't respect max-width in certain situations */
+    img { width: 100%; max-width: -moz-max-content !important; }
+}
