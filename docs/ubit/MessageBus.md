@@ -234,7 +234,7 @@ Default constructor.
 #####Description
 Queues the given event to be sent to all registered recipients.  
 
-
+ 
 
 
 #####Parameters
@@ -242,18 +242,18 @@ Queues the given event to be sent to all registered recipients.
 >  <div style='color:#a71d5d; display:inline-block'>MicroBitEvent</div> evt - The event to send.
 #####Example
 ```cpp
- MicroBitMessageBus bus;
-
- // Creates and sends the MicroBitEvent using bus.
- MicrobitEvent evt(MICROBIT_ID_BUTTON_A, MICROBIT_BUTTON_EVT_CLICK);
-
- // Creates the MicrobitEvent, but delays the sending of that event.
- MicrobitEvent evt1(MICROBIT_ID_BUTTON_A, MICROBIT_BUTTON_EVT_CLICK, CREATE_ONLY);
-
- bus.send(evt1);
-
- // This has the same effect!
- evt1.fire()
+ MicroBitMessageBus bus; 
+ 
+ // Creates and sends the MicroBitEvent using bus. 
+ MicrobitEvent evt(MICROBIT_ID_BUTTON_A, MICROBIT_BUTTON_EVT_CLICK); 
+ 
+ // Creates the MicrobitEvent, but delays the sending of that event. 
+ MicrobitEvent evt1(MICROBIT_ID_BUTTON_A, MICROBIT_BUTTON_EVT_CLICK, CREATE_ONLY); 
+ 
+ bus.send(evt1); 
+ 
+ // This has the same effect! 
+ evt1.fire() 
 ```
 ##process
 <br/>
@@ -261,7 +261,7 @@ Queues the given event to be sent to all registered recipients.
 #####Description
 Internal function, used to deliver the given event to all relevant recipients. Normally, this is called once an event has been removed from the event queue.  
 
-
+ 
 
 
 #####Parameters
@@ -271,14 +271,14 @@ Internal function, used to deliver the given event to all relevant recipients. N
 1 if all matching listeners were processed, 0 if further processing is required.
 
 !!! note
-    It is recommended that all external code uses the  send()  function instead of this function, or the constructors provided by MicrobitEvent.
+    It is recommended that all external code uses the  send()  function instead of this function, or the constructors provided by MicrobitEvent. 
 
 <br/>
 ####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>process</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitEvent  &</div> evt,  <div style='color:#a71d5d; display:inline-block'>bool</div> urgent)
 #####Description
 Internal function, used to deliver the given event to all relevant recipients. Normally, this is called once an event has been removed from the event queue.  
 
-
+ 
 
 
 #####Parameters
@@ -290,7 +290,7 @@ Internal function, used to deliver the given event to all relevant recipients. N
 1 if all matching listeners were processed, 0 if further processing is required.
 
 !!! note
-    It is recommended that all external code uses the  send()  function instead of this function, or the constructors provided by MicrobitEvent.
+    It is recommended that all external code uses the  send()  function instead of this function, or the constructors provided by MicrobitEvent. 
 
 ##elementAt
 <br/>
@@ -298,41 +298,41 @@ Internal function, used to deliver the given event to all relevant recipients. N
 #####Description
 Returns the microBitListener with the given position in our list.  
 
-
+ 
 
 
 #####Parameters
 
 >  <div style='color:#a71d5d; display:inline-block'>int</div> n - The position in the list to return.
 #####Returns
-the  MicroBitListener  at postion n in the list, or NULL if the position is invalid.
+the  MicroBitListener  at postion n in the list, or NULL if the position is invalid. 
 ##add
 <br/>
 ####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>add</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitListener  *</div> newListener)
 #####Description
 Add the given  MicroBitListener  to the list of event handlers, unconditionally.  
 
-
+ 
 
 
 #####Parameters
 
 >  <div style='color:#a71d5d; display:inline-block'>MicroBitListener  *</div> newListener
 #####Returns
-MICROBIT_OK if the listener is valid, MICROBIT_INVALID_PARAMETER otherwise.
+MICROBIT_OK if the listener is valid, MICROBIT_INVALID_PARAMETER otherwise. 
 ##remove
 <br/>
 ####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>remove</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitListener  *</div> newListener)
 #####Description
 Remove the given  MicroBitListener  from the list of event handlers.  
 
-
+ 
 
 
 #####Parameters
 
 >  <div style='color:#a71d5d; display:inline-block'>MicroBitListener  *</div> newListener
 #####Returns
-MICROBIT_OK if the listener is valid, MICROBIT_INVALID_PARAMETER otherwise.
+MICROBIT_OK if the listener is valid, MICROBIT_INVALID_PARAMETER otherwise. 
 ____
 [comment]: <> ({"end":"MicroBitMessageBus"})
