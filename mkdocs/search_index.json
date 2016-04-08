@@ -122,8 +122,23 @@
         }, 
         {
             "location": "/online-toolchains/", 
-            "text": "", 
+            "text": "mbed\n\n\nARM mbed has an online IDE for C/C++ development available at \nmbed.org\n. It is free to use and the micro:bit is one of the officially supported platforms.\n\n\nThe online IDE provides a simple interface for writing, compiling and sharing projects like the micro:bit DAL, which is based on the \nmbed SDK\n.\n\n\n\n\nGetting started with mbed.org\n\n\n\n\n\nHello World on mbed.org\n\n\n\n\n\n\nCreate an account \ndeveloper.mbed.org\n\n\n\n\n\n\nVisit the \nLancaster-University team\n on mbed\n\n\n\n\n\n\nChoose the \nmicrobit-samples\n project, and click the \nImport this program\n button for that project:\n\n\n\n\n\n\nOnce in the online IDE, select the project you just imported and click the \nCompile\n button:\n\n\n\n\n\n\nThe build will run and your browser will prompt you to download a file. Save this file locally, then drag and drop it onto your micro:bit.\n\n\n\n\n\n\nWhile the program is copying, the orange LED on the back of the micro:bit will flash. Once the copy has finished, the micro:bit drive will reset and disconnect from your computer. At this point, your code will also start running!", 
             "title": "Online Development"
+        }, 
+        {
+            "location": "/online-toolchains/#mbed", 
+            "text": "ARM mbed has an online IDE for C/C++ development available at  mbed.org . It is free to use and the micro:bit is one of the officially supported platforms.  The online IDE provides a simple interface for writing, compiling and sharing projects like the micro:bit DAL, which is based on the  mbed SDK .", 
+            "title": "mbed"
+        }, 
+        {
+            "location": "/online-toolchains/#getting-started-with-mbedorg", 
+            "text": "", 
+            "title": "Getting started with mbed.org"
+        }, 
+        {
+            "location": "/online-toolchains/#hello-world-on-mbedorg", 
+            "text": "Create an account  developer.mbed.org    Visit the  Lancaster-University team  on mbed    Choose the  microbit-samples  project, and click the  Import this program  button for that project:    Once in the online IDE, select the project you just imported and click the  Compile  button:    The build will run and your browser will prompt you to download a file. Save this file locally, then drag and drop it onto your micro:bit.    While the program is copying, the orange LED on the back of the micro:bit will flash. Once the copy has finished, the micro:bit drive will reset and disconnect from your computer. At this point, your code will also start running!", 
+            "title": "Hello World on mbed.org"
         }, 
         {
             "location": "/offline-toolchains/", 

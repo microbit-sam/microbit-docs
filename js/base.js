@@ -26,6 +26,7 @@ $(document).ready(function() {
     });
 
     $('iframe[src*="vimeo.com"]').wrap('<div class="embed-container" />');
+    $('iframe[src*="youtube.com"]').wrap('<div class="embed-container" />');
 });
 
 
