@@ -37,6 +37,7 @@ $( document ).ready(function() {
 
     if(window.location.pathname.indexOf("online-toolchains") > 0){
         $(".table td:nth-child(1)").width('25%');
+        $(".table td img").wrap('<div style="max-width:100%">');
         $(".table td:nth-child(2)").width('75%');
     }
 });
