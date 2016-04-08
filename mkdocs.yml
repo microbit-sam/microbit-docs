@@ -1,5 +1,5 @@
 site_name: 'micro:bit runtime'
-google_analytics: ['UA-76156484-1', 'microbit-docs']
+google_analytics: ['UA-76156484-1', 'auto']
 repo_url: https://github.com/lancaster-university/microbit-dal/
 pages:
     - General:
