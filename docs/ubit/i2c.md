@@ -35,10 +35,6 @@ Constructor.
 
  
 
-  https://www.nordicsemi.com/eng/nordic/Products/nRF51822/PAN-nRF51822/24634   
-
- v2.0 through to v2.4           
-
 
 #####Parameters
 
@@ -51,7 +47,7 @@ Constructor.
 ```
 
 !!! note
-    This class presents a wrapped mbed call to capture failed I2C operations caused by a known silicon bug in the nrf51822. Attempts to automatically reset and restart the I2C hardware if this case is detected.
+    This class presents a wrapped mbed call to capture failed I2C operations caused by a known silicon bug in the nrf51822. Attempts to automatically reset and restart the I2C hardware if this case is detected. 
 
 ##read
 <br/>

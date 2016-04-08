@@ -22,14 +22,23 @@ You can also control the queuing and threading model used for your callback func
 This may sound complex at first, but it is actually very simple. For example, to find out when button A is clicked, write some code like this:
 
 ```cpp
-void onButtonA(MicroBitEvent e)
+#include "MicroBit.h"
+
+MicroBit    uBit;
+
+void onButtonA(MicroBitEvent)
 {
     uBit.display.print("A");
 }
 
 int main()
 {
+    uBit.init();
     uBit.messageBus.listen(MICROBIT_ID_BUTTON_A, MICROBIT_BUTTON_EVT_CLICK, onButtonA);
+
+    // We don't want to drop out of main!
+    while(1)
+        uBit.sleep(100);
 }
 ```
 
@@ -46,6 +55,10 @@ You can find out which ones by looking at the `MicroBitEvent` delivered to your 
 
 For example, you could write a program like this:
 ```cpp
+#include "MicroBit.h"
+
+MicroBit    uBit;
+
 void onButtonA(MicroBitEvent e)
 {
     if (e.value == MICROBIT_BUTTON_EVT_CLICK)
@@ -57,7 +70,12 @@ void onButtonA(MicroBitEvent e)
 
 int main()
 {
+    uBit.init();
     uBit.messageBus.listen(MICROBIT_ID_BUTTON_A, MICROBIT_EVT_ANY, onButtonA);
+
+    // We don't want to drop out of main!
+    while(1)
+        uBit.sleep(100);
 }
 ```
 
@@ -67,14 +85,23 @@ Use this sparingly though, as this could be quite a lot of events!
 
 The following code would attach the `onEvent` function to receive all the events from the whole runtime:
 ```cpp
-void onEvent(MicroBitEvent e)
+#include "MicroBit.h"
+
+MicroBit    uBit;
+
+void onEvent(MicroBitEvent)
 {
     uBit.display.scroll("SOMETHING HAPPENED!");
 }
 
 int main()
 {
+    uBit.init();
     uBit.messageBus.listen(MICROBIT_ID_ANY, MICROBIT_EVT_ANY, onEvent);
+
+    // We don't want to drop out of main!
+    while(1)
+        uBit.sleep(100);
 }
 ```
 
@@ -101,16 +128,29 @@ These various modes provide great flexibility in how the runtime can be used to 
 
 You can define the threading mode you want to use on a per event handler basis as an optional final parameter to the listen function:
 ```cpp
+#include "MicroBit.h"
+
+MicroBit    uBit;
+
 bool pressed = false;
 
-void onButtonA(MicroBitEvent e)
+void onButtonA(MicroBitEvent)
 {
     pressed = true;
 }
 
 int main()
 {
+    uBit.init();
     uBit.messageBus.listen(MICROBIT_ID_BUTTON_A, MICROBIT_BUTTON_EVT_CLICK, onButtonA, MESSAGE_BUS_LISTENER_IMMEDIATE);
+
+    // We don't want to drop out of main!
+    while(1)
+    {
+        if(pressed)
+            uBit.display.scroll("Pressed!");
+        uBit.sleep(100);
+    }
 }
 ```
 
@@ -194,7 +234,7 @@ Default constructor.
 #####Description
 Queues the given event to be sent to all registered recipients.  
 
- 
+
 
 
 #####Parameters
@@ -202,18 +242,18 @@ Queues the given event to be sent to all registered recipients.
 >  <div style='color:#a71d5d; display:inline-block'>MicroBitEvent</div> evt - The event to send.
 #####Example
 ```cpp
- MicroBitMessageBus bus; 
- 
- // Creates and sends the MicroBitEvent using bus. 
- MicrobitEvent evt(MICROBIT_ID_BUTTON_A, MICROBIT_BUTTON_EVT_CLICK); 
- 
- // Creates the MicrobitEvent, but delays the sending of that event. 
- MicrobitEvent evt1(MICROBIT_ID_BUTTON_A, MICROBIT_BUTTON_EVT_CLICK, CREATE_ONLY); 
- 
- bus.send(evt1); 
- 
- // This has the same effect! 
- evt1.fire() 
+ MicroBitMessageBus bus;
+
+ // Creates and sends the MicroBitEvent using bus.
+ MicrobitEvent evt(MICROBIT_ID_BUTTON_A, MICROBIT_BUTTON_EVT_CLICK);
+
+ // Creates the MicrobitEvent, but delays the sending of that event.
+ MicrobitEvent evt1(MICROBIT_ID_BUTTON_A, MICROBIT_BUTTON_EVT_CLICK, CREATE_ONLY);
+
+ bus.send(evt1);
+
+ // This has the same effect!
+ evt1.fire()
 ```
 ##process
 <br/>
@@ -221,7 +261,7 @@ Queues the given event to be sent to all registered recipients.
 #####Description
 Internal function, used to deliver the given event to all relevant recipients. Normally, this is called once an event has been removed from the event queue.  
 
- 
+
 
 
 #####Parameters
@@ -231,14 +271,14 @@ Internal function, used to deliver the given event to all relevant recipients. N
 1 if all matching listeners were processed, 0 if further processing is required.
 
 !!! note
-    It is recommended that all external code uses the  send()  function instead of this function, or the constructors provided by MicrobitEvent. 
+    It is recommended that all external code uses the  send()  function instead of this function, or the constructors provided by MicrobitEvent.
 
 <br/>
 ####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>process</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitEvent  &</div> evt,  <div style='color:#a71d5d; display:inline-block'>bool</div> urgent)
 #####Description
 Internal function, used to deliver the given event to all relevant recipients. Normally, this is called once an event has been removed from the event queue.  
 
- 
+
 
 
 #####Parameters
@@ -250,7 +290,7 @@ Internal function, used to deliver the given event to all relevant recipients. N
 1 if all matching listeners were processed, 0 if further processing is required.
 
 !!! note
-    It is recommended that all external code uses the  send()  function instead of this function, or the constructors provided by MicrobitEvent. 
+    It is recommended that all external code uses the  send()  function instead of this function, or the constructors provided by MicrobitEvent.
 
 ##elementAt
 <br/>
@@ -258,41 +298,41 @@ Internal function, used to deliver the given event to all relevant recipients. N
 #####Description
 Returns the microBitListener with the given position in our list.  
 
- 
+
 
 
 #####Parameters
 
 >  <div style='color:#a71d5d; display:inline-block'>int</div> n - The position in the list to return.
 #####Returns
-the  MicroBitListener  at postion n in the list, or NULL if the position is invalid. 
+the  MicroBitListener  at postion n in the list, or NULL if the position is invalid.
 ##add
 <br/>
 ####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>add</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitListener  *</div> newListener)
 #####Description
 Add the given  MicroBitListener  to the list of event handlers, unconditionally.  
 
- 
+
 
 
 #####Parameters
 
 >  <div style='color:#a71d5d; display:inline-block'>MicroBitListener  *</div> newListener
 #####Returns
-MICROBIT_OK if the listener is valid, MICROBIT_INVALID_PARAMETER otherwise. 
+MICROBIT_OK if the listener is valid, MICROBIT_INVALID_PARAMETER otherwise.
 ##remove
 <br/>
 ####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>remove</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitListener  *</div> newListener)
 #####Description
 Remove the given  MicroBitListener  from the list of event handlers.  
 
- 
+
 
 
 #####Parameters
 
 >  <div style='color:#a71d5d; display:inline-block'>MicroBitListener  *</div> newListener
 #####Returns
-MICROBIT_OK if the listener is valid, MICROBIT_INVALID_PARAMETER otherwise. 
+MICROBIT_OK if the listener is valid, MICROBIT_INVALID_PARAMETER otherwise.
 ____
 [comment]: <> ({"end":"MicroBitMessageBus"})
