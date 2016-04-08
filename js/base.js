@@ -34,6 +34,11 @@ $(document).ready(function() {
 $( document ).ready(function() {
     hljs.initHighlightingOnLoad();
     $('table').addClass('table table-striped table-hover');
+
+    if(window.location.pathname.indexOf("online-toolchains") > 0){
+        $(".table td:nth-child(1)").addClass("col-md-4");
+        $(".table td:nth-child(2)").addClass("col-md-8");
+    }
 });
 
 

@@ -627,18 +627,18 @@ uBit.messageBus.ignore(MICROBIT_ID_BUTTON_A, MICROBIT_BUTTON_EVT_CLICK, this, &a
 <p><div style='color:#a71d5d; display:inline-block'>MicroBitEvent</div> evt - The event to send.</p>
 </blockquote>
 <h5 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> MicroBitMessageBus bus;
+<pre><code class="cpp"> MicroBitMessageBus bus; 
 
- // Creates and sends the MicroBitEvent using bus.
- MicrobitEvent evt(MICROBIT_ID_BUTTON_A, MICROBIT_BUTTON_EVT_CLICK);
+ // Creates and sends the MicroBitEvent using bus. 
+ MicrobitEvent evt(MICROBIT_ID_BUTTON_A, MICROBIT_BUTTON_EVT_CLICK); 
 
- // Creates the MicrobitEvent, but delays the sending of that event.
- MicrobitEvent evt1(MICROBIT_ID_BUTTON_A, MICROBIT_BUTTON_EVT_CLICK, CREATE_ONLY);
+ // Creates the MicrobitEvent, but delays the sending of that event. 
+ MicrobitEvent evt1(MICROBIT_ID_BUTTON_A, MICROBIT_BUTTON_EVT_CLICK, CREATE_ONLY); 
 
- bus.send(evt1);
+ bus.send(evt1); 
 
- // This has the same effect!
- evt1.fire()
+ // This has the same effect! 
+ evt1.fire() 
 </code></pre>
 
 <h2 id="process">process<a class="headerlink" href="#process" title="Permanent link">&para;</a></h2>
@@ -654,7 +654,7 @@ uBit.messageBus.ignore(MICROBIT_ID_BUTTON_A, MICROBIT_BUTTON_EVT_CLICK, this, &a
 <p>1 if all matching listeners were processed, 0 if further processing is required.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>It is recommended that all external code uses the  send()  function instead of this function, or the constructors provided by MicrobitEvent.</p>
+<p>It is recommended that all external code uses the  send()  function instead of this function, or the constructors provided by MicrobitEvent. </p>
 </div>
 <p><br/></p>
 <h4 id="int-process-microbitevent-evt-bool-urgent"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>process</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitEvent  &amp;</div> evt,  <div style='color:#a71d5d; display:inline-block'>bool</div> urgent)<a class="headerlink" href="#int-process-microbitevent-evt-bool-urgent" title="Permanent link">&para;</a></h4>
@@ -669,7 +669,7 @@ uBit.messageBus.ignore(MICROBIT_ID_BUTTON_A, MICROBIT_BUTTON_EVT_CLICK, this, &a
 <p>1 if all matching listeners were processed, 0 if further processing is required.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>It is recommended that all external code uses the  send()  function instead of this function, or the constructors provided by MicrobitEvent.</p>
+<p>It is recommended that all external code uses the  send()  function instead of this function, or the constructors provided by MicrobitEvent. </p>
 </div>
 <h2 id="elementat">elementAt<a class="headerlink" href="#elementat" title="Permanent link">&para;</a></h2>
 <p><br/></p>
@@ -681,7 +681,7 @@ uBit.messageBus.ignore(MICROBIT_ID_BUTTON_A, MICROBIT_BUTTON_EVT_CLICK, this, &a
 <p><div style='color:#a71d5d; display:inline-block'>int</div> n - The position in the list to return.</p>
 </blockquote>
 <h5 id="returns_2">Returns<a class="headerlink" href="#returns_2" title="Permanent link">&para;</a></h5>
-<p>the  MicroBitListener  at postion n in the list, or NULL if the position is invalid.</p>
+<p>the  MicroBitListener  at postion n in the list, or NULL if the position is invalid. </p>
 <h2 id="add">add<a class="headerlink" href="#add" title="Permanent link">&para;</a></h2>
 <p><br/></p>
 <h4 id="int-add-microbitlistener-newlistener"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>add</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitListener  *</div> newListener)<a class="headerlink" href="#int-add-microbitlistener-newlistener" title="Permanent link">&para;</a></h4>
@@ -692,7 +692,7 @@ uBit.messageBus.ignore(MICROBIT_ID_BUTTON_A, MICROBIT_BUTTON_EVT_CLICK, this, &a
 <p><div style='color:#a71d5d; display:inline-block'>MicroBitListener  *</div> newListener</p>
 </blockquote>
 <h5 id="returns_3">Returns<a class="headerlink" href="#returns_3" title="Permanent link">&para;</a></h5>
-<p>MICROBIT_OK if the listener is valid, MICROBIT_INVALID_PARAMETER otherwise.</p>
+<p>MICROBIT_OK if the listener is valid, MICROBIT_INVALID_PARAMETER otherwise. </p>
 <h2 id="remove">remove<a class="headerlink" href="#remove" title="Permanent link">&para;</a></h2>
 <p><br/></p>
 <h4 id="int-remove-microbitlistener-newlistener"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>remove</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitListener  *</div> newListener)<a class="headerlink" href="#int-remove-microbitlistener-newlistener" title="Permanent link">&para;</a></h4>
@@ -703,7 +703,7 @@ uBit.messageBus.ignore(MICROBIT_ID_BUTTON_A, MICROBIT_BUTTON_EVT_CLICK, this, &a
 <p><div style='color:#a71d5d; display:inline-block'>MicroBitListener  *</div> newListener</p>
 </blockquote>
 <h5 id="returns_4">Returns<a class="headerlink" href="#returns_4" title="Permanent link">&para;</a></h5>
-<p>MICROBIT_OK if the listener is valid, MICROBIT_INVALID_PARAMETER otherwise.</p>
+<p>MICROBIT_OK if the listener is valid, MICROBIT_INVALID_PARAMETER otherwise. </p>
 <hr /></div>
         </div>
 
