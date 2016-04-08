@@ -1,3 +1,18 @@
+#Online C/C++ compilers supporting the runtime
+
+| Online compiler | Description |
+| --- |-------------|
+| [![ARM mbed](resources/logos/mbed.png)](#mbed) | ARM mbed has an online IDE for C/C++ development available at [mbed.org](http://developer.mbed.org). It is free to use and the micro:bit is one of the officially supported platforms. This online IDE provides a simple interface for writing, compiling and sharing projects like the micro:bit DAL, which is based on the [mbed SDK](https://github.com/mbedmicro/mbed). |
+
+#Our friends using the runtime
+
+| Language | Description |
+| ------------- |-------------|
+| [![Microsoft Touch Develop](resources/logos/touchdevelop.png)](https://www.microbit.co.uk/create-code) | With its touch-based interface, Touch Develop has been designed for mobile devices with touchscreens. It can also be used with a pc, keyboard and mouse. Touch Develop introduces a statically-typed scripting language with syntax-directed editor. It can be used to produce web-based apps that can run online on any platform. |
+| [![Microsoft Block Editor](resources/logos/blocks.png)](https://www.microbit.co.uk/create-code) | The Block Editor is a visual editor and provides an introduction to structured programming via drag and drop coding blocks that snap together. You can also convert a Block Editor script into a Touch Develop script which helps with the transition to text-based programming. |
+| [![Code Kingdoms JavaScript](resources/logos/codekingdoms.png)](https://www.microbit.co.uk/create-code) | Code Kingdoms is a visual JavaScript editor. It has a drag-and-drop interface making it accessible to beginners. You can also change from the visual editor to a text-based editor which supports the transition to text-based programming as the learner’s coding skills progress. |
+| [![MicroPython](resources/logos/python.png)](https://www.microbit.co.uk/create-code) | MicroPython is a completely text-based editor, perfect for those who want to push their coding skills further. A selection of 'snippets' are on hand to help auto-complete trickier tasks and a range of premade images and music are built-in to give you a helping hand with your code. |
+
 # mbed
 
 ARM mbed has an online IDE for C/C++ development available at [mbed.org](http://developer.mbed.org). It is free to use and the micro:bit is one of the officially supported platforms.
