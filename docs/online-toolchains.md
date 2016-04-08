@@ -2,7 +2,7 @@
 
 | Online compiler | Description |
 | --- |-------------|
-| [![ARM mbed](resources/logos/mbed.png)](#mbed) | ARM mbed has an online IDE for C/C++ development available at [mbed.org](http://developer.mbed.org). It is free to use and the micro:bit is one of the officially supported platforms. This online IDE provides a simple interface for writing, compiling and sharing projects like the micro:bit DAL, which is based on the [mbed SDK](https://github.com/mbedmicro/mbed). |
+| [![ARM mbed](resources/logos/mbed.png)](#mbed) | ARM mbed has an online IDE for C/C++ development available at [http://developer.mbed.org](http://developer.mbed.org). It is free to use and the BBC micro:bit is one of its officially supported platforms. This online IDE provides a simple interface for writing, compiling and sharing projects like the micro:bit DAL, which is based on the [mbed SDK](https://github.com/mbedmicro/mbed). |
 
 #Our friends using the runtime
 
@@ -15,7 +15,7 @@
 
 # mbed
 
-ARM mbed has an online IDE for C/C++ development available at [mbed.org](http://developer.mbed.org). It is free to use and the micro:bit is one of the officially supported platforms.
+ARM mbed has an online IDE for C/C++ development available at [http://developer.mbed.org](http://developer.mbed.org). It is free to use and the BBC micro:bit is one of its officially supported platforms.
 
 The online IDE provides a simple interface for writing, compiling and sharing projects like the micro:bit DAL, which is based on the [mbed SDK](https://github.com/mbedmicro/mbed).
 
@@ -27,14 +27,16 @@ The online IDE provides a simple interface for writing, compiling and sharing pr
 
 ## Hello World on mbed.org
 
-1. Create an account [developer.mbed.org](https://developer.mbed.org/account/signup)
+1. Create an account on [developer.mbed.org](https://developer.mbed.org/account/signup).
 
-2. Visit the [Lancaster-University team](https://developer.mbed.org/teams/Lancaster-University) on mbed
+1. Visit the [micro:bit platform page](https://developer.mbed.org/platforms/Microbit/) and *add the micro:bit to your compiler* by clicking the "Add to your mbed compiler" button in the right hand sidebar.
 
-3. Choose the [microbit-samples](https://developer.mbed.org/teams/Lancaster-University/code/microbit-samples) project, and click the `Import this program` button for that project:
+1. Go to the [microbit-samples](https://developer.mbed.org/teams/Lancaster-University/code/microbit-samples/?platform=Microbit) project, and click the `Import this program` button for that project. The online IDE will open.
 
-4. Once in the online IDE, select the project you just imported and click the `Compile` button:
+1. Complete the import of the project and then select it in the sidebar and click the `Compile` button. The build will start. The first build will take longer than subsequent builds.
 
-5. The build will run and your browser will prompt you to download a file. Save this file locally, then drag and drop it onto your micro:bit.
+1. Your browser will prompt you to download a file. Save this file locally, then drag and drop it onto your micro:bit. The copy triggers the orange LED on the back of the micro:bit to flash; it will stop flashing when the download is complete.
 
-6. While the program is copying, the orange LED on the back of the micro:bit will flash. Once the copy has finished, the micro:bit drive will reset and disconnect from your computer. At this point, your code will also start running!
+1. When the copy process finshes, the micro:bit drive will reset and disconnect from your computer. At this point, your code will also start running!
+
+There is a more detailed guide for using the micro:bit in mbed on the [Lancaster-University team wiki on mbed](https://developer.mbed.org/teams/Lancaster-University/wiki/MicrobitGettingStarted)
