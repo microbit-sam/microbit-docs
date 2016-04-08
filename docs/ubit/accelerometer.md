@@ -39,8 +39,17 @@ can be used.
 | Constant | Value |
 | ------------- |-------------|
 | MICROBIT_ID_ACCELEROMETER | 4 |
+| MICROBIT_ID_GESTURE | 27 |
 
-##Message Bus Events
+##Message Bus Events: 
+
+### MICROBIT_ID_ACCELEROMETER 
+
+| Constant | Value |
+| ------------- |-------------|
+| MICROBIT_ACCELEROMETER_EVT_DATA_UPDATE | 1 |
+
+### MICROBIT_ID_GESTURE 
 
 | Constant | Value |
 | ------------- |-------------|
