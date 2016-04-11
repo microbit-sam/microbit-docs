@@ -40,6 +40,7 @@ pages:
         - TemperatureService: "ble/temperature-service.md"
     - Extras:
         - MicroBitLightSensor: "extras/light-sensing.md"
+        - SPI: "extras/spi.md"
 #--------------HIDDEN PAGES BEGIN
 #unfortunately this is required, otherwise mkdocs doesn't build pages not linked by nav.
     - _blemanager: "ubit/blemanager.md"
