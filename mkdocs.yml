@@ -9,6 +9,7 @@ pages:
         - Online Development: 'online-toolchains.md'
         - Offline Development: 'offline-toolchains.md'
         - Hardware: 'device.md'
+        - Help: 'help.md'
     - uBit:
         - Overview: 'ubit.md'
         - i2c: 'ubit/i2c.md'
