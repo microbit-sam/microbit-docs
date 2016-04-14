@@ -137,7 +137,7 @@ case BleAdapterService.NOTIFICATION_RECEIVED:
 
 ###### micro:bit code for the buggy controller
 
-<pre>
+```cpp
 /*
 The MIT License (MIT)
 
@@ -246,5 +246,5 @@ int main()
 }
 
 #endif
-</pre>
+```
 
