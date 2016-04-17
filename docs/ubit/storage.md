@@ -32,6 +32,7 @@ int main()
     {
         //this is not the first boot, scroll our stored value.
         memcpy(&stored, firstTime->value, sizeof(int));
+        delete firstTime;
         uBit.display.scroll(stored);
     }
 }
@@ -84,7 +85,7 @@ Default constructor.
 #####Description
 Writes the given number of bytes to the address specified.  
 
- 
+
 
 
 #####Parameters
@@ -96,7 +97,7 @@ Writes the given number of bytes to the address specified.
 >  <div style='color:#a71d5d; display:inline-block'>int</div> length - the number of bytes to write.
 
 !!! note
-    currently not implemented. 
+    currently not implemented.
 
 ##flashPageErase
 <br/>
@@ -104,56 +105,56 @@ Writes the given number of bytes to the address specified.
 #####Description
 Method for erasing a page in flash.  
 
-   
- 
- page_address 
- 
- 
+
+
+ page_address
+
+
  Address of the first word in the page to be erased.   
- 
- 
-          
+
+
+
 
 
 #####Parameters
 
->  <div style='color:#a71d5d; display:inline-block'>uint32_t *</div> page_address - Address of the first word in the page to be erased. 
+>  <div style='color:#a71d5d; display:inline-block'>uint32_t *</div> page_address - Address of the first word in the page to be erased.
 ##flashWordWrite
 <br/>
 ####<div style='color:#a71d5d; display:inline-block'>void</div> <div style='color:#795da3; display:inline-block'>flashWordWrite</div>( <div style='color:#a71d5d; display:inline-block'>uint32_t *</div> address,  <div style='color:#a71d5d; display:inline-block'>uint32_t</div> value)
 #####Description
 Method for writing a word of data in flash with a value.  
 
-   
- 
- address 
- 
- 
+
+
+ address
+
+
  Address of the word to change.  
- 
- 
- 
- value 
- 
- 
+
+
+
+ value
+
+
  Value to be written to flash.   
- 
- 
-          
+
+
+
 
 
 #####Parameters
 
 >  <div style='color:#a71d5d; display:inline-block'>uint32_t *</div> address - Address of the word to change.
 
->  <div style='color:#a71d5d; display:inline-block'>uint32_t</div> value - Value to be written to flash. 
+>  <div style='color:#a71d5d; display:inline-block'>uint32_t</div> value - Value to be written to flash.
 ##put
 <br/>
 ####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>put</div>( <div style='color:#a71d5d; display:inline-block'>const char *</div> key,  <div style='color:#a71d5d; display:inline-block'>uint8_t *</div> data)
 #####Description
 Places a given key, and it's corresponding value into flash at the earliest available point.  
 
- 
+
 
 
 #####Parameters
@@ -162,13 +163,13 @@ Places a given key, and it's corresponding value into flash at the earliest avai
 
 >  <div style='color:#a71d5d; display:inline-block'>uint8_t *</div> data - a pointer to the beginning of the data to be persisted.
 #####Returns
-MICROBIT_OK on success, or MICROBIT_NO_RESOURCES if the storage page is full 
+MICROBIT_OK on success, or MICROBIT_NO_RESOURCES if the storage page is full
 <br/>
 ####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>put</div>( <div style='color:#a71d5d; display:inline-block'>ManagedString</div> key,  <div style='color:#a71d5d; display:inline-block'>uint8_t *</div> data)
 #####Description
 Places a given key, and it's corresponding value into flash at the earliest available point.  
 
- 
+
 
 
 #####Parameters
@@ -177,14 +178,14 @@ Places a given key, and it's corresponding value into flash at the earliest avai
 
 >  <div style='color:#a71d5d; display:inline-block'>uint8_t *</div> data - a pointer to the beginning of the data to be persisted.
 #####Returns
-MICROBIT_OK on success, or MICROBIT_NO_RESOURCES if the storage page is full 
+MICROBIT_OK on success, or MICROBIT_NO_RESOURCES if the storage page is full
 ##get
 <br/>
 ####<div style='color:#a71d5d; display:inline-block'>KeyValuePair</div> <div style='color:#795da3; display:inline-block'>get</div>( <div style='color:#a71d5d; display:inline-block'>const char *</div> key)
 #####Description
 Retreives a  KeyValuePair  identified by a given key.  
 
- 
+
 
 
 #####Parameters
@@ -194,14 +195,14 @@ Retreives a  KeyValuePair  identified by a given key.
 a pointer to a heap allocated  KeyValuePair  struct, this pointer will be NULL if the key was not found in storage.
 
 !!! note
-    it is up to the user to free memory after use. 
+    it is up to the user to free memory after use.
 
 <br/>
 ####<div style='color:#a71d5d; display:inline-block'>KeyValuePair</div> <div style='color:#795da3; display:inline-block'>get</div>( <div style='color:#a71d5d; display:inline-block'>ManagedString</div> key)
 #####Description
 Retreives a  KeyValuePair  identified by a given key.  
 
- 
+
 
 
 #####Parameters
@@ -211,7 +212,7 @@ Retreives a  KeyValuePair  identified by a given key.
 a pointer to a heap allocated  KeyValuePair  struct, this pointer will be NULL if the key was not found in storage.
 
 !!! note
-    it is up to the user to free memory after use. 
+    it is up to the user to free memory after use.
 
 ##remove
 <br/>
@@ -219,37 +220,37 @@ a pointer to a heap allocated  KeyValuePair  struct, this pointer will be NULL i
 #####Description
 Removes a  KeyValuePair  identified by a given key.  
 
- 
+
 
 
 #####Parameters
 
 >  <div style='color:#a71d5d; display:inline-block'>const char *</div> key - the unique name used to identify a  KeyValuePair  in flash.
 #####Returns
-MICROBIT_OK on success, or MICROBIT_NO_DATA if the given key was not found in flash. 
+MICROBIT_OK on success, or MICROBIT_NO_DATA if the given key was not found in flash.
 <br/>
 ####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>remove</div>( <div style='color:#a71d5d; display:inline-block'>ManagedString</div> key)
 #####Description
 Removes a  KeyValuePair  identified by a given key.  
 
- 
+
 
 
 #####Parameters
 
 >  <div style='color:#a71d5d; display:inline-block'>ManagedString</div> key - the unique name used to identify a  KeyValuePair  in flash.
 #####Returns
-MICROBIT_OK on success, or MICROBIT_NO_DATA if the given key was not found in flash. 
+MICROBIT_OK on success, or MICROBIT_NO_DATA if the given key was not found in flash.
 ##size
 <br/>
 ####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>size</div>()
 #####Description
 The size of the flash based  KeyValueStore .  
 
- 
+
 
 
 #####Returns
-the number of entries in the key value store 
+the number of entries in the key value store
 ____
 [comment]: <> ({"end":"MicroBitStorage"})
