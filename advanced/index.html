@@ -522,11 +522,12 @@ int main()
 </code></pre>
 
 <h2 id="compile-time-configuration-options">Compile Time Configuration Options<a class="headerlink" href="#compile-time-configuration-options" title="Permanent link">&para;</a></h2>
-<p>In addition to the flexibility to initialise only the components that you need, the runtime also provides a central, compile time configuration file called 'MicroBitConfig.h'.</p>
+<p>In addition to the flexibility to initialise only the components that you need, the runtime also provides a central, compile time configuration file called <code>MicroBitConfig.h</code>.</p>
 <p>You can use this to reconfigure the default behaviour of the runtime.</p>
 <p>The default settings will provide a stable working environment, but advanced users may want to further tailor the behaviour.</p>
 <p>To tailor the behaviour, simply edit the <code>MicroBitConfig.h</code> file to change the settings, and then perform a clean rebuild.</p>
-<p>The following options are configurable at compile time through this mechanism:</p>
+<h3 id="compile-time-options-with-microbitconfigh">Compile Time Options with MicroBitConfig.h<a class="headerlink" href="#compile-time-options-with-microbitconfigh" title="Permanent link">&para;</a></h3>
+<p>The following options are configurable at compile time through <code>MicroBitConfig.h</code>:</p>
 <table>
 <thead>
 <tr>
@@ -715,7 +716,66 @@ int main()
 <td>The end address of the mbed heap space</td>
 </tr>
 </tbody>
-</table></div>
+</table>
+<h3 id="compile-time-options-with-yotta">Compile Time Options with Yotta<a class="headerlink" href="#compile-time-options-with-yotta" title="Permanent link">&para;</a></h3>
+<p>Rather than edit the <code>MicroBitConfig.h</code> file to change the default behaviour of the runtime, if you are using
+<code>yotta</code>, you can also provide a <code>config.json</code> in your project.</p>
+<p>Here's a <code>config.json</code>, using all available configuration options, that matches the default values specified in <code>MicroBitConfig.h</code>:</p>
+<pre><code class="json">{
+    &quot;microbit-dal&quot;:{
+        &quot;bluetooth&quot;:{
+            &quot;enabled&quot;: 1,
+            &quot;pairing_mode&quot;: 1,
+            &quot;private_addressing&quot;: 0,
+            &quot;open&quot;: 0,
+            &quot;whitelist&quot;: 1,
+            &quot;advertising_timeout&quot;: 0,
+            &quot;tx_power&quot;: 0,
+            &quot;dfu_service&quot;: 1,
+            &quot;event_service&quot;: 1,
+            &quot;device_info_service&quot;: 1
+        },
+        &quot;reuse_sd&quot;: 1,
+        &quot;gatt_table_size&quot;: &quot;0x300&quot;,
+        &quot;heap_allocator&quot;: 1,
+        &quot;nested_heap_proportion&quot;: 0.75,
+        &quot;system_tick_period&quot;: 6,
+        &quot;system_components&quot;: 10,
+        &quot;idle_components&quot;: 6,
+        &quot;use_accel_lsb&quot;: 0,
+        &quot;min_display_brightness&quot;: 1,
+        &quot;max_display_brightness&quot;: 255,
+        &quot;display_scroll_speed&quot;: 120,
+        &quot;display_scroll_stride&quot;: -1,
+        &quot;display_print_speed&quot;: 400,
+        &quot;panic_on_heap_full&quot;: 1,
+        &quot;debug&quot;: 0,
+        &quot;heap_debug&quot;: 0,
+        &quot;stack_size&quot;:2048,
+        &quot;sram_base&quot;:&quot;0x20000008&quot;,
+        &quot;sram_end&quot;:&quot;0x20004000&quot;,
+        &quot;sd_limit&quot;:&quot;0x20002000&quot;,
+        &quot;gatt_table_start&quot;:&quot;0x20001900&quot;
+    }
+}
+</code></pre>
+
+<p>It should be noted that <strong>all</strong> of the above options are optional, and will revert to their default values
+if not specified. This means that we can also provide a subset of these options, to configure specific
+parts of the runtime:</p>
+<pre><code class="json">{
+    &quot;microbit-dal&quot;:{
+        &quot;bluetooth&quot;:{
+            &quot;open&quot;: 1
+        },
+        &quot;debug&quot;:1
+    }
+}
+</code></pre>
+
+<p>Additionally, the options provided through <code>config.json</code> intuitively map onto the <code>#defines</code>
+listed in <code>MicroBitConfig.h</code></p>
+<p>An example of <code>config.json</code> in operation is available at the <a href="https://github.com/lancaster-university/microbit-samples">microbit-samples</a> GitHub repository.</p></div>
         </div>
 
         <footer class="col-md-12">
