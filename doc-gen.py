@@ -224,7 +224,7 @@ def extract_default(document_root, element):
 ###
 def escape_md_chars(text):
     for char in md_special_chars:
-        text.replace(char['md_char'], char['replacement'])
+        text = text.replace(char['md_char'], "\\" + char['md_char'])
     return text
 
 ###

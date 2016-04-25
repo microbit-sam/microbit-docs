@@ -853,6 +853,36 @@ MICROBIT_OK, MICROBIT_BUSY if the screen is in use, or MICROBIT_INVALID_PARAMETE
  MicroBitImage i(heart_w,heart_h,heart); 
  display.animateAsync(i,100,5); 
 ```
+<br/>
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>animateAsync</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> image,  <div style='color:#a71d5d; display:inline-block'>int</div> delay,  <div style='color:#a71d5d; display:inline-block'>int</div> stride,  <div style='color:#a71d5d; display:inline-block'>int</div> startingPosition,  <div style='color:#a71d5d; display:inline-block'>int</div> autoClear)
+#####Description
+"Animates" the current image across the display with a given stride, finishing on the last frame of the animation. Returns immediately.  
+
+ 
+
+
+#####Parameters
+
+>  <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> image - The image to display.
+
+>  <div style='color:#a71d5d; display:inline-block'>int</div> delay - The time to delay between each update of the display, in milliseconds.
+
+>  <div style='color:#a71d5d; display:inline-block'>int</div> stride - The number of pixels to shift by in each update.
+
+>  <div style='color:#a71d5d; display:inline-block'>int</div> startingPosition - the starting position on the display for the animation to begin at. Defaults to MICROBIT_DISPLAY_ANIMATE_DEFAULT_POS.
+
+>  <div style='color:#a71d5d; display:inline-block'>int</div> autoClear - defines whether or not the display is automatically cleared once the animation is complete. By default, the display is cleared. Set this parameter to zero to disable the autoClear operation.
+#####Returns
+MICROBIT_OK, MICROBIT_BUSY if the screen is in use, or MICROBIT_INVALID_PARAMETER.
+#####Example
+```cpp
+ const int heart_w = 10; 
+ const int heart_h = 5; 
+ const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; 
+ 
+ MicroBitImage i(heart_w,heart_h,heart); 
+ display.animateAsync(i,100,5); 
+```
 ##animate
 <br/>
 ####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>animate</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> image,  <div style='color:#a71d5d; display:inline-block'>int</div> delay,  <div style='color:#a71d5d; display:inline-block'>int</div> stride)
@@ -897,6 +927,36 @@ MICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.
 >  <div style='color:#a71d5d; display:inline-block'>int</div> stride - The number of pixels to shift by in each update.
 
 >  <div style='color:#a71d5d; display:inline-block'>int</div> startingPosition - the starting position on the display for the animation to begin at. Defaults to MICROBIT_DISPLAY_ANIMATE_DEFAULT_POS.
+#####Returns
+MICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.
+#####Example
+```cpp
+ const int heart_w = 10; 
+ const int heart_h = 5; 
+ const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; 
+ 
+ MicroBitImage i(heart_w,heart_h,heart); 
+ display.animate(i,100,5); 
+```
+<br/>
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>animate</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> image,  <div style='color:#a71d5d; display:inline-block'>int</div> delay,  <div style='color:#a71d5d; display:inline-block'>int</div> stride,  <div style='color:#a71d5d; display:inline-block'>int</div> startingPosition,  <div style='color:#a71d5d; display:inline-block'>int</div> autoClear)
+#####Description
+"Animates" the current image across the display with a given stride, finishing on the last frame of the animation. Blocks the calling thread until the animation is complete.  
+
+ 
+
+
+#####Parameters
+
+>  <div style='color:#a71d5d; display:inline-block'>MicroBitImage</div> image
+
+>  <div style='color:#a71d5d; display:inline-block'>int</div> delay - The time to delay between each update of the display, in milliseconds.
+
+>  <div style='color:#a71d5d; display:inline-block'>int</div> stride - The number of pixels to shift by in each update.
+
+>  <div style='color:#a71d5d; display:inline-block'>int</div> startingPosition - the starting position on the display for the animation to begin at. Defaults to MICROBIT_DISPLAY_ANIMATE_DEFAULT_POS.
+
+>  <div style='color:#a71d5d; display:inline-block'>int</div> autoClear - defines whether or not the display is automatically cleared once the animation is complete. By default, the display is cleared. Set this parameter to zero to disable the autoClear operation.
 #####Returns
 MICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.
 #####Example

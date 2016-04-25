@@ -316,7 +316,7 @@ SYNC_SLEEP - bytes are copied into the txBuff and the fiber sleeps
 #####Returns
 the number of bytes written, or MICROBIT_SERIAL_IN_USE if another fiber is using the serial instance for transmission. 
 <br/>
-####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>send</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t *</div> buffer,  <div style='color:#a71d5d; display:inline-block'>int</div> bufferLen)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>send</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t \*</div> buffer,  <div style='color:#a71d5d; display:inline-block'>int</div> bufferLen)
 #####Description
 Sends a buffer of known length over the serial line.  
 
@@ -358,13 +358,13 @@ Defaults to SYNC_SLEEP.
 
 #####Parameters
 
->  <div style='color:#a71d5d; display:inline-block'>uint8_t *</div> buffer - a pointer to the first character of the buffer
+>  <div style='color:#a71d5d; display:inline-block'>uint8_t \*</div> buffer - a pointer to the first character of the buffer
 
 >  <div style='color:#a71d5d; display:inline-block'>int</div> bufferLen - a pointer to the first character of the buffer
 #####Returns
 the number of bytes written, or MICROBIT_SERIAL_IN_USE if another fiber is using the serial instance for transmission. 
 <br/>
-####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>send</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t *</div> buffer,  <div style='color:#a71d5d; display:inline-block'>int</div> bufferLen,  <div style='color:#a71d5d; display:inline-block'>MicroBitSerialMode</div> mode)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>send</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t \*</div> buffer,  <div style='color:#a71d5d; display:inline-block'>int</div> bufferLen,  <div style='color:#a71d5d; display:inline-block'>MicroBitSerialMode</div> mode)
 #####Description
 Sends a buffer of known length over the serial line.  
 
@@ -406,7 +406,7 @@ Defaults to SYNC_SLEEP.
 
 #####Parameters
 
->  <div style='color:#a71d5d; display:inline-block'>uint8_t *</div> buffer - a pointer to the first character of the buffer
+>  <div style='color:#a71d5d; display:inline-block'>uint8_t \*</div> buffer - a pointer to the first character of the buffer
 
 >  <div style='color:#a71d5d; display:inline-block'>int</div> bufferLen - a pointer to the first character of the buffer
 
@@ -592,7 +592,7 @@ SYNC_SLEEP - If the desired number of characters are available, this will return
 #####Returns
 A  ManagedString , or an empty  ManagedString  if an error was encountered during the read. 
 <br/>
-####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>read</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t *</div> buffer,  <div style='color:#a71d5d; display:inline-block'>int</div> bufferLen)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>read</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t \*</div> buffer,  <div style='color:#a71d5d; display:inline-block'>int</div> bufferLen)
 #####Description
 Reads multiple characters from the rxBuff and fills a user buffer.  
 
@@ -636,13 +636,13 @@ Defaults to SYNC_SLEEP.
 
 #####Parameters
 
->  <div style='color:#a71d5d; display:inline-block'>uint8_t *</div> buffer - a pointer to a user allocated buffer.
+>  <div style='color:#a71d5d; display:inline-block'>uint8_t \*</div> buffer - a pointer to a user allocated buffer.
 
 >  <div style='color:#a71d5d; display:inline-block'>int</div> bufferLen - the amount of data that can be safely stored
 #####Returns
 the number of characters read, or MICROBIT_SERIAL_IN_USE if another fiber is using the instance for receiving. 
 <br/>
-####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>read</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t *</div> buffer,  <div style='color:#a71d5d; display:inline-block'>int</div> bufferLen,  <div style='color:#a71d5d; display:inline-block'>MicroBitSerialMode</div> mode)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>read</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t \*</div> buffer,  <div style='color:#a71d5d; display:inline-block'>int</div> bufferLen,  <div style='color:#a71d5d; display:inline-block'>MicroBitSerialMode</div> mode)
 #####Description
 Reads multiple characters from the rxBuff and fills a user buffer.  
 
@@ -686,7 +686,7 @@ Defaults to SYNC_SLEEP.
 
 #####Parameters
 
->  <div style='color:#a71d5d; display:inline-block'>uint8_t *</div> buffer - a pointer to a user allocated buffer.
+>  <div style='color:#a71d5d; display:inline-block'>uint8_t \*</div> buffer - a pointer to a user allocated buffer.
 
 >  <div style='color:#a71d5d; display:inline-block'>int</div> bufferLen - the amount of data that can be safely stored
 

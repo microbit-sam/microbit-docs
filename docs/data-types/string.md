@@ -103,7 +103,7 @@ See the API documentation below for further details.
 [comment]: <> ({"className":"ManagedString"})
 ##Constructor
 <br/>
-####ManagedString( <div style='color:#a71d5d; display:inline-block'>StringData  *</div> ptr)
+####ManagedString( <div style='color:#a71d5d; display:inline-block'>StringData  \*</div> ptr)
 #####Description
 Constructor. Create a managed string from a specially prepared string literal.  
 
@@ -112,7 +112,7 @@ Constructor. Create a managed string from a specially prepared string literal.
 
 #####Parameters
 
->  <div style='color:#a71d5d; display:inline-block'>StringData  *</div> ptr - The literal - first two bytes should be 0xff, then the length in little endian, then the literal. The literal has to be 4-byte aligned.
+>  <div style='color:#a71d5d; display:inline-block'>StringData  \*</div> ptr - The literal - first two bytes should be 0xff, then the length in little endian, then the literal. The literal has to be 4-byte aligned.
 #####Example
 ```cpp
  static const char hello[] __attribute__ ((aligned (4))) = "\xff\xff\x05\x00" "Hello"; 
@@ -129,7 +129,7 @@ Get current ptr, do not decr() it, and set the current instance to empty string.
 
 ##Constructor
 <br/>
-####ManagedString( <div style='color:#a71d5d; display:inline-block'>const char *</div> str)
+####ManagedString( <div style='color:#a71d5d; display:inline-block'>const char \*</div> str)
 #####Description
 Constructor.  
 
@@ -142,7 +142,7 @@ Constructor.
 
 #####Parameters
 
->  <div style='color:#a71d5d; display:inline-block'>const char *</div> str - The character array on which to base the new  ManagedString .
+>  <div style='color:#a71d5d; display:inline-block'>const char \*</div> str - The character array on which to base the new  ManagedString .
 #####Example
 ```cpp
  ManagedString s("abcdefg"); 
@@ -195,7 +195,7 @@ Constructor. Create a  ManagedString  from a  PacketBuffer . All bytes in the  P
  ManagedString s = radio.datagram.recv(); 
 ```
 <br/>
-####ManagedString( <div style='color:#a71d5d; display:inline-block'>const char *</div> str,  <div style='color:#a71d5d; display:inline-block'>const int16_t</div> length)
+####ManagedString( <div style='color:#a71d5d; display:inline-block'>const char \*</div> str,  <div style='color:#a71d5d; display:inline-block'>const int16_t</div> length)
 #####Description
 Constructor. Create a  ManagedString  from a pointer to an 8-bit character buffer of a given length.  
 
@@ -206,7 +206,7 @@ Constructor. Create a  ManagedString  from a pointer to an 8-bit character buffe
 
 #####Parameters
 
->  <div style='color:#a71d5d; display:inline-block'>const char *</div> str - The character array on which to base the new  ManagedString .
+>  <div style='color:#a71d5d; display:inline-block'>const char \*</div> str - The character array on which to base the new  ManagedString .
 
 >  <div style='color:#a71d5d; display:inline-block'>const int16_t</div> length - The length of the character array
 #####Example
@@ -418,7 +418,7 @@ the character at posisiton index, zero if index is invalid.
 ```
 ##toCharArray
 <br/>
-####<div style='color:#a71d5d; display:inline-block'>const char *</div> <div style='color:#795da3; display:inline-block'>toCharArray</div>()
+####<div style='color:#a71d5d; display:inline-block'>const char \*</div> <div style='color:#795da3; display:inline-block'>toCharArray</div>()
 #####Description
 Provides an immutable 8 bit wide character buffer representing this string.  
 

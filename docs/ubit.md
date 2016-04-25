@@ -208,7 +208,7 @@ The time since the last reset, in milliseconds.
 
 ##systemVersion
 <br/>
-####<div style='color:#a71d5d; display:inline-block'>const char *</div> <div style='color:#795da3; display:inline-block'>systemVersion</div>()
+####<div style='color:#a71d5d; display:inline-block'>const char \*</div> <div style='color:#795da3; display:inline-block'>systemVersion</div>()
 #####Description
 Determine the version of the micro:bit runtime currently in use.  
 
@@ -261,7 +261,7 @@ Triggers a microbit panic where an loop will display a panic face and the status
 ```
 ##addSystemComponent
 <br/>
-####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>addSystemComponent</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitComponent  *</div> component)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>addSystemComponent</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitComponent  \*</div> component)
 #####Description
 Add a component to the array of system components. This component will then receive periodic callbacks, once every tick period in interrupt context.  
 
@@ -272,7 +272,7 @@ Add a component to the array of system components. This component will then rece
 
 #####Parameters
 
->  <div style='color:#a71d5d; display:inline-block'>MicroBitComponent  *</div> component - The component to add.
+>  <div style='color:#a71d5d; display:inline-block'>MicroBitComponent  \*</div> component - The component to add.
 #####Returns
 MICROBIT_OK on success or MICROBIT_NO_RESOURCES if the component array is full.
 #####Example
@@ -288,7 +288,7 @@ MICROBIT_OK on success or MICROBIT_NO_RESOURCES if the component array is full.
 
 ##removeSystemComponent
 <br/>
-####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>removeSystemComponent</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitComponent  *</div> component)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>removeSystemComponent</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitComponent  \*</div> component)
 #####Description
 Remove a component from the array of system components. This component will no longer receive periodic callbacks.  
 
@@ -299,7 +299,7 @@ Remove a component from the array of system components. This component will no l
 
 #####Parameters
 
->  <div style='color:#a71d5d; display:inline-block'>MicroBitComponent  *</div> component - The component to remove.
+>  <div style='color:#a71d5d; display:inline-block'>MicroBitComponent  \*</div> component - The component to remove.
 #####Returns
 MICROBIT_OK on success or MICROBIT_INVALID_PARAMETER is returned if the given component has not been previously added.
 #####Example
@@ -317,7 +317,7 @@ MICROBIT_OK on success or MICROBIT_INVALID_PARAMETER is returned if the given co
 
 ##addIdleComponent
 <br/>
-####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>addIdleComponent</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitComponent  *</div> component)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>addIdleComponent</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitComponent  \*</div> component)
 #####Description
 Adds a component to the array of idle thread components, which are processed when the run queue is empty.  
 
@@ -330,7 +330,7 @@ Adds a component to the array of idle thread components, which are processed whe
 
 #####Parameters
 
->  <div style='color:#a71d5d; display:inline-block'>MicroBitComponent  *</div> component - The component to add to the array.
+>  <div style='color:#a71d5d; display:inline-block'>MicroBitComponent  \*</div> component - The component to add to the array.
 #####Returns
 MICROBIT_OK on success or MICROBIT_NO_RESOURCES if the fiber components array is full.
 #####Example
@@ -348,7 +348,7 @@ MICROBIT_OK on success or MICROBIT_NO_RESOURCES if the fiber components array is
 
 ##removeIdleComponent
 <br/>
-####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>removeIdleComponent</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitComponent  *</div> component)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>removeIdleComponent</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitComponent  \*</div> component)
 #####Description
 Remove a component from the array of idle thread components  
 
@@ -359,7 +359,7 @@ Remove a component from the array of idle thread components
 
 #####Parameters
 
->  <div style='color:#a71d5d; display:inline-block'>MicroBitComponent  *</div> component - The component to remove from the idle component array.
+>  <div style='color:#a71d5d; display:inline-block'>MicroBitComponent  \*</div> component - The component to remove from the idle component array.
 #####Returns
 MICROBIT_OK on success. MICROBIT_INVALID_PARAMETER is returned if the given component has not been previously added.
 #####Example
