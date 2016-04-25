@@ -496,7 +496,7 @@
             "title": "systemVersion"
         }, 
         {
-            "location": "/ubit/#const-char-systemversion", 
+            "location": "/ubit/#const-char-42-systemversion", 
             "text": "", 
             "title": "const char * systemVersion()"
         }, 
@@ -556,7 +556,7 @@
             "title": "addSystemComponent"
         }, 
         {
-            "location": "/ubit/#int-addsystemcomponent-microbitcomponent-component", 
+            "location": "/ubit/#int-addsystemcomponent-microbitcomponent-42-component", 
             "text": "", 
             "title": "int addSystemComponent( MicroBitComponent  * component)"
         }, 
@@ -586,7 +586,7 @@
             "title": "removeSystemComponent"
         }, 
         {
-            "location": "/ubit/#int-removesystemcomponent-microbitcomponent-component", 
+            "location": "/ubit/#int-removesystemcomponent-microbitcomponent-42-component", 
             "text": "", 
             "title": "int removeSystemComponent( MicroBitComponent  * component)"
         }, 
@@ -616,7 +616,7 @@
             "title": "addIdleComponent"
         }, 
         {
-            "location": "/ubit/#int-addidlecomponent-microbitcomponent-component", 
+            "location": "/ubit/#int-addidlecomponent-microbitcomponent-42-component", 
             "text": "", 
             "title": "int addIdleComponent( MicroBitComponent  * component)"
         }, 
@@ -646,7 +646,7 @@
             "title": "removeIdleComponent"
         }, 
         {
-            "location": "/ubit/#int-removeidlecomponent-microbitcomponent-component", 
+            "location": "/ubit/#int-removeidlecomponent-microbitcomponent-42-component", 
             "text": "", 
             "title": "int removeIdleComponent( MicroBitComponent  * component)"
         }, 
@@ -731,7 +731,7 @@
             "title": "read"
         }, 
         {
-            "location": "/ubit/i2c/#int-read-int-address-char-data-int-length", 
+            "location": "/ubit/i2c/#int-read-int-address-char-42-data-int-length", 
             "text": "", 
             "title": "int read( int address,  char * data,  int length)"
         }, 
@@ -751,7 +751,7 @@
             "title": "Returns"
         }, 
         {
-            "location": "/ubit/i2c/#int-read-int-address-char-data-int-length-bool-repeated", 
+            "location": "/ubit/i2c/#int-read-int-address-char-42-data-int-length-bool-repeated", 
             "text": "", 
             "title": "int read( int address,  char * data,  int length,  bool repeated)"
         }, 
@@ -776,7 +776,7 @@
             "title": "write"
         }, 
         {
-            "location": "/ubit/i2c/#int-write-int-address-const-char-data-int-length", 
+            "location": "/ubit/i2c/#int-write-int-address-const-char-42-data-int-length", 
             "text": "", 
             "title": "int write( int address,  const char * data,  int length)"
         }, 
@@ -796,7 +796,7 @@
             "title": "Returns"
         }, 
         {
-            "location": "/ubit/i2c/#int-write-int-address-const-char-data-int-length-bool-repeated", 
+            "location": "/ubit/i2c/#int-write-int-address-const-char-42-data-int-length-bool-repeated", 
             "text": "", 
             "title": "int write( int address,  const char * data,  int length,  bool repeated)"
         }, 
@@ -817,7 +817,7 @@
         }, 
         {
             "location": "/ubit/storage/", 
-            "text": "uBit.storage\n\n\nOverview\n\n\nMicroBitStorage\n provides a simple way to store data on the micro:bit that persists\nthrough power cycles. It currently takes the form of a key value store which contains\na number of key value pairs.\n\n\nIf a user wanted to determine if a micro:bit has just been flashed over USB they\ncould simply write the following:\n\n\n#include \nMicroBit.h\n\n\nMicroBit    uBit;\n\nint main()\n{\n    uBit.init();\n\n    KeyValuePair* firstTime = uBit.storage.get(\nboot\n);\n\n    int stored;\n\n    if(firstTime == NULL)\n    {\n        //this is the first boot after a flash. Store a value!\n        stored = 1;\n        uBit.storage.put(\nboot\n, (uint8_t *)\nstored);\n        uBit.display.scroll(\nStored!\n);\n    }\n    else\n    {\n        //this is not the first boot, scroll our stored value.\n        memcpy(\nstored, firstTime-\nvalue, sizeof(int));\n        delete firstTime;\n        uBit.display.scroll(stored);\n    }\n}\n\n\n\n\nWhat is flash memory?\n\n\nThe micro:bit has 256 kB flash memory and 16 kB random access memory (RAM). Flash memory\nis \nnon-volatile\n, which essentially means that data is not forgotten when the device\nis powered off, this is the technology that many USB sticks use.\n\n\nThe alternative, Random Access Memory (also known as \nvolatile\n memory), cannot be persisted through power cycling the device as its\noperation relies upon maintaining a constant supply of power.\n\n\nTherefore, \nMicroBitStorage\n utilises the \nnon-volatile\n nature of flash memory, to\nstore its data. This class is utilised by the \ncompass\n, \naccelerometer\n\nand \nbleManager\n to improve the user experience by persisting calibration\nand bonding data.\n\n\nOperations\n\n\nYou can \nput()\n, \nget()\n and \nremove()\n key value pairs from the store.\n\n\nKey Value pairs have a fixed length key of \n16 bytes\n, and a fixed length value of\n\n32 bytes\n. This class only populates a single block (\n1024 bytes\n) in its current state,\nwhich means that \n21\n Key Value pairs can be stored.\n\n\nMessage Bus ID\n\n\n\n\nNone.\n\n\n\n\nMessage Bus Events\n\n\n\n\nNone.\n\n\n\n\nAPI\n\n\nConstructor\n\n\n\n\nMicroBitStorage()\n\n\nDescription\n\n\nDefault constructor.  \n\n\nCreates an instance of  MicroBitStorage  which acts like a  KeyValueStore  that allows the retrieval, addition and deletion of KeyValuePairs.           \n\n\nwriteBytes\n\n\n\n\nint\n \nwriteBytes\n( \nuint8_t *\n buffer,  \nuint32_t\n address,  \nint\n length)\n\n\nDescription\n\n\nWrites the given number of bytes to the address specified.  \n\n\nParameters\n\n\n\n\nuint8_t *\n buffer - the data to write.\n\n\nuint32_t\n address - the location in memory to write to.\n\n\nint\n length - the number of bytes to write.\n\n\n\n\n\n\nNote\n\n\ncurrently not implemented.\n\n\n\n\nflashPageErase\n\n\n\n\nvoid\n \nflashPageErase\n( \nuint32_t *\n page_address)\n\n\nDescription\n\n\nMethod for erasing a page in flash.  \n\n\npage_address\n\n\nAddress of the first word in the page to be erased.   \n\n\nParameters\n\n\n\n\nuint32_t *\n page_address - Address of the first word in the page to be erased.\n\n\n\n\nflashWordWrite\n\n\n\n\nvoid\n \nflashWordWrite\n( \nuint32_t *\n address,  \nuint32_t\n value)\n\n\nDescription\n\n\nMethod for writing a word of data in flash with a value.  \n\n\naddress\n\n\nAddress of the word to change.  \n\n\nvalue\n\n\nValue to be written to flash.   \n\n\nParameters\n\n\n\n\nuint32_t *\n address - Address of the word to change.\n\n\nuint32_t\n value - Value to be written to flash.\n\n\n\n\nput\n\n\n\n\nint\n \nput\n( \nconst char \n key,  \nuint8_t \n data)\n\n\nDescription\n\n\nPlaces a given key, and it's corresponding value into flash at the earliest available point.  \n\n\nParameters\n\n\n\n\nconst char *\n key - the unique name that should be used as an identifier for the given data. The key is presumed to be null terminated.\n\n\nuint8_t *\n data - a pointer to the beginning of the data to be persisted.\n\n\n\n\nReturns\n\n\nMICROBIT_OK on success, or MICROBIT_NO_RESOURCES if the storage page is full\n\n\n\nint\n \nput\n( \nManagedString\n key,  \nuint8_t *\n data)\n\n\nDescription\n\n\nPlaces a given key, and it's corresponding value into flash at the earliest available point.  \n\n\nParameters\n\n\n\n\nManagedString\n key - the unique name that should be used as an identifier for the given data.\n\n\nuint8_t *\n data - a pointer to the beginning of the data to be persisted.\n\n\n\n\nReturns\n\n\nMICROBIT_OK on success, or MICROBIT_NO_RESOURCES if the storage page is full\n\n\nget\n\n\n\n\nKeyValuePair\n \nget\n( \nconst char *\n key)\n\n\nDescription\n\n\nRetreives a  KeyValuePair  identified by a given key.  \n\n\nParameters\n\n\n\n\nconst char *\n key - the unique name used to identify a  KeyValuePair  in flash.\n\n\n\n\nReturns\n\n\na pointer to a heap allocated  KeyValuePair  struct, this pointer will be NULL if the key was not found in storage.\n\n\n\n\nNote\n\n\nit is up to the user to free memory after use.\n\n\n\n\n\n\nKeyValuePair\n \nget\n( \nManagedString\n key)\n\n\nDescription\n\n\nRetreives a  KeyValuePair  identified by a given key.  \n\n\nParameters\n\n\n\n\nManagedString\n key - the unique name used to identify a  KeyValuePair  in flash.\n\n\n\n\nReturns\n\n\na pointer to a heap allocated  KeyValuePair  struct, this pointer will be NULL if the key was not found in storage.\n\n\n\n\nNote\n\n\nit is up to the user to free memory after use.\n\n\n\n\nremove\n\n\n\n\nint\n \nremove\n( \nconst char *\n key)\n\n\nDescription\n\n\nRemoves a  KeyValuePair  identified by a given key.  \n\n\nParameters\n\n\n\n\nconst char *\n key - the unique name used to identify a  KeyValuePair  in flash.\n\n\n\n\nReturns\n\n\nMICROBIT_OK on success, or MICROBIT_NO_DATA if the given key was not found in flash.\n\n\n\nint\n \nremove\n( \nManagedString\n key)\n\n\nDescription\n\n\nRemoves a  KeyValuePair  identified by a given key.  \n\n\nParameters\n\n\n\n\nManagedString\n key - the unique name used to identify a  KeyValuePair  in flash.\n\n\n\n\nReturns\n\n\nMICROBIT_OK on success, or MICROBIT_NO_DATA if the given key was not found in flash.\n\n\nsize\n\n\n\n\nint\n \nsize\n()\n\n\nDescription\n\n\nThe size of the flash based  KeyValueStore .  \n\n\nReturns\n\n\nthe number of entries in the key value store", 
+            "text": "uBit.storage\n\n\nOverview\n\n\nMicroBitStorage\n provides a simple way to store data on the micro:bit that persists\nthrough power cycles. It currently takes the form of a key value store which contains\na number of key value pairs.\n\n\nIf a user wanted to determine if a micro:bit has just been flashed over USB they\ncould simply write the following:\n\n\n#include \nMicroBit.h\n\n\nMicroBit    uBit;\n\nint main()\n{\n    uBit.init();\n\n    KeyValuePair* firstTime = uBit.storage.get(\nboot\n);\n\n    int stored;\n\n    if(firstTime == NULL)\n    {\n        //this is the first boot after a flash. Store a value!\n        stored = 1;\n        uBit.storage.put(\nboot\n, (uint8_t *)\nstored, sizeof(int));\n        uBit.display.scroll(\nStored!\n);\n    }\n    else\n    {\n        //this is not the first boot, scroll our stored value.\n        memcpy(\nstored, firstTime-\nvalue, sizeof(int));\n        delete firstTime;\n        uBit.display.scroll(stored);\n    }\n}\n\n\n\n\nWhat is flash memory?\n\n\nThe micro:bit has 256 kB flash memory and 16 kB random access memory (RAM). Flash memory\nis \nnon-volatile\n, which essentially means that data is not forgotten when the device\nis powered off, this is the technology that many USB sticks use.\n\n\nThe alternative, Random Access Memory (also known as \nvolatile\n memory), cannot be persisted through power cycling the device as its\noperation relies upon maintaining a constant supply of power.\n\n\nTherefore, \nMicroBitStorage\n utilises the \nnon-volatile\n nature of flash memory, to\nstore its data. This class is utilised by the \ncompass\n, \naccelerometer\n\nand \nbleManager\n to improve the user experience by persisting calibration\nand bonding data.\n\n\nOperations\n\n\nYou can \nput()\n, \nget()\n and \nremove()\n key value pairs from the store.\n\n\nKey Value pairs have a fixed length key of \n16 bytes\n, and a fixed length value of\n\n32 bytes\n. This class only populates a single block (\n1024 bytes\n) in its current state,\nwhich means that \n21\n Key Value pairs can be stored.\n\n\nMessage Bus ID\n\n\n\n\nNone.\n\n\n\n\nMessage Bus Events\n\n\n\n\nNone.\n\n\n\n\nAPI\n\n\nConstructor\n\n\n\n\nMicroBitStorage()\n\n\nDescription\n\n\nDefault constructor.  \n\n\nCreates an instance of  MicroBitStorage  which acts like a  KeyValueStore  that allows the retrieval, addition and deletion of KeyValuePairs.           \n\n\nwriteBytes\n\n\n\n\nint\n \nwriteBytes\n( \nuint8_t *\n buffer,  \nuint32_t\n address,  \nint\n length)\n\n\nDescription\n\n\nWrites the given number of bytes to the address specified.  \n\n\nParameters\n\n\n\n\nuint8_t *\n buffer - the data to write.\n\n\nuint32_t\n address - the location in memory to write to.\n\n\nint\n length - the number of bytes to write.\n\n\n\n\n\n\nNote\n\n\ncurrently not implemented. \n\n\n\n\nflashPageErase\n\n\n\n\nvoid\n \nflashPageErase\n( \nuint32_t *\n page_address)\n\n\nDescription\n\n\nMethod for erasing a page in flash.  \n\n\npage_address \n\n\nAddress of the first word in the page to be erased.   \n\n\nParameters\n\n\n\n\nuint32_t *\n page_address - Address of the first word in the page to be erased. \n\n\n\n\nflashWordWrite\n\n\n\n\nvoid\n \nflashWordWrite\n( \nuint32_t *\n address,  \nuint32_t\n value)\n\n\nDescription\n\n\nMethod for writing a word of data in flash with a value.  \n\n\naddress \n\n\nAddress of the word to change.  \n\n\nvalue \n\n\nValue to be written to flash.   \n\n\nParameters\n\n\n\n\nuint32_t *\n address - Address of the word to change.\n\n\nuint32_t\n value - Value to be written to flash. \n\n\n\n\nput\n\n\n\n\nint\n \nput\n( \nconst char *\n key,  \nuint8_t *\n data,  \nint\n dataSize)\n\n\nDescription\n\n\nPlaces a given key, and it's corresponding value into flash at the earliest available point.  \n\n\nParameters\n\n\n\n\nconst char *\n key - the unique name that should be used as an identifier for the given data. The key is presumed to be null terminated.\n\n\nuint8_t *\n data - a pointer to the beginning of the data to be persisted.\n\n\nint\n dataSize - the size of the data to be persisted\n\n\n\n\nReturns\n\n\nMICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if the key or size is too large, MICROBIT_NO_RESOURCES if the storage page is full \n\n\n\nint\n \nput\n( \nManagedString\n key,  \nuint8_t *\n data,  \nint\n dataSize)\n\n\nDescription\n\n\nPlaces a given key, and it's corresponding value into flash at the earliest available point.  \n\n\nParameters\n\n\n\n\nManagedString\n key - the unique name that should be used as an identifier for the given data.\n\n\nuint8_t *\n data - a pointer to the beginning of the data to be persisted.\n\n\nint\n dataSize - the size of the data to be persisted\n\n\n\n\nReturns\n\n\nMICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if the key or size is too large, MICROBIT_NO_RESOURCES if the storage page is full \n\n\nget\n\n\n\n\nKeyValuePair\n \nget\n( \nconst char *\n key)\n\n\nDescription\n\n\nRetreives a  KeyValuePair  identified by a given key.  \n\n\nParameters\n\n\n\n\nconst char *\n key - the unique name used to identify a  KeyValuePair  in flash.\n\n\n\n\nReturns\n\n\na pointer to a heap allocated  KeyValuePair  struct, this pointer will be NULL if the key was not found in storage.\n\n\n\n\nNote\n\n\nit is up to the user to free memory after use. \n\n\n\n\n\n\nKeyValuePair\n \nget\n( \nManagedString\n key)\n\n\nDescription\n\n\nRetreives a  KeyValuePair  identified by a given key.  \n\n\nParameters\n\n\n\n\nManagedString\n key - the unique name used to identify a  KeyValuePair  in flash.\n\n\n\n\nReturns\n\n\na pointer to a heap allocated  KeyValuePair  struct, this pointer will be NULL if the key was not found in storage.\n\n\n\n\nNote\n\n\nit is up to the user to free memory after use. \n\n\n\n\nremove\n\n\n\n\nint\n \nremove\n( \nconst char *\n key)\n\n\nDescription\n\n\nRemoves a  KeyValuePair  identified by a given key.  \n\n\nParameters\n\n\n\n\nconst char *\n key - the unique name used to identify a  KeyValuePair  in flash.\n\n\n\n\nReturns\n\n\nMICROBIT_OK on success, or MICROBIT_NO_DATA if the given key was not found in flash. \n\n\n\nint\n \nremove\n( \nManagedString\n key)\n\n\nDescription\n\n\nRemoves a  KeyValuePair  identified by a given key.  \n\n\nParameters\n\n\n\n\nManagedString\n key - the unique name used to identify a  KeyValuePair  in flash.\n\n\n\n\nReturns\n\n\nMICROBIT_OK on success, or MICROBIT_NO_DATA if the given key was not found in flash. \n\n\nsize\n\n\n\n\nint\n \nsize\n()\n\n\nDescription\n\n\nThe size of the flash based  KeyValueStore .  \n\n\nReturns\n\n\nthe number of entries in the key value store", 
             "title": "storage"
         }, 
         {
@@ -827,7 +827,7 @@
         }, 
         {
             "location": "/ubit/storage/#overview", 
-            "text": "MicroBitStorage  provides a simple way to store data on the micro:bit that persists\nthrough power cycles. It currently takes the form of a key value store which contains\na number of key value pairs.  If a user wanted to determine if a micro:bit has just been flashed over USB they\ncould simply write the following:  #include  MicroBit.h \n\nMicroBit    uBit;\n\nint main()\n{\n    uBit.init();\n\n    KeyValuePair* firstTime = uBit.storage.get( boot );\n\n    int stored;\n\n    if(firstTime == NULL)\n    {\n        //this is the first boot after a flash. Store a value!\n        stored = 1;\n        uBit.storage.put( boot , (uint8_t *) stored);\n        uBit.display.scroll( Stored! );\n    }\n    else\n    {\n        //this is not the first boot, scroll our stored value.\n        memcpy( stored, firstTime- value, sizeof(int));\n        delete firstTime;\n        uBit.display.scroll(stored);\n    }\n}", 
+            "text": "MicroBitStorage  provides a simple way to store data on the micro:bit that persists\nthrough power cycles. It currently takes the form of a key value store which contains\na number of key value pairs.  If a user wanted to determine if a micro:bit has just been flashed over USB they\ncould simply write the following:  #include  MicroBit.h \n\nMicroBit    uBit;\n\nint main()\n{\n    uBit.init();\n\n    KeyValuePair* firstTime = uBit.storage.get( boot );\n\n    int stored;\n\n    if(firstTime == NULL)\n    {\n        //this is the first boot after a flash. Store a value!\n        stored = 1;\n        uBit.storage.put( boot , (uint8_t *) stored, sizeof(int));\n        uBit.display.scroll( Stored! );\n    }\n    else\n    {\n        //this is not the first boot, scroll our stored value.\n        memcpy( stored, firstTime- value, sizeof(int));\n        delete firstTime;\n        uBit.display.scroll(stored);\n    }\n}", 
             "title": "Overview"
         }, 
         {
@@ -876,7 +876,7 @@
             "title": "writeBytes"
         }, 
         {
-            "location": "/ubit/storage/#int-writebytes-uint8_t-buffer-uint32_t-address-int-length", 
+            "location": "/ubit/storage/#int-writebytes-uint8_t-42-buffer-uint32_t-address-int-length", 
             "text": "", 
             "title": "int writeBytes( uint8_t * buffer,  uint32_t address,  int length)"
         }, 
@@ -896,13 +896,13 @@
             "title": "flashPageErase"
         }, 
         {
-            "location": "/ubit/storage/#void-flashpageerase-uint32_t-page_address", 
+            "location": "/ubit/storage/#void-flashpageerase-uint32_t-42-page_address", 
             "text": "", 
             "title": "void flashPageErase( uint32_t * page_address)"
         }, 
         {
             "location": "/ubit/storage/#description_2", 
-            "text": "Method for erasing a page in flash.    page_address  Address of the first word in the page to be erased.", 
+            "text": "Method for erasing a page in flash.    page_address   Address of the first word in the page to be erased.", 
             "title": "Description"
         }, 
         {
@@ -916,13 +916,13 @@
             "title": "flashWordWrite"
         }, 
         {
-            "location": "/ubit/storage/#void-flashwordwrite-uint32_t-address-uint32_t-value", 
+            "location": "/ubit/storage/#void-flashwordwrite-uint32_t-42-address-uint32_t-value", 
             "text": "", 
             "title": "void flashWordWrite( uint32_t * address,  uint32_t value)"
         }, 
         {
             "location": "/ubit/storage/#description_3", 
-            "text": "Method for writing a word of data in flash with a value.    address  Address of the word to change.    value  Value to be written to flash.", 
+            "text": "Method for writing a word of data in flash with a value.    address   Address of the word to change.    value   Value to be written to flash.", 
             "title": "Description"
         }, 
         {
@@ -936,9 +936,9 @@
             "title": "put"
         }, 
         {
-            "location": "/ubit/storage/#int-put-const-char-key-uint8_t-data", 
+            "location": "/ubit/storage/#int-put-const-char-42-key-uint8_t-42-data-int-datasize", 
             "text": "", 
-            "title": "int put( const char  key,  uint8_t  data)"
+            "title": "int put( const char * key,  uint8_t * data,  int dataSize)"
         }, 
         {
             "location": "/ubit/storage/#description_4", 
@@ -947,18 +947,18 @@
         }, 
         {
             "location": "/ubit/storage/#parameters_3", 
-            "text": "const char *  key - the unique name that should be used as an identifier for the given data. The key is presumed to be null terminated.  uint8_t *  data - a pointer to the beginning of the data to be persisted.", 
+            "text": "const char *  key - the unique name that should be used as an identifier for the given data. The key is presumed to be null terminated.  uint8_t *  data - a pointer to the beginning of the data to be persisted.  int  dataSize - the size of the data to be persisted", 
             "title": "Parameters"
         }, 
         {
             "location": "/ubit/storage/#returns", 
-            "text": "MICROBIT_OK on success, or MICROBIT_NO_RESOURCES if the storage page is full", 
+            "text": "MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if the key or size is too large, MICROBIT_NO_RESOURCES if the storage page is full", 
             "title": "Returns"
         }, 
         {
-            "location": "/ubit/storage/#int-put-managedstring-key-uint8_t-data", 
+            "location": "/ubit/storage/#int-put-managedstring-key-uint8_t-42-data-int-datasize", 
             "text": "", 
-            "title": "int put( ManagedString key,  uint8_t * data)"
+            "title": "int put( ManagedString key,  uint8_t * data,  int dataSize)"
         }, 
         {
             "location": "/ubit/storage/#description_5", 
@@ -967,12 +967,12 @@
         }, 
         {
             "location": "/ubit/storage/#parameters_4", 
-            "text": "ManagedString  key - the unique name that should be used as an identifier for the given data.  uint8_t *  data - a pointer to the beginning of the data to be persisted.", 
+            "text": "ManagedString  key - the unique name that should be used as an identifier for the given data.  uint8_t *  data - a pointer to the beginning of the data to be persisted.  int  dataSize - the size of the data to be persisted", 
             "title": "Parameters"
         }, 
         {
             "location": "/ubit/storage/#returns_1", 
-            "text": "MICROBIT_OK on success, or MICROBIT_NO_RESOURCES if the storage page is full", 
+            "text": "MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER if the key or size is too large, MICROBIT_NO_RESOURCES if the storage page is full", 
             "title": "Returns"
         }, 
         {
@@ -981,7 +981,7 @@
             "title": "get"
         }, 
         {
-            "location": "/ubit/storage/#keyvaluepair-get-const-char-key", 
+            "location": "/ubit/storage/#keyvaluepair-get-const-char-42-key", 
             "text": "", 
             "title": "KeyValuePair get( const char * key)"
         }, 
@@ -1026,7 +1026,7 @@
             "title": "remove"
         }, 
         {
-            "location": "/ubit/storage/#int-remove-const-char-key", 
+            "location": "/ubit/storage/#int-remove-const-char-42-key", 
             "text": "", 
             "title": "int remove( const char * key)"
         }, 
@@ -1286,7 +1286,7 @@
             "title": "Returns"
         }, 
         {
-            "location": "/ubit/serial/#int-send-uint8_t-buffer-int-bufferlen", 
+            "location": "/ubit/serial/#int-send-uint8_t-42-buffer-int-bufferlen", 
             "text": "", 
             "title": "int send( uint8_t * buffer,  int bufferLen)"
         }, 
@@ -1306,7 +1306,7 @@
             "title": "Returns"
         }, 
         {
-            "location": "/ubit/serial/#int-send-uint8_t-buffer-int-bufferlen-microbitserialmode-mode", 
+            "location": "/ubit/serial/#int-send-uint8_t-42-buffer-int-bufferlen-microbitserialmode-mode", 
             "text": "", 
             "title": "int send( uint8_t * buffer,  int bufferLen,  MicroBitSerialMode mode)"
         }, 
@@ -1406,7 +1406,7 @@
             "title": "Returns"
         }, 
         {
-            "location": "/ubit/serial/#int-read-uint8_t-buffer-int-bufferlen", 
+            "location": "/ubit/serial/#int-read-uint8_t-42-buffer-int-bufferlen", 
             "text": "", 
             "title": "int read( uint8_t * buffer,  int bufferLen)"
         }, 
@@ -1426,7 +1426,7 @@
             "title": "Returns"
         }, 
         {
-            "location": "/ubit/serial/#int-read-uint8_t-buffer-int-bufferlen-microbitserialmode-mode", 
+            "location": "/ubit/serial/#int-read-uint8_t-42-buffer-int-bufferlen-microbitserialmode-mode", 
             "text": "", 
             "title": "int read( uint8_t * buffer,  int bufferLen,  MicroBitSerialMode mode)"
         }, 
@@ -2071,7 +2071,7 @@
             "title": "add"
         }, 
         {
-            "location": "/ubit/messageBus/#int-add-microbitlistener-newlistener", 
+            "location": "/ubit/messageBus/#int-add-microbitlistener-42-newlistener", 
             "text": "", 
             "title": "int add( MicroBitListener  * newListener)"
         }, 
@@ -2096,7 +2096,7 @@
             "title": "remove"
         }, 
         {
-            "location": "/ubit/messageBus/#int-remove-microbitlistener-newlistener", 
+            "location": "/ubit/messageBus/#int-remove-microbitlistener-42-newlistener", 
             "text": "", 
             "title": "int remove( MicroBitListener  * newListener)"
         }, 
@@ -2262,7 +2262,7 @@
         }, 
         {
             "location": "/ubit/display/", 
-            "text": "uBit.display\n\n\nOverview\n\n\nThe MicroBitDisplay class is a general purpose device driver for controlling LED matrix displays.\nLED matrix displays are simple, inexpensive devices that use a single LED as a display pixel. They therefore\ntend to be of relatively low resolution, but often provide visually attractive displays due to the high coherence and brightness\nof the LEDs.\n\n\nLEDs in matrix displays are connected to general purpose I/O (GPIO) pins on CPU. Although they \ncould\n be connected such that each\nLED has its own GPIO pin, this is not usually the case, as the scarce resource of GPIO pins would soon be used up.  For example,\non the micro:bit, the LED matix has 25 LEDs. If this required 25 GPIO pins, then there would be none left for anything else!\n\n\nInstead, these LEDs are controlled by 12 GPIO pins. Three of those pins provide power to LEDs, the other\nnine provide a route to ground. The pins that source power are called \nrows\n. The pins that sink power are called \ncolumns\n.\nThe following diagram shows how the 5x5 grid is connected into 3 logical 'rows' and 9 'columns':\n\n\n\n\nWhere the format is: \nROW\n.\nCOLUMN\n\n\nSo, if we wanted to light up the middle LED, we would need to put a HIGH voltage (logic 1) on row 2, and a LOW voltage (logic 0) on column 3. Notice that when row 2 is\nHIGH, we the value we write to the 9 column pins affect all of the LEDs 2.1 to 2.7, without affecting any of the LEDS on row 1 or row 3. Sharing GPIO pins in this way is known as multiplexing.\nMoreover, if we scan throuh the different rows fast enough - faster than the eye can see - then we can provide the illusion of all the LEDS being on at the same time! This is a technique\nknown as \npersistance of vision\n... and was also the same basis of the very first TV sets (although that did not use LEDs!).\n\n\nCapabilities\n\n\nThe MicroBitDisplay class provides a driver for a general purpose matrix display, and also several high level features that make creating animations and visual effects on the\nmicro:bit LED display easy and fun! This class lets you:\n\n\n\n\nControl the LED matrix on the micro:bit.\n\n\nUse an optimised typeface (font) so you can show upper and lower case letters, numbers of symbols on the display.\n\n\nSet Display wide or \nper-pixel\n brightness control up to 256 level per pixel.\n\n\nCreate, move, paste and animate images.\n\n\nScroll and print images and text.\n\n\nAccess the screen buffer directly, so you can manipulate individual pixels.\n\n\n\n\nUsing the Display\n\n\nWhen using the uBit obbject, the display is automatically set up, and ready for you to use. Use any or all of the functions listed in the API section below to create effects on the\nLED display. Here are a few examples to get you started though!\n\n\nScrolling Text\n\n\nSimply use the scroll function specify the message you want to scroll, and sit back and watch the result. The messgae you provide will be scrolled, pixel by pixel across the display from right to left.\nIf you take a look at the documentation for the scroll function in the API below, you will notice that you can also specify the speed of the scroll as an optional final parameter. The lower the delay, the\nfaster your text will scroll across the screen.\n\n\nuBit.display.scroll(\nHELLO!\n);\nuBit.display.scroll(\nHELLO!\n, 100);\n\n\n\n\nNotice that you can also scroll numbers (either constants of variables):\n\n\nint c = 42;\nuBit.display.scroll(c);\n\n\n\n\nPrinting Text\n\n\nSometimes it is better to show the letters/numbers in turn on the screen rather than scrolling them. If you want to do this, the 'print' function has exactly the same parameters as 'scroll', but\nwith this behaviour.  e.g.\n\n\nuBit.display.print(\nHELLO!\n);\nuBit.display.print(\nHELLO!\n, 100);\nuBit.display.print(42);\n\n\n\n\nDo notice that print behaves slightly differently if you provide a single character or numeric digit though. if you do this, the value you proviode will sty on the screen until you explicitly\nchange the screen. if you ask the runtime to print a strong with two or more characters, then each will appear in turn, then disappear. e.g. try this and you will find it stays on the screen:\n\n\nuBit.display.print(7);\n\n\n\n\nShowing Images\n\n\nIt is also possible to print and scroll bitmap images on the display. Images are represented in the runtime by using a \nMicroBitImage\n. These can easily be created, just as\nyou create any variable. Onve created, you can then provide them as a parameter to the scroll and print functions. Unlike the text based animation functions, you can also specif exactly\nwhere in the screen you would like to the image to appear - and you can even treat pixel values of zero as transparent if you like!\nSee the \nMicroBitImage page\n for more details on images, but here are a few simple examples:\n\n\n// show your smiley on the screen...\nMicroBitImage smiley(\n0,255,0,255, 0\\n0,255,0,255,0\\n0,0,0,0,0\\n255,0,0,0,255\\n0,255,255,255,0\\n\n);\nuBit.display.print(smiley);\n\n\n\n\n// make your smiley peep up from the bottom of the screen...\nMicroBitImage smiley(\n0,255,0,255, 0\\n0,255,0,255,0\\n0,0,0,0,0\\n255,0,0,0,255\\n0,255,255,255,0\\n\n);\nfor (int y=4; y \n= 0; y--)\n{\n    uBit.display.image.paste(smiley,0,y);\n    uBit.sleep(500);\n}\n\n\n\n\n// scroll your smiley across the screen...\nMicroBitImage smiley(\n0,255,0,255, 0\\n0,255,0,255,0\\n0,0,0,0,0\\n255,0,0,0,255\\n0,255,255,255,0\\n\n);\nuBit.display.scroll(smiley);\n\n\n\n\nRunning in the Background...\n\n\nBy now you have probably noticed that the scroll, print and animate functions all wait for the effect requested to finished before returning. This is by design, to allow you to easily synchronise your programs.\nHowever, sometimes you want to launch an effect, and let it run in the background while your program does something else. For this, you can use the \nAsync\n variations of the scroll, print and animate functions.\nThese all have identical parameters and capabilities, but will return immediately. Try some of the examples above with their Async equivalents to understand this different behaviour.  For example:\n\n\n// scroll your smiley across the screen, without waiting for it to finish...\nMicroBitImage smiley(\n0,255,0,255, 0\\n0,255,0,255,0\\n0,0,0,0,0\\n255,0,0,0,255\\n0,255,255,255,0\\n\n);\nuBit.display.scrollAsync(smiley);\n\n\n\n\nChanging Display Mode\n\n\nThe MicroBitDisplay class supports either on/off LED display, or displays where each pixel has an individual brightness value between 0 and 255. The former cost much less processor time and battery power to\noperate, so is the default. The latter does provide more useful effect though, so you can change between these modes by using the  'setDiplayMode' funciton. Valid values are:\n\n\n\n\n\n\n\n\nDisplay mode\n\n\nBrief Description\n\n\n\n\n\n\n\n\n\n\nDISPLAY_MODE_BLACK_AND_WHITE\n\n\nEach pixel can be just on or off. The brightness of all pixels is controlled by the setBrightness function.\n\n\n\n\n\n\nDISPLAY_MODE_BLACK_AND_WHITE_LIGHT_SENSE\n\n\nEach pixel can be just on or off, and the display driver will also sense the ambient brightness from the LEDs.\n\n\n\n\n\n\nDISPLAY_MODE_GREYSCALE\n\n\nEach pixel can independently have 256 levels of brightness.\n\n\n\n\n\n\n\n\nfor example:\n\n\n// show a smiley with bright eyes!\nMicroBitImage smiley(\n0,255,0,255, 0\\n0,255,0,255,0\\n0,0,0,0,0\\n32,0,0,0,32\\n0,32,32,32,0\\n\n);\nuBit.display.setDisplayMode(DISPLAY_MODE_GREYSCALE);\nuBit.display.print(smiley);\n\n\n\n\nAccessing the Display Buffer\n\n\nThe memory buffer that is used to drive the LEDs is itself a \nMicroBitImage\n. This means that you can also access and call any of the functions listed in the \nMicroBitImage API documentation\n\ndirectly on the dipslay buffer. Examples here include setPixelValue, as illustrated below, but read the above documentation link for full details.\n\n\n// set a single pixel by co-ordinate\nuBit.display.image.setPixelValue(2,2,255);\n\n\n\n\nOther Useful Functions\n\n\n\n\n'clear' will clear the screen immediately.\n\n\n'stopAnimtion' will terminate any ongoing print, scroll or animate functions.\n\n\n'setBrightness' lets you set the overall maximum brightness of the display, as a value between 1 and 255.\n\n\n'enable' and 'disable' turn on and off the display. When disabled, you can reuse many if the GPIO pins. See the \nMicroBitIO\n class for more information.\n\n\n'rotateTo' even lets you specify the orientation of the display - in case you need to use your micro:bit the wrong way up. :-)\n\n\n'readLightLevel' runs the LEDs backwards as photodiodes and tells you how bright your room is... see \nLight Sensing\n for more info!\n\n\n\n\nMessage Bus ID\n\n\n\n\n\n\n\n\nConstant\n\n\nValue\n\n\n\n\n\n\n\n\n\n\nMICROBIT_ID_DISPLAY\n\n\n6\n\n\n\n\n\n\n\n\nMessage Bus Events\n\n\n\n\n\n\n\n\nConstant\n\n\nValue\n\n\n\n\n\n\n\n\n\n\nMICROBIT_DISPLAY_EVT_ANIMATION_COMPLETE\n\n\n1\n\n\n\n\n\n\nMICROBIT_DISPLAY_EVT_LIGHT_SENSE\n\n\n2\n\n\n\n\n\n\n\n\nNotify Events\n\n\nThese events use the notification channel \nMICROBIT_ID_NOTIFY\n, which provides\ngeneral purpose synchronisation.\n\n\n\n\n\n\n\n\nConstant\n\n\nValue\n\n\n\n\n\n\n\n\n\n\nMICROBIT_DISPLAY_EVT_FREE\n\n\n1\n\n\n\n\n\n\n\n\nAPI\n\n\nConstructor\n\n\n\n\nMicroBitDisplay()\n\n\nDescription\n\n\nConstructor.  \n\n\nCreate a software representation the micro:bit's 5x5 LED matrix. The display is initially blank.  \n\n\nExample\n\n\n MicroBitDisplay display; \n\n\n\n\n\n\nMicroBitDisplay( \nuint16_t\n id)\n\n\nDescription\n\n\nConstructor.  \n\n\nCreate a software representation the micro:bit's 5x5 LED matrix. The display is initially blank.  \n\n\nParameters\n\n\n\n\nuint16_t\n id - The id the display should use when sending events on the MessageBus. Defaults to MICROBIT_ID_DISPLAY.\n\n\n\n\nExample\n\n\n MicroBitDisplay display; \n\n\n\n\n\n\nMicroBitDisplay( \nuint16_t\n id,  \nconst  MatrixMap  \n map)\n\n\nDescription\n\n\nConstructor.  \n\n\nCreate a software representation the micro:bit's 5x5 LED matrix. The display is initially blank.  \n\n\nParameters\n\n\n\n\nuint16_t\n id - The id the display should use when sending events on the MessageBus. Defaults to MICROBIT_ID_DISPLAY.\n\n\nconst  MatrixMap  \n map - The mapping information that relates pin inputs/outputs to physical screen coordinates. Defaults to microbitMatrixMap, defined in  MicroBitMatrixMaps.h .\n\n\n\n\nExample\n\n\n MicroBitDisplay display; \n\n\n\n\nstopAnimation\n\n\n\n\nvoid\n \nstopAnimation\n()\n\n\nDescription\n\n\nStops any currently running animation, and any that are waiting to be displayed.           \n\n\nprintCharAsync\n\n\n\n\nint\n \nprintCharAsync\n( \nchar\n c)\n\n\nDescription\n\n\nPrints the given character to the display, if it is not in use.  \n\n\nParameters\n\n\n\n\nchar\n c - The character to display.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_BUSY is the screen is in use, or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n display.printAsync('p'); \n display.printAsync('p',100); \n\n\n\n\n\n\nint\n \nprintCharAsync\n( \nchar\n c,  \nint\n delay)\n\n\nDescription\n\n\nPrints the given character to the display, if it is not in use.  \n\n\nParameters\n\n\n\n\nchar\n c - The character to display.\n\n\nint\n delay - Optional parameter - the time for which to show the character. Zero displays the character forever, or until the Displays next use.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_BUSY is the screen is in use, or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n display.printAsync('p'); \n display.printAsync('p',100); \n\n\n\n\nprintAsync\n\n\n\n\nint\n \nprintAsync\n( \nManagedString\n s)\n\n\nDescription\n\n\nPrints the given  ManagedString  to the display, one character at a time. Returns immediately, and executes the animation asynchronously.  \n\n\nParameters\n\n\n\n\nManagedString\n s - The string to display.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n display.printAsync(\nabc123\n,400); \n\n\n\n\n\n\nint\n \nprintAsync\n( \nManagedString\n s,  \nint\n delay)\n\n\nDescription\n\n\nPrints the given  ManagedString  to the display, one character at a time. Returns immediately, and executes the animation asynchronously.  \n\n\nParameters\n\n\n\n\nManagedString\n s - The string to display.\n\n\nint\n delay - The time to delay between characters, in milliseconds. Must be \n 0. Defaults to: MICROBIT_DEFAULT_PRINT_SPEED.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n display.printAsync(\nabc123\n,400); \n\n\n\n\n\n\nint\n \nprintAsync\n( \nMicroBitImage\n i)\n\n\nDescription\n\n\nPrints the given image to the display, if the display is not in use. Returns immediately, and executes the animation asynchronously.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n i - The image to display.\n\n\n\n\nExample\n\n\n MicrobitImage i(\n1,1,1,1,1\\n1,1,1,1,1\\n\n); \n display.print(i,400); \n\n\n\n\n\n\nint\n \nprintAsync\n( \nMicroBitImage\n i,  \nint\n x)\n\n\nDescription\n\n\nPrints the given image to the display, if the display is not in use. Returns immediately, and executes the animation asynchronously.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n i - The image to display.\n\n\nint\n x - The horizontal position on the screen to display the image. Defaults to 0.\n\n\n\n\nExample\n\n\n MicrobitImage i(\n1,1,1,1,1\\n1,1,1,1,1\\n\n); \n display.print(i,400); \n\n\n\n\n\n\nint\n \nprintAsync\n( \nMicroBitImage\n i,  \nint\n x,  \nint\n y)\n\n\nDescription\n\n\nPrints the given image to the display, if the display is not in use. Returns immediately, and executes the animation asynchronously.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n i - The image to display.\n\n\nint\n x - The horizontal position on the screen to display the image. Defaults to 0.\n\n\nint\n y - The vertical position on the screen to display the image. Defaults to 0.\n\n\n\n\nExample\n\n\n MicrobitImage i(\n1,1,1,1,1\\n1,1,1,1,1\\n\n); \n display.print(i,400); \n\n\n\n\n\n\nint\n \nprintAsync\n( \nMicroBitImage\n i,  \nint\n x,  \nint\n y,  \nint\n alpha)\n\n\nDescription\n\n\nPrints the given image to the display, if the display is not in use. Returns immediately, and executes the animation asynchronously.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n i - The image to display.\n\n\nint\n x - The horizontal position on the screen to display the image. Defaults to 0.\n\n\nint\n y - The vertical position on the screen to display the image. Defaults to 0.\n\n\nint\n alpha - Treats the brightness level '0' as transparent. Defaults to 0.\n\n\n\n\nExample\n\n\n MicrobitImage i(\n1,1,1,1,1\\n1,1,1,1,1\\n\n); \n display.print(i,400); \n\n\n\n\n\n\nint\n \nprintAsync\n( \nMicroBitImage\n i,  \nint\n x,  \nint\n y,  \nint\n alpha,  \nint\n delay)\n\n\nDescription\n\n\nPrints the given image to the display, if the display is not in use. Returns immediately, and executes the animation asynchronously.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n i - The image to display.\n\n\nint\n x - The horizontal position on the screen to display the image. Defaults to 0.\n\n\nint\n y - The vertical position on the screen to display the image. Defaults to 0.\n\n\nint\n alpha - Treats the brightness level '0' as transparent. Defaults to 0.\n\n\nint\n delay - The time to delay between characters, in milliseconds. Defaults to 0.\n\n\n\n\nExample\n\n\n MicrobitImage i(\n1,1,1,1,1\\n1,1,1,1,1\\n\n); \n display.print(i,400); \n\n\n\n\nprintChar\n\n\n\n\nint\n \nprintChar\n( \nchar\n c)\n\n\nDescription\n\n\nPrints the given character to the display.  \n\n\nParameters\n\n\n\n\nchar\n c - The character to display.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n display.printAsync('p'); \n display.printAsync('p',100); \n\n\n\n\n\n\nint\n \nprintChar\n( \nchar\n c,  \nint\n delay)\n\n\nDescription\n\n\nPrints the given character to the display.  \n\n\nParameters\n\n\n\n\nchar\n c - The character to display.\n\n\nint\n delay - Optional parameter - the time for which to show the character. Zero displays the character forever, or until the Displays next use.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n display.printAsync('p'); \n display.printAsync('p',100); \n\n\n\n\nprint\n\n\n\n\nint\n \nprint\n( \nManagedString\n s)\n\n\nDescription\n\n\nPrints the given string to the display, one character at a time.  \n\n\nBlocks the calling thread until all the text has been displayed.  \n\n\nParameters\n\n\n\n\nManagedString\n s - The string to display.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n display.print(\nabc123\n,400); \n\n\n\n\n\n\nint\n \nprint\n( \nManagedString\n s,  \nint\n delay)\n\n\nDescription\n\n\nPrints the given string to the display, one character at a time.  \n\n\nBlocks the calling thread until all the text has been displayed.  \n\n\nParameters\n\n\n\n\nManagedString\n s - The string to display.\n\n\nint\n delay - The time to delay between characters, in milliseconds. Defaults to: MICROBIT_DEFAULT_PRINT_SPEED.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n display.print(\nabc123\n,400); \n\n\n\n\n\n\nint\n \nprint\n( \nMicroBitImage\n i)\n\n\nDescription\n\n\nPrints the given image to the display. Blocks the calling thread until all the image has been displayed.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n i - The image to display.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_BUSY if the display is already in use, or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n MicrobitImage i(\n1,1,1,1,1\\n1,1,1,1,1\\n\n); \n display.print(i,400); \n\n\n\n\n\n\nint\n \nprint\n( \nMicroBitImage\n i,  \nint\n x)\n\n\nDescription\n\n\nPrints the given image to the display. Blocks the calling thread until all the image has been displayed.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n i - The image to display.\n\n\nint\n x - The horizontal position on the screen to display the image. Defaults to 0.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_BUSY if the display is already in use, or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n MicrobitImage i(\n1,1,1,1,1\\n1,1,1,1,1\\n\n); \n display.print(i,400); \n\n\n\n\n\n\nint\n \nprint\n( \nMicroBitImage\n i,  \nint\n x,  \nint\n y)\n\n\nDescription\n\n\nPrints the given image to the display. Blocks the calling thread until all the image has been displayed.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n i - The image to display.\n\n\nint\n x - The horizontal position on the screen to display the image. Defaults to 0.\n\n\nint\n y - The vertical position on the screen to display the image. Defaults to 0.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_BUSY if the display is already in use, or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n MicrobitImage i(\n1,1,1,1,1\\n1,1,1,1,1\\n\n); \n display.print(i,400); \n\n\n\n\n\n\nint\n \nprint\n( \nMicroBitImage\n i,  \nint\n x,  \nint\n y,  \nint\n alpha)\n\n\nDescription\n\n\nPrints the given image to the display. Blocks the calling thread until all the image has been displayed.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n i - The image to display.\n\n\nint\n x - The horizontal position on the screen to display the image. Defaults to 0.\n\n\nint\n y - The vertical position on the screen to display the image. Defaults to 0.\n\n\nint\n alpha - Treats the brightness level '0' as transparent. Defaults to 0.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_BUSY if the display is already in use, or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n MicrobitImage i(\n1,1,1,1,1\\n1,1,1,1,1\\n\n); \n display.print(i,400); \n\n\n\n\n\n\nint\n \nprint\n( \nMicroBitImage\n i,  \nint\n x,  \nint\n y,  \nint\n alpha,  \nint\n delay)\n\n\nDescription\n\n\nPrints the given image to the display. Blocks the calling thread until all the image has been displayed.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n i - The image to display.\n\n\nint\n x - The horizontal position on the screen to display the image. Defaults to 0.\n\n\nint\n y - The vertical position on the screen to display the image. Defaults to 0.\n\n\nint\n alpha - Treats the brightness level '0' as transparent. Defaults to 0.\n\n\nint\n delay - The time to display the image for, or zero to show the image forever. Defaults to 0.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_BUSY if the display is already in use, or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n MicrobitImage i(\n1,1,1,1,1\\n1,1,1,1,1\\n\n); \n display.print(i,400); \n\n\n\n\nscrollAsync\n\n\n\n\nint\n \nscrollAsync\n( \nManagedString\n s)\n\n\nDescription\n\n\nScrolls the given string to the display, from right to left. Returns immediately, and executes the animation asynchronously.  \n\n\nParameters\n\n\n\n\nManagedString\n s - The string to display.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_BUSY if the display is already in use, or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n display.scrollAsync(\nabc123\n,100); \n\n\n\n\n\n\nint\n \nscrollAsync\n( \nManagedString\n s,  \nint\n delay)\n\n\nDescription\n\n\nScrolls the given string to the display, from right to left. Returns immediately, and executes the animation asynchronously.  \n\n\nParameters\n\n\n\n\nManagedString\n s - The string to display.\n\n\nint\n delay - The time to delay between characters, in milliseconds. Defaults to: MICROBIT_DEFAULT_SCROLL_SPEED.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_BUSY if the display is already in use, or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n display.scrollAsync(\nabc123\n,100); \n\n\n\n\n\n\nint\n \nscrollAsync\n( \nMicroBitImage\n image)\n\n\nDescription\n\n\nScrolls the given image across the display, from right to left. Returns immediately, and executes the animation asynchronously.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n image - The image to display.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_BUSY if the display is already in use, or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n MicrobitImage i(\n1,1,1,1,1\\n1,1,1,1,1\\n\n); \n display.scrollAsync(i,100,1); \n\n\n\n\n\n\nint\n \nscrollAsync\n( \nMicroBitImage\n image,  \nint\n delay)\n\n\nDescription\n\n\nScrolls the given image across the display, from right to left. Returns immediately, and executes the animation asynchronously.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n image - The image to display.\n\n\nint\n delay - The time between updates, in milliseconds. Defaults to: MICROBIT_DEFAULT_SCROLL_SPEED.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_BUSY if the display is already in use, or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n MicrobitImage i(\n1,1,1,1,1\\n1,1,1,1,1\\n\n); \n display.scrollAsync(i,100,1); \n\n\n\n\n\n\nint\n \nscrollAsync\n( \nMicroBitImage\n image,  \nint\n delay,  \nint\n stride)\n\n\nDescription\n\n\nScrolls the given image across the display, from right to left. Returns immediately, and executes the animation asynchronously.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n image - The image to display.\n\n\nint\n delay - The time between updates, in milliseconds. Defaults to: MICROBIT_DEFAULT_SCROLL_SPEED.\n\n\nint\n stride - The number of pixels to shift by in each update. Defaults to MICROBIT_DEFAULT_SCROLL_STRIDE.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_BUSY if the display is already in use, or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n MicrobitImage i(\n1,1,1,1,1\\n1,1,1,1,1\\n\n); \n display.scrollAsync(i,100,1); \n\n\n\n\nscroll\n\n\n\n\nint\n \nscroll\n( \nManagedString\n s)\n\n\nDescription\n\n\nScrolls the given string across the display, from right to left. Blocks the calling thread until all text has been displayed.  \n\n\nParameters\n\n\n\n\nManagedString\n s - The string to display.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n display.scroll(\nabc123\n,100); \n\n\n\n\n\n\nint\n \nscroll\n( \nManagedString\n s,  \nint\n delay)\n\n\nDescription\n\n\nScrolls the given string across the display, from right to left. Blocks the calling thread until all text has been displayed.  \n\n\nParameters\n\n\n\n\nManagedString\n s - The string to display.\n\n\nint\n delay - The time to delay between characters, in milliseconds. Defaults to: MICROBIT_DEFAULT_SCROLL_SPEED.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n display.scroll(\nabc123\n,100); \n\n\n\n\n\n\nint\n \nscroll\n( \nMicroBitImage\n image)\n\n\nDescription\n\n\nScrolls the given image across the display, from right to left. Blocks the calling thread until all the text has been displayed.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n image - The image to display.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n MicrobitImage i(\n1,1,1,1,1\\n1,1,1,1,1\\n\n); \n display.scroll(i,100,1); \n\n\n\n\n\n\nint\n \nscroll\n( \nMicroBitImage\n image,  \nint\n delay)\n\n\nDescription\n\n\nScrolls the given image across the display, from right to left. Blocks the calling thread until all the text has been displayed.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n image - The image to display.\n\n\nint\n delay - The time between updates, in milliseconds. Defaults to: MICROBIT_DEFAULT_SCROLL_SPEED.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n MicrobitImage i(\n1,1,1,1,1\\n1,1,1,1,1\\n\n); \n display.scroll(i,100,1); \n\n\n\n\n\n\nint\n \nscroll\n( \nMicroBitImage\n image,  \nint\n delay,  \nint\n stride)\n\n\nDescription\n\n\nScrolls the given image across the display, from right to left. Blocks the calling thread until all the text has been displayed.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n image - The image to display.\n\n\nint\n delay - The time between updates, in milliseconds. Defaults to: MICROBIT_DEFAULT_SCROLL_SPEED.\n\n\nint\n stride - The number of pixels to shift by in each update. Defaults to MICROBIT_DEFAULT_SCROLL_STRIDE.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n MicrobitImage i(\n1,1,1,1,1\\n1,1,1,1,1\\n\n); \n display.scroll(i,100,1); \n\n\n\n\nanimateAsync\n\n\n\n\nint\n \nanimateAsync\n( \nMicroBitImage\n image,  \nint\n delay,  \nint\n stride)\n\n\nDescription\n\n\n\"Animates\" the current image across the display with a given stride, finishing on the last frame of the animation. Returns immediately.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n image - The image to display.\n\n\nint\n delay - The time to delay between each update of the display, in milliseconds.\n\n\nint\n stride - The number of pixels to shift by in each update.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_BUSY if the screen is in use, or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n const int heart_w = 10; \n const int heart_h = 5; \n const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; \n\n MicroBitImage i(heart_w,heart_h,heart); \n display.animateAsync(i,100,5); \n\n\n\n\n\n\nint\n \nanimateAsync\n( \nMicroBitImage\n image,  \nint\n delay,  \nint\n stride,  \nint\n startingPosition)\n\n\nDescription\n\n\n\"Animates\" the current image across the display with a given stride, finishing on the last frame of the animation. Returns immediately.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n image - The image to display.\n\n\nint\n delay - The time to delay between each update of the display, in milliseconds.\n\n\nint\n stride - The number of pixels to shift by in each update.\n\n\nint\n startingPosition - the starting position on the display for the animation to begin at. Defaults to MICROBIT_DISPLAY_ANIMATE_DEFAULT_POS.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_BUSY if the screen is in use, or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n const int heart_w = 10; \n const int heart_h = 5; \n const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; \n\n MicroBitImage i(heart_w,heart_h,heart); \n display.animateAsync(i,100,5); \n\n\n\n\nanimate\n\n\n\n\nint\n \nanimate\n( \nMicroBitImage\n image,  \nint\n delay,  \nint\n stride)\n\n\nDescription\n\n\n\"Animates\" the current image across the display with a given stride, finishing on the last frame of the animation. Blocks the calling thread until the animation is complete.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n image\n\n\nint\n delay - The time to delay between each update of the display, in milliseconds.\n\n\nint\n stride - The number of pixels to shift by in each update.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n const int heart_w = 10; \n const int heart_h = 5; \n const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; \n\n MicroBitImage i(heart_w,heart_h,heart); \n display.animate(i,100,5); \n\n\n\n\n\n\nint\n \nanimate\n( \nMicroBitImage\n image,  \nint\n delay,  \nint\n stride,  \nint\n startingPosition)\n\n\nDescription\n\n\n\"Animates\" the current image across the display with a given stride, finishing on the last frame of the animation. Blocks the calling thread until the animation is complete.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n image\n\n\nint\n delay - The time to delay between each update of the display, in milliseconds.\n\n\nint\n stride - The number of pixels to shift by in each update.\n\n\nint\n startingPosition - the starting position on the display for the animation to begin at. Defaults to MICROBIT_DISPLAY_ANIMATE_DEFAULT_POS.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n const int heart_w = 10; \n const int heart_h = 5; \n const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; \n\n MicroBitImage i(heart_w,heart_h,heart); \n display.animate(i,100,5); \n\n\n\n\nsetBrightness\n\n\n\n\nint\n \nsetBrightness\n( \nint\n b)\n\n\nDescription\n\n\nConfigures the brightness of the display.  \n\n\nParameters\n\n\n\n\nint\n b - The brightness to set the brightness to, in the range 0 - 255.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, or MICROBIT_INVALID_PARAMETER\n\n\nExample\n\n\n display.setBrightness(255); //max brightness \n\n\n\n\nsetDisplayMode\n\n\n\n\nvoid\n \nsetDisplayMode\n( \nDisplayMode\n mode)\n\n\nDescription\n\n\nConfigures the mode of the display.  \n\n\nParameters\n\n\n\n\nDisplayMode\n mode - The mode to swap the display into. One of: DISPLAY_MODE_GREYSCALE, DISPLAY_MODE_BLACK_AND_WHITE, DISPLAY_MODE_BLACK_AND_WHITE_LIGHT_SENSE\n\n\n\n\nExample\n\n\n display.setDisplayMode(DISPLAY_MODE_GREYSCALE); //per pixel brightness \n\n\n\n\ngetDisplayMode\n\n\n\n\nint\n \ngetDisplayMode\n()\n\n\nDescription\n\n\nRetrieves the mode of the display.  \n\n\nReturns\n\n\nthe current mode of the display \n\n\ngetBrightness\n\n\n\n\nint\n \ngetBrightness\n()\n\n\nDescription\n\n\nFetches the current brightness of this display.  \n\n\nReturns\n\n\nthe brightness of this display, in the range 0..255.\n\n\nExample\n\n\n display.getBrightness(); //the current brightness \n\n\n\n\nrotateTo\n\n\n\n\nvoid\n \nrotateTo\n( \nDisplayRotation\n position)\n\n\nDescription\n\n\nRotates the display to the given position.  \n\n\nAxis aligned values only.  \n\n\nParameters\n\n\n\n\nDisplayRotation\n position\n\n\n\n\nExample\n\n\n display.rotateTo(MICROBIT_DISPLAY_ROTATION_180); //rotates 180 degrees from original orientation \n\n\n\n\nenable\n\n\n\n\nvoid\n \nenable\n()\n\n\nDescription\n\n\nEnables the display, should only be called if the display is disabled.  \n\n\nExample\n\n\n display.enable(); //Enables the display mechanics \n\n\n\n\n\n\nNote\n\n\nOnly enables the display if the display is currently disabled. \n\n\n\n\ndisable\n\n\n\n\nvoid\n \ndisable\n()\n\n\nDescription\n\n\nDisables the display, which releases control of the GPIO pins used by the display, which are exposed on the edge connector.  \n\n\nExample\n\n\n display.disable(); //disables the display \n\n\n\n\n\n\nNote\n\n\nOnly disables the display if the display is currently enabled. \n\n\n\n\nclear\n\n\n\n\nvoid\n \nclear\n()\n\n\nDescription\n\n\nClears the display of any remaining pixels.  \n\n\ndisplay.image.clear()  can also be used!  \n\n\nExample\n\n\n display.clear(); //clears the display \n\n\n\n\nsetFont\n\n\n\n\nvoid\n \nsetFont\n( \nMicroBitFont\n font)\n\n\nDescription\n\n\nUpdates the font that will be used for display operations.  \n\n\nParameters\n\n\n\n\nMicroBitFont\n font - the new font that will be used to render characters.\n\n\n\n\n\n\nNote\n\n\nDEPRECATED! Please use  MicroBitFont::setSystemFont()  instead. \n\n\n\n\ngetFont\n\n\n\n\nMicroBitFont\n \ngetFont\n()\n\n\nDescription\n\n\nRetrieves the font object used for rendering characters on the display.  \n\n\n\n\nNote\n\n\nDEPRECATED! Please use  MicroBitFont::getSystemFont()  instead. \n\n\n\n\nscreenShot\n\n\n\n\nMicroBitImage\n \nscreenShot\n()\n\n\nDescription\n\n\nCaptures the bitmap currently being rendered on the display.  \n\n\nReturns\n\n\na  MicroBitImage  containing the captured data. \n\n\nreadLightLevel\n\n\n\n\nint\n \nreadLightLevel\n()\n\n\nDescription\n\n\nGives a representative figure of the light level in the current environment where are micro:bit is situated.  \n\n\nInternally, it constructs an instance of a  MicroBitLightSensor  if not already configured and sets the display mode to DISPLAY_MODE_BLACK_AND_WHITE_LIGHT_SENSE.  \n\n\nThis also changes the tickPeriod to MICROBIT_LIGHT_SENSOR_TICK_SPEED so that the display does not suffer from artifacts.  \n\n\nReturns\n\n\nan indicative light level in the range 0 - 255.\n\n\n\n\nNote\n\n\nthis will return 0 on the first call to this method, a light reading will be available after the display has activated the light sensor for the first time.", 
+            "text": "uBit.display\n\n\nOverview\n\n\nThe MicroBitDisplay class is a general purpose device driver for controlling LED matrix displays.\nLED matrix displays are simple, inexpensive devices that use a single LED as a display pixel. They therefore\ntend to be of relatively low resolution, but often provide visually attractive displays due to the high coherence and brightness\nof the LEDs.\n\n\nLEDs in matrix displays are connected to general purpose I/O (GPIO) pins on CPU. Although they \ncould\n be connected such that each\nLED has its own GPIO pin, this is not usually the case, as the scarce resource of GPIO pins would soon be used up.  For example,\non the micro:bit, the LED matix has 25 LEDs. If this required 25 GPIO pins, then there would be none left for anything else!\n\n\nInstead, these LEDs are controlled by 12 GPIO pins. Three of those pins provide power to LEDs, the other\nnine provide a route to ground. The pins that source power are called \nrows\n. The pins that sink power are called \ncolumns\n.\nThe following diagram shows how the 5x5 grid is connected into 3 logical 'rows' and 9 'columns':\n\n\n\n\nWhere the format is: \nROW\n.\nCOLUMN\n\n\nSo, if we wanted to light up the middle LED, we would need to put a HIGH voltage (logic 1) on row 2, and a LOW voltage (logic 0) on column 3. Notice that when row 2 is\nHIGH, we the value we write to the 9 column pins affect all of the LEDs 2.1 to 2.7, without affecting any of the LEDS on row 1 or row 3. Sharing GPIO pins in this way is known as multiplexing.\nMoreover, if we scan throuh the different rows fast enough - faster than the eye can see - then we can provide the illusion of all the LEDS being on at the same time! This is a technique\nknown as \npersistance of vision\n... and was also the same basis of the very first TV sets (although that did not use LEDs!).\n\n\nCapabilities\n\n\nThe MicroBitDisplay class provides a driver for a general purpose matrix display, and also several high level features that make creating animations and visual effects on the\nmicro:bit LED display easy and fun! This class lets you:\n\n\n\n\nControl the LED matrix on the micro:bit.\n\n\nUse an optimised typeface (font) so you can show upper and lower case letters, numbers of symbols on the display.\n\n\nSet Display wide or \nper-pixel\n brightness control up to 256 level per pixel.\n\n\nCreate, move, paste and animate images.\n\n\nScroll and print images and text.\n\n\nAccess the screen buffer directly, so you can manipulate individual pixels.\n\n\n\n\nUsing the Display\n\n\nWhen using the uBit obbject, the display is automatically set up, and ready for you to use. Use any or all of the functions listed in the API section below to create effects on the\nLED display. Here are a few examples to get you started though!\n\n\nScrolling Text\n\n\nSimply use the scroll function specify the message you want to scroll, and sit back and watch the result. The messgae you provide will be scrolled, pixel by pixel across the display from right to left.\nIf you take a look at the documentation for the scroll function in the API below, you will notice that you can also specify the speed of the scroll as an optional final parameter. The lower the delay, the\nfaster your text will scroll across the screen.\n\n\nuBit.display.scroll(\nHELLO!\n);\nuBit.display.scroll(\nHELLO!\n, 100);\n\n\n\n\nNotice that you can also scroll numbers (either constants of variables):\n\n\nint c = 42;\nuBit.display.scroll(c);\n\n\n\n\nPrinting Text\n\n\nSometimes it is better to show the letters/numbers in turn on the screen rather than scrolling them. If you want to do this, the 'print' function has exactly the same parameters as 'scroll', but\nwith this behaviour.  e.g.\n\n\nuBit.display.print(\nHELLO!\n);\nuBit.display.print(\nHELLO!\n, 100);\nuBit.display.print(42);\n\n\n\n\nDo notice that print behaves slightly differently if you provide a single character or numeric digit though. if you do this, the value you proviode will sty on the screen until you explicitly\nchange the screen. if you ask the runtime to print a strong with two or more characters, then each will appear in turn, then disappear. e.g. try this and you will find it stays on the screen:\n\n\nuBit.display.print(7);\n\n\n\n\nShowing Images\n\n\nIt is also possible to print and scroll bitmap images on the display. Images are represented in the runtime by using a \nMicroBitImage\n. These can easily be created, just as\nyou create any variable. Onve created, you can then provide them as a parameter to the scroll and print functions. Unlike the text based animation functions, you can also specif exactly\nwhere in the screen you would like to the image to appear - and you can even treat pixel values of zero as transparent if you like!\nSee the \nMicroBitImage page\n for more details on images, but here are a few simple examples:\n\n\n// show your smiley on the screen...\nMicroBitImage smiley(\n0,255,0,255, 0\\n0,255,0,255,0\\n0,0,0,0,0\\n255,0,0,0,255\\n0,255,255,255,0\\n\n);\nuBit.display.print(smiley);\n\n\n\n\n// make your smiley peep up from the bottom of the screen...\nMicroBitImage smiley(\n0,255,0,255, 0\\n0,255,0,255,0\\n0,0,0,0,0\\n255,0,0,0,255\\n0,255,255,255,0\\n\n);\nfor (int y=4; y \n= 0; y--)\n{\n    uBit.display.image.paste(smiley,0,y);\n    uBit.sleep(500);\n}\n\n\n\n\n// scroll your smiley across the screen...\nMicroBitImage smiley(\n0,255,0,255, 0\\n0,255,0,255,0\\n0,0,0,0,0\\n255,0,0,0,255\\n0,255,255,255,0\\n\n);\nuBit.display.scroll(smiley);\n\n\n\n\nRunning in the Background...\n\n\nBy now you have probably noticed that the scroll, print and animate functions all wait for the effect requested to finished before returning. This is by design, to allow you to easily synchronise your programs.\nHowever, sometimes you want to launch an effect, and let it run in the background while your program does something else. For this, you can use the \nAsync\n variations of the scroll, print and animate functions.\nThese all have identical parameters and capabilities, but will return immediately. Try some of the examples above with their Async equivalents to understand this different behaviour.  For example:\n\n\n// scroll your smiley across the screen, without waiting for it to finish...\nMicroBitImage smiley(\n0,255,0,255, 0\\n0,255,0,255,0\\n0,0,0,0,0\\n255,0,0,0,255\\n0,255,255,255,0\\n\n);\nuBit.display.scrollAsync(smiley);\n\n\n\n\nChanging Display Mode\n\n\nThe MicroBitDisplay class supports either on/off LED display, or displays where each pixel has an individual brightness value between 0 and 255. The former cost much less processor time and battery power to\noperate, so is the default. The latter does provide more useful effect though, so you can change between these modes by using the  'setDiplayMode' funciton. Valid values are:\n\n\n\n\n\n\n\n\nDisplay mode\n\n\nBrief Description\n\n\n\n\n\n\n\n\n\n\nDISPLAY_MODE_BLACK_AND_WHITE\n\n\nEach pixel can be just on or off. The brightness of all pixels is controlled by the setBrightness function.\n\n\n\n\n\n\nDISPLAY_MODE_BLACK_AND_WHITE_LIGHT_SENSE\n\n\nEach pixel can be just on or off, and the display driver will also sense the ambient brightness from the LEDs.\n\n\n\n\n\n\nDISPLAY_MODE_GREYSCALE\n\n\nEach pixel can independently have 256 levels of brightness.\n\n\n\n\n\n\n\n\nfor example:\n\n\n// show a smiley with bright eyes!\nMicroBitImage smiley(\n0,255,0,255, 0\\n0,255,0,255,0\\n0,0,0,0,0\\n32,0,0,0,32\\n0,32,32,32,0\\n\n);\nuBit.display.setDisplayMode(DISPLAY_MODE_GREYSCALE);\nuBit.display.print(smiley);\n\n\n\n\nAccessing the Display Buffer\n\n\nThe memory buffer that is used to drive the LEDs is itself a \nMicroBitImage\n. This means that you can also access and call any of the functions listed in the \nMicroBitImage API documentation\n\ndirectly on the dipslay buffer. Examples here include setPixelValue, as illustrated below, but read the above documentation link for full details.\n\n\n// set a single pixel by co-ordinate\nuBit.display.image.setPixelValue(2,2,255);\n\n\n\n\nOther Useful Functions\n\n\n\n\n'clear' will clear the screen immediately.\n\n\n'stopAnimtion' will terminate any ongoing print, scroll or animate functions.\n\n\n'setBrightness' lets you set the overall maximum brightness of the display, as a value between 1 and 255.\n\n\n'enable' and 'disable' turn on and off the display. When disabled, you can reuse many if the GPIO pins. See the \nMicroBitIO\n class for more information.\n\n\n'rotateTo' even lets you specify the orientation of the display - in case you need to use your micro:bit the wrong way up. :-)\n\n\n'readLightLevel' runs the LEDs backwards as photodiodes and tells you how bright your room is... see \nLight Sensing\n for more info!\n\n\n\n\nMessage Bus ID\n\n\n\n\n\n\n\n\nConstant\n\n\nValue\n\n\n\n\n\n\n\n\n\n\nMICROBIT_ID_DISPLAY\n\n\n6\n\n\n\n\n\n\n\n\nMessage Bus Events\n\n\n\n\n\n\n\n\nConstant\n\n\nValue\n\n\n\n\n\n\n\n\n\n\nMICROBIT_DISPLAY_EVT_ANIMATION_COMPLETE\n\n\n1\n\n\n\n\n\n\nMICROBIT_DISPLAY_EVT_LIGHT_SENSE\n\n\n2\n\n\n\n\n\n\n\n\nNotify Events\n\n\nThese events use the notification channel \nMICROBIT_ID_NOTIFY\n, which provides\ngeneral purpose synchronisation.\n\n\n\n\n\n\n\n\nConstant\n\n\nValue\n\n\n\n\n\n\n\n\n\n\nMICROBIT_DISPLAY_EVT_FREE\n\n\n1\n\n\n\n\n\n\n\n\nAPI\n\n\nConstructor\n\n\n\n\nMicroBitDisplay()\n\n\nDescription\n\n\nConstructor.  \n\n\nCreate a software representation the micro:bit's 5x5 LED matrix. The display is initially blank.  \n\n\nExample\n\n\n MicroBitDisplay display; \n\n\n\n\n\n\nMicroBitDisplay( \nuint16_t\n id)\n\n\nDescription\n\n\nConstructor.  \n\n\nCreate a software representation the micro:bit's 5x5 LED matrix. The display is initially blank.  \n\n\nParameters\n\n\n\n\nuint16_t\n id - The id the display should use when sending events on the MessageBus. Defaults to MICROBIT_ID_DISPLAY.\n\n\n\n\nExample\n\n\n MicroBitDisplay display; \n\n\n\n\n\n\nMicroBitDisplay( \nuint16_t\n id,  \nconst  MatrixMap  \n map)\n\n\nDescription\n\n\nConstructor.  \n\n\nCreate a software representation the micro:bit's 5x5 LED matrix. The display is initially blank.  \n\n\nParameters\n\n\n\n\nuint16_t\n id - The id the display should use when sending events on the MessageBus. Defaults to MICROBIT_ID_DISPLAY.\n\n\nconst  MatrixMap  \n map - The mapping information that relates pin inputs/outputs to physical screen coordinates. Defaults to microbitMatrixMap, defined in  MicroBitMatrixMaps.h .\n\n\n\n\nExample\n\n\n MicroBitDisplay display; \n\n\n\n\nstopAnimation\n\n\n\n\nvoid\n \nstopAnimation\n()\n\n\nDescription\n\n\nStops any currently running animation, and any that are waiting to be displayed.           \n\n\nprintCharAsync\n\n\n\n\nint\n \nprintCharAsync\n( \nchar\n c)\n\n\nDescription\n\n\nPrints the given character to the display, if it is not in use.  \n\n\nParameters\n\n\n\n\nchar\n c - The character to display.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_BUSY is the screen is in use, or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n display.printAsync('p'); \n display.printAsync('p',100); \n\n\n\n\n\n\nint\n \nprintCharAsync\n( \nchar\n c,  \nint\n delay)\n\n\nDescription\n\n\nPrints the given character to the display, if it is not in use.  \n\n\nParameters\n\n\n\n\nchar\n c - The character to display.\n\n\nint\n delay - Optional parameter - the time for which to show the character. Zero displays the character forever, or until the Displays next use.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_BUSY is the screen is in use, or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n display.printAsync('p'); \n display.printAsync('p',100); \n\n\n\n\nprintAsync\n\n\n\n\nint\n \nprintAsync\n( \nManagedString\n s)\n\n\nDescription\n\n\nPrints the given  ManagedString  to the display, one character at a time. Returns immediately, and executes the animation asynchronously.  \n\n\nParameters\n\n\n\n\nManagedString\n s - The string to display.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n display.printAsync(\nabc123\n,400); \n\n\n\n\n\n\nint\n \nprintAsync\n( \nManagedString\n s,  \nint\n delay)\n\n\nDescription\n\n\nPrints the given  ManagedString  to the display, one character at a time. Returns immediately, and executes the animation asynchronously.  \n\n\nParameters\n\n\n\n\nManagedString\n s - The string to display.\n\n\nint\n delay - The time to delay between characters, in milliseconds. Must be \n 0. Defaults to: MICROBIT_DEFAULT_PRINT_SPEED.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n display.printAsync(\nabc123\n,400); \n\n\n\n\n\n\nint\n \nprintAsync\n( \nMicroBitImage\n i)\n\n\nDescription\n\n\nPrints the given image to the display, if the display is not in use. Returns immediately, and executes the animation asynchronously.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n i - The image to display.\n\n\n\n\nExample\n\n\n MicrobitImage i(\n1,1,1,1,1\\n1,1,1,1,1\\n\n); \n display.print(i,400); \n\n\n\n\n\n\nint\n \nprintAsync\n( \nMicroBitImage\n i,  \nint\n x)\n\n\nDescription\n\n\nPrints the given image to the display, if the display is not in use. Returns immediately, and executes the animation asynchronously.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n i - The image to display.\n\n\nint\n x - The horizontal position on the screen to display the image. Defaults to 0.\n\n\n\n\nExample\n\n\n MicrobitImage i(\n1,1,1,1,1\\n1,1,1,1,1\\n\n); \n display.print(i,400); \n\n\n\n\n\n\nint\n \nprintAsync\n( \nMicroBitImage\n i,  \nint\n x,  \nint\n y)\n\n\nDescription\n\n\nPrints the given image to the display, if the display is not in use. Returns immediately, and executes the animation asynchronously.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n i - The image to display.\n\n\nint\n x - The horizontal position on the screen to display the image. Defaults to 0.\n\n\nint\n y - The vertical position on the screen to display the image. Defaults to 0.\n\n\n\n\nExample\n\n\n MicrobitImage i(\n1,1,1,1,1\\n1,1,1,1,1\\n\n); \n display.print(i,400); \n\n\n\n\n\n\nint\n \nprintAsync\n( \nMicroBitImage\n i,  \nint\n x,  \nint\n y,  \nint\n alpha)\n\n\nDescription\n\n\nPrints the given image to the display, if the display is not in use. Returns immediately, and executes the animation asynchronously.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n i - The image to display.\n\n\nint\n x - The horizontal position on the screen to display the image. Defaults to 0.\n\n\nint\n y - The vertical position on the screen to display the image. Defaults to 0.\n\n\nint\n alpha - Treats the brightness level '0' as transparent. Defaults to 0.\n\n\n\n\nExample\n\n\n MicrobitImage i(\n1,1,1,1,1\\n1,1,1,1,1\\n\n); \n display.print(i,400); \n\n\n\n\n\n\nint\n \nprintAsync\n( \nMicroBitImage\n i,  \nint\n x,  \nint\n y,  \nint\n alpha,  \nint\n delay)\n\n\nDescription\n\n\nPrints the given image to the display, if the display is not in use. Returns immediately, and executes the animation asynchronously.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n i - The image to display.\n\n\nint\n x - The horizontal position on the screen to display the image. Defaults to 0.\n\n\nint\n y - The vertical position on the screen to display the image. Defaults to 0.\n\n\nint\n alpha - Treats the brightness level '0' as transparent. Defaults to 0.\n\n\nint\n delay - The time to delay between characters, in milliseconds. Defaults to 0.\n\n\n\n\nExample\n\n\n MicrobitImage i(\n1,1,1,1,1\\n1,1,1,1,1\\n\n); \n display.print(i,400); \n\n\n\n\nprintChar\n\n\n\n\nint\n \nprintChar\n( \nchar\n c)\n\n\nDescription\n\n\nPrints the given character to the display.  \n\n\nParameters\n\n\n\n\nchar\n c - The character to display.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n display.printAsync('p'); \n display.printAsync('p',100); \n\n\n\n\n\n\nint\n \nprintChar\n( \nchar\n c,  \nint\n delay)\n\n\nDescription\n\n\nPrints the given character to the display.  \n\n\nParameters\n\n\n\n\nchar\n c - The character to display.\n\n\nint\n delay - Optional parameter - the time for which to show the character. Zero displays the character forever, or until the Displays next use.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n display.printAsync('p'); \n display.printAsync('p',100); \n\n\n\n\nprint\n\n\n\n\nint\n \nprint\n( \nManagedString\n s)\n\n\nDescription\n\n\nPrints the given string to the display, one character at a time.  \n\n\nBlocks the calling thread until all the text has been displayed.  \n\n\nParameters\n\n\n\n\nManagedString\n s - The string to display.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n display.print(\nabc123\n,400); \n\n\n\n\n\n\nint\n \nprint\n( \nManagedString\n s,  \nint\n delay)\n\n\nDescription\n\n\nPrints the given string to the display, one character at a time.  \n\n\nBlocks the calling thread until all the text has been displayed.  \n\n\nParameters\n\n\n\n\nManagedString\n s - The string to display.\n\n\nint\n delay - The time to delay between characters, in milliseconds. Defaults to: MICROBIT_DEFAULT_PRINT_SPEED.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n display.print(\nabc123\n,400); \n\n\n\n\n\n\nint\n \nprint\n( \nMicroBitImage\n i)\n\n\nDescription\n\n\nPrints the given image to the display. Blocks the calling thread until all the image has been displayed.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n i - The image to display.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_BUSY if the display is already in use, or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n MicrobitImage i(\n1,1,1,1,1\\n1,1,1,1,1\\n\n); \n display.print(i,400); \n\n\n\n\n\n\nint\n \nprint\n( \nMicroBitImage\n i,  \nint\n x)\n\n\nDescription\n\n\nPrints the given image to the display. Blocks the calling thread until all the image has been displayed.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n i - The image to display.\n\n\nint\n x - The horizontal position on the screen to display the image. Defaults to 0.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_BUSY if the display is already in use, or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n MicrobitImage i(\n1,1,1,1,1\\n1,1,1,1,1\\n\n); \n display.print(i,400); \n\n\n\n\n\n\nint\n \nprint\n( \nMicroBitImage\n i,  \nint\n x,  \nint\n y)\n\n\nDescription\n\n\nPrints the given image to the display. Blocks the calling thread until all the image has been displayed.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n i - The image to display.\n\n\nint\n x - The horizontal position on the screen to display the image. Defaults to 0.\n\n\nint\n y - The vertical position on the screen to display the image. Defaults to 0.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_BUSY if the display is already in use, or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n MicrobitImage i(\n1,1,1,1,1\\n1,1,1,1,1\\n\n); \n display.print(i,400); \n\n\n\n\n\n\nint\n \nprint\n( \nMicroBitImage\n i,  \nint\n x,  \nint\n y,  \nint\n alpha)\n\n\nDescription\n\n\nPrints the given image to the display. Blocks the calling thread until all the image has been displayed.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n i - The image to display.\n\n\nint\n x - The horizontal position on the screen to display the image. Defaults to 0.\n\n\nint\n y - The vertical position on the screen to display the image. Defaults to 0.\n\n\nint\n alpha - Treats the brightness level '0' as transparent. Defaults to 0.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_BUSY if the display is already in use, or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n MicrobitImage i(\n1,1,1,1,1\\n1,1,1,1,1\\n\n); \n display.print(i,400); \n\n\n\n\n\n\nint\n \nprint\n( \nMicroBitImage\n i,  \nint\n x,  \nint\n y,  \nint\n alpha,  \nint\n delay)\n\n\nDescription\n\n\nPrints the given image to the display. Blocks the calling thread until all the image has been displayed.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n i - The image to display.\n\n\nint\n x - The horizontal position on the screen to display the image. Defaults to 0.\n\n\nint\n y - The vertical position on the screen to display the image. Defaults to 0.\n\n\nint\n alpha - Treats the brightness level '0' as transparent. Defaults to 0.\n\n\nint\n delay - The time to display the image for, or zero to show the image forever. Defaults to 0.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_BUSY if the display is already in use, or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n MicrobitImage i(\n1,1,1,1,1\\n1,1,1,1,1\\n\n); \n display.print(i,400); \n\n\n\n\nscrollAsync\n\n\n\n\nint\n \nscrollAsync\n( \nManagedString\n s)\n\n\nDescription\n\n\nScrolls the given string to the display, from right to left. Returns immediately, and executes the animation asynchronously.  \n\n\nParameters\n\n\n\n\nManagedString\n s - The string to display.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_BUSY if the display is already in use, or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n display.scrollAsync(\nabc123\n,100); \n\n\n\n\n\n\nint\n \nscrollAsync\n( \nManagedString\n s,  \nint\n delay)\n\n\nDescription\n\n\nScrolls the given string to the display, from right to left. Returns immediately, and executes the animation asynchronously.  \n\n\nParameters\n\n\n\n\nManagedString\n s - The string to display.\n\n\nint\n delay - The time to delay between characters, in milliseconds. Defaults to: MICROBIT_DEFAULT_SCROLL_SPEED.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_BUSY if the display is already in use, or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n display.scrollAsync(\nabc123\n,100); \n\n\n\n\n\n\nint\n \nscrollAsync\n( \nMicroBitImage\n image)\n\n\nDescription\n\n\nScrolls the given image across the display, from right to left. Returns immediately, and executes the animation asynchronously.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n image - The image to display.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_BUSY if the display is already in use, or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n MicrobitImage i(\n1,1,1,1,1\\n1,1,1,1,1\\n\n); \n display.scrollAsync(i,100,1); \n\n\n\n\n\n\nint\n \nscrollAsync\n( \nMicroBitImage\n image,  \nint\n delay)\n\n\nDescription\n\n\nScrolls the given image across the display, from right to left. Returns immediately, and executes the animation asynchronously.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n image - The image to display.\n\n\nint\n delay - The time between updates, in milliseconds. Defaults to: MICROBIT_DEFAULT_SCROLL_SPEED.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_BUSY if the display is already in use, or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n MicrobitImage i(\n1,1,1,1,1\\n1,1,1,1,1\\n\n); \n display.scrollAsync(i,100,1); \n\n\n\n\n\n\nint\n \nscrollAsync\n( \nMicroBitImage\n image,  \nint\n delay,  \nint\n stride)\n\n\nDescription\n\n\nScrolls the given image across the display, from right to left. Returns immediately, and executes the animation asynchronously.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n image - The image to display.\n\n\nint\n delay - The time between updates, in milliseconds. Defaults to: MICROBIT_DEFAULT_SCROLL_SPEED.\n\n\nint\n stride - The number of pixels to shift by in each update. Defaults to MICROBIT_DEFAULT_SCROLL_STRIDE.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_BUSY if the display is already in use, or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n MicrobitImage i(\n1,1,1,1,1\\n1,1,1,1,1\\n\n); \n display.scrollAsync(i,100,1); \n\n\n\n\nscroll\n\n\n\n\nint\n \nscroll\n( \nManagedString\n s)\n\n\nDescription\n\n\nScrolls the given string across the display, from right to left. Blocks the calling thread until all text has been displayed.  \n\n\nParameters\n\n\n\n\nManagedString\n s - The string to display.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n display.scroll(\nabc123\n,100); \n\n\n\n\n\n\nint\n \nscroll\n( \nManagedString\n s,  \nint\n delay)\n\n\nDescription\n\n\nScrolls the given string across the display, from right to left. Blocks the calling thread until all text has been displayed.  \n\n\nParameters\n\n\n\n\nManagedString\n s - The string to display.\n\n\nint\n delay - The time to delay between characters, in milliseconds. Defaults to: MICROBIT_DEFAULT_SCROLL_SPEED.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n display.scroll(\nabc123\n,100); \n\n\n\n\n\n\nint\n \nscroll\n( \nMicroBitImage\n image)\n\n\nDescription\n\n\nScrolls the given image across the display, from right to left. Blocks the calling thread until all the text has been displayed.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n image - The image to display.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n MicrobitImage i(\n1,1,1,1,1\\n1,1,1,1,1\\n\n); \n display.scroll(i,100,1); \n\n\n\n\n\n\nint\n \nscroll\n( \nMicroBitImage\n image,  \nint\n delay)\n\n\nDescription\n\n\nScrolls the given image across the display, from right to left. Blocks the calling thread until all the text has been displayed.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n image - The image to display.\n\n\nint\n delay - The time between updates, in milliseconds. Defaults to: MICROBIT_DEFAULT_SCROLL_SPEED.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n MicrobitImage i(\n1,1,1,1,1\\n1,1,1,1,1\\n\n); \n display.scroll(i,100,1); \n\n\n\n\n\n\nint\n \nscroll\n( \nMicroBitImage\n image,  \nint\n delay,  \nint\n stride)\n\n\nDescription\n\n\nScrolls the given image across the display, from right to left. Blocks the calling thread until all the text has been displayed.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n image - The image to display.\n\n\nint\n delay - The time between updates, in milliseconds. Defaults to: MICROBIT_DEFAULT_SCROLL_SPEED.\n\n\nint\n stride - The number of pixels to shift by in each update. Defaults to MICROBIT_DEFAULT_SCROLL_STRIDE.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n MicrobitImage i(\n1,1,1,1,1\\n1,1,1,1,1\\n\n); \n display.scroll(i,100,1); \n\n\n\n\nanimateAsync\n\n\n\n\nint\n \nanimateAsync\n( \nMicroBitImage\n image,  \nint\n delay,  \nint\n stride)\n\n\nDescription\n\n\n\"Animates\" the current image across the display with a given stride, finishing on the last frame of the animation. Returns immediately.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n image - The image to display.\n\n\nint\n delay - The time to delay between each update of the display, in milliseconds.\n\n\nint\n stride - The number of pixels to shift by in each update.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_BUSY if the screen is in use, or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n const int heart_w = 10; \n const int heart_h = 5; \n const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; \n\n MicroBitImage i(heart_w,heart_h,heart); \n display.animateAsync(i,100,5); \n\n\n\n\n\n\nint\n \nanimateAsync\n( \nMicroBitImage\n image,  \nint\n delay,  \nint\n stride,  \nint\n startingPosition)\n\n\nDescription\n\n\n\"Animates\" the current image across the display with a given stride, finishing on the last frame of the animation. Returns immediately.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n image - The image to display.\n\n\nint\n delay - The time to delay between each update of the display, in milliseconds.\n\n\nint\n stride - The number of pixels to shift by in each update.\n\n\nint\n startingPosition - the starting position on the display for the animation to begin at. Defaults to MICROBIT_DISPLAY_ANIMATE_DEFAULT_POS.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_BUSY if the screen is in use, or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n const int heart_w = 10; \n const int heart_h = 5; \n const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; \n\n MicroBitImage i(heart_w,heart_h,heart); \n display.animateAsync(i,100,5); \n\n\n\n\n\n\nint\n \nanimateAsync\n( \nMicroBitImage\n image,  \nint\n delay,  \nint\n stride,  \nint\n startingPosition,  \nint\n autoClear)\n\n\nDescription\n\n\n\"Animates\" the current image across the display with a given stride, finishing on the last frame of the animation. Returns immediately.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n image - The image to display.\n\n\nint\n delay - The time to delay between each update of the display, in milliseconds.\n\n\nint\n stride - The number of pixels to shift by in each update.\n\n\nint\n startingPosition - the starting position on the display for the animation to begin at. Defaults to MICROBIT_DISPLAY_ANIMATE_DEFAULT_POS.\n\n\nint\n autoClear - defines whether or not the display is automatically cleared once the animation is complete. By default, the display is cleared. Set this parameter to zero to disable the autoClear operation.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_BUSY if the screen is in use, or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n const int heart_w = 10; \n const int heart_h = 5; \n const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; \n\n MicroBitImage i(heart_w,heart_h,heart); \n display.animateAsync(i,100,5); \n\n\n\n\nanimate\n\n\n\n\nint\n \nanimate\n( \nMicroBitImage\n image,  \nint\n delay,  \nint\n stride)\n\n\nDescription\n\n\n\"Animates\" the current image across the display with a given stride, finishing on the last frame of the animation. Blocks the calling thread until the animation is complete.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n image\n\n\nint\n delay - The time to delay between each update of the display, in milliseconds.\n\n\nint\n stride - The number of pixels to shift by in each update.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n const int heart_w = 10; \n const int heart_h = 5; \n const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; \n\n MicroBitImage i(heart_w,heart_h,heart); \n display.animate(i,100,5); \n\n\n\n\n\n\nint\n \nanimate\n( \nMicroBitImage\n image,  \nint\n delay,  \nint\n stride,  \nint\n startingPosition)\n\n\nDescription\n\n\n\"Animates\" the current image across the display with a given stride, finishing on the last frame of the animation. Blocks the calling thread until the animation is complete.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n image\n\n\nint\n delay - The time to delay between each update of the display, in milliseconds.\n\n\nint\n stride - The number of pixels to shift by in each update.\n\n\nint\n startingPosition - the starting position on the display for the animation to begin at. Defaults to MICROBIT_DISPLAY_ANIMATE_DEFAULT_POS.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n const int heart_w = 10; \n const int heart_h = 5; \n const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; \n\n MicroBitImage i(heart_w,heart_h,heart); \n display.animate(i,100,5); \n\n\n\n\n\n\nint\n \nanimate\n( \nMicroBitImage\n image,  \nint\n delay,  \nint\n stride,  \nint\n startingPosition,  \nint\n autoClear)\n\n\nDescription\n\n\n\"Animates\" the current image across the display with a given stride, finishing on the last frame of the animation. Blocks the calling thread until the animation is complete.  \n\n\nParameters\n\n\n\n\nMicroBitImage\n image\n\n\nint\n delay - The time to delay between each update of the display, in milliseconds.\n\n\nint\n stride - The number of pixels to shift by in each update.\n\n\nint\n startingPosition - the starting position on the display for the animation to begin at. Defaults to MICROBIT_DISPLAY_ANIMATE_DEFAULT_POS.\n\n\nint\n autoClear - defines whether or not the display is automatically cleared once the animation is complete. By default, the display is cleared. Set this parameter to zero to disable the autoClear operation.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.\n\n\nExample\n\n\n const int heart_w = 10; \n const int heart_h = 5; \n const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; \n\n MicroBitImage i(heart_w,heart_h,heart); \n display.animate(i,100,5); \n\n\n\n\nsetBrightness\n\n\n\n\nint\n \nsetBrightness\n( \nint\n b)\n\n\nDescription\n\n\nConfigures the brightness of the display.  \n\n\nParameters\n\n\n\n\nint\n b - The brightness to set the brightness to, in the range 0 - 255.\n\n\n\n\nReturns\n\n\nMICROBIT_OK, or MICROBIT_INVALID_PARAMETER\n\n\nExample\n\n\n display.setBrightness(255); //max brightness \n\n\n\n\nsetDisplayMode\n\n\n\n\nvoid\n \nsetDisplayMode\n( \nDisplayMode\n mode)\n\n\nDescription\n\n\nConfigures the mode of the display.  \n\n\nParameters\n\n\n\n\nDisplayMode\n mode - The mode to swap the display into. One of: DISPLAY_MODE_GREYSCALE, DISPLAY_MODE_BLACK_AND_WHITE, DISPLAY_MODE_BLACK_AND_WHITE_LIGHT_SENSE\n\n\n\n\nExample\n\n\n display.setDisplayMode(DISPLAY_MODE_GREYSCALE); //per pixel brightness \n\n\n\n\ngetDisplayMode\n\n\n\n\nint\n \ngetDisplayMode\n()\n\n\nDescription\n\n\nRetrieves the mode of the display.  \n\n\nReturns\n\n\nthe current mode of the display \n\n\ngetBrightness\n\n\n\n\nint\n \ngetBrightness\n()\n\n\nDescription\n\n\nFetches the current brightness of this display.  \n\n\nReturns\n\n\nthe brightness of this display, in the range 0..255.\n\n\nExample\n\n\n display.getBrightness(); //the current brightness \n\n\n\n\nrotateTo\n\n\n\n\nvoid\n \nrotateTo\n( \nDisplayRotation\n position)\n\n\nDescription\n\n\nRotates the display to the given position.  \n\n\nAxis aligned values only.  \n\n\nParameters\n\n\n\n\nDisplayRotation\n position\n\n\n\n\nExample\n\n\n display.rotateTo(MICROBIT_DISPLAY_ROTATION_180); //rotates 180 degrees from original orientation \n\n\n\n\nenable\n\n\n\n\nvoid\n \nenable\n()\n\n\nDescription\n\n\nEnables the display, should only be called if the display is disabled.  \n\n\nExample\n\n\n display.enable(); //Enables the display mechanics \n\n\n\n\n\n\nNote\n\n\nOnly enables the display if the display is currently disabled. \n\n\n\n\ndisable\n\n\n\n\nvoid\n \ndisable\n()\n\n\nDescription\n\n\nDisables the display, which releases control of the GPIO pins used by the display, which are exposed on the edge connector.  \n\n\nExample\n\n\n display.disable(); //disables the display \n\n\n\n\n\n\nNote\n\n\nOnly disables the display if the display is currently enabled. \n\n\n\n\nclear\n\n\n\n\nvoid\n \nclear\n()\n\n\nDescription\n\n\nClears the display of any remaining pixels.  \n\n\ndisplay.image.clear()  can also be used!  \n\n\nExample\n\n\n display.clear(); //clears the display \n\n\n\n\nsetFont\n\n\n\n\nvoid\n \nsetFont\n( \nMicroBitFont\n font)\n\n\nDescription\n\n\nUpdates the font that will be used for display operations.  \n\n\nParameters\n\n\n\n\nMicroBitFont\n font - the new font that will be used to render characters.\n\n\n\n\n\n\nNote\n\n\nDEPRECATED! Please use  MicroBitFont::setSystemFont()  instead. \n\n\n\n\ngetFont\n\n\n\n\nMicroBitFont\n \ngetFont\n()\n\n\nDescription\n\n\nRetrieves the font object used for rendering characters on the display.  \n\n\n\n\nNote\n\n\nDEPRECATED! Please use  MicroBitFont::getSystemFont()  instead. \n\n\n\n\nscreenShot\n\n\n\n\nMicroBitImage\n \nscreenShot\n()\n\n\nDescription\n\n\nCaptures the bitmap currently being rendered on the display.  \n\n\nReturns\n\n\na  MicroBitImage  containing the captured data. \n\n\nreadLightLevel\n\n\n\n\nint\n \nreadLightLevel\n()\n\n\nDescription\n\n\nGives a representative figure of the light level in the current environment where are micro:bit is situated.  \n\n\nInternally, it constructs an instance of a  MicroBitLightSensor  if not already configured and sets the display mode to DISPLAY_MODE_BLACK_AND_WHITE_LIGHT_SENSE.  \n\n\nThis also changes the tickPeriod to MICROBIT_LIGHT_SENSOR_TICK_SPEED so that the display does not suffer from artifacts.  \n\n\nReturns\n\n\nan indicative light level in the range 0 - 255.\n\n\n\n\nNote\n\n\nthis will return 0 on the first call to this method, a light reading will be available after the display has activated the light sensor for the first time.", 
             "title": "display"
         }, 
         {
@@ -3176,6 +3176,31 @@
             "title": "Example"
         }, 
         {
+            "location": "/ubit/display/#int-animateasync-microbitimage-image-int-delay-int-stride-int-startingposition-int-autoclear", 
+            "text": "", 
+            "title": "int animateAsync( MicroBitImage image,  int delay,  int stride,  int startingPosition,  int autoClear)"
+        }, 
+        {
+            "location": "/ubit/display/#description_34", 
+            "text": "\"Animates\" the current image across the display with a given stride, finishing on the last frame of the animation. Returns immediately.", 
+            "title": "Description"
+        }, 
+        {
+            "location": "/ubit/display/#parameters_32", 
+            "text": "MicroBitImage  image - The image to display.  int  delay - The time to delay between each update of the display, in milliseconds.  int  stride - The number of pixels to shift by in each update.  int  startingPosition - the starting position on the display for the animation to begin at. Defaults to MICROBIT_DISPLAY_ANIMATE_DEFAULT_POS.  int  autoClear - defines whether or not the display is automatically cleared once the animation is complete. By default, the display is cleared. Set this parameter to zero to disable the autoClear operation.", 
+            "title": "Parameters"
+        }, 
+        {
+            "location": "/ubit/display/#returns_25", 
+            "text": "MICROBIT_OK, MICROBIT_BUSY if the screen is in use, or MICROBIT_INVALID_PARAMETER.", 
+            "title": "Returns"
+        }, 
+        {
+            "location": "/ubit/display/#example_33", 
+            "text": "const int heart_w = 10; \n const int heart_h = 5; \n const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; \n\n MicroBitImage i(heart_w,heart_h,heart); \n display.animateAsync(i,100,5);", 
+            "title": "Example"
+        }, 
+        {
             "location": "/ubit/display/#animate", 
             "text": "", 
             "title": "animate"
@@ -3186,38 +3211,13 @@
             "title": "int animate( MicroBitImage image,  int delay,  int stride)"
         }, 
         {
-            "location": "/ubit/display/#description_34", 
-            "text": "\"Animates\" the current image across the display with a given stride, finishing on the last frame of the animation. Blocks the calling thread until the animation is complete.", 
-            "title": "Description"
-        }, 
-        {
-            "location": "/ubit/display/#parameters_32", 
-            "text": "MicroBitImage  image  int  delay - The time to delay between each update of the display, in milliseconds.  int  stride - The number of pixels to shift by in each update.", 
-            "title": "Parameters"
-        }, 
-        {
-            "location": "/ubit/display/#returns_25", 
-            "text": "MICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.", 
-            "title": "Returns"
-        }, 
-        {
-            "location": "/ubit/display/#example_33", 
-            "text": "const int heart_w = 10; \n const int heart_h = 5; \n const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; \n\n MicroBitImage i(heart_w,heart_h,heart); \n display.animate(i,100,5);", 
-            "title": "Example"
-        }, 
-        {
-            "location": "/ubit/display/#int-animate-microbitimage-image-int-delay-int-stride-int-startingposition", 
-            "text": "", 
-            "title": "int animate( MicroBitImage image,  int delay,  int stride,  int startingPosition)"
-        }, 
-        {
             "location": "/ubit/display/#description_35", 
             "text": "\"Animates\" the current image across the display with a given stride, finishing on the last frame of the animation. Blocks the calling thread until the animation is complete.", 
             "title": "Description"
         }, 
         {
             "location": "/ubit/display/#parameters_33", 
-            "text": "MicroBitImage  image  int  delay - The time to delay between each update of the display, in milliseconds.  int  stride - The number of pixels to shift by in each update.  int  startingPosition - the starting position on the display for the animation to begin at. Defaults to MICROBIT_DISPLAY_ANIMATE_DEFAULT_POS.", 
+            "text": "MicroBitImage  image  int  delay - The time to delay between each update of the display, in milliseconds.  int  stride - The number of pixels to shift by in each update.", 
             "title": "Parameters"
         }, 
         {
@@ -3227,6 +3227,56 @@
         }, 
         {
             "location": "/ubit/display/#example_34", 
+            "text": "const int heart_w = 10; \n const int heart_h = 5; \n const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; \n\n MicroBitImage i(heart_w,heart_h,heart); \n display.animate(i,100,5);", 
+            "title": "Example"
+        }, 
+        {
+            "location": "/ubit/display/#int-animate-microbitimage-image-int-delay-int-stride-int-startingposition", 
+            "text": "", 
+            "title": "int animate( MicroBitImage image,  int delay,  int stride,  int startingPosition)"
+        }, 
+        {
+            "location": "/ubit/display/#description_36", 
+            "text": "\"Animates\" the current image across the display with a given stride, finishing on the last frame of the animation. Blocks the calling thread until the animation is complete.", 
+            "title": "Description"
+        }, 
+        {
+            "location": "/ubit/display/#parameters_34", 
+            "text": "MicroBitImage  image  int  delay - The time to delay between each update of the display, in milliseconds.  int  stride - The number of pixels to shift by in each update.  int  startingPosition - the starting position on the display for the animation to begin at. Defaults to MICROBIT_DISPLAY_ANIMATE_DEFAULT_POS.", 
+            "title": "Parameters"
+        }, 
+        {
+            "location": "/ubit/display/#returns_27", 
+            "text": "MICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.", 
+            "title": "Returns"
+        }, 
+        {
+            "location": "/ubit/display/#example_35", 
+            "text": "const int heart_w = 10; \n const int heart_h = 5; \n const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; \n\n MicroBitImage i(heart_w,heart_h,heart); \n display.animate(i,100,5);", 
+            "title": "Example"
+        }, 
+        {
+            "location": "/ubit/display/#int-animate-microbitimage-image-int-delay-int-stride-int-startingposition-int-autoclear", 
+            "text": "", 
+            "title": "int animate( MicroBitImage image,  int delay,  int stride,  int startingPosition,  int autoClear)"
+        }, 
+        {
+            "location": "/ubit/display/#description_37", 
+            "text": "\"Animates\" the current image across the display with a given stride, finishing on the last frame of the animation. Blocks the calling thread until the animation is complete.", 
+            "title": "Description"
+        }, 
+        {
+            "location": "/ubit/display/#parameters_35", 
+            "text": "MicroBitImage  image  int  delay - The time to delay between each update of the display, in milliseconds.  int  stride - The number of pixels to shift by in each update.  int  startingPosition - the starting position on the display for the animation to begin at. Defaults to MICROBIT_DISPLAY_ANIMATE_DEFAULT_POS.  int  autoClear - defines whether or not the display is automatically cleared once the animation is complete. By default, the display is cleared. Set this parameter to zero to disable the autoClear operation.", 
+            "title": "Parameters"
+        }, 
+        {
+            "location": "/ubit/display/#returns_28", 
+            "text": "MICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.", 
+            "title": "Returns"
+        }, 
+        {
+            "location": "/ubit/display/#example_36", 
             "text": "const int heart_w = 10; \n const int heart_h = 5; \n const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; \n\n MicroBitImage i(heart_w,heart_h,heart); \n display.animate(i,100,5);", 
             "title": "Example"
         }, 
@@ -3241,22 +3291,22 @@
             "title": "int setBrightness( int b)"
         }, 
         {
-            "location": "/ubit/display/#description_36", 
+            "location": "/ubit/display/#description_38", 
             "text": "Configures the brightness of the display.", 
             "title": "Description"
         }, 
         {
-            "location": "/ubit/display/#parameters_34", 
+            "location": "/ubit/display/#parameters_36", 
             "text": "int  b - The brightness to set the brightness to, in the range 0 - 255.", 
             "title": "Parameters"
         }, 
         {
-            "location": "/ubit/display/#returns_27", 
+            "location": "/ubit/display/#returns_29", 
             "text": "MICROBIT_OK, or MICROBIT_INVALID_PARAMETER", 
             "title": "Returns"
         }, 
         {
-            "location": "/ubit/display/#example_35", 
+            "location": "/ubit/display/#example_37", 
             "text": "display.setBrightness(255); //max brightness", 
             "title": "Example"
         }, 
@@ -3271,17 +3321,17 @@
             "title": "void setDisplayMode( DisplayMode mode)"
         }, 
         {
-            "location": "/ubit/display/#description_37", 
+            "location": "/ubit/display/#description_39", 
             "text": "Configures the mode of the display.", 
             "title": "Description"
         }, 
         {
-            "location": "/ubit/display/#parameters_35", 
+            "location": "/ubit/display/#parameters_37", 
             "text": "DisplayMode  mode - The mode to swap the display into. One of: DISPLAY_MODE_GREYSCALE, DISPLAY_MODE_BLACK_AND_WHITE, DISPLAY_MODE_BLACK_AND_WHITE_LIGHT_SENSE", 
             "title": "Parameters"
         }, 
         {
-            "location": "/ubit/display/#example_36", 
+            "location": "/ubit/display/#example_38", 
             "text": "display.setDisplayMode(DISPLAY_MODE_GREYSCALE); //per pixel brightness", 
             "title": "Example"
         }, 
@@ -3296,12 +3346,12 @@
             "title": "int getDisplayMode()"
         }, 
         {
-            "location": "/ubit/display/#description_38", 
+            "location": "/ubit/display/#description_40", 
             "text": "Retrieves the mode of the display.", 
             "title": "Description"
         }, 
         {
-            "location": "/ubit/display/#returns_28", 
+            "location": "/ubit/display/#returns_30", 
             "text": "the current mode of the display", 
             "title": "Returns"
         }, 
@@ -3316,17 +3366,17 @@
             "title": "int getBrightness()"
         }, 
         {
-            "location": "/ubit/display/#description_39", 
+            "location": "/ubit/display/#description_41", 
             "text": "Fetches the current brightness of this display.", 
             "title": "Description"
         }, 
         {
-            "location": "/ubit/display/#returns_29", 
+            "location": "/ubit/display/#returns_31", 
             "text": "the brightness of this display, in the range 0..255.", 
             "title": "Returns"
         }, 
         {
-            "location": "/ubit/display/#example_37", 
+            "location": "/ubit/display/#example_39", 
             "text": "display.getBrightness(); //the current brightness", 
             "title": "Example"
         }, 
@@ -3341,17 +3391,17 @@
             "title": "void rotateTo( DisplayRotation position)"
         }, 
         {
-            "location": "/ubit/display/#description_40", 
+            "location": "/ubit/display/#description_42", 
             "text": "Rotates the display to the given position.    Axis aligned values only.", 
             "title": "Description"
         }, 
         {
-            "location": "/ubit/display/#parameters_36", 
+            "location": "/ubit/display/#parameters_38", 
             "text": "DisplayRotation  position", 
             "title": "Parameters"
         }, 
         {
-            "location": "/ubit/display/#example_38", 
+            "location": "/ubit/display/#example_40", 
             "text": "display.rotateTo(MICROBIT_DISPLAY_ROTATION_180); //rotates 180 degrees from original orientation", 
             "title": "Example"
         }, 
@@ -3366,12 +3416,12 @@
             "title": "void enable()"
         }, 
         {
-            "location": "/ubit/display/#description_41", 
+            "location": "/ubit/display/#description_43", 
             "text": "Enables the display, should only be called if the display is disabled.", 
             "title": "Description"
         }, 
         {
-            "location": "/ubit/display/#example_39", 
+            "location": "/ubit/display/#example_41", 
             "text": "display.enable(); //Enables the display mechanics    Note  Only enables the display if the display is currently disabled.", 
             "title": "Example"
         }, 
@@ -3386,12 +3436,12 @@
             "title": "void disable()"
         }, 
         {
-            "location": "/ubit/display/#description_42", 
+            "location": "/ubit/display/#description_44", 
             "text": "Disables the display, which releases control of the GPIO pins used by the display, which are exposed on the edge connector.", 
             "title": "Description"
         }, 
         {
-            "location": "/ubit/display/#example_40", 
+            "location": "/ubit/display/#example_42", 
             "text": "display.disable(); //disables the display    Note  Only disables the display if the display is currently enabled.", 
             "title": "Example"
         }, 
@@ -3406,12 +3456,12 @@
             "title": "void clear()"
         }, 
         {
-            "location": "/ubit/display/#description_43", 
+            "location": "/ubit/display/#description_45", 
             "text": "Clears the display of any remaining pixels.    display.image.clear()  can also be used!", 
             "title": "Description"
         }, 
         {
-            "location": "/ubit/display/#example_41", 
+            "location": "/ubit/display/#example_43", 
             "text": "display.clear(); //clears the display", 
             "title": "Example"
         }, 
@@ -3426,12 +3476,12 @@
             "title": "void setFont( MicroBitFont font)"
         }, 
         {
-            "location": "/ubit/display/#description_44", 
+            "location": "/ubit/display/#description_46", 
             "text": "Updates the font that will be used for display operations.", 
             "title": "Description"
         }, 
         {
-            "location": "/ubit/display/#parameters_37", 
+            "location": "/ubit/display/#parameters_39", 
             "text": "MicroBitFont  font - the new font that will be used to render characters.    Note  DEPRECATED! Please use  MicroBitFont::setSystemFont()  instead.", 
             "title": "Parameters"
         }, 
@@ -3446,7 +3496,7 @@
             "title": "MicroBitFont getFont()"
         }, 
         {
-            "location": "/ubit/display/#description_45", 
+            "location": "/ubit/display/#description_47", 
             "text": "Retrieves the font object used for rendering characters on the display.     Note  DEPRECATED! Please use  MicroBitFont::getSystemFont()  instead.", 
             "title": "Description"
         }, 
@@ -3461,12 +3511,12 @@
             "title": "MicroBitImage screenShot()"
         }, 
         {
-            "location": "/ubit/display/#description_46", 
+            "location": "/ubit/display/#description_48", 
             "text": "Captures the bitmap currently being rendered on the display.", 
             "title": "Description"
         }, 
         {
-            "location": "/ubit/display/#returns_30", 
+            "location": "/ubit/display/#returns_32", 
             "text": "a  MicroBitImage  containing the captured data.", 
             "title": "Returns"
         }, 
@@ -3481,12 +3531,12 @@
             "title": "int readLightLevel()"
         }, 
         {
-            "location": "/ubit/display/#description_47", 
+            "location": "/ubit/display/#description_49", 
             "text": "Gives a representative figure of the light level in the current environment where are micro:bit is situated.    Internally, it constructs an instance of a  MicroBitLightSensor  if not already configured and sets the display mode to DISPLAY_MODE_BLACK_AND_WHITE_LIGHT_SENSE.    This also changes the tickPeriod to MICROBIT_LIGHT_SENSOR_TICK_SPEED so that the display does not suffer from artifacts.", 
             "title": "Description"
         }, 
         {
-            "location": "/ubit/display/#returns_31", 
+            "location": "/ubit/display/#returns_33", 
             "text": "an indicative light level in the range 0 - 255.   Note  this will return 0 on the first call to this method, a light reading will be available after the display has activated the light sensor for the first time.", 
             "title": "Returns"
         }, 
@@ -5856,7 +5906,7 @@
             "title": "send"
         }, 
         {
-            "location": "/ubit/radio/#int-send-framebuffer-buffer", 
+            "location": "/ubit/radio/#int-send-framebuffer-42-buffer", 
             "text": "", 
             "title": "int send( FrameBuffer  * buffer)"
         }, 
@@ -5936,7 +5986,7 @@
             "title": "getBitmap"
         }, 
         {
-            "location": "/data-types/image/#uint8_t-getbitmap", 
+            "location": "/data-types/image/#uint8_t-42-getbitmap", 
             "text": "", 
             "title": "uint8_t * getBitmap()"
         }, 
@@ -5951,7 +6001,7 @@
             "title": "Constructor"
         }, 
         {
-            "location": "/data-types/image/#microbitimage-imagedata-ptr", 
+            "location": "/data-types/image/#microbitimage-imagedata-42-ptr", 
             "text": "", 
             "title": "MicroBitImage( ImageData  * ptr)"
         }, 
@@ -6006,7 +6056,7 @@
             "title": "Example"
         }, 
         {
-            "location": "/data-types/image/#microbitimage-const-char-s", 
+            "location": "/data-types/image/#microbitimage-const-char-42-s", 
             "text": "", 
             "title": "MicroBitImage( const char * s)"
         }, 
@@ -6041,7 +6091,7 @@
             "title": "Parameters"
         }, 
         {
-            "location": "/data-types/image/#microbitimage-const-int16_t-x-const-int16_t-y-const-uint8_t-bitmap", 
+            "location": "/data-types/image/#microbitimage-const-int16_t-x-const-int16_t-y-const-uint8_t-42-bitmap", 
             "text": "", 
             "title": "MicroBitImage( const int16_t x,  const int16_t y,  const uint8_t * bitmap)"
         }, 
@@ -6201,7 +6251,7 @@
             "title": "printImage"
         }, 
         {
-            "location": "/data-types/image/#int-printimage-int16_t-x-int16_t-y-const-uint8_t-bitmap", 
+            "location": "/data-types/image/#int-printimage-int16_t-x-int16_t-y-const-uint8_t-42-bitmap", 
             "text": "", 
             "title": "int printImage( int16_t x,  int16_t y,  const uint8_t * bitmap)"
         }, 
@@ -6821,7 +6871,7 @@
             "title": "Constructor"
         }, 
         {
-            "location": "/data-types/string/#managedstring-stringdata-ptr", 
+            "location": "/data-types/string/#managedstring-stringdata-42-ptr", 
             "text": "", 
             "title": "ManagedString( StringData  * ptr)"
         }, 
@@ -6861,7 +6911,7 @@
             "title": "Constructor"
         }, 
         {
-            "location": "/data-types/string/#managedstring-const-char-str", 
+            "location": "/data-types/string/#managedstring-const-char-42-str", 
             "text": "", 
             "title": "ManagedString( const char * str)"
         }, 
@@ -6941,7 +6991,7 @@
             "title": "Example"
         }, 
         {
-            "location": "/data-types/string/#managedstring-const-char-str-const-int16_t-length", 
+            "location": "/data-types/string/#managedstring-const-char-42-str-const-int16_t-length", 
             "text": "", 
             "title": "ManagedString( const char * str,  const int16_t length)"
         }, 
@@ -7206,7 +7256,7 @@
             "title": "toCharArray"
         }, 
         {
-            "location": "/data-types/string/#const-char-tochararray", 
+            "location": "/data-types/string/#const-char-42-tochararray", 
             "text": "", 
             "title": "const char * toCharArray()"
         }, 
@@ -7281,7 +7331,7 @@
             "title": "Constructor"
         }, 
         {
-            "location": "/data-types/packetbuffer/#managedstring-stringdata-ptr", 
+            "location": "/data-types/packetbuffer/#managedstring-stringdata-42-ptr", 
             "text": "", 
             "title": "ManagedString( StringData  * ptr)"
         }, 
@@ -7321,7 +7371,7 @@
             "title": "Constructor"
         }, 
         {
-            "location": "/data-types/packetbuffer/#managedstring-const-char-str", 
+            "location": "/data-types/packetbuffer/#managedstring-const-char-42-str", 
             "text": "", 
             "title": "ManagedString( const char * str)"
         }, 
@@ -7401,7 +7451,7 @@
             "title": "Example"
         }, 
         {
-            "location": "/data-types/packetbuffer/#managedstring-const-char-str-const-int16_t-length", 
+            "location": "/data-types/packetbuffer/#managedstring-const-char-42-str-const-int16_t-length", 
             "text": "", 
             "title": "ManagedString( const char * str,  const int16_t length)"
         }, 
@@ -7666,7 +7716,7 @@
             "title": "toCharArray"
         }, 
         {
-            "location": "/data-types/packetbuffer/#const-char-tochararray", 
+            "location": "/data-types/packetbuffer/#const-char-42-tochararray", 
             "text": "", 
             "title": "const char * toCharArray()"
         }, 
@@ -8781,7 +8831,7 @@
             "title": "recv"
         }, 
         {
-            "location": "/ubit/radiodatagram/#int-recv-uint8_t-buf-int-len", 
+            "location": "/ubit/radiodatagram/#int-recv-uint8_t-42-buf-int-len", 
             "text": "", 
             "title": "int recv( uint8_t * buf,  int len)"
         }, 
@@ -8821,7 +8871,7 @@
             "title": "send"
         }, 
         {
-            "location": "/ubit/radiodatagram/#int-send-uint8_t-buffer-int-len", 
+            "location": "/ubit/radiodatagram/#int-send-uint8_t-42-buffer-int-len", 
             "text": "", 
             "title": "int send( uint8_t * buffer,  int len)"
         }, 

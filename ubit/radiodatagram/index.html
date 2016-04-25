@@ -476,7 +476,7 @@ int main()
 </blockquote>
 <h2 id="recv">recv<a class="headerlink" href="#recv" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-recv-uint8_t-buf-int-len"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>recv</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t *</div> buf,  <div style='color:#a71d5d; display:inline-block'>int</div> len)<a class="headerlink" href="#int-recv-uint8_t-buf-int-len" title="Permanent link">&para;</a></h4>
+<h4 id="int-recv-uint8_t-42-buf-int-len"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>recv</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t *</div> buf,  <div style='color:#a71d5d; display:inline-block'>int</div> len)<a class="headerlink" href="#int-recv-uint8_t-42-buf-int-len" title="Permanent link">&para;</a></h4>
 <h5 id="description_1">Description<a class="headerlink" href="#description_1" title="Permanent link">&para;</a></h5>
 <p>Retrieves packet payload data into the given buffer.  </p>
 <p>If a data packet is already available, then it will be returned immediately to the caller. If no data is available then MICROBIT_INVALID_PARAMETER is returned.  </p>
@@ -496,7 +496,7 @@ int main()
 <p>the data received, or an empty  PacketBuffer  if no data is available. </p>
 <h2 id="send">send<a class="headerlink" href="#send" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-send-uint8_t-buffer-int-len"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>send</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t *</div> buffer,  <div style='color:#a71d5d; display:inline-block'>int</div> len)<a class="headerlink" href="#int-send-uint8_t-buffer-int-len" title="Permanent link">&para;</a></h4>
+<h4 id="int-send-uint8_t-42-buffer-int-len"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>send</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t *</div> buffer,  <div style='color:#a71d5d; display:inline-block'>int</div> len)<a class="headerlink" href="#int-send-uint8_t-42-buffer-int-len" title="Permanent link">&para;</a></h4>
 <h5 id="description_3">Description<a class="headerlink" href="#description_3" title="Permanent link">&para;</a></h5>
 <p>Transmits the given buffer onto the broadcast radio.  </p>
 <p>This is a synchronous call that will wait until the transmission of the packet has completed before returning.  </p>
