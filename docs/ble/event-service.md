@@ -20,7 +20,7 @@ This service is enabled by default.
 
 micro:bit uses an event bus which relays event objects from system components which generate them to other system components which have registered an interest in events of a given type. This principle and capability has been extended to remote devices connected over Bluetooth. Connected clients can indicate the types of event they are interested in and be informed via Bluetooth notificatons as and when such events occur. Similarly, micro:bit application code can inform a connected client of events which might happen in or be observed by an application running on the connected device (the client application) and be informed when they occur via Bluetooth write operations. 
 
-Event objects consist of an integer (4 octets) type and an integer (4 octets) value.
+Event objects consist of a short (2 octets) type and a short (2 octets) value.
 
 When either client application or micro:bit code registers an interest in an event type it may register for all events of that type regardless of the associated value or may specify a particular value which must accompany that event type for it to be of interest.
 
@@ -125,8 +125,126 @@ case BleAdapterService.NOTIFICATION_RECEIVED:
 ```
 
 
-#### Video Demonstration
+#### Video Demonstrations
+
+##### Temperature Alarm
 
 <iframe src="https://player.vimeo.com/video/153072501" width="750" height="422" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
+##### Buggy Remote Control
+
+<iframe allowfullscreen="" frameborder="0" height="422" mozallowfullscreen="" src="https://player.vimeo.com/video/162680772" webkitallowfullscreen="" width="750"></iframe>
+
+###### micro:bit code for the buggy controller
+
+```cpp
+/*
+The MIT License (MIT)
+
+Copyright (c) 2016 British Broadcasting Corporation.
+This software is provided by Lancaster University by arrangement with the BBC.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
+*/
+
+#include "MicroBit.h"
+#include "MicroBitSamples.h"
+
+#ifdef MICROBIT_GAMEPAD
+
+MicroBit uBit;
+
+#define MES_DPAD_CONTROLLER                 1104
+#define MES_DPAD_1_BUTTON_UP_ON             1
+#define MES_DPAD_1_BUTTON_UP_OFF            2
+#define MES_DPAD_1_BUTTON_DOWN_ON           3
+#define MES_DPAD_1_BUTTON_DOWN_OFF          4
+#define MES_DPAD_1_BUTTON_LEFT_ON           5
+#define MES_DPAD_1_BUTTON_LEFT_OFF          6
+#define MES_DPAD_1_BUTTON_RIGHT_ON          7
+#define MES_DPAD_1_BUTTON_RIGHT_OFF         8
+#define MES_DPAD_2_BUTTON_UP_ON             9
+#define MES_DPAD_2_BUTTON_UP_OFF            10
+#define MES_DPAD_2_BUTTON_DOWN_ON           11
+#define MES_DPAD_2_BUTTON_DOWN_OFF          12
+#define MES_DPAD_2_BUTTON_LEFT_ON           13
+#define MES_DPAD_2_BUTTON_LEFT_OFF          14
+#define MES_DPAD_2_BUTTON_RIGHT_ON          15
+#define MES_DPAD_2_BUTTON_RIGHT_OFF         16
+
+int pin0, pin8, pin12, pin16 = 0;
+
+int drive = 0;
+
+void onControllerEvent(MicroBitEvent e)
+{
+  if (e.value == MES_DPAD_2_BUTTON_UP_ON) {
+      pin12 = 1;
+      pin16 = 1;
+      drive = 1;
+  } else {
+    if (e.value == MES_DPAD_2_BUTTON_UP_OFF) {
+      pin12 = 0;
+      pin16 = 0;
+      drive = 0;
+    }
+  }
+  
+  if (drive == 1) {
+      if (e.value == MES_DPAD_1_BUTTON_LEFT_ON) {
+          pin12 = 1;
+          pin16 = 0;
+      } else {
+          if (e.value == MES_DPAD_1_BUTTON_RIGHT_ON) {
+              pin12 = 0;
+              pin16 = 1;
+          } else {
+              if (e.value == MES_DPAD_1_BUTTON_LEFT_OFF || e.value == MES_DPAD_1_BUTTON_RIGHT_OFF) {
+                  pin12 = 1;
+                  pin16 = 1;
+              } else {
+              }
+          }
+      }
+  }
+
+  uBit.io.P0.setDigitalValue(pin0);
+  uBit.io.P8.setDigitalValue(pin8);
+  uBit.io.P12.setDigitalValue(pin12);
+  uBit.io.P16.setDigitalValue(pin16);
+  
+}
+
+int main()
+{
+    // Initialise the micro:bit runtime.
+    uBit.init();
+
+    uBit.display.scroll("BUGGY!");
+    uBit.messageBus.listen(MES_DPAD_CONTROLLER, 0, onControllerEvent); 
+
+    // If main exits, there may still be other fibers running or registered event handlers etc.
+    // Simply release this fiber, which will mean we enter the scheduler. Worse case, we then
+    // sit in the idle task forever, in a power efficient sleep.
+    release_fiber();
+}
+
+#endif
+```
 

@@ -2,8 +2,7 @@
 
 ## Introduction
 
-This Bluetooth Low Energy (BLE) service is an optional part of the standard bluetooth profile for the micro:bit. It is a passive service, that can operate transparently in the
-background as your main program is running. It provides live electronic compass / magnetometer data to a connected Bluetooth master device such as a smartphone. You do not need to explicity address an API on the service to achieve this.
+This Bluetooth Low Energy (BLE) service is an optional part of the standard bluetooth profile for the micro:bit. It is a passive service, that can operate transparently in the background as your main program is running. It provides live electronic compass / magnetometer data to a connected Bluetooth master device such as a smartphone. You do not need to explicity address an API on the service to achieve this.
 
 ## Enabling the Service
 
@@ -24,8 +23,13 @@ This service is disabled by default. To enable the service, simply create an ins
 
 ### General Procedures
 
-micro:bit has an LED display with 5 rows and 5 columns i.e. 25 LEDs in total. The Bluetooth LED service allows the entire grid to be addressed as a bitmap using the LED Matrix State characteristic which supports both read and write operations. Text strings can be sent to the micro:bit for display by writing to the LED Text characteristic and the speed with which it is scrolled can be controlled by setting a delay value in milliseconds by writing to the Scrolling Delay characteristic.
+micro:bit includes a magnetometer or "digital compass". The Bluetooth profile gives access to magnetometer data via the Magnetometer Service which includes 3 characteristics. Magnetometer Period controls the frequency with which magnetometer data is reported over Bluetooth. Magnetometer Bearing can deliver compass bearing measurements in degrees from North as Bluetooth notifications. Similarly, Magnetometer Data supports notifications and can deliver "raw" X, Y, Z values which describe the current bearing as a 3D vector. 
 
+* X is the magnetic field strength in the direction of magnetic north
+* Y is the magnetic field strength in the direction of magnetic east i.e. 90 degrees from magnetic north
+* Z is the magnetic field strength vertically down 
+
+From the X, Y and Z vector values it's possible to calculate the direction of magnetic north and its strength in micro-Teslas.
 
 See the profile page and profile reference documentation for data format and UUID details.
 
@@ -39,7 +43,7 @@ Android developers should make themselves familiar with the [Android Bluetooth l
 
 #### microbit-ble-demo-android
 
-The open source microbit-ble-demo-android application contains a partial demonstration of the micro:bit Bluetooth Magnetometer service. The main body of code for this demonstration can be found in ui.MagnetometerActivity.java except for the Bluetooth operations themselves which are in bluetooth.BleAdapterService which acts as a kind of higher level Bluetooth API for activities to use without needing to directly concern themselves too closely with the Android APIs themselves. In most cases, operations are asynchronous so that the activity code initiates a Bluetooth operation by calling one of the methods in bluetooth.BleAdapterService (e.g. readCharacteristic(....) ) and later receives a message containing the result of the operation from this object via a Handler object. The message is examined in the Handler code and acted upon.
+The open source microbit-ble-demo-android application contains a demonstration of the micro:bit Bluetooth Magnetometer service. The main body of code for this demonstration can be found in ui.MagnetometerActivity.java except for the Bluetooth operations themselves which are in bluetooth.BleAdapterService which acts as a kind of higher level Bluetooth API for activities to use without needing to directly concern themselves too closely with the Android APIs themselves. In most cases, operations are asynchronous so that the activity code initiates a Bluetooth operation by calling one of the methods in bluetooth.BleAdapterService (e.g. readCharacteristic(....) ) and later receives a message containing the result of the operation from this object via a Handler object. The message is examined in the Handler code and acted upon.
 
 Key parts of the magnetometer demonstration in this application are explained next.
 
@@ -109,8 +113,15 @@ case BleAdapterService.NOTIFICATION_RECEIVED:
             Log.d(Constants.TAG, "Magnetometer Bearing received: " + bearing);
             ((TextView) MagnetometerActivity.this.findViewById(R.id.bearing)).setText(bearing + " degrees");
             current_bearing = bearing;
+            String point_name = compassPoint(current_bearing);
+            Log.d(Constants.TAG, "Point Name: " + point_name);
+            ((TextView) MagnetometerActivity.this.findViewById(R.id.compass_point)).setText(point_name);
         }
     }
     break;
 ```
+#### Video Demonstration
+
+<iframe src="https://player.vimeo.com/video/162990270" width="750" height="422" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> 
+
 
