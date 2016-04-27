@@ -396,8 +396,7 @@
 
 <h1 id="bluetooth-magnetometer-service">Bluetooth Magnetometer Service<a class="headerlink" href="#bluetooth-magnetometer-service" title="Permanent link">&para;</a></h1>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
-<p>This Bluetooth Low Energy (BLE) service is an optional part of the standard bluetooth profile for the micro:bit. It is a passive service, that can operate transparently in the
-background as your main program is running. It provides live electronic compass / magnetometer data to a connected Bluetooth master device such as a smartphone. You do not need to explicity address an API on the service to achieve this.</p>
+<p>This Bluetooth Low Energy (BLE) service is an optional part of the standard bluetooth profile for the micro:bit. It is a passive service, that can operate transparently in the background as your main program is running. It provides live electronic compass / magnetometer data to a connected Bluetooth master device such as a smartphone. You do not need to explicity address an API on the service to achieve this.</p>
 <h2 id="enabling-the-service">Enabling the Service<a class="headerlink" href="#enabling-the-service" title="Permanent link">&para;</a></h2>
 <p>This service is disabled by default. To enable the service, simply create an instance of this class in your program, at any time after the uBit object has been initialised:</p>
 <pre><code class="cpp">    new MicroBitMagnetometerService(*uBit.ble, uBit.compass);    
@@ -411,14 +410,20 @@ background as your main program is running. It provides live electronic compass 
 <p>Please see the <a href="../../resources/bluetooth/microbit-profile-V1.7-Level-2.pdf">micro:bit Bluetooth profile specification</a>.</p>
 <h2 id="example-applications-for-androidiosandroid">Example Applications for Android/IOS/Android<a class="headerlink" href="#example-applications-for-androidiosandroid" title="Permanent link">&para;</a></h2>
 <h3 id="general-procedures">General Procedures<a class="headerlink" href="#general-procedures" title="Permanent link">&para;</a></h3>
-<p>micro:bit has an LED display with 5 rows and 5 columns i.e. 25 LEDs in total. The Bluetooth LED service allows the entire grid to be addressed as a bitmap using the LED Matrix State characteristic which supports both read and write operations. Text strings can be sent to the micro:bit for display by writing to the LED Text characteristic and the speed with which it is scrolled can be controlled by setting a delay value in milliseconds by writing to the Scrolling Delay characteristic.</p>
+<p>micro:bit includes a magnetometer or "digital compass". The Bluetooth profile gives access to magnetometer data via the Magnetometer Service which includes 3 characteristics. Magnetometer Period controls the frequency with which magnetometer data is reported over Bluetooth. Magnetometer Bearing can deliver compass bearing measurements in degrees from North as Bluetooth notifications. Similarly, Magnetometer Data supports notifications and can deliver "raw" X, Y, Z values which describe the current bearing as a 3D vector. </p>
+<ul>
+<li>X is the magnetic field strength in the direction of magnetic north</li>
+<li>Y is the magnetic field strength in the direction of magnetic east i.e. 90 degrees from magnetic north</li>
+<li>Z is the magnetic field strength vertically down </li>
+</ul>
+<p>From the X, Y and Z vector values it's possible to calculate the direction of magnetic north and its strength in micro-Teslas.</p>
 <p>See the profile page and profile reference documentation for data format and UUID details.</p>
 <h3 id="android">Android<a class="headerlink" href="#android" title="Permanent link">&para;</a></h3>
 <p><img src="../../resources/bluetooth/magnetometer_icon.png" alt="LED Demo"></p>
 <h4 id="android-bluetooth-apis">Android Bluetooth APIs<a class="headerlink" href="#android-bluetooth-apis" title="Permanent link">&para;</a></h4>
 <p>Android developers should make themselves familiar with the <a href="http://developer.android.com/guide/topics/connectivity/bluetooth-le.html">Android Bluetooth low energy APIs</a></p>
 <h4 id="microbit-ble-demo-android">microbit-ble-demo-android<a class="headerlink" href="#microbit-ble-demo-android" title="Permanent link">&para;</a></h4>
-<p>The open source microbit-ble-demo-android application contains a partial demonstration of the micro:bit Bluetooth Magnetometer service. The main body of code for this demonstration can be found in ui.MagnetometerActivity.java except for the Bluetooth operations themselves which are in bluetooth.BleAdapterService which acts as a kind of higher level Bluetooth API for activities to use without needing to directly concern themselves too closely with the Android APIs themselves. In most cases, operations are asynchronous so that the activity code initiates a Bluetooth operation by calling one of the methods in bluetooth.BleAdapterService (e.g. readCharacteristic(....) ) and later receives a message containing the result of the operation from this object via a Handler object. The message is examined in the Handler code and acted upon.</p>
+<p>The open source microbit-ble-demo-android application contains a demonstration of the micro:bit Bluetooth Magnetometer service. The main body of code for this demonstration can be found in ui.MagnetometerActivity.java except for the Bluetooth operations themselves which are in bluetooth.BleAdapterService which acts as a kind of higher level Bluetooth API for activities to use without needing to directly concern themselves too closely with the Android APIs themselves. In most cases, operations are asynchronous so that the activity code initiates a Bluetooth operation by calling one of the methods in bluetooth.BleAdapterService (e.g. readCharacteristic(....) ) and later receives a message containing the result of the operation from this object via a Handler object. The message is examined in the Handler code and acted upon.</p>
 <p>Key parts of the magnetometer demonstration in this application are explained next.</p>
 <h4 id="in-bluetoothbleadapterservice">In bluetooth.BleAdapterService<a class="headerlink" href="#in-bluetoothbleadapterservice" title="Permanent link">&para;</a></h4>
 <pre><code class="java">public static String MAGNETOMETERSERVICE_SERVICE_UUID = &quot;E95DF2D8251D470AA062FA1922DFA9A8&quot;;
@@ -481,10 +486,16 @@ case BleAdapterService.NOTIFICATION_RECEIVED:
             Log.d(Constants.TAG, &quot;Magnetometer Bearing received: &quot; + bearing);
             ((TextView) MagnetometerActivity.this.findViewById(R.id.bearing)).setText(bearing + &quot; degrees&quot;);
             current_bearing = bearing;
+            String point_name = compassPoint(current_bearing);
+            Log.d(Constants.TAG, &quot;Point Name: &quot; + point_name);
+            ((TextView) MagnetometerActivity.this.findViewById(R.id.compass_point)).setText(point_name);
         }
     }
     break;
-</code></pre></div>
+</code></pre>
+
+<h4 id="video-demonstration">Video Demonstration<a class="headerlink" href="#video-demonstration" title="Permanent link">&para;</a></h4>
+<iframe src="https://player.vimeo.com/video/162990270" width="750" height="422" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>
         </div>
 
         <footer class="col-md-12">
