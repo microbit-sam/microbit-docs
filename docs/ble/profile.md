@@ -50,6 +50,14 @@ White listing allows paired devices only to connect to and interact with the mic
 
 The micro:bit will advertise if in "pairing mode" or if it has been previously paired/bonded in which case it will advertise but a white list will be active and connections will only be accepted from previously paired devices. See below for more information on pairing.
 
+In pairing mode the micro:bit will advertise with flags set indicating it is discoverable (LE General Discoverable Mode) as showing here:
+
+<img src="../../resources/bluetooth/adv_pairing_mode.png" alt="Advertising in Pairing Mode">
+
+In “normal mode” (i.e. not pairing mode) advertsing packets have neither the LE Limited Discoverable mode or the LE General Discoverable Mode flags set and so in this situation may not be listed in the “available Bluetooth devices” screen of some smartphones which have not paired with the micro:bit. This is by design.
+
+<img src="../../resources/bluetooth/adv_normal_mode.png" alt="Advertising in Normal Mode">
+
 ### Pairing
 
 To interact with any service on the micro:bit the peer device must first be paired/bonded with it.
