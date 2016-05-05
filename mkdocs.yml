@@ -38,6 +38,7 @@ pages:
         - LEDService: "ble/led-service.md"
         - MagnetometerService: "ble/magnetometer-service.md"
         - TemperatureService: "ble/temperature-service.md"
+        - UARTService: "ble/uart-service.md"
     - Extras:
         - MicroBitLightSensor: "extras/light-sensing.md"
         - SPI: "extras/spi.md"

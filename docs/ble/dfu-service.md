@@ -12,7 +12,7 @@ This service is enabled by default.
 
 ## Bluetooth Service Specification
 
- Please see the [micro:bit Bluetooth profile specification](../resources/bluetooth/microbit-profile-V1.7-Level-2.pdf).
+ Please see the [micro:bit Bluetooth profile specification](../resources/bluetooth/microbit-profile-V1.9-Level-2.pdf).
 
 ## Example Applications for Android/IOS/Android
 

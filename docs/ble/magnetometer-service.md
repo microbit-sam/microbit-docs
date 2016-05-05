@@ -17,7 +17,7 @@ This service is disabled by default. To enable the service, simply create an ins
 
 ## Bluetooth Service Specification
 
- Please see the [micro:bit Bluetooth profile specification](../resources/bluetooth/microbit-profile-V1.7-Level-2.pdf).
+ Please see the [micro:bit Bluetooth profile specification](../resources/bluetooth/microbit-profile-V1.9-Level-2.pdf).
 
 ## Example Applications for Android/IOS/Android
 
@@ -71,7 +71,7 @@ bluetooth_le_adapter.setNotificationsState(
 ```
 
 ``` java
-// handlign notifications
+// handling notifications
 case BleAdapterService.NOTIFICATION_RECEIVED:
     bundle = msg.getData();
     service_uuid = bundle.getString(BleAdapterService.PARCEL_SERVICE_UUID);
