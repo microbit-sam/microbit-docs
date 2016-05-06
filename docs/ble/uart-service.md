@@ -59,7 +59,7 @@ void onButtonA(MicroBitEvent e)
         uBit.display.scroll("NC");
         return;
     }
-    uart->send(ManagedString("YES"));
+    uart->send("YES");
     uBit.display.scroll("YES");
 }
 
@@ -69,7 +69,7 @@ void onButtonB(MicroBitEvent e)
         uBit.display.scroll("NC");
         return;
     }
-    uart->send(ManagedString("NO"));
+    uart->send("NO");
     uBit.display.scroll("NO");
 }
 
@@ -79,7 +79,7 @@ void onButtonAB(MicroBitEvent e)
         uBit.display.scroll("NC");
         return;
     }
-    uart->send(ManagedString("GOT IT!!"));
+    uart->send("GOT IT!!");
     uBit.display.scroll("GOT IT!!");
 }
 
