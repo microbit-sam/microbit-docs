@@ -50,6 +50,14 @@ White listing allows paired devices only to connect to and interact with the mic
 
 The micro:bit will advertise if in "pairing mode" or if it has been previously paired/bonded in which case it will advertise but a white list will be active and connections will only be accepted from previously paired devices. See below for more information on pairing.
 
+In pairing mode the micro:bit will advertise with flags set indicating it is discoverable (LE General Discoverable Mode) as showing here:
+
+<img src="../../resources/bluetooth/adv_pairing_mode.png" alt="Advertising in Pairing Mode">
+
+In “normal mode” (i.e. not pairing mode) advertsing packets have neither the LE Limited Discoverable mode or the LE General Discoverable Mode flags set and so in this situation may not be listed in the “available Bluetooth devices” screen of some smartphones which have not paired with the micro:bit. This is by design.
+
+<img src="../../resources/bluetooth/adv_normal_mode.png" alt="Advertising in Normal Mode">
+
 ### Pairing
 
 To interact with any service on the micro:bit the peer device must first be paired/bonded with it.
@@ -66,7 +74,7 @@ A maximum of 4 devices may be paired with a micro:bit simultaneously (note thoug
 
 ## Reference Documentation
 
-Details of the micro:bit's Bluetooth services, characteristics, the operations they each support and any associated descriptors along with UUID values can be found in the associated [micro:bit Bluetooth profile specification](../resources/bluetooth/microbit-profile-V1.7-Level-2.pdf)
+Details of the micro:bit's Bluetooth services, characteristics, the operations they each support and any associated descriptors along with UUID values can be found in the associated [micro:bit Bluetooth profile specification](../resources/bluetooth/microbit-profile-V1.9-Level-2.pdf)
 
 A simplified overview appears below.
 
@@ -85,11 +93,18 @@ A simplified overview appears below.
 | IO Pin Service | Custom | optional | Allows access to and configuration of IO pins on the edge connector. |
 | Event Service | Custom | optional | Allows the micro:bit to inform the connected client of the types of event it wants to be informed about. Allows the client to inform the micro:bit of relevant events. Allows micro:bit to inform the client of events originating on the micro:bit.Event data includes both a type and a reason or origin. |
 | DFU Control Service | Custom | mandatory | Used to initiate device firmware update. Defined by Nordic Semiconductor. |
+| UART Service | Custom | optional | Provides pseudo serial data communications over Bluetooth low energy, allowing arbitrary byte sequences to be exchanged in either direction with a connected peer. Data from micro:bit to peer is transmitted using Bluetooth Indications. Data from the peer to the micro:bit is transmitted using Write or Write No Response PDUs. This is an implementation of Nordic Semicondutor's UART/Serial Port Emulation over Bluetooth low energy. 
+
+The maximum number of bytes which may be transmitted in one PDU is limited to the MTU minus three or 20 octets to be precise.
+
+See https://developer.nordicsemi.com/nRF5_SDK/nRF51_SDK_v8.x.x/doc/8.0.0/s110/html/a00072.html for the original Nordic Semiconductor documentation by way of background.
+
+Note: This service was added after micro:bits initially shipped to school and so is not in the default image. |
 
 
 Known issue: the firmware on micro:bits shipped initially to schools contains the full Bluetooth profile. Once the software has been changed by flashing an application created using any of the on-line code editors however, all services are lost except for Device Information Service, Event Service and DFU Control Service. If you need other services you must restore your micro:bit to its original state by installing the [default hex file](../resources/BBC_MICROBIT_OOB_FINAL.zip) or better still [this hex file](../resources/microbit-1_4_17_pwr0.zip) which does not use the display so you can use it over Bluetooth instead.
 
-The following sections elaborate on the description of a service and/or its characteristics. For full details see the [micro:bit Bluetooth profile specification](../resources/bluetooth/microbit-profile-V1.7-Level-2.pdf)
+The following sections elaborate on the description of a service and/or its characteristics. For full details see the [micro:bit Bluetooth profile specification](../resources/bluetooth/microbit-profile-V1.9-Level-2.pdf)
 
 ### About the Device Information Service
 
@@ -201,6 +216,22 @@ Allows clients to initiate the micro:bit pairing and over the air firmware updat
 #### Characteristics
 
 **DFU Control** : Writing 0x01 initiates rebooting the micro:bit into the Nordic Semiconductor bootloader if the DFU Flash Code characteristic has been written to with the correct secret key. Writing 0x02 to this charactertistic  means "request flash code".
+
+### About the UART Service
+
+Provides a pseudo serial interface to the micro:bit for the exchange of arbitrary sequences of bytes. A maximum of 20 octets (MTU of 23 minus 3) can be transmitted in a single operation but a series of operations can be executed to affect something like serial data communications.
+
+This is an implementation of the Nordic Semiconductor UART service:
+
+https://developer.nordicsemi.com/nRF5_SDK/nRF51_SDK_v8.x.x/doc/8.0.0/s110/html/a00072.html 
+
+
+#### Characteristics
+
+**TX Characteristic**: Allows the micro:bit to transmit a byte array containing an arbitrary number of arbitrary octet values to a connected device. Uses Indications for this purpose.
+
+**RX Characteristic**: Allows a connected client to send a byte array containing an arbitrary number of arbitrary octet values to a connected micro:bit using with Write Requests or Write Commands.
+
 
 ## Using the Bluetooth Profile
 
