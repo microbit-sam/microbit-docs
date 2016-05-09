@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
 
-	<title>MagnetometerService - micro:bit runtime</title>
+	<title>UARTService - micro:bit runtime</title>
 
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -284,8 +284,8 @@
 
                     
                         
-<li class="active">
-    <a href="./">MagnetometerService</a>
+<li >
+    <a href="../magnetometer-service/">MagnetometerService</a>
 </li>
 
                     
@@ -296,8 +296,8 @@
 
                     
                         
-<li >
-    <a href="../uart-service/">UARTService</a>
+<li class="active">
+    <a href="./">UARTService</a>
 </li>
 
                     
@@ -357,12 +357,12 @@
                     </a>
                 </li>
                 <li >
-                    <a rel="next" href="../led-service/">
+                    <a rel="next" href="../temperature-service/">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../temperature-service/">
+                    <a rel="prev" href="../../extras/light-sensing/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -385,13 +385,15 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#bluetooth-magnetometer-service">Bluetooth Magnetometer Service</a></li>
+        <li class="main active"><a href="#bluetooth-uart-service">Bluetooth UART Service</a></li>
         
             <li><a href="#introduction">Introduction</a></li>
         
-            <li><a href="#enabling-the-service">Enabling the Service</a></li>
+            <li><a href="#enabling-and-using-the-service">Enabling and Using the Service</a></li>
         
             <li><a href="#bluetooth-service-specification">Bluetooth Service Specification</a></li>
+        
+            <li><a href="#example-microbit-application-animal-vegetable-mineral-game">Example micro:bit application - Animal Vegetable Mineral game</a></li>
         
             <li><a href="#example-applications-for-androidiosandroid">Example Applications for Android/IOS/Android</a></li>
         
@@ -400,12 +402,13 @@
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="bluetooth-magnetometer-service">Bluetooth Magnetometer Service<a class="headerlink" href="#bluetooth-magnetometer-service" title="Permanent link">&para;</a></h1>
+<h1 id="bluetooth-uart-service">Bluetooth UART Service<a class="headerlink" href="#bluetooth-uart-service" title="Permanent link">&para;</a></h1>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
-<p>This Bluetooth Low Energy (BLE) service is an optional part of the standard bluetooth profile for the micro:bit. It is a passive service, that can operate transparently in the background as your main program is running. It provides live electronic compass / magnetometer data to a connected Bluetooth master device such as a smartphone. You do not need to explicity address an API on the service to achieve this.</p>
-<h2 id="enabling-the-service">Enabling the Service<a class="headerlink" href="#enabling-the-service" title="Permanent link">&para;</a></h2>
-<p>This service is disabled by default. To enable the service, simply create an instance of this class in your program, at any time after the uBit object has been initialised:</p>
-<pre><code class="cpp">    new MicroBitMagnetometerService(*uBit.ble, uBit.compass);    
+<p>This Bluetooth Low Energy (BLE) service is an optional part of the standard bluetooth profile for the micro:bit. It is a passive service, that can operate transparently in the background as your main program is running. It provides a form of serial data communications capability over Bluetooth low energy and can be used to exchange arbitrary sequences of bytes in either direction between micro:bit and connected peer.</p>
+<h2 id="enabling-and-using-the-service">Enabling and Using the Service<a class="headerlink" href="#enabling-and-using-the-service" title="Permanent link">&para;</a></h2>
+<p>This service is disabled by default. To enable the service, create an instance of this class in your program at any time after the uBit object has been initialised. Send data from the micro:bit to the connected peer at any time using one of the send methods of the MicroBitUARTService class. To receive data from the connected peer use one of several methods such as readUntil which blocks until a specified delimiter value is received and then returns all previous octets in the receive buffer. Consult the API for details.</p>
+<p>Note that it may make sense to coordinate use of the UART service with the state of the Bluetooth connection, only reading or sending serial data when there is an active Bluetooth connection. Two micro:bit message bus events are provided for this purpose. A full example appears below.</p>
+<pre><code class="cpp">MicroBitUARTService *uart;   
 </code></pre>
 
 <div class="admonition note">
@@ -414,94 +417,175 @@
 </div>
 <h2 id="bluetooth-service-specification">Bluetooth Service Specification<a class="headerlink" href="#bluetooth-service-specification" title="Permanent link">&para;</a></h2>
 <p>Please see the <a href="../../resources/bluetooth/microbit-profile-V1.9-Level-2.pdf">micro:bit Bluetooth profile specification</a>.</p>
+<h2 id="example-microbit-application-animal-vegetable-mineral-game">Example micro:bit application - Animal Vegetable Mineral game<a class="headerlink" href="#example-microbit-application-animal-vegetable-mineral-game" title="Permanent link">&para;</a></h2>
+<pre><code class="cpp">#include &quot;MicroBit.h&quot;
+#include &quot;MicroBitSamples.h&quot;
+#include &quot;MicroBitUARTService.h&quot;
+MicroBit uBit;
+MicroBitUARTService *uart;
+
+int connected = 0;
+
+void onConnected(MicroBitEvent e)
+{
+    uBit.display.scroll(&quot;C&quot;);
+
+    connected = 1;
+
+    // my client will send ASCII strings terminated with the colon character
+    ManagedString eom(&quot;:&quot;);
+
+    while(1) {
+        ManagedString msg = uart-&gt;readUntil(eom);
+        uBit.display.scroll(msg);
+    }
+
+}
+
+void onDisconnected(MicroBitEvent e)
+{
+    uBit.display.scroll(&quot;D&quot;);
+    connected = 0;
+}
+
+void onButtonA(MicroBitEvent e)
+{
+    if (connected == 0) {
+        uBit.display.scroll(&quot;NC&quot;);
+        return;
+    }
+    uart-&gt;send(&quot;YES&quot;);
+    uBit.display.scroll(&quot;YES&quot;);
+}
+
+void onButtonB(MicroBitEvent e)
+{
+    if (connected == 0) {
+        uBit.display.scroll(&quot;NC&quot;);
+        return;
+    }
+    uart-&gt;send(&quot;NO&quot;);
+    uBit.display.scroll(&quot;NO&quot;);
+}
+
+void onButtonAB(MicroBitEvent e)
+{
+    if (connected == 0) {
+        uBit.display.scroll(&quot;NC&quot;);
+        return;
+    }
+    uart-&gt;send(&quot;GOT IT!!&quot;);
+    uBit.display.scroll(&quot;GOT IT!!&quot;);
+}
+
+/*
+Recommend disabling the DFU and Event services in MicroBitConfig.h since they are not needed here:
+
+#ifndef MICROBIT_BLE_DFU_SERVICE
+#define MICROBIT_BLE_DFU_SERVICE                0
+#endif
+
+#ifndef MICROBIT_BLE_EVENT_SERVICE
+#define MICROBIT_BLE_EVENT_SERVICE              0
+#endif
+*/
+
+int main()
+{
+    // Initialise the micro:bit runtime.
+    uBit.init();
+
+    // listen for Bluetooth connection state changes
+    uBit.messageBus.listen(MICROBIT_ID_BLE, MICROBIT_BLE_EVT_CONNECTED, onConnected);
+    uBit.messageBus.listen(MICROBIT_ID_BLE, MICROBIT_BLE_EVT_DISCONNECTED, onDisconnected);
+
+    // listen for user button interactions
+    uBit.messageBus.listen(MICROBIT_ID_BUTTON_A, MICROBIT_BUTTON_EVT_CLICK, onButtonA);
+    uBit.messageBus.listen(MICROBIT_ID_BUTTON_B, MICROBIT_BUTTON_EVT_CLICK, onButtonB);
+    uBit.messageBus.listen(MICROBIT_ID_BUTTON_AB, MICROBIT_BUTTON_EVT_CLICK, onButtonAB);
+
+
+    // Note GATT table size increased from default in MicroBitConfig.h
+    // #define MICROBIT_SD_GATT_TABLE_SIZE             0x500
+    uart = new MicroBitUARTService(*uBit.ble, 32, 32); 
+    uBit.display.scroll(&quot;AVM&quot;);
+
+    // If main exits, there may still be other fibers running or registered event handlers etc.
+    // Simply release this fiber, which will mean we enter the scheduler. Worse case, we then
+    // sit in the idle task forever, in a power efficient sleep.
+    release_fiber();
+}
+</code></pre>
+
+<p><strong>Known Issue</strong> In the onConnected event handler method, the call to ManagedString msg = uart-&gt;readUntil(eom); blocks until the specified end of message character is received. This prevents the event handler from exiting. Under normal circumstances this is fine. If however the connected application loses its connection and then reconnects, the onConnected method will not execute and therefore the 'connected' variable which tracks the Bluetooth connection state will not update. The micro:bit application will now behave as though it is not in a connection and therefore functions such as sending text by pressing a button will not work. In this situation the user should simply reset their micro:bit and reconnect their smartphone application. An API which allows serial reads to unblock or perhaps threads to be terminated is under consideration for a future release of the micro:bit runtime.  </p>
 <h2 id="example-applications-for-androidiosandroid">Example Applications for Android/IOS/Android<a class="headerlink" href="#example-applications-for-androidiosandroid" title="Permanent link">&para;</a></h2>
 <h3 id="general-procedures">General Procedures<a class="headerlink" href="#general-procedures" title="Permanent link">&para;</a></h3>
-<p>micro:bit includes a magnetometer or "digital compass". The Bluetooth profile gives access to magnetometer data via the Magnetometer Service which includes 3 characteristics. Magnetometer Period controls the frequency with which magnetometer data is reported over Bluetooth. Magnetometer Bearing can deliver compass bearing measurements in degrees from North as Bluetooth notifications. Similarly, Magnetometer Data supports notifications and can deliver "raw" X, Y, Z values which describe the current bearing as a 3D vector. </p>
-<ul>
-<li>X is the magnetic field strength in the direction of magnetic north</li>
-<li>Y is the magnetic field strength in the direction of magnetic east i.e. 90 degrees from magnetic north</li>
-<li>Z is the magnetic field strength vertically down </li>
-</ul>
-<p>From the X, Y and Z vector values it's possible to calculate the direction of magnetic north and its strength in micro-Teslas.</p>
-<p>See the profile page and profile reference documentation for data format and UUID details.</p>
+<p>A connected peer such as a smartphone application can transmit data to the micro:bit, up to a maximum of 20 octets at a time by writing to the RX Characteristic. Either of the Write Request or Write Command (i.e. write with no response) PDUs may be used by the client. </p>
+<p>See the profile page and profile reference documentation UUID details.</p>
 <h3 id="android">Android<a class="headerlink" href="#android" title="Permanent link">&para;</a></h3>
-<p><img src="../../resources/bluetooth/magnetometer_icon.png" alt="LED Demo"></p>
+<p><img src="../../resources/bluetooth/uart_demo.png" alt="UART Demo"></p>
 <h4 id="android-bluetooth-apis">Android Bluetooth APIs<a class="headerlink" href="#android-bluetooth-apis" title="Permanent link">&para;</a></h4>
 <p>Android developers should make themselves familiar with the <a href="http://developer.android.com/guide/topics/connectivity/bluetooth-le.html">Android Bluetooth low energy APIs</a></p>
 <h4 id="microbit-ble-demo-android">microbit-ble-demo-android<a class="headerlink" href="#microbit-ble-demo-android" title="Permanent link">&para;</a></h4>
-<p>The open source microbit-ble-demo-android application contains a demonstration of the micro:bit Bluetooth Magnetometer service. The main body of code for this demonstration can be found in ui.MagnetometerActivity.java except for the Bluetooth operations themselves which are in bluetooth.BleAdapterService which acts as a kind of higher level Bluetooth API for activities to use without needing to directly concern themselves too closely with the Android APIs themselves. In most cases, operations are asynchronous so that the activity code initiates a Bluetooth operation by calling one of the methods in bluetooth.BleAdapterService (e.g. readCharacteristic(....) ) and later receives a message containing the result of the operation from this object via a Handler object. The message is examined in the Handler code and acted upon.</p>
+<p>The open source microbit-ble-demo-android application contains a demonstration of the micro:bit Bluetooth UART service in the form of a guessing game called Animal Vegetable Mineral. The main body of code for this demonstration can be found in ui.UartAvmActivity.java except for the Bluetooth operations themselves which are in bluetooth.BleAdapterService which acts as a kind of higher level Bluetooth API for activities to use without needing to directly concern themselves too closely with the Android APIs themselves. In most cases, operations are asynchronous so that the activity code initiates a Bluetooth operation by calling one of the methods in bluetooth.BleAdapterService (e.g. readCharacteristic(....) ) and later receives a message containing the result of the operation from this object via a Handler object. The message is examined in the Handler code and acted upon.</p>
 <p>Key parts of the magnetometer demonstration in this application are explained next.</p>
 <h4 id="in-bluetoothbleadapterservice">In bluetooth.BleAdapterService<a class="headerlink" href="#in-bluetoothbleadapterservice" title="Permanent link">&para;</a></h4>
-<pre><code class="java">public static String MAGNETOMETERSERVICE_SERVICE_UUID = &quot;E95DF2D8251D470AA062FA1922DFA9A8&quot;;
-public static String MAGNETOMETERDATA_CHARACTERISTIC_UUID = &quot;E95DFB11251D470AA062FA1922DFA9A8&quot;;
-public static String MAGNETOMETERPERIOD_CHARACTERISTIC_UUID = &quot;E95D386C251D470AA062FA1922DFA9A8&quot;;
-public static String MAGNETOMETERBEARING_CHARACTERISTIC_UUID = &quot;E95D9715251D470AA062FA1922DFA9A8&quot;;
+<pre><code class="java">public static String UARTSERVICE_SERVICE_UUID = &quot;6E400001B5A3F393E0A9E50E24DCCA9E&quot;;
+public static String UART_RX_CHARACTERISTIC_UUID = &quot;6E400002B5A3F393E0A9E50E24DCCA9E&quot;;
+public static String UART_TX_CHARACTERISTIC_UUID = &quot;6E400003B5A3F393E0A9E50E24DCCA9E&quot;;
 </code></pre>
 
-<h4 id="in-uimagnetometeractivity">In ui.MagnetometerActivity<a class="headerlink" href="#in-uimagnetometeractivity" title="Permanent link">&para;</a></h4>
-<pre><code class="java">// enabling notifications on the Magnetometer Bearing characteristic
-bluetooth_le_adapter.setNotificationsState(
-                    Utility.normaliseUUID(BleAdapterService.MAGNETOMETERSERVICE_SERVICE_UUID), 
-                    Utility.normaliseUUID(BleAdapterService.MAGNETOMETERBEARING_CHARACTERISTIC_UUID), true)
-
-// enabling notifications on the Magnetometer Data characteristic
-bluetooth_le_adapter.setNotificationsState(
-                    Utility.normaliseUUID(BleAdapterService.MAGNETOMETERSERVICE_SERVICE_UUID), 
-                    Utility.normaliseUUID(BleAdapterService.MAGNETOMETERDATA_CHARACTERISTIC_UUID), true)                    
+<h4 id="in-uiuartavmactivity">In ui.UartAvmActivity<a class="headerlink" href="#in-uiuartavmactivity" title="Permanent link">&para;</a></h4>
+<pre><code class="java">// enabling indications on the UART TX characteristic
+if (bluetooth_le_adapter.setIndicationsState(Utility.normaliseUUID(BleAdapterService.UARTSERVICE_SERVICE_UUID), Utility.normaliseUUID(BleAdapterService.UART_TX_CHARACTERISTIC_UUID), true)) {
+    showMsg(Utility.htmlColorGreen(&quot;UART TX indications ON&quot;));
+} else {
+    showMsg(Utility.htmlColorRed(&quot;Failed to set UART TX indications ON&quot;));
+}
 </code></pre>
 
-<pre><code class="java">// handling notifications
-case BleAdapterService.NOTIFICATION_RECEIVED:
+<pre><code class="java">// handling indications
+case BleAdapterService.NOTIFICATION_OR_INDICATION_RECEIVED:
     bundle = msg.getData();
     service_uuid = bundle.getString(BleAdapterService.PARCEL_SERVICE_UUID);
     characteristic_uuid = bundle.getString(BleAdapterService.PARCEL_CHARACTERISTIC_UUID);
     b = bundle.getByteArray(BleAdapterService.PARCEL_VALUE);
-    Log.d(Constants.TAG, &quot;Value=&quot; + Utility.byteArrayAsHexString(b));
-    if (characteristic_uuid.equalsIgnoreCase((Utility.normaliseUUID(BleAdapterService.MAGNETOMETERDATA_CHARACTERISTIC_UUID)))) {
-        byte[] x_bytes = new byte[2];
-        byte[] y_bytes = new byte[2];
-        byte[] z_bytes = new byte[2];
-        System.arraycopy(b, 0, x_bytes, 0, 2);
-        System.arraycopy(b, 2, y_bytes, 0, 2);
-        System.arraycopy(b, 4, z_bytes, 0, 2);
-        short raw_x = Utility.shortFromLittleEndianBytes(x_bytes);
-        short raw_y = Utility.shortFromLittleEndianBytes(y_bytes);
-        short raw_z = Utility.shortFromLittleEndianBytes(z_bytes);
-        Log.d(Constants.TAG, &quot;Magnetometer Data received: x=&quot; + raw_x + &quot; y=&quot; + raw_y + &quot; z=&quot; + raw_z);
-
-        float magnet_x = raw_x / 1000f;
-        float magnet_y = raw_y / 1000f;
-        float magnet_z = raw_z / 1000f;
-        Log.d(Constants.TAG, &quot;magnetometer data converted: x=&quot; + magnet_x + &quot; y=&quot; + magnet_y + &quot; z=&quot; + magnet_z);
-
-        magnet_input[0] = magnet_x;
-        magnet_input[1] = magnet_y;
-        magnet_input[2] = magnet_z;
-        magnet_output = Utility.lowPass(magnet_input, magnet_output);
-        Log.d(Constants.TAG, &quot;Smoothed magnetometer data: x=&quot; + magnet_output[0] + &quot; y=&quot; + magnet_output[1] + &quot; z=&quot; + magnet_output[2]);
-
-        ((TextView) MagnetometerActivity.this.findViewById(R.id.magnet_x)).setText(&quot;X: &quot; + String.format(&quot;%.3f&quot;, magnet_output[0]));
-        ((TextView) MagnetometerActivity.this.findViewById(R.id.magnet_y)).setText(&quot;Y: &quot; + String.format(&quot;%.3f&quot;, magnet_output[1]));
-        ((TextView) MagnetometerActivity.this.findViewById(R.id.magnet_z)).setText(&quot;Z: &quot; + String.format(&quot;%.3f&quot;, magnet_output[2]));
-
-    } else {
-        if (characteristic_uuid.equalsIgnoreCase((Utility.normaliseUUID(BleAdapterService.MAGNETOMETERBEARING_CHARACTERISTIC_UUID)))) {
-            byte[] bearing_bytes = new byte[2];
-            System.arraycopy(b, 0, bearing_bytes, 0, 2);
-            short bearing = Utility.shortFromLittleEndianBytes(bearing_bytes);
-            Log.d(Constants.TAG, &quot;Magnetometer Bearing received: &quot; + bearing);
-            ((TextView) MagnetometerActivity.this.findViewById(R.id.bearing)).setText(bearing + &quot; degrees&quot;);
-            current_bearing = bearing;
-            String point_name = compassPoint(current_bearing);
-            Log.d(Constants.TAG, &quot;Point Name: &quot; + point_name);
-            ((TextView) MagnetometerActivity.this.findViewById(R.id.compass_point)).setText(point_name);
+    if (characteristic_uuid.equalsIgnoreCase((Utility.normaliseUUID(BleAdapterService.UART_TX_CHARACTERISTIC_UUID)))) {
+        String ascii=&quot;&quot;;
+        try {
+            ascii = new String(b,&quot;US-ASCII&quot;);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            showMsg(Utility.htmlColorGreen(&quot;Could not convert TX data to ASCII&quot;));
+            return;
+        }
+        if (!ascii.equals(Constants.AVM_CORRECT_RESPONSE)) {
+            showAnswer(ascii);
+        } else {
+            showAnswer(ascii+&quot; You only needed &quot;+guess_count+&quot; guesses!&quot;);
         }
     }
-    break;
+    break; 
+</code></pre>
+
+<pre><code class="java">// sending data to the micro:bit by writing to the RX Characteristic
+public void onSendText(View view) {
+    EditText text = (EditText) UartAvmActivity.this.findViewById(R.id.avm_question_text);
+    try {
+        String question = text.getText().toString() + &quot;:&quot;;
+        byte[] ascii_bytes = question.getBytes(&quot;US-ASCII&quot;);
+        bluetooth_le_adapter.writeCharacteristic(Utility.normaliseUUID(BleAdapterService.UARTSERVICE_SERVICE_UUID), Utility.normaliseUUID(BleAdapterService.UART_RX_CHARACTERISTIC_UUID), ascii_bytes);
+        guess_count++;
+        showGuessCount();
+    } catch (UnsupportedEncodingException e) {
+        e.printStackTrace();
+        showMsg(&quot;Unable to convert text to ASCII bytes&quot;);
+    }
+}
 </code></pre>
 
 <h4 id="video-demonstration">Video Demonstration<a class="headerlink" href="#video-demonstration" title="Permanent link">&para;</a></h4>
-<iframe src="https://player.vimeo.com/video/162990270" width="750" height="422" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>
+<iframe src="https://player.vimeo.com/video/164622668" width="750" height="422" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>
         </div>
 
         <footer class="col-md-12">

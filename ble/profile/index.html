@@ -295,6 +295,12 @@
 </li>
 
                     
+                        
+<li >
+    <a href="../uart-service/">UARTService</a>
+</li>
+
+                    
                     </ul>
                 </li>
             
@@ -433,6 +439,10 @@
 <p>White listing allows paired devices only to connect to and interact with the micro:bit. Attempts to connect from devices not in the white list are ignored by the Bluetooth Link Layer.</p>
 <h3 id="advertising">Advertising<a class="headerlink" href="#advertising" title="Permanent link">&para;</a></h3>
 <p>The micro:bit will advertise if in "pairing mode" or if it has been previously paired/bonded in which case it will advertise but a white list will be active and connections will only be accepted from previously paired devices. See below for more information on pairing.</p>
+<p>In pairing mode the micro:bit will advertise with flags set indicating it is discoverable (LE General Discoverable Mode) as showing here:</p>
+<p><img src="../../resources/bluetooth/adv_pairing_mode.png" alt="Advertising in Pairing Mode"></p>
+<p>In “normal mode” (i.e. not pairing mode) advertsing packets have neither the LE Limited Discoverable mode or the LE General Discoverable Mode flags set and so in this situation may not be listed in the “available Bluetooth devices” screen of some smartphones which have not paired with the micro:bit. This is by design.</p>
+<p><img src="../../resources/bluetooth/adv_normal_mode.png" alt="Advertising in Normal Mode"></p>
 <h3 id="pairing">Pairing<a class="headerlink" href="#pairing" title="Permanent link">&para;</a></h3>
 <p>To interact with any service on the micro:bit the peer device must first be paired/bonded with it.</p>
 <iframe src="https://player.vimeo.com/video/161609551" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
@@ -443,7 +453,7 @@
 <p>Next, initiate pairing on the peer device. On Android for example, go into Settings/Bluetooth and allow the system to scan for and discover the advertising micro:bit. Select it and pairing will commence. The micro:bit will indicate it's ready to pair by displaying an arrow which points left towards button A. Press button A and a 6 digit number will be displayed on the micro:bit, one digit at a time. The peer device should now allow you to enter the 6 digit pass key. Do so and if the correct number was entered into the peer, micro:bit will display a tick/check to indicate pairing was achieved.</p>
 <p>A maximum of 4 devices may be paired with a micro:bit simultaneously (note though that only one paired device may connect to the micro:bit at a time).</p>
 <h2 id="reference-documentation">Reference Documentation<a class="headerlink" href="#reference-documentation" title="Permanent link">&para;</a></h2>
-<p>Details of the micro:bit's Bluetooth services, characteristics, the operations they each support and any associated descriptors along with UUID values can be found in the associated <a href="../../resources/bluetooth/microbit-profile-V1.7-Level-2.pdf">micro:bit Bluetooth profile specification</a></p>
+<p>Details of the micro:bit's Bluetooth services, characteristics, the operations they each support and any associated descriptors along with UUID values can be found in the associated <a href="../../resources/bluetooth/microbit-profile-V1.9-Level-2.pdf">micro:bit Bluetooth profile specification</a></p>
 <p>A simplified overview appears below.</p>
 <h2 id="gatt-services">GATT Services<a class="headerlink" href="#gatt-services" title="Permanent link">&para;</a></h2>
 <table>
@@ -522,10 +532,19 @@
 <td>mandatory</td>
 <td>Used to initiate device firmware update. Defined by Nordic Semiconductor.</td>
 </tr>
+<tr>
+<td>UART Service</td>
+<td>Custom</td>
+<td>optional</td>
+<td>Provides pseudo serial data communications over Bluetooth low energy, allowing arbitrary byte sequences to be exchanged in either direction with a connected peer. Data from micro:bit to peer is transmitted using Bluetooth Indications. Data from the peer to the micro:bit is transmitted using Write or Write No Response PDUs. This is an implementation of Nordic Semicondutor's UART/Serial Port Emulation over Bluetooth low energy.</td>
+</tr>
 </tbody>
 </table>
+<p>The maximum number of bytes which may be transmitted in one PDU is limited to the MTU minus three or 20 octets to be precise.</p>
+<p>See https://developer.nordicsemi.com/nRF5_SDK/nRF51_SDK_v8.x.x/doc/8.0.0/s110/html/a00072.html for the original Nordic Semiconductor documentation by way of background.</p>
+<p>Note: This service was added after micro:bits initially shipped to school and so is not in the default image. |</p>
 <p>Known issue: the firmware on micro:bits shipped initially to schools contains the full Bluetooth profile. Once the software has been changed by flashing an application created using any of the on-line code editors however, all services are lost except for Device Information Service, Event Service and DFU Control Service. If you need other services you must restore your micro:bit to its original state by installing the <a href="../../resources/BBC_MICROBIT_OOB_FINAL.zip">default hex file</a> or better still <a href="../../resources/microbit-1_4_17_pwr0.zip">this hex file</a> which does not use the display so you can use it over Bluetooth instead.</p>
-<p>The following sections elaborate on the description of a service and/or its characteristics. For full details see the <a href="../../resources/bluetooth/microbit-profile-V1.7-Level-2.pdf">micro:bit Bluetooth profile specification</a></p>
+<p>The following sections elaborate on the description of a service and/or its characteristics. For full details see the <a href="../../resources/bluetooth/microbit-profile-V1.9-Level-2.pdf">micro:bit Bluetooth profile specification</a></p>
 <h3 id="about-the-device-information-service">About the Device Information Service<a class="headerlink" href="#about-the-device-information-service" title="Permanent link">&para;</a></h3>
 <p>This is an adopted service which defines 9 characteristics, all of which are optional members of of the service. For micro:bit we chose to include 3 of those characteristics only.</p>
 <p>See <a href="https://developer.bluetooth.org/gatt/services/Pages/ServiceViewer.aspx?u=org.bluetooth.service.device_information.xml">https://developer.bluetooth.org/gatt/services/Pages/ServiceViewer.aspx?u=org.bluetooth.service.device_information.xml</a></p>
@@ -588,6 +607,13 @@
 <p>Allows clients to initiate the micro:bit pairing and over the air firmware update procedures. Firmware updates are actually handled by the Nordic Semiconductor DFU service which is not part of this profile, after the micro:bit enters an alternate bootloader.</p>
 <h4 id="characteristics_5">Characteristics<a class="headerlink" href="#characteristics_5" title="Permanent link">&para;</a></h4>
 <p><strong>DFU Control</strong> : Writing 0x01 initiates rebooting the micro:bit into the Nordic Semiconductor bootloader if the DFU Flash Code characteristic has been written to with the correct secret key. Writing 0x02 to this charactertistic  means "request flash code".</p>
+<h3 id="about-the-uart-service">About the UART Service<a class="headerlink" href="#about-the-uart-service" title="Permanent link">&para;</a></h3>
+<p>Provides a pseudo serial interface to the micro:bit for the exchange of arbitrary sequences of bytes. A maximum of 20 octets (MTU of 23 minus 3) can be transmitted in a single operation but a series of operations can be executed to affect something like serial data communications.</p>
+<p>This is an implementation of the Nordic Semiconductor UART service:</p>
+<p>https://developer.nordicsemi.com/nRF5_SDK/nRF51_SDK_v8.x.x/doc/8.0.0/s110/html/a00072.html </p>
+<h4 id="characteristics_6">Characteristics<a class="headerlink" href="#characteristics_6" title="Permanent link">&para;</a></h4>
+<p><strong>TX Characteristic</strong>: Allows the micro:bit to transmit a byte array containing an arbitrary number of arbitrary octet values to a connected device. Uses Indications for this purpose.</p>
+<p><strong>RX Characteristic</strong>: Allows a connected client to send a byte array containing an arbitrary number of arbitrary octet values to a connected micro:bit using with Write Requests or Write Commands.</p>
 <h2 id="using-the-bluetooth-profile">Using the Bluetooth Profile<a class="headerlink" href="#using-the-bluetooth-profile" title="Permanent link">&para;</a></h2>
 <p>Click on the Bluetooth menu and then select one of the Bluetooth services for a page of information dedicated to that service including information for application developers.</p>
 <p>Martin Woolley's personal blog contains a series of micro:bit Bluetooth demonstration videos. See <a href="http://bluetooth-mdw.blogspot.co.uk/p/bbc-microbit.html">http://bluetooth-mdw.blogspot.co.uk/p/bbc-microbit.html</a></p>
