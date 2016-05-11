@@ -396,7 +396,7 @@ The roll of the device, in radians.
 ```
 ##getGesture
 <br/>
-####<div style='color:#a71d5d; display:inline-block'>BasicGesture</div> <div style='color:#795da3; display:inline-block'>getGesture</div>()
+####<div style='color:#a71d5d; display:inline-block'>uint16_t</div> <div style='color:#795da3; display:inline-block'>getGesture</div>()
 #####Description
 Retrieves the last recorded gesture.  
 
@@ -412,14 +412,5 @@ The last gesture that was detected.
  if (accelerometer.getGesture() == SHAKE) 
  display.scroll("SHAKE!"); 
 ```
-##isIdleCallbackNeeded
-<br/>
-####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>isIdleCallbackNeeded</div>()
-#####Description
-Returns 0 or 1. 1 indicates data is waiting to be read, zero means data is not ready to be read.  
-
- We check if any data is ready for reading by checking the interrupt flag on the accelerometer.           
-
-
 ____
 [comment]: <> ({"end":"MicroBitAccelerometer"})

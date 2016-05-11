@@ -622,12 +622,5 @@ Returns 0 or 1. 1 indicates that the compass is calibrating, zero means the comp
 Clears the calibration held in persistent storage, and sets the calibrated flag to zero.           
 
 
-##isIdleCallbackNeeded
-<br/>
-####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>isIdleCallbackNeeded</div>()
-#####Description
-Returns 0 or 1. 1 indicates data is waiting to be read, zero means data is not ready to be read.           
-
-
 ____
 [comment]: <> ({"end":"MicroBitCompass"})
