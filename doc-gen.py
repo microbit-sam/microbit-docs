@@ -101,8 +101,10 @@ def find_files(directory, pattern):
 def clean_dir(dir):
     for root, dirs, files in os.walk(dir):
         for f in files:
-            os.unlink(os.path.join(root, f))
+            print "removing " + f
+            os.remove(os.path.join(root, f))
         for d in dirs:
+            print "removing " + d
             shutil.rmtree(os.path.join(root, d))
 
 ###
@@ -255,7 +257,8 @@ def extract_member_function(root, xml_element):
         'description':[],
         'returns':"",
         'notes':"",
-        'examples':""
+        'examples':"",
+        'simulator':""
     }
 
     function['name'] = xml_element.find('definition').text
@@ -303,7 +306,7 @@ def extract_member_function(root, xml_element):
 
     if len(detailed_description.findall("para")) is not 0:
         for para in detailed_description.findall("para"):
-            if len(para.findall("programlisting")) is 0 and len(para.findall("simplesect")) is 0:
+            if len(para.findall("programlisting")) is 0 and len(para.findall("simplesect")) is 0 and len(para.findall("simulator")) is 0:
                 function['description'] = function['description'] + extract_with_subelements(para)
 
             #para indicates a new paragraph - we should treat it as such... append \n!
@@ -318,6 +321,10 @@ def extract_member_function(root, xml_element):
          function['notes'] =  ' '.join(return_section.itertext())
 
     examples = detailed_description.find('para/programlisting')
+    simulator = detailed_description.find('para/simulator')
+
+    if simulator is not None:
+        function['simulator'] = simulator.text
 
     if examples is not None:
          function['examples'] = ''.join([('' if index is 0 else ' ')+word for index, word in enumerate(examples.itertext(),1) ])
@@ -437,7 +444,8 @@ def derive_functions(member_func):
             'returns' : member_func['returns'],
             'notes' : member_func['notes'],
             'examples' : member_func['examples'],
-            'return_type' : member_func['return_type'],
+            'simulator' : member_func['simulator'],
+            'return_type' : member_func['return_type']
         }
 
         for i in range(0, param_index):
@@ -588,6 +596,14 @@ def gen_member_func_doc(class_name, member_functions):
                 lines.append("#####Example\n")
                 lines.append("```cpp\n")
                 lines.append(derived_func['examples'])
+                lines.append("```\n")
+            #-----------------------------
+
+            #---- simulator ----
+            if len(derived_func['simulator']) is not 0:
+                lines.append("#####Simulation\n")
+                lines.append("```sim\n")
+                lines.append(derived_func['simulator'])
                 lines.append("```\n")
             #-----------------------------
 

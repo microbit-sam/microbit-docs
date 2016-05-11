@@ -422,6 +422,8 @@ Prints the given character to the display.
 
  
 
+ 
+
 
 #####Parameters
 
@@ -433,10 +435,17 @@ MICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.
  display.printAsync('p'); 
  display.printAsync('p',100); 
 ```
+#####Simulation
+```sim
+
+basic.showString('H')
+```
 <br/>
 ####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>printChar</div>( <div style='color:#a71d5d; display:inline-block'>char</div> c,  <div style='color:#a71d5d; display:inline-block'>int</div> delay)
 #####Description
 Prints the given character to the display.  
+
+ 
 
  
 
@@ -452,6 +461,11 @@ MICROBIT_OK, MICROBIT_CANCELLED or MICROBIT_INVALID_PARAMETER.
 ```cpp
  display.printAsync('p'); 
  display.printAsync('p',100); 
+```
+#####Simulation
+```sim
+
+basic.showString('H')
 ```
 ##print
 <br/>

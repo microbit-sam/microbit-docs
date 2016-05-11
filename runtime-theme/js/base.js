@@ -14,6 +14,9 @@ function getSearchTerm()
 }
 
 $(document).ready(function() {
+    console.log(base_url+"/js/jquery-1.10.2.min.js")
+    require([base_url+"/js/jquery-1.10.2.min.js", "https://m.pxt.io/--embed"],renderSnippets);
+
     var search_term = getSearchTerm(),
         $search_modal = $('#mkdocs_search_modal');
 
@@ -30,9 +33,33 @@ $(document).ready(function() {
 });
 
 
+function renderSnippets() {
+    var path = window.location.href.split('/').pop().split(/[?#]/)[0];
+    console.log(path)
+    ksRunnerReady(function() {
+        pxt.runner.renderAsync({
+            snippetClass: 'lang-blocks',
+            signatureClass: 'lang-sig',
+            blocksClass:'lang-block',
+            shuffleClass: 'lang-shuffle',
+            simulatorClass: 'lang-sim',
+            linksClass: 'lang-cards',
+            namespacesClass: 'lang-namespaces',
+            codeCardClass: 'lang-codecard',
+            snippetReplaceParent: true,
+            simulator: true,
+            hex: true,
+            hexName: path
+        }).done();
+    });
+}
+
 /* Highlight */
 $( document ).ready(function() {
+
+    hljs.configure({ languages: ["cpp"] });
     hljs.initHighlightingOnLoad();
+
     $('table').addClass('table table-striped table-hover');
 
     if(window.location.pathname.indexOf("online-toolchains") > 0){
