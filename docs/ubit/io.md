@@ -383,7 +383,7 @@ Configures the pull of this pin.
 
 #####Parameters
 
->  <div style='color:#a71d5d; display:inline-block'>PinMode</div> pull - one of the mbed pull configurations: PullUp, PullDown, PullNone, OpenDrain
+>  <div style='color:#a71d5d; display:inline-block'>PinMode</div> pull - one of the mbed pull configurations: PullUp, PullDown, PullNone
 #####Returns
 MICROBIT_NOT_SUPPORTED if the current pin configuration is anything other than a digital input, otherwise MICROBIT_OK. 
 ##eventOn
