@@ -412,8 +412,6 @@
         
             <li><a href="#substring">substring</a></li>
         
-            <li><a href="#operator_4">operator+</a></li>
-        
             <li><a href="#charat">charAt</a></li>
         
             <li><a href="#tochararray">toCharArray</a></li>
@@ -693,37 +691,18 @@ uBit.display.scroll(b.getRSSI());
  display.scroll(s.substring(0,2)) // displays &quot;ab&quot; 
 </code></pre>
 
-<h2 id="operator_4">operator+<a class="headerlink" href="#operator_4" title="Permanent link">&para;</a></h2>
-<p><br/></p>
-<h4 id="managedstring-operator-managedstring-s"><div style='color:#a71d5d; display:inline-block'>ManagedString</div> <div style='color:#795da3; display:inline-block'>operator+</div>( <div style='color:#a71d5d; display:inline-block'>ManagedString  &amp;</div> s)<a class="headerlink" href="#managedstring-operator-managedstring-s" title="Permanent link">&para;</a></h4>
-<h5 id="description_14">Description<a class="headerlink" href="#description_14" title="Permanent link">&para;</a></h5>
-<p>Concatenates this string with the one provided.  </p>
-<h5 id="parameters_12">Parameters<a class="headerlink" href="#parameters_12" title="Permanent link">&para;</a></h5>
-<blockquote>
-<p><div style='color:#a71d5d; display:inline-block'>ManagedString  &amp;</div> s - The  ManagedString  to concatenate.</p>
-</blockquote>
-<h5 id="returns_4">Returns<a class="headerlink" href="#returns_4" title="Permanent link">&para;</a></h5>
-<p>a new  ManagedString  representing the joined strings.</p>
-<h5 id="example_13">Example<a class="headerlink" href="#example_13" title="Permanent link">&para;</a></h5>
-<pre><code class="cpp"> MicroBitDisplay display; 
- ManagedString s(&quot;abcd&quot;); 
- ManagedString p(&quot;efgh&quot;) 
-
- display.scroll(s + p) // scrolls &quot;abcdefgh&quot; 
-</code></pre>
-
 <h2 id="charat">charAt<a class="headerlink" href="#charat" title="Permanent link">&para;</a></h2>
 <p><br/></p>
 <h4 id="char-charat-int16_t-index"><div style='color:#a71d5d; display:inline-block'>char</div> <div style='color:#795da3; display:inline-block'>charAt</div>( <div style='color:#a71d5d; display:inline-block'>int16_t</div> index)<a class="headerlink" href="#char-charat-int16_t-index" title="Permanent link">&para;</a></h4>
-<h5 id="description_15">Description<a class="headerlink" href="#description_15" title="Permanent link">&para;</a></h5>
+<h5 id="description_14">Description<a class="headerlink" href="#description_14" title="Permanent link">&para;</a></h5>
 <p>Provides a character value at a given position in the string, indexed from zero.  </p>
-<h5 id="parameters_13">Parameters<a class="headerlink" href="#parameters_13" title="Permanent link">&para;</a></h5>
+<h5 id="parameters_12">Parameters<a class="headerlink" href="#parameters_12" title="Permanent link">&para;</a></h5>
 <blockquote>
 <p><div style='color:#a71d5d; display:inline-block'>int16_t</div> index - The position of the character to return.</p>
 </blockquote>
-<h5 id="returns_5">Returns<a class="headerlink" href="#returns_5" title="Permanent link">&para;</a></h5>
+<h5 id="returns_4">Returns<a class="headerlink" href="#returns_4" title="Permanent link">&para;</a></h5>
 <p>the character at posisiton index, zero if index is invalid.</p>
-<h5 id="example_14">Example<a class="headerlink" href="#example_14" title="Permanent link">&para;</a></h5>
+<h5 id="example_13">Example<a class="headerlink" href="#example_13" title="Permanent link">&para;</a></h5>
 <pre><code class="cpp"> MicroBitDisplay display; 
  ManagedString s(&quot;abcd&quot;); 
 
@@ -733,18 +712,18 @@ uBit.display.scroll(b.getRSSI());
 <h2 id="tochararray">toCharArray<a class="headerlink" href="#tochararray" title="Permanent link">&para;</a></h2>
 <p><br/></p>
 <h4 id="const-char-42-tochararray"><div style='color:#a71d5d; display:inline-block'>const char *</div> <div style='color:#795da3; display:inline-block'>toCharArray</div>()<a class="headerlink" href="#const-char-42-tochararray" title="Permanent link">&para;</a></h4>
-<h5 id="description_16">Description<a class="headerlink" href="#description_16" title="Permanent link">&para;</a></h5>
+<h5 id="description_15">Description<a class="headerlink" href="#description_15" title="Permanent link">&para;</a></h5>
 <p>Provides an immutable 8 bit wide character buffer representing this string.  </p>
-<h5 id="returns_6">Returns<a class="headerlink" href="#returns_6" title="Permanent link">&para;</a></h5>
+<h5 id="returns_5">Returns<a class="headerlink" href="#returns_5" title="Permanent link">&para;</a></h5>
 <p>a pointer to the character buffer. </p>
 <h2 id="length">length<a class="headerlink" href="#length" title="Permanent link">&para;</a></h2>
 <p><br/></p>
 <h4 id="int16_t-length"><div style='color:#a71d5d; display:inline-block'>int16_t</div> <div style='color:#795da3; display:inline-block'>length</div>()<a class="headerlink" href="#int16_t-length" title="Permanent link">&para;</a></h4>
-<h5 id="description_17">Description<a class="headerlink" href="#description_17" title="Permanent link">&para;</a></h5>
+<h5 id="description_16">Description<a class="headerlink" href="#description_16" title="Permanent link">&para;</a></h5>
 <p>Determines the length of this  ManagedString  in characters.  </p>
-<h5 id="returns_7">Returns<a class="headerlink" href="#returns_7" title="Permanent link">&para;</a></h5>
+<h5 id="returns_6">Returns<a class="headerlink" href="#returns_6" title="Permanent link">&para;</a></h5>
 <p>the length of the string in characters.</p>
-<h5 id="example_15">Example<a class="headerlink" href="#example_15" title="Permanent link">&para;</a></h5>
+<h5 id="example_14">Example<a class="headerlink" href="#example_14" title="Permanent link">&para;</a></h5>
 <pre><code class="cpp"> MicroBitDisplay display; 
  ManagedString s(&quot;abcd&quot;); 
 
