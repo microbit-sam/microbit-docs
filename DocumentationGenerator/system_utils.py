@@ -80,6 +80,13 @@ class SystemUtils:
                 if not os.path.exists(d) or os.stat(s).st_mtime - os.stat(d).st_mtime > 1:
                     shutil.copy2(s, d)
 
+    def __add_version_info(self,version_string, extract_location):
+        content_path = extract_location + "js/base.js"
+        lines = self.read(content_path)
+        html_string = '<div class=\'admonition warning\' style=\'margin-top:30px;\'><p class=\'admonition-title\'>Warning</p><p>You are viewing documentation for <b>' + version_string + '</b></p></div>'
+        lines[0]= '$(document).ready(function() { $(\'div[role="main"]\').prepend("' + html_string + '") });'
+        self.write(content_path, lines)
+
     def validate_version(self, working_dir, module_paths, extract_location):
         module_string = "/module.json"
         mkdocs_yml = yaml.load(self.read("./mkdocs.yml", plain=True))
@@ -92,7 +99,7 @@ class SystemUtils:
         if module_strings[1:] != module_strings[:-1]:
             raise Exception("Version mismatch exception! microbit-dal and microbit are not compatible versions.")
 
-        module_string = "v" + module_strings[0]
+        module_string = "v" + str(module_strings[0])
 
         if mkdocs_yml["versioning"]["runtime"] != module_string:
             #capture old site, save in docs/historic/versionNumber
@@ -111,6 +118,8 @@ class SystemUtils:
             zip_ref.close()
 
             self.copytree(archive_name, extract_folder)
+
+            self.__add_version_info(mkdocs_yml["versioning"]["runtime"], extract_folder)
 
             self.clean_dir(archive_name)
 
