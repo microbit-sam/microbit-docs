@@ -37,6 +37,6 @@ The online IDE provides a simple interface for writing, compiling and sharing pr
 
 1. Your browser will prompt you to download a file. Save this file locally, then drag and drop it onto your micro:bit. The copy triggers the orange LED on the back of the micro:bit to flash; it will stop flashing when the download is complete.
 
-1. When the copy process finshes, the micro:bit drive will reset and disconnect from your computer. At this point, your code will also start running!
+1. When the copy process finishes, the micro:bit drive will reset and disconnect from your computer. At this point, your code will also start running!
 
 There is a more detailed guide for using the micro:bit in mbed on the [Lancaster-University team wiki on mbed](https://developer.mbed.org/teams/Lancaster-University/wiki/MicrobitGettingStarted)

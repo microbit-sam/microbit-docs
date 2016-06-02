@@ -3,7 +3,7 @@
 ## Introduction
 
 This Bluetooth service is an optional part of the standard Bluetooth profile for the micro:bit. It is a passive service, that can operate transparently in the
-background as your main program is running. It provides live updates of the state of the physical buttons on the device to a connected Bluetooth master device such as a smartphone. You do not need to explicity address an API on the service to achieve this.
+background as your main program is running. It provides live updates of the state of the physical buttons on the device to a connected Bluetooth master device such as a smartphone. You do not need to explicitly address an API on the service to achieve this.
 
 ## Enabling the Service
 

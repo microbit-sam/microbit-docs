@@ -14,7 +14,7 @@ Programmers are also free (in fact, encouraged!) to send their own events whenev
 The `MicroBitMessageBus` records which events your program is interested in, and delivers those `MicroBitEvent`s to your program as they occur
 through a defined **event handler**.  
 
-This is acheived through the `MicroBitMessageBus` `listen` function. This lets you attach a callback
+This is achieved through the `MicroBitMessageBus` `listen` function. This lets you attach a callback
 to a function when a specified event (or events) occur.
 
 You can also control the queuing and threading model used for your callback function on a per event handler basis.

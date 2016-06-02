@@ -366,7 +366,7 @@ MICROBIT_OK, or MICROBIT_INVALID_PARAMETER.
 <br/>
 ####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>getPixelValue</div>( <div style='color:#a71d5d; display:inline-block'>int16_t</div> x,  <div style='color:#a71d5d; display:inline-block'>int16_t</div> y)
 #####Description
-Retreives the value of a given pixel.  
+Retrieves the value of a given pixel.  
 
  
 
@@ -419,7 +419,7 @@ MICROBIT_OK on success, or MICROBIT_INVALID_PARAMETER.
 #####Description
 Pastes a given bitmap at the given co-ordinates.  
 
- Any pixels in the relvant area of this image are replaced.  
+ Any pixels in the relevant area of this image are replaced.  
 
  
 
@@ -440,7 +440,7 @@ The number of pixels written.
 #####Description
 Pastes a given bitmap at the given co-ordinates.  
 
- Any pixels in the relvant area of this image are replaced.  
+ Any pixels in the relevant area of this image are replaced.  
 
  
 
@@ -463,7 +463,7 @@ The number of pixels written.
 #####Description
 Pastes a given bitmap at the given co-ordinates.  
 
- Any pixels in the relvant area of this image are replaced.  
+ Any pixels in the relevant area of this image are replaced.  
 
  
 
@@ -488,7 +488,7 @@ The number of pixels written.
 #####Description
 Pastes a given bitmap at the given co-ordinates.  
 
- Any pixels in the relvant area of this image are replaced.  
+ Any pixels in the relevant area of this image are replaced.  
 
  
 

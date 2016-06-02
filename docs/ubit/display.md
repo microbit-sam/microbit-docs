@@ -9,7 +9,7 @@ of the LEDs.
 
 LEDs in matrix displays are connected to general purpose I/O (GPIO) pins on CPU. Although they *could* be connected such that each
 LED has its own GPIO pin, this is not usually the case, as the scarce resource of GPIO pins would soon be used up.  For example,
-on the micro:bit, the LED matix has 25 LEDs. If this required 25 GPIO pins, then there would be none left for anything else!
+on the micro:bit, the LED matrix has 25 LEDs. If this required 25 GPIO pins, then there would be none left for anything else!
 
 Instead, these LEDs are controlled by 12 GPIO pins. Three of those pins provide power to LEDs, the other
 nine provide a route to ground. The pins that source power are called **rows**. The pins that sink power are called **columns**.
@@ -20,8 +20,8 @@ The following diagram shows how the 5x5 grid is connected into 3 logical 'rows' 
 
 So, if we wanted to light up the middle LED, we would need to put a HIGH voltage (logic 1) on row 2, and a LOW voltage (logic 0) on column 3. Notice that when row 2 is
 HIGH, we the value we write to the 9 column pins affect all of the LEDs 2.1 to 2.7, without affecting any of the LEDS on row 1 or row 3. Sharing GPIO pins in this way is known as multiplexing.
-Moreover, if we scan throuh the different rows fast enough - faster than the eye can see - then we can provide the illusion of all the LEDS being on at the same time! This is a technique
-known as *persistance of vision*... and was also the same basis of the very first TV sets (although that did not use LEDs!).
+Moreover, if we scan through the different rows fast enough - faster than the eye can see - then we can provide the illusion of all the LEDS being on at the same time! This is a technique
+known as *persistence of vision*... and was also the same basis of the very first TV sets (although that did not use LEDs!).
 
 ## Capabilities
 

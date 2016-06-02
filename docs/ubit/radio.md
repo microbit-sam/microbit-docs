@@ -468,7 +468,7 @@ Retrieves the next packet from the receive buffer. If a data packet is available
 The buffer containing the the packet. If no data is available, NULL is returned.
 
 !!! note
-    Once  recv()  has been called, it is the callers resposibility to delete the buffer when appropriate. 
+    Once  recv()  has been called, it is the callers responsibility to delete the buffer when appropriate. 
 
 ##send
 <br/>

@@ -119,7 +119,7 @@ Will reset the micro:bit when called.
 #####Description
 Delay execution for the given amount of time.  
 
- If the scheduler is running, this will deschedule the current fiber and perform a power efficent, concurrent sleep operation.  
+ If the scheduler is running, this will deschedule the current fiber and perform a power efficient, concurrent sleep operation.  
 
  If the scheduler is disabled or we're running in an interrupt context, this will revert to a busy wait.  
 
@@ -177,7 +177,7 @@ Seed the pseudo random number generator using the given value.
 #####Description
 Generate a random number in the given range. We use a simple Galois LFSR random number generator here, as a Galois LFSR is sufficient for our applications, and much more lightweight than the hardware random number generator built int the processor, which takes a long time and uses a lot of energy.  
 
- KIDS: You shouldn't use this is the real world to generte cryptographic keys though... have a think why not. :-)  
+ KIDS: You shouldn't use this is the real world to generate cryptographic keys though... have a think why not. :-)  
 
  
 
