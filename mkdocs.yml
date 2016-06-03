@@ -1,62 +1,65 @@
-site_name: 'micro:bit runtime'
-google_analytics: ['UA-76156484-1', 'auto']
-repo_url: https://github.com/lancaster-university/microbit-dal/
-site_description: 'Full documentation on the micro:bit runtime which provides an easy to use environment for programming the BBC micro:bit in the C/C++ language, written by Lancaster University.'
-pages:
-    - General:
-        - Introduction: 'index.md'
-        - Concepts: 'concepts.md'
-        - Advanced: 'advanced.md'
-        - Online Development: 'online-toolchains.md'
-        - Offline Development: 'offline-toolchains.md'
-        - Hardware: 'device.md'
-        - Help: 'help.md'
-    - uBit:
-        - Overview: 'ubit.md'
-        - i2c: 'ubit/i2c.md'
-        - storage: 'ubit/storage.md'
-        - serial: 'ubit/serial.md'
-        - messageBus: 'ubit/messageBus.md'
-        - buttons: 'ubit/button.md'
-        - display: 'ubit/display.md'
-        - accelerometer: 'ubit/accelerometer.md'
-        - compass: 'ubit/compass.md'
-        - thermometer: 'ubit/thermometer.md'
-        - io: 'ubit/io.md'
-        - radio: 'ubit/radio.md'
-    - Data Types:
-        - MicroBitImage: "data-types/image.md"
-        - MicroBitEvent: "data-types/event.md"
-        - ManagedString: "data-types/string.md"
-        - PacketBuffer: "data-types/packetbuffer.md"
-    - Bluetooth:
-        - Profile: "ble/profile.md"
-        - AccelerometerService: "ble/accelerometer-service.md"
-        - ButtonService: "ble/button-service.md"
-        - DFUService: "ble/dfu-service.md"
-        - EventService: "ble/event-service.md"
-        - IOPinService: "ble/iopin-service.md"
-        - LEDService: "ble/led-service.md"
-        - MagnetometerService: "ble/magnetometer-service.md"
-        - TemperatureService: "ble/temperature-service.md"
-        - UARTService: "ble/uart-service.md"
-    - Extras:
-        - MicroBitLightSensor: "extras/light-sensing.md"
-        - SPI: "extras/spi.md"
-#--------------HIDDEN PAGES BEGIN
-#unfortunately this is required, otherwise mkdocs doesn't build pages not linked by nav.
-    - _blemanager: "ubit/blemanager.md"
-    - _buttonAB: 'ubit/multibutton.md'
-    - _radioevent: 'ubit/radioevent.md'
-    - _radiodatagram: 'ubit/radiodatagram.md'
-#--------------HIDDEN PAGES END
-markdown_extensions:
-    - toc:
-        permalink: True
-    - admonition:
-extra_css:
-    - css/extra.css
 extra:
-    logo_url: './img/logo[whiteruntime].png'
-    logo_author: 'Aluna Everitt (@AlunaEveritt on Twitter)'
-theme_dir: 'runtime-theme'
+  logo_author: Aluna Everitt (@AlunaEveritt on Twitter)
+  logo_url: ./img/logo[whiteruntime].png
+extra_css:
+- css/extra.css
+google_analytics:
+- UA-76156484-1
+- auto
+markdown_extensions:
+- toc:
+    permalink: true
+- admonition: null
+pages:
+- General:
+  - Introduction: index.md
+  - Concepts: concepts.md
+  - Advanced: advanced.md
+  - Online Development: online-toolchains.md
+  - Offline Development: offline-toolchains.md
+  - Hardware: device.md
+  - Help: help.md
+- uBit:
+  - Overview: ubit.md
+  - i2c: ubit/i2c.md
+  - storage: ubit/storage.md
+  - serial: ubit/serial.md
+  - messageBus: ubit/messageBus.md
+  - buttons: ubit/button.md
+  - display: ubit/display.md
+  - accelerometer: ubit/accelerometer.md
+  - compass: ubit/compass.md
+  - thermometer: ubit/thermometer.md
+  - io: ubit/io.md
+  - radio: ubit/radio.md
+- Data Types:
+  - MicroBitImage: data-types/image.md
+  - MicroBitEvent: data-types/event.md
+  - ManagedString: data-types/string.md
+  - PacketBuffer: data-types/packetbuffer.md
+- Bluetooth:
+  - Profile: ble/profile.md
+  - AccelerometerService: ble/accelerometer-service.md
+  - ButtonService: ble/button-service.md
+  - DFUService: ble/dfu-service.md
+  - EventService: ble/event-service.md
+  - IOPinService: ble/iopin-service.md
+  - LEDService: ble/led-service.md
+  - MagnetometerService: ble/magnetometer-service.md
+  - TemperatureService: ble/temperature-service.md
+  - UARTService: ble/uart-service.md
+- Extras:
+  - MicroBitLightSensor: extras/light-sensing.md
+  - SPI: extras/spi.md
+- _blemanager: ubit/blemanager.md
+- _buttonAB: ubit/multibutton.md
+- _radioevent: ubit/radioevent.md
+- _radiodatagram: ubit/radiodatagram.md
+repo_url: https://github.com/lancaster-university/microbit-dal/
+site_description: Full documentation on the micro:bit runtime which provides an easy
+  to use environment for programming the BBC micro:bit in the C/C++ language, written
+  by Lancaster University.
+site_name: micro:bit runtime
+theme_dir: runtime-theme
+versioning:
+  runtime: v2.0.0-rc3
