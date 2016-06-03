@@ -253,7 +253,7 @@ Copy assign operation.
 
  Called when one  ManagedString  is assigned the value of another.  
 
- If the  ManagedString  being assigned is already refering to a character buffer, decrement the reference count and free up the buffer as necessary.  
+ If the  ManagedString  being assigned is already referring to a character buffer, decrement the reference count and free up the buffer as necessary.  
 
  Then, update our character buffer to refer to that of the supplied  ManagedString , and increase its reference count.  
 
@@ -408,7 +408,7 @@ Provides a character value at a given position in the string, indexed from zero.
 
 >  <div style='color:#a71d5d; display:inline-block'>int16_t</div> index - The position of the character to return.
 #####Returns
-the character at posisiton index, zero if index is invalid.
+the character at position index, zero if index is invalid.
 #####Example
 ```cpp
  MicroBitDisplay display; 
