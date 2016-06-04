@@ -404,20 +404,20 @@
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
 <p>This Bluetooth service is an optional part of the standard Bluetooth profile for the micro:bit. It is a passive service, that can operate transparently in the
 background as your main program is running. This service extends the microBitMessageBus over Bluetooth, so that standard MicroBitEvents raised on the device can be transmitted transparently over
-Bluetooth and received and processed by connected Bluetooth master device such as a smartphone.  You do not need to explicity address and API on the service to achieve this.</p>
+Bluetooth and received and processed by connected Bluetooth master device such as a smartphone.  You do not need to explicitly address and API on the service to achieve this.</p>
 <h2 id="enabling-the-service">Enabling the Service<a class="headerlink" href="#enabling-the-service" title="Permanent link">&para;</a></h2>
 <p>This service is enabled by default.</p>
 <h2 id="bluetooth-service-specification">Bluetooth Service Specification<a class="headerlink" href="#bluetooth-service-specification" title="Permanent link">&para;</a></h2>
 <p>Please see the <a href="../../resources/bluetooth/microbit-profile-V1.9-Level-2.pdf">micro:bit Bluetooth profile specification</a>.</p>
 <h2 id="example-applications-for-androidiosandroid">Example Applications for Android/IOS/Android<a class="headerlink" href="#example-applications-for-androidiosandroid" title="Permanent link">&para;</a></h2>
 <h3 id="general-procedures">General Procedures<a class="headerlink" href="#general-procedures" title="Permanent link">&para;</a></h3>
-<p>micro:bit uses an event bus which relays event objects from system components which generate them to other system components which have registered an interest in events of a given type. This principle and capability has been extended to remote devices connected over Bluetooth. Connected clients can indicate the types of event they are interested in and be informed via Bluetooth notificatons as and when such events occur. Similarly, micro:bit application code can inform a connected client of events which might happen in or be observed by an application running on the connected device (the client application) and be informed when they occur via Bluetooth write operations. </p>
+<p>micro:bit uses an event bus which relays event objects from system components which generate them to other system components which have registered an interest in events of a given type. This principle and capability has been extended to remote devices connected over Bluetooth. Connected clients can indicate the types of event they are interested in and be informed via Bluetooth notifications as and when such events occur. Similarly, micro:bit application code can inform a connected client of events which might happen in or be observed by an application running on the connected device (the client application) and be informed when they occur via Bluetooth write operations. </p>
 <p>Event objects consist of a short (2 octets) type and a short (2 octets) value.</p>
 <p>When either client application or micro:bit code registers an interest in an event type it may register for all events of that type regardless of the associated value or may specify a particular value which must accompany that event type for it to be of interest.</p>
 <p>The Microbit Requirements characteristic allows micro:bit code to inform the client application of a list of one or more event types/values it wants to be informed about if they arise. For example if a client application monitors for incoming SMS messages and defines receipt of an SMS message to be event type 1234 then a micro:bit application could inform the client application it wants to be told when an SMS has been received by declaring its interest in event type 1234 in its MicrobitRequirements characteristic.</p>
 <p>The Client Requirements characteristic has a similar purpose but is the mechanism the client application uses to tell the micro:bit application what events it is interested in. Should they arise and notifications have been enabled on the MicrobitEvent characteristic, the client application will receive a Bluetooth notification containing the event object. A micro:bit application which monitors temperature and notifies a smartphone application when the temperature falls below a specified limit or rises above another threshold could use events to notify the client application when either of these things happens.</p>
 <p>The MicroBit Event characteristic is used to convey events which have happened on the micro:bit to the connected client. Notifications are normally used but the most recent events for which the client registered can be determined by reading the characteristic value at any time.</p>
-<p>The Client Event characteirstic is used to convey events which have happened on the client device to the micro:bit. This is achieved through the client application writing one or more events to the characteristic value.</p>
+<p>The Client Event characteristic is used to convey events which have happened on the client device to the micro:bit. This is achieved through the client application writing one or more events to the characteristic value.</p>
 <p>See the profile page and profile reference documentation for data format and UUID details.</p>
 <h3 id="android">Android<a class="headerlink" href="#android" title="Permanent link">&para;</a></h3>
 <p><img src="../../resources/bluetooth/event_demo.png" alt="Event Demo"></p>
@@ -625,6 +625,15 @@ int main()
         <script>var base_url = '../..';</script>
         <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
         <script src="../../js/base.js"></script>
+        <!--<script src="../../archive/v2.0.0-rc3/js/base.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc3/js/bootstrap-3.0.3.min.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc3/js/highlight.pack.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc3/js/jquery-1.10.2.min.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc3/mkdocs/js/lunr-0.5.7.min.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc3/mkdocs/js/mustache.min.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc3/mkdocs/js/require.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc3/mkdocs/js/search.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc3/mkdocs/js/text.js"></script>-->
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
             <div class="modal-dialog">

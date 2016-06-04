@@ -435,13 +435,13 @@
 <p>Encrypted link for operations involving most characteristics</p>
 </li>
 </ol>
-<p>Pairing equips the micro:bit and a trusted peer device with the potential to perform security operations when interacting such as utilising an AES 128 bit encrypted link. All interactions involving custom services except for the DFU Control Service must be performed over an encrypted link. Note that encryption will be automatically applied whenever required. If a peer device is not paired with the micro:bit and a secure operation is attempted it will be rejected and the usual, expected behaviour of the peer is that it will inititiate the pairing process automatically.</p>
+<p>Pairing equips the micro:bit and a trusted peer device with the potential to perform security operations when interacting such as utilising an AES 128 bit encrypted link. All interactions involving custom services except for the DFU Control Service must be performed over an encrypted link. Note that encryption will be automatically applied whenever required. If a peer device is not paired with the micro:bit and a secure operation is attempted it will be rejected and the usual, expected behaviour of the peer is that it will initiate the pairing process automatically.</p>
 <p>White listing allows paired devices only to connect to and interact with the micro:bit. Attempts to connect from devices not in the white list are ignored by the Bluetooth Link Layer.</p>
 <h3 id="advertising">Advertising<a class="headerlink" href="#advertising" title="Permanent link">&para;</a></h3>
 <p>The micro:bit will advertise if in "pairing mode" or if it has been previously paired/bonded in which case it will advertise but a white list will be active and connections will only be accepted from previously paired devices. See below for more information on pairing.</p>
 <p>In pairing mode the micro:bit will advertise with flags set indicating it is discoverable (LE General Discoverable Mode) as showing here:</p>
 <p><img src="../../resources/bluetooth/adv_pairing_mode.png" alt="Advertising in Pairing Mode"></p>
-<p>In “normal mode” (i.e. not pairing mode) advertsing packets have neither the LE Limited Discoverable mode or the LE General Discoverable Mode flags set and so in this situation may not be listed in the “available Bluetooth devices” screen of some smartphones which have not paired with the micro:bit. This is by design.</p>
+<p>In “normal mode” (i.e. not pairing mode) advertising packets have neither the LE Limited Discoverable mode or the LE General Discoverable Mode flags set and so in this situation may not be listed in the “available Bluetooth devices” screen of some smartphones which have not paired with the micro:bit. This is by design.</p>
 <p><img src="../../resources/bluetooth/adv_normal_mode.png" alt="Advertising in Normal Mode"></p>
 <h3 id="pairing">Pairing<a class="headerlink" href="#pairing" title="Permanent link">&para;</a></h3>
 <p>To interact with any service on the micro:bit the peer device must first be paired/bonded with it.</p>
@@ -606,7 +606,7 @@
 <h3 id="about-the-dfu-control-service">About the DFU Control Service<a class="headerlink" href="#about-the-dfu-control-service" title="Permanent link">&para;</a></h3>
 <p>Allows clients to initiate the micro:bit pairing and over the air firmware update procedures. Firmware updates are actually handled by the Nordic Semiconductor DFU service which is not part of this profile, after the micro:bit enters an alternate bootloader.</p>
 <h4 id="characteristics_5">Characteristics<a class="headerlink" href="#characteristics_5" title="Permanent link">&para;</a></h4>
-<p><strong>DFU Control</strong> : Writing 0x01 initiates rebooting the micro:bit into the Nordic Semiconductor bootloader if the DFU Flash Code characteristic has been written to with the correct secret key. Writing 0x02 to this charactertistic  means "request flash code".</p>
+<p><strong>DFU Control</strong> : Writing 0x01 initiates rebooting the micro:bit into the Nordic Semiconductor bootloader if the DFU Flash Code characteristic has been written to with the correct secret key. Writing 0x02 to this characteristic  means "request flash code".</p>
 <h3 id="about-the-uart-service">About the UART Service<a class="headerlink" href="#about-the-uart-service" title="Permanent link">&para;</a></h3>
 <p>Provides a pseudo serial interface to the micro:bit for the exchange of arbitrary sequences of bytes. A maximum of 20 octets (MTU of 23 minus 3) can be transmitted in a single operation but a series of operations can be executed to affect something like serial data communications.</p>
 <p>This is an implementation of the Nordic Semiconductor UART service:</p>
@@ -632,6 +632,15 @@
         <script>var base_url = '../..';</script>
         <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
         <script src="../../js/base.js"></script>
+        <!--<script src="../../archive/v2.0.0-rc3/js/base.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc3/js/bootstrap-3.0.3.min.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc3/js/highlight.pack.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc3/js/jquery-1.10.2.min.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc3/mkdocs/js/lunr-0.5.7.min.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc3/mkdocs/js/mustache.min.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc3/mkdocs/js/require.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc3/mkdocs/js/search.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc3/mkdocs/js/text.js"></script>-->
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
             <div class="modal-dialog">

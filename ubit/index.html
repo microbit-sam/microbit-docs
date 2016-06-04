@@ -520,7 +520,7 @@ uBit.sleep(X);
 <h4 id="void-sleep-uint32_t-milliseconds"><div style='color:#a71d5d; display:inline-block'>void</div> <div style='color:#795da3; display:inline-block'>sleep</div>( <div style='color:#a71d5d; display:inline-block'>uint32_t</div> milliseconds)<a class="headerlink" href="#void-sleep-uint32_t-milliseconds" title="Permanent link">&para;</a></h4>
 <h5 id="description_3">Description<a class="headerlink" href="#description_3" title="Permanent link">&para;</a></h5>
 <p>Delay execution for the given amount of time.  </p>
-<p>If the scheduler is running, this will deschedule the current fiber and perform a power efficent, concurrent sleep operation.  </p>
+<p>If the scheduler is running, this will deschedule the current fiber and perform a power efficient, concurrent sleep operation.  </p>
 <p>If the scheduler is disabled or we're running in an interrupt context, this will revert to a busy wait.  </p>
 <p>Alternatively: wait, wait_ms, wait_us can be used which will perform a blocking sleep operation.  </p>
 <h5 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h5>
@@ -563,7 +563,7 @@ uBit.sleep(X);
 <h4 id="int-random-int-max"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>random</div>( <div style='color:#a71d5d; display:inline-block'>int</div> max)<a class="headerlink" href="#int-random-int-max" title="Permanent link">&para;</a></h4>
 <h5 id="description_6">Description<a class="headerlink" href="#description_6" title="Permanent link">&para;</a></h5>
 <p>Generate a random number in the given range. We use a simple Galois LFSR random number generator here, as a Galois LFSR is sufficient for our applications, and much more lightweight than the hardware random number generator built int the processor, which takes a long time and uses a lot of energy.  </p>
-<p>KIDS: You shouldn't use this is the real world to generte cryptographic keys though... have a think why not. :-)  </p>
+<p>KIDS: You shouldn't use this is the real world to generate cryptographic keys though... have a think why not. :-)  </p>
 <h5 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">&para;</a></h5>
 <blockquote>
 <p><div style='color:#a71d5d; display:inline-block'>int</div> max - the upper range to generate a number for. This number cannot be negative.</p>
@@ -735,6 +735,15 @@ uBit.sleep(X);
         <script>var base_url = '..';</script>
         <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
         <script src="../js/base.js"></script>
+        <!--<script src="../archive/v2.0.0-rc3/js/base.js"></script>-->
+        <!--<script src="../archive/v2.0.0-rc3/js/bootstrap-3.0.3.min.js"></script>-->
+        <!--<script src="../archive/v2.0.0-rc3/js/highlight.pack.js"></script>-->
+        <!--<script src="../archive/v2.0.0-rc3/js/jquery-1.10.2.min.js"></script>-->
+        <!--<script src="../archive/v2.0.0-rc3/mkdocs/js/lunr-0.5.7.min.js"></script>-->
+        <!--<script src="../archive/v2.0.0-rc3/mkdocs/js/mustache.min.js"></script>-->
+        <!--<script src="../archive/v2.0.0-rc3/mkdocs/js/require.js"></script>-->
+        <!--<script src="../archive/v2.0.0-rc3/mkdocs/js/search.js"></script>-->
+        <!--<script src="../archive/v2.0.0-rc3/mkdocs/js/text.js"></script>-->
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
             <div class="modal-dialog">

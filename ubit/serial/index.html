@@ -661,7 +661,7 @@ general purpose synchronisation.</p>
 <p><div style='color:#a71d5d; display:inline-block'>ManagedString</div> s - the string to send</p>
 </blockquote>
 <h5 id="returns_2">Returns<a class="headerlink" href="#returns_2" title="Permanent link">&para;</a></h5>
-<p>the number of bytes written, or MICROBIT_SERIAL_IN_USE if another fiber is using the serial instance for transmission. 
+<p>the number of bytes written, MICROBIT_SERIAL_IN_USE if another fiber is using the serial instance for transmission, MICROBIT_INVALID_PARAMETER if buffer is invalid, or the given bufferLen is &lt;= 0. 
 <br/></p>
 <h4 id="int-send-managedstring-s-microbitserialmode-mode"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>send</div>( <div style='color:#a71d5d; display:inline-block'>ManagedString</div> s,  <div style='color:#a71d5d; display:inline-block'>MicroBitSerialMode</div> mode)<a class="headerlink" href="#int-send-managedstring-s-microbitserialmode-mode" title="Permanent link">&para;</a></h4>
 <h5 id="description_6">Description<a class="headerlink" href="#description_6" title="Permanent link">&para;</a></h5>
@@ -689,7 +689,7 @@ general purpose synchronisation.</p>
              until all bytes have been sent. This allows other fibers
              to continue execution.</p>
 <h5 id="returns_3">Returns<a class="headerlink" href="#returns_3" title="Permanent link">&para;</a></h5>
-<p>the number of bytes written, or MICROBIT_SERIAL_IN_USE if another fiber is using the serial instance for transmission. 
+<p>the number of bytes written, MICROBIT_SERIAL_IN_USE if another fiber is using the serial instance for transmission, MICROBIT_INVALID_PARAMETER if buffer is invalid, or the given bufferLen is &lt;= 0. 
 <br/></p>
 <h4 id="int-send-uint8_t-42-buffer-int-bufferlen"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>send</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t *</div> buffer,  <div style='color:#a71d5d; display:inline-block'>int</div> bufferLen)<a class="headerlink" href="#int-send-uint8_t-42-buffer-int-bufferlen" title="Permanent link">&para;</a></h4>
 <h5 id="description_7">Description<a class="headerlink" href="#description_7" title="Permanent link">&para;</a></h5>
@@ -713,7 +713,7 @@ general purpose synchronisation.</p>
 <p><div style='color:#a71d5d; display:inline-block'>int</div> bufferLen - a pointer to the first character of the buffer</p>
 </blockquote>
 <h5 id="returns_4">Returns<a class="headerlink" href="#returns_4" title="Permanent link">&para;</a></h5>
-<p>the number of bytes written, or MICROBIT_SERIAL_IN_USE if another fiber is using the serial instance for transmission. 
+<p>the number of bytes written, MICROBIT_SERIAL_IN_USE if another fiber is using the serial instance for transmission, MICROBIT_INVALID_PARAMETER if buffer is invalid, or the given bufferLen is &lt;= 0. 
 <br/></p>
 <h4 id="int-send-uint8_t-42-buffer-int-bufferlen-microbitserialmode-mode"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>send</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t *</div> buffer,  <div style='color:#a71d5d; display:inline-block'>int</div> bufferLen,  <div style='color:#a71d5d; display:inline-block'>MicroBitSerialMode</div> mode)<a class="headerlink" href="#int-send-uint8_t-42-buffer-int-bufferlen-microbitserialmode-mode" title="Permanent link">&para;</a></h4>
 <h5 id="description_8">Description<a class="headerlink" href="#description_8" title="Permanent link">&para;</a></h5>
@@ -744,7 +744,7 @@ general purpose synchronisation.</p>
              until all bytes have been sent. This allows other fibers
              to continue execution.</p>
 <h5 id="returns_5">Returns<a class="headerlink" href="#returns_5" title="Permanent link">&para;</a></h5>
-<p>the number of bytes written, or MICROBIT_SERIAL_IN_USE if another fiber is using the serial instance for transmission. </p>
+<p>the number of bytes written, MICROBIT_SERIAL_IN_USE if another fiber is using the serial instance for transmission, MICROBIT_INVALID_PARAMETER if buffer is invalid, or the given bufferLen is &lt;= 0. </p>
 <h2 id="read">read<a class="headerlink" href="#read" title="Permanent link">&para;</a></h2>
 <p><br/></p>
 <h4 id="int-read"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>read</div>()<a class="headerlink" href="#int-read" title="Permanent link">&para;</a></h4>
@@ -1008,6 +1008,7 @@ general purpose synchronisation.</p>
 <h4 id="int-eventafter-int-len"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>eventAfter</div>( <div style='color:#a71d5d; display:inline-block'>int</div> len)<a class="headerlink" href="#int-eventafter-int-len" title="Permanent link">&para;</a></h4>
 <h5 id="description_19">Description<a class="headerlink" href="#description_19" title="Permanent link">&para;</a></h5>
 <p>Configures an event to be fired after "len" characters.  </p>
+<p>Will generate an event with the ID: MICROBIT_ID_SERIAL and the value MICROBIT_SERIAL_EVT_HEAD_MATCH.  </p>
 <h5 id="parameters_18">Parameters<a class="headerlink" href="#parameters_18" title="Permanent link">&para;</a></h5>
 <blockquote>
 <p><div style='color:#a71d5d; display:inline-block'>int</div> len - the number of characters to wait before triggering the event.</p>
@@ -1018,6 +1019,7 @@ general purpose synchronisation.</p>
 <h4 id="int-eventafter-int-len-microbitserialmode-mode"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>eventAfter</div>( <div style='color:#a71d5d; display:inline-block'>int</div> len,  <div style='color:#a71d5d; display:inline-block'>MicroBitSerialMode</div> mode)<a class="headerlink" href="#int-eventafter-int-len-microbitserialmode-mode" title="Permanent link">&para;</a></h4>
 <h5 id="description_20">Description<a class="headerlink" href="#description_20" title="Permanent link">&para;</a></h5>
 <p>Configures an event to be fired after "len" characters.  </p>
+<p>Will generate an event with the ID: MICROBIT_ID_SERIAL and the value MICROBIT_SERIAL_EVT_HEAD_MATCH.  </p>
 <h5 id="parameters_19">Parameters<a class="headerlink" href="#parameters_19" title="Permanent link">&para;</a></h5>
 <blockquote>
 <p><div style='color:#a71d5d; display:inline-block'>int</div> len - the number of characters to wait before triggering the event.</p>
@@ -1033,9 +1035,10 @@ general purpose synchronisation.</p>
 <h4 id="int-eventon-managedstring-delimeters"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>eventOn</div>( <div style='color:#a71d5d; display:inline-block'>ManagedString</div> delimeters)<a class="headerlink" href="#int-eventon-managedstring-delimeters" title="Permanent link">&para;</a></h4>
 <h5 id="description_21">Description<a class="headerlink" href="#description_21" title="Permanent link">&para;</a></h5>
 <p>Configures an event to be fired on a match with one of the delimeters.  </p>
+<p>Will generate an event with the ID: MICROBIT_ID_SERIAL and the value MICROBIT_SERIAL_EVT_DELIM_MATCH.  </p>
 <h5 id="parameters_20">Parameters<a class="headerlink" href="#parameters_20" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#a71d5d; display:inline-block'>ManagedString</div> delimeters - the characters to match received characters against e.g.  ManagedString ("\r\n")</p>
+<p><div style='color:#a71d5d; display:inline-block'>ManagedString</div> delimeters - the characters to match received characters against e.g.  ManagedString ("\n")</p>
 </blockquote>
 <h5 id="returns_18">Returns<a class="headerlink" href="#returns_18" title="Permanent link">&para;</a></h5>
 <p>MICROBIT_INVALID_PARAMETER if the mode given is SYNC_SPINWAIT, otherwise MICROBIT_OK.</p>
@@ -1047,9 +1050,10 @@ general purpose synchronisation.</p>
 <h4 id="int-eventon-managedstring-delimeters-microbitserialmode-mode"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>eventOn</div>( <div style='color:#a71d5d; display:inline-block'>ManagedString</div> delimeters,  <div style='color:#a71d5d; display:inline-block'>MicroBitSerialMode</div> mode)<a class="headerlink" href="#int-eventon-managedstring-delimeters-microbitserialmode-mode" title="Permanent link">&para;</a></h4>
 <h5 id="description_22">Description<a class="headerlink" href="#description_22" title="Permanent link">&para;</a></h5>
 <p>Configures an event to be fired on a match with one of the delimeters.  </p>
+<p>Will generate an event with the ID: MICROBIT_ID_SERIAL and the value MICROBIT_SERIAL_EVT_DELIM_MATCH.  </p>
 <h5 id="parameters_21">Parameters<a class="headerlink" href="#parameters_21" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#a71d5d; display:inline-block'>ManagedString</div> delimeters - the characters to match received characters against e.g.  ManagedString ("\r\n")</p>
+<p><div style='color:#a71d5d; display:inline-block'>ManagedString</div> delimeters - the characters to match received characters against e.g.  ManagedString ("\n")</p>
 <p><div style='color:#a71d5d; display:inline-block'>MicroBitSerialMode</div> mode - the selected mode, one of: ASYNC, SYNC_SPINWAIT, SYNC_SLEEP. Each mode gives a different behaviour:  ASYNC - Will configure the event and return immediately.</p>
 </blockquote>
 <p>SYNC_SPINWAIT - will return MICROBIT_INVALID_PARAMETER</p>
@@ -1195,6 +1199,15 @@ general purpose synchronisation.</p>
         <script>var base_url = '../..';</script>
         <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
         <script src="../../js/base.js"></script>
+        <!--<script src="../../archive/v2.0.0-rc3/js/base.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc3/js/bootstrap-3.0.3.min.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc3/js/highlight.pack.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc3/js/jquery-1.10.2.min.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc3/mkdocs/js/lunr-0.5.7.min.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc3/mkdocs/js/mustache.min.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc3/mkdocs/js/require.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc3/mkdocs/js/search.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc3/mkdocs/js/text.js"></script>-->
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
             <div class="modal-dialog">

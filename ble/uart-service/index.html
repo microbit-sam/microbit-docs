@@ -413,7 +413,7 @@
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Using Bluetooth services is memory hungry. By default, some of the memory normally used by Nordic's Bluetooth protocol stack (known as a SoftDevice), is reclaimed by the micro:bit runtime as general purpose memory for your applications. if you enable more Bluetooth services, then you may need to provide more memory back to Soft Device to ensure proper operation. If after enabling this service your Bluetooth applicaiton cannot access the service reliably, you should consider increasing the value of MICROBIT_SD_GATT_TABLE_SIZE in your inc/MicroBitConfig.h. The more service you add, the larger this will need to be, up to the limit defined in MicroBitConfig.h.</p>
+<p>Using Bluetooth services is memory hungry. By default, some of the memory normally used by Nordic's Bluetooth protocol stack (known as a SoftDevice), is reclaimed by the micro:bit runtime as general purpose memory for your applications. if you enable more Bluetooth services, then you may need to provide more memory back to Soft Device to ensure proper operation. If after enabling this service your Bluetooth application cannot access the service reliably, you should consider increasing the value of MICROBIT_SD_GATT_TABLE_SIZE in your inc/MicroBitConfig.h. The more service you add, the larger this will need to be, up to the limit defined in MicroBitConfig.h.</p>
 </div>
 <h2 id="bluetooth-service-specification">Bluetooth Service Specification<a class="headerlink" href="#bluetooth-service-specification" title="Permanent link">&para;</a></h2>
 <p>Please see the <a href="../../resources/bluetooth/microbit-profile-V1.9-Level-2.pdf">micro:bit Bluetooth profile specification</a>.</p>
@@ -600,6 +600,15 @@ public void onSendText(View view) {
         <script>var base_url = '../..';</script>
         <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
         <script src="../../js/base.js"></script>
+        <!--<script src="../../archive/v2.0.0-rc3/js/base.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc3/js/bootstrap-3.0.3.min.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc3/js/highlight.pack.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc3/js/jquery-1.10.2.min.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc3/mkdocs/js/lunr-0.5.7.min.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc3/mkdocs/js/mustache.min.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc3/mkdocs/js/require.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc3/mkdocs/js/search.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc3/mkdocs/js/text.js"></script>-->
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
             <div class="modal-dialog">
