@@ -150,6 +150,24 @@ Configures this IO pin as a digital input (if necessary) and tests its current v
  MicroBitPin P0(MICROBIT_ID_IO_P0, MICROBIT_PIN_P0, PIN_CAPABILITY_BOTH); 
  P0.getDigitalValue(); // P0 is either 0 or 1; 
 ```
+<br/>
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>getDigitalValue</div>( <div style='color:#a71d5d; display:inline-block'>PinMode</div> pull)
+#####Description
+Configures this IO pin as a digital input with the specified internal pull-up/pull-down configuraiton (if necessary) and tests its current value.  
+
+ 
+
+
+#####Parameters
+
+>  <div style='color:#a71d5d; display:inline-block'>PinMode</div> pull - one of the mbed pull configurations: PullUp, PullDown, PullNone
+#####Returns
+1 if this input is high, 0 if input is LO, or MICROBIT_NOT_SUPPORTED if the given pin does not have digital capability.
+#####Example
+```cpp
+ MicroBitPin P0(MICROBIT_ID_IO_P0, MICROBIT_PIN_P0, PIN_CAPABILITY_BOTH); 
+ P0.getDigitalValue(PullUp); // P0 is either 0 or 1; 
+```
 ##setAnalogValue
 <br/>
 ####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>setAnalogValue</div>( <div style='color:#a71d5d; display:inline-block'>int</div> value)

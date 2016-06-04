@@ -343,28 +343,6 @@ a  ManagedString  representing the requested substring.
  
  display.scroll(s.substring(0,2)) // displays "ab" 
 ```
-##operator+
-<br/>
-####<div style='color:#a71d5d; display:inline-block'>ManagedString</div> <div style='color:#795da3; display:inline-block'>operator+</div>( <div style='color:#a71d5d; display:inline-block'>ManagedString  &</div> s)
-#####Description
-Concatenates this string with the one provided.  
-
- 
-
-
-#####Parameters
-
->  <div style='color:#a71d5d; display:inline-block'>ManagedString  &</div> s - The  ManagedString  to concatenate.
-#####Returns
-a new  ManagedString  representing the joined strings.
-#####Example
-```cpp
- MicroBitDisplay display; 
- ManagedString s("abcd"); 
- ManagedString p("efgh") 
- 
- display.scroll(s + p) // scrolls "abcdefgh" 
-```
 ##charAt
 <br/>
 ####<div style='color:#a71d5d; display:inline-block'>char</div> <div style='color:#795da3; display:inline-block'>charAt</div>( <div style='color:#a71d5d; display:inline-block'>int16_t</div> index)

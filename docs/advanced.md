@@ -190,6 +190,7 @@ The following options are configurable at compile time through `MicroBitConfig.h
 | `MICROBIT_DEFAULT_SCROLL_STRIDE` | Selects the number of pixels a scroll will move in each quantum.|
 | `MICROBIT_DEFAULT_PRINT_SPEED` | Selects the time each character will be shown on the display during print operations, in milliseconds.|
 | `MICROBIT_DEFAULT_SERIAL_MODE` | Configures the default serial mode used by serial read and send calls.|
+| `MICROBIT_DEFAULT_PULLMODE` | Define the default mode in which the digital input pins are configured. Valid options are PullDown, PullUp and PullNone.|
 | `MICROBIT_PANIC_HEAP_FULL` | Enable this to invoke a panic on out of memory conditions.|
 | `MICROBIT_DBG` | Enable this to route debug messages through the USB serial interface.|
 | `MICROBIT_HEAP_DBG` | Enable this to receive detailed diagnostic messages from the heap allocator via the USB serial interface.|
@@ -233,6 +234,7 @@ Here's a `config.json`, using all available configuration options, that matches 
             "device_info_service": 1
         },
         "reuse_sd": 1,
+        "default_pullmode":"PullDown",
         "gatt_table_size": "0x300",
         "heap_allocator": 1,
         "nested_heap_proportion": 0.75,
