@@ -48,6 +48,7 @@ pages:
   - MagnetometerService: ble/magnetometer-service.md
   - TemperatureService: ble/temperature-service.md
   - UARTService: ble/uart-service.md
+  - Connection Events: ble/ble-connection-events.md
 - Extras:
   - MicroBitLightSensor: extras/light-sensing.md
   - SPI: extras/spi.md
