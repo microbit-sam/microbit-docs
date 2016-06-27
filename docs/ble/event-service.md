@@ -84,7 +84,13 @@ bluetooth_le_adapter.setNotificationsState(
                     Utility.normaliseUUID(BleAdapterService.EVENTSERVICE_SERVICE_UUID), 
                     Utility.normaliseUUID(BleAdapterService.MICROBITEVENT_CHARACTERISTIC_UUID), true)                    
 ```
-                       
+
+``` java
+short MICROBIT_EVENT_TYPE_TEMPERATURE_ALARM = 9000;
+short MICROBIT_EVENT_VALUE_ANY = 0000;
+// informing micro:bit of the types of event we want to be informed about
+bluetooth_le_adapter.writeCharacteristic(Utility.normaliseUUID(BleAdapterService.EVENTSERVICE_SERVICE_UUID), Utility.normaliseUUID(BleAdapterService.CLIENTREQUIREMENTS_CHARACTERISTIC_UUID), Utility.leBytesFromTwoShorts(Constants.MICROBIT_EVENT_TYPE_TEMPERATURE_ALARM,Constants.MICROBIT_EVENT_VALUE_ANY));
+```                        
 
 ``` java
 // setting the upper and lower temperature limits 
