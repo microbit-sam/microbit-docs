@@ -73,7 +73,7 @@ uBit.display.scroll(b.getRSSI());
 [comment]: <> ({"className":"ManagedString"})
 ##Constructor
 <br/>
-####ManagedString( <div style='color:#a71d5d; display:inline-block'>StringData  *</div> ptr)
+####ManagedString( <div style='color:#a71d5d; display:inline-block'>StringData  \*</div> ptr)
 #####Description
 Constructor. Create a managed string from a specially prepared string literal.  
 
@@ -82,7 +82,7 @@ Constructor. Create a managed string from a specially prepared string literal.
 
 #####Parameters
 
->  <div style='color:#a71d5d; display:inline-block'>StringData  *</div> ptr - The literal - first two bytes should be 0xff, then the length in little endian, then the literal. The literal has to be 4-byte aligned.
+>  <div style='color:#a71d5d; display:inline-block'>StringData  \*</div> ptr - The literal - first two bytes should be 0xff, then the length in little endian, then the literal. The literal has to be 4-byte aligned.
 #####Example
 ```cpp
  static const char hello[] __attribute__ ((aligned (4))) = "\xff\xff\x05\x00" "Hello"; 
@@ -99,7 +99,7 @@ Get current ptr, do not decr() it, and set the current instance to empty string.
 
 ##Constructor
 <br/>
-####ManagedString( <div style='color:#a71d5d; display:inline-block'>const char *</div> str)
+####ManagedString( <div style='color:#a71d5d; display:inline-block'>const char \*</div> str)
 #####Description
 Constructor.  
 
@@ -112,7 +112,7 @@ Constructor.
 
 #####Parameters
 
->  <div style='color:#a71d5d; display:inline-block'>const char *</div> str - The character array on which to base the new  ManagedString .
+>  <div style='color:#a71d5d; display:inline-block'>const char \*</div> str - The character array on which to base the new  ManagedString .
 #####Example
 ```cpp
  ManagedString s("abcdefg"); 
@@ -165,7 +165,7 @@ Constructor. Create a  ManagedString  from a  PacketBuffer . All bytes in the  P
  ManagedString s = radio.datagram.recv(); 
 ```
 <br/>
-####ManagedString( <div style='color:#a71d5d; display:inline-block'>const char *</div> str,  <div style='color:#a71d5d; display:inline-block'>const int16_t</div> length)
+####ManagedString( <div style='color:#a71d5d; display:inline-block'>const char \*</div> str,  <div style='color:#a71d5d; display:inline-block'>const int16_t</div> length)
 #####Description
 Constructor. Create a  ManagedString  from a pointer to an 8-bit character buffer of a given length.  
 
@@ -176,7 +176,7 @@ Constructor. Create a  ManagedString  from a pointer to an 8-bit character buffe
 
 #####Parameters
 
->  <div style='color:#a71d5d; display:inline-block'>const char *</div> str - The character array on which to base the new  ManagedString .
+>  <div style='color:#a71d5d; display:inline-block'>const char \*</div> str - The character array on which to base the new  ManagedString .
 
 >  <div style='color:#a71d5d; display:inline-block'>const int16_t</div> length - The length of the character array
 #####Example
@@ -223,7 +223,7 @@ Copy assign operation.
 
  Called when one  ManagedString  is assigned the value of another.  
 
- If the  ManagedString  being assigned is already refering to a character buffer, decrement the reference count and free up the buffer as necessary.  
+ If the  ManagedString  being assigned is already referring to a character buffer, decrement the reference count and free up the buffer as necessary.  
 
  Then, update our character buffer to refer to that of the supplied  ManagedString , and increase its reference count.  
 
@@ -343,28 +343,6 @@ a  ManagedString  representing the requested substring.
  
  display.scroll(s.substring(0,2)) // displays "ab" 
 ```
-##operator+
-<br/>
-####<div style='color:#a71d5d; display:inline-block'>ManagedString</div> <div style='color:#795da3; display:inline-block'>operator+</div>( <div style='color:#a71d5d; display:inline-block'>ManagedString  &</div> s)
-#####Description
-Concatenates this string with the one provided.  
-
- 
-
-
-#####Parameters
-
->  <div style='color:#a71d5d; display:inline-block'>ManagedString  &</div> s - The  ManagedString  to concatenate.
-#####Returns
-a new  ManagedString  representing the joined strings.
-#####Example
-```cpp
- MicroBitDisplay display; 
- ManagedString s("abcd"); 
- ManagedString p("efgh") 
- 
- display.scroll(s + p) // scrolls "abcdefgh" 
-```
 ##charAt
 <br/>
 ####<div style='color:#a71d5d; display:inline-block'>char</div> <div style='color:#795da3; display:inline-block'>charAt</div>( <div style='color:#a71d5d; display:inline-block'>int16_t</div> index)
@@ -388,7 +366,7 @@ the character at posisiton index, zero if index is invalid.
 ```
 ##toCharArray
 <br/>
-####<div style='color:#a71d5d; display:inline-block'>const char *</div> <div style='color:#795da3; display:inline-block'>toCharArray</div>()
+####<div style='color:#a71d5d; display:inline-block'>const char \*</div> <div style='color:#795da3; display:inline-block'>toCharArray</div>()
 #####Description
 Provides an immutable 8 bit wide character buffer representing this string.  
 

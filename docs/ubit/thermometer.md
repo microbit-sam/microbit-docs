@@ -196,16 +196,5 @@ Updates the temperature sample of this instance of  MicroBitThermometer  only if
 
 #####Returns
 MICROBIT_OK on success. 
-##isIdleCallbackNeeded
-<br/>
-####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>isIdleCallbackNeeded</div>()
-#####Description
-Indicates if we'd like some processor time to sense the temperature.  
-
- 
-
-
-#####Returns
-1 if we'd like some processor time, 0 otherwise. 
 ____
 [comment]: <> ({"end":"MicroBitThermometer"})

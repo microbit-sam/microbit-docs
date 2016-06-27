@@ -152,14 +152,14 @@ Get current ptr, do not decr() it, and set the current instance to empty image.
 
 ##getBitmap
 <br/>
-####<div style='color:#a71d5d; display:inline-block'>uint8_t *</div> <div style='color:#795da3; display:inline-block'>getBitmap</div>()
+####<div style='color:#a71d5d; display:inline-block'>uint8_t \*</div> <div style='color:#795da3; display:inline-block'>getBitmap</div>()
 #####Description
 Return a 2D array representing the bitmap image.           
 
 
 ##Constructor
 <br/>
-####MicroBitImage( <div style='color:#a71d5d; display:inline-block'>ImageData  *</div> ptr)
+####MicroBitImage( <div style='color:#a71d5d; display:inline-block'>ImageData  \*</div> ptr)
 #####Description
 Constructor. Create an image from a specially prepared constant array, with no copying. Will call ptr->incr().  
 
@@ -168,7 +168,7 @@ Constructor. Create an image from a specially prepared constant array, with no c
 
 #####Parameters
 
->  <div style='color:#a71d5d; display:inline-block'>ImageData  *</div> ptr - The literal - first two bytes should be 0xff, then width, 0, height, 0, and the bitmap. Width and height are 16 bit. The literal has to be 4-byte aligned.
+>  <div style='color:#a71d5d; display:inline-block'>ImageData  \*</div> ptr - The literal - first two bytes should be 0xff, then width, 0, height, 0, and the bitmap. Width and height are 16 bit. The literal has to be 4-byte aligned.
 #####Example
 ```cpp
  static const uint8_t heart[] __attribute__ ((aligned (4))) = { 0xff, 0xff, 10, 0, 5, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart 
@@ -203,7 +203,7 @@ Copy Constructor. Add ourselves as a reference to an existing  MicroBitImage .
  MicroBitImage i2(i); //points to i 
 ```
 <br/>
-####MicroBitImage( <div style='color:#a71d5d; display:inline-block'>const char *</div> s)
+####MicroBitImage( <div style='color:#a71d5d; display:inline-block'>const char \*</div> s)
 #####Description
 Constructor. Create a blank bitmap representation of a given size.  
 
@@ -212,7 +212,7 @@ Constructor. Create a blank bitmap representation of a given size.
 
 #####Parameters
 
->  <div style='color:#a71d5d; display:inline-block'>const char *</div> s - A text based representation of the image given whitespace delimited numeric values.
+>  <div style='color:#a71d5d; display:inline-block'>const char \*</div> s - A text based representation of the image given whitespace delimited numeric values.
 #####Example
 ```cpp
  MicroBitImage i("0,1,0,1,0\n1,0,1,0,1\n0,1,0,1,0\n1,0,1,0,1\n0,1,0,1,0\n"); // 5x5 image 
@@ -250,7 +250,7 @@ Bitmap buffer is linear, with 8 bits per pixel, row by row, top to bottom with n
 
 >  <div style='color:#a71d5d; display:inline-block'>const int16_t</div> y - the height of the image.
 <br/>
-####MicroBitImage( <div style='color:#a71d5d; display:inline-block'>const int16_t</div> x,  <div style='color:#a71d5d; display:inline-block'>const int16_t</div> y,  <div style='color:#a71d5d; display:inline-block'>const uint8_t *</div> bitmap)
+####MicroBitImage( <div style='color:#a71d5d; display:inline-block'>const int16_t</div> x,  <div style='color:#a71d5d; display:inline-block'>const int16_t</div> y,  <div style='color:#a71d5d; display:inline-block'>const uint8_t \*</div> bitmap)
 #####Description
 Constructor. Create a bitmap representation of a given size, based on a given buffer.  
 
@@ -263,7 +263,7 @@ Constructor. Create a bitmap representation of a given size, based on a given bu
 
 >  <div style='color:#a71d5d; display:inline-block'>const int16_t</div> y - the height of the image.
 
->  <div style='color:#a71d5d; display:inline-block'>const uint8_t *</div> bitmap - a 2D array representing the image.
+>  <div style='color:#a71d5d; display:inline-block'>const uint8_t \*</div> bitmap - a 2D array representing the image.
 #####Example
 ```cpp
  const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart 
@@ -366,7 +366,7 @@ MICROBIT_OK, or MICROBIT_INVALID_PARAMETER.
 <br/>
 ####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>getPixelValue</div>( <div style='color:#a71d5d; display:inline-block'>int16_t</div> x,  <div style='color:#a71d5d; display:inline-block'>int16_t</div> y)
 #####Description
-Retreives the value of a given pixel.  
+Retrieves the value of a given pixel.  
 
  
 
@@ -385,7 +385,7 @@ The value assigned to the given pixel location (the brightness level 0-255), or 
 ```
 ##printImage
 <br/>
-####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>printImage</div>( <div style='color:#a71d5d; display:inline-block'>int16_t</div> x,  <div style='color:#a71d5d; display:inline-block'>int16_t</div> y,  <div style='color:#a71d5d; display:inline-block'>const uint8_t *</div> bitmap)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>printImage</div>( <div style='color:#a71d5d; display:inline-block'>int16_t</div> x,  <div style='color:#a71d5d; display:inline-block'>int16_t</div> y,  <div style='color:#a71d5d; display:inline-block'>const uint8_t \*</div> bitmap)
 #####Description
 Replaces the content of this image with that of a given 2D array representing the image.  
 
@@ -400,7 +400,7 @@ Replaces the content of this image with that of a given 2D array representing th
 
 >  <div style='color:#a71d5d; display:inline-block'>int16_t</div> y - the width of the image. Must be within the dimensions of the image.
 
->  <div style='color:#a71d5d; display:inline-block'>const uint8_t *</div> bitmap - a 2D array representing the image.
+>  <div style='color:#a71d5d; display:inline-block'>const uint8_t \*</div> bitmap - a 2D array representing the image.
 #####Returns
 MICROBIT_OK on success, or MICROBIT_INVALID_PARAMETER.
 #####Example
@@ -419,7 +419,7 @@ MICROBIT_OK on success, or MICROBIT_INVALID_PARAMETER.
 #####Description
 Pastes a given bitmap at the given co-ordinates.  
 
- Any pixels in the relvant area of this image are replaced.  
+ Any pixels in the relevant area of this image are replaced.  
 
  
 
@@ -440,7 +440,7 @@ The number of pixels written.
 #####Description
 Pastes a given bitmap at the given co-ordinates.  
 
- Any pixels in the relvant area of this image are replaced.  
+ Any pixels in the relevant area of this image are replaced.  
 
  
 
@@ -463,7 +463,7 @@ The number of pixels written.
 #####Description
 Pastes a given bitmap at the given co-ordinates.  
 
- Any pixels in the relvant area of this image are replaced.  
+ Any pixels in the relevant area of this image are replaced.  
 
  
 
@@ -488,7 +488,7 @@ The number of pixels written.
 #####Description
 Pastes a given bitmap at the given co-ordinates.  
 
- Any pixels in the relvant area of this image are replaced.  
+ Any pixels in the relevant area of this image are replaced.  
 
  
 

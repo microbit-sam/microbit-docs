@@ -146,7 +146,7 @@ int main()
 ```
 
 ## Compile Time Configuration Options
-In addition to the flexibility to initialise only the components that you need, the runtime also provides a central, compile time configuration file called 'MicroBitConfig.h'.
+In addition to the flexibility to initialise only the components that you need, the runtime also provides a central, compile time configuration file called `MicroBitConfig.h`.
 
 You can use this to reconfigure the default behaviour of the runtime.
 
@@ -154,7 +154,9 @@ The default settings will provide a stable working environment, but advanced use
 
 To tailor the behaviour, simply edit the `MicroBitConfig.h` file to change the settings, and then perform a clean rebuild.
 
-The following options are configurable at compile time through this mechanism:
+###Compile Time Options with MicroBitConfig.h
+
+The following options are configurable at compile time through `MicroBitConfig.h`:
 
 | Configuration option | Brief Description |
 | ------------- |-------------|
@@ -188,6 +190,7 @@ The following options are configurable at compile time through this mechanism:
 | `MICROBIT_DEFAULT_SCROLL_STRIDE` | Selects the number of pixels a scroll will move in each quantum.|
 | `MICROBIT_DEFAULT_PRINT_SPEED` | Selects the time each character will be shown on the display during print operations, in milliseconds.|
 | `MICROBIT_DEFAULT_SERIAL_MODE` | Configures the default serial mode used by serial read and send calls.|
+| `MICROBIT_DEFAULT_PULLMODE` | Define the default mode in which the digital input pins are configured. Valid options are PullDown, PullUp and PullNone.|
 | `MICROBIT_PANIC_HEAP_FULL` | Enable this to invoke a panic on out of memory conditions.|
 | `MICROBIT_DBG` | Enable this to route debug messages through the USB serial interface.|
 | `MICROBIT_HEAP_DBG` | Enable this to receive detailed diagnostic messages from the heap allocator via the USB serial interface.|
@@ -208,3 +211,70 @@ There are also some constants that define the geometry of the micro:bit memory
 | `MICROBIT_STACK_SIZE` | Amount of memory reserved for the stack (in bytes). |
 | `MICROBIT_HEAP_END` | The end address of the mbed heap space |
 
+### Compile Time Options with Yotta
+
+Rather than edit the `MicroBitConfig.h` file to change the default behaviour of the runtime, if you are using
+`yotta`, you can also provide a `config.json` in your project.
+
+Here's a `config.json`, using all available configuration options, that matches the default values specified in `MicroBitConfig.h`:
+
+```json
+{
+    "microbit-dal":{
+        "bluetooth":{
+            "enabled": 1,
+            "pairing_mode": 1,
+            "private_addressing": 0,
+            "open": 0,
+            "whitelist": 1,
+            "advertising_timeout": 0,
+            "tx_power": 0,
+            "dfu_service": 1,
+            "event_service": 1,
+            "device_info_service": 1
+        },
+        "reuse_sd": 1,
+        "default_pullmode":"PullDown",
+        "gatt_table_size": "0x300",
+        "heap_allocator": 1,
+        "nested_heap_proportion": 0.75,
+        "system_tick_period": 6,
+        "system_components": 10,
+        "idle_components": 6,
+        "use_accel_lsb": 0,
+        "min_display_brightness": 1,
+        "max_display_brightness": 255,
+        "display_scroll_speed": 120,
+        "display_scroll_stride": -1,
+        "display_print_speed": 400,
+        "panic_on_heap_full": 1,
+        "debug": 0,
+        "heap_debug": 0,
+        "stack_size":2048,
+        "sram_base":"0x20000008",
+        "sram_end":"0x20004000",
+        "sd_limit":"0x20002000",
+        "gatt_table_start":"0x20001900"
+    }
+}
+```
+
+It should be noted that **all** of the above options are optional, and will revert to their default values
+if not specified. This means that we can also provide a subset of these options, to configure specific
+parts of the runtime:
+
+```json
+{
+    "microbit-dal":{
+        "bluetooth":{
+            "open": 1
+        },
+        "debug":1
+    }
+}
+```
+
+Additionally, the options provided through `config.json` intuitively map onto the `#defines`
+listed in `MicroBitConfig.h`
+
+An example of `config.json` in operation is available at the [microbit-samples](https://github.com/lancaster-university/microbit-samples) GitHub repository.

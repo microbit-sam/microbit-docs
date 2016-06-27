@@ -14,7 +14,7 @@ Programmers are also free (in fact, encouraged!) to send their own events whenev
 The `MicroBitMessageBus` records which events your program is interested in, and delivers those `MicroBitEvent`s to your program as they occur
 through a defined **event handler**.  
 
-This is acheived through the `MicroBitMessageBus` `listen` function. This lets you attach a callback
+This is achieved through the `MicroBitMessageBus` `listen` function. This lets you attach a callback
 to a function when a specified event (or events) occur.
 
 You can also control the queuing and threading model used for your callback function on a per event handler basis.
@@ -308,7 +308,7 @@ Returns the microBitListener with the given position in our list.
 the  MicroBitListener  at postion n in the list, or NULL if the position is invalid. 
 ##add
 <br/>
-####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>add</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitListener  *</div> newListener)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>add</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitListener  \*</div> newListener)
 #####Description
 Add the given  MicroBitListener  to the list of event handlers, unconditionally.  
 
@@ -317,12 +317,12 @@ Add the given  MicroBitListener  to the list of event handlers, unconditionally.
 
 #####Parameters
 
->  <div style='color:#a71d5d; display:inline-block'>MicroBitListener  *</div> newListener
+>  <div style='color:#a71d5d; display:inline-block'>MicroBitListener  \*</div> newListener
 #####Returns
 MICROBIT_OK if the listener is valid, MICROBIT_INVALID_PARAMETER otherwise. 
 ##remove
 <br/>
-####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>remove</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitListener  *</div> newListener)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>remove</div>( <div style='color:#a71d5d; display:inline-block'>MicroBitListener  \*</div> newListener)
 #####Description
 Remove the given  MicroBitListener  from the list of event handlers.  
 
@@ -331,7 +331,7 @@ Remove the given  MicroBitListener  from the list of event handlers.
 
 #####Parameters
 
->  <div style='color:#a71d5d; display:inline-block'>MicroBitListener  *</div> newListener
+>  <div style='color:#a71d5d; display:inline-block'>MicroBitListener  \*</div> newListener
 #####Returns
 MICROBIT_OK if the listener is valid, MICROBIT_INVALID_PARAMETER otherwise. 
 ____

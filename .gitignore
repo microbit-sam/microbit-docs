@@ -1,5 +1,6 @@
 xml
 html
 site
-inc
+temp
 latex
+*.pyc

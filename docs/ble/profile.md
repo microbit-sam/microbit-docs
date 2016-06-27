@@ -42,7 +42,7 @@ micro:bit uses standard Bluetooth security. Bluetooth defines a series of option
 
 3. Encrypted link for operations involving most characteristics
 
-Pairing equips the micro:bit and a trusted peer device with the potential to perform security operations when interacting such as utilising an AES 128 bit encrypted link. All interactions involving custom services except for the DFU Control Service must be performed over an encrypted link. Note that encryption will be automatically applied whenever required. If a peer device is not paired with the micro:bit and a secure operation is attempted it will be rejected and the usual, expected behaviour of the peer is that it will inititiate the pairing process automatically.
+Pairing equips the micro:bit and a trusted peer device with the potential to perform security operations when interacting such as utilising an AES 128 bit encrypted link. All interactions involving custom services except for the DFU Control Service must be performed over an encrypted link. Note that encryption will be automatically applied whenever required. If a peer device is not paired with the micro:bit and a secure operation is attempted it will be rejected and the usual, expected behaviour of the peer is that it will initiate the pairing process automatically.
 
 White listing allows paired devices only to connect to and interact with the micro:bit. Attempts to connect from devices not in the white list are ignored by the Bluetooth Link Layer.
 
@@ -54,7 +54,7 @@ In pairing mode the micro:bit will advertise with flags set indicating it is dis
 
 <img src="../../resources/bluetooth/adv_pairing_mode.png" alt="Advertising in Pairing Mode">
 
-In “normal mode” (i.e. not pairing mode) advertsing packets have neither the LE Limited Discoverable mode or the LE General Discoverable Mode flags set and so in this situation may not be listed in the “available Bluetooth devices” screen of some smartphones which have not paired with the micro:bit. This is by design.
+In “normal mode” (i.e. not pairing mode) advertising packets have neither the LE Limited Discoverable mode or the LE General Discoverable Mode flags set and so in this situation may not be listed in the “available Bluetooth devices” screen of some smartphones which have not paired with the micro:bit. This is by design.
 
 <img src="../../resources/bluetooth/adv_normal_mode.png" alt="Advertising in Normal Mode">
 
@@ -215,7 +215,7 @@ Allows clients to initiate the micro:bit pairing and over the air firmware updat
 
 #### Characteristics
 
-**DFU Control** : Writing 0x01 initiates rebooting the micro:bit into the Nordic Semiconductor bootloader if the DFU Flash Code characteristic has been written to with the correct secret key. Writing 0x02 to this charactertistic  means "request flash code".
+**DFU Control** : Writing 0x01 initiates rebooting the micro:bit into the Nordic Semiconductor bootloader if the DFU Flash Code characteristic has been written to with the correct secret key. Writing 0x02 to this characteristic  means "request flash code".
 
 ### About the UART Service
 

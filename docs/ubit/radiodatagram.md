@@ -94,7 +94,7 @@ Constructor.
 >  <div style='color:#a71d5d; display:inline-block'>MicroBitRadio  &</div> r - The underlying radio module used to send and receive data. 
 ##recv
 <br/>
-####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>recv</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t *</div> buf,  <div style='color:#a71d5d; display:inline-block'>int</div> len)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>recv</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t \*</div> buf,  <div style='color:#a71d5d; display:inline-block'>int</div> len)
 #####Description
 Retrieves packet payload data into the given buffer.  
 
@@ -105,7 +105,7 @@ Retrieves packet payload data into the given buffer.
 
 #####Parameters
 
->  <div style='color:#a71d5d; display:inline-block'>uint8_t *</div> buf - A pointer to a valid memory location where the received data is to be stored
+>  <div style='color:#a71d5d; display:inline-block'>uint8_t \*</div> buf - A pointer to a valid memory location where the received data is to be stored
 
 >  <div style='color:#a71d5d; display:inline-block'>int</div> len - The maximum amount of data that can safely be stored in 'buf'
 #####Returns
@@ -124,7 +124,7 @@ Retreives packet payload data into the given buffer.
 the data received, or an empty  PacketBuffer  if no data is available. 
 ##send
 <br/>
-####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>send</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t *</div> buffer,  <div style='color:#a71d5d; display:inline-block'>int</div> len)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>send</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t \*</div> buffer,  <div style='color:#a71d5d; display:inline-block'>int</div> len)
 #####Description
 Transmits the given buffer onto the broadcast radio.  
 
@@ -135,7 +135,7 @@ Transmits the given buffer onto the broadcast radio.
 
 #####Parameters
 
->  <div style='color:#a71d5d; display:inline-block'>uint8_t *</div> buffer - The packet contents to transmit.
+>  <div style='color:#a71d5d; display:inline-block'>uint8_t \*</div> buffer - The packet contents to transmit.
 
 >  <div style='color:#a71d5d; display:inline-block'>int</div> len - The number of bytes to transmit.
 #####Returns

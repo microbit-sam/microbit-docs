@@ -468,11 +468,11 @@ Retrieves the next packet from the receive buffer. If a data packet is available
 The buffer containing the the packet. If no data is available, NULL is returned.
 
 !!! note
-    Once  recv()  has been called, it is the callers resposibility to delete the buffer when appropriate. 
+    Once  recv()  has been called, it is the callers responsibility to delete the buffer when appropriate. 
 
 ##send
 <br/>
-####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>send</div>( <div style='color:#a71d5d; display:inline-block'>FrameBuffer  *</div> buffer)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>send</div>( <div style='color:#a71d5d; display:inline-block'>FrameBuffer  \*</div> buffer)
 #####Description
 Transmits the given buffer onto the broadcast radio. The call will wait until the transmission of the packet has completed before returning.  
 
@@ -481,7 +481,7 @@ Transmits the given buffer onto the broadcast radio. The call will wait until th
 
 #####Parameters
 
->  <div style='color:#a71d5d; display:inline-block'>FrameBuffer  *</div> buffer
+>  <div style='color:#a71d5d; display:inline-block'>FrameBuffer  \*</div> buffer
 #####Returns
 MICROBIT_OK on success, or MICROBIT_NOT_SUPPORTED if the BLE stack is running. 
 ____

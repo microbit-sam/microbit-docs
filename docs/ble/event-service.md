@@ -4,7 +4,7 @@
 
 This Bluetooth service is an optional part of the standard Bluetooth profile for the micro:bit. It is a passive service, that can operate transparently in the
 background as your main program is running. This service extends the microBitMessageBus over Bluetooth, so that standard MicroBitEvents raised on the device can be transmitted transparently over
-Bluetooth and received and processed by connected Bluetooth master device such as a smartphone.  You do not need to explicity address and API on the service to achieve this.
+Bluetooth and received and processed by connected Bluetooth master device such as a smartphone.  You do not need to explicitly address and API on the service to achieve this.
 
 ## Enabling the Service
 
@@ -18,7 +18,7 @@ This service is enabled by default.
 
 ### General Procedures
 
-micro:bit uses an event bus which relays event objects from system components which generate them to other system components which have registered an interest in events of a given type. This principle and capability has been extended to remote devices connected over Bluetooth. Connected clients can indicate the types of event they are interested in and be informed via Bluetooth notificatons as and when such events occur. Similarly, micro:bit application code can inform a connected client of events which might happen in or be observed by an application running on the connected device (the client application) and be informed when they occur via Bluetooth write operations. 
+micro:bit uses an event bus which relays event objects from system components which generate them to other system components which have registered an interest in events of a given type. This principle and capability has been extended to remote devices connected over Bluetooth. Connected clients can indicate the types of event they are interested in and be informed via Bluetooth notifications as and when such events occur. Similarly, micro:bit application code can inform a connected client of events which might happen in or be observed by an application running on the connected device (the client application) and be informed when they occur via Bluetooth write operations. 
 
 Event objects consist of a short (2 octets) type and a short (2 octets) value.
 
@@ -30,7 +30,7 @@ The Client Requirements characteristic has a similar purpose but is the mechanis
 
 The MicroBit Event characteristic is used to convey events which have happened on the micro:bit to the connected client. Notifications are normally used but the most recent events for which the client registered can be determined by reading the characteristic value at any time.
 
-The Client Event characteirstic is used to convey events which have happened on the client device to the micro:bit. This is achieved through the client application writing one or more events to the characteristic value.
+The Client Event characteristic is used to convey events which have happened on the client device to the micro:bit. This is achieved through the client application writing one or more events to the characteristic value.
 
 See the profile page and profile reference documentation for data format and UUID details.
 

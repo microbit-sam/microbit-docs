@@ -264,7 +264,7 @@ Defaults to SYNC_SLEEP.
 
 >  <div style='color:#a71d5d; display:inline-block'>ManagedString</div> s - the string to send
 #####Returns
-the number of bytes written, or MICROBIT_SERIAL_IN_USE if another fiber is using the serial instance for transmission. 
+the number of bytes written, MICROBIT_SERIAL_IN_USE if another fiber is using the serial instance for transmission, MICROBIT_INVALID_PARAMETER if buffer is invalid, or the given bufferLen is <= 0. 
 <br/>
 ####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>send</div>( <div style='color:#a71d5d; display:inline-block'>ManagedString</div> s,  <div style='color:#a71d5d; display:inline-block'>MicroBitSerialMode</div> mode)
 #####Description
@@ -314,9 +314,9 @@ SYNC_SLEEP - bytes are copied into the txBuff and the fiber sleeps
              to continue execution.
 
 #####Returns
-the number of bytes written, or MICROBIT_SERIAL_IN_USE if another fiber is using the serial instance for transmission. 
+the number of bytes written, MICROBIT_SERIAL_IN_USE if another fiber is using the serial instance for transmission, MICROBIT_INVALID_PARAMETER if buffer is invalid, or the given bufferLen is <= 0. 
 <br/>
-####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>send</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t *</div> buffer,  <div style='color:#a71d5d; display:inline-block'>int</div> bufferLen)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>send</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t \*</div> buffer,  <div style='color:#a71d5d; display:inline-block'>int</div> bufferLen)
 #####Description
 Sends a buffer of known length over the serial line.  
 
@@ -358,13 +358,13 @@ Defaults to SYNC_SLEEP.
 
 #####Parameters
 
->  <div style='color:#a71d5d; display:inline-block'>uint8_t *</div> buffer - a pointer to the first character of the buffer
+>  <div style='color:#a71d5d; display:inline-block'>uint8_t \*</div> buffer - a pointer to the first character of the buffer
 
 >  <div style='color:#a71d5d; display:inline-block'>int</div> bufferLen - a pointer to the first character of the buffer
 #####Returns
-the number of bytes written, or MICROBIT_SERIAL_IN_USE if another fiber is using the serial instance for transmission. 
+the number of bytes written, MICROBIT_SERIAL_IN_USE if another fiber is using the serial instance for transmission, MICROBIT_INVALID_PARAMETER if buffer is invalid, or the given bufferLen is <= 0. 
 <br/>
-####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>send</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t *</div> buffer,  <div style='color:#a71d5d; display:inline-block'>int</div> bufferLen,  <div style='color:#a71d5d; display:inline-block'>MicroBitSerialMode</div> mode)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>send</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t \*</div> buffer,  <div style='color:#a71d5d; display:inline-block'>int</div> bufferLen,  <div style='color:#a71d5d; display:inline-block'>MicroBitSerialMode</div> mode)
 #####Description
 Sends a buffer of known length over the serial line.  
 
@@ -406,7 +406,7 @@ Defaults to SYNC_SLEEP.
 
 #####Parameters
 
->  <div style='color:#a71d5d; display:inline-block'>uint8_t *</div> buffer - a pointer to the first character of the buffer
+>  <div style='color:#a71d5d; display:inline-block'>uint8_t \*</div> buffer - a pointer to the first character of the buffer
 
 >  <div style='color:#a71d5d; display:inline-block'>int</div> bufferLen - a pointer to the first character of the buffer
 
@@ -421,7 +421,7 @@ SYNC_SLEEP - bytes are copied into the txBuff and the fiber sleeps
              to continue execution.
 
 #####Returns
-the number of bytes written, or MICROBIT_SERIAL_IN_USE if another fiber is using the serial instance for transmission. 
+the number of bytes written, MICROBIT_SERIAL_IN_USE if another fiber is using the serial instance for transmission, MICROBIT_INVALID_PARAMETER if buffer is invalid, or the given bufferLen is <= 0. 
 ##read
 <br/>
 ####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>read</div>()
@@ -592,7 +592,7 @@ SYNC_SLEEP - If the desired number of characters are available, this will return
 #####Returns
 A  ManagedString , or an empty  ManagedString  if an error was encountered during the read. 
 <br/>
-####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>read</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t *</div> buffer,  <div style='color:#a71d5d; display:inline-block'>int</div> bufferLen)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>read</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t \*</div> buffer,  <div style='color:#a71d5d; display:inline-block'>int</div> bufferLen)
 #####Description
 Reads multiple characters from the rxBuff and fills a user buffer.  
 
@@ -636,13 +636,13 @@ Defaults to SYNC_SLEEP.
 
 #####Parameters
 
->  <div style='color:#a71d5d; display:inline-block'>uint8_t *</div> buffer - a pointer to a user allocated buffer.
+>  <div style='color:#a71d5d; display:inline-block'>uint8_t \*</div> buffer - a pointer to a user allocated buffer.
 
 >  <div style='color:#a71d5d; display:inline-block'>int</div> bufferLen - the amount of data that can be safely stored
 #####Returns
 the number of characters read, or MICROBIT_SERIAL_IN_USE if another fiber is using the instance for receiving. 
 <br/>
-####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>read</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t *</div> buffer,  <div style='color:#a71d5d; display:inline-block'>int</div> bufferLen,  <div style='color:#a71d5d; display:inline-block'>MicroBitSerialMode</div> mode)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>read</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t \*</div> buffer,  <div style='color:#a71d5d; display:inline-block'>int</div> bufferLen,  <div style='color:#a71d5d; display:inline-block'>MicroBitSerialMode</div> mode)
 #####Description
 Reads multiple characters from the rxBuff and fills a user buffer.  
 
@@ -686,7 +686,7 @@ Defaults to SYNC_SLEEP.
 
 #####Parameters
 
->  <div style='color:#a71d5d; display:inline-block'>uint8_t *</div> buffer - a pointer to a user allocated buffer.
+>  <div style='color:#a71d5d; display:inline-block'>uint8_t \*</div> buffer - a pointer to a user allocated buffer.
 
 >  <div style='color:#a71d5d; display:inline-block'>int</div> bufferLen - the amount of data that can be safely stored
 
@@ -856,6 +856,8 @@ MICROBIT_SERIAL_IN_USE if another fiber is currently transmitting or receiving, 
 #####Description
 Configures an event to be fired after "len" characters.  
 
+ Will generate an event with the ID: MICROBIT_ID_SERIAL and the value MICROBIT_SERIAL_EVT_HEAD_MATCH.  
+
  
 
 
@@ -868,6 +870,8 @@ MICROBIT_INVALID_PARAMETER if the mode given is SYNC_SPINWAIT, otherwise MICROBI
 ####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>eventAfter</div>( <div style='color:#a71d5d; display:inline-block'>int</div> len,  <div style='color:#a71d5d; display:inline-block'>MicroBitSerialMode</div> mode)
 #####Description
 Configures an event to be fired after "len" characters.  
+
+ Will generate an event with the ID: MICROBIT_ID_SERIAL and the value MICROBIT_SERIAL_EVT_HEAD_MATCH.  
 
  
 
@@ -891,12 +895,14 @@ MICROBIT_INVALID_PARAMETER if the mode given is SYNC_SPINWAIT, otherwise MICROBI
 #####Description
 Configures an event to be fired on a match with one of the delimeters.  
 
+ Will generate an event with the ID: MICROBIT_ID_SERIAL and the value MICROBIT_SERIAL_EVT_DELIM_MATCH.  
+
  
 
 
 #####Parameters
 
->  <div style='color:#a71d5d; display:inline-block'>ManagedString</div> delimeters - the characters to match received characters against e.g.  ManagedString ("\r\n")
+>  <div style='color:#a71d5d; display:inline-block'>ManagedString</div> delimeters - the characters to match received characters against e.g.  ManagedString ("\n")
 #####Returns
 MICROBIT_INVALID_PARAMETER if the mode given is SYNC_SPINWAIT, otherwise MICROBIT_OK.
 
@@ -908,12 +914,14 @@ MICROBIT_INVALID_PARAMETER if the mode given is SYNC_SPINWAIT, otherwise MICROBI
 #####Description
 Configures an event to be fired on a match with one of the delimeters.  
 
+ Will generate an event with the ID: MICROBIT_ID_SERIAL and the value MICROBIT_SERIAL_EVT_DELIM_MATCH.  
+
  
 
 
 #####Parameters
 
->  <div style='color:#a71d5d; display:inline-block'>ManagedString</div> delimeters - the characters to match received characters against e.g.  ManagedString ("\r\n")
+>  <div style='color:#a71d5d; display:inline-block'>ManagedString</div> delimeters - the characters to match received characters against e.g.  ManagedString ("\n")
 
 >  <div style='color:#a71d5d; display:inline-block'>MicroBitSerialMode</div> mode - the selected mode, one of: ASYNC, SYNC_SPINWAIT, SYNC_SLEEP. Each mode gives a different behaviour:  ASYNC - Will configure the event and return immediately.
 
