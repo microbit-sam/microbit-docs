@@ -301,6 +301,12 @@
 </li>
 
                     
+                        
+<li >
+    <a href="../ble-connection-events/">Connection Events</a>
+</li>
+
+                    
                     </ul>
                 </li>
             
@@ -456,6 +462,12 @@ private byte [] event_set_upper = { 0x2A, 0x23, 0x00, 0x00}; // event 9002
 bluetooth_le_adapter.setNotificationsState(
                     Utility.normaliseUUID(BleAdapterService.EVENTSERVICE_SERVICE_UUID), 
                     Utility.normaliseUUID(BleAdapterService.MICROBITEVENT_CHARACTERISTIC_UUID), true)                    
+</code></pre>
+
+<pre><code class="java">short MICROBIT_EVENT_TYPE_TEMPERATURE_ALARM = 9000;
+short MICROBIT_EVENT_VALUE_ANY = 0000;
+// informing micro:bit of the types of event we want to be informed about
+bluetooth_le_adapter.writeCharacteristic(Utility.normaliseUUID(BleAdapterService.EVENTSERVICE_SERVICE_UUID), Utility.normaliseUUID(BleAdapterService.CLIENTREQUIREMENTS_CHARACTERISTIC_UUID), Utility.leBytesFromTwoShorts(Constants.MICROBIT_EVENT_TYPE_TEMPERATURE_ALARM,Constants.MICROBIT_EVENT_VALUE_ANY));
 </code></pre>
 
 <pre><code class="java">// setting the upper and lower temperature limits 
