@@ -24,7 +24,7 @@ On board the micro:bit there is already:
         the micro:bit.
     </p>
     <p>
-        <a target="_blank" href="../resources/datasheets/nrf51822.pdf" class="btn btn-lg btn-outline">
+        <a target="_blank" href="../resources/datasheets/nRF51822.pdf" class="btn btn-lg btn-outline">
             Datasheet
         </a>
     </p>
