@@ -1,5 +1,35 @@
 /* Search */
 
+function appendVersionList()
+{
+    archiveIndex = window.location.href.indexOf("archive");
+    isArchived  = archiveIndex > -1 ? true : false;
+    //relativePath = isArchived ? "../.." : ".";
+
+    version = isArchived ? window.location.href.split("/")[2] : "Current";
+
+    relativePath += "/js/versions.js"
+
+    $.ajax({
+        url: relativePath,
+    }).done(function(data){
+        html = "<div style='margin-top:30px;' class='form-group'><select class='form-control'>"
+
+        versions = ["Current"] + versions
+
+        //html += "<option value = 'Current' " + (!isArchived ? "selected": "") + ">Current</option>"
+
+        for(var i = 0; i < versions.length; i++)
+            html += "<option value = '" + versions[i] + "' " + (versions[i] == version ? "selected": "") + ">" + versions[i] +"</option>"
+
+        html += "</select></div>"
+
+        $('div[role="main"]').prepend(html);
+    }).fail(function(){
+        //fail transparently...
+    })
+}
+
 function getSearchTerm()
 {
     var sPageURL = window.location.search.substring(1);
@@ -14,6 +44,9 @@ function getSearchTerm()
 }
 
 $(document).ready(function() {
+
+    appendVersionList();
+
     var search_term = getSearchTerm(),
         $search_modal = $('#mkdocs_search_modal');
 
