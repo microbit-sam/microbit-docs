@@ -93,7 +93,7 @@
                     
                         
 <li >
-    <a href="../../online-toolchains/">Online Development</a>
+    <a href="../../online-toolchains/">Web-based Development</a>
 </li>
 
                     
@@ -441,7 +441,7 @@ void onConnected(MicroBitEvent e)
     // my client will send ASCII strings terminated with the colon character
     ManagedString eom(&quot;:&quot;);
 
-    while(1) {
+    while (connected == 1) {
         ManagedString msg = uart-&gt;readUntil(eom);
         uBit.display.scroll(msg);
     }

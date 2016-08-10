@@ -93,7 +93,7 @@
                     
                         
 <li >
-    <a href="../../online-toolchains/">Online Development</a>
+    <a href="../../online-toolchains/">Web-based Development</a>
 </li>
 
                     
@@ -425,7 +425,7 @@ a linear shift (although changes in temperature will be accurate). See <a href="
 <p>Please see the <a href="../../resources/bluetooth/microbit-profile-V1.9-Level-2.pdf">micro:bit Bluetooth profile specification</a>.</p>
 <h2 id="example-applications-for-androidiosandroid">Example Applications for Android/IOS/Android<a class="headerlink" href="#example-applications-for-androidiosandroid" title="Permanent link">&para;</a></h2>
 <h3 id="general-procedures">General Procedures<a class="headerlink" href="#general-procedures" title="Permanent link">&para;</a></h3>
-<p>micro:bit has an LED display with 5 rows and 5 columns i.e. 25 LEDs in total. The Bluetooth LED service allows the entire grid to be addressed as a bitmap using the LED Matrix State characteristic which supports both read and write operations. Text strings can be sent to the micro:bit for display by writing to the LED Text characteristic and the speed with which it is scrolled can be controlled by setting a delay value in milliseconds by writing to the Scrolling Delay characteristic.</p>
+<p>micro:bit can acquire a temperature reading from the surface of the nrf51822 processor and this can be shared with connected Bluetooth clients, either via Bluetooth notifications or by the client reading the current value of the Temperature characteristic. The frequency with which Temperature notifications are sent (more accurately, the frequency with which the temperature is sampled) may be configured by writing a ms value to the Temperature Period characteristic.  </p>
 <p>See the profile page and profile reference documentation for data format and UUID details.</p>
 <h3 id="android">Android<a class="headerlink" href="#android" title="Permanent link">&para;</a></h3>
 <p><img src="../../resources/bluetooth/temperature_demo.png" alt="Temperature Demo"></p>
