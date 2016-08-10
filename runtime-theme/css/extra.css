@@ -130,3 +130,9 @@ code{
     /* Firefox doesn't respect max-width in certain situations */
     img { width: 100%; max-width: -moz-max-content !important; }
 }
+
+.img-icon a img
+{
+    max-height:80px;
+    width:auto;
+}
