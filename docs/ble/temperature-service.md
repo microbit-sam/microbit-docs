@@ -27,7 +27,7 @@ This service is disabled by default. To enable the service, simply create an ins
 
 ### General Procedures
 
-micro:bit has an LED display with 5 rows and 5 columns i.e. 25 LEDs in total. The Bluetooth LED service allows the entire grid to be addressed as a bitmap using the LED Matrix State characteristic which supports both read and write operations. Text strings can be sent to the micro:bit for display by writing to the LED Text characteristic and the speed with which it is scrolled can be controlled by setting a delay value in milliseconds by writing to the Scrolling Delay characteristic.
+micro:bit can acquire a temperature reading from the surface of the nrf51822 processor and this can be shared with connected Bluetooth clients, either via Bluetooth notifications or by the client reading the current value of the Temperature characteristic. The frequency with which Temperature notifications are sent (more accurately, the frequency with which the temperature is sampled) may be configured by writing a ms value to the Temperature Period characteristic.  
 
 
 See the profile page and profile reference documentation for data format and UUID details.

@@ -140,6 +140,8 @@ Note: to deliver meaningful data the micro:bit magnetometer must first be calibr
 
 **Temperature** : Signed integer 8 bit value in celsius.
 
+**Temperature Period** : Determines the frequency with which temperature data is updated in milliseconds.
+
 ### About the Button Service
 
 The Button Service exposes the two buttons on the micro:bit and allows their state to be read on demand by a connected client or the client to subscribe to notifications of state change. 3 button states are defined and represented by a simple numeric enumeration:  0 = not pressed, 1 = pressed, 2 = long press.
