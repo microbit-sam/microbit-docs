@@ -74,7 +74,7 @@ A maximum of 4 devices may be paired with a micro:bit simultaneously (note thoug
 
 ## Reference Documentation
 
-Details of the micro:bit's Bluetooth services, characteristics, the operations they each support and any associated descriptors along with UUID values can be found in the associated [micro:bit Bluetooth profile specification](../resources/bluetooth/microbit-profile-V1.9-Level-2.pdf)
+Details of the micro:bit's Bluetooth services, characteristics, the operations they each support and any associated descriptors along with UUID values can be found in the associated [micro:bit Bluetooth profile specification](../resources/bluetooth/bluetooth_profile.html)
 
 A simplified overview appears below.
 
@@ -93,7 +93,7 @@ A simplified overview appears below.
 | IO Pin Service | Custom | optional | Allows access to and configuration of IO pins on the edge connector. |
 | Event Service | Custom | optional | Allows the micro:bit to inform the connected client of the types of event it wants to be informed about. Allows the client to inform the micro:bit of relevant events. Allows micro:bit to inform the client of events originating on the micro:bit.Event data includes both a type and a reason or origin. |
 | DFU Control Service | Custom | mandatory | Used to initiate device firmware update. Defined by Nordic Semiconductor. |
-| UART Service | Custom | optional | Provides pseudo serial data communications over Bluetooth low energy, allowing arbitrary byte sequences to be exchanged in either direction with a connected peer. Data from micro:bit to peer is transmitted using Bluetooth Indications. Data from the peer to the micro:bit is transmitted using Write or Write No Response PDUs. This is an implementation of Nordic Semicondutor's UART/Serial Port Emulation over Bluetooth low energy. 
+| UART Service | Custom | optional | Provides pseudo serial data communications over Bluetooth low energy, allowing arbitrary byte sequences to be exchanged in either direction with a connected peer. Data from micro:bit to peer is transmitted using Bluetooth Indications. Data from the peer to the micro:bit is transmitted using Write or Write No Response PDUs. This is an implementation of Nordic Semicondutor's UART/Serial Port Emulation over Bluetooth low energy.
 
 The maximum number of bytes which may be transmitted in one PDU is limited to the MTU minus three or 20 octets to be precise.
 
@@ -225,7 +225,7 @@ Provides a pseudo serial interface to the micro:bit for the exchange of arbitrar
 
 This is an implementation of the Nordic Semiconductor UART service:
 
-https://developer.nordicsemi.com/nRF5_SDK/nRF51_SDK_v8.x.x/doc/8.0.0/s110/html/a00072.html 
+https://developer.nordicsemi.com/nRF5_SDK/nRF51_SDK_v8.x.x/doc/8.0.0/s110/html/a00072.html
 
 
 #### Characteristics
