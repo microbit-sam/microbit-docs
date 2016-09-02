@@ -107,7 +107,7 @@ In this call the scheduler, memory allocator and Bluetooth stack are initialised
 
 Fibers are lightweight threads used by the runtime to perform operations asynchronously.
 
-The function call `fiber_release();` is recommended at the end of main to release the main fiber, and enter
+The function call `release_fiber();` is recommended at the end of main to release the main fiber, and enter
 the scheduler indefinitely as you may have other fibers running elsewhere in the code.
 It also means that the processor will enter a power efficient sleep if there are
 no other processes running.
