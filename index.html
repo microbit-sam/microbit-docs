@@ -491,7 +491,7 @@ repetition!</p>
 </div>
 <h3 id="what-is-a-fiber-and-why-do-we-release-it">What is a fiber and why do we release it?<a class="headerlink" href="#what-is-a-fiber-and-why-do-we-release-it" title="Permanent link">&para;</a></h3>
 <p>Fibers are lightweight threads used by the runtime to perform operations asynchronously.</p>
-<p>The function call <code>fiber_release();</code> is recommended at the end of main to release the main fiber, and enter
+<p>The function call <code>release_fiber();</code> is recommended at the end of main to release the main fiber, and enter
 the scheduler indefinitely as you may have other fibers running elsewhere in the code.
 It also means that the processor will enter a power efficient sleep if there are
 no other processes running.</p>
@@ -519,6 +519,7 @@ no other processes running.</p>
         <!--<script src="./archive/v2.0.0-rc3/mkdocs/js/require.js"></script>-->
         <!--<script src="./archive/v2.0.0-rc3/mkdocs/js/search.js"></script>-->
         <!--<script src="./archive/v2.0.0-rc3/mkdocs/js/text.js"></script>-->
+        <!--<script src="./resources/bluetooth/functions.js"></script>-->
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
             <div class="modal-dialog">

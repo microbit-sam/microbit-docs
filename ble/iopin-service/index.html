@@ -425,9 +425,14 @@ This data can be transparently read and written by a connected Bluetooth master 
 <h2 id="example-applications-for-androidiosandroid">Example Applications for Android/IOS/Android<a class="headerlink" href="#example-applications-for-androidiosandroid" title="Permanent link">&para;</a></h2>
 <h3 id="general-procedures">General Procedures<a class="headerlink" href="#general-procedures" title="Permanent link">&para;</a></h3>
 <p>Applications should first configure the pins they wish to work with over Bluetooth. Configuration involves specifying that a pin is to be used for digital I/O or analogue I/O and that it is to be used for input or for output. These two types of configuration are handled by two characteristics in the IO Pin Service namely Pin AD Configuration and Pin IO Configuration. </p>
-<p>The Pin AD Configuration characteristic contains a bit mask which allows each pin to be configured for analogue or digital use. Bit n corresponds to pin n where 0 &lt;= n &lt; 19. A value of 0 means digital and 1 means analogue.</p>
-<p>The Pin IO Configuration characteristic contains a bit mask which allows each pin to be configured for input or output use. Bit n corresponds to pin n where 0 &lt;= n &lt; 19. A value of 0 means output and 1 means input.</p>
+<p>The Pin AD Configuration characteristic contains A bit mask (32 bit) which defines which inputs will be read. If the Pin AD Configuration bit mask is also set the pin will be read as an analogue input, if not it will be read as a digital input.  </p>
+<p>Note that in practice, setting a pin's mask bit means that it will be read by the micro:bit runtime and, if notifications have been enabled on the Pin Data characteristic, data read will be transmitted to the connected Bluetooth peer device in a Pin Data notification. If the pin's bit is clear, it  simply means that it will not be read by the micro:bit runtime.By default, pins are configured for output.</p>
 <p>The Pin Data characteristic  is used to read values from one or more pins concurrently via Bluetooth read operations or write data to pins using Bluetooth writes. Notifications are also supported as a means of receiving input data. See the reference documentation for further information.</p>
+<p>The PWM Control characteristic allows a client to use up to 2 micro:bit pins at a time for PWM output and to set the period and value of the pin(s). This is useful for applications such as the analogue control of LEDs and simple audio tone generation. Note that not all pins support PWM on micro:bit.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If PWM is used for the generation of audio tones via speakers or similar, then tones will not sound as "clean and pure" as they would if the pins were set to the same period and value directly on a micro:bit which has Bluetooth disabled. This is due to a combination of factors including the fact that PWM on micro:bit is implemented partly in software and the Nordic Semiconductor Bluetooth stack takes priority with respect to interrupts.</p>
+</div>
 <h3 id="android">Android<a class="headerlink" href="#android" title="Permanent link">&para;</a></h3>
 <p><img src="../../resources/bluetooth/io_pin_demo.png" alt="IO Pin Demo"></p>
 <h4 id="android-bluetooth-apis">Android Bluetooth APIs<a class="headerlink" href="#android-bluetooth-apis" title="Permanent link">&para;</a></h4>
@@ -497,6 +502,7 @@ public boolean onTouch(View v, MotionEvent event) {
         <!--<script src="../../archive/v2.0.0-rc3/mkdocs/js/require.js"></script>-->
         <!--<script src="../../archive/v2.0.0-rc3/mkdocs/js/search.js"></script>-->
         <!--<script src="../../archive/v2.0.0-rc3/mkdocs/js/text.js"></script>-->
+        <!--<script src="../../resources/bluetooth/functions.js"></script>-->
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
             <div class="modal-dialog">
