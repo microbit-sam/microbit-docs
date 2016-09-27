@@ -181,6 +181,7 @@ The following options are configurable at compile time through `MicroBitConfig.h
 | `MICROBIT_BLE_DFU_SERVICE` | Enable/Disable Bluetooth Service: MicroBitDFU. This allows over the air programming during normal operation.|
 | `MICROBIT_BLE_EVENT_SERVICE` | Enable/Disable Bluetooth Service: MicroBitEventService. This allows routing of events from the micro:bit message bus over Bluetooth.|
 | `MICROBIT_BLE_DEVICE_INFORMATION_SERVICE` | Enable/Disable Bluetooth Service: MicroBitDeviceInformationService. This enables the standard Bluetooth device information service.|
+| `MICROBIT_BLE_EDDYSTONE_URL` | Enable/Disable Eddystone URL support. Enabling this enables you to broadcast a physical web url from the microbit |
 | `USE_ACCEL_LSB` | Enable 10 bit sampling on the accelerometer. By default, a more efficient 8 bit sampling if used.|
 | `MICROBIT_DISPLAY_TYPE` | Selects the default matrix configuration for the display driver.|
 | `MICROBIT_DISPLAY_MINIMUM_BRIGHTNESS` | Selects the minimum permissible brightness level for the device.|
@@ -231,7 +232,8 @@ Here's a `config.json`, using all available configuration options, that matches 
             "tx_power": 0,
             "dfu_service": 1,
             "event_service": 1,
-            "device_info_service": 1
+            "device_info_service": 1,
+            "eddystone_url": 0
         },
         "reuse_sd": 1,
         "default_pullmode":"PullDown",
