@@ -12,7 +12,7 @@
 
 	<div class="main_heading">
 	  <div id="id_date" class="date">The Date</div>
-	  <div class="heading_title">Bluetooth Developer Studio Level 2 Profile Report</div>
+	  <div class="heading_title">Bluetooth Developer Studio Level 3 Profile Report</div>
 	  <div class="icon"><a href="https://www.bluetooth.com/"><img src="https://www.bluetooth.com/~/media/bluetooth/homepage/smalllogo.ashx"/></a></div>
 	</div>
 
@@ -24,11 +24,9 @@
     
 	<div class="profile_item">
 	  <div class="profile_label">Profile Name</div>
+	  <div class="profile_value">BBC microbit V1_10</div>
 	</div>
-	<div class="profile_item">
-	  <div class="profile_value">BBC MICROBIT V1_10</div>
-	</div>
-	
+
 	<div class="profile_item">
 	  <div class="profile_label">Abstract:</div>
 	</div>
@@ -44,17 +42,24 @@ Twitter: @bluetooth_mdw</pre></div>
 	</div>
 	<div class="profile_item">
 	  <div class="text_block"><pre>Version 1.10 - 1st September 2016
-Added PWM support to the IO Pin Service by adding the PWM Control characteristic.
+
+Added PWM support to the IO Pin Service by adding the PWM Control characteristic.
 Specified that characteristics in the IO Pin Service are all optional (but at least one must be included).
-Version 1.9 - 27th April 2016
-Added Nordic Semiconductor UART service
-Version 1.8 - 30th March 2016 - Not Released
-Version 1.7 - 22nd January 2016
-Standard Bluetooth pairing and security are now used. Specifically:
+
+Version 1.9 - 27th April 2016
+
+Added Nordic Semiconductor UART service
+
+Version 1.8 - 30th March 2016 - Not Released
+
+Version 1.7 - 22nd January 2016
+
+Standard Bluetooth pairing and security are now used. Specifically:
 1. Pairing with passkey and MITM protection
 2. White Listing
 3. Encrypted link for most operations
-All services except Generic Access, Generic Attribute, Device Information and DFU Control Service designated OPTIONAL
+
+All services except Generic Access, Generic Attribute, Device Information and DFU Control Service designated OPTIONAL
 DFU Control Service has lost the the DFU Flash Code characteristic since we're now using standard Bluetooth pairing.
 Changed names of button characteristics to use A and B instead of 1 and 2
 Revised 5 byte representation of the LED Matrix:
@@ -70,7 +75,8 @@ DFU Control characteristic given the READ property
 Documented supported values the accelerometer and magnetometer period characteristics can take.
 Documented magic event type/value of zero
 Documented event type/value are little endian
-Version 1.6 - 17th October 2015
+
+Version 1.6 - 17th October 2015
 Removed the Battery Service. No way to establish battery levels on the micro:bit
 Added a simple Temperature Service to exploit temperature sensors in micro:bit processors with Temperature and Temperature Period characteristics.
 Accelerometer and Magnetometer period characteristics now have uint16 fields instead of uint8 which required scaling up by multipling by 10.
@@ -80,7 +86,8 @@ New characteristic Magnetometer Heading added to the Magnetometer Service. Provi
 Removed IO Parallel Port characteristic due to complexity and memory considerations.
 Added Generic Attribute Service (previously absent in the repository)
 Changed the LED Matrix State characteristic field so that we now have one octet per row of LEDs for ease of use.
-Version 1.5 - 10th September 2015
+
+Version 1.5 - 10th September 2015
 Button State 2 characteristic given new, distinct UUID of E95DDA91-251D-470A-A062-FA1922DFA9A8
 Removed the System LED State characteristic from the LED Service since it cannot be controlled from the BLE MCU.
 Removed the Scrolling State characteristic from the LED Service due to complexity and memory constraints.
@@ -261,6 +268,16 @@ Removed Write property from MicroBit Requirements characteristic.</pre></div>
 		  <div class="characteristic_value">Excluded</div>
 	  </div> 
 
+  <!-- Field Block -->
+	  <div class="characteristic_field">
+		  <div class="characteristic_field_label">Fields</div>
+	   	<div class="characteristic_field_value">
+<table>
+			<tr><td>1. Name&nbsp;:&nbsp;utf8s</td></tr>
+</table></div>
+	  </div>
+
+
 <!-- Descriptor Block -->
 	  <div class="characteristic_field">
 		  <div class="characteristic_field_label">Descriptors</div>
@@ -362,6 +379,16 @@ Removed Write property from MicroBit Requirements characteristic.</pre></div>
 		  <div class="characteristic_value">Excluded</div>
 	  </div> 
 
+  <!-- Field Block -->
+	  <div class="characteristic_field">
+		  <div class="characteristic_field_label">Fields</div>
+	   	<div class="characteristic_field_value">
+<table>
+			<tr><td>1. Category&nbsp;:&nbsp;16bit</td></tr>
+</table></div>
+	  </div>
+
+
 <!-- Descriptor Block -->
 	  <div class="characteristic_field">
 		  <div class="characteristic_field_label">Descriptors</div>
@@ -462,6 +489,19 @@ Removed Write property from MicroBit Requirements characteristic.</pre></div>
 		  <div class="characteristic_label">Extended Properties</div>
 		  <div class="characteristic_value">Excluded</div>
 	  </div> 
+
+  <!-- Field Block -->
+	  <div class="characteristic_field">
+		  <div class="characteristic_field_label">Fields</div>
+	   	<div class="characteristic_field_value">
+<table>
+			<tr><td>1. Minimum Connection Interval&nbsp;:&nbsp;uint16</td></tr>
+			<tr><td>2. Maximum Connection Interval&nbsp;:&nbsp;uint16</td></tr>
+			<tr><td>3. Slave Latency&nbsp;:&nbsp;uint16</td></tr>
+			<tr><td>4. Connection Supervision Timeout Multiplier&nbsp;:&nbsp;uint16</td></tr>
+</table></div>
+	  </div>
+
 
 <!-- Descriptor Block -->
 	  <div class="characteristic_field">
@@ -622,6 +662,17 @@ Removed Write property from MicroBit Requirements characteristic.</pre></div>
 		  <div class="characteristic_label">Extended Properties</div>
 		  <div class="characteristic_value">Excluded</div>
 	  </div> 
+
+  <!-- Field Block -->
+	  <div class="characteristic_field">
+		  <div class="characteristic_field_label">Fields</div>
+	   	<div class="characteristic_field_value">
+<table>
+			<tr><td>1. Start of Affected Attribute Handle Range&nbsp;:&nbsp;uint16</td></tr>
+			<tr><td>2. End of Affected Attribute Handle Range&nbsp;:&nbsp;uint16</td></tr>
+</table></div>
+	  </div>
+
 
 <!-- Descriptor Block -->
 	  <div class="characteristic_field">
@@ -788,6 +839,16 @@ Only one instance of the Device Information Service is exposed on a device.
 		  <div class="characteristic_value">Excluded</div>
 	  </div> 
 
+  <!-- Field Block -->
+	  <div class="characteristic_field">
+		  <div class="characteristic_field_label">Fields</div>
+	   	<div class="characteristic_field_value">
+<table>
+			<tr><td>1. Model Number&nbsp;:&nbsp;utf8s</td></tr>
+</table></div>
+	  </div>
+
+
 <!-- Descriptor Block -->
 	  <div class="characteristic_field">
 		  <div class="characteristic_field_label">Descriptors</div>
@@ -888,6 +949,16 @@ Only one instance of the Device Information Service is exposed on a device.
 		  <div class="characteristic_label">Extended Properties</div>
 		  <div class="characteristic_value">Excluded</div>
 	  </div> 
+
+  <!-- Field Block -->
+	  <div class="characteristic_field">
+		  <div class="characteristic_field_label">Fields</div>
+	   	<div class="characteristic_field_value">
+<table>
+			<tr><td>1. Serial Number&nbsp;:&nbsp;utf8s</td></tr>
+</table></div>
+	  </div>
+
 
 <!-- Descriptor Block -->
 	  <div class="characteristic_field">
@@ -990,6 +1061,16 @@ Only one instance of the Device Information Service is exposed on a device.
 		  <div class="characteristic_value">Excluded</div>
 	  </div> 
 
+  <!-- Field Block -->
+	  <div class="characteristic_field">
+		  <div class="characteristic_field_label">Fields</div>
+	   	<div class="characteristic_field_value">
+<table>
+			<tr><td>1. Hardware Revision&nbsp;:&nbsp;utf8s</td></tr>
+</table></div>
+	  </div>
+
+
 <!-- Descriptor Block -->
 	  <div class="characteristic_field">
 		  <div class="characteristic_field_label">Descriptors</div>
@@ -1090,6 +1171,16 @@ Only one instance of the Device Information Service is exposed on a device.
 		  <div class="characteristic_label">Extended Properties</div>
 		  <div class="characteristic_value">Excluded</div>
 	  </div> 
+
+  <!-- Field Block -->
+	  <div class="characteristic_field">
+		  <div class="characteristic_field_label">Fields</div>
+	   	<div class="characteristic_field_value">
+<table>
+			<tr><td>1. Firmware Revision&nbsp;:&nbsp;utf8s</td></tr>
+</table></div>
+	  </div>
+
 
 <!-- Descriptor Block -->
 	  <div class="characteristic_field">
@@ -1193,6 +1284,16 @@ Only one instance of the Device Information Service is exposed on a device.
 		  <div class="characteristic_label">Extended Properties</div>
 		  <div class="characteristic_value">Excluded</div>
 	  </div> 
+
+  <!-- Field Block -->
+	  <div class="characteristic_field">
+		  <div class="characteristic_field_label">Fields</div>
+	   	<div class="characteristic_field_value">
+<table>
+			<tr><td>1. Manufacturer Name&nbsp;:&nbsp;utf8s</td></tr>
+</table></div>
+	  </div>
+
 
 <!-- Descriptor Block -->
 	  <div class="characteristic_field">
@@ -1360,6 +1461,18 @@ Data can be read on demand or notified periodically.</pre></div>
 		  <div class="characteristic_value">Excluded</div>
 	  </div> 
 
+  <!-- Field Block -->
+	  <div class="characteristic_field">
+		  <div class="characteristic_field_label">Fields</div>
+	   	<div class="characteristic_field_value">
+<table>
+			<tr><td>1. Accelerometer_X &nbsp;:&nbsp;sint16</td></tr>
+			<tr><td>2. Accelerometer_Y&nbsp;:&nbsp;sint16</td></tr>
+			<tr><td>3. Accelerometer_Z&nbsp;:&nbsp;sint16</td></tr>
+</table></div>
+	  </div>
+
+
 <!-- Descriptor Block -->
 	  <div class="characteristic_field">
 		  <div class="characteristic_field_label">Descriptors</div>
@@ -1463,6 +1576,16 @@ Valid values are 1, 2, 5, 10, 20, 80, 160 and 640.</pre></div>
 		  <div class="characteristic_label">Extended Properties</div>
 		  <div class="characteristic_value">Excluded</div>
 	  </div> 
+
+  <!-- Field Block -->
+	  <div class="characteristic_field">
+		  <div class="characteristic_field_label">Fields</div>
+	   	<div class="characteristic_field_value">
+<table>
+			<tr><td>1. Accelerometer_Period&nbsp;:&nbsp;uint16</td></tr>
+</table></div>
+	  </div>
+
 
 <!-- Descriptor Block -->
 	  <div class="characteristic_field">
@@ -1625,6 +1748,18 @@ Data can be read on demand or notified periodically.</pre></div>
 		  <div class="characteristic_value">Excluded</div>
 	  </div> 
 
+  <!-- Field Block -->
+	  <div class="characteristic_field">
+		  <div class="characteristic_field_label">Fields</div>
+	   	<div class="characteristic_field_value">
+<table>
+			<tr><td>1. Magnetometer_X&nbsp;:&nbsp;sint16</td></tr>
+			<tr><td>2. Magnetometer_Y&nbsp;:&nbsp;sint16</td></tr>
+			<tr><td>3. Magnetometer_Z&nbsp;:&nbsp;sint16</td></tr>
+</table></div>
+	  </div>
+
+
 <!-- Descriptor Block -->
 	  <div class="characteristic_field">
 		  <div class="characteristic_field_label">Descriptors</div>
@@ -1729,6 +1864,16 @@ Valid values are 1, 2, 5, 10, 20, 80, 160 and 640.</pre></div>
 		  <div class="characteristic_value">Excluded</div>
 	  </div> 
 
+  <!-- Field Block -->
+	  <div class="characteristic_field">
+		  <div class="characteristic_field_label">Fields</div>
+	   	<div class="characteristic_field_value">
+<table>
+			<tr><td>1. Magnetometer_Period&nbsp;:&nbsp;uint16</td></tr>
+</table></div>
+	  </div>
+
+
 <!-- Descriptor Block -->
 	  <div class="characteristic_field">
 		  <div class="characteristic_field_label">Descriptors</div>
@@ -1829,6 +1974,16 @@ Valid values are 1, 2, 5, 10, 20, 80, 160 and 640.</pre></div>
 		  <div class="characteristic_label">Extended Properties</div>
 		  <div class="characteristic_value">Excluded</div>
 	  </div> 
+
+  <!-- Field Block -->
+	  <div class="characteristic_field">
+		  <div class="characteristic_field_label">Fields</div>
+	   	<div class="characteristic_field_value">
+<table>
+			<tr><td>1. bearing value&nbsp;:&nbsp;uint16</td></tr>
+</table></div>
+	  </div>
+
 
 <!-- Descriptor Block -->
 	  <div class="characteristic_field">
@@ -1992,6 +2147,16 @@ Valid values are 1, 2, 5, 10, 20, 80, 160 and 640.</pre></div>
 		  <div class="characteristic_value">Excluded</div>
 	  </div> 
 
+  <!-- Field Block -->
+	  <div class="characteristic_field">
+		  <div class="characteristic_field_label">Fields</div>
+	   	<div class="characteristic_field_value">
+<table>
+			<tr><td>1. Button_State_Value&nbsp;:&nbsp;uint8</td></tr>
+</table></div>
+	  </div>
+
+
 <!-- Descriptor Block -->
 	  <div class="characteristic_field">
 		  <div class="characteristic_field_label">Descriptors</div>
@@ -2094,6 +2259,16 @@ Valid values are 1, 2, 5, 10, 20, 80, 160 and 640.</pre></div>
 		  <div class="characteristic_label">Extended Properties</div>
 		  <div class="characteristic_value">Excluded</div>
 	  </div> 
+
+  <!-- Field Block -->
+	  <div class="characteristic_field">
+		  <div class="characteristic_field_label">Fields</div>
+	   	<div class="characteristic_field_value">
+<table>
+			<tr><td>1. Button_State_Value&nbsp;:&nbsp;uint8</td></tr>
+</table></div>
+	  </div>
+
 
 <!-- Descriptor Block -->
 	  <div class="characteristic_field">
@@ -2271,6 +2446,16 @@ READ: A client reading this characteristic will receive Pin Number / Value pairs
 		  <div class="characteristic_value">Excluded</div>
 	  </div> 
 
+  <!-- Field Block -->
+	  <div class="characteristic_field">
+		  <div class="characteristic_field_label">Fields</div>
+	   	<div class="characteristic_field_value">
+<table>
+			<tr><td>1. IO_Pin_Data&nbsp;:&nbsp;uint8[]</td></tr>
+</table></div>
+	  </div>
+
+
 <!-- Descriptor Block -->
 	  <div class="characteristic_field">
 		  <div class="characteristic_field_label">Descriptors</div>
@@ -2374,6 +2559,16 @@ Bit n corresponds to pin n where 0 LESS THAN OR EQUAL TO n LESS THAN 19. A value
 		  <div class="characteristic_label">Extended Properties</div>
 		  <div class="characteristic_value">Excluded</div>
 	  </div> 
+
+  <!-- Field Block -->
+	  <div class="characteristic_field">
+		  <div class="characteristic_field_label">Fields</div>
+	   	<div class="characteristic_field_value">
+<table>
+			<tr><td>1. Pin_AD_Config_Value&nbsp;:&nbsp;uint24</td></tr>
+</table></div>
+	  </div>
+
 
 <!-- Descriptor Block -->
 	  <div class="characteristic_field">
@@ -2479,6 +2674,16 @@ Bit n corresponds to pin n where 0 LESS THAN OR EQUAL TO n LESS THAN 19. A value
 		  <div class="characteristic_label">Extended Properties</div>
 		  <div class="characteristic_value">Excluded</div>
 	  </div> 
+
+  <!-- Field Block -->
+	  <div class="characteristic_field">
+		  <div class="characteristic_field_label">Fields</div>
+	   	<div class="characteristic_field_value">
+<table>
+			<tr><td>1. Pin_IO_Config_Value&nbsp;:&nbsp;uint24</td></tr>
+</table></div>
+	  </div>
+
 
 <!-- Descriptor Block -->
 	  <div class="characteristic_field">
@@ -2592,6 +2797,16 @@ Fields are transmitted over the air in Little Endian format.</pre></div>
 		  <div class="characteristic_label">Extended Properties</div>
 		  <div class="characteristic_value">Excluded</div>
 	  </div> 
+
+  <!-- Field Block -->
+	  <div class="characteristic_field">
+		  <div class="characteristic_field_label">Fields</div>
+	   	<div class="characteristic_field_value">
+<table>
+			<tr><td>1. PWM Control Field&nbsp;:&nbsp;uint8[]</td></tr>
+</table></div>
+	  </div>
+
 
 <!-- Descriptor Block -->
 	  <div class="characteristic_field">
@@ -2768,6 +2983,16 @@ Octet 4, LED Row 5: bit4 bit3 bit2 bit1 bit0
 		  <div class="characteristic_value">Excluded</div>
 	  </div> 
 
+  <!-- Field Block -->
+	  <div class="characteristic_field">
+		  <div class="characteristic_field_label">Fields</div>
+	   	<div class="characteristic_field_value">
+<table>
+			<tr><td>1. LED_Matrix_State&nbsp;:&nbsp;uint8[]</td></tr>
+</table></div>
+	  </div>
+
+
 <!-- Descriptor Block -->
 	  <div class="characteristic_field">
 		  <div class="characteristic_field_label">Descriptors</div>
@@ -2869,6 +3094,16 @@ Octet 4, LED Row 5: bit4 bit3 bit2 bit1 bit0
 		  <div class="characteristic_value">Excluded</div>
 	  </div> 
 
+  <!-- Field Block -->
+	  <div class="characteristic_field">
+		  <div class="characteristic_field_label">Fields</div>
+	   	<div class="characteristic_field_value">
+<table>
+			<tr><td>1. LED_Text_Value&nbsp;:&nbsp;utf8s</td></tr>
+</table></div>
+	  </div>
+
+
 <!-- Descriptor Block -->
 	  <div class="characteristic_field">
 		  <div class="characteristic_field_label">Descriptors</div>
@@ -2969,6 +3204,16 @@ Octet 4, LED Row 5: bit4 bit3 bit2 bit1 bit0
 		  <div class="characteristic_label">Extended Properties</div>
 		  <div class="characteristic_value">Excluded</div>
 	  </div> 
+
+  <!-- Field Block -->
+	  <div class="characteristic_field">
+		  <div class="characteristic_field_label">Fields</div>
+	   	<div class="characteristic_field_value">
+<table>
+			<tr><td>1. Scrolling_Delay_Value&nbsp;:&nbsp;uint16</td></tr>
+</table></div>
+	  </div>
+
 
 <!-- Descriptor Block -->
 	  <div class="characteristic_field">
@@ -3162,6 +3407,16 @@ event_type and event_value are each encoded in little endian format.</pre></div>
 		  <div class="characteristic_value">Excluded</div>
 	  </div> 
 
+  <!-- Field Block -->
+	  <div class="characteristic_field">
+		  <div class="characteristic_field_label">Fields</div>
+	   	<div class="characteristic_field_value">
+<table>
+			<tr><td>1. microbit_reqs_value&nbsp;:&nbsp;uint8[]</td></tr>
+</table></div>
+	  </div>
+
+
 <!-- Descriptor Block -->
 	  <div class="characteristic_field">
 		  <div class="characteristic_field_label">Descriptors</div>
@@ -3271,6 +3526,16 @@ struct event {
 		  <div class="characteristic_label">Extended Properties</div>
 		  <div class="characteristic_value">Excluded</div>
 	  </div> 
+
+  <!-- Field Block -->
+	  <div class="characteristic_field">
+		  <div class="characteristic_field_label">Fields</div>
+	   	<div class="characteristic_field_value">
+<table>
+			<tr><td>1. Event_Type_And_Value&nbsp;:&nbsp;uint8[]</td></tr>
+</table></div>
+	  </div>
+
 
 <!-- Descriptor Block -->
 	  <div class="characteristic_field">
@@ -3385,6 +3650,16 @@ event_type and event_value are each encoded in little endian format.</pre></div>
 		  <div class="characteristic_value">Excluded</div>
 	  </div> 
 
+  <!-- Field Block -->
+	  <div class="characteristic_field">
+		  <div class="characteristic_field_label">Fields</div>
+	   	<div class="characteristic_field_value">
+<table>
+			<tr><td>1. Client_Requirements_Value&nbsp;:&nbsp;uint8[]</td></tr>
+</table></div>
+	  </div>
+
+
 <!-- Descriptor Block -->
 	  <div class="characteristic_field">
 		  <div class="characteristic_field_label">Descriptors</div>
@@ -3493,6 +3768,16 @@ struct event {
 		  <div class="characteristic_label">Extended Properties</div>
 		  <div class="characteristic_value">Excluded</div>
 	  </div> 
+
+  <!-- Field Block -->
+	  <div class="characteristic_field">
+		  <div class="characteristic_field_label">Fields</div>
+	   	<div class="characteristic_field_value">
+<table>
+			<tr><td>1. Event_Types_And_Values&nbsp;:&nbsp;uint8[]</td></tr>
+</table></div>
+	  </div>
+
 
 <!-- Descriptor Block -->
 	  <div class="characteristic_field">
@@ -3657,6 +3942,16 @@ Writing 0x02 to this characteristic  means "request flash code".</pre></div>
 		  <div class="characteristic_value">Excluded</div>
 	  </div> 
 
+  <!-- Field Block -->
+	  <div class="characteristic_field">
+		  <div class="characteristic_field_label">Fields</div>
+	   	<div class="characteristic_field_value">
+<table>
+			<tr><td>1. dfu_control&nbsp;:&nbsp;uint8</td></tr>
+</table></div>
+	  </div>
+
+
 <!-- Descriptor Block -->
 	  <div class="characteristic_field">
 		  <div class="characteristic_field_label">Descriptors</div>
@@ -3817,6 +4112,16 @@ Writing 0x02 to this characteristic  means "request flash code".</pre></div>
 		  <div class="characteristic_value">Excluded</div>
 	  </div> 
 
+  <!-- Field Block -->
+	  <div class="characteristic_field">
+		  <div class="characteristic_field_label">Fields</div>
+	   	<div class="characteristic_field_value">
+<table>
+			<tr><td>1. temperature value&nbsp;:&nbsp;sint8</td></tr>
+</table></div>
+	  </div>
+
+
 <!-- Descriptor Block -->
 	  <div class="characteristic_field">
 		  <div class="characteristic_field_label">Descriptors</div>
@@ -3918,6 +4223,16 @@ Writing 0x02 to this characteristic  means "request flash code".</pre></div>
 		  <div class="characteristic_label">Extended Properties</div>
 		  <div class="characteristic_value">Excluded</div>
 	  </div> 
+
+  <!-- Field Block -->
+	  <div class="characteristic_field">
+		  <div class="characteristic_field_label">Fields</div>
+	   	<div class="characteristic_field_value">
+<table>
+			<tr><td>1. temperature period value&nbsp;:&nbsp;uint16</td></tr>
+</table></div>
+	  </div>
+
 
 <!-- Descriptor Block -->
 	  <div class="characteristic_field">
@@ -4084,6 +4399,16 @@ The maximum number of bytes which may be transmitted in one PDU is limited to th
 		  <div class="characteristic_value">Excluded</div>
 	  </div> 
 
+  <!-- Field Block -->
+	  <div class="characteristic_field">
+		  <div class="characteristic_field_label">Fields</div>
+	   	<div class="characteristic_field_value">
+<table>
+			<tr><td>1. UART TX Field&nbsp;:&nbsp;uint8[]</td></tr>
+</table></div>
+	  </div>
+
+
 <!-- Descriptor Block -->
 	  <div class="characteristic_field">
 		  <div class="characteristic_field_label">Descriptors</div>
@@ -4186,6 +4511,16 @@ The maximum number of bytes which may be transmitted in one PDU is limited to th
 		  <div class="characteristic_label">Extended Properties</div>
 		  <div class="characteristic_value">Excluded</div>
 	  </div> 
+
+  <!-- Field Block -->
+	  <div class="characteristic_field">
+		  <div class="characteristic_field_label">Fields</div>
+	   	<div class="characteristic_field_value">
+<table>
+			<tr><td>1. UART TX Field&nbsp;:&nbsp;uint8[]</td></tr>
+</table></div>
+	  </div>
+
 
 <!-- Descriptor Block -->
 	  <div class="characteristic_field">
