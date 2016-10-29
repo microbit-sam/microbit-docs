@@ -49,6 +49,7 @@ pages:
   - TemperatureService: ble/temperature-service.md
   - UARTService: ble/uart-service.md
   - Connection Events: ble/ble-connection-events.md
+  - Eddystone Beacons: ble/eddystone.md
 - Extras:
   - MicroBitLightSensor: extras/light-sensing.md
   - SPI: extras/spi.md

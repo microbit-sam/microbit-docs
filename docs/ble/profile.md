@@ -38,7 +38,7 @@ The profile was designed using Bluetooth Developer Studio, a free of charge tool
 
 micro:bit uses standard Bluetooth security. Bluetooth defines a series of optional security features of which the following are used for micro:bit:
 
-1. Pairing with passkey and MITM protection
+1. Pairing with passkey and MITM protection or "Just Works" pairing depending on micro:bit source code configuration
 
 2. White Listing
 
@@ -62,7 +62,11 @@ In “normal mode” (i.e. not pairing mode) advertising packets have neither th
 
 ### Pairing
 
-To interact with any service on the micro:bit the peer device must first be paired/bonded with it.
+Code on a micro:bit may be created in such a way that pairing may or may not be required for interaction with Bluetooth services to be possible. If pairing is required, there are two forms which are supported.
+
+**Passkey Pairing** involves the micro:bit displaying a randomly generated, 6 digit number to the user and the user then entering this into the other device. The video below shows this process.
+
+**Just Works Pairing** does not require a passkey to be entered and pairing proceeds automatically, without further user interaction once it has been initiated with the micro:bit in pairing mode as usual.
 
 <iframe src="https://player.vimeo.com/video/161609551" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
@@ -70,9 +74,45 @@ To interact with any service on the micro:bit the peer device must first be pair
 
 To pair with a micro:bit it must first be placed in "pairing mode". To do this, hold down both buttons A and B and press and hold the reset button. If powered by USB, let go of the reset button but keep holding both buttons A and B down. This will result in the micro:bit going into pairing mode and the words "PAIRING MODE" should be seen scrolling across the display followed by the graphical representation of the micro:bit 5 character identifier.
 
-Next, initiate pairing on the peer device. On Android for example, go into Settings/Bluetooth and allow the system to scan for and discover the advertising micro:bit. Select it and pairing will commence. The micro:bit will indicate it's ready to pair by displaying an arrow which points left towards button A. Press button A and a 6 digit number will be displayed on the micro:bit, one digit at a time. The peer device should now allow you to enter the 6 digit pass key. Do so and if the correct number was entered into the peer, micro:bit will display a tick/check to indicate pairing was achieved.
+Next, initiate pairing on the peer device. On Android for example, go into Settings/Bluetooth and allow the system to scan for and discover the advertising micro:bit. Select it and pairing will commence. The micro:bit will indicate it's ready to pair by displaying an arrow which points left towards button A. What happens next depends on which pairing approach has been selected in the micro:bit configuration:
+
+**Passkey Pairing**
+Press button A and a 6 digit number will be displayed on the micro:bit, one digit at a time. The peer device should now allow you to enter the 6 digit pass key. Do so and if the correct number was entered into the peer, micro:bit will display a tick/check to indicate pairing was achieved.
+
+**Just Works Pairing**
+Press button A and the micro:bit and other device will automatically pair, with no further input required from the user. It just works. Hey, maybe that's where the name comes from!
 
 A maximum of 4 devices may be paired with a micro:bit simultaneously (note though that only one paired device may connect to the micro:bit at a time).
+
+### Selecting Pairing Requirements
+
+micro:bit code may stipulate that pairing is required and if so, which of the **Just Works** and **Passkey** pairing approaches is to be used. Alternatively, if may indicate that no pairing is required.
+
+**Important!**
+If you do decide to disable pairing, be aware that your micro:bit now has no Bluetooth security. All communication will be "in clear" and there will be no control over who or what can connect to your micro:bit. Remember that as a Bluetooth "peripheral", it can only accept one connection at a time so if something other than your own peer device connects to your micro:bit, you will not be able to. If this does happen, or you suspect it to have happened, resetting the micro:bit will break the connection. It is recommended that you use the micro:bit display and the Bluetooth connection events in code to provide a visual indication of the connection status whether you use pairing or not.
+
+Specifying your pairing requirement is done through a config.json file which should be in your project file hierarchy as shown:
+
+<img src="../../resources/bluetooth/config_dot_json.png" alt="Advertising in Pairing Mode">
+
+The following config.json properties are used to select pairing behaviours:
+
+```
+{
+    "microbit-dal": {
+        "bluetooth": {
+            "pairing_mode": 1,
+            "open": 0,
+            "security_level": "SECURITY_MODE_ENCRYPTION_WITH_MITM",
+        },
+    }
+}
+```
+**pairing_mode** controls whether or not micro:bit is able to switch into pairing mode. Required if you want to be able to pair your micro:bit.
+
+**open** takes a value of 0 or 1. A value of 1 means no pairing is required and the **security_level** property is ignored if this value is specified.
+
+**security_level** takes values **SECURITY_MODE_ENCRYPTION_WITH_MITM** for passkey pairing or **SECURITY_MODE_ENCRYPTION_NO_MITM** for just works pairing.
 
 ## Reference Documentation
 
