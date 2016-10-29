@@ -34,6 +34,15 @@ while(1)
 ```
 Will transition between Digital and Analog output every second.
 
+### Micro:bit Pin Naming 
+
+The `uBit.io` interface allows direct control over the micro:bit IO pins. However, sometimes
+it is necessary to refer to a pin by name. Pin names always take the form: `MICROBIT_PIN_P0`.
+All methods requesting a `PinName` parameter should be supplied with an identifier of this form. 
+It should be noted that identifiers of the form `P0` are not necessarilty valid, as these refer to
+prcoessor pins, not pins on the edge connector. 
+
+
 ### Shared Functionality
 
 As well as being General Purpose Input Output (**GPIO**) pins, some pins on the

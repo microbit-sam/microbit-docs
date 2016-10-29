@@ -20,7 +20,7 @@ This service is disabled by default. To enable the service, simply create an ins
 
 ## Bluetooth Service Specification
 
- Please see the [micro:bit Bluetooth profile specification](../resources/bluetooth/microbit-profile-V1.9-Level-2.pdf).
+ Please see the [micro:bit Bluetooth profile specification](https://lancaster-university.github.io/microbit-docs/resources/bluetooth/bluetooth_profile.html).
 
 ## Example Applications for Android/IOS/Android
 

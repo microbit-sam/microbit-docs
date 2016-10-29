@@ -146,7 +146,7 @@ Note: This service was added after micro:bits initially shipped to school and so
 
 Known issue: the firmware on micro:bits shipped initially to schools contains the full Bluetooth profile. Once the software has been changed by flashing an application created using any of the on-line code editors however, all services are lost except for Device Information Service, Event Service and DFU Control Service. If you need other services you must restore your micro:bit to its original state by installing the [default hex file](../resources/BBC_MICROBIT_OOB_FINAL.zip) or better still [this hex file](../resources/microbit-1_4_17_pwr0.zip) which does not use the display so you can use it over Bluetooth instead.
 
-The following sections elaborate on the description of a service and/or its characteristics. For full details see the [micro:bit Bluetooth profile specification](../resources/bluetooth/microbit-profile-V1.9-Level-2.pdf)
+The following sections elaborate on the description of a service and/or its characteristics. For full details see the [micro:bit Bluetooth profile specification](https://lancaster-university.github.io/microbit-docs/resources/bluetooth/bluetooth_profile.html)
 
 ### About the Device Information Service
 
