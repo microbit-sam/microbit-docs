@@ -307,6 +307,12 @@
 </li>
 
                     
+                        
+<li >
+    <a href="../eddystone/">Eddystone Beacons</a>
+</li>
+
+                    
                     </ul>
                 </li>
             
@@ -421,7 +427,7 @@ This data can be transparently read and written by a connected Bluetooth master 
 <p>Using Bluetooth services is memory hungry. By default, some of the memory normally used by Nordic's Bluetooth protocol stack (known as a SoftDevice), is reclaimed by the micro:bit runtime as general purpose memory for your applications. if you enable more Bluetooth services, then you may need to provide more memory back to Soft Device to ensure proper operation. If after enabling this service your Bluetooth application cannot access the service reliably, you should consider increasing the value of MICROBIT_SD_GATT_TABLE_SIZE in your inc/MicroBitConfig.h. The more service you add, the larger this will need to be, up to the limit defined in MicroBitConfig.h.</p>
 </div>
 <h2 id="bluetooth-service-specification">Bluetooth Service Specification<a class="headerlink" href="#bluetooth-service-specification" title="Permanent link">&para;</a></h2>
-<p>Please see the <a href="../../resources/bluetooth/microbit-profile-V1.9-Level-2.pdf">micro:bit Bluetooth profile specification</a>.</p>
+<p>Please see the <a href="https://lancaster-university.github.io/microbit-docs/resources/bluetooth/bluetooth_profile.html">micro:bit Bluetooth profile specification</a>.</p>
 <h2 id="example-applications-for-androidiosandroid">Example Applications for Android/IOS/Android<a class="headerlink" href="#example-applications-for-androidiosandroid" title="Permanent link">&para;</a></h2>
 <h3 id="general-procedures">General Procedures<a class="headerlink" href="#general-procedures" title="Permanent link">&para;</a></h3>
 <p>Applications should first configure the pins they wish to work with over Bluetooth. Configuration involves specifying that a pin is to be used for digital I/O or analogue I/O and that it is to be used for input or for output. These two types of configuration are handled by two characteristics in the IO Pin Service namely Pin AD Configuration and Pin IO Configuration. </p>

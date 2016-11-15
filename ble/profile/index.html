@@ -307,6 +307,12 @@
 </li>
 
                     
+                        
+<li >
+    <a href="../eddystone/">Eddystone Beacons</a>
+</li>
+
+                    
                     </ul>
                 </li>
             
@@ -433,7 +439,7 @@
 <p>micro:bit uses standard Bluetooth security. Bluetooth defines a series of optional security features of which the following are used for micro:bit:</p>
 <ol>
 <li>
-<p>Pairing with passkey and MITM protection</p>
+<p>Pairing with passkey and MITM protection or "Just Works" pairing depending on micro:bit source code configuration</p>
 </li>
 <li>
 <p>White Listing</p>
@@ -451,14 +457,41 @@
 <p>In “normal mode” (i.e. not pairing mode) advertising packets have neither the LE Limited Discoverable mode or the LE General Discoverable Mode flags set and so in this situation may not be listed in the “available Bluetooth devices” screen of some smartphones which have not paired with the micro:bit. This is by design.</p>
 <p><img src="../../resources/bluetooth/adv_normal_mode.png" alt="Advertising in Normal Mode"></p>
 <h3 id="pairing">Pairing<a class="headerlink" href="#pairing" title="Permanent link">&para;</a></h3>
-<p>To interact with any service on the micro:bit the peer device must first be paired/bonded with it.</p>
+<p>Code on a micro:bit may be created in such a way that pairing may or may not be required for interaction with Bluetooth services to be possible. If pairing is required, there are two forms which are supported.</p>
+<p><strong>Passkey Pairing</strong> involves the micro:bit displaying a randomly generated, 6 digit number to the user and the user then entering this into the other device. The video below shows this process.</p>
+<p><strong>Just Works Pairing</strong> does not require a passkey to be entered and pairing proceeds automatically, without further user interaction once it has been initiated with the micro:bit in pairing mode as usual.</p>
 <iframe src="https://player.vimeo.com/video/161609551" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 <p><a href="https://vimeo.com/161609551">How to pair your BBC micro:bit with an Android phone or tablet</a> from <a href="https://vimeo.com/user35324434">Martin Woolley</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
 
 <p>To pair with a micro:bit it must first be placed in "pairing mode". To do this, hold down both buttons A and B and press and hold the reset button. If powered by USB, let go of the reset button but keep holding both buttons A and B down. This will result in the micro:bit going into pairing mode and the words "PAIRING MODE" should be seen scrolling across the display followed by the graphical representation of the micro:bit 5 character identifier.</p>
-<p>Next, initiate pairing on the peer device. On Android for example, go into Settings/Bluetooth and allow the system to scan for and discover the advertising micro:bit. Select it and pairing will commence. The micro:bit will indicate it's ready to pair by displaying an arrow which points left towards button A. Press button A and a 6 digit number will be displayed on the micro:bit, one digit at a time. The peer device should now allow you to enter the 6 digit pass key. Do so and if the correct number was entered into the peer, micro:bit will display a tick/check to indicate pairing was achieved.</p>
+<p>Next, initiate pairing on the peer device. On Android for example, go into Settings/Bluetooth and allow the system to scan for and discover the advertising micro:bit. Select it and pairing will commence. The micro:bit will indicate it's ready to pair by displaying an arrow which points left towards button A. What happens next depends on which pairing approach has been selected in the micro:bit configuration:</p>
+<p><strong>Passkey Pairing</strong>
+Press button A and a 6 digit number will be displayed on the micro:bit, one digit at a time. The peer device should now allow you to enter the 6 digit pass key. Do so and if the correct number was entered into the peer, micro:bit will display a tick/check to indicate pairing was achieved.</p>
+<p><strong>Just Works Pairing</strong>
+Press button A and the micro:bit and other device will automatically pair, with no further input required from the user. It just works. Hey, maybe that's where the name comes from!</p>
 <p>A maximum of 4 devices may be paired with a micro:bit simultaneously (note though that only one paired device may connect to the micro:bit at a time).</p>
+<h3 id="selecting-pairing-requirements">Selecting Pairing Requirements<a class="headerlink" href="#selecting-pairing-requirements" title="Permanent link">&para;</a></h3>
+<p>micro:bit code may stipulate that pairing is required and if so, which of the <strong>Just Works</strong> and <strong>Passkey</strong> pairing approaches is to be used. Alternatively, if may indicate that no pairing is required.</p>
+<p><strong>Important!</strong>
+If you do decide to disable pairing, be aware that your micro:bit now has no Bluetooth security. All communication will be "in clear" and there will be no control over who or what can connect to your micro:bit. Remember that as a Bluetooth "peripheral", it can only accept one connection at a time so if something other than your own peer device connects to your micro:bit, you will not be able to. If this does happen, or you suspect it to have happened, resetting the micro:bit will break the connection. It is recommended that you use the micro:bit display and the Bluetooth connection events in code to provide a visual indication of the connection status whether you use pairing or not.</p>
+<p>Specifying your pairing requirement is done through a config.json file which should be in your project file hierarchy as shown:</p>
+<p><img src="../../resources/bluetooth/config_dot_json.png" alt="Advertising in Pairing Mode"></p>
+<p>The following config.json properties are used to select pairing behaviours:</p>
+<pre><code>{
+    &quot;microbit-dal&quot;: {
+        &quot;bluetooth&quot;: {
+            &quot;pairing_mode&quot;: 1,
+            &quot;open&quot;: 0,
+            &quot;security_level&quot;: &quot;SECURITY_MODE_ENCRYPTION_WITH_MITM&quot;,
+        },
+    }
+}
+</code></pre>
+
+<p><strong>pairing_mode</strong> controls whether or not micro:bit is able to switch into pairing mode. Required if you want to be able to pair your micro:bit.</p>
+<p><strong>open</strong> takes a value of 0 or 1. A value of 1 means no pairing is required and the <strong>security_level</strong> property is ignored if this value is specified.</p>
+<p><strong>security_level</strong> takes values <strong>SECURITY_MODE_ENCRYPTION_WITH_MITM</strong> for passkey pairing or <strong>SECURITY_MODE_ENCRYPTION_NO_MITM</strong> for just works pairing.</p>
 <h2 id="reference-documentation">Reference Documentation<a class="headerlink" href="#reference-documentation" title="Permanent link">&para;</a></h2>
 <p>Details of the micro:bit's Bluetooth services, characteristics, the operations they each support and any associated descriptors along with UUID values can be found in the associated <a href="../../resources/bluetooth/bluetooth_profile.html">micro:bit Bluetooth profile specification</a></p>
 <p>A simplified overview appears below.</p>
@@ -551,7 +584,7 @@
 <p>See https://developer.nordicsemi.com/nRF5_SDK/nRF51_SDK_v8.x.x/doc/8.0.0/s110/html/a00072.html for the original Nordic Semiconductor documentation by way of background.</p>
 <p>Note: This service was added after micro:bits initially shipped to school and so is not in the default image. |</p>
 <p>Known issue: the firmware on micro:bits shipped initially to schools contains the full Bluetooth profile. Once the software has been changed by flashing an application created using any of the on-line code editors however, all services are lost except for Device Information Service, Event Service and DFU Control Service. If you need other services you must restore your micro:bit to its original state by installing the <a href="../../resources/BBC_MICROBIT_OOB_FINAL.zip">default hex file</a> or better still <a href="../../resources/microbit-1_4_17_pwr0.zip">this hex file</a> which does not use the display so you can use it over Bluetooth instead.</p>
-<p>The following sections elaborate on the description of a service and/or its characteristics. For full details see the <a href="../../resources/bluetooth/microbit-profile-V1.9-Level-2.pdf">micro:bit Bluetooth profile specification</a></p>
+<p>The following sections elaborate on the description of a service and/or its characteristics. For full details see the <a href="https://lancaster-university.github.io/microbit-docs/resources/bluetooth/bluetooth_profile.html">micro:bit Bluetooth profile specification</a></p>
 <h3 id="about-the-device-information-service">About the Device Information Service<a class="headerlink" href="#about-the-device-information-service" title="Permanent link">&para;</a></h3>
 <p>This is an adopted service which defines 9 characteristics, all of which are optional members of of the service. For micro:bit we chose to include 3 of those characteristics only.</p>
 <p>See <a href="https://developer.bluetooth.org/gatt/services/Pages/ServiceViewer.aspx?u=org.bluetooth.service.device_information.xml">https://developer.bluetooth.org/gatt/services/Pages/ServiceViewer.aspx?u=org.bluetooth.service.device_information.xml</a></p>

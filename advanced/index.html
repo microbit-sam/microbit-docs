@@ -307,6 +307,12 @@
 </li>
 
                     
+                        
+<li >
+    <a href="../ble/eddystone/">Eddystone Beacons</a>
+</li>
+
+                    
                     </ul>
                 </li>
             
@@ -633,6 +639,10 @@ int main()
 <td>Enable/Disable Bluetooth Service: MicroBitDeviceInformationService. This enables the standard Bluetooth device information service.</td>
 </tr>
 <tr>
+<td><code>MICROBIT_BLE_EDDYSTONE_URL</code></td>
+<td>Enable/Disable Eddystone URL support. Enabling this enables you to broadcast a physical web url from the microbit</td>
+</tr>
+<tr>
 <td><code>USE_ACCEL_LSB</code></td>
 <td>Enable 10 bit sampling on the accelerometer. By default, a more efficient 8 bit sampling if used.</td>
 </tr>
@@ -749,7 +759,8 @@ int main()
             &quot;tx_power&quot;: 0,
             &quot;dfu_service&quot;: 1,
             &quot;event_service&quot;: 1,
-            &quot;device_info_service&quot;: 1
+            &quot;device_info_service&quot;: 1,
+            &quot;eddystone_url&quot;: 0
         },
         &quot;reuse_sd&quot;: 1,
         &quot;default_pullmode&quot;:&quot;PullDown&quot;,

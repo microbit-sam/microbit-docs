@@ -307,6 +307,12 @@
 </li>
 
                     
+                        
+<li >
+    <a href="../../ble/eddystone/">Eddystone Beacons</a>
+</li>
+
+                    
                     </ul>
                 </li>
             
@@ -471,6 +477,12 @@ modes based on the method that as been called.</p>
 </code></pre>
 
 <p>Will transition between Digital and Analog output every second.</p>
+<h3 id="microbit-pin-naming">Micro:bit Pin Naming<a class="headerlink" href="#microbit-pin-naming" title="Permanent link">&para;</a></h3>
+<p>The <code>uBit.io</code> interface allows direct control over the micro:bit IO pins. However, sometimes
+it is necessary to refer to a pin by name. Pin names always take the form: <code>MICROBIT_PIN_P0</code>.
+All methods requesting a <code>PinName</code> parameter should be supplied with an identifier of this form. 
+It should be noted that identifiers of the form <code>P0</code> are not necessarilty valid, as these refer to
+prcoessor pins, not pins on the edge connector. </p>
 <h3 id="shared-functionality">Shared Functionality<a class="headerlink" href="#shared-functionality" title="Permanent link">&para;</a></h3>
 <p>As well as being General Purpose Input Output (<strong>GPIO</strong>) pins, some pins on the
 micro:bit have other functionality used internally by the micro:bit.</p>

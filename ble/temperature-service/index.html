@@ -307,6 +307,12 @@
 </li>
 
                     
+                        
+<li >
+    <a href="../eddystone/">Eddystone Beacons</a>
+</li>
+
+                    
                     </ul>
                 </li>
             
@@ -422,7 +428,7 @@ a linear shift (although changes in temperature will be accurate). See <a href="
 <p>Using Bluetooth services is memory hungry. By default, some of the memory normally used by Nordic's Bluetooth protocol stack (known as a SoftDevice), is reclaimed by the micro:bit runtime as general purpose memory for your applications. if you enable more Bluetooth services, then you may need to provide more memory back to Soft Device to ensure proper operation. If after enabling this service your Bluetooth application cannot access the service reliably, you should consider increasing the value of MICROBIT_SD_GATT_TABLE_SIZE in your inc/MicroBitConfig.h. The more service you add, the larger this will need to be, up to the limit defined in MicroBitConfig.h.</p>
 </div>
 <h2 id="bluetooth-service-specification">Bluetooth Service Specification<a class="headerlink" href="#bluetooth-service-specification" title="Permanent link">&para;</a></h2>
-<p>Please see the <a href="../../resources/bluetooth/microbit-profile-V1.9-Level-2.pdf">micro:bit Bluetooth profile specification</a>.</p>
+<p>Please see the <a href="https://lancaster-university.github.io/microbit-docs/resources/bluetooth/bluetooth_profile.html">micro:bit Bluetooth profile specification</a>.</p>
 <h2 id="example-applications-for-androidiosandroid">Example Applications for Android/IOS/Android<a class="headerlink" href="#example-applications-for-androidiosandroid" title="Permanent link">&para;</a></h2>
 <h3 id="general-procedures">General Procedures<a class="headerlink" href="#general-procedures" title="Permanent link">&para;</a></h3>
 <p>micro:bit can acquire a temperature reading from the surface of the nrf51822 processor and this can be shared with connected Bluetooth clients, either via Bluetooth notifications or by the client reading the current value of the Temperature characteristic. The frequency with which Temperature notifications are sent (more accurately, the frequency with which the temperature is sampled) may be configured by writing a ms value to the Temperature Period characteristic.  </p>
