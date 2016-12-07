@@ -49,8 +49,8 @@ To set up a micro:bit so that it advertises with the Eddystone URL frame type, t
 #### Starting Advertising
 In your source code, you'll need to define the URL you want to be broadcast and then call uBit.bleManager.advertiseEddystoneUrl with the URL as one of the arguments. 
 
-For example, the following shows the use of a URL shortener that allows for a URL of a longer length, to be sent by an Eddystone Beacon.
-In this case, http://www.bittysoftware.com/, is shortened to https://goo.gl/TlUTF7. It is important to understand that the maximum length of an URL is 17 but in the micro:bit implementation of the specification, the byte encoding is taken care of. This means that the URL is shortened further from 21 to 14 where the https:// is encoded as one byte. It is left up to the reader to inspect the specification for other byte encoding.
+For example, the following shows the use of a URL shortener that allows for a URL, of a longer length than of maximun of 17, to be sent by an Eddystone Beacon.
+In this case, http://www.bittysoftware.com/, is shortened to https://goo.gl/TlUTF7. It is important to understand that the maximum length of an URL is 17 but in the micro:bit implementation of the specification, the byte encoding of the specificationis taken care of resulting in a shorter length of the URL sent by the beacon. In the example, this means that the URL is shortened further from 21 to 14 where the https:// is encoded as one byte and is placed in the URL prefix and the remaining 14 characters are placed in the avaialable space of 17. It is left up to the reader to inspect the specification for other byte encoding.
 
 ``` cpp
 #include "MicroBit.h"
