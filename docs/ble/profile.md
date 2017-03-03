@@ -192,7 +192,26 @@ The Button Service exposes the two buttons on the micro:bit and allows their sta
 
 The service provides the client with direct control of each individual LED in the display grid. The client may also work at a higher level of abstraction and send strings of text to be displayed one character at a time on the LED display, with configurable scrolling transitions from one character to the next.
 
-A single characteristic containing a 32 bit mask (7 bits are unused) represents all 25 LEDs with a 0 bit indicating LED OFF and a 1 indicating LED ON. The characteristic may be written or read in a single GATT operation allowing efficient manipulation of all LEDs in the grid.
+The LED Matrix State characteristic contains a bit mask which represents the on|off state of all 25 LEDs with a 0 bit value indicating LED OFF and a 1 indicating LED ON. The characteristic may be written or read in a single GATT operation allowing efficient manipulation of all LEDs in the grid.
+
+The characteristic value consists of an array of 5 x utf8 octets, each representing one row of 5 LEDs.  
+
+Octet 0 represents the first row of LEDs i.e. the top row when the micro:bit is viewed with the edge connector at the bottom and USB connector at the top. 
+
+Octet 1 represents the second row and so on.
+
+In each octet, bit 4 corresponds to the first LED in the row, bit 3 the second and so on. 
+
+Bit values represent the state of the related LED: off (0) or on (1).
+
+So in summary, we have:
+```
+Octet 0, LED Row 1: bit4 bit3 bit2 bit1 bit0
+Octet 1, LED Row 2: bit4 bit3 bit2 bit1 bit0
+Octet 2, LED Row 3: bit4 bit3 bit2 bit1 bit0
+Octet 3, LED Row 4: bit4 bit3 bit2 bit1 bit0
+Octet 4, LED Row 5: bit4 bit3 bit2 bit1 bit0
+```
 
 Other characteristics allow a text string to be written to it by the client for display and the scrolling delay may be set.
 

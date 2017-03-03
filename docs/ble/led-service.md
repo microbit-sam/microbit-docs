@@ -25,7 +25,28 @@ This service is disabled by default. To enable the service, simply create an ins
 
 ### General Procedures
 
-micro:bit has an LED display with 5 rows and 5 columns i.e. 25 LEDs in total. The Bluetooth LED service allows the entire grid to be addressed as a bitmap using the LED Matrix State characteristic which supports both read and write operations. Text strings can be sent to the micro:bit for display by writing to the LED Text characteristic and the speed with which it is scrolled can be controlled by setting a delay value in milliseconds by writing to the Scrolling Delay characteristic.
+micro:bit has an LED display with 5 rows and 5 columns i.e. 25 LEDs in total. The Bluetooth LED service allows the entire grid to be addressed as a bitmap using the LED Matrix State characteristic which supports both read and write operations. 
+
+The LED Matrix State characteristic consists of an array of 5 x utf8 octets, each representing one row of 5 LEDs.  
+
+Octet 0 represents the first row of LEDs i.e. the top row when the micro:bit is viewed with the edge connector at the bottom and USB connector at the top. 
+
+Octet 1 represents the second row and so on.
+
+In each octet, bit 4 corresponds to the first LED in the row, bit 3 the second and so on. 
+
+Bit values represent the state of the related LED: off (0) or on (1).
+
+So in summary, we have:
+```
+Octet 0, LED Row 1: bit4 bit3 bit2 bit1 bit0
+Octet 1, LED Row 2: bit4 bit3 bit2 bit1 bit0
+Octet 2, LED Row 3: bit4 bit3 bit2 bit1 bit0
+Octet 3, LED Row 4: bit4 bit3 bit2 bit1 bit0
+Octet 4, LED Row 5: bit4 bit3 bit2 bit1 bit0
+```
+
+Text strings can be sent to the micro:bit for display by writing to the LED Text characteristic and the speed with which it is scrolled can be controlled by setting a delay value in milliseconds by writing to the Scrolling Delay characteristic.
 
 
 See the profile page and profile reference documentation for data format and UUID details.
