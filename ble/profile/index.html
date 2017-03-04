@@ -607,7 +607,20 @@ If you do decide to disable pairing, be aware that your micro:bit now has no Blu
 <p>The Button Service exposes the two buttons on the micro:bit and allows their state to be read on demand by a connected client or the client to subscribe to notifications of state change. 3 button states are defined and represented by a simple numeric enumeration:  0 = not pressed, 1 = pressed, 2 = long press.</p>
 <h3 id="about-the-led-service">About the LED Service<a class="headerlink" href="#about-the-led-service" title="Permanent link">&para;</a></h3>
 <p>The service provides the client with direct control of each individual LED in the display grid. The client may also work at a higher level of abstraction and send strings of text to be displayed one character at a time on the LED display, with configurable scrolling transitions from one character to the next.</p>
-<p>A single characteristic containing a 32 bit mask (7 bits are unused) represents all 25 LEDs with a 0 bit indicating LED OFF and a 1 indicating LED ON. The characteristic may be written or read in a single GATT operation allowing efficient manipulation of all LEDs in the grid.</p>
+<p>The LED Matrix State characteristic contains a bit mask which represents the on|off state of all 25 LEDs with a 0 bit value indicating LED OFF and a 1 indicating LED ON. The characteristic may be written or read in a single GATT operation allowing efficient manipulation of all LEDs in the grid.</p>
+<p>The characteristic value consists of an array of 5 x utf8 octets, each representing one row of 5 LEDs.  </p>
+<p>Octet 0 represents the first row of LEDs i.e. the top row when the micro:bit is viewed with the edge connector at the bottom and USB connector at the top. </p>
+<p>Octet 1 represents the second row and so on.</p>
+<p>In each octet, bit 4 corresponds to the first LED in the row, bit 3 the second and so on. </p>
+<p>Bit values represent the state of the related LED: off (0) or on (1).</p>
+<p>So in summary, we have:</p>
+<pre><code>Octet 0, LED Row 1: bit4 bit3 bit2 bit1 bit0
+Octet 1, LED Row 2: bit4 bit3 bit2 bit1 bit0
+Octet 2, LED Row 3: bit4 bit3 bit2 bit1 bit0
+Octet 3, LED Row 4: bit4 bit3 bit2 bit1 bit0
+Octet 4, LED Row 5: bit4 bit3 bit2 bit1 bit0
+</code></pre>
+
 <p>Other characteristics allow a text string to be written to it by the client for display and the scrolling delay may be set.</p>
 <h4 id="characteristics_3">Characteristics<a class="headerlink" href="#characteristics_3" title="Permanent link">&para;</a></h4>
 <p><strong>LED Matrix State</strong> : Allows the state of any|all LEDs in the 5x5 grid to be set to on or off with a single GATT operation. Consists of a 32 bit field with bits 0 - 24 representing the off (0) or on (1) state of the corresponding LED.</p>
