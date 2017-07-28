@@ -23,7 +23,15 @@ This service is disabled by default. To enable the service, simply create an ins
 
 ### General Procedures
 
-micro:bit includes a magnetometer or "digital compass". The Bluetooth profile gives access to magnetometer data via the Magnetometer Service which includes 3 characteristics. Magnetometer Period controls the frequency with which magnetometer data is reported over Bluetooth. Magnetometer Bearing can deliver compass bearing measurements in degrees from North as Bluetooth notifications. Similarly, Magnetometer Data supports notifications and can deliver "raw" X, Y, Z values which describe the current bearing as a 3D vector. 
+micro:bit includes a magnetometer or "digital compass". The Bluetooth profile gives access to magnetometer data via the Magnetometer Service which includes four characteristics:
+
+| **Characteristic Name** | **Description** |
+| --- | --- |
+| Magnetometer Period | Controls the frequency with which magnetometer data is reported over Bluetooth. |
+| Magnetometer Bearing | Compass bearing measurements in degrees from North as Bluetooth notifications. |
+| Magnetometer Data | Raw X, Y, Z values which describe the current bearing as a 3D vector. |
+| Magnetometer Calibration | Allows calibration of the compass to be triggered over a Bluetooth connection. Write a value of 0x01 to initiate the calibration process. If you want feedback on the outcome, enable notifications. For the full set of values this characteristic may contain and their meaning, see [micro:bit Bluetooth profile specification](../resources/bluetooth/bluetooth_profile.html) |
+
 
 * X is the magnetic field strength in the direction of magnetic north
 * Y is the magnetic field strength in the direction of magnetic east i.e. 90 degrees from magnetic north
