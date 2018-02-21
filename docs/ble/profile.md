@@ -135,7 +135,8 @@ A simplified overview appears below.
 | IO Pin Service | Custom | optional | Allows access to and configuration of IO pins on the edge connector. |
 | Event Service | Custom | optional | Allows the micro:bit to inform the connected client of the types of event it wants to be informed about. Allows the client to inform the micro:bit of relevant events. Allows micro:bit to inform the client of events originating on the micro:bit.Event data includes both a type and a reason or origin. |
 | DFU Control Service | Custom | mandatory | Used to initiate device firmware update. Defined by Nordic Semiconductor. |
-| UART Service | Custom | optional | Provides pseudo serial data communications over Bluetooth low energy, allowing arbitrary byte sequences to be exchanged in either direction with a connected peer. Data from micro:bit to peer is transmitted using Bluetooth Indications. Data from the peer to the micro:bit is transmitted using Write or Write No Response PDUs. This is an implementation of Nordic Semicondutor's UART/Serial Port Emulation over Bluetooth low energy.
+| UART Service | Custom | optional | Provides pseudo serial data communications over Bluetooth low energy, allowing arbitrary byte sequences to be exchanged in either direction with a connected peer. Data from micro:bit to peer is transmitted using Bluetooth Indications. Data from the peer to the micro:bit is transmitted using Write or Write No Response PDUs. This is an implementation of Nordic Semicondutor's UART/Serial Port Emulation over Bluetooth low energy. |
+| Partial Flashing Service | Custom | mandatory | Allows a client to update the MakeCode program on the Micro:Bit via BLE.
 
 The maximum number of bytes which may be transmitted in one PDU is limited to the MTU minus three or 20 octets to be precise.
 
@@ -144,9 +145,12 @@ See https://developer.nordicsemi.com/nRF5_SDK/nRF51_SDK_v8.x.x/doc/8.0.0/s110/ht
 Note: This service was added after micro:bits initially shipped to school and so is not in the default image. |
 
 
-Known issue: the firmware on micro:bits shipped initially to schools contains the full Bluetooth profile. Once the software has been changed by flashing an application created using any of the on-line code editors however, all services are lost except for Device Information Service, Event Service and DFU Control Service. If you need other services you must restore your micro:bit to its original state by installing the [default hex file](../resources/BBC_MICROBIT_OOB_FINAL.zip) or better still [this hex file](../resources/microbit-1_4_17_pwr0.zip) which does not use the display so you can use it over Bluetooth instead.
+Known issue: the firmware on micro:bits shipped initially to schools contains the full Bluetooth profile. Once the software has been changed by flashing an application created using any of the on-line code editors however, all services are lost except for Device Information Service, Event Service and DFU Control Service. If you need other services you must restore your micro:bit to its original state by installing the [default hex file](../resources/BBC_MICROBIT_OOB_FINAL.zip) or better still [this hex file](../resources/microbit-1_4_17_pwr0.zip) which does not use the display so you can use it over Bluetooth instead. A DAL 2.1.0 version of the all services hex file [can be found here.](../resources/BLE_All_Services_DAL_2-1-1.hex.zip)
 
 The following sections elaborate on the description of a service and/or its characteristics. For full details see the [micro:bit Bluetooth profile specification](https://lancaster-university.github.io/microbit-docs/resources/bluetooth/bluetooth_profile.html)
+
+### All Services Enabled Hex File
+The ['bluetooth-services' hex file](/docs/resources/BLE_All_Services_DAL_2-1-1.hex.zip) (originally written in C++) enables all the Bluetooth services listed below and tests when the micro:bit is connected and disconnected via Bluetooth. The source can be found here: https://github.com/lancaster-university/microbit-samples/blob/master/source/examples/bluetooth-services/main.cpp
 
 ### About the Device Information Service
 
@@ -172,7 +176,9 @@ See [https://developer.bluetooth.org/gatt/services/Pages/ServiceViewer.aspx?u=or
 
 **Magnetometer Bearing** : Compass bearing in degrees from North.
 
-Note: to deliver meaningful data the micro:bit magnetometer must first be calibrated. The calibration procedure can be triggered by simply using the compass in your micro:bit program, or adding the MicroBitMagnetometer Bluetooth service to your Bluetooth profile\*.
+**Magnetometer Calibration** : Used to trigger a magnetometer calibration. This is done by writing `0x01` to the characteristic.
+
+Note: to deliver meaningful data the micro:bit magnetometer must first be calibrated. \*.
 
 \* from v2.0.0 of the runtime onwards.
 
@@ -299,6 +305,13 @@ https://developer.nordicsemi.com/nRF5_SDK/nRF51_SDK_v8.x.x/doc/8.0.0/s110/html/a
 
 **RX Characteristic**: Allows a connected client to send a byte array containing an arbitrary number of arbitrary octet values to a connected micro:bit using with Write Requests or Write Commands.
 
+### About the Partial Flashing Service
+
+Allows clients to update the MakeCode section of firmware over a BLE connection. This is a faster method than using the DFU Control service but will not work across different versions of the DAL e.g. Bluetooth vs Radio.
+
+#### Characteristics
+
+**Partial Flash Characteristic** : This is used to control the memory map and transfer data to be written to the flash storage. A write request beginning 0x00 is used to request for information from the Memory Map, and a request beginning 0x01 is used to transfer data to be written to the flash.
 
 ## Using the Bluetooth Profile
 
