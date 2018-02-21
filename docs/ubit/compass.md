@@ -20,7 +20,10 @@ to make our headings far more accurate. You can see this in action when calibrat
 
 After calibration has been performed, the end product is an e-compass!
 
-The micro:bit uses the NXP [MAG3110](../resources/datasheets/MAG3110.pdf).
+There are [two variants of the micro:bit](https://tech.microbit.org/hardware/)
+, one uses the NXP [MAG3110](../resources/datasheets/MAG3110.pdf) and the other a uses the ST
+[LSM303](https://www.st.com/resource/en/datasheet/lsm303agr.pdf) combined accelerometer and
+magnetometer.
 
 ### Real time updates
 
@@ -32,6 +35,26 @@ If there is no scheduler running, the values are synchronously read on `get[X,Y,
 calls. Additionally, if you would like to drive compass updates manually `updateSample()`
 can be used.
 
+### Device initialisation
+
+When the compass object is created it attempts to detect which magnetometer is on board. If no 
+device is detected a magnetometer object is created that will throw an `051` error if a program 
+attempts to interact with the compass.
+
+The compass relies on the accelerometer to calculate it's orientation and will fail to 
+initialise if no accelerometer is detected.
+
+In order to calibrate the compass a display object is required, plus an optional storage object that
+will store the calibration in persistent FLASH.
+
+```
+storage(),
+i2c(I2C_SDA0, I2C_SCL0),
+display(),
+accelerometer(MicroBitAccelerometer::autoDetect(i2c)),
+compass(MicroBitCompass::autoDetect(i2c)),
+compassCalibrator(compass, accelerometer, display, storage), // Storage is optional
+```
 
 ##Message Bus ID
 
