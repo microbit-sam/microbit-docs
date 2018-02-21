@@ -135,7 +135,8 @@ A simplified overview appears below.
 | IO Pin Service | Custom | optional | Allows access to and configuration of IO pins on the edge connector. |
 | Event Service | Custom | optional | Allows the micro:bit to inform the connected client of the types of event it wants to be informed about. Allows the client to inform the micro:bit of relevant events. Allows micro:bit to inform the client of events originating on the micro:bit.Event data includes both a type and a reason or origin. |
 | DFU Control Service | Custom | mandatory | Used to initiate device firmware update. Defined by Nordic Semiconductor. |
-| UART Service | Custom | optional | Provides pseudo serial data communications over Bluetooth low energy, allowing arbitrary byte sequences to be exchanged in either direction with a connected peer. Data from micro:bit to peer is transmitted using Bluetooth Indications. Data from the peer to the micro:bit is transmitted using Write or Write No Response PDUs. This is an implementation of Nordic Semicondutor's UART/Serial Port Emulation over Bluetooth low energy.
+| UART Service | Custom | optional | Provides pseudo serial data communications over Bluetooth low energy, allowing arbitrary byte sequences to be exchanged in either direction with a connected peer. Data from micro:bit to peer is transmitted using Bluetooth Indications. Data from the peer to the micro:bit is transmitted using Write or Write No Response PDUs. This is an implementation of Nordic Semicondutor's UART/Serial Port Emulation over Bluetooth low energy. |
+| Partial Flashing Service | Custom | mandatory | Allows a client to update the MakeCode program on the Micro:Bit via BLE.
 
 The maximum number of bytes which may be transmitted in one PDU is limited to the MTU minus three or 20 octets to be precise.
 
@@ -299,6 +300,13 @@ https://developer.nordicsemi.com/nRF5_SDK/nRF51_SDK_v8.x.x/doc/8.0.0/s110/html/a
 
 **RX Characteristic**: Allows a connected client to send a byte array containing an arbitrary number of arbitrary octet values to a connected micro:bit using with Write Requests or Write Commands.
 
+### About the Partial Flashing Service
+
+Allows clients to update the MakeCode section of firmware over a BLE connection. This is a faster method than using the DFU Control service but will not work across different versions of the DAL e.g. Bluetooth vs Radio.
+
+#### Characteristics
+
+**Partial Flash Characteristic** : This is used to control the memory map and transfer data to be written to the flash storage. A write request beginning 0x00 is used to request for information from the Memory Map, and a request beginning 0x01 is used to transfer data to be written to the flash.
 
 ## Using the Bluetooth Profile
 
