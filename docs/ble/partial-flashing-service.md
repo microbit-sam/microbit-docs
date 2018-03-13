@@ -2,7 +2,11 @@
 
 ## Introduction
 
-The partial flashing service allows a BLE client to connect to a micro:bit and read and write the information required to partially update the firmware (e.g. the MakeCode section of the flash).
+The Partial Flashing Service allows a BLE client to connect to a micro:bit and read and write the information required to partially update the firmware (e.g. the MakeCode section of the flash).
+
+This service exists in partnership with the DFU service that allows a client to fully flash the micro:bit.
+
+Diagrams showing the flow of data during partial flashing can be found at [the bottom of the document](#partial flashing client).
 
 ## Bluetooth Service Specification
 
@@ -10,11 +14,11 @@ The partial flashing service allows a BLE client to connect to a micro:bit and r
 
 
 ## Characteristic Commands
-The service consists of a single Bluetooth GATT characteristic that responds to a clients WRITE/WRITE WITHOUT RESPONSE request with a BLE Notification. The characteristic supports two commands: one to request Memory Map information, and one to write data to the flash.
+The service consists of a single Bluetooth GATT characteristic that responds to a client's WRITE WITHOUT RESPONSE request with a BLE Notification. The characteristic supports commands to: Read the REGION INFO i.e. request Memory Map information, WRITE DATA to the flash, inform the micro:bit that the sevice has reached END OF TRANSMISSION, obtain the MICROBIT STATUS (PFS version #, current m:b mode), and to RESET the micro:bit into either application (MakeCode) or BLE mode.
 
 ### Region Info Command
 
-The Region Info command is used to request information from the Memory Map. The client sends a WRITE or WRITE WITHOUT RESPONSE command with the control byte (byte 0) set to 0x00 (Region Info) and byte 1 set to the region ID:
+The Region Info command is used to request information from the Memory Map. The client sends a WRITE WITHOUT RESPONSE command with the control byte (byte 0) set to 0x00 (Region Info) and byte 1 set to the region ID:
 
 #### Client Write Request
 
@@ -38,11 +42,13 @@ To send the new firmware and write it to the flash a WRITE_WITHOUT_RESPONSE comm
 
 #### Client Write Without Response
 
-| 1 Byte    | 16 Bytes | 2 Bytes | 1 Byte  |
+| 1 Byte    | 2 Bytes | 1 Byte  | 16 Bytes |
 |---|---|---|---|
-| COMMAND   | DATA     | OFFSET  | PACKET# |
+| COMMAND   | OFFSET  | PACKET# | DATA |
 
-The micro:bit handles packets in blocks of 4 packets. The offset from the first packet in the block is stored whilst waiting for the remaining 3 packets. Once all 4 packets have been received the block of 4 is written to the flash at the offset specified by the packet and a notification is sent to the client to request the next block of packets.
+The micro:bit handles data in blocks of 4 packets. This allows the micro:bit to process a 64 byte buffer and ensure that it can be successfully processed. 
+
+The offset from the first packet in the block is stored whilst waiting for the remaining 3 packets. Once all 4 packets have been received the block of 4 is written to the flash at the offset specified by the packet and a notification is sent to the client to request the next block of packets.
 
 #### micro:bit Response
 
@@ -54,7 +60,7 @@ The micro:bit handles packets in blocks of 4 packets. The offset from the first 
 
 
 **Out Of Order Packet
-If the micro:bit detects an out of order packet the packet count is reset to the start of the current block and a notification is sent to inform the client.
+If the micro:bit detects an out of order packet the packet count is set to the end of the block (start of block + 3, ready for the next) and a notification is sent to inform the client.
 
 | Byte 0 | Byte 1 | 
 |---|---|
@@ -62,11 +68,13 @@ If the micro:bit detects an out of order packet the packet count is reset to the
 
 **End Of Transmission**
 
-When the start of the embedded source is reached a WRITE request is issues with the value 0xFF. The micro:bit then writes the current block buffer to finish the transmission and overwrite the embedded source magic.
+When the start of the embedded source is reached a WRITE_WITHOUT_RESPONSE request is issued with a payload of 0x02. The micro:bit removes the embedded source magic to prevent confusion with the new application, and resets the micro:bit into application mode.
 
 | Byte 0 |
 |---|
-| END_OF_TX / 0xFF |
+| END_OF_TX / 0x02 |
+
+**
 
 ### UUIDs
 ```
