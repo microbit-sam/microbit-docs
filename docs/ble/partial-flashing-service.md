@@ -64,9 +64,9 @@ If the micro:bit detects an out of order packet the packet count is set to the e
 
 | Byte 0 | Byte 1 | 
 |---|---|
-| WRITE_NOTIFICATION / 0x01 | 0xAA |
+| WRITE NOTIFICATION / 0x01 | 0xAA |
 
-**End Of Transmission**
+### End Of Transmission
 
 When the start of the embedded source is reached a WRITE_WITHOUT_RESPONSE request is issued with a payload of 0x02. The micro:bit removes the embedded source magic to prevent confusion with the new application, and resets the micro:bit into application mode.
 
@@ -74,7 +74,27 @@ When the start of the embedded source is reached a WRITE_WITHOUT_RESPONSE reques
 |---|
 | END_OF_TX / 0x02 |
 
-**
+### MICROBIT STATUS
+A client can fetch the version of the Partial Flashing Service and the micro:bit's current status using the MICROBIT STATUS command.
+
+| Byte 0 |
+|---|
+| MICROBIT STATUS / 0xEE |
+
+The micro:bit responds with a notification. Partial Flashing Version, currently returns 1 for the intial release. Current mode returns: 0x00 for Pairing Mode, 0x01 for Application Mode.
+
+| Byte 0 | Byte 1 | Byte 2 |
+|---|---|---|
+| MICROBIT STATUS / 0xEE | Partial Flashing Version | Current Mode |
+
+### MICROBIT RESET
+The Partial Flashing Service also allows a client to reset a micro:bit into either Application or Bluetooth Pairing Mode.
+
+Reset Type: 0x00 for Pairing Mode, 0x01 for Application Mode
+
+| Byte 0 | Byte 1
+|---|---|
+| MICROBIT RESET / 0xFF | Reset Mode |
 
 ### UUIDs
 ```
