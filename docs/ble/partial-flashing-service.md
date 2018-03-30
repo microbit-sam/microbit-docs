@@ -50,6 +50,13 @@ The micro:bit handles data in blocks of 4 packets. This allows the micro:bit to 
 
 The offset from the first packet in the block is stored whilst waiting for the remaining 3 packets. Once all 4 packets have been received the block of 4 is written to the flash at the offset specified by the packet and a notification is sent to the client to request the next block of packets.
 
+**The offset used is the address bytes of the current record in the hex file**
+e.g.: 
+:10__0100__00214601360121470136007EFE09D2190140
+
+
+
+
 #### micro:bit Response
 
 **Successful Write:**
@@ -60,7 +67,7 @@ The offset from the first packet in the block is stored whilst waiting for the r
 
 
 **Out Of Order Packet
-If the micro:bit detects an out of order packet the packet count is set to the end of the block (start of block + 3, ready for the next) and a notification is sent to inform the client.
+If the micro:bit detects an out of order packet the packet count is set to the end of the block (start of block + 3, ready for the next) and a notification is sent to inform the client. The client needs to update the packet # to the start of the next block - add 4 to the start of the block (block packet counts always start with a multiple of 4: 0, 4, 8, 12..).
 
 | Byte 0 | Byte 1 | 
 |---|---|
@@ -139,4 +146,21 @@ The client then transfers the hex data from the file starting at the 'magic numb
 Once the embedded source is found the client sends an END OF TRANSMISSION BLE write to inform the micro:bit the transfer is over.
 
 ![Do Partial Flashing](https://github.com/microbit-foundation/partial-flashing-issue-tracker/blob/master/PFFlow.png?raw=true)
+
+#### Martin's Step by Step on iOS
+(1) Check the hex file for the magic (remember the file hash)
+(2) Request DAL region
+(3) Check DAL hash against stored hash - fail if different
+
+(4) Request MakeCode region
+
+(5) Calculate base address = start_address - start_address % 0x10000;
+
+(6) Request STATUS
+
+(7) If mode is application request reboot to pairing mode; try to reconnect; goto 2)
+(8) If mode is pairing send first batch of 4 FLASH packets
+(9) Send next 4 flash packets. Repeat until complete.
+
+(10) Send end of transmission
 
