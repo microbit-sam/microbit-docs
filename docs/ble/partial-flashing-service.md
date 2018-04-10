@@ -141,7 +141,7 @@ Once the hashes have been obtained from the micro:bit they need to be compared w
 
 ![Determine Partial Flashing](https://github.com/microbit-foundation/partial-flashing-issue-tracker/blob/master/DeterminePF.png?raw=true)
 
-The client then transfers the hex data from the file starting at the 'magic number' up until the page that contains the [embedded source](https://makecode.com/source-embedding) - also found using a magic number `41140E2FB82FA2BB`.
+If partial flashing is possible the micro:bit needs to be in BLE mode to prevent the flashing process from interfering with instructions that are executing. This is done by sending a `MICROBIT_RESET` command with `0x00` as the payload. The client then transfers the hex data from the file starting at the 'magic number' up until the page that contains the [embedded source](https://makecode.com/source-embedding) - also found using a magic number `41140E2FB82FA2BB`.
 
 Once the embedded source is found the client sends an END OF TRANSMISSION BLE write to inform the micro:bit the transfer is over.
 
