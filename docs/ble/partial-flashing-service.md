@@ -66,7 +66,7 @@ e.g.:
 | WRITE_NOTIFICATION / 0x01 | 0xFF |
 
 
-**Out Of Order Packet
+**Out Of Order Packet**
 If the micro:bit detects an out of order packet the packet count is set to the end of the block (start of block + 3, ready for the next) and a notification is sent to inform the client. The client needs to update the packet # to the start of the next block - add 4 to the start of the block (block packet counts always start with a multiple of 4: 0, 4, 8, 12..).
 
 | Byte 0 | Byte 1 | 
