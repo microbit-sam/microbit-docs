@@ -10,7 +10,7 @@ To edit micro:bit documentation, please edit the raw markdown files contained in
 [comment]: <> ({"end":"MicroBitAccelerometer"})
 ```
 
-Will be deleted and regenerated with `python doc-gen.py` is executed.
+Will be deleted and regenerated when `python doc-gen.py` is executed.
 
 We use mkdocs version 0.15.3 to build this site, please use this version only.
 
