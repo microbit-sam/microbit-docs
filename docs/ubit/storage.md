@@ -79,26 +79,6 @@ Default constructor.
  Creates an instance of  MicroBitStorage  which acts like a  KeyValueStore  that allows the retrieval, addition and deletion of KeyValuePairs.           
 
 
-##writeBytes
-<br/>
-####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>writeBytes</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t \*</div> buffer,  <div style='color:#a71d5d; display:inline-block'>uint32_t</div> address,  <div style='color:#a71d5d; display:inline-block'>int</div> length)
-#####Description
-Writes the given number of bytes to the address specified.  
-
- 
-
-
-#####Parameters
-
->  <div style='color:#a71d5d; display:inline-block'>uint8_t \*</div> buffer - the data to write.
-
->  <div style='color:#a71d5d; display:inline-block'>uint32_t</div> address - the location in memory to write to.
-
->  <div style='color:#a71d5d; display:inline-block'>int</div> length - the number of bytes to write.
-
-!!! note
-    currently not implemented. 
-
 ##flashPageErase
 <br/>
 ####<div style='color:#a71d5d; display:inline-block'>void</div> <div style='color:#795da3; display:inline-block'>flashPageErase</div>( <div style='color:#a71d5d; display:inline-block'>uint32_t \*</div> page_address)

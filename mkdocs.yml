@@ -46,6 +46,7 @@ pages:
   - IOPinService: ble/iopin-service.md
   - LEDService: ble/led-service.md
   - MagnetometerService: ble/magnetometer-service.md
+  - PartialFlashingService: ble/partial-flashing-service.md
   - TemperatureService: ble/temperature-service.md
   - UARTService: ble/uart-service.md
   - Connection Events: ble/ble-connection-events.md
@@ -64,4 +65,4 @@ site_description: Full documentation on the micro:bit runtime which provides an 
 site_name: micro:bit runtime
 theme_dir: runtime-theme
 versioning:
-  runtime: v2.0.0-rc4
+  runtime: v2.1.0

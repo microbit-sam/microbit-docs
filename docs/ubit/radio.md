@@ -383,16 +383,16 @@ Attempt to queue a buffer received by the radio hardware, if sufficient space is
 MICROBIT_OK on success, or MICROBIT_NO_RESOURCES if a replacement receiver buffer could not be allocated (either by policy or memory exhaustion). 
 ##setRSSI
 <br/>
-####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>setRSSI</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t</div> rssi)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>setRSSI</div>( <div style='color:#a71d5d; display:inline-block'>int</div> rssi)
 #####Description
-Sets the RSSI for the most recent packet.  
+Sets the RSSI for the most recent packet. The value is measured in -dbm. The higher the value, the stronger the signal. Typical values are in the range -42 to -128.  
 
  
 
 
 #####Parameters
 
->  <div style='color:#a71d5d; display:inline-block'>uint8_t</div> rssi - the new rssi value.
+>  <div style='color:#a71d5d; display:inline-block'>int</div> rssi - the new rssi value.
 
 !!! note
     should only be called from RADIO_IRQHandler... 
@@ -401,7 +401,7 @@ Sets the RSSI for the most recent packet.
 <br/>
 ####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>getRSSI</div>()
 #####Description
-Retrieves the current RSSI for the most recent packet.  
+Retrieves the current RSSI for the most recent packet. The return value is measured in -dbm. The higher the value, the stronger the signal. Typical values are in the range -42 to -128.  
 
  
 

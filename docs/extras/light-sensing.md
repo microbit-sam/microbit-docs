@@ -164,23 +164,25 @@ This method returns a summed average of the three sections of the display.
 
  A section is defined as:   
  | 1 | | 2 | | 3 |   
-  ___    ___    ___    ___    ___     
+  ___      ___      ___      ___      ___      
  
-  ___    ___    ___    ___    ___    
+  ___      ___      ___      ___      ___      
  
-  2         3         1    
+  2          3          1      
  
-  ___    ___    ___    ___    ___    
+  ___      ___      ___      ___      ___      
  
                      
  
-  ___    ___    ___    ___    ___    
+  ___      ___      ___      ___      ___      
  
-  3         1         2    
+  3          1          2      
  
-  ___    ___    ___    ___    ___    
+  ___      ___      ___      ___      ___      
  
-Where each number represents a different section on the 5 x 5 matrix display.  
+  
+
+ Where each number represents a different section on the 5 x 5 matrix display.  
 
  
 

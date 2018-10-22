@@ -385,7 +385,7 @@ The value assigned to the given pixel location (the brightness level 0-255), or 
 ```
 ##printImage
 <br/>
-####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>printImage</div>( <div style='color:#a71d5d; display:inline-block'>int16_t</div> x,  <div style='color:#a71d5d; display:inline-block'>int16_t</div> y,  <div style='color:#a71d5d; display:inline-block'>const uint8_t \*</div> bitmap)
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>printImage</div>( <div style='color:#a71d5d; display:inline-block'>int16_t</div> width,  <div style='color:#a71d5d; display:inline-block'>int16_t</div> height,  <div style='color:#a71d5d; display:inline-block'>const uint8_t \*</div> bitmap)
 #####Description
 Replaces the content of this image with that of a given 2D array representing the image.  
 
@@ -396,9 +396,9 @@ Replaces the content of this image with that of a given 2D array representing th
 
 #####Parameters
 
->  <div style='color:#a71d5d; display:inline-block'>int16_t</div> x - the width of the image. Must be within the dimensions of the image.
+>  <div style='color:#a71d5d; display:inline-block'>int16_t</div> width - the width of the image. Must be within the dimensions of the image.
 
->  <div style='color:#a71d5d; display:inline-block'>int16_t</div> y - the width of the image. Must be within the dimensions of the image.
+>  <div style='color:#a71d5d; display:inline-block'>int16_t</div> height - the height of the image. Must be within the dimensions of the image.
 
 >  <div style='color:#a71d5d; display:inline-block'>const uint8_t \*</div> bitmap - a 2D array representing the image.
 #####Returns
@@ -406,8 +406,8 @@ MICROBIT_OK on success, or MICROBIT_INVALID_PARAMETER.
 #####Example
 ```cpp
  const uint8_t heart[] = { 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, }; // a cute heart 
- MicroBitImage i(); 
- i.printImage(0,0,heart); 
+ MicroBitImage i(10, 5); 
+ i.printImage(10,5,heart); 
 ```
 
 !!! note

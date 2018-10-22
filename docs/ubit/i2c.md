@@ -123,5 +123,64 @@ Performs a complete write transaction. The bottom bit of the address is forced t
 >  <div style='color:#a71d5d; display:inline-block'>bool</div> repeated - if true, stop is not sent at the end. Defaults to false.
 #####Returns
 MICROBIT_OK on success, MICROBIT_I2C_ERROR if an unresolved write failure is detected. 
+##writeRegister
+<br/>
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>writeRegister</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t</div> address,  <div style='color:#a71d5d; display:inline-block'>uint8_t</div> reg,  <div style='color:#a71d5d; display:inline-block'>uint8_t</div> value)
+#####Description
+Issues a standard, 2 byte I2C command write.  
+
+ Blocks the calling thread until complete.  
+
+ 
+
+
+#####Parameters
+
+>  <div style='color:#a71d5d; display:inline-block'>uint8_t</div> address - The address of the I2C device to write to. 
+
+>  <div style='color:#a71d5d; display:inline-block'>uint8_t</div> reg - The address of the register in the device to write. 
+
+>  <div style='color:#a71d5d; display:inline-block'>uint8_t</div> value - The value to write.
+#####Returns
+MICROBIT_OK on success, MICROBIT_I2C_ERROR if the the write request failed. 
+##readRegister
+<br/>
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>readRegister</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t</div> address,  <div style='color:#a71d5d; display:inline-block'>uint8_t</div> reg,  <div style='color:#a71d5d; display:inline-block'>uint8_t \*</div> buffer,  <div style='color:#a71d5d; display:inline-block'>int</div> length)
+#####Description
+Issues a read command, copying data into the specified buffer.  
+
+ Blocks the calling thread until complete.  
+
+ 
+
+
+#####Parameters
+
+>  <div style='color:#a71d5d; display:inline-block'>uint8_t</div> address
+
+>  <div style='color:#a71d5d; display:inline-block'>uint8_t</div> reg - The address of the register to access.
+
+>  <div style='color:#a71d5d; display:inline-block'>uint8_t \*</div> buffer - Memory area to read the data into.
+
+>  <div style='color:#a71d5d; display:inline-block'>int</div> length - The number of bytes to read.
+#####Returns
+MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER or MICROBIT_I2C_ERROR if the the read request failed. 
+<br/>
+####<div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>readRegister</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t</div> address,  <div style='color:#a71d5d; display:inline-block'>uint8_t</div> reg)
+#####Description
+Issues a single byte read command, and returns the value read, or an error.  
+
+ Blocks the calling thread until complete.  
+
+ 
+
+
+#####Parameters
+
+>  <div style='color:#a71d5d; display:inline-block'>uint8_t</div> address - The address of the I2C device to write to. 
+
+>  <div style='color:#a71d5d; display:inline-block'>uint8_t</div> reg - The address of the register to access.
+#####Returns
+the byte read on success, MICROBIT_INVALID_PARAMETER or MICROBIT_I2C_ERROR if the the read request failed. 
 ____
 [comment]: <> ({"end":"MicroBitI2C"})
