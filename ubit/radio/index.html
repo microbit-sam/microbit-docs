@@ -291,6 +291,12 @@
                     
                         
 <li >
+    <a href="../../ble/partial-flashing-service/">PartialFlashingService</a>
+</li>
+
+                    
+                        
+<li >
     <a href="../../ble/temperature-service/">TemperatureService</a>
 </li>
 
@@ -816,12 +822,12 @@ int main()
 <p>MICROBIT_OK on success, or MICROBIT_NO_RESOURCES if a replacement receiver buffer could not be allocated (either by policy or memory exhaustion). </p>
 <h2 id="setrssi">setRSSI<a class="headerlink" href="#setrssi" title="Permanent link">&para;</a></h2>
 <p><br/></p>
-<h4 id="int-setrssi-uint8_t-rssi"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>setRSSI</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t</div> rssi)<a class="headerlink" href="#int-setrssi-uint8_t-rssi" title="Permanent link">&para;</a></h4>
+<h4 id="int-setrssi-int-rssi"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>setRSSI</div>( <div style='color:#a71d5d; display:inline-block'>int</div> rssi)<a class="headerlink" href="#int-setrssi-int-rssi" title="Permanent link">&para;</a></h4>
 <h5 id="description_6">Description<a class="headerlink" href="#description_6" title="Permanent link">&para;</a></h5>
-<p>Sets the RSSI for the most recent packet.  </p>
+<p>Sets the RSSI for the most recent packet. The value is measured in -dbm. The higher the value, the stronger the signal. Typical values are in the range -42 to -128.  </p>
 <h5 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">&para;</a></h5>
 <blockquote>
-<p><div style='color:#a71d5d; display:inline-block'>uint8_t</div> rssi - the new rssi value.</p>
+<p><div style='color:#a71d5d; display:inline-block'>int</div> rssi - the new rssi value.</p>
 </blockquote>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -831,7 +837,7 @@ int main()
 <p><br/></p>
 <h4 id="int-getrssi"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>getRSSI</div>()<a class="headerlink" href="#int-getrssi" title="Permanent link">&para;</a></h4>
 <h5 id="description_7">Description<a class="headerlink" href="#description_7" title="Permanent link">&para;</a></h5>
-<p>Retrieves the current RSSI for the most recent packet.  </p>
+<p>Retrieves the current RSSI for the most recent packet. The return value is measured in -dbm. The higher the value, the stronger the signal. Typical values are in the range -42 to -128.  </p>
 <h5 id="returns_4">Returns<a class="headerlink" href="#returns_4" title="Permanent link">&para;</a></h5>
 <p>the most recent RSSI value or MICROBIT_NOT_SUPPORTED if the BLE stack is running. </p>
 <h2 id="enable">enable<a class="headerlink" href="#enable" title="Permanent link">&para;</a></h2>
@@ -912,6 +918,25 @@ int main()
         <!--<script src="../../archive/v2.0.0-rc3/mkdocs/js/require.js"></script>-->
         <!--<script src="../../archive/v2.0.0-rc3/mkdocs/js/search.js"></script>-->
         <!--<script src="../../archive/v2.0.0-rc3/mkdocs/js/text.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc4/archive/v2.0.0-rc3/js/base.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc4/archive/v2.0.0-rc3/js/bootstrap-3.0.3.min.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc4/archive/v2.0.0-rc3/js/highlight.pack.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc4/archive/v2.0.0-rc3/js/jquery-1.10.2.min.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc4/archive/v2.0.0-rc3/mkdocs/js/lunr-0.5.7.min.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc4/archive/v2.0.0-rc3/mkdocs/js/mustache.min.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc4/archive/v2.0.0-rc3/mkdocs/js/require.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc4/archive/v2.0.0-rc3/mkdocs/js/search.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc4/archive/v2.0.0-rc3/mkdocs/js/text.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc4/js/base.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc4/js/bootstrap-3.0.3.min.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc4/js/highlight.pack.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc4/js/jquery-1.10.2.min.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc4/mkdocs/js/lunr-0.5.7.min.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc4/mkdocs/js/mustache.min.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc4/mkdocs/js/require.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc4/mkdocs/js/search.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc4/mkdocs/js/text.js"></script>-->
+        <!--<script src="../../archive/v2.0.0-rc4/resources/bluetooth/functions.js"></script>-->
         <!--<script src="../../resources/bluetooth/functions.js"></script>-->
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
