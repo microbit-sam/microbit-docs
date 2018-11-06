@@ -12,6 +12,9 @@ Diagrams showing the flow of data during partial flashing can be found at [the b
 
  Please see the [micro:bit Bluetooth profile specification](https://lancaster-university.github.io/microbit-docs/resources/bluetooth/bluetooth_profile.html).
 
+## Enabling the service
+
+Currently partial flashing is __only supported by programs built using MakeCode__. This is because the service requires the user program to be appended onto the end of the DAL, something which can't be guaranteed in a C++ program. The partial flashing service is enabled by default for MakeCode programs.
 
 ## Characteristic Commands
 The service consists of a single Bluetooth GATT characteristic that responds to a client's WRITE WITHOUT RESPONSE request with a BLE Notification. The characteristic supports commands to: Read the REGION INFO i.e. request Memory Map information, WRITE DATA to the flash, inform the micro:bit that the sevice has reached END OF TRANSMISSION, obtain the MICROBIT STATUS (PFS version #, current m:b mode), and to RESET the micro:bit into either application (MakeCode) or BLE mode.

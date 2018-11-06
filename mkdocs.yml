@@ -46,6 +46,7 @@ pages:
   - IOPinService: ble/iopin-service.md
   - LEDService: ble/led-service.md
   - MagnetometerService: ble/magnetometer-service.md
+  - PartialFlashingService: ble/partial-flashing-service.md
   - TemperatureService: ble/temperature-service.md
   - UARTService: ble/uart-service.md
   - Connection Events: ble/ble-connection-events.md
