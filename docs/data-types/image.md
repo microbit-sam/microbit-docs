@@ -12,7 +12,7 @@ image onto another at a given position, shifting the content of an image and com
 It is designed to work with the [`MicroBitDisplay`](../ubit/display.md) class to allow the creation of animations and visual effects.
 
 !!! note
-    This is a **managed type**. This means that it will automatically use and release memory as needed. There is no need for you to explicitly free or release memory when your done - the memory will be freed as soon as the last piece of code stops using the data.
+    This is a **managed type**. This means that it will automatically use and release memory as needed. There is no need for you to explicitly free or release memory when you're done - the memory will be freed as soon as the last piece of code stops using the data.
 
 ## Creating Images
 
