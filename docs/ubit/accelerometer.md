@@ -22,7 +22,7 @@ when only the force gravity is acting upon an object. If you were to throw a bal
 into the air, free fall would begin as soon as the ball begins its decent after the
 acceleration from your throw has subsided.
 
-There are [two variants of the micro:bit](https://support.microbit.org/support/solutions/articles/19000087020-micro-bit-motion-sensor-hardware-change)
+There are [two variants of the micro:bit](https://tech.microbit.org/hardware/)
 , one uses the [MMA8653](../resources/datasheets/MMA8653.pdf) and the other a uses the 
 [LSM303](https://www.st.com/resource/en/datasheet/lsm303agr.pdf) combined accelerometer and 
 magnetometer.
@@ -38,10 +38,20 @@ calls. Additionally, if you would like to drive accelerometer updates manually `
 can be used.
 
 ### Device initialisation
-When the accelerometer object is created it attempts to detect which accelerometer is on board. 
-This is done by trying to read the `WHO_AM_I` value from each device. If no device is detected a
-basic object is created that will return an `050` error if a program attempts to interact with 
-the acclerometer.
+
+When the accelerometer object is created it attempts to detect which accelerometer is on board 
+and creates an instance of the corresponding class. If no device is detected a 
+MicroBitAccelerometer object is created that will throw an `050` error if the program attempts
+to interact with the accelerometer.
+
+This is done by creating an [i2c](/ubit/i2c) object and passing it to the 
+`MicroBitAccelerometer::autoDetect()` function. This then scans the given I2C bus for supported 
+accelerometer devices and returns the appropriate driver.
+
+```
+i2c(I2C_SDA0, I2C_SCL0),
+accelerometer(MicroBitAccelerometer::autoDetect(i2c)),
+```
 
 ##Message Bus ID
 

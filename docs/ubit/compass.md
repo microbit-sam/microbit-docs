@@ -20,7 +20,7 @@ to make our headings far more accurate. You can see this in action when calibrat
 
 After calibration has been performed, the end product is an e-compass!
 
-There are [two variants of the micro:bit](https://support.microbit.org/support/solutions/articles/19000087020-micro-bit-motion-sensor-hardware-change)
+There are [two variants of the micro:bit](https://tech.microbit.org/hardware/)
 , one uses the NXP [MAG3110](../resources/datasheets/MAG3110.pdf) and the other a uses the ST
 [LSM303](https://www.st.com/resource/en/datasheet/lsm303agr.pdf) combined accelerometer and
 magnetometer.
@@ -37,13 +37,24 @@ can be used.
 
 ### Device initialisation
 
-When the compass object is created it attempts to detect which magnetometer is on board.
-This is done by trying to read the `WHO_AM_I` value from each device. If no device is detected a
-basic object is created that will return an `051` error if a program attempts to interact with
-the compass.
+When the compass object is created it attempts to detect which magnetometer is on board. If no 
+device is detected a magnetometer object is created that will throw an `051` error if a program 
+attempts to interact with the compass.
 
-The compass relies on the accelerometer to calculate it's orientation and will fail to initialise
-if no accelerometer is detected.
+The compass relies on the accelerometer to calculate it's orientation and will fail to 
+initialise if no accelerometer is detected.
+
+In order to calibrate the compass both the display and storage objects also need to be
+created. This allows the user to complete the calibration, and then store the calibration.
+
+```
+storage(),
+i2c(I2C_SDA0, I2C_SCL0),
+display(),
+accelerometer(MicroBitAccelerometer::autoDetect(i2c)),
+compass(MicroBitCompass::autoDetect(i2c)),
+compassCalibrator(compass, accelerometer, display, storage),
+```
 
 ##Message Bus ID
 
