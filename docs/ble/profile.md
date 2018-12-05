@@ -149,6 +149,9 @@ Known issue: the firmware on micro:bits shipped initially to schools contains th
 
 The following sections elaborate on the description of a service and/or its characteristics. For full details see the [micro:bit Bluetooth profile specification](https://lancaster-university.github.io/microbit-docs/resources/bluetooth/bluetooth_profile.html)
 
+### All Services Enabled Hex File
+The ['bluetooth-services' hex file](/docs/resources/BLE_All_Services_DAL_2-1-0.hex.zip) (originally written in C++) enables all the Bluetooth services listed below and tests when the micro:bit is connected and disconnected via Bluetooth. The source can be found here: https://github.com/lancaster-university/microbit-samples/blob/master/source/examples/bluetooth-services/main.cpp
+
 ### About the Device Information Service
 
 This is an adopted service which defines 9 characteristics, all of which are optional members of of the service. For micro:bit we chose to include 3 of those characteristics only.
