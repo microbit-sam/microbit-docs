@@ -2,7 +2,8 @@
 ![confused emjoi](resources/emoji/confused.png)
 
 If you have any questions about the software or the hardware
-for the micro:bit, please visit the Microbit Educational Foundation [support](https://support.microbit.org/support/home) hub.
+for the micro:bit, please visit the Microbit Educational Foundation [support](https://support.microbit.org/support/home) hub or 
+[join our Slack channel](https://tech.microbit.org/get-involved/where-to-find/)
 
 If you have found an issue with our **documentation**, or if something is not clear
 in the documentation, please file an issue on the [microbit-docs github repository](https://github.com/lancaster-university/microbit-docs/issues).
