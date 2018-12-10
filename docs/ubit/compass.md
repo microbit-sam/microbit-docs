@@ -44,8 +44,8 @@ attempts to interact with the compass.
 The compass relies on the accelerometer to calculate it's orientation and will fail to 
 initialise if no accelerometer is detected.
 
-In order to calibrate the compass both the display and storage objects also need to be
-created. This allows the user to complete the calibration, and then store the calibration.
+In order to calibrate the compass a display object is required, plus an optional storage object that
+will store the calibration in persistent FLASH.
 
 ```
 storage(),
@@ -53,7 +53,7 @@ i2c(I2C_SDA0, I2C_SCL0),
 display(),
 accelerometer(MicroBitAccelerometer::autoDetect(i2c)),
 compass(MicroBitCompass::autoDetect(i2c)),
-compassCalibrator(compass, accelerometer, display, storage),
+compassCalibrator(compass, accelerometer, display, storage), // Storage is optional
 ```
 
 ##Message Bus ID
