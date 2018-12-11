@@ -2,9 +2,7 @@
 
 ## Introduction
 
-The BBC micro:bit ships with a default Bluetooth profile included in the run-time firmware.
-
-The profile consists of various "services" and "characteristics" designed to give easy access to the micro:bit's hardware so that initial exploration of the device's capabilities may take place using a corresponding application on another, compatible Bluetooth device such as a smartphone.
+The out of the box program ships with the DFU, Event, Device Information, Accelerometer, Button, LED, and Temperature services enabled. Once the software has been changed by flashing an application created using any of the on-line code editors supporting bluetooth, all services are lost except for Device Information Service, Event Service and DFU Control Service.
 
 Given the nature of micro:bit and the tools which will be available to developers, it will be possible for the profile to be partly or completely changed and replaced with a profile of the developer's own design. The latter case is out of scope for this document which focuses on the standard, default profile only.
 
@@ -142,10 +140,7 @@ The maximum number of bytes which may be transmitted in one PDU is limited to th
 
 See https://developer.nordicsemi.com/nRF5_SDK/nRF51_SDK_v8.x.x/doc/8.0.0/s110/html/a00072.html for the original Nordic Semiconductor documentation by way of background.
 
-Note: This service was added after micro:bits initially shipped to school and so is not in the default image. |
-
-
-Known issue: the firmware on micro:bits shipped initially to schools contains the full Bluetooth profile. Once the software has been changed by flashing an application created using any of the on-line code editors however, all services are lost except for Device Information Service, Event Service and DFU Control Service. If you need other services you must restore your micro:bit to its original state by installing the [default hex file](../resources/BBC_MICROBIT_OOB_FINAL.zip) or better still [this hex file](../resources/microbit-1_4_17_pwr0.zip) which does not use the display so you can use it over Bluetooth instead. A DAL 2.1.0 version of the all services hex file [can be found here.](../resources/BLE_All_Services_DAL_2-1-1.hex.zip)
+If you wish to restore your micro:bit to its original services you can do so by installing the [Out Of Box hex file](../resources/BBC_MICROBIT_OOB_FINAL.zip).
 
 The following sections elaborate on the description of a service and/or its characteristics. For full details see the [micro:bit Bluetooth profile specification](https://lancaster-university.github.io/microbit-docs/resources/bluetooth/bluetooth_profile.html)
 
