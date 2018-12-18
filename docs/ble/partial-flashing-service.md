@@ -142,17 +142,20 @@ Once the hashes have been obtained from the micro:bit they need to be compared w
     .word 0 ; reserved
 ```
 
-![Determine Partial Flashing](https://github.com/microbit-foundation/partial-flashing-issue-tracker/blob/master/DeterminePF.png?raw=true)
+![Determine Partial Flashing](/resources/DeterminePF.png)
 
 If partial flashing is possible the micro:bit needs to be in BLE mode to prevent the flashing process from interfering with instructions that are executing. This is done by sending a `MICROBIT_RESET` command with `0x00` as the payload. The client then transfers the hex data from the file starting at the 'magic number' up until the page that contains the [embedded source](https://makecode.com/source-embedding) - also found using a magic number `41140E2FB82FA2BB`.
 
 Once the embedded source is found the client sends an END OF TRANSMISSION BLE write to inform the micro:bit the transfer is over.
 
-![Do Partial Flashing](https://github.com/microbit-foundation/partial-flashing-issue-tracker/blob/master/PFFlow.png?raw=true)
+![Do Partial Flashing](/resources/PFFlow.png)
 
 #### Martin's Step by Step on iOS
+
 (1) Check the hex file for the magic (remember the file hash)
+
 (2) Request DAL region
+
 (3) Check DAL hash against stored hash - fail if different
 
 (4) Request MakeCode region
@@ -162,7 +165,9 @@ Once the embedded source is found the client sends an END OF TRANSMISSION BLE wr
 (6) Request STATUS
 
 (7) If mode is application request reboot to pairing mode; try to reconnect; goto 2)
+
 (8) If mode is pairing send first batch of 4 FLASH packets
+
 (9) Send next 4 flash packets. Repeat until complete.
 
 (10) Send end of transmission
