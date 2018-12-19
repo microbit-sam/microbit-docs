@@ -23,7 +23,7 @@ HIGH, we the value we write to the 9 column pins affect all of the LEDs 2.1 to 2
 Moreover, if we scan through the different rows fast enough - faster than the eye can see - then we can provide the illusion of all the LEDS being on at the same time! This is a technique
 known as *persistence of vision*... and was also the same basis of the very first TV sets (although that did not use LEDs!).
 
-The display refresh rate depends on the `systemTick` function, by default this is called every 6ms (166.6 Hz). If the display is in light saving mode the tick period is changed to 5ms (200 Hz).
+In it's normal mode, the display will update every 18ms (55 Hz). If the display is in light saving mode the period is changed to 15ms (66 Hz).
 
 ## Capabilities
 
