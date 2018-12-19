@@ -8,7 +8,7 @@
 
 | Language | Description |
 | ------------- |-------------|
-| <div class="img-icon">[![Microsoft MakeCode](resources/logos/pxt.svg)](https://makecode.microbit.org/)</div> | MakeCode provides a programming experience based around JavaScript. The experience has a built-in progression from a simple block-based editor, to a in-browser text editor complete with robust auto-completion.  |
+| <div class="img-icon">[![Microsoft MakeCode](resources/logos/makecode.svg)](https://makecode.microbit.org/)</div> | MakeCode provides a programming experience based around JavaScript. The experience has a built-in progression from a simple block-based editor, to a in-browser text editor complete with robust auto-completion.  |
 | <div class="img-icon">[![MicroPython](resources/logos/python.png)](https://python.microbit.org/)</div> | MicroPython is a completely text-based editor, perfect for those who want to push their coding skills further. A selection of 'snippets' are on hand to help auto-complete trickier tasks and a range of premade images and music are built-in to give you a helping hand with your code. |
 
 # mbed
