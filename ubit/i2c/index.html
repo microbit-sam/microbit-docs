@@ -24,16 +24,6 @@
         <![endif]-->
 
         
-        <script>
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-            ga('create', 'UA-76156484-1', 'auto');
-            ga('send', 'pageview');
-        </script>
-        
     </head>
 
     <body>
@@ -419,10 +409,6 @@
         
             <li><a href="#write">write</a></li>
         
-            <li><a href="#writeregister">writeRegister</a></li>
-        
-            <li><a href="#readregister">readRegister</a></li>
-        
     
     </ul>
 </div></div>
@@ -518,53 +504,13 @@ can be used in conjunction with the micro:bit.</p>
 </blockquote>
 <h5 id="returns_3">Returns<a class="headerlink" href="#returns_3" title="Permanent link">&para;</a></h5>
 <p>MICROBIT_OK on success, MICROBIT_I2C_ERROR if an unresolved write failure is detected. </p>
-<h2 id="writeregister">writeRegister<a class="headerlink" href="#writeregister" title="Permanent link">&para;</a></h2>
-<p><br/></p>
-<h4 id="int-writeregister-uint8_t-address-uint8_t-reg-uint8_t-value"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>writeRegister</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t</div> address,  <div style='color:#a71d5d; display:inline-block'>uint8_t</div> reg,  <div style='color:#a71d5d; display:inline-block'>uint8_t</div> value)<a class="headerlink" href="#int-writeregister-uint8_t-address-uint8_t-reg-uint8_t-value" title="Permanent link">&para;</a></h4>
-<h5 id="description_5">Description<a class="headerlink" href="#description_5" title="Permanent link">&para;</a></h5>
-<p>Issues a standard, 2 byte I2C command write.  </p>
-<p>Blocks the calling thread until complete.  </p>
-<h5 id="parameters_5">Parameters<a class="headerlink" href="#parameters_5" title="Permanent link">&para;</a></h5>
-<blockquote>
-<p><div style='color:#a71d5d; display:inline-block'>uint8_t</div> address - The address of the I2C device to write to. </p>
-<p><div style='color:#a71d5d; display:inline-block'>uint8_t</div> reg - The address of the register in the device to write. </p>
-<p><div style='color:#a71d5d; display:inline-block'>uint8_t</div> value - The value to write.</p>
-</blockquote>
-<h5 id="returns_4">Returns<a class="headerlink" href="#returns_4" title="Permanent link">&para;</a></h5>
-<p>MICROBIT_OK on success, MICROBIT_I2C_ERROR if the the write request failed. </p>
-<h2 id="readregister">readRegister<a class="headerlink" href="#readregister" title="Permanent link">&para;</a></h2>
-<p><br/></p>
-<h4 id="int-readregister-uint8_t-address-uint8_t-reg-uint8_t-42-buffer-int-length"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>readRegister</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t</div> address,  <div style='color:#a71d5d; display:inline-block'>uint8_t</div> reg,  <div style='color:#a71d5d; display:inline-block'>uint8_t *</div> buffer,  <div style='color:#a71d5d; display:inline-block'>int</div> length)<a class="headerlink" href="#int-readregister-uint8_t-address-uint8_t-reg-uint8_t-42-buffer-int-length" title="Permanent link">&para;</a></h4>
-<h5 id="description_6">Description<a class="headerlink" href="#description_6" title="Permanent link">&para;</a></h5>
-<p>Issues a read command, copying data into the specified buffer.  </p>
-<p>Blocks the calling thread until complete.  </p>
-<h5 id="parameters_6">Parameters<a class="headerlink" href="#parameters_6" title="Permanent link">&para;</a></h5>
-<blockquote>
-<p><div style='color:#a71d5d; display:inline-block'>uint8_t</div> address</p>
-<p><div style='color:#a71d5d; display:inline-block'>uint8_t</div> reg - The address of the register to access.</p>
-<p><div style='color:#a71d5d; display:inline-block'>uint8_t *</div> buffer - Memory area to read the data into.</p>
-<p><div style='color:#a71d5d; display:inline-block'>int</div> length - The number of bytes to read.</p>
-</blockquote>
-<h5 id="returns_5">Returns<a class="headerlink" href="#returns_5" title="Permanent link">&para;</a></h5>
-<p>MICROBIT_OK on success, MICROBIT_INVALID_PARAMETER or MICROBIT_I2C_ERROR if the the read request failed. 
-<br/></p>
-<h4 id="int-readregister-uint8_t-address-uint8_t-reg"><div style='color:#a71d5d; display:inline-block'>int</div> <div style='color:#795da3; display:inline-block'>readRegister</div>( <div style='color:#a71d5d; display:inline-block'>uint8_t</div> address,  <div style='color:#a71d5d; display:inline-block'>uint8_t</div> reg)<a class="headerlink" href="#int-readregister-uint8_t-address-uint8_t-reg" title="Permanent link">&para;</a></h4>
-<h5 id="description_7">Description<a class="headerlink" href="#description_7" title="Permanent link">&para;</a></h5>
-<p>Issues a single byte read command, and returns the value read, or an error.  </p>
-<p>Blocks the calling thread until complete.  </p>
-<h5 id="parameters_7">Parameters<a class="headerlink" href="#parameters_7" title="Permanent link">&para;</a></h5>
-<blockquote>
-<p><div style='color:#a71d5d; display:inline-block'>uint8_t</div> address - The address of the I2C device to write to. </p>
-<p><div style='color:#a71d5d; display:inline-block'>uint8_t</div> reg - The address of the register to access.</p>
-</blockquote>
-<h5 id="returns_6">Returns<a class="headerlink" href="#returns_6" title="Permanent link">&para;</a></h5>
-<p>the byte read on success, MICROBIT_INVALID_PARAMETER or MICROBIT_I2C_ERROR if the the read request failed. </p>
 <hr /></div>
         </div>
 
         <footer class="col-md-12">
             
             <center><a href="https://www.lancaster.ac.uk"><image style="width:auto;" height="61" src="../../img/lancs-logo.png"></image></a></center>
+            <center>DAL Version v2.1.1</center>
             <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
         </footer>
 
@@ -602,6 +548,44 @@ can be used in conjunction with the micro:bit.</p>
         <!--<script src="../../archive/v2.0.0-rc4/mkdocs/js/search.js"></script>-->
         <!--<script src="../../archive/v2.0.0-rc4/mkdocs/js/text.js"></script>-->
         <!--<script src="../../archive/v2.0.0-rc4/resources/bluetooth/functions.js"></script>-->
+        <!--<script src="../../archive/v2.1.0/archive/v2.0.0-rc3/js/base.js"></script>-->
+        <!--<script src="../../archive/v2.1.0/archive/v2.0.0-rc3/js/bootstrap-3.0.3.min.js"></script>-->
+        <!--<script src="../../archive/v2.1.0/archive/v2.0.0-rc3/js/highlight.pack.js"></script>-->
+        <!--<script src="../../archive/v2.1.0/archive/v2.0.0-rc3/js/jquery-1.10.2.min.js"></script>-->
+        <!--<script src="../../archive/v2.1.0/archive/v2.0.0-rc3/mkdocs/js/lunr-0.5.7.min.js"></script>-->
+        <!--<script src="../../archive/v2.1.0/archive/v2.0.0-rc3/mkdocs/js/mustache.min.js"></script>-->
+        <!--<script src="../../archive/v2.1.0/archive/v2.0.0-rc3/mkdocs/js/require.js"></script>-->
+        <!--<script src="../../archive/v2.1.0/archive/v2.0.0-rc3/mkdocs/js/search.js"></script>-->
+        <!--<script src="../../archive/v2.1.0/archive/v2.0.0-rc3/mkdocs/js/text.js"></script>-->
+        <!--<script src="../../archive/v2.1.0/js/base.js"></script>-->
+        <!--<script src="../../archive/v2.1.0/js/bootstrap-3.0.3.min.js"></script>-->
+        <!--<script src="../../archive/v2.1.0/js/highlight.pack.js"></script>-->
+        <!--<script src="../../archive/v2.1.0/js/jquery-1.10.2.min.js"></script>-->
+        <!--<script src="../../archive/v2.1.0/mkdocs/js/lunr-0.5.7.min.js"></script>-->
+        <!--<script src="../../archive/v2.1.0/mkdocs/js/mustache.min.js"></script>-->
+        <!--<script src="../../archive/v2.1.0/mkdocs/js/require.js"></script>-->
+        <!--<script src="../../archive/v2.1.0/mkdocs/js/search.js"></script>-->
+        <!--<script src="../../archive/v2.1.0/mkdocs/js/text.js"></script>-->
+        <!--<script src="../../archive/v2.1.0/resources/bluetooth/functions.js"></script>-->
+        <!--<script src="../../archive/v2.1.1/archive/v2.0.0-rc3/js/base.js"></script>-->
+        <!--<script src="../../archive/v2.1.1/archive/v2.0.0-rc3/js/bootstrap-3.0.3.min.js"></script>-->
+        <!--<script src="../../archive/v2.1.1/archive/v2.0.0-rc3/js/highlight.pack.js"></script>-->
+        <!--<script src="../../archive/v2.1.1/archive/v2.0.0-rc3/js/jquery-1.10.2.min.js"></script>-->
+        <!--<script src="../../archive/v2.1.1/archive/v2.0.0-rc3/mkdocs/js/lunr-0.5.7.min.js"></script>-->
+        <!--<script src="../../archive/v2.1.1/archive/v2.0.0-rc3/mkdocs/js/mustache.min.js"></script>-->
+        <!--<script src="../../archive/v2.1.1/archive/v2.0.0-rc3/mkdocs/js/require.js"></script>-->
+        <!--<script src="../../archive/v2.1.1/archive/v2.0.0-rc3/mkdocs/js/search.js"></script>-->
+        <!--<script src="../../archive/v2.1.1/archive/v2.0.0-rc3/mkdocs/js/text.js"></script>-->
+        <!--<script src="../../archive/v2.1.1/js/base.js"></script>-->
+        <!--<script src="../../archive/v2.1.1/js/bootstrap-3.0.3.min.js"></script>-->
+        <!--<script src="../../archive/v2.1.1/js/highlight.pack.js"></script>-->
+        <!--<script src="../../archive/v2.1.1/js/jquery-1.10.2.min.js"></script>-->
+        <!--<script src="../../archive/v2.1.1/mkdocs/js/lunr-0.5.7.min.js"></script>-->
+        <!--<script src="../../archive/v2.1.1/mkdocs/js/mustache.min.js"></script>-->
+        <!--<script src="../../archive/v2.1.1/mkdocs/js/require.js"></script>-->
+        <!--<script src="../../archive/v2.1.1/mkdocs/js/search.js"></script>-->
+        <!--<script src="../../archive/v2.1.1/mkdocs/js/text.js"></script>-->
+        <!--<script src="../../archive/v2.1.1/resources/bluetooth/functions.js"></script>-->
         <!--<script src="../../resources/bluetooth/functions.js"></script>-->
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
