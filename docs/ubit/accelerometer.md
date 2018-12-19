@@ -22,7 +22,10 @@ when only the force gravity is acting upon an object. If you were to throw a bal
 into the air, free fall would begin as soon as the ball begins its decent after the
 acceleration from your throw has subsided.
 
-The micro:bit uses the [MMA8653](../resources/datasheets/MMA8653.pdf).
+There are [two variants of the micro:bit](https://tech.microbit.org/hardware/)
+, one uses the [MMA8653](../resources/datasheets/MMA8653.pdf) and the other a uses the 
+[LSM303](https://www.st.com/resource/en/datasheet/lsm303agr.pdf) combined accelerometer and 
+magnetometer.
 
 ### Real time updates
 
@@ -33,6 +36,22 @@ whenever the micro:bit has no other tasks to perform..
 If there is no scheduler running, the values are synchronously read on `get[X,Y,Z]()`
 calls. Additionally, if you would like to drive accelerometer updates manually `updateSample()`
 can be used.
+
+### Device initialisation
+
+When the accelerometer object is created it attempts to detect which accelerometer is on board 
+and creates an instance of the corresponding class. If no device is detected a 
+MicroBitAccelerometer object is created that will throw an `050` error if the program attempts
+to interact with the accelerometer.
+
+This is done by creating an [i2c](/ubit/i2c) object and passing it to the 
+`MicroBitAccelerometer::autoDetect()` function. This then scans the given I2C bus for supported 
+accelerometer devices and returns the appropriate driver.
+
+```
+i2c(I2C_SDA0, I2C_SCL0),
+accelerometer(MicroBitAccelerometer::autoDetect(i2c)),
+```
 
 ##Message Bus ID
 

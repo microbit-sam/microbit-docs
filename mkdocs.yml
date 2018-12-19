@@ -1,6 +1,7 @@
 extra:
   logo_author: Aluna Everitt (@AlunaEveritt on Twitter)
   logo_url: ./img/logo[whiteruntime].png
+  runtime: v2.1.1
 extra_css:
 - css/extra.css
 markdown_extensions:
@@ -61,5 +62,3 @@ site_description: Full documentation on the micro:bit runtime which provides an 
   by Lancaster University.
 site_name: micro:bit runtime
 theme_dir: runtime-theme
-versioning:
-  runtime: v2.0.0-rc4
