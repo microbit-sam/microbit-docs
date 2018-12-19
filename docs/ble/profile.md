@@ -176,7 +176,9 @@ See [https://developer.bluetooth.org/gatt/services/Pages/ServiceViewer.aspx?u=or
 
 **Magnetometer Bearing** : Compass bearing in degrees from North.
 
-Note: to deliver meaningful data the micro:bit magnetometer must first be calibrated. The calibration procedure can be triggered by simply using the compass in your micro:bit program, or adding the MicroBitMagnetometer Bluetooth service to your Bluetooth profile\*.
+**Magnetometer Calibration** : Used to trigger a magnetometer calibration. This is done by writing `0x01` to the characteristic.
+
+Note: to deliver meaningful data the micro:bit magnetometer must first be calibrated. \*.
 
 \* from v2.0.0 of the runtime onwards.
 
