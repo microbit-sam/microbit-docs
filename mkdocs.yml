@@ -3,9 +3,6 @@ extra:
   logo_url: ./img/logo[whiteruntime].png
 extra_css:
 - css/extra.css
-google_analytics:
-- UA-76156484-1
-- auto
 markdown_extensions:
 - toc:
     permalink: true
