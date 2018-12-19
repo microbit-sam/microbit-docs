@@ -601,7 +601,8 @@ If you do decide to disable pairing, be aware that your micro:bit now has no Blu
 <p><strong>Magnetometer Data</strong> : Contains magnetometer measurements for X, Y and Z axes as 3 unsigned 16 bit values in that order and in little endian format. Data can be read on demand or notified periodically.</p>
 <p><strong>Magnetometer Period</strong> : Determines the frequency with which magnetometer data is reported in milliseconds. Valid values are 1, 2, 5, 10, 20, 80, 160 and 640.</p>
 <p><strong>Magnetometer Bearing</strong> : Compass bearing in degrees from North.</p>
-<p>Note: to deliver meaningful data the micro:bit magnetometer must first be calibrated. The calibration procedure can be triggered by simply using the compass in your micro:bit program, or adding the MicroBitMagnetometer Bluetooth service to your Bluetooth profile*.</p>
+<p><strong>Magnetometer Calibration</strong> : Used to trigger a magnetometer calibration. This is done by writing <code>0x01</code> to the characteristic.</p>
+<p>Note: to deliver meaningful data the micro:bit magnetometer must first be calibrated. *.</p>
 <p>* from v2.0.0 of the runtime onwards.</p>
 <h3 id="about-the-temperature-service">About the Temperature Service<a class="headerlink" href="#about-the-temperature-service" title="Permanent link">&para;</a></h3>
 <h4 id="characteristics_2">Characteristics<a class="headerlink" href="#characteristics_2" title="Permanent link">&para;</a></h4>
