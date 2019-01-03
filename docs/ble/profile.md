@@ -145,12 +145,12 @@ See https://developer.nordicsemi.com/nRF5_SDK/nRF51_SDK_v8.x.x/doc/8.0.0/s110/ht
 Note: This service was added after micro:bits initially shipped to school and so is not in the default image. |
 
 
-Known issue: the firmware on micro:bits shipped initially to schools contains the full Bluetooth profile. Once the software has been changed by flashing an application created using any of the on-line code editors however, all services are lost except for Device Information Service, Event Service and DFU Control Service. If you need other services you must restore your micro:bit to its original state by installing the [default hex file](../resources/BBC_MICROBIT_OOB_FINAL.zip) or better still [this hex file](../resources/microbit-1_4_17_pwr0.zip) which does not use the display so you can use it over Bluetooth instead. A DAL 2.1.0 version of the all services hex file [can be found here.](../resources/BLE_All_Services_DAL_2-1-1.hex.zip)
+Known issue: the firmware on micro:bits shipped initially to schools contains the full Bluetooth profile. Once the software has been changed by flashing an application created using any of the on-line code editors however, all services are lost except for Device Information Service, Event Service and DFU Control Service. If you need other services you must restore your micro:bit to its original state by installing the [default hex file](../resources/BBC_MICROBIT_OOB_FINAL.zip) or better still [this hex file](../resources/microbit-1_4_17_pwr0.zip) which does not use the display so you can use it over Bluetooth instead. A DAL 2.1.1 version of the all services hex file [can be found here.](/resources/BLE_All_Services_DAL_2-1-1.hex.zip)
 
 The following sections elaborate on the description of a service and/or its characteristics. For full details see the [micro:bit Bluetooth profile specification](https://lancaster-university.github.io/microbit-docs/resources/bluetooth/bluetooth_profile.html)
 
 ### All Services Enabled Hex File
-The ['bluetooth-services' hex file](/docs/resources/BLE_All_Services_DAL_2-1-1.hex.zip) (originally written in C++) enables all the Bluetooth services listed below and tests when the micro:bit is connected and disconnected via Bluetooth. The source can be found here: https://github.com/lancaster-university/microbit-samples/blob/master/source/examples/bluetooth-services/main.cpp
+The ['bluetooth-services' hex file](/resources/BLE_All_Services_DAL_2-1-1.hex.zip) (originally written in C++) enables all the Bluetooth services listed below and tests when the micro:bit is connected and disconnected via Bluetooth. The source can be found here: https://github.com/lancaster-university/microbit-samples/blob/master/source/examples/bluetooth-services/main.cpp
 
 ### About the Device Information Service
 
