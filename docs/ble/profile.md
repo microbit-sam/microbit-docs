@@ -150,7 +150,7 @@ Known issue: the firmware on micro:bits shipped initially to schools contains th
 The following sections elaborate on the description of a service and/or its characteristics. For full details see the [micro:bit Bluetooth profile specification](https://lancaster-university.github.io/microbit-docs/resources/bluetooth/bluetooth_profile.html)
 
 ### All Services Enabled Hex File
-The ['bluetooth-services' hex file](/resources/BLE_All_Services_DAL_2-1-1.hex.zip) (originally written in C++) enables all the Bluetooth services listed below and tests when the micro:bit is connected and disconnected via Bluetooth. The source can be found here: https://github.com/lancaster-university/microbit-samples/blob/master/source/examples/bluetooth-services/main.cpp
+The 'bluetooth-services' hex file (Either [without Magnetometer Service](/resources/BLE_All_Services_DAL_2-1-1-No-Mag.hex.zip) or [without DFU Service](/resources/BLE_All_Services_DAL_2-1-1-No-DFU.hex.zip)) (originally written in C++) enables all the Bluetooth services listed below and will indicate when the micro:bit is connected and disconnected via Bluetooth. The source can be found [here.](https://github.com/lancaster-university/microbit-samples/blob/master/source/examples/bluetooth-services/main.cpp)
 
 ### About the Device Information Service
 
