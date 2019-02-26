@@ -128,7 +128,7 @@ A simplified overview appears below.
 | Generic Attribute Service | Adopted | mandatory | Can inform clients of changes in the attribute table such as reassigned handle values.Mandatory in GATT profiles. |
 | Device Information Service | Adopted | mandatory | Provides more comprehensive details about the device and its manufacturer |
 | Accelerometer Service | Custom | optional | Provides access to the accelerometer sensor state and configuration of the frequency with which readings are reported. |
-| Magnetometer Service | Custom | optional | Provides access to the magnetometer sensor state and configuration of the frequency with which readings are reported. Provides access to a "current bearing" value in degrees. |
+| Magnetometer Service | Custom | optional | Provides access to the magnetometer sensor state and configuration of the frequency with which readings are reported. Provides access to a "current bearing" value in degrees. Allows a connected client to initiate compass calibration. |
 | Temperature Service | Custom | optional | Provides access to a simplified, integer temperature measurement in celsius, derived from several sensors in the micro:bit. |
 | Button Service | Custom | optional | Allow button state changes to be notified to the client |
 | LED Service | Custom | optional | Allows access to both the LED "display" grid and the system status LED |
